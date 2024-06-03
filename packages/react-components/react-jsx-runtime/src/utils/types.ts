@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import type { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilities';
+import type { SlotComponentType, SlotPropsDataType } from '@fluentui/react-utilities';
 
 export type JSXRuntime = <P extends {}>(
   type: React.ElementType<P>,
@@ -9,7 +9,7 @@ export type JSXRuntime = <P extends {}>(
   self?: unknown,
 ) => React.ReactElement<P>;
 
-export type JSXSlotRuntime = <Props extends UnknownSlotProps>(
+export type JSXSlotRuntime = <Props extends SlotPropsDataType>(
   type: SlotComponentType<Props>,
   overrideProps: Props | null,
   key?: React.Key,

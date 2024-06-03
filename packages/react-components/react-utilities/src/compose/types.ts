@@ -2,6 +2,12 @@ import * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 import { DistributiveOmit, ReplaceNullWithUndefined } from '../utils/types';
 
+export type SlotPropsDataType = {
+  as?: keyof JSX.IntrinsicElements;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children?: any;
+};
+
 export type SlotRenderFunction<Props> = (
   Component: React.ElementType<Props>,
   props: Omit<Props, 'as'>,
@@ -13,14 +19,15 @@ export type SlotRenderFunction<Props> = (
  * This should ONLY be used in type templates as in `extends SlotPropsRecord`;
  * it shouldn't be used as a component's Slots type.
  */
-export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandValue | null | undefined>;
+export type SlotPropsRecord = Record<string, SlotPropsDataType | SlotShorthandValue | null | undefined>;
 
 /**
  * The shorthand value of a slot allows specifying its child
  */
-export type SlotShorthandValue = React.ReactChild | React.ReactNode[] | React.ReactPortal;
+export type SlotShorthandValue = React.ReactElement | string | number | Iterable<React.ReactNode> | React.ReactPortal;
 
 /**
+ * @deprecated - SlotPropsDataType instead
  * Matches any slot props type.
  *
  * This should ONLY be used in type templates as in `extends UnknownSlotProps`;
@@ -41,9 +48,15 @@ type WithSlotShorthandValue<Props> =
  * Helper type for {@link Slot}. Takes the props we want to support for a slot and adds the ability for `children`
  * to be a render function that takes those props.
  */
-type WithSlotRenderFunction<Props> = Props & {
+type WithSlotRenderFunction<Props> = Omit<Props, 'children'> & {
   children?: ('children' extends keyof Props ? Props['children'] : never) | SlotRenderFunction<Props>;
 };
+
+type WithoutSlotRenderFunction<Props> = Props extends unknown
+  ? 'children' extends keyof Props
+    ? Omit<Props, 'children'> & { children?: Exclude<Props['children'], Function> }
+    : Props
+  : never;
 
 /**
  * HTML element types that are not allowed to have children.
@@ -98,7 +111,8 @@ type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type exte
  * ```
  */
 export type Slot<
-  Type extends keyof JSX.IntrinsicElements | React.ComponentType | React.VoidFunctionComponent | UnknownSlotProps,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Type extends keyof JSX.IntrinsicElements | React.ComponentType<any> | SlotPropsDataType,
   AlternateAs extends keyof JSX.IntrinsicElements = never,
 > = IsSingleton<Extract<Type, string>> extends true
   ?
@@ -106,12 +120,14 @@ export type Slot<
           Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
             ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
             : Type extends React.ComponentType<infer Props> // Component types like `typeof Button`
-            ? WithSlotRenderFunction<Props>
+            ? Props extends SlotPropsDataType
+              ? Props
+              : WithSlotRenderFunction<Props>
             : Type // Props types like `ButtonProps`
         >
-      | {
-          [As in AlternateAs]: { as: As } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
-        }[AlternateAs]
+      | (AlternateAs extends unknown
+          ? { as: AlternateAs } & WithSlotRenderFunction<IntrinsicElementProps<AlternateAs>>
+          : never)
       | null
   : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
@@ -166,7 +182,7 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
   // Include a prop for each slot (see note below about the Omit)
   Omit<Slots, Primary & 'root'> &
     // Include all of the props of the primary slot inline in the component's props
-    PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
+    PropsWithoutRef<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Primary]>>>;
 
 // Note: the `Omit<Slots, Primary & 'root'>` above is a little tricky. Here's what it's doing:
 // * If the Primary slot is 'root', then omit the `root` slot prop.
@@ -187,7 +203,7 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
   // Include a prop for each slot, with the shorthand resolved to a props object
   // The root slot can never be null, so also exclude null from it
   [Key in keyof Slots]: ReplaceNullWithUndefined<
-    Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>
+    WithoutSlotRenderFunction<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>
   >;
 };
 
@@ -237,7 +253,7 @@ export type SlotClassNames<Slots> = {
  * A definition of a slot, as a component, very similar to how a React component is declared,
  * but with some additional metadata that is used to determine how to render the slot.
  */
-export type SlotComponentType<Props> = Props & {
+export type SlotComponentType<Props extends SlotPropsDataType> = WithoutSlotRenderFunction<Props> & {
   /**
    * **NOTE**: Slot components are not callable.
    */
