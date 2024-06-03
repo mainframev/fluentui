@@ -13,6 +13,7 @@ import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Provider } from 'react';
@@ -323,14 +324,14 @@ export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
 export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
 
 // @public
-export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSlots>>, 'content'> & Pick<Partial<TableCellLayoutSlots>, 'content'> & {
+export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
     appearance?: 'primary';
     truncate?: boolean;
 };
 
 // @public (undocumented)
 export type TableCellLayoutSlots = {
-    root: Slot<'div'>;
+    root: Slot<Omit<ExtractSlotProps<Slot<'div'>>, 'content'>>;
     media: Slot<'span'>;
     main: Slot<'span'>;
     description: Slot<'span'>;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { Announce } from '../AriaLive/AriaLive.types';
 import { Toast, ToastIntent } from '../../state';
 import { ToastContainerContextValue } from '../../contexts/toastContainerContext';
@@ -10,7 +10,7 @@ export type ToastContainerContextValues = {
 };
 
 export type ToastContainerSlots = {
-  root: NonNullable<Slot<'div'>>;
+  root: NonNullable<ExtractSlotProps<Slot<'div'>>>;
   timer: NonNullable<Slot<TimerProps>>;
 };
 

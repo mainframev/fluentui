@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import { TableContextValue } from '../Table/Table.types';
 
@@ -9,7 +9,7 @@ export type TableCellLayoutContextValues = {
 };
 
 export type TableCellLayoutSlots = {
-  root: Slot<'div'>;
+  root: Slot<Omit<ExtractSlotProps<Slot<'div'>>, 'content'>>;
 
   /**
    * Slot for an icon or other visual element
@@ -35,19 +35,18 @@ export type TableCellLayoutSlots = {
 /**
  * TableCellLayout Props
  */
-export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSlots>>, 'content'> &
-  Pick<Partial<TableCellLayoutSlots>, 'content'> & {
-    /**
-     * Renders design variants of the table cell
-     * @default undefined
-     */
-    appearance?: 'primary';
+export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
+  /**
+   * Renders design variants of the table cell
+   * @default undefined
+   */
+  appearance?: 'primary';
 
-    /**
-     * Renders content with overflow: hidden and text-overflow: ellipsis
-     */
-    truncate?: boolean;
-  };
+  /**
+   * Renders content with overflow: hidden and text-overflow: ellipsis
+   */
+  truncate?: boolean;
+};
 
 /**
  * State used in rendering TableCellLayout

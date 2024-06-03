@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilities';
+import { SlotComponentType, SlotPropsDataType } from '@fluentui/react-utilities';
 import { getMetadataFromSlotComponent } from '../utils/getMetadataFromSlotComponent';
 import { DevRuntime } from '../utils/DevRuntime';
 
-export const jsxDEVSlot = <Props extends UnknownSlotProps>(
+export const jsxDEVSlot = <Props extends SlotPropsDataType>(
   type: SlotComponentType<Props>,
   overrideProps: Props | null,
   key?: React.Key,

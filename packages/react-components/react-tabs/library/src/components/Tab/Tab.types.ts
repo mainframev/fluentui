@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 
 /**
  * Any value that identifies a specific tab.
@@ -9,7 +9,7 @@ export type TabSlots = {
   /**
    * Root of the component.
    */
-  root: Slot<'button'>;
+  root: Slot<Omit<ExtractSlotProps<Slot<'button'>>, 'content'>>;
 
   /**
    * Icon that renders before the content.
@@ -30,18 +30,17 @@ export type TabInternalSlots = TabSlots & {
 /**
  * Tab Props
  */
-export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> &
-  Pick<Partial<TabSlots>, 'content'> & {
-    /**
-     * A tab can be set to disable interaction.
-     * @default false
-     */
-    disabled?: boolean;
-    /**
-     * The value that identifies this tab when selected.
-     */
-    value: TabValue;
-  };
+export type TabProps = ComponentProps<Partial<TabSlots>> & {
+  /**
+   * A tab can be set to disable interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * The value that identifies this tab when selected.
+   */
+  value: TabValue;
+};
 
 /**
  * State used in rendering Tab

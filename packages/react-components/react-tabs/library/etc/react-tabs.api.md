@@ -7,6 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Provider } from 'react';
@@ -89,7 +90,7 @@ export type TabListSlots = {
 export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
 
 // @public
-export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> & Pick<Partial<TabSlots>, 'content'> & {
+export type TabProps = ComponentProps<Partial<TabSlots>> & {
     disabled?: boolean;
     value: TabValue;
 };
@@ -102,7 +103,7 @@ export type TabRegisterData = {
 
 // @public (undocumented)
 export type TabSlots = {
-    root: Slot<'button'>;
+    root: Slot<Omit<ExtractSlotProps<Slot<'button'>>, 'content'>>;
     icon?: Slot<'span'>;
     content: NonNullable<Slot<'span'>>;
 };

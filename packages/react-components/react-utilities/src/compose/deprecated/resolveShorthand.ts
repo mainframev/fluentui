@@ -11,6 +11,7 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = R
 /**
  * @deprecated use slot.always or slot.optional combined with assertSlots instead
  */
+// eslint-disable-next-line deprecation/deprecation
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
@@ -31,6 +32,7 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps> = (value, options) =>
+  // eslint-disable-next-line deprecation/deprecation
   slot.optional<UnknownSlotProps>(value, {
     ...options,
     renderByDefault: options?.required,

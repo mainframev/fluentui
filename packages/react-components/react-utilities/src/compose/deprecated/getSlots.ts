@@ -112,6 +112,7 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   }
 
   const shouldOmitAsProp = typeof slot === 'string' && asProp;
+  // eslint-disable-next-line deprecation/deprecation
   const slotProps = (shouldOmitAsProp ? omit(props, ['as']) : (props as UnknownSlotProps)) as R[K];
   return [slot, slotProps];
 }
