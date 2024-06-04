@@ -234,7 +234,7 @@ export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
  * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
  */
 export type ForwardRefComponent<Props> = React.ForwardRefExoticComponent<
-  Props & React.RefAttributes<InferredElementRefType<Props>>
+  Props & { ref?: React.Ref<InferredElementRefType<Props>> }
 >;
 // A definition like this would also work, but typescript is more likely to unnecessarily expand
 // the props type with this version (and it's likely much more expensive to evaluate)

@@ -19,7 +19,7 @@ export const getIntrinsicElementProps = <
   /** The slot's default element type (e.g. 'div') */
   tagName: NonNullable<Props['as']>,
   /** The component's props object */
-  props: Props & React.RefAttributes<InferredElementRefType<Props>>,
+  props: Props & { ref?: React.Ref<InferredElementRefType<Props>> },
   /** List of native props to exclude from the returned value */
   excludedPropNames?: ExcludedPropKeys[],
 ) => {
