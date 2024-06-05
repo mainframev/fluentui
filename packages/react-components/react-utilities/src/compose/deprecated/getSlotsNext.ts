@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentState, SlotPropsRecord, UnknownSlotProps } from '../types';
+import type { LegacyComponentState, SlotPropsRecord, UnknownSlotProps } from '../types';
 import { ObjectSlotProps, Slots } from './getSlots';
 
 /**
@@ -13,7 +13,8 @@ import { ObjectSlotProps, Slots } from './getSlots';
  * @deprecated use slot.always or slot.optional combined with assertSlots instead
  */
 export function getSlotsNext<R extends SlotPropsRecord>(
-  state: ComponentState<R>,
+  // eslint-disable-next-line deprecation/deprecation
+  state: LegacyComponentState<R>,
 ): {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   slots: Slots<R>;
@@ -40,7 +41,8 @@ export function getSlotsNext<R extends SlotPropsRecord>(
  * @deprecated use slot.always or slot.optional combined with assertSlots instead
  */
 function getSlotNext<R extends SlotPropsRecord, K extends keyof R>(
-  state: ComponentState<R>,
+  // eslint-disable-next-line deprecation/deprecation
+  state: LegacyComponentState<R>,
   slotName: K,
 ): readonly [React.ElementType<R[K]> | null, R[K]] {
   const props = state[slotName];

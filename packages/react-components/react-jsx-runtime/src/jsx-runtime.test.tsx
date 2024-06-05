@@ -2,7 +2,7 @@
 
 import { render } from '@testing-library/react';
 import { assertSlots, getSlotsNext, resolveShorthand, slot } from '@fluentui/react-utilities';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, LegacyComponentState, Slot } from '@fluentui/react-utilities';
 
 describe('createElement with getSlotsNext', () => {
   describe('general behavior tests', () => {
@@ -64,7 +64,8 @@ describe('createElement with getSlotsNext', () => {
   describe('custom behavior tests', () => {
     it('keeps children from "defaultProps" in a render callback', () => {
       type TestComponentSlots = { slot: Slot<'div'> };
-      type TestComponentState = ComponentState<TestComponentSlots>;
+      // eslint-disable-next-line deprecation/deprecation
+      type TestComponentState = LegacyComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
       const TestComponent = (props: TestComponentProps) => {
@@ -107,7 +108,8 @@ describe('createElement with getSlotsNext', () => {
 
     it('keeps children from a render template in a render callback', () => {
       type TestComponentSlots = { outer: Slot<'div'>; inner: Slot<'div'> };
-      type TestComponentState = ComponentState<TestComponentSlots>;
+      // eslint-disable-next-line deprecation/deprecation
+      type TestComponentState = LegacyComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
       const TestComponent = (props: TestComponentProps) => {

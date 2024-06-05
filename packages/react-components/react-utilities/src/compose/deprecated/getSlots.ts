@@ -2,7 +2,7 @@ import * as React from 'react';
 import { omit } from '../../utils/omit';
 import type {
   AsIntrinsicElement,
-  ComponentState,
+  LegacyComponentState,
   ExtractSlotProps,
   SlotPropsRecord,
   SlotRenderFunction,
@@ -57,7 +57,8 @@ export type ObjectSlotProps<S extends SlotPropsRecord> = {
  * @returns An object containing the `slots` map and `slotProps` map.
  */
 export function getSlots<R extends SlotPropsRecord>(
-  state: ComponentState<R>,
+  // eslint-disable-next-line deprecation/deprecation
+  state: LegacyComponentState<R>,
 ): {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   slots: Slots<R>;
@@ -80,7 +81,8 @@ export function getSlots<R extends SlotPropsRecord>(
 }
 
 function getSlot<R extends SlotPropsRecord, K extends keyof R>(
-  state: ComponentState<R>,
+  // eslint-disable-next-line deprecation/deprecation
+  state: LegacyComponentState<R>,
   slotName: K,
 ): readonly [React.ElementType<R[K]> | null, R[K]] {
   const props = state[slotName];

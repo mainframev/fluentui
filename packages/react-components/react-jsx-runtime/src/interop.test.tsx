@@ -3,7 +3,7 @@
 
 import { render } from '@testing-library/react';
 import { assertSlots, resolveShorthand, slot } from '@fluentui/react-utilities';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, LegacyComponentState, Slot } from '@fluentui/react-utilities';
 import { createElement } from './createElement';
 
 describe('resolveShorthand with assertSlots', () => {
@@ -14,7 +14,8 @@ describe('resolveShorthand with assertSlots', () => {
         someSlot: NonNullable<Slot<'div'>>;
       };
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
-      type TestComponentState = ComponentState<TestComponentSlots>;
+      // eslint-disable-next-line deprecation/deprecation
+      type TestComponentState = LegacyComponentState<TestComponentSlots>;
 
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
@@ -58,7 +59,8 @@ describe('resolveShorthand with assertSlots', () => {
     it('keeps children from a render template in a render callback', () => {
       const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
       type TestComponentSlots = { outer: NonNullable<Slot<'div'>>; inner: NonNullable<Slot<'div'>> };
-      type TestComponentState = ComponentState<TestComponentSlots>;
+      // eslint-disable-next-line deprecation/deprecation
+      type TestComponentState = LegacyComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
       const TestComponent = (props: TestComponentProps) => {
@@ -119,7 +121,8 @@ describe('resolveShorthand with assertSlots', () => {
     it("should support 'as' property to opt-out of base element type", () => {
       const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
       type TestComponentSlots = { slot: NonNullable<Slot<'div', 'span'>> };
-      type TestComponentState = ComponentState<TestComponentSlots>;
+      // eslint-disable-next-line deprecation/deprecation
+      type TestComponentState = LegacyComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
       const TestComponent = (props: TestComponentProps) => {
