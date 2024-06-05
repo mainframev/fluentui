@@ -101,13 +101,13 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public @deprecated
-export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
+export function getSlots<R extends SlotPropsRecord>(state: LegacyComponentState<R>): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
 };
 
 // @internal @deprecated
-export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
+export function getSlotsNext<R extends SlotPropsRecord>(state: LegacyComponentState<R>): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
 };
@@ -145,6 +145,15 @@ export function isSlot<Props extends {}>(element: unknown): element is SlotCompo
 
 // @public
 export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
+
+// @public @deprecated (undocumented)
+export type LegacyComponentState<Slots extends SlotPropsRecord> = {
+    components: {
+        [Key in keyof Slots]-?: React_2.ComponentType<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Key]>>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    };
+} & {
+    [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
+};
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;

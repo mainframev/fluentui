@@ -208,6 +208,27 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 };
 
 /**
+ * @deprecated
+ *
+ * on the new API, the `ComponentState` expects to be used together with `slot.always` or `slot.optional` to define the slot's declaration on the state. Those methods ensure that the slot is properly defined.
+ *
+ * This is not true for the legacy API, where the slots are defined directly on the state object. This type is used to define the state object for the legacy API.
+ */
+export type LegacyComponentState<Slots extends SlotPropsRecord> = {
+  components: {
+    [Key in keyof Slots]-?:
+      | React.ComponentType<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Key]>>>
+      | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+  };
+} & {
+  // Include a prop for each slot, with the shorthand resolved to a props object
+  // The root slot can never be null, so also exclude null from it
+  [Key in keyof Slots]: ReplaceNullWithUndefined<
+    Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>
+  >;
+};
+
+/**
  * This is part of a hack to infer the element type from a native element *props* type.
  * The only place the original element is found in a native props type (at least that's workable
  * for inference) is in the event handlers, so some of the helper types use this event handler
