@@ -27,7 +27,7 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
 // @public
 export type ComponentState<Slots extends SlotPropsRecord> = {
     components: {
-        [Key in keyof Slots]-?: React_2.ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Slots]-?: ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & {
     [Key in keyof Slots]: ReplaceNullWithUndefined<WithoutSlotRenderFunction<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>>;
@@ -63,7 +63,7 @@ export type FluentTriggerComponent = {
 };
 
 // @public
-export type ForwardRefComponent<Props> = React_2.ForwardRefExoticComponent<Props & {
+export type ForwardRefComponent<Props> = React_2.NamedExoticComponent<Props & {
     ref?: React_2.Ref<InferredElementRefType<Props>>;
 }>;
 
@@ -149,7 +149,7 @@ export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | Re
 // @public @deprecated (undocumented)
 export type LegacyComponentState<Slots extends SlotPropsRecord> = {
     components: {
-        [Key in keyof Slots]-?: React_2.ComponentType<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Key]>>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Slots]-?: ComponentType<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Key]>>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
     };
 } & {
     [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
@@ -262,9 +262,9 @@ export { SelectionMode_2 as SelectionMode }
 export function setVirtualParent(child: Node, parent?: Node): void;
 
 // @public
-export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType<any> | SlotPropsDataType, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
+export type Slot<Type extends keyof JSX.IntrinsicElements | ComponentType<any> | SlotPropsDataType, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
-} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? Props extends SlotPropsDataType ? Props : WithSlotRenderFunction<Props> : Type> | (AlternateAs extends unknown ? {
+} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends ComponentType<infer Props> ? Props extends SlotPropsDataType ? Props : WithSlotRenderFunction<Props> : Type> | (AlternateAs extends unknown ? {
     as: AlternateAs;
 } & WithSlotRenderFunction<IntrinsicElementProps<AlternateAs>> : never) | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
@@ -293,7 +293,7 @@ export type SlotClassNames<Slots> = {
 export type SlotComponentType<Props extends SlotPropsDataType> = WithoutSlotRenderFunction<Props> & {
     (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
-    [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
 };
 
 // @public (undocumented)
