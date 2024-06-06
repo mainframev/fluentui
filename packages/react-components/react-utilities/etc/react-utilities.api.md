@@ -101,13 +101,13 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public @deprecated
-export function getSlots<R extends SlotPropsRecord>(state: LegacyComponentState<R>): {
+export function getSlots<R extends SlotPropsRecord>(state: unknown): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
 };
 
 // @internal @deprecated
-export function getSlotsNext<R extends SlotPropsRecord>(state: LegacyComponentState<R>): {
+export function getSlotsNext<R extends SlotPropsRecord>(state: unknown): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
 };
@@ -145,15 +145,6 @@ export function isSlot<Props extends {}>(element: unknown): element is SlotCompo
 
 // @public
 export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
-
-// @public @deprecated (undocumented)
-export type LegacyComponentState<Slots extends SlotPropsRecord> = {
-    components: {
-        [Key in keyof Slots]-?: ComponentType<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Key]>>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-    };
-} & {
-    [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
-};
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
@@ -207,15 +198,15 @@ export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => 
 export function resetIdsForTests(): void;
 
 // @public @deprecated
-export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps>;
+export const resolveShorthand: ResolveShorthandFunction<SlotPropsDataType>;
 
 // @public
 function resolveShorthand_2<Props extends SlotPropsDataType | null | undefined>(value: Props | SlotShorthandValue): Props;
 
 // @public @deprecated (undocumented)
-export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
-    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
+export type ResolveShorthandFunction<Props extends SlotPropsDataType = SlotPropsDataType> = {
+    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): WithoutSlotRenderFunction<P>;
+    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): WithoutSlotRenderFunction<P> | undefined;
 };
 
 // @public @deprecated (undocumented)

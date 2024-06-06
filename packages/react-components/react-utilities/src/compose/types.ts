@@ -45,14 +45,18 @@ type WithSlotShorthandValue<Props> =
   | ('children' extends keyof Props ? Extract<SlotShorthandValue, Props['children']> : never);
 
 /**
+ * @internal
  * Helper type for {@link Slot}. Takes the props we want to support for a slot and adds the ability for `children`
  * to be a render function that takes those props.
  */
-type WithSlotRenderFunction<Props> = Omit<Props, 'children'> & {
+export type WithSlotRenderFunction<Props> = Omit<Props, 'children'> & {
   children?: ('children' extends keyof Props ? Props['children'] : never) | SlotRenderFunction<Props>;
 };
 
-type WithoutSlotRenderFunction<Props> = Props extends unknown
+/**
+ * @internal
+ */
+export type WithoutSlotRenderFunction<Props> = Props extends unknown
   ? 'children' extends keyof Props
     ? Omit<Props, 'children'> & { children?: Exclude<Props['children'], Function> }
     : Props
@@ -204,24 +208,6 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
   // The root slot can never be null, so also exclude null from it
   [Key in keyof Slots]: ReplaceNullWithUndefined<
     WithoutSlotRenderFunction<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>
-  >;
-};
-
-/**
- * @deprecated
- * Defines the State object of a component given its slots.
- */
-export type LegacyComponentState<Slots extends SlotPropsRecord> = {
-  components: {
-    [Key in keyof Slots]-?:
-      | ComponentType<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Key]>>>
-      | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-  };
-} & {
-  // Include a prop for each slot, with the shorthand resolved to a props object
-  // The root slot can never be null, so also exclude null from it
-  [Key in keyof Slots]: ReplaceNullWithUndefined<
-    Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>
   >;
 };
 
