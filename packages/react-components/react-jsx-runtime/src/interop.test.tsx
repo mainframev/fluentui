@@ -3,7 +3,7 @@
 
 import { render } from '@testing-library/react';
 import { assertSlots, resolveShorthand, slot } from '@fluentui/react-utilities';
-import type { ComponentProps, ComponentState, LegacyComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { createElement } from './createElement';
 
 describe('resolveShorthand with assertSlots', () => {
@@ -15,7 +15,7 @@ describe('resolveShorthand with assertSlots', () => {
       };
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
       // eslint-disable-next-line deprecation/deprecation
-      type TestComponentState = LegacyComponentState<TestComponentSlots>;
+      type TestComponentState = ComponentState<TestComponentSlots>;
 
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
@@ -60,7 +60,7 @@ describe('resolveShorthand with assertSlots', () => {
       const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
       type TestComponentSlots = { outer: NonNullable<Slot<'div'>>; inner: NonNullable<Slot<'div'>> };
       // eslint-disable-next-line deprecation/deprecation
-      type TestComponentState = LegacyComponentState<TestComponentSlots>;
+      type TestComponentState = ComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
       const TestComponent = (props: TestComponentProps) => {
@@ -122,7 +122,7 @@ describe('resolveShorthand with assertSlots', () => {
       const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
       type TestComponentSlots = { slot: NonNullable<Slot<'div', 'span'>> };
       // eslint-disable-next-line deprecation/deprecation
-      type TestComponentState = LegacyComponentState<TestComponentSlots>;
+      type TestComponentState = ComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
       const TestComponent = (props: TestComponentProps) => {

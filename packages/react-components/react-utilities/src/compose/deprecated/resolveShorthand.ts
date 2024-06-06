@@ -1,5 +1,5 @@
 import * as slot from '../slot';
-import type { SlotShorthandValue, UnknownSlotProps } from '../types';
+import type { SlotPropsDataType, SlotShorthandValue, WithoutSlotRenderFunction } from '../types';
 
 /**
  * @deprecated - use slot.always or slot.optional combined with assertSlots instead
@@ -11,13 +11,15 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = R
 /**
  * @deprecated use slot.always or slot.optional combined with assertSlots instead
  */
-// eslint-disable-next-line deprecation/deprecation
-export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
+export type ResolveShorthandFunction<Props extends SlotPropsDataType = SlotPropsDataType> = {
+  <P extends Props>(
+    value: P | SlotShorthandValue | undefined,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    options: ResolveShorthandOptions<P, true>,
+  ): WithoutSlotRenderFunction<P>;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>):
-    | P
+    | WithoutSlotRenderFunction<P>
     | undefined;
 };
 
@@ -31,12 +33,11 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
  * @deprecated use slot.always or slot.optional combined with assertSlots instead
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps> = (value, options) =>
-  // eslint-disable-next-line deprecation/deprecation
-  slot.optional<UnknownSlotProps>(value, {
+export const resolveShorthand: ResolveShorthandFunction<SlotPropsDataType> = (value, options) =>
+  slot.optional<SlotPropsDataType>(value, {
     ...options,
     renderByDefault: options?.required,
     // elementType as undefined is the way to identify between a slot and a resolveShorthand call
     // in the case elementType is undefined assertSlots will fail, ensuring it'll only work with slot method.
     elementType: undefined!,
-  });
+  }) as WithoutSlotRenderFunction<SlotPropsDataType>;

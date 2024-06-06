@@ -2,7 +2,7 @@ import * as React from 'react';
 import { omit } from '../../utils/omit';
 import type {
   AsIntrinsicElement,
-  LegacyComponentState,
+  ComponentState,
   ExtractSlotProps,
   SlotPropsRecord,
   SlotRenderFunction,
@@ -57,21 +57,21 @@ export type ObjectSlotProps<S extends SlotPropsRecord> = {
  * @returns An object containing the `slots` map and `slotProps` map.
  */
 export function getSlots<R extends SlotPropsRecord>(
-  // eslint-disable-next-line deprecation/deprecation
-  state: LegacyComponentState<R>,
+  state: unknown,
 ): {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   slots: Slots<R>;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   slotProps: ObjectSlotProps<R>;
 } {
+  const typeState = state as ComponentState<R>;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
-  const slotNames: (keyof R)[] = Object.keys(state.components);
+  const slotNames: (keyof R)[] = Object.keys(typeState.components);
   for (const slotName of slotNames) {
-    const [slot, props] = getSlot(state, slotName);
+    const [slot, props] = getSlot(typeState, slotName);
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
@@ -81,8 +81,7 @@ export function getSlots<R extends SlotPropsRecord>(
 }
 
 function getSlot<R extends SlotPropsRecord, K extends keyof R>(
-  // eslint-disable-next-line deprecation/deprecation
-  state: LegacyComponentState<R>,
+  state: ComponentState<R>,
   slotName: K,
 ): readonly [React.ElementType<R[K]> | null, R[K]] {
   const props = state[slotName];
@@ -97,11 +96,9 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
 
   const renderFunction = isSlot(props) ? props[SLOT_RENDER_FUNCTION_SYMBOL] : undefined;
 
-  const slot = (
-    state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
-      ? asProp || state.components?.[slotName] || 'div'
-      : state.components[slotName]
-  ) as React.ElementType<R[K]>;
+  const slot = (state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
+    ? asProp || state.components?.[slotName] || 'div'
+    : state.components[slotName]) as unknown as React.ElementType<R[K]>;
 
   if (renderFunction || typeof children === 'function') {
     const render = (renderFunction || children) as SlotRenderFunction<R[K]>;
