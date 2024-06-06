@@ -112,14 +112,14 @@ type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type exte
  */
 export type Slot<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Type extends keyof JSX.IntrinsicElements | React.ComponentType<any> | SlotPropsDataType,
+  Type extends keyof JSX.IntrinsicElements | ComponentType<any> | SlotPropsDataType,
   AlternateAs extends keyof JSX.IntrinsicElements = never,
 > = IsSingleton<Extract<Type, string>> extends true
   ?
       | WithSlotShorthandValue<
           Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
             ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
-            : Type extends React.ComponentType<infer Props> // Component types like `typeof Button`
+            : Type extends ComponentType<infer Props> // Component types like `typeof Button`
             ? Props extends SlotPropsDataType
               ? Props
               : WithSlotRenderFunction<Props>
@@ -196,7 +196,7 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
 export type ComponentState<Slots extends SlotPropsRecord> = {
   components: {
     [Key in keyof Slots]-?:
-      | React.ComponentType<ExtractSlotProps<Slots[Key]>>
+      | ComponentType<ExtractSlotProps<Slots[Key]>>
       | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & {
@@ -209,15 +209,12 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 
 /**
  * @deprecated
- *
- * on the new API, the `ComponentState` expects to be used together with `slot.always` or `slot.optional` to define the slot's declaration on the state. Those methods ensure that the slot is properly defined.
- *
- * This is not true for the legacy API, where the slots are defined directly on the state object. This type is used to define the state object for the legacy API.
+ * Defines the State object of a component given its slots.
  */
 export type LegacyComponentState<Slots extends SlotPropsRecord> = {
   components: {
     [Key in keyof Slots]-?:
-      | React.ComponentType<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Key]>>>
+      | ComponentType<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Key]>>>
       | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 } & {
@@ -227,6 +224,24 @@ export type LegacyComponentState<Slots extends SlotPropsRecord> = {
     Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>
   >;
 };
+
+/**
+ * With react 18, our `children` type starts leaking everywhere and that causes conflicts on component declaration, specially in the `propTypes` property of
+ * both `ComponentClass` and `FunctionComponent`.
+ *
+ * This type substitutes `React.ComponentType` only keeping the function signature, it omits `propTypes`, `displayName` and other properties that are not
+ * required for the inference.
+ */
+type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
+
+interface FunctionComponent<P> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (props: P): React.ReactElement<any, any> | null;
+}
+
+interface ComponentClass<P = {}, S = React.ComponentState> extends React.StaticLifecycle<P, S> {
+  new (props: P): React.Component<P, S>;
+}
 
 /**
  * This is part of a hack to infer the element type from a native element *props* type.
@@ -254,14 +269,9 @@ export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
 /**
  * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
  */
-export type ForwardRefComponent<Props> = React.ForwardRefExoticComponent<
+export type ForwardRefComponent<Props> = React.NamedExoticComponent<
   Props & { ref?: React.Ref<InferredElementRefType<Props>> }
 >;
-// A definition like this would also work, but typescript is more likely to unnecessarily expand
-// the props type with this version (and it's likely much more expensive to evaluate)
-// export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>
-//   ? React.ForwardRefExoticComponent<Props> & React.RefAttributes<Element>
-//   : never;
 
 /**
  * Helper type to correctly define the slot class names object.
@@ -287,7 +297,7 @@ export type SlotComponentType<Props extends SlotPropsDataType> = WithoutSlotRend
    * @internal
    */
   [SLOT_ELEMENT_TYPE_SYMBOL]:
-    | React.ComponentType<Props>
+    | ComponentType<Props>
     | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
 };
 
