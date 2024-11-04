@@ -182,7 +182,8 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   // Callback ref that attaches a keyborg:focusin event listener.
   const [keyborgListenerCallbackRef] = React.useState(() => {
     const onKeyborgFocusIn = ((ev: KeyborgFocusInEvent) => {
-      // Skip showing the tooltip if focus moved programmatically.
+      // Skip showing the tooltip if focus moved programmatically, except
+      // when user is in keybord mode.
       // For example, we don't want to show the tooltip when a dialog is closed
       // and Tabster programmatically restores focus to the trigger button.
       // See https://github.com/microsoft/fluentui/issues/27576
