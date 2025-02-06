@@ -14,7 +14,7 @@ export type DialogSlots = {
 };
 
 export type InternalDialogSlots = {
-  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
+  surfaceMotion: Slot<PresenceMotionSlotProps>;
 };
 
 export type DialogOpenChangeEvent = DialogOpenChangeData['event'];

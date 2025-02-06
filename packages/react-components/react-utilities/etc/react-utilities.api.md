@@ -6,6 +6,9 @@
 
 import * as React_2 from 'react';
 
+// Warning: (ae-incompatible-release-tags) The symbol "always" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "always" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public
 function always<Props extends SlotPropsDataType>(value: Props | SlotShorthandValue | undefined, options: SlotOptions<Props>): SlotComponentType<Props>;
 
@@ -22,12 +25,12 @@ export function canUseDOM(): boolean;
 export const clamp: (value: number, min: number, max: number) => number;
 
 // @public
-export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Primary]>>>;
+export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 // @public
 export type ComponentState<Slots extends SlotPropsRecord> = {
     components: {
-        [Key in keyof Slots]-?: ComponentType<ExtractSlotProps<Slots[Key]>> | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+        [Key in keyof Slots]-?: React_2.ElementType;
     };
 } & {
     [Key in keyof Slots]: ReplaceNullWithUndefined<WithoutSlotRenderFunction<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>>;
@@ -63,9 +66,7 @@ export type FluentTriggerComponent = {
 };
 
 // @public
-export type ForwardRefComponent<Props> = React_2.NamedExoticComponent<Props & {
-    ref?: React_2.Ref<InferredElementRefType<Props>>;
-}>;
+export type ForwardRefComponent<Props> = NamedExoticComponent<Props & RefAttributes<InferredElementRefType<Props>>>;
 
 // @public
 export function getEventClientCoords(event: TouchOrMouseEvent): {
@@ -73,10 +74,12 @@ export function getEventClientCoords(event: TouchOrMouseEvent): {
     clientY: number;
 };
 
+// Warning: (ae-incompatible-release-tags) The symbol "getIntrinsicElementProps" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public
 export const getIntrinsicElementProps: <Props extends SlotPropsDataType, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & {
     ref?: React_2.Ref<InferredElementRefType<Props>> | undefined;
-}, excludedPropNames?: ExcludedPropKeys[] | undefined) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "slot" | "style" | "title" | "as" | "children" | "className" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture">>;
+}, excludedPropNames?: ExcludedPropKeys[] | undefined) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "children" | "slot" | "style" | "title" | "as" | "className" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "placeholder" | "spellCheck" | "tabIndex" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture">>;
 
 // @public @deprecated
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -137,6 +140,8 @@ export function isInteractiveHTMLElement(element: unknown): boolean;
 // @public
 export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | React_2.MouseEvent;
 
+// Warning: (ae-incompatible-release-tags) The symbol "isResolvedShorthand" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public
 export function isResolvedShorthand<Shorthand extends Slot<SlotPropsDataType>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
 
@@ -163,6 +168,9 @@ export type OnSelectionChangeData = {
     selectedItems: Set<SelectionItemId>;
 };
 
+// Warning: (ae-incompatible-release-tags) The symbol "optional" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "optional" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public
 function optional<Props extends SlotPropsDataType>(value: Props | SlotShorthandValue | undefined | null, options: {
     renderByDefault?: boolean;
@@ -197,12 +205,19 @@ export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => 
 // @public
 export function resetIdsForTests(): void;
 
+// Warning: (ae-incompatible-release-tags) The symbol "resolveShorthand" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public @deprecated
 export const resolveShorthand: ResolveShorthandFunction<SlotPropsDataType>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "resolveShorthand" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "resolveShorthand" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public
 function resolveShorthand_2<Props extends SlotPropsDataType | null | undefined>(value: Props | SlotShorthandValue): Props;
 
+// Warning: (ae-incompatible-release-tags) The symbol "ResolveShorthandFunction" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public @deprecated (undocumented)
 export type ResolveShorthandFunction<Props extends SlotPropsDataType = SlotPropsDataType> = {
     <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): WithoutSlotRenderFunction<P>;
@@ -252,6 +267,8 @@ export { SelectionMode_2 as SelectionMode }
 // @internal
 export function setVirtualParent(child: Node, parent?: Node): void;
 
+// Warning: (ae-incompatible-release-tags) The symbol "Slot" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | ComponentType<any> | SlotPropsDataType, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
@@ -281,37 +298,45 @@ export type SlotClassNames<Slots> = {
 };
 
 // @public
-export type SlotComponentType<Props extends SlotPropsDataType> = WithoutSlotRenderFunction<Props> & {
-    (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
+export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> & FunctionComponent<{
+    children?: ReactNode;
+}> & {
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
     [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
 };
 
+// Warning: (ae-incompatible-release-tags) The symbol "SlotOptions" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "SlotOptions" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public (undocumented)
 export type SlotOptions<Props extends SlotPropsDataType> = {
     elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-    defaultProps?: Partial<Props>;
+    defaultProps?: Partial<Props & {
+        ref?: React_2.Ref<InferredElementRefType<Props>>;
+    }>;
 };
 
-// @public (undocumented)
+// @internal
 export type SlotPropsDataType = {
     as?: keyof JSX.IntrinsicElements;
-    children?: any;
+    children?: ReactNode;
 };
 
+// Warning: (ae-incompatible-release-tags) The symbol "SlotPropsRecord" is marked as @public, but its signature references "SlotPropsDataType" which is marked as @internal
+//
 // @public
 export type SlotPropsRecord = Record<string, SlotPropsDataType | SlotShorthandValue | null | undefined>;
 
 // @public (undocumented)
-export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'as'>) => React_2.ReactNode;
+export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'as'>) => ReactNode;
 
 // @public @deprecated (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
-    [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : ExtractSlotProps<S[K]> extends React_2.ComponentType<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<ExtractSlotProps<S[K]>>;
+    [K in keyof S]: React_2.ElementType<any>;
 };
 
 // @public
-export type SlotShorthandValue = React_2.ReactElement | string | number | Iterable<React_2.ReactNode> | React_2.ReactPortal;
+export type SlotShorthandValue = React_2.ReactElement | string | number | Iterable<ReactNode> | React_2.ReactPortal;
 
 // @public
 export const SSRProvider: React_2.FC<{

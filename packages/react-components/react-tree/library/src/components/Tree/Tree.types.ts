@@ -13,7 +13,7 @@ export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
   root: Slot<'div'>;
-  collapseMotion?: Slot<PresenceMotionSlotProps>;
+  collapseMotion?: Slot<Omit<PresenceMotionSlotProps, 'children'>>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
