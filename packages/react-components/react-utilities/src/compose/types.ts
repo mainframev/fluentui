@@ -1,17 +1,28 @@
 import * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
-import { DistributiveOmit, ReplaceNullWithUndefined } from '../utils/types';
+import {
+  ComponentType,
+  FunctionComponent,
+  NamedExoticComponent,
+  PropsWithoutChildren,
+  PropsWithoutRef,
+  ReactNode,
+  RefAttributes,
+  ReplaceNullWithUndefined,
+} from '../utils/types';
 
+/**
+ * @internal
+ *
+ * This should ONLY be used in type templates as in `extends SlotPropsDataType`;
+ * it shouldn't be used as a component's Slot props type.
+ */
 export type SlotPropsDataType = {
   as?: keyof JSX.IntrinsicElements;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children?: any;
+  children?: ReactNode;
 };
 
-export type SlotRenderFunction<Props> = (
-  Component: React.ElementType<Props>,
-  props: Omit<Props, 'as'>,
-) => React.ReactNode;
+export type SlotRenderFunction<Props> = (Component: React.ElementType<Props>, props: Omit<Props, 'as'>) => ReactNode;
 
 /**
  * Matches any component's Slots type (such as ButtonSlots).
@@ -24,7 +35,7 @@ export type SlotPropsRecord = Record<string, SlotPropsDataType | SlotShorthandVa
 /**
  * The shorthand value of a slot allows specifying its child
  */
-export type SlotShorthandValue = React.ReactElement | string | number | Iterable<React.ReactNode> | React.ReactPortal;
+export type SlotShorthandValue = React.ReactElement | string | number | Iterable<ReactNode> | React.ReactPortal;
 
 /**
  * @deprecated - SlotPropsDataType instead
@@ -156,24 +167,6 @@ export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends ne
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
 
 /**
- * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
- */
-export type PropsWithoutRef<P> = 'ref' extends keyof P ? DistributiveOmit<P, 'ref'> : P;
-
-/**
- * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
- */
-export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveOmit<P, 'children'> : P;
-
-/**
  * Removes SlotShorthandValue and null from the slot type, extracting just the slot's Props object.
  */
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
@@ -184,24 +177,27 @@ export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefin
  */
 export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> =
   // Include a prop for each slot (see note below about the Omit)
+  // Note: the `Omit<Slots, Primary & 'root'>` here is a little tricky. Here's what it's doing:
+  // * If the Primary slot is 'root', then omit the `root` slot prop.
+  // * Otherwise, don't omit any props: include *both* the Primary and `root` props.
+  //   We need both props to allow the user to specify native props for either slot because the `root` slot is
+  //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
   Omit<Slots, Primary & 'root'> &
     // Include all of the props of the primary slot inline in the component's props
-    PropsWithoutRef<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Primary]>>>;
-
-// Note: the `Omit<Slots, Primary & 'root'>` above is a little tricky. Here's what it's doing:
-// * If the Primary slot is 'root', then omit the `root` slot prop.
-// * Otherwise, don't omit any props: include *both* the Primary and `root` props.
-//   We need both props to allow the user to specify native props for either slot because the `root` slot is
-//   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
+    PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 /**
  * Defines the State object of a component given its slots.
  */
 export type ComponentState<Slots extends SlotPropsRecord> = {
+  /**
+   * @deprecated
+   * The base element type for each slot.
+   * This property is deprecated and will be removed in a future version.
+   * The slot base element type is declared through `slot.*(slotShorthand, {elementType: ElementType})` instead.
+   */
   components: {
-    [Key in keyof Slots]-?:
-      | ComponentType<ExtractSlotProps<Slots[Key]>>
-      | (ExtractSlotProps<Slots[Key]> extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [Key in keyof Slots]-?: React.ElementType;
   };
 } & {
   // Include a prop for each slot, with the shorthand resolved to a props object
@@ -210,24 +206,6 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
     WithoutSlotRenderFunction<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>
   >;
 };
-
-/**
- * With react 18, our `children` type starts leaking everywhere and that causes conflicts on component declaration, specially in the `propTypes` property of
- * both `ComponentClass` and `FunctionComponent`.
- *
- * This type substitutes `React.ComponentType` only keeping the function signature, it omits `propTypes`, `displayName` and other properties that are not
- * required for the inference.
- */
-type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
-
-interface FunctionComponent<P> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (props: P): React.ReactElement<any, any> | null;
-}
-
-interface ComponentClass<P = {}, S = React.ComponentState> extends React.StaticLifecycle<P, S> {
-  new (props: P): React.Component<P, S>;
-}
 
 /**
  * This is part of a hack to infer the element type from a native element *props* type.
@@ -254,10 +232,10 @@ export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
 
 /**
  * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ *
+ * Note: {@link React.RefAttributes} is {@link https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/69756 | leaking string references} into forwardRef components, forwardRef component do not support string refs.
  */
-export type ForwardRefComponent<Props> = React.NamedExoticComponent<
-  Props & { ref?: React.Ref<InferredElementRefType<Props>> }
->;
+export type ForwardRefComponent<Props> = NamedExoticComponent<Props & RefAttributes<InferredElementRefType<Props>>>;
 
 /**
  * Helper type to correctly define the slot class names object.
@@ -270,22 +248,19 @@ export type SlotClassNames<Slots> = {
  * A definition of a slot, as a component, very similar to how a React component is declared,
  * but with some additional metadata that is used to determine how to render the slot.
  */
-export type SlotComponentType<Props extends SlotPropsDataType> = WithoutSlotRenderFunction<Props> & {
-  /**
-   * **NOTE**: Slot components are not callable.
-   */
-  (props: React.PropsWithChildren<{}>): React.ReactElement | null;
-  /**
-   * @internal
-   */
-  [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
-  /**
-   * @internal
-   */
-  [SLOT_ELEMENT_TYPE_SYMBOL]:
-    | ComponentType<Props>
-    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-};
+export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
+  FunctionComponent<{ children?: ReactNode }> & {
+    /**
+     * @internal
+     */
+    [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
+    /**
+     * @internal
+     */
+    [SLOT_ELEMENT_TYPE_SYMBOL]:
+      | ComponentType<Props>
+      | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+  };
 
 /**
  * Data type for event handlers. It makes data a discriminated union, where each object requires `event` and `type` property.

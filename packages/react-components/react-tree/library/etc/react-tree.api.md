@@ -398,7 +398,7 @@ export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 // @public (undocumented)
 export type TreeSlots = {
     root: Slot<'div'>;
-    collapseMotion?: Slot<PresenceMotionSlotProps>;
+    collapseMotion?: Slot<Omit<PresenceMotionSlotProps, 'children'>>;
 };
 
 // @public

@@ -19,6 +19,7 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         {state.trigger}
         {state.content && (
+          // @ts-expect-error: TODO: slots type React 18
           <state.surfaceMotion>
             <MotionRefForwarder>
               {/* Casting here as content should be equivalent to <DialogSurface/> */}

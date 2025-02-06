@@ -20,12 +20,12 @@ export function getSlotsNext<R extends SlotPropsRecord>(
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   slotProps: ObjectSlotProps<R>;
 } {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const typedState = state as ComponentState<R>;
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slotNames: (keyof R)[] = Object.keys(typedState.components);
   for (const slotName of slotNames) {
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -55,12 +55,18 @@ function getSlotNext<R extends SlotPropsRecord, K extends keyof R>(
   // TS Error: Property 'as' does not exist on type 'UnknownSlotProps | undefined'.ts(2339)
   const { as: asProp, ...propsWithoutAs } = props as NonUndefined<typeof props>;
 
-  const slot = (state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
-    ? asProp || state.components?.[slotName] || 'div'
-    : state.components[slotName]) as unknown as React.ElementType<R[K]>;
+  const slot = (
+    state.components?.[slotName] === undefined || // eslint-disable-line @typescript-eslint/no-deprecated
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    typeof state.components[slotName] === 'string'
+      ? // eslint-disable-next-line @typescript-eslint/no-deprecated
+        asProp || state.components?.[slotName] || 'div'
+      : // eslint-disable-next-line @typescript-eslint/no-deprecated
+        state.components[slotName]
+  ) as React.ElementType<R[K]>;
 
   const shouldOmitAsProp = typeof slot === 'string' && asProp;
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slotProps: UnknownSlotProps = shouldOmitAsProp ? propsWithoutAs : props;
 
   return [slot, slotProps as R[K]];
