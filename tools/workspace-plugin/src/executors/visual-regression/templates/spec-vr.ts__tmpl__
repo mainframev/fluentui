@@ -32,6 +32,6 @@ snapshotsToAssert.forEach(actualSnapshotFileName => {
     `);
 
     // Compare the rendered image with the baseline
-    await expect(page.locator('#image')).toHaveScreenshot();
+    await expect(page.locator('#image')).toHaveScreenshot(actualSnapshotFileName);
   });
 });
