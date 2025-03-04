@@ -188,12 +188,6 @@ export async function runSnapshotTests(
     reportPath: path.join(cwd(), reportPath),
   };
 
-  if (updateSnapshots) {
-    console.info('Creating Baseline');
-    fs.mkdirSync(normalizedPaths.baselineDir, { recursive: true });
-    fs.cpSync(normalizedPaths.actualDir, normalizedPaths.baselineDir, { recursive: true });
-  }
-
   if (!fs.existsSync(normalizedPaths.baselineDir)) {
     fs.mkdirSync(normalizedPaths.baselineDir, { recursive: true });
   }
@@ -213,14 +207,17 @@ export async function runSnapshotTests(
 
   const removedFilesFromBaseline = baselineFiles.filter(file => {
     if (!actualFiles.includes(file)) {
-      results.push({
-        file,
-        passed: updateSnapshots ? true : false,
-        error: updateSnapshots ? undefined : 'Remove Snapshot',
-        changeType: 'remove',
-      });
       if (!updateSnapshots) {
+        results.push({
+          file,
+          passed: updateSnapshots ? true : false,
+          error: updateSnapshots ? undefined : 'Remove Snapshot',
+          changeType: 'remove',
+        });
         allPassed = false;
+      } else {
+        const baselinePath = path.join(normalizedPaths.baselineDir, file);
+        fs.unlinkSync(baselinePath);
       }
     }
   });
@@ -245,9 +242,10 @@ export async function runSnapshotTests(
         error: updateSnapshots ? undefined : 'New Snapshot',
         changeType: 'add',
       });
-
       if (!updateSnapshots) {
         allPassed = false;
+      } else {
+        fs.copyFileSync(actualPath, baselinePath);
       }
       continue;
     }
