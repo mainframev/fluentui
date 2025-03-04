@@ -64,14 +64,16 @@ function generateHtmlReport(
     <!DOCTYPE html>
     <html>
     <head>
-      <title>Snapshot Comparison Report</title>
+      <title>Visual Regression Report</title>
       <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             margin: 40px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
         }
 
         table {
