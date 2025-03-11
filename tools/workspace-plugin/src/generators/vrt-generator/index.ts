@@ -52,15 +52,9 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
     sourceRoot: `${root}/src`,
     tags: ['platform:web', 'vNext', 'visual-regression'],
     targets: {
-      storybook: {
-        command: 'storybook dev',
-        options: {
-          cwd: '{projectRoot}',
-        },
-      },
       'generate-image-for-vrt': {
         command:
-          'rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/actual --waitTimeScreenshot 500 --concurrency 4 --headless true',
+          'rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true',
         options: {
           cwd: '{projectRoot}',
         },
@@ -71,6 +65,7 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
           },
         },
         dependsOn: ['build-storybook'],
+        inputs: ['{projectRoot}/src/**/*.stories.tsx'],
         outputs: ['{projectRoot}/dist/screenshots/**'],
         cache: true,
       },
@@ -84,7 +79,12 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
         options: {
           cwd: '{projectRoot}',
         },
-        dependsOn: ['build-storybook', 'generate-image-for-vrt'],
+        dependsOn: [
+          'build-storybook',
+          'generate-image-for-vrt',
+          { projects: ['visual-regression-assert'], target: 'build' },
+        ],
+        inputs: ['{projectRoot}/dist/vrt/screenshots/**', '{projectRoot}/src/**/*.stories.tsx'],
         metadata: {
           help: {
             command: 'yarn visual-regression-assert --help',
@@ -97,19 +97,6 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
         options: {
           cwd: '{projectRoot}',
         },
-      },
-      build: {
-        executor: '@nx/js:swc',
-        outputs: ['{options.outputPath}'],
-        options: {
-          outputPath: `dist/${root}`,
-          main: `${root}/src/index.ts`,
-          tsConfig: `${root}/tsconfig.lib.json`,
-          assets: [`${root}/*.md`],
-        },
-      },
-      lint: {
-        executor: '@nx/eslint:lint',
       },
     },
     implicitDependencies: [],
