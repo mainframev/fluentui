@@ -18,7 +18,7 @@
     "lz-string": "^1.4.4",
     "react-document-title": "^2.0.3",
     "react-frame-component": "^4.1.1",
-    "react-is": "^17.0.2",
+    "react-is": "^18.3.0",
     "use-immer": "^0.6.0"
   },
   "devDependencies": {
@@ -26,7 +26,7 @@
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-jest": "*",
-    "@types/react-frame-component": "^4.1.1"
+    "@types/react-frame-component": "^4.1.6"
   },
   "peerDependencies": {
     "@babel/standalone": "^7.8.3",
