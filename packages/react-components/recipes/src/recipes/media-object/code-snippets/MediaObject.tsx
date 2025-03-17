@@ -40,7 +40,7 @@ const MediaObject: React.VoidFunctionComponent<MediaObjectTypes> = ({
   );
 };
 
-const Legend: React.FC<{ colorClassName: string }> = ({ children, colorClassName }) => {
+const Legend = ({ children, colorClassName }: { colorClassName: string; children: React.ReactNode }) => {
   const skeletonStyles = useSkeletonStyles();
   return (
     <div className={skeletonStyles.legend}>

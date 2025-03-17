@@ -4,7 +4,7 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { mergeClasses } from '@griffel/react';
 import { useExampleStyles } from './Example.styles';
 
-export const TemplateExample: React.FC<{ centered?: boolean }> = ({ children, centered }) => {
+export const TemplateExample = ({ children, centered }: { centered: boolean; children: React.ReactNode }) => {
   const exampleStyles = useExampleStyles();
 
   const innerContainerClassName = mergeClasses(exampleStyles.innerContainer, centered && exampleStyles.centered);
