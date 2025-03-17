@@ -58,7 +58,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
       container: cacheLtr.sheet.container,
     });
 
-    const Provider: React.FC = props => {
+    const Provider = (props: { children?: React.ReactNode }) => {
       // TODO: Find a way to cleanup global styles
       // React.useEffect(() => {
       // return () => sheet.flush();

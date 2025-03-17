@@ -28,10 +28,10 @@ export type MergeStylesShadowRootProviderProps = {
 /**
  * Context for a shadow root.
  */
-export const MergeStylesShadowRootProvider: React.FC<MergeStylesShadowRootProviderProps> = ({
+export const MergeStylesShadowRootProvider = ({
   shadowRoot,
   ...props
-}) => {
+}: MergeStylesShadowRootProviderProps & { children: React.ReactNode }) => {
   const value = React.useMemo(() => {
     return {
       stylesheets: new Map(),

@@ -24,6 +24,7 @@ function hasServerRenderedStyle(targetDocument = document) {
 type RendererProviderProps = {
   renderer: FelaRenderer;
   rehydrate?: boolean;
+  children?: React.ReactNode;
   targetDocument?: Document;
 };
 

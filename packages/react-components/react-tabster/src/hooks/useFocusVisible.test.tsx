@@ -20,7 +20,7 @@ const createDocumentMock = (): Document => {
 describe('useFocusVisible', () => {
   describe('targetWindow', () => {
     it('uses a window from context by default', () => {
-      const Wrapper: React.FC<{ targetDocument: Document | undefined }> = props => (
+      const Wrapper = (props: { targetDocument: Document | undefined; children?: React.ReactNode }) => (
         <Provider_unstable value={{ dir: 'ltr', targetDocument: props.targetDocument }}>
           {props.children}
         </Provider_unstable>
@@ -49,7 +49,7 @@ describe('useFocusVisible', () => {
       const element = targetDocument.createElement('div');
 
       const { result, rerender } = renderHook<
-        { targetDocument: Document | undefined },
+        { targetDocument: Document | undefined; children?: React.ReactNode },
         React.MutableRefObject<HTMLElement | null>
       >(props => useFocusVisible({ targetDocument: props.targetDocument }), {
         wrapper: props => (

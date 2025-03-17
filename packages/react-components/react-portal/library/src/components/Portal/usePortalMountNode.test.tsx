@@ -16,7 +16,9 @@ describe('usePortalMountNode', () => {
   it('creates an element and attaches it to "mountNode"', () => {
     const mountNode = document.createElement('div');
     const { result } = renderHook(() => usePortalMountNode({}), {
-      wrapper: props => <PortalMountNodeProvider {...props} value={mountNode} />,
+      wrapper: ({ children }: { children: React.ReactNode }) => (
+        <PortalMountNodeProvider value={mountNode}>{children}</PortalMountNodeProvider>
+      ),
     });
 
     expect(result.current).toBeInstanceOf(HTMLDivElement);

@@ -13,7 +13,7 @@ export type FocusRectsProviderProps = {
   layerRoot?: boolean;
 };
 
-export const FocusRectsProvider: React.FC<FocusRectsProviderProps> = props => {
+export const FocusRectsProvider = (props: FocusRectsProviderProps & { children: React.ReactNode }) => {
   const { providerRef, layerRoot } = props;
   const [registeredProviders] = React.useState<React.RefObject<HTMLElement>[]>([]);
   const parentContext = React.useContext(FocusRectsContext);

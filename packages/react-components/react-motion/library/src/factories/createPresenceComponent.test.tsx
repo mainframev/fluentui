@@ -483,7 +483,7 @@ describe('PresenceGroupChildContext', () => {
     const TestPresence = createPresenceComponent(motion);
     const { ElementMock } = createElementMock();
 
-    const Wrapper: React.FC<{ visible: boolean }> = ({ children, visible }) => (
+    const Wrapper = ({ children, visible }: { children: React.ReactNode; visible: boolean }) => (
       <PresenceGroupChildContext.Provider value={{ appear: false, onExit, visible, unmountOnExit: true }}>
         {children}
       </PresenceGroupChildContext.Provider>
