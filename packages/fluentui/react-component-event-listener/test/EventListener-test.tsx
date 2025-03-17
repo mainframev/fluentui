@@ -5,7 +5,10 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 // @ts-ignore
 import * as simulant from 'simulant';
 
-class TestBoundary extends React.Component<{ onError: (e: Error) => void }, { hasError: boolean }> {
+class TestBoundary extends React.Component<
+  { onError: (e: Error) => void; children: React.ReactNode },
+  { hasError: boolean }
+> {
   state = { hasError: false };
 
   componentDidCatch(error: Error) {
