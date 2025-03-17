@@ -6,7 +6,7 @@ export interface AttachmentDescriptionProps extends React.HTMLAttributes<HTMLSpa
 
 export const attachmentDescriptionClassName = 'fui-AttachmentDescription';
 
-export const AttachmentDescription: React.FC<AttachmentDescriptionProps> = React.forwardRef<
+export const AttachmentDescription: React.FC<React.PropsWithChildren<AttachmentDescriptionProps>> = React.forwardRef<
   HTMLSpanElement,
   AttachmentDescriptionProps
 >((props, ref) => {

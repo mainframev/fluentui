@@ -7,7 +7,7 @@ import type { MenuProps } from './Menu.types';
 /**
  * Wrapper component that manages state for a popup MenuList and a MenuTrigger
  */
-export const Menu: React.FC<MenuProps> = props => {
+export const Menu: React.FC<React.PropsWithChildren<MenuProps>> = props => {
   const state = useMenu_unstable(props);
   const contextValues = useMenuContextValues_unstable(state);
 

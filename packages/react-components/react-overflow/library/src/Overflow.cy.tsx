@@ -21,7 +21,7 @@ const selectors = {
   menu: 'data-test-menu',
 };
 
-const Container: React.FC<{ children?: React.ReactNode; size?: number } & Omit<OverflowProps, 'children'>> = ({
+const Container: React.FC<React.PropsWithChildren<{ children?: React.ReactNode; size?: number } & Omit<OverflowProps, 'children'>>> = ({
   children,
   size,
   overflowAxis = 'horizontal' as const,
@@ -73,7 +73,7 @@ const setContainerHeight = (size: number) => {
   setContainerSize(size, 'height');
 };
 
-const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & Omit<OverflowItemProps, 'children'>> = ({
+const Item: React.FC<React.PropsWithChildren<{ children?: React.ReactNode; width?: number | string } & Omit<OverflowItemProps, 'children'>>> = ({
   children,
   width,
   ...overflowItemProps
@@ -91,7 +91,7 @@ const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & O
   );
 };
 
-const Menu: React.FC<{ width?: number }> = ({ width }) => {
+const Menu: React.FC<React.PropsWithChildren<{ width?: number }>> = ({ width }) => {
   const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
   const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
   const selector = {
@@ -132,10 +132,10 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
   );
 };
 
-export const Divider: React.FC<{
+export const Divider: React.FC<React.PropsWithChildren<{
   groupId: string;
   children?: React.ReactNode;
-}> = ({ groupId, children }) => {
+}>> = ({ groupId, children }) => {
   const isGroupVisible = useIsOverflowGroupVisible(groupId);
 
   if (isGroupVisible === 'hidden') {
@@ -168,10 +168,10 @@ export const Divider: React.FC<{
   );
 };
 
-export const CustomDivider: React.FC<{
+export const CustomDivider: React.FC<React.PropsWithChildren<{
   groupId: string;
   children?: React.ReactNode;
-}> = ({ groupId, children }) => {
+}>> = ({ groupId, children }) => {
   const isGroupVisible = useIsOverflowGroupVisible(groupId);
 
   if (isGroupVisible === 'hidden') {

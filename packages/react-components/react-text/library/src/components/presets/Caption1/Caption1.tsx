@@ -6,7 +6,7 @@ import { caption1ClassNames, useCaption1Styles } from './useCaption1Styles.style
 /**
  * Text preset component for the Caption1 typography variant
  */
-export const Caption1: React.FunctionComponent<TextPresetProps> = createPreset({
+export const Caption1: React.FunctionComponent<React.PropsWithChildren<TextPresetProps>> = createPreset({
   useStyles: useCaption1Styles,
   className: caption1ClassNames.root,
   displayName: 'Caption1',

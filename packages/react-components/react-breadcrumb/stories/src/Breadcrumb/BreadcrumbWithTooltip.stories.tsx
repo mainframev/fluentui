@@ -114,7 +114,7 @@ function renderItem(entry: Item, isLastItem: boolean) {
   );
 }
 
-const BreadcrumbMenuItem: React.FC<{ item: Item }> = props => {
+const BreadcrumbMenuItem: React.FC<React.PropsWithChildren<{ item: Item }>> = props => {
   const { item } = props;
   const isVisible = useIsOverflowItemVisible(item.key.toString());
 

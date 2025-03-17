@@ -7,7 +7,7 @@ import { SplitButtonProps } from './SplitButton.types';
 
 describe('SplitButton', () => {
   isConformant({
-    Component: SplitButton as React.FunctionComponent<SplitButtonProps>,
+    Component: SplitButton as React.FunctionComponent<React.PropsWithChildren<SplitButtonProps>>,
     displayName: 'SplitButton',
     testOptions: {
       'has-static-classnames': [

@@ -6,7 +6,7 @@ import { ButtonProps } from '@fluentui/react-button';
 
 describe('ToolbarButton', () => {
   isConformant({
-    Component: ToolbarButton as React.FunctionComponent<ButtonProps>,
+    Component: ToolbarButton as React.FunctionComponent<React.PropsWithChildren<ButtonProps>>,
     displayName: 'ToolbarButton',
     disabledTests: ['component-has-static-classnames-object'],
   });

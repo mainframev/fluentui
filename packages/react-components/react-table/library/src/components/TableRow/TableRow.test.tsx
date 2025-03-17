@@ -13,7 +13,7 @@ describe('TableRow', () => {
   });
 
   isConformant({
-    Component: TableRow as React.FunctionComponent<TableRowProps>,
+    Component: TableRow as React.FunctionComponent<React.PropsWithChildren<TableRowProps>>,
     renderOptions: {
       container: tbody,
     },

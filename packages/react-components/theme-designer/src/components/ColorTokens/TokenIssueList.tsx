@@ -60,7 +60,7 @@ export interface ColorTokenRowProps {
   showContrast?: boolean;
 }
 
-const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
+const ColorTokenCol: React.FunctionComponent<React.PropsWithChildren<ColorTokenRowProps>> = props => {
   const styles = useStyles();
   const { brand, brandValue, brandValueString, selected, token, showContrast } = props;
 
@@ -139,7 +139,7 @@ export const constructRowParameters = (
   return { colorValue, usage, handleColorChange, overridenTokens };
 };
 
-export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = props => {
+export const TokenIssueList: React.FunctionComponent<React.PropsWithChildren<TokenIssueListProps>> = props => {
   const styles = useStyles();
 
   const [columns] = React.useState<TableColumnDefinition<string>[]>(columnsDef);

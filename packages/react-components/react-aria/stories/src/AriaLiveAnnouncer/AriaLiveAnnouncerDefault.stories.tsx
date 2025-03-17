@@ -12,7 +12,7 @@ const useClasses = makeStyles({
   },
 });
 
-const AnnouncePlayground: React.FC = () => {
+const AnnouncePlayground: React.FC<React.PropsWithChildren<unknown>> = () => {
   const classes = useClasses();
   const { announce } = useAnnounce();
 

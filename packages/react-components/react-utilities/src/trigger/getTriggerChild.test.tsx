@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getTriggerChild } from './getTriggerChild';
 import type { FluentTriggerComponent } from './types';
 
-const TestTrigger: React.FC<{ id?: string; children: React.ReactNode }> & FluentTriggerComponent = props => (
+const TestTrigger: React.FC<React.PropsWithChildren<{ id?: string; children: React.ReactNode }>> & FluentTriggerComponent = props => (
   <>{props.children}</>
 );
 TestTrigger.displayName = 'TestTrigger';

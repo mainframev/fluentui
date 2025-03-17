@@ -42,7 +42,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const TokenBox: React.FC<TokenBoxProps> = props => {
+export const TokenBox: React.FC<React.PropsWithChildren<TokenBoxProps>> = props => {
   const styles = useStyles();
   return (
     <>
@@ -56,7 +56,7 @@ export const TokenBox: React.FC<TokenBoxProps> = props => {
   );
 };
 
-export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
+export const TokenBoxes: React.FC<React.PropsWithChildren<TokenBoxesProps>> = props => {
   const styles = useStyles();
   const [filter, setFilter] = React.useState<string>('');
 

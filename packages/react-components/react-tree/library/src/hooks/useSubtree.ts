@@ -30,7 +30,7 @@ export function useSubtree(
       // This is a problem at the moment due to UnknownSlotProps assumption
       // that `children` property is `ReactNode`, which in this case is not valid
       // as PresenceComponentProps['children'] is `ReactElement`
-      collapseMotion: Collapse as React.FC<PresenceMotionSlotProps>,
+      collapseMotion: Collapse as React.FC<React.PropsWithChildren<PresenceMotionSlotProps>>,
     },
     level: parentLevel + 1,
     root: slot.always(

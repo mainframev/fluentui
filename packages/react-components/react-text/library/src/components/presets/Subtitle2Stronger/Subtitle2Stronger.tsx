@@ -6,7 +6,7 @@ import { subtitle2StrongerClassNames, useSubtitle2StrongerStyles } from './useSu
 /**
  * Text preset component for the Subtitle2Stronger typography variant
  */
-export const Subtitle2Stronger: React.FunctionComponent<TextPresetProps> = createPreset({
+export const Subtitle2Stronger: React.FunctionComponent<React.PropsWithChildren<TextPresetProps>> = createPreset({
   useStyles: useSubtitle2StrongerStyles,
   className: subtitle2StrongerClassNames.root,
   displayName: 'Subtitle2Stronger',

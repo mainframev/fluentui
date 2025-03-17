@@ -52,7 +52,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Header: React.FC<HeaderProps> = props => {
+export const Header: React.FC<React.PropsWithChildren<HeaderProps>> = props => {
   const styles = useStyles();
 
   const handleClick = () => {

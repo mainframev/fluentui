@@ -10,7 +10,7 @@ import { PortalCompatProvider, useProviderThemeClasses } from './PortalCompatPro
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
-const TestWrapperWithMultipleClasses: React.FC = props => {
+const TestWrapperWithMultipleClasses: React.FC<React.PropsWithChildren<unknown>> = props => {
   // Creates a second className with CSS variables
   const { styleTagId } = useFluentProviderThemeStyleTag({
     theme: { borderRadiusCircular: '50px' },

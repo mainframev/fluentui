@@ -65,11 +65,11 @@ const useClasses = makeStyles({
   },
 });
 
-const WireframeContent: React.FC<{
+const WireframeContent: React.FC<React.PropsWithChildren<{
   appearance: 'odd' | 'even';
   children: React.ReactNode;
   size?: 'small' | 'medium' | 'large';
-}> = props => {
+}>> = props => {
   const classes = useClasses();
 
   return (

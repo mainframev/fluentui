@@ -50,7 +50,7 @@ const getBrands = (colors: BrandVariants): Brands[] => {
   return Object.keys(colors).map(color => parseInt(color, 10) as Brands);
 };
 
-export const Palette: React.FC<PaletteProps> = props => {
+export const Palette: React.FC<React.PropsWithChildren<PaletteProps>> = props => {
   const styles = useStyles();
 
   const {

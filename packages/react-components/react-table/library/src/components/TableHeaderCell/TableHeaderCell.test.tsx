@@ -13,7 +13,7 @@ describe('TableHeaderCell', () => {
   });
 
   isConformant({
-    Component: TableHeaderCell as React.FC<TableHeaderCellProps>,
+    Component: TableHeaderCell as React.FC<React.PropsWithChildren<TableHeaderCellProps>>,
     displayName: 'TableHeaderCell',
     testOptions: {
       'has-static-classnames': [

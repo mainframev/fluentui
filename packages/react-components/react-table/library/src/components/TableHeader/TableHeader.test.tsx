@@ -11,7 +11,7 @@ describe('TableHeader', () => {
     document.body.appendChild(table);
   });
   isConformant({
-    Component: TableHeader as React.FC<TableHeaderProps>,
+    Component: TableHeader as React.FC<React.PropsWithChildren<TableHeaderProps>>,
     displayName: 'TableHeader',
     renderOptions: {
       container: table,

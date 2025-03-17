@@ -127,14 +127,14 @@ type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type exte
  */
 export type Slot<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Type extends keyof JSX.IntrinsicElements | ComponentType<any> | SlotPropsDataType,
+  Type extends keyof JSX.IntrinsicElements | ComponentType<React.PropsWithChildren<any>> | SlotPropsDataType,
   AlternateAs extends keyof JSX.IntrinsicElements = never,
 > = IsSingleton<Extract<Type, string>> extends true
   ?
       | WithSlotShorthandValue<
           Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
             ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
-            : Type extends ComponentType<infer Props> // Component types like `typeof Button`
+            : Type extends ComponentType<React.PropsWithChildren<infer Props>> // Component types like `typeof Button`
             ? Props extends SlotPropsDataType
               ? Props
               : WithSlotRenderFunction<Props>
@@ -249,7 +249,7 @@ export type SlotClassNames<Slots> = {
  * but with some additional metadata that is used to determine how to render the slot.
  */
 export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
-  FunctionComponent<{ children?: ReactNode }> & {
+  FunctionComponent<React.PropsWithChildren<{ children?: ReactNode }>> & {
     /**
      * @internal
      */
@@ -258,7 +258,7 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
      * @internal
      */
     [SLOT_ELEMENT_TYPE_SYMBOL]:
-      | ComponentType<Props>
+      | ComponentType<React.PropsWithChildren<Props>>
       | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   };
 

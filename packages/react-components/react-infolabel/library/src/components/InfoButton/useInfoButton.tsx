@@ -45,7 +45,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
 
     components: {
       root: 'button',
-      popover: Popover as React.FC<Partial<PopoverProps>>,
+      popover: Popover as React.FC<React.PropsWithChildren<Partial<PopoverProps>>>,
       info: PopoverSurface,
     },
 
@@ -66,7 +66,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         size: popoverSizeMap[size],
         withArrow: true,
       },
-      elementType: Popover as React.FC<Partial<Omit<PopoverProps, 'openOnHover'>>>,
+      elementType: Popover as React.FC<React.PropsWithChildren<Partial<Omit<PopoverProps, 'openOnHover'>>>>,
     }),
     info: slot.always(props.info, {
       defaultProps: {

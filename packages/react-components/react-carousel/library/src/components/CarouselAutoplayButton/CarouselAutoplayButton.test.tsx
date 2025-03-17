@@ -7,7 +7,7 @@ import { CarouselAutoplayButtonProps } from './CarouselAutoplayButton.types';
 
 describe('CarouselAutoplayButton', () => {
   isConformant({
-    Component: CarouselAutoplayButton as React.FunctionComponent<CarouselAutoplayButtonProps>,
+    Component: CarouselAutoplayButton as React.FunctionComponent<React.PropsWithChildren<CarouselAutoplayButtonProps>>,
     displayName: 'CarouselAutoplayButton',
     testOptions: {
       'has-static-classnames': [

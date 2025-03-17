@@ -8,7 +8,7 @@ import { Toolbar } from '../Toolbar/Toolbar';
 
 describe('ToolbarRadioButton', () => {
   isConformant({
-    Component: ToolbarRadioButton as React.FunctionComponent<ToggleButtonProps>,
+    Component: ToolbarRadioButton as React.FunctionComponent<React.PropsWithChildren<ToggleButtonProps>>,
     displayName: 'ToolbarRadioButton',
     disabledTests: ['component-has-static-classnames-object'],
   });

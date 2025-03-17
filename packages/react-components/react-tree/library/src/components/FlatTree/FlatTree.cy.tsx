@@ -20,7 +20,7 @@ const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-const TreeTest: React.FC<FlatTreeProps & HeadlessFlatTreeOptions> = props => {
+const TreeTest: React.FC<React.PropsWithChildren<FlatTreeProps & HeadlessFlatTreeOptions>> = props => {
   const flatTree = useHeadlessFlatTree_unstable(
     flattenTreeFromElement(
       props.children ? (

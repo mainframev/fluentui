@@ -18,7 +18,7 @@ const TestMotion = jest.fn(
     exit: { keyframes: [{ opacity: 1 }, { opacity: 0 }] },
   }),
 );
-const TestComponent: React.FC<TestComponentProps> = props => {
+const TestComponent: React.FC<React.PropsWithChildren<TestComponentProps>> = props => {
   const state: TestComponentState = {
     components: {
       presenceMotion: TestMotion,

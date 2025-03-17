@@ -6,7 +6,7 @@ import { ListItemProps } from './ListItem.types';
 
 describe('ListItem', () => {
   isConformant<ListItemProps>({
-    Component: ListItem as React.FunctionComponent<ListItemProps>,
+    Component: ListItem as React.FunctionComponent<React.PropsWithChildren<ListItemProps>>,
     displayName: 'ListItem',
     testOptions: {
       'has-static-classnames': [

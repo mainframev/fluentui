@@ -6,7 +6,7 @@ export interface AttachmentBodyProps extends React.HTMLAttributes<HTMLDivElement
 
 export const attachmentBodyClassName = 'fui-AttachmentBody';
 
-export const AttachmentBody: React.FC<AttachmentBodyProps> = React.forwardRef<HTMLDivElement, AttachmentBodyProps>(
+export const AttachmentBody: React.FC<React.PropsWithChildren<AttachmentBodyProps>> = React.forwardRef<HTMLDivElement, AttachmentBodyProps>(
   (props, ref) => {
     const { className, children, ...rest } = props;
     const classes = useAttachmentBodyStyles();

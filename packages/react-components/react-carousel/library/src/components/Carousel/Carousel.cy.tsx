@@ -18,7 +18,7 @@ const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-const CarouselTest: React.FC<CarouselProps> = props => {
+const CarouselTest: React.FC<React.PropsWithChildren<CarouselProps>> = props => {
   return (
     <Carousel {...props}>
       <CarouselViewport>
@@ -92,7 +92,7 @@ describe('CarouselControlledIndexTest', () => {
   });
 });
 
-const CarouselAddCardsTest: React.FC<CarouselProps> = props => {
+const CarouselAddCardsTest: React.FC<React.PropsWithChildren<CarouselProps>> = props => {
   const [isVisible, setVisibility] = React.useState(false);
   const [controlledIndex, setControlledIndex] = React.useState<number | undefined>(props.activeIndex);
 

@@ -11,7 +11,7 @@ import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constan
 
 export type SlotOptions<Props extends SlotPropsDataType> = {
   elementType:
-    | React.ComponentType<Props>
+    | React.ComponentType<React.PropsWithChildren<Props>>
     | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
   defaultProps?: Partial<Props & { ref?: React.Ref<InferredElementRefType<Props>> }>;
 };

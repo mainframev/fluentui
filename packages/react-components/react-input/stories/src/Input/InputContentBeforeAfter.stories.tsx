@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MicButton: React.FC<ButtonProps> = props => {
+const MicButton: React.FC<React.PropsWithChildren<ButtonProps>> = props => {
   return <Button {...props} appearance="transparent" icon={<MicRegular />} size="small" />;
 };
 

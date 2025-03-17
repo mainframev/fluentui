@@ -12,7 +12,7 @@ describe('TableCell', () => {
   });
 
   isConformant({
-    Component: TableCell as React.FunctionComponent<TableCellProps>,
+    Component: TableCell as React.FunctionComponent<React.PropsWithChildren<TableCellProps>>,
     renderOptions: {
       container: tr,
     },

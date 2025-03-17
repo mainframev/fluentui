@@ -25,7 +25,7 @@ type FrameRendererProps = {
   children: (externalDocument: Document, renderer: ReturnType<typeof createDOMRenderer>) => React.ReactElement;
 };
 
-const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }) => {
+const FrameRenderer: React.FunctionComponent<React.PropsWithChildren<FrameRendererProps>> = ({ children }) => {
   const [frameRef, setFrameRef] = React.useState<HTMLIFrameElement | null>(null);
   const [container, setContainer] = React.useState<HTMLDivElement | null>(null);
 
@@ -49,7 +49,7 @@ const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }
   );
 };
 
-const ApplyStylesToPortalsExample: React.FC<{ targetDocument?: Document }> = ({ targetDocument }) => {
+const ApplyStylesToPortalsExample: React.FC<React.PropsWithChildren<{ targetDocument?: Document }>> = ({ targetDocument }) => {
   const styles = useStyles();
 
   return (
@@ -80,13 +80,13 @@ const ApplyStylesToPortalsExample: React.FC<{ targetDocument?: Document }> = ({ 
 export const ApplyStylesToPortals = () => (
   // FrameRenderer is redundant this example, it's used only to render portals inside an iframe
   // to make them visible in Storybook
-  <FrameRenderer>
+  (<FrameRenderer>
     {(externalDocument, renderer) => (
       <RendererProvider renderer={renderer} targetDocument={externalDocument}>
         <ApplyStylesToPortalsExample targetDocument={externalDocument} />
       </RendererProvider>
     )}
-  </FrameRenderer>
+  </FrameRenderer>)
 );
 
 ApplyStylesToPortals.parameters = {

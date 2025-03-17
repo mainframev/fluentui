@@ -13,7 +13,7 @@ function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
 
 describe('List', () => {
   isConformant({
-    Component: List as React.FunctionComponent<ListProps>,
+    Component: List as React.FunctionComponent<React.PropsWithChildren<ListProps>>,
     displayName: 'List',
   });
 

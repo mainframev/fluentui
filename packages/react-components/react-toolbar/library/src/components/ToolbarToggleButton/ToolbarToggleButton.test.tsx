@@ -6,7 +6,7 @@ import { ToggleButtonProps } from '@fluentui/react-button';
 
 describe('ToolbarToggleButton', () => {
   isConformant({
-    Component: ToolbarToggleButton as React.FunctionComponent<ToggleButtonProps>,
+    Component: ToolbarToggleButton as React.FunctionComponent<React.PropsWithChildren<ToggleButtonProps>>,
     displayName: 'ToolbarToggleButton',
     disabledTests: ['component-has-static-classnames-object'],
   });

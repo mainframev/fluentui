@@ -11,7 +11,7 @@ const useCatInputStyles = makeStyles({
   },
 });
 
-const CatInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = props => {
+const CatInput: React.FC<React.PropsWithChildren<React.InputHTMLAttributes<HTMLInputElement>>> = props => {
   const styles = useCatInputStyles();
   return (
     <div className={styles.root}>

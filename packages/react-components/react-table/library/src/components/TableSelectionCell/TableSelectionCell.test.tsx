@@ -15,7 +15,7 @@ describe('TableSelectionCell', () => {
   });
 
   isConformant({
-    Component: TableSelectionCell as React.FC<TableSelectionCellProps>,
+    Component: TableSelectionCell as React.FC<React.PropsWithChildren<TableSelectionCellProps>>,
     displayName: 'TableSelectionCell',
     renderOptions: {
       container: tr,

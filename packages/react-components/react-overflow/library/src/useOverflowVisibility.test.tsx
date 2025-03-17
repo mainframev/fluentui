@@ -16,7 +16,7 @@ describe('useOverflowVisibility', () => {
       bar: true,
       baz: false,
     } as const;
-    const Wrapper: React.FC = props => {
+    const Wrapper: React.FC<React.PropsWithChildren<unknown>> = props => {
       return (
         <OverflowContext.Provider
           {...props}

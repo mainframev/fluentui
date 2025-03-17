@@ -5,7 +5,7 @@ import { HamburgerProps } from './Hamburger.types';
 
 describe('Hamburger', () => {
   isConformant({
-    Component: Hamburger as React.FunctionComponent<HamburgerProps>,
+    Component: Hamburger as React.FunctionComponent<React.PropsWithChildren<HamburgerProps>>,
     displayName: 'Hamburger',
   });
 });

@@ -8,7 +8,7 @@ import type { FluentTriggerComponent } from '@fluentui/react-utilities';
  * Wraps a trigger element as an only child
  * and adds the necessary event handling to open a popup menu
  */
-export const MenuTrigger: React.FC<MenuTriggerProps> = props => {
+export const MenuTrigger: React.FC<React.PropsWithChildren<MenuTriggerProps>> = props => {
   const state = useMenuTrigger_unstable(props);
 
   return renderMenuTrigger_unstable(state);

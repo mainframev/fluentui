@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Content: React.FC<ContentProps> = props => {
+export const Content: React.FC<React.PropsWithChildren<ContentProps>> = props => {
   const styles = useStyles();
   const {
     state: { themeWithOverrides },

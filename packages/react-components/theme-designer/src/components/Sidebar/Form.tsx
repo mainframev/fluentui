@@ -82,7 +82,7 @@ const useStyles = makeStyles({
 });
 
 const DELAY_INPUT = 20;
-export const Form: React.FC = () => {
+export const Form: React.FC<React.PropsWithChildren<unknown>> = () => {
   const styles = useStyles();
   const sidebarId = useId();
 

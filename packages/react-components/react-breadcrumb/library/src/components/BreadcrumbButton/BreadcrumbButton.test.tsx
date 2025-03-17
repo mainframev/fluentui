@@ -8,7 +8,7 @@ import { ArrowRight16Filled } from '@fluentui/react-icons';
 
 describe('BreadcrumbButton', () => {
   isConformant({
-    Component: BreadcrumbButton as React.FunctionComponent<BreadcrumbButtonProps>,
+    Component: BreadcrumbButton as React.FunctionComponent<React.PropsWithChildren<BreadcrumbButtonProps>>,
     displayName: 'BreadcrumbButton',
     testOptions: {
       'has-static-classnames': [

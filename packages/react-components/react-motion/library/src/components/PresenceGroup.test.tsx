@@ -4,10 +4,10 @@ import * as React from 'react';
 import { PresenceGroupChildContext, PresenceGroupChildContextValue } from '../contexts/PresenceGroupChildContext';
 import { PresenceGroup } from './PresenceGroup';
 
-const TestComponent: React.FC<{
+const TestComponent: React.FC<React.PropsWithChildren<{
   id: string;
   onRender: (data: { id: string; appear: boolean; visible: boolean }) => void;
-}> = props => {
+}>> = props => {
   const { id, onRender } = props;
   const { appear, visible, onExit } = React.useContext(PresenceGroupChildContext) as PresenceGroupChildContextValue;
 

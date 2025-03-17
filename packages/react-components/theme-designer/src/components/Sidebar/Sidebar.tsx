@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Sidebar: React.FC<SidebarProps> = props => {
+export const Sidebar: React.FC<React.PropsWithChildren<SidebarProps>> = props => {
   const styles = useStyles();
 
   return (

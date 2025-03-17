@@ -103,9 +103,9 @@ const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: 
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
-const WireframeContent: React.FC<{
+const WireframeContent: React.FC<React.PropsWithChildren<{
   index: number;
-}> = props => {
+}>> = props => {
   const classes = useClasses();
 
   return (

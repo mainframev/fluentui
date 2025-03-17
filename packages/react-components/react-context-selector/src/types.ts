@@ -4,7 +4,7 @@ import * as React from 'react';
  * @internal
  */
 export type Context<Value> = React.Context<Value> & {
-  Provider: React.FC<React.ProviderProps<Value>>;
+  Provider: React.FC<React.PropsWithChildren<React.ProviderProps<Value>>>;
   Consumer: never;
 };
 

@@ -6,7 +6,7 @@ import { AppItemStaticProps } from './AppItemStatic.types';
 
 describe('AppItemStatic', () => {
   isConformant({
-    Component: AppItemStatic as React.FunctionComponent<AppItemStaticProps>,
+    Component: AppItemStatic as React.FunctionComponent<React.PropsWithChildren<AppItemStaticProps>>,
     displayName: 'AppItemStatic',
     testOptions: {
       'has-static-classnames': [

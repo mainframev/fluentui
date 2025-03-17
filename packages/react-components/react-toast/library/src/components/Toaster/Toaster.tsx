@@ -9,7 +9,7 @@ import type { ToasterProps } from './Toaster.types';
 /**
  * Toaster component - renders a collection of toasts dispatched imperatively
  */
-export const Toaster: React.FC<ToasterProps> = props => {
+export const Toaster: React.FC<React.PropsWithChildren<ToasterProps>> = props => {
   const state = useToaster_unstable(props);
 
   useToasterStyles_unstable(state);

@@ -6,7 +6,7 @@ import type { NavItemProps } from './NavItem.types';
 
 describe('NavItem', () => {
   isConformant({
-    Component: NavItem as React.FunctionComponent<NavItemProps>,
+    Component: NavItem as React.FunctionComponent<React.PropsWithChildren<NavItemProps>>,
     displayName: 'NavItem',
     testOptions: {
       'has-static-classnames': [

@@ -37,7 +37,7 @@ export function useProviderThemeClasses(): string[] {
   return cssVariablesClasses;
 }
 
-export const PortalCompatProvider: React.FC<{ children?: React.ReactNode }> = props => {
+export const PortalCompatProvider: React.FC<React.PropsWithChildren<{ children?: React.ReactNode }>> = props => {
   const { children } = props;
   const cssVariablesClasses = useProviderThemeClasses();
 

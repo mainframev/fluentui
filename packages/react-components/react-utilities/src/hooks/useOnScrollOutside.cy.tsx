@@ -7,7 +7,7 @@ describe('useOnScrollOutside', () => {
   it('should work', () => {
     const onOutsideScroll = cy.spy();
 
-    const OutsideScrollExample: React.FC<{ onOutsideScroll: () => void }> = props => {
+    const OutsideScrollExample: React.FC<React.PropsWithChildren<{ onOutsideScroll: () => void }>> = props => {
       const innerRef = React.useRef<HTMLDivElement>(null);
 
       useOnScrollOutside({
@@ -64,7 +64,7 @@ describe('useOnScrollOutside', () => {
   it('should not trigger callback on browser-initiated scroll due to focus change', () => {
     const onOutsideScroll = cy.spy();
 
-    const OutsideScrollExample: React.FC<{ onOutsideScroll: () => void }> = props => {
+    const OutsideScrollExample: React.FC<React.PropsWithChildren<{ onOutsideScroll: () => void }>> = props => {
       const innerRef = React.useRef<HTMLDivElement>(null);
 
       useOnScrollOutside({

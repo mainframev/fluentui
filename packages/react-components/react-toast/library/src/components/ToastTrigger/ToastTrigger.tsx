@@ -6,7 +6,7 @@ import type { ToastTriggerProps } from './ToastTrigger.types';
 /**
  * ToastTrigger component
  */
-export const ToastTrigger: React.FC<ToastTriggerProps> = props => {
+export const ToastTrigger: React.FC<React.PropsWithChildren<ToastTriggerProps>> = props => {
   const state = useToastTrigger_unstable(props);
 
   return renderToastTrigger_unstable(state);

@@ -7,7 +7,7 @@ import { Header } from './components/Header/Header';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from './components/Content/Content';
 
-export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
+export const ThemeDesigner: React.FC<React.PropsWithChildren<ThemeDesignerProps>> = props => {
   const styles = useStyles();
   return (
     <FluentProvider theme={webLightTheme}>

@@ -7,7 +7,7 @@ import { useTeachingPopoverTrigger_unstable } from './useTeachingPopoverTrigger'
 /**
  * Direct extension of PopoverTrigger - Wraps a trigger element as an only child and adds the necessary event handling to open a teaching bubble.
  */
-export const TeachingPopoverTrigger: React.FC<TeachingPopoverTriggerProps> = props => {
+export const TeachingPopoverTrigger: React.FC<React.PropsWithChildren<TeachingPopoverTriggerProps>> = props => {
   const state = useTeachingPopoverTrigger_unstable(props);
 
   return renderTeachingPopoverTrigger_unstable(state);

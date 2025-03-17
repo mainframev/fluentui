@@ -8,7 +8,7 @@ import { useAriaLiveAnnouncerContextValues_unstable } from './useAriaLiveAnnounc
 /**
  * A sample implementation of a component that manages aria live announcements.
  */
-export const AriaLiveAnnouncer: React.FC<AriaLiveAnnouncerProps> = props => {
+export const AriaLiveAnnouncer: React.FC<React.PropsWithChildren<AriaLiveAnnouncerProps>> = props => {
   const state = useAriaLiveAnnouncer_unstable(props);
   const contextValues = useAriaLiveAnnouncerContextValues_unstable(state);
 

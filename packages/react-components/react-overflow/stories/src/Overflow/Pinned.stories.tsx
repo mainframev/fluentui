@@ -72,11 +72,11 @@ export const Pinned = () => {
   );
 };
 
-const OverflowSelectionItem: React.FC<{
+const OverflowSelectionItem: React.FC<React.PropsWithChildren<{
   onSelectItem?: (item: string) => void;
   selected?: boolean;
   id: string;
-}> = props => {
+}>> = props => {
   const onClick = () => {
     props.onSelectItem?.(props.id);
   };
@@ -94,7 +94,7 @@ const OverflowSelectionItem: React.FC<{
   );
 };
 
-const OverflowMenuItem: React.FC<Pick<OverflowItemProps, 'id'> & { onClick: () => void }> = props => {
+const OverflowMenuItem: React.FC<React.PropsWithChildren<Pick<OverflowItemProps, 'id'> & { onClick: () => void }>> = props => {
   const { id, onClick } = props;
   const isVisible = useIsOverflowItemVisible(id);
 
@@ -105,10 +105,10 @@ const OverflowMenuItem: React.FC<Pick<OverflowItemProps, 'id'> & { onClick: () =
   return <MenuItem onClick={onClick}>Item {id}</MenuItem>;
 };
 
-const OverflowMenu: React.FC<{
+const OverflowMenu: React.FC<React.PropsWithChildren<{
   itemIds: string[];
   onSelect: (itemId: string) => void;
-}> = ({ itemIds, onSelect }) => {
+}>> = ({ itemIds, onSelect }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {

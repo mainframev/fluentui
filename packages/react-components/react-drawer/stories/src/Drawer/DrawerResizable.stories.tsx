@@ -83,7 +83,7 @@ export const Resizable = () => {
     [isResizing],
   );
 
-  const ResizeComponent: React.FC = () => (
+  const ResizeComponent: React.FC<React.PropsWithChildren<unknown>> = () => (
     <div className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)} onMouseDown={startResizing} />
   );
 

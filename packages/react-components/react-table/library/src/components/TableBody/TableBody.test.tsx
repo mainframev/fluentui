@@ -11,7 +11,7 @@ describe('TableBody', () => {
     document.body.appendChild(table);
   });
   isConformant({
-    Component: TableBody as React.FC<TableBodyProps>,
+    Component: TableBody as React.FC<React.PropsWithChildren<TableBodyProps>>,
     displayName: 'TableBody',
     renderOptions: {
       container: table,

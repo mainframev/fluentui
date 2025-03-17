@@ -13,7 +13,7 @@ describe('ToggleButton', () => {
   });
 
   isConformant({
-    Component: ToggleButton as React.FunctionComponent<ToggleButtonProps>,
+    Component: ToggleButton as React.FunctionComponent<React.PropsWithChildren<ToggleButtonProps>>,
     displayName: 'ToggleButton',
     testOptions: {
       'has-static-classnames': [

@@ -190,7 +190,7 @@ const Column3 = () => {
   );
 };
 
-export const ThemePreviewV9: React.FC<ContentProps> = props => {
+export const ThemePreviewV9: React.FC<React.PropsWithChildren<ContentProps>> = props => {
   const styles = useStyles();
   return (
     <div className={styles.root}>

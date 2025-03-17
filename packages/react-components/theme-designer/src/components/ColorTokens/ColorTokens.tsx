@@ -7,7 +7,7 @@ import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 export interface ColorTokensProps {}
 
-export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
+export const ColorTokens: React.FunctionComponent<React.PropsWithChildren<ColorTokensProps>> = props => {
   const {
     state: {
       brand,

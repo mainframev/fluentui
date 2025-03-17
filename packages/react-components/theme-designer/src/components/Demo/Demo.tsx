@@ -180,7 +180,7 @@ export const Column3 = () => {
   );
 };
 
-export const Demo: React.FC<ContentProps> = props => {
+export const Demo: React.FC<React.PropsWithChildren<ContentProps>> = props => {
   const styles = useStyles();
   return (
     <div>

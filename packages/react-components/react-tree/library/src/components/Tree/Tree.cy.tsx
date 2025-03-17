@@ -17,7 +17,7 @@ const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-const TreeTest: React.FC<TreeProps> = props => {
+const TreeTest: React.FC<React.PropsWithChildren<TreeProps>> = props => {
   return (
     <Tree id="tree" aria-label="Tree" {...props}>
       {props.children ?? (

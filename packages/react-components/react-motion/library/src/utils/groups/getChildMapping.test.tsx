@@ -2,10 +2,10 @@ import * as React from 'react';
 import { getChildMapping } from './getChildMapping';
 import { render } from '@testing-library/react';
 
-const TestComponent: React.FC<{
+const TestComponent: React.FC<React.PropsWithChildren<{
   children: React.ReactNode;
   onMapping: (mapping: ReturnType<typeof getChildMapping>) => void;
-}> = props => {
+}>> = props => {
   React.useEffect(() => {
     props.onMapping(getChildMapping(props.children));
   });

@@ -18,7 +18,7 @@ function getPointsFromEasing(value: string) {
   throw new Error('Only cubic-bezier() easing is supported');
 }
 
-const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; tokenValue: string }> = props => {
+const MotionCurveCard: React.FC<React.PropsWithChildren<{ animationEnabled: boolean; tokenName: string; tokenValue: string }>> = props => {
   const { animationEnabled, tokenName, tokenValue } = props;
 
   const classes = useCardClasses();
@@ -57,7 +57,7 @@ const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; 
   );
 };
 
-const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: string; tokenValue: string }> = props => {
+const MotionDurationCard: React.FC<React.PropsWithChildren<{ animationEnabled: boolean; tokenName: string; tokenValue: string }>> = props => {
   const { animationEnabled, tokenName, tokenValue } = props;
   const classes = useCardClasses();
 

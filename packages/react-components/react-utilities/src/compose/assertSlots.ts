@@ -46,7 +46,7 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
       if (!isSlot(slotElement)) {
         typedState[slotName as keyof ComponentState<Slots>] = slot.always(slotElement, {
           // eslint-disable-next-line @typescript-eslint/no-deprecated
-          elementType: typedState.components[slotName] as React.ComponentType<{}>,
+          elementType: typedState.components[slotName] as React.ComponentType<React.PropsWithChildren<{}>>,
         }) as ComponentState<Slots>[keyof ComponentState<Slots>];
         // eslint-disable-next-line no-console
         console.warn(/** #__DE-INDENT__ */ `
@@ -61,7 +61,7 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
         // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (elementType !== typedState.components[slotName]) {
           // eslint-disable-next-line @typescript-eslint/no-deprecated
-          slotElement[SLOT_ELEMENT_TYPE_SYMBOL] = typedState.components[slotName] as React.ComponentType<{}>;
+          slotElement[SLOT_ELEMENT_TYPE_SYMBOL] = typedState.components[slotName] as React.ComponentType<React.PropsWithChildren<{}>>;
           // eslint-disable-next-line no-console
           console.warn(/** #__DE-INDENT__ */ `
             @fluentui/react-utilities [${assertSlots.name}]:

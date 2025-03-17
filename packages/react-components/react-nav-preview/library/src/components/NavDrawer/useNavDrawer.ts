@@ -39,7 +39,7 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
       // this is a problem with the lack of support for union types on React v18
       // ComponentState is using React.ComponentType which will try to infer propType
       // propTypes WeakValidator signature will break distributive unions making this type invalid
-      root: Drawer as React.FC<DrawerProps>,
+      root: Drawer as React.FC<React.PropsWithChildren<DrawerProps>>,
     },
 
     root: slot.always(
@@ -49,7 +49,7 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
         // this is a problem with the lack of support for union types on React v18
         // ComponentState is using React.ComponentType which will try to infer propType
         // propTypes WeakValidator signature will break distributive unions making this type invalid
-        elementType: Drawer as React.FC<DrawerProps & React.RefAttributes<HTMLDivElement>>,
+        elementType: Drawer as React.FC<React.PropsWithChildren<DrawerProps & React.RefAttributes<HTMLDivElement>>>,
       },
     ),
   };

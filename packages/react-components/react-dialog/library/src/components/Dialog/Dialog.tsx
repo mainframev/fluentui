@@ -11,7 +11,7 @@ import { useDialogContextValues_unstable } from './useDialogContextValues';
  * and a `DialogSurface` (or some component that will eventually render one of those compound components)
  * in this specific order
  */
-export const Dialog: React.FC<DialogProps> = React.memo(props => {
+export const Dialog: React.FC<React.PropsWithChildren<DialogProps>> = React.memo(props => {
   const state = useDialog_unstable(props);
   const contextValues = useDialogContextValues_unstable(state);
 

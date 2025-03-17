@@ -49,7 +49,7 @@ const IMAGES = [
   'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
 ];
 
-const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index: number }> = props => {
+const BannerCard: React.FC<React.PropsWithChildren<{ children: React.ReactNode; imageSrc: string; index: number }>> = props => {
   const { children, imageSrc, index } = props;
   const classes = useClasses();
 

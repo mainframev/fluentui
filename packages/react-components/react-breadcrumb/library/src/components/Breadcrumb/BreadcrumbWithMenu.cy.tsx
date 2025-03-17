@@ -29,7 +29,7 @@ type Item = {
   href?: string;
 };
 
-const OverflowMenu: React.FC<{ id: string; item: Item; link?: boolean }> = props => {
+const OverflowMenu: React.FC<React.PropsWithChildren<{ id: string; item: Item; link?: boolean }>> = props => {
   const { item, id, link = false } = props;
   const isVisible = useIsOverflowItemVisible(id);
 

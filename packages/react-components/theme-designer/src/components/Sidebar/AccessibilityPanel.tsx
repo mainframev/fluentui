@@ -12,7 +12,7 @@ export interface AccessibilityPanelProps {
   brand: BrandVariants;
 }
 
-export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = props => {
+export const AccessibilityPanel: React.FC<React.PropsWithChildren<AccessibilityPanelProps>> = props => {
   const { lightThemeOverrides, darkThemeOverrides, brand } = props;
   const { failedContrastTests: failLight } = getAccessibilityChecker({
     ...createLightTheme(brand),

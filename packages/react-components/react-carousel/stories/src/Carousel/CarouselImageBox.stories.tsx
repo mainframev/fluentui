@@ -55,7 +55,7 @@ const IMAGES: ImageDefinition[] = [
   },
 ];
 
-const ImageCard: React.FC<ImageDefinition> = props => {
+const ImageCard: React.FC<React.PropsWithChildren<ImageDefinition>> = props => {
   const classes = useClasses();
   const { url } = props;
 

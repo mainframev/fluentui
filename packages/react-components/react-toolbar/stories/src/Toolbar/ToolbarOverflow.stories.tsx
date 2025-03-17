@@ -28,7 +28,7 @@ interface ToolbarOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
   id: string;
 }
 
-const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = props => {
+const ToolbarOverflowMenuItem: React.FC<React.PropsWithChildren<ToolbarOverflowMenuItemProps>> = props => {
   const { id, ...rest } = props;
   const isVisible = useIsOverflowItemVisible(id);
 
@@ -51,9 +51,9 @@ const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = props =>
   return <MenuItem {...(rest as MenuItemProps)}>Item {id}</MenuItem>;
 };
 
-const ToolbarMenuOverflowDivider: React.FC<{
+const ToolbarMenuOverflowDivider: React.FC<React.PropsWithChildren<{
   id: string;
-}> = props => {
+}>> = props => {
   const isGroupVisible = useIsOverflowGroupVisible(props.id);
 
   if (isGroupVisible === 'visible') {
@@ -63,7 +63,7 @@ const ToolbarMenuOverflowDivider: React.FC<{
   return <MenuDivider />;
 };
 
-const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ itemIds }) => {
+const OverflowMenu: React.FC<React.PropsWithChildren<{ itemIds: Array<Array<string>> }>> = ({ itemIds }) => {
   const { ref, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {

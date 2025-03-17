@@ -100,9 +100,9 @@ export const PriorityWithDividers = () => {
   );
 };
 
-const OverflowGroupDivider: React.FC<{
+const OverflowGroupDivider: React.FC<React.PropsWithChildren<{
   groupId: number;
-}> = props => {
+}>> = props => {
   const groupVisibility = useIsOverflowGroupVisible(props.groupId.toString());
   if (groupVisibility === 'hidden') {
     return null;
@@ -118,7 +118,7 @@ const OverflowGroupDivider: React.FC<{
   );
 };
 
-const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
+const OverflowMenu: React.FC<React.PropsWithChildren<{ itemIds: string[] }>> = ({ itemIds }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
@@ -148,7 +148,7 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
   );
 };
 
-const OverflowMenuItem: React.FC<{ id: string }> = props => {
+const OverflowMenuItem: React.FC<React.PropsWithChildren<{ id: string }>> = props => {
   const { id } = props;
   const isVisible = useIsOverflowItemVisible(id);
 
@@ -159,9 +159,9 @@ const OverflowMenuItem: React.FC<{ id: string }> = props => {
   return <MenuItem>Item {id}</MenuItem>;
 };
 
-const OverflowMenuDivider: React.FC<{
+const OverflowMenuDivider: React.FC<React.PropsWithChildren<{
   groupId: number;
-}> = props => {
+}>> = props => {
   const { groupId } = props;
 
   // ⚠️⚠️ This is important

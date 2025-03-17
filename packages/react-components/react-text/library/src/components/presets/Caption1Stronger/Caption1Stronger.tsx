@@ -6,7 +6,7 @@ import { caption1StrongerClassNames, useCaption1StrongerStyles } from './useCapt
 /**
  * Text preset component for the Caption1Stronger typography variant
  */
-export const Caption1Stronger: React.FunctionComponent<TextPresetProps> = createPreset({
+export const Caption1Stronger: React.FunctionComponent<React.PropsWithChildren<TextPresetProps>> = createPreset({
   useStyles: useCaption1StrongerStyles,
   className: caption1StrongerClassNames.root,
   displayName: 'Caption1Stronger',

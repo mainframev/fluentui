@@ -6,7 +6,7 @@ import { appItemClassNames } from './useAppItemStyles.styles';
 
 describe('AppItem', () => {
   isConformant({
-    Component: AppItem as React.FunctionComponent<AppItemProps>,
+    Component: AppItem as React.FunctionComponent<React.PropsWithChildren<AppItemProps>>,
     displayName: 'AppItem',
     testOptions: {
       'has-static-classnames': [

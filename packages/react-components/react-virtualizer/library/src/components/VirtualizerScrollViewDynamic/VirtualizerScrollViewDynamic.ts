@@ -9,7 +9,7 @@ import type { VirtualizerContextProps } from '../../Utilities';
  * Virtualizer ScrollView
  */
 
-export const VirtualizerScrollViewDynamic: React.FC<VirtualizerScrollViewDynamicProps> = (
+export const VirtualizerScrollViewDynamic: React.FC<React.PropsWithChildren<VirtualizerScrollViewDynamicProps>> = (
   props: VirtualizerScrollViewDynamicProps,
   context: React.Context<VirtualizerContextProps>,
 ) => {

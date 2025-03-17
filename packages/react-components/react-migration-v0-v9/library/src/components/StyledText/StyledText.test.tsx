@@ -8,7 +8,7 @@ import { StyledText, StyledTextProps } from './StyledText';
 
 describe('StyledText', () => {
   isConformant({
-    Component: StyledText as React.ComponentType<StyledTextProps>,
+    Component: StyledText as React.ComponentType<React.PropsWithChildren<StyledTextProps>>,
     componentPath: module!.filename.replace('.test', ''),
     displayName: 'StyledText',
     disabledTests: ['has-docblock', 'has-top-level-file', 'component-has-static-classnames-object'],

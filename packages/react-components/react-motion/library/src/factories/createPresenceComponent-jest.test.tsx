@@ -11,7 +11,7 @@ const TestPresence = createPresenceComponent({
   enter: { keyframes, ...options },
   exit: { keyframes: keyframes.slice().reverse(), ...options },
 });
-const TestComponent: React.FC<{ appear?: boolean; onMotionFinish?: () => void }> = props => {
+const TestComponent: React.FC<React.PropsWithChildren<{ appear?: boolean; onMotionFinish?: () => void }>> = props => {
   const { appear, onMotionFinish } = props;
   const [visible, setVisible] = React.useState(true);
 

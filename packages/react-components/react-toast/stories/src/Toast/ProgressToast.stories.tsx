@@ -17,7 +17,7 @@ import {
 const intervalDelay = 100;
 const intervalIncrement = 5;
 
-const DownloadProgressBar: React.FC<{ onDownloadEnd: () => void }> = ({ onDownloadEnd }) => {
+const DownloadProgressBar: React.FC<React.PropsWithChildren<{ onDownloadEnd: () => void }>> = ({ onDownloadEnd }) => {
   const [value, setValue] = React.useState(100);
   // This effect simulates progress value based on state/remote data
   React.useEffect(() => {

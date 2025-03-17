@@ -5,7 +5,7 @@ import { NavSectionHeaderProps } from './NavSectionHeader.types';
 
 describe('NavSectionHeader', () => {
   isConformant({
-    Component: NavSectionHeader as React.FunctionComponent<NavSectionHeaderProps>,
+    Component: NavSectionHeader as React.FunctionComponent<React.PropsWithChildren<NavSectionHeaderProps>>,
     displayName: 'NavSectionHeader',
   });
 });

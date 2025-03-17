@@ -16,7 +16,7 @@ export const withAriaLive = (Story: () => JSX.Element, context: FluentStoryConte
   );
 };
 
-const AriaLiveWrapper: React.FC<{ children: React.ReactNode }> = props => {
+const AriaLiveWrapper: React.FC<React.PropsWithChildren<{ children: React.ReactNode }>> = props => {
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {

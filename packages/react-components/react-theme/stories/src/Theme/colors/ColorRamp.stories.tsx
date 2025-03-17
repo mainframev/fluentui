@@ -27,7 +27,7 @@ const alphaStyle = {
     'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)',
 };
 
-export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props => {
+export const ColorRampItem: React.FunctionComponent<React.PropsWithChildren<ColorRampItemProps>> = props => {
   const divRef = React.useRef();
   const cssVar = React.useRef();
   const [rawColorValue, setRawColorValue] = React.useState();
@@ -77,7 +77,7 @@ export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props 
 /**
  * Renders a color ramp for documentation purposes.
  */
-export const ColorRamp: React.FunctionComponent<ColorRampProps> = props => (
+export const ColorRamp: React.FunctionComponent<React.PropsWithChildren<ColorRampProps>> = props => (
   <div>
     {Object.entries(props.ramp).map(([name, value]) => {
       return <ColorRampItem key={name + ':' + value} name={name} value={value} />;

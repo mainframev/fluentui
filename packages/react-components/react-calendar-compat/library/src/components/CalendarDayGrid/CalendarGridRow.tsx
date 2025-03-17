@@ -27,7 +27,7 @@ export interface CalendarGridRowProps extends CalendarDayGridProps {
 /**
  * @internal
  */
-export const CalendarGridRow: React.FunctionComponent<CalendarGridRowProps> = props => {
+export const CalendarGridRow: React.FunctionComponent<React.PropsWithChildren<CalendarGridRowProps>> = props => {
   const {
     ariaHidden,
     classNames,

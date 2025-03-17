@@ -6,7 +6,7 @@ import { TeachingPopoverCarouselFooterButtonProps } from './TeachingPopoverCarou
 
 describe('TeachingPopoverCarouselFooterButton', () => {
   isConformant({
-    Component: TeachingPopoverCarouselFooterButton as React.FunctionComponent<TeachingPopoverCarouselFooterButtonProps>,
+    Component: TeachingPopoverCarouselFooterButton as React.FunctionComponent<React.PropsWithChildren<TeachingPopoverCarouselFooterButtonProps>>,
     displayName: 'TeachingPopoverCarouselFooterButton',
   });
 

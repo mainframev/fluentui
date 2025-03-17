@@ -16,9 +16,7 @@ import { InlineDrawer, type InlineDrawerProps } from '../InlineDrawer';
  */
 export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElement>): DrawerState => {
   // casting here to convert a union of functions to a single function with the union of parameters
-  const elementType = (props.type === 'inline' ? InlineDrawer : OverlayDrawer) as React.FC<
-    InlineDrawerProps | OverlayDrawerProps
-  >;
+  const elementType = (props.type === 'inline' ? InlineDrawer : OverlayDrawer) as React.FC<React.PropsWithChildren<InlineDrawerProps | OverlayDrawerProps>>;
   const root: InlineDrawerProps | OverlayDrawerProps = slot.always({ ref, ...props }, { elementType });
 
   return {

@@ -15,7 +15,7 @@ export interface CalendarDayMonthHeaderRowProps extends CalendarDayGridProps {
 /**
  * @internal
  */
-export const CalendarMonthHeaderRow: React.FunctionComponent<CalendarDayMonthHeaderRowProps> = props => {
+export const CalendarMonthHeaderRow: React.FunctionComponent<React.PropsWithChildren<CalendarDayMonthHeaderRowProps>> = props => {
   const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow, weeks, classNames } = props;
   const dayLabels = strings.shortDays.slice();
 

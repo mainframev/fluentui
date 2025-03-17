@@ -47,7 +47,7 @@ import {
 } from '@fluentui/react-icons';
 import type { PresenceBadgeState } from './PresenceBadge.types';
 
-export const presenceAwayRegular: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceAwayRegular: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceAway10Regular,
@@ -60,7 +60,7 @@ export const presenceAwayRegular: Record<PresenceBadgeState['size'], React.Funct
   'extra-large': PresenceAway20Regular,
 };
 
-export const presenceAwayFilled: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceAwayFilled: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceAway10Filled,
@@ -73,7 +73,7 @@ export const presenceAwayFilled: Record<PresenceBadgeState['size'], React.Functi
   'extra-large': PresenceAway20Filled,
 };
 
-export const presenceAvailableRegular: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceAvailableRegular: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceAvailable10Regular,
@@ -86,7 +86,7 @@ export const presenceAvailableRegular: Record<PresenceBadgeState['size'], React.
   'extra-large': PresenceAvailable20Regular,
 };
 
-export const presenceAvailableFilled: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceAvailableFilled: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceAvailable10Filled,
@@ -99,7 +99,7 @@ export const presenceAvailableFilled: Record<PresenceBadgeState['size'], React.F
   'extra-large': PresenceAvailable20Filled,
 };
 
-export const presenceBlockedRegular: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceBlockedRegular: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceBlocked10Regular,
@@ -112,7 +112,7 @@ export const presenceBlockedRegular: Record<PresenceBadgeState['size'], React.Fu
   'extra-large': PresenceBlocked20Regular,
 };
 
-export const presenceBusyFilled: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceBusyFilled: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceBusy10Filled,
@@ -125,7 +125,7 @@ export const presenceBusyFilled: Record<PresenceBadgeState['size'], React.Functi
   'extra-large': PresenceBusy20Filled,
 };
 
-export const presenceDndFilled: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceDndFilled: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceDnd10Filled,
@@ -138,7 +138,7 @@ export const presenceDndFilled: Record<PresenceBadgeState['size'], React.Functio
   'extra-large': PresenceDnd20Filled,
 };
 
-export const presenceDndRegular: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceDndRegular: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceDnd10Regular,
@@ -151,7 +151,7 @@ export const presenceDndRegular: Record<PresenceBadgeState['size'], React.Functi
   'extra-large': PresenceDnd20Regular,
 };
 
-export const presenceOofRegular: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceOofRegular: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceOof10Regular,
@@ -164,7 +164,7 @@ export const presenceOofRegular: Record<PresenceBadgeState['size'], React.Functi
   'extra-large': PresenceOof20Regular,
 };
 
-export const presenceOfflineRegular: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceOfflineRegular: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceOffline10Regular,
@@ -177,7 +177,7 @@ export const presenceOfflineRegular: Record<PresenceBadgeState['size'], React.Fu
   'extra-large': PresenceOffline20Regular,
 };
 
-export const presenceUnknownRegular: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+export const presenceUnknownRegular: Record<PresenceBadgeState['size'], React.FunctionComponent<React.PropsWithChildren<unknown>>> = {
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   tiny: PresenceUnknown10Regular,

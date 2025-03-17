@@ -94,9 +94,9 @@ export const LargerDividers = () => {
   );
 };
 
-const OverflowGroupDivider: React.FC<{
+const OverflowGroupDivider: React.FC<React.PropsWithChildren<{
   groupId: string;
-}> = props => {
+}>> = props => {
   return (
     <OverflowDivider groupId={props.groupId}>
       <div>
@@ -106,7 +106,7 @@ const OverflowGroupDivider: React.FC<{
   );
 };
 
-const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
+const OverflowMenu: React.FC<React.PropsWithChildren<{ itemIds: string[] }>> = ({ itemIds }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
@@ -136,7 +136,7 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
   );
 };
 
-const OverflowMenuItem: React.FC<{ id: string }> = props => {
+const OverflowMenuItem: React.FC<React.PropsWithChildren<{ id: string }>> = props => {
   const { id } = props;
   const isVisible = useIsOverflowItemVisible(id);
 
@@ -147,9 +147,9 @@ const OverflowMenuItem: React.FC<{ id: string }> = props => {
   return <MenuItem>Item {id}</MenuItem>;
 };
 
-const OverflowMenuDivider: React.FC<{
+const OverflowMenuDivider: React.FC<React.PropsWithChildren<{
   id: string;
-}> = props => {
+}>> = props => {
   const isGroupVisible = useIsOverflowGroupVisible(props.id);
 
   if (isGroupVisible === 'visible') {

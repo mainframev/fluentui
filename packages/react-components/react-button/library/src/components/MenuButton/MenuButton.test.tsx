@@ -8,7 +8,7 @@ import { menuButtonClassNames } from './useMenuButtonStyles.styles';
 
 describe('MenuButton', () => {
   isConformant({
-    Component: MenuButton as React.FunctionComponent<MenuButtonProps>,
+    Component: MenuButton as React.FunctionComponent<React.PropsWithChildren<MenuButtonProps>>,
     displayName: 'MenuButton',
     testOptions: {
       'has-static-classnames': [

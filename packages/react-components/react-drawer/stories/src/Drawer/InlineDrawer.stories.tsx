@@ -61,7 +61,7 @@ type DrawerInlineExampleProps = InlineDrawerProps & {
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...props }) => {
+const DrawerInlineExample: React.FC<React.PropsWithChildren<DrawerInlineExampleProps>> = ({ setOpen, ...props }) => {
   const restoreFocusSourceAttributes = useRestoreFocusSource();
 
   return (

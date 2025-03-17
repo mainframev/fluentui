@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Nav: React.FC<NavProps> = props => {
+export const Nav: React.FC<React.PropsWithChildren<NavProps>> = props => {
   const styles = useStyles();
 
   const underlineId = useId('input-underline');

@@ -97,7 +97,7 @@ describe('getReactCallbackName', () => {
     const element = document.createElement('div');
     document.body.appendChild(element);
 
-    const Component: React.FC = () =>
+    const Component: React.FC<React.PropsWithChildren<unknown>> = () =>
       React.createElement(specialElements[callbackName] || 'div', {
         id: 'test-el',
         [callbackName]: (e: React.SyntheticEvent) => {

@@ -92,7 +92,7 @@ export const StackShim = (props: IStackProps) => {
         return null;
       }
 
-      if (child.type && ((child as React.ReactElement).type as React.ComponentType).name === 'StackItemShim') {
+      if (child.type && ((child as React.ReactElement).type as React.ComponentType<React.PropsWithChildren<unknown>>).name === 'StackItemShim') {
         const defaultItemProps: IStackItemProps = {
           shrink: !disableShrink,
         };

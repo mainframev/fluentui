@@ -13,7 +13,7 @@ import type { FluentTriggerComponent } from '@fluentui/react-utilities';
  * Besides being a trigger that opens/close a dialog through context this component doesn't do much,
  * making it basically unnecessary in cases where the trigger is outside of the `Dialog` component.
  */
-export const DialogTrigger: React.FC<DialogTriggerProps> = props => {
+export const DialogTrigger: React.FC<React.PropsWithChildren<DialogTriggerProps>> = props => {
   const state = useDialogTrigger_unstable(props);
 
   return renderDialogTrigger_unstable(state);

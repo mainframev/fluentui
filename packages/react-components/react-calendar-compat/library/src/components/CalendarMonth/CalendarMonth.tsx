@@ -67,7 +67,7 @@ function useFocusLogic({ componentRef }: { componentRef: CalendarMonthProps['com
 /**
  * @internal
  */
-export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props => {
+export const CalendarMonth: React.FunctionComponent<React.PropsWithChildren<CalendarMonthProps>> = props => {
   const {
     allFocusable,
     animationDirection,

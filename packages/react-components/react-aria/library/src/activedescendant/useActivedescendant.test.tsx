@@ -61,7 +61,7 @@ expect.extend({
 });
 
 describe('useActivedescendant', () => {
-  const Test: React.FC<{ imperativeRef: React.RefObject<ActiveDescendantImperativeRef> }> = ({ imperativeRef }) => {
+  const Test: React.FC<React.PropsWithChildren<{ imperativeRef: React.RefObject<ActiveDescendantImperativeRef> }>> = ({ imperativeRef }) => {
     const { listboxRef, activeParentRef } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
       matchOption: el => el.getAttribute('role') === 'option',
       imperativeRef,

@@ -6,7 +6,7 @@ import { ListItemProps } from './ListItem.types';
 
 describe('ListItem', () => {
   isConformant({
-    Component: ListItem as React.FunctionComponent<ListItemProps>,
+    Component: ListItem as React.FunctionComponent<React.PropsWithChildren<ListItemProps>>,
     componentPath: module!.filename.replace('.test', ''),
     displayName: 'ListItem',
     // Disabled because this should be ItemLayout's responsibility, but it doesn't render those.

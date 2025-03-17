@@ -23,7 +23,7 @@ const useClasses = makeStyles({
   },
 });
 
-const CustomMessage: React.FC<{ children: React.ReactNode } & Pick<PortalProps, 'mountNode'>> = props => {
+const CustomMessage: React.FC<React.PropsWithChildren<{ children: React.ReactNode } & Pick<PortalProps, 'mountNode'>>> = props => {
   const classes = useClasses();
 
   const mountNodeProps = toMountNodeProps(props.mountNode);

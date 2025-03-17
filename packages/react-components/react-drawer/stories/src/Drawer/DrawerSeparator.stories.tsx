@@ -42,7 +42,7 @@ type DrawerSeparatorExampleProps = {
   className?: string;
 };
 
-const DrawerSeparatorExample: React.FC<DrawerSeparatorExampleProps> = ({ open, setOpen, position }) => {
+const DrawerSeparatorExample: React.FC<React.PropsWithChildren<DrawerSeparatorExampleProps>> = ({ open, setOpen, position }) => {
   return (
     <InlineDrawer separator position={position} open={open}>
       <DrawerHeader>

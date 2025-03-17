@@ -45,7 +45,7 @@ export interface ColorTokenRowProps {
   selected: boolean;
 }
 
-const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
+const ColorTokenCol: React.FunctionComponent<React.PropsWithChildren<ColorTokenRowProps>> = props => {
   const styles = useStyles();
   const { brand, brandValue, brandValueString, selected } = props;
 
@@ -77,7 +77,7 @@ const columnsDef: TableColumnDefinition<string>[] = [
   }),
 ];
 
-export const TokenList: React.FunctionComponent<TokenIssueListProps> = props => {
+export const TokenList: React.FunctionComponent<React.PropsWithChildren<TokenIssueListProps>> = props => {
   const styles = useStyles();
 
   const [columns] = React.useState<TableColumnDefinition<string>[]>(columnsDef);

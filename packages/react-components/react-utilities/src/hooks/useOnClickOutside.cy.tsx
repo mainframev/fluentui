@@ -5,7 +5,7 @@ import Frame from 'react-frame-component';
 
 import { useOnClickOutside } from './useOnClickOutside';
 
-const OutsideClickExample: React.FC<{ useShadowDOM: boolean; onOutsideClick: () => void }> = props => {
+const OutsideClickExample: React.FC<React.PropsWithChildren<{ useShadowDOM: boolean; onOutsideClick: () => void }>> = props => {
   const innerRef = React.useRef<HTMLDivElement>(null);
 
   useOnClickOutside({
@@ -39,7 +39,7 @@ const OutsideClickExample: React.FC<{ useShadowDOM: boolean; onOutsideClick: () 
   );
 };
 
-const IFrameExample: React.FC<{ disabledFocusOnIframe?: boolean; onOutsideClick: () => void }> = props => {
+const IFrameExample: React.FC<React.PropsWithChildren<{ disabledFocusOnIframe?: boolean; onOutsideClick: () => void }>> = props => {
   const innerRef = React.useRef<HTMLDivElement>(null);
 
   useOnClickOutside({

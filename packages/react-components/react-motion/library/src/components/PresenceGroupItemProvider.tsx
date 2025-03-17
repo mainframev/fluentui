@@ -17,7 +17,7 @@ type PresenceGroupItemProviderProps = Omit<PresenceGroupChildContextValue, 'onEx
  * Provides context for a single child of a `PresenceGroup`. Exists only to make a stable context value for a child.
  * Not intended for direct use.
  */
-export const PresenceGroupItemProvider: React.FC<PresenceGroupItemProviderProps> = props => {
+export const PresenceGroupItemProvider: React.FC<React.PropsWithChildren<PresenceGroupItemProviderProps>> = props => {
   const { appear, childKey, onExit, visible, unmountOnExit } = props;
   const contextValue = React.useMemo(
     () => ({

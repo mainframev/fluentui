@@ -8,7 +8,7 @@ export function createPreset(options: {
   className: string;
   displayName: string;
   useStyles: () => Record<'root', string>;
-}): React.FunctionComponent<TextPresetProps> {
+}): React.FunctionComponent<React.PropsWithChildren<TextPresetProps>> {
   const { useStyles, className, displayName } = options;
   const Wrapper: ForwardRefComponent<TextPresetProps> = React.forwardRef((props, ref) => {
     'use no memo';

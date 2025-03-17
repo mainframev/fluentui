@@ -5,7 +5,7 @@ import type { NavSubItemProps } from './NavSubItem.types';
 
 describe('NavSubItem', () => {
   isConformant({
-    Component: NavSubItem as React.FunctionComponent<NavSubItemProps>,
+    Component: NavSubItem as React.FunctionComponent<React.PropsWithChildren<NavSubItemProps>>,
     displayName: 'NavSubItem',
   });
 });

@@ -6,7 +6,7 @@ import { ButtonProps } from '@fluentui/react-button';
 
 describe('ToolbarGroup', () => {
   isConformant({
-    Component: ToolbarGroup as React.FunctionComponent<ButtonProps>,
+    Component: ToolbarGroup as React.FunctionComponent<React.PropsWithChildren<ButtonProps>>,
     displayName: 'ToolbarGroup',
     disabledTests: ['component-has-static-classnames-object'],
   });

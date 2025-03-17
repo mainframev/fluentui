@@ -6,7 +6,7 @@ import type { TeachingPopoverProps } from './TeachingPopover.types';
 /**
  * An extension class of Popover which defaults to withArrow and FocusTrap enabled.
  */
-export const TeachingPopover: React.FC<TeachingPopoverProps> = props => {
+export const TeachingPopover: React.FC<React.PropsWithChildren<TeachingPopoverProps>> = props => {
   const state = useTeachingPopover_unstable(props);
 
   return renderTeachingPopover_unstable(state);

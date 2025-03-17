@@ -36,7 +36,7 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
 export function presenceMotionSlot<MotionParams extends Record<string, MotionParam> = {}>(
   motion: PresenceMotionSlotProps<MotionParams> | null | undefined,
   options: {
-    elementType: React.FC<PresenceComponentProps & MotionParams>;
+    elementType: React.FC<React.PropsWithChildren<PresenceComponentProps & MotionParams>>;
     defaultProps: PresenceMotionSlotRenderProps & MotionParams;
   },
 ): SlotComponentType<PresenceMotionSlotRenderProps & MotionParams> {

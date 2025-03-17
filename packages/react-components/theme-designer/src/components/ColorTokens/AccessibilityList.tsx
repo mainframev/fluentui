@@ -38,7 +38,7 @@ export interface AccessibilityContrastChipProps {
   testType: TestType;
 }
 
-export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityContrastChipProps> = props => {
+export const AccessibilityContrastChip: React.FunctionComponent<React.PropsWithChildren<AccessibilityContrastChipProps>> = props => {
   const styles = useStyles();
   const { failKeys, testType } = props;
 
@@ -73,7 +73,7 @@ export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityCon
   );
 };
 
-export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
+export const AccessibilityList: React.FunctionComponent<React.PropsWithChildren<AccessibilityListProps>> = props => {
   const { brand, theme, colorOverride, onNewOverride, themeOverrides, themeName } = props;
 
   const { all, failedContrastTests } = getAccessibilityChecker(theme);

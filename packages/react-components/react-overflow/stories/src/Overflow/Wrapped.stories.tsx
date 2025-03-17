@@ -84,7 +84,7 @@ export const Wrapped = () => {
   );
 };
 
-const OverflowMenuItem: React.FC<Pick<OverflowItemProps, 'id'>> = props => {
+const OverflowMenuItem: React.FC<React.PropsWithChildren<Pick<OverflowItemProps, 'id'>>> = props => {
   const { id } = props;
   const isVisible = useIsOverflowItemVisible(id);
 
@@ -96,7 +96,7 @@ const OverflowMenuItem: React.FC<Pick<OverflowItemProps, 'id'>> = props => {
   return <MenuItem>Item {id}</MenuItem>;
 };
 
-const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
+const OverflowMenu: React.FC<React.PropsWithChildren<{ itemIds: string[] }>> = ({ itemIds }) => {
   const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {

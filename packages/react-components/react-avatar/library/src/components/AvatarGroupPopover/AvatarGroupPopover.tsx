@@ -9,7 +9,7 @@ import type { AvatarGroupPopoverProps } from './AvatarGroupPopover.types';
 /**
  * The AvatarGroupPopover component provides a button with a Popover containing the children provided.
  */
-export const AvatarGroupPopover: React.FC<AvatarGroupPopoverProps> = props => {
+export const AvatarGroupPopover: React.FC<React.PropsWithChildren<AvatarGroupPopoverProps>> = props => {
   const state = useAvatarGroupPopover_unstable(props);
   const contextValues = useAvatarGroupPopoverContextValues_unstable(state);
 

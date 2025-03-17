@@ -7,7 +7,7 @@ import { CompoundButtonProps } from './CompoundButton.types';
 
 describe('CompoundButton', () => {
   isConformant({
-    Component: CompoundButton as React.FunctionComponent<CompoundButtonProps>,
+    Component: CompoundButton as React.FunctionComponent<React.PropsWithChildren<CompoundButtonProps>>,
     displayName: 'CompoundButton',
     testOptions: {
       'has-static-classnames': [

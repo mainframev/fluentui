@@ -8,7 +8,7 @@ import { ButtonProps } from './Button.types';
 
 describe('Button', () => {
   isConformant({
-    Component: Button as React.FunctionComponent<ButtonProps>,
+    Component: Button as React.FunctionComponent<React.PropsWithChildren<ButtonProps>>,
     displayName: 'Button',
     testOptions: {
       'has-static-classnames': [

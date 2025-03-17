@@ -6,7 +6,7 @@ export interface AttachmentHeaderProps extends React.HTMLAttributes<HTMLSpanElem
 
 export const attachmentHeaderClassName = 'fui-AttachmentHeader';
 
-export const AttachmentHeader: React.FC<AttachmentHeaderProps> = React.forwardRef<
+export const AttachmentHeader: React.FC<React.PropsWithChildren<AttachmentHeaderProps>> = React.forwardRef<
   HTMLSpanElement,
   AttachmentHeaderProps
 >((props, ref) => {

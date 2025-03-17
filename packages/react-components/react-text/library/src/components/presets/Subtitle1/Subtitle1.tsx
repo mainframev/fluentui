@@ -6,7 +6,7 @@ import { subtitle1ClassNames, useSubtitle1Styles } from './useSubtitle1Styles.st
 /**
  * Text preset component for the Subtitle1 typography variant
  */
-export const Subtitle1: React.FunctionComponent<TextPresetProps> = createPreset({
+export const Subtitle1: React.FunctionComponent<React.PropsWithChildren<TextPresetProps>> = createPreset({
   useStyles: useSubtitle1Styles,
   className: subtitle1ClassNames.root,
   displayName: 'Subtitle1',

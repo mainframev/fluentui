@@ -64,7 +64,7 @@ export const LazyLoading = () => {
   );
 };
 
-const Subtree: React.FC<SubtreeProps> = ({ onDataLoaded, onDataLoading, value }) => {
+const Subtree: React.FC<React.PropsWithChildren<SubtreeProps>> = ({ onDataLoaded, onDataLoading, value }) => {
   const [open, setOpen] = React.useState(false);
   // useQuery here is just a helper to simulate async data fetching
   // you can use any other async data fetching library like react-query, swr, etc.

@@ -8,7 +8,7 @@ import * as React from 'react';
  * Virtualizer ScrollView
  */
 
-export const VirtualizerScrollView: React.FC<VirtualizerScrollViewProps> = (props: VirtualizerScrollViewProps) => {
+export const VirtualizerScrollView: React.FC<React.PropsWithChildren<VirtualizerScrollViewProps>> = (props: VirtualizerScrollViewProps) => {
   const state = useVirtualizerScrollView_unstable(props);
 
   useVirtualizerScrollViewStyles_unstable(state);

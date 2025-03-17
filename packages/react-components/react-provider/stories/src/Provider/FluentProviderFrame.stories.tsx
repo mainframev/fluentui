@@ -35,7 +35,7 @@ type FrameRendererProps = {
   children: (externalDocument: Document, renderer: ReturnType<typeof createDOMRenderer>) => React.ReactElement;
 };
 
-const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }) => {
+const FrameRenderer: React.FunctionComponent<React.PropsWithChildren<FrameRendererProps>> = ({ children }) => {
   const [frameRef, setFrameRef] = React.useState<HTMLIFrameElement | null>(null);
 
   const contentDocument = frameRef ? (frameRef.contentDocument as Document) : undefined;
@@ -53,7 +53,7 @@ const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }
   );
 };
 
-const Example: React.FC = props => {
+const Example: React.FC<React.PropsWithChildren<unknown>> = props => {
   const styles = useExampleStyles();
 
   return (

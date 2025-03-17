@@ -6,7 +6,7 @@ export interface AttachmentIconProps extends React.HTMLAttributes<HTMLSpanElemen
 
 export const attachmentIconClassName = 'fui-AttachmentIcon';
 
-export const AttachmentIcon: React.FC<AttachmentIconProps> = React.forwardRef<HTMLSpanElement, AttachmentIconProps>(
+export const AttachmentIcon: React.FC<React.PropsWithChildren<AttachmentIconProps>> = React.forwardRef<HTMLSpanElement, AttachmentIconProps>(
   (props, ref) => {
     const { className, children, ...rest } = props;
     const classes = useAttachmentIconStyles();

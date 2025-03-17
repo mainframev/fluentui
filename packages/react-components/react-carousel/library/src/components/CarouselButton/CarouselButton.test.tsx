@@ -6,7 +6,7 @@ import { CarouselButtonProps } from './CarouselButton.types';
 
 describe('CarouselButton', () => {
   isConformant({
-    Component: CarouselButton as React.FunctionComponent<CarouselButtonProps>,
+    Component: CarouselButton as React.FunctionComponent<React.PropsWithChildren<CarouselButtonProps>>,
     displayName: 'CarouselButton',
     requiredProps: {
       navType: 'next',

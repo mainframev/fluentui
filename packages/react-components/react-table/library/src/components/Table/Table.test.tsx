@@ -9,7 +9,7 @@ import { TableBody } from '../TableBody/TableBody';
 
 describe('Table', () => {
   isConformant({
-    Component: Table as React.FC<TableProps>,
+    Component: Table as React.FC<React.PropsWithChildren<TableProps>>,
     displayName: 'Table',
   });
 

@@ -7,7 +7,7 @@ import { breadcrumbItemClassNames } from './useBreadcrumbItemStyles.styles';
 
 describe('BreadcrumbItem', () => {
   isConformant({
-    Component: BreadcrumbItem as React.FunctionComponent<BreadcrumbItemProps>,
+    Component: BreadcrumbItem as React.FunctionComponent<React.PropsWithChildren<BreadcrumbItemProps>>,
     displayName: 'BreadcrumbItem',
     testOptions: {
       'has-static-classnames': [

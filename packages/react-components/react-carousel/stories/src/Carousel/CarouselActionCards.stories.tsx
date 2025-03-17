@@ -141,7 +141,7 @@ const POSTS: Post[] = [
   },
 ];
 
-const ActionCard: React.FC<Post & { index: number }> = props => {
+const ActionCard: React.FC<React.PropsWithChildren<Post & { index: number }>> = props => {
   const { avatarUrl, description, name, text, index } = props;
   const classes = useCardClasses();
 

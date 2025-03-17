@@ -52,7 +52,7 @@ export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | un
  * This type substitutes `React.ComponentType` only keeping the function signature, it omits `propTypes`, `displayName` and other properties that are not
  * required for the inference.
  */
-export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
+export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<React.PropsWithChildren<P>>;
 
 /**
  * @internal
@@ -76,7 +76,7 @@ export interface FunctionComponent<P> {
   displayName?: string;
 }
 
-export type FC<P> = FunctionComponent<P>;
+export type FC<P> = FunctionComponent<React.PropsWithChildren<P>>;
 
 export interface ExoticComponent<P> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

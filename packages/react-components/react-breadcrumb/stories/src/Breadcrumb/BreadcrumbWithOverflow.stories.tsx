@@ -126,7 +126,7 @@ const useTooltipStyles = makeStyles({
   },
 });
 
-const MenuItem: React.FC<{ id: string; item: Item }> = props => {
+const MenuItem: React.FC<React.PropsWithChildren<{ id: string; item: Item }>> = props => {
   const { item, id } = props;
   const isVisible = useIsOverflowItemVisible(id);
   const href = item.itemProps?.href || '';
@@ -142,9 +142,9 @@ const MenuItem: React.FC<{ id: string; item: Item }> = props => {
   );
 };
 
-const OverflowGroupDivider: React.FC<{
+const OverflowGroupDivider: React.FC<React.PropsWithChildren<{
   groupId: number;
-}> = props => {
+}>> = props => {
   return (
     <OverflowDivider groupId={props.groupId.toString()}>
       <BreadcrumbDivider data-group={props.groupId} />

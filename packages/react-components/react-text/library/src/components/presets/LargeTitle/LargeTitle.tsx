@@ -6,7 +6,7 @@ import { largeTitleClassNames, useLargeTitleStyles } from './useLargeTitleStyles
 /**
  * Text preset component for the Large Title typography variant
  */
-export const LargeTitle: React.FunctionComponent<TextPresetProps> = createPreset({
+export const LargeTitle: React.FunctionComponent<React.PropsWithChildren<TextPresetProps>> = createPreset({
   useStyles: useLargeTitleStyles,
   className: largeTitleClassNames.root,
   displayName: 'LargeTitle',

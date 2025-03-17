@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-components';
 import type { AnnounceContextValue } from '@fluentui/react-components';
 
-const AnnouncePlayground: React.FC = () => {
+const AnnouncePlayground: React.FC<React.PropsWithChildren<unknown>> = () => {
   const { announce } = useAnnounce();
 
   const [message, setMessage] = React.useState('Hello world');

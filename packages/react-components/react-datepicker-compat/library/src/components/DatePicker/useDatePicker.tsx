@@ -486,7 +486,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const state: DatePickerState = {
     disabled: !!props.disabled,
     inlinePopup,
-    components: { root: Input, calendar: Calendar as React.FC<Partial<CalendarProps>>, popupSurface: 'div' },
+    components: { root: Input, calendar: Calendar as React.FC<React.PropsWithChildren<Partial<CalendarProps>>>, popupSurface: 'div' },
     calendar: calendarShorthand,
     mountNode,
     root,
