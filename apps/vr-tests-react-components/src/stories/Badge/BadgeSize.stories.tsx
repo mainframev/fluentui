@@ -5,7 +5,7 @@ import { propValues, useStyles } from './utils';
 import type { Meta } from '@storybook/react';
 import { getStoryVariant, RTL } from '../../utilities';
 
-const BadgeSampleRow: React.FC<BadgeProps> = props => {
+const BadgeSampleRow = (props: React.PropsWithChildren<BadgeProps>) => {
   const styles = useStyles();
 
   // Text content is not supported for tiny and extra-small
