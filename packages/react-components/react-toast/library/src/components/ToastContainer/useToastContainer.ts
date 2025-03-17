@@ -132,8 +132,8 @@ export const useToastContainer_unstable = (
 
   // Users never actually use ToastContainer as a JSX but imperatively through useToastContainerController
   const userRootSlot = (data as { root?: ExtractSlotProps<Slot<'div'>> }).root;
-  const onMotionFinish: ToastContainerState['onMotionFinish'] = React.useCallback(
-    (_, { direction }) => {
+  const onMotionFinish = React.useCallback(
+    (_: null, { direction }: { direction: 'enter' | 'exit' }) => {
       if (direction === 'exit') {
         remove();
       }
