@@ -48,7 +48,53 @@ The goal is to make updates to our type system codebase to accommodate the break
 
 As of now, the following breaking changes are present in React 18:
 
-**TODO**: Add breaking changes here
+`@types/react@17 -> @types/react@18`
+
+- Removal of implicit children from `React.FC` / `React.FunctionComponent / React.Component`.
+- `this.context` becomes `unknown`.
+- Removal of previously deprecated types. Affecting only older versions, where React.ReactType, React.Props used.
+- `ref` property in `React.RefAttributes` becomes `LegacyRef`. Affects `useMergedRefs` , breaks where `React.PropsWithRef` and `React.RefAttributes` are used.
+
+```ts
+// v17
+interface RefAttributes<T> {
+  ref?: Ref<T>;
+}
+
+// v18
+interface RefAttributes<T> {
+  // 💣💣💣💣
+  ref?: LegacyRef<T>;
+}
+```
+
+- `ReactNode` becomes more specific. This change affects heavily our Slots API.
+
+```ts
+// v17
+type ReactText = string | number;
+type ReactChild = ReactElement | ReactText;
+// 💣💣💣
+type ReactFragment = {} | ReactNodeArray;
+type ReactNode = ReactChild | ReactFragment | ReactPortal | boolean | null | undefined;
+
+// v18
+type ReactNode =
+  | ReactElement
+  | string
+  | number
+  | Iterable<ReactNode>
+  | ReactPortal
+  | boolean
+  | null
+  | undefined
+  | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_REACT_NODES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_REACT_NODES];
+```
+
+Related links:
+
+- [DefinitelyTyped: React 18 types](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56210)
+- [React v9 Slots Proposed Changes](https://github.com/microsoft/fluentui/pull/31548/files)
 
 ### What is not covered by this RFC
 
@@ -143,3 +189,7 @@ The release will include the necessary type changes, documentation updates and a
 - 👎 Documentation issues to communicate what release adds the React 18 support
 
 **TODO**: Add implementation details here
+
+```
+
+```
