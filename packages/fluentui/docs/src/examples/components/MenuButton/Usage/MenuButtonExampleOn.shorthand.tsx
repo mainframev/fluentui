@@ -3,6 +3,7 @@ import { Alert, Button, Flex, MenuButton } from '@fluentui/react-northstar';
 import { ExpandIcon } from '@fluentui/react-icons-northstar';
 
 class MenuButtonExampleOn extends React.Component {
+  context: any;
   state = { alert: false };
 
   showAlert = () => {

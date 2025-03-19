@@ -10,6 +10,7 @@ const contentWithButtons = (
 );
 
 class PopupExampleOnWithFocusTrap extends React.Component {
+  context: any;
   state = { alert: false };
 
   showAlert = () => {

@@ -3,6 +3,7 @@ import { Alert, Button, Flex, Popup } from '@fluentui/react-northstar';
 import { MoreIcon } from '@fluentui/react-icons-northstar';
 
 class PopupExampleOn extends React.Component {
+  context: any;
   state = { alert: false };
 
   showAlert = () => {
