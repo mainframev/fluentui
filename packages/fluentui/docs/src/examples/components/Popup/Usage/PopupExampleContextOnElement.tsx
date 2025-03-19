@@ -9,6 +9,7 @@ const contentWithButtons = (
 );
 
 class PopupContextOnElement extends React.Component {
+  context: any;
   state = { alert: false };
 
   showAlert = () => {
