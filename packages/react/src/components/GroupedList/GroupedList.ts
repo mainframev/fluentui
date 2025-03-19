@@ -4,7 +4,7 @@ import { getStyles } from './GroupedList.styles';
 import { GroupedListBase } from './GroupedList.base';
 import type { IGroupedListProps, IGroupedListStyles, IGroupedListStyleProps } from './GroupedList.types';
 
-export const GroupedList: React.FunctionComponent<IGroupedListProps> = styled<
+export const GroupedList: React.FunctionComponent<React.PropsWithChildren<IGroupedListProps>> = styled<
   IGroupedListProps,
   IGroupedListStyleProps,
   IGroupedListStyles

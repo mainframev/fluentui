@@ -37,7 +37,7 @@ const useComponentRef = (props: IOverflowSetProps, divContainer: React.RefObject
   );
 };
 
-export const OverflowSetBase: React.FunctionComponent<IOverflowSetProps> = React.forwardRef<
+export const OverflowSetBase: React.FunctionComponent<React.PropsWithChildren<IOverflowSetProps>> = React.forwardRef<
   HTMLDivElement,
   IOverflowSetProps
 >((props, forwardedRef) => {

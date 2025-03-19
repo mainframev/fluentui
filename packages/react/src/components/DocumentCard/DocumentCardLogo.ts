@@ -8,7 +8,7 @@ import type {
   IDocumentCardLogoStyles,
 } from './DocumentCardLogo.types';
 
-export const DocumentCardLogo: React.FunctionComponent<IDocumentCardLogoProps> = styled<
+export const DocumentCardLogo: React.FunctionComponent<React.PropsWithChildren<IDocumentCardLogoProps>> = styled<
   IDocumentCardLogoProps,
   IDocumentCardLogoStyleProps,
   IDocumentCardLogoStyles

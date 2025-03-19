@@ -92,7 +92,7 @@ const useComponentRef = (props: IModalProps, focusTrapZone: React.RefObject<IFoc
   );
 };
 
-export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<HTMLDivElement, IModalProps>(
+export const ModalBase: React.FunctionComponent<React.PropsWithChildren<IModalProps>> = React.forwardRef<HTMLDivElement, IModalProps>(
   (propsWithoutDefaults, ref) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
     const {

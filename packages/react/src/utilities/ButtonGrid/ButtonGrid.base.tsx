@@ -6,7 +6,7 @@ import type { IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from 
 
 const getClassNames = classNamesFunction<IButtonGridStyleProps, IButtonGridStyles>();
 
-export const ButtonGridBase: React.FunctionComponent<IButtonGridProps> = React.forwardRef<
+export const ButtonGridBase: React.FunctionComponent<React.PropsWithChildren<IButtonGridProps>> = React.forwardRef<
   HTMLElement,
   IButtonGridProps
 >((props, forwardedRef) => {

@@ -64,7 +64,7 @@ const getColorPickerGridCellButtonClassNames = memoizeFunction(
   },
 );
 
-export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps> = props => {
+export const ColorPickerGridCellBase: React.FunctionComponent<React.PropsWithChildren<IColorPickerGridCellProps>> = props => {
   const {
     item,
     // eslint-disable-next-line @typescript-eslint/no-deprecated

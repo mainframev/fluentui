@@ -35,7 +35,7 @@ function useDebugWarnings(props: ISwatchColorPickerProps) {
   }
 }
 
-export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerProps> = React.forwardRef<
+export const SwatchColorPickerBase: React.FunctionComponent<React.PropsWithChildren<ISwatchColorPickerProps>> = React.forwardRef<
   HTMLElement,
   ISwatchColorPickerProps
 >((props, ref) => {

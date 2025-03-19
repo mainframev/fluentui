@@ -100,6 +100,7 @@ import { FontSizes } from '@fluentui/style-utilities';
 import { FontWeights } from '@fluentui/style-utilities';
 import { format } from '@fluentui/utilities';
 import { formProperties } from '@fluentui/utilities';
+import { FunctionComponent } from 'react';
 import { getChildren } from '@fluentui/utilities';
 import { getDatePartHashValue } from '@fluentui/date-time-utilities';
 import { getDateRangeArray } from '@fluentui/date-time-utilities';
@@ -307,6 +308,7 @@ import { PartialTheme } from '@fluentui/theme';
 import { Point } from '@fluentui/utilities';
 import { portalContainsElement } from '@fluentui/utilities';
 import { precisionRound } from '@fluentui/utilities';
+import { PropsWithChildren } from 'react';
 import { PulsingBeaconAnimationStyles } from '@fluentui/style-utilities';
 import { raiseClick } from '@fluentui/utilities';
 import * as React_2 from 'react';
@@ -445,7 +447,7 @@ export { AnimationStyles }
 export { AnimationVariables }
 
 // @public (undocumented)
-export const Announced: React_2.FunctionComponent<IAnnouncedProps>;
+export const Announced: React_2.FunctionComponent<React_2.PropsWithChildren<IAnnouncedProps>>;
 
 // @public (undocumented)
 export class AnnouncedBase extends React_2.Component<IAnnouncedProps> {
@@ -480,6 +482,8 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -701,6 +705,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     protected currentPromise: PromiseLike<any> | undefined;
@@ -719,7 +725,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected _getDescribedBy: (items: T[], hasError: boolean) => string;
     // @deprecated (undocumented)
-    protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
+    protected getSuggestionsAlert(suggestionAlertClassName?: string): React_2.JSX.Element | undefined;
     // (undocumented)
     protected input: React_2.RefObject<IAutofill>;
     // (undocumented)
@@ -764,7 +770,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
-    protected renderCustomAlert(alertClassName?: string): JSX.Element;
+    protected renderCustomAlert(alertClassName?: string): React_2.JSX.Element;
     // (undocumented)
     protected renderError(className?: string): JSX.Element | null;
     // (undocumented)
@@ -814,6 +820,8 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(oldProps: P, oldState: IBaseSelectedItemsListState<IObjectWithKey>): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -870,7 +878,7 @@ export enum BaseSlots {
 }
 
 // @public (undocumented)
-export const Breadcrumb: React_2.FunctionComponent<IBreadcrumbProps>;
+export const Breadcrumb: React_2.FunctionComponent<React_2.PropsWithChildren<IBreadcrumbProps>>;
 
 // @public (undocumented)
 export class BreadcrumbBase extends React_2.Component<IBreadcrumbProps, any> {
@@ -911,10 +919,10 @@ export const ButtonGlobalClassNames: {
 };
 
 // @public (undocumented)
-export const ButtonGrid: React_2.FunctionComponent<IButtonGridProps>;
+export const ButtonGrid: React_2.FunctionComponent<React_2.PropsWithChildren<IButtonGridProps>>;
 
 // @public (undocumented)
-export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => JSX.Element;
+export const ButtonGridCell: <T, P extends IButtonGridCellProps<T>>(props: IButtonGridCellProps<T>) => React_2.JSX.Element;
 
 export { buttonProperties }
 
@@ -939,16 +947,16 @@ export enum ButtonType {
 export { calculatePrecision }
 
 // @public (undocumented)
-export const Calendar: React_2.FunctionComponent<ICalendarProps>;
+export const Calendar: React_2.FunctionComponent<React_2.PropsWithChildren<ICalendarProps>>;
 
 // @public (undocumented)
-export const Callout: React_2.FunctionComponent<ICalloutProps>;
+export const Callout: React_2.FunctionComponent<React_2.PropsWithChildren<ICalloutProps>>;
 
 // @public (undocumented)
-export const CalloutContent: React_2.FunctionComponent<ICalloutProps>;
+export const CalloutContent: FunctionComponent<PropsWithChildren<ICalloutProps>>;
 
 // @public (undocumented)
-export const CalloutContentBase: React_2.FunctionComponent<ICalloutProps>;
+export const CalloutContentBase: React_2.FC<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
@@ -956,19 +964,19 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 export { canUseDOM }
 
 // @public (undocumented)
-export const Check: React_2.FunctionComponent<ICheckProps>;
+export const Check: React_2.FunctionComponent<React_2.PropsWithChildren<ICheckProps>>;
 
 // @public (undocumented)
 export const CHECK_CELL_WIDTH = 48;
 
 // @public (undocumented)
-export const CheckBase: React_2.FunctionComponent<ICheckProps>;
+export const CheckBase: React_2.FunctionComponent<React_2.PropsWithChildren<ICheckProps>>;
 
 // @public (undocumented)
-export const Checkbox: React_2.FunctionComponent<ICheckboxProps>;
+export const Checkbox: React_2.FunctionComponent<React_2.PropsWithChildren<ICheckboxProps>>;
 
 // @public (undocumented)
-export const CheckboxBase: React_2.FunctionComponent<ICheckboxProps>;
+export const CheckboxBase: React_2.FunctionComponent<React_2.PropsWithChildren<ICheckboxProps>>;
 
 // @public (undocumented)
 export enum CheckboxVisibility {
@@ -978,13 +986,13 @@ export enum CheckboxVisibility {
 }
 
 // @public (undocumented)
-export const ChoiceGroup: React_2.FunctionComponent<IChoiceGroupProps>;
+export const ChoiceGroup: React_2.FunctionComponent<React_2.PropsWithChildren<IChoiceGroupProps>>;
 
 // @public (undocumented)
-export const ChoiceGroupBase: React_2.FunctionComponent<IChoiceGroupProps>;
+export const ChoiceGroupBase: React_2.FunctionComponent<React_2.PropsWithChildren<IChoiceGroupProps>>;
 
 // @public (undocumented)
-export const ChoiceGroupOption: React_2.FunctionComponent<IChoiceGroupOptionProps>;
+export const ChoiceGroupOption: React_2.FunctionComponent<React_2.PropsWithChildren<IChoiceGroupOptionProps>>;
 
 // @public
 export function clamp(value: number, max: number, min?: number): number;
@@ -995,13 +1003,13 @@ export { classNamesFunction }
 export function cleanupDefaultLayerHost(doc: Document, shadowRoot?: ShadowRoot | null): void;
 
 // @public (undocumented)
-export const Coachmark: React_2.FunctionComponent<ICoachmarkProps>;
+export const Coachmark: React_2.FunctionComponent<React_2.PropsWithChildren<ICoachmarkProps>>;
 
 // @public (undocumented)
 export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
 
 // @public (undocumented)
-export const CoachmarkBase: React_2.FunctionComponent<ICoachmarkProps>;
+export const CoachmarkBase: React_2.FunctionComponent<React_2.PropsWithChildren<ICoachmarkProps>>;
 
 export { colGroupProperties }
 
@@ -1016,7 +1024,7 @@ export enum CollapseAllVisibility {
 export { ColorClassNames }
 
 // @public (undocumented)
-export const ColorPicker: React_2.FunctionComponent<IColorPickerProps>;
+export const ColorPicker: React_2.FunctionComponent<React_2.PropsWithChildren<IColorPickerProps>>;
 
 // @public (undocumented)
 export class ColorPickerBase extends React_2.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
@@ -1032,10 +1040,10 @@ export class ColorPickerBase extends React_2.Component<IColorPickerProps, IColor
 }
 
 // @public (undocumented)
-export const ColorPickerGridCell: React_2.FunctionComponent<IColorPickerGridCellProps>;
+export const ColorPickerGridCell: React_2.FunctionComponent<React_2.PropsWithChildren<IColorPickerGridCellProps>>;
 
 // @public (undocumented)
-export const ColorPickerGridCellBase: React_2.FunctionComponent<IColorPickerGridCellProps>;
+export const ColorPickerGridCellBase: React_2.FunctionComponent<React_2.PropsWithChildren<IColorPickerGridCellProps>>;
 
 export { colProperties }
 
@@ -1054,10 +1062,10 @@ export enum ColumnDragEndLocation {
 }
 
 // @public (undocumented)
-export const ComboBox: React_2.FunctionComponent<IComboBoxProps>;
+export const ComboBox: React_2.FunctionComponent<React_2.PropsWithChildren<IComboBoxProps>>;
 
 // @public (undocumented)
-export const CommandBar: React_2.FunctionComponent<ICommandBarProps>;
+export const CommandBar: React_2.FunctionComponent<React_2.PropsWithChildren<ICommandBarProps>>;
 
 // @public (undocumented)
 export class CommandBarBase extends React_2.Component<ICommandBarProps, {}> implements ICommandBar {
@@ -1084,13 +1092,13 @@ export const CommandButton: typeof ActionButton;
 export { CommunicationColors }
 
 // @public (undocumented)
-export const CompactPeoplePicker: React_2.FunctionComponent<IPeoplePickerProps>;
+export const CompactPeoplePicker: React_2.FunctionComponent<React_2.PropsWithChildren<IPeoplePickerProps>>;
 
 // @public
 export class CompactPeoplePickerBase extends BasePeoplePicker {
     static defaultProps: {
-        onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => JSX.Element;
+        onRenderItem: (props: IPeoplePickerItemSelectedProps) => React_2.JSX.Element;
+        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => React_2.JSX.Element;
         createGenericItem: typeof createGenericItem;
     };
 }
@@ -1127,13 +1135,13 @@ export enum ConstrainMode {
 export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: string[], keytip: IKeytipConfigItem): void;
 
 // @public
-export const ContextualMenu: React_2.FunctionComponent<IContextualMenuProps>;
+export const ContextualMenu: React_2.FunctionComponent<React_2.PropsWithChildren<IContextualMenuProps>>;
 
 // @public (undocumented)
-export const ContextualMenuBase: React_2.FunctionComponent<IContextualMenuProps>;
+export const ContextualMenuBase: React_2.FunctionComponent<React_2.PropsWithChildren<IContextualMenuProps>>;
 
 // @public
-export const ContextualMenuItem: React_2.FunctionComponent<IContextualMenuItemProps>;
+export const ContextualMenuItem: React_2.FunctionComponent<React_2.PropsWithChildren<IContextualMenuItemProps>>;
 
 // @public (undocumented)
 export class ContextualMenuItemBase extends React_2.Component<IContextualMenuItemProps, {}> {
@@ -1145,7 +1153,7 @@ export class ContextualMenuItemBase extends React_2.Component<IContextualMenuIte
     // (undocumented)
     openSubMenu: () => void;
     // (undocumented)
-    render(): JSX.Element;
+    render(): React_2.JSX.Element;
 }
 
 // @public (undocumented)
@@ -1217,10 +1225,10 @@ export const DATAKTP_EXECUTE_TARGET = "data-ktp-execute-target";
 export const DATAKTP_TARGET = "data-ktp-target";
 
 // @public (undocumented)
-export const DatePicker: React_2.FunctionComponent<IDatePickerProps>;
+export const DatePicker: React_2.FunctionComponent<React_2.PropsWithChildren<IDatePickerProps>>;
 
 // @public (undocumented)
-export const DatePickerBase: React_2.FunctionComponent<IDatePickerProps>;
+export const DatePickerBase: React_2.FunctionComponent<React_2.PropsWithChildren<IDatePickerProps>>;
 
 export { DateRangeType }
 
@@ -1277,7 +1285,7 @@ export { DelayedRender }
 export { Depths }
 
 // @public (undocumented)
-export const DetailsColumn: React_2.FunctionComponent<IDetailsColumnProps>;
+export const DetailsColumn: React_2.FunctionComponent<React_2.PropsWithChildren<IDetailsColumnProps>>;
 
 // @public
 export class DetailsColumnBase extends React_2.Component<IDetailsColumnProps> {
@@ -1293,7 +1301,7 @@ export class DetailsColumnBase extends React_2.Component<IDetailsColumnProps> {
 }
 
 // @public (undocumented)
-export const DetailsHeader: React_2.FunctionComponent<IDetailsHeaderBaseProps>;
+export const DetailsHeader: React_2.FunctionComponent<React_2.PropsWithChildren<IDetailsHeaderBaseProps>>;
 
 // @public (undocumented)
 export class DetailsHeaderBase extends React_2.Component<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
@@ -1316,7 +1324,7 @@ export class DetailsHeaderBase extends React_2.Component<IDetailsHeaderBaseProps
 }
 
 // @public (undocumented)
-export const DetailsList: React_2.FunctionComponent<IDetailsListProps>;
+export const DetailsList: React_2.FunctionComponent<React_2.PropsWithChildren<IDetailsListProps>>;
 
 // @public (undocumented)
 export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetailsListState> implements IDetailsList {
@@ -1325,6 +1333,8 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -1365,7 +1375,7 @@ export enum DetailsListLayoutMode {
 }
 
 // @public (undocumented)
-export const DetailsRow: React_2.FunctionComponent<IDetailsRowBaseProps>;
+export const DetailsRow: React_2.FunctionComponent<React_2.PropsWithChildren<IDetailsRowBaseProps>>;
 
 // @public (undocumented)
 export class DetailsRowBase extends React_2.Component<IDetailsRowBaseProps, IDetailsRowState> {
@@ -1382,7 +1392,7 @@ export class DetailsRowBase extends React_2.Component<IDetailsRowBaseProps, IDet
     static getDerivedStateFromProps(nextProps: IDetailsRowBaseProps, previousState: IDetailsRowState): IDetailsRowState;
     measureCell(index: number, onMeasureDone: (width: number) => void): void;
     // (undocumented)
-    protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element;
+    protected _onRenderCheck(props: IDetailsRowCheckProps): React_2.JSX.Element;
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
@@ -1390,10 +1400,10 @@ export class DetailsRowBase extends React_2.Component<IDetailsRowBaseProps, IDet
 }
 
 // @public (undocumented)
-export const DetailsRowCheck: React_2.FunctionComponent<IDetailsRowCheckProps>;
+export const DetailsRowCheck: React_2.FunctionComponent<React_2.PropsWithChildren<IDetailsRowCheckProps>>;
 
 // @public
-export const DetailsRowFields: React_2.FunctionComponent<IDetailsRowFieldsProps>;
+export const DetailsRowFields: React_2.FunctionComponent<React_2.PropsWithChildren<IDetailsRowFieldsProps>>;
 
 // @public (undocumented)
 export const DetailsRowGlobalClassNames: {
@@ -1413,7 +1423,7 @@ export const DetailsRowGlobalClassNames: {
 };
 
 // @public (undocumented)
-export const Dialog: React_2.FunctionComponent<IDialogProps>;
+export const Dialog: React_2.FunctionComponent<React_2.PropsWithChildren<IDialogProps>>;
 
 // @public (undocumented)
 export class DialogBase extends React_2.Component<IDialogProps, {}> {
@@ -1425,7 +1435,7 @@ export class DialogBase extends React_2.Component<IDialogProps, {}> {
 }
 
 // @public (undocumented)
-export const DialogContent: React_2.FunctionComponent<IDialogContentProps>;
+export const DialogContent: React_2.FunctionComponent<React_2.PropsWithChildren<IDialogContentProps>>;
 
 // @public (undocumented)
 export class DialogContentBase extends React_2.Component<IDialogContentProps, {}> {
@@ -1437,7 +1447,7 @@ export class DialogContentBase extends React_2.Component<IDialogContentProps, {}
 }
 
 // @public (undocumented)
-export const DialogFooter: React_2.FunctionComponent<IDialogFooterProps>;
+export const DialogFooter: React_2.FunctionComponent<React_2.PropsWithChildren<IDialogFooterProps>>;
 
 // @public (undocumented)
 export class DialogFooterBase extends React_2.Component<IDialogFooterProps, {}> {
@@ -1479,34 +1489,34 @@ export { disableBodyScroll }
 export { divProperties }
 
 // @public (undocumented)
-export const DocumentCard: React_2.FunctionComponent<IDocumentCardProps>;
+export const DocumentCard: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardProps>>;
 
 // @public (undocumented)
-export const DocumentCardActions: React_2.FunctionComponent<IDocumentCardActionsProps>;
+export const DocumentCardActions: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardActionsProps>>;
 
 // @public (undocumented)
-export const DocumentCardActivity: React_2.FunctionComponent<IDocumentCardActivityProps>;
+export const DocumentCardActivity: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardActivityProps>>;
 
 // @public (undocumented)
-export const DocumentCardDetails: React_2.FunctionComponent<IDocumentCardDetailsProps>;
+export const DocumentCardDetails: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardDetailsProps>>;
 
 // @public (undocumented)
-export const DocumentCardImage: React_2.FunctionComponent<IDocumentCardImageProps>;
+export const DocumentCardImage: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardImageProps>>;
 
 // @public (undocumented)
-export const DocumentCardLocation: React_2.FunctionComponent<IDocumentCardLocationProps>;
+export const DocumentCardLocation: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardLocationProps>>;
 
 // @public (undocumented)
-export const DocumentCardLogo: React_2.FunctionComponent<IDocumentCardLogoProps>;
+export const DocumentCardLogo: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardLogoProps>>;
 
 // @public (undocumented)
-export const DocumentCardPreview: React_2.FunctionComponent<IDocumentCardPreviewProps>;
+export const DocumentCardPreview: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardPreviewProps>>;
 
 // @public (undocumented)
-export const DocumentCardStatus: React_2.FunctionComponent<IDocumentCardStatusProps>;
+export const DocumentCardStatus: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardStatusProps>>;
 
 // @public (undocumented)
-export const DocumentCardTitle: React_2.FunctionComponent<IDocumentCardTitleProps>;
+export const DocumentCardTitle: React_2.FunctionComponent<React_2.PropsWithChildren<IDocumentCardTitleProps>>;
 
 // @public (undocumented)
 export enum DocumentCardType {
@@ -1531,10 +1541,10 @@ export class DragDropHelper implements IDragDropHelper {
 }
 
 // @public (undocumented)
-export const Dropdown: React_2.FunctionComponent<IDropdownProps>;
+export const Dropdown: React_2.FunctionComponent<React_2.PropsWithChildren<IDropdownProps>>;
 
 // @public (undocumented)
-export const DropdownBase: React_2.FunctionComponent<IDropdownProps>;
+export const DropdownBase: React_2.FunctionComponent<React_2.PropsWithChildren<IDropdownProps>>;
 
 export { EdgeChromiumHighContrastSelector }
 
@@ -1553,7 +1563,7 @@ export { enableBodyScroll }
 export { EventGroup }
 
 // @public (undocumented)
-export const ExpandingCard: React_2.FunctionComponent<IExpandingCardProps>;
+export const ExpandingCard: React_2.FunctionComponent<React_2.PropsWithChildren<IExpandingCardProps>>;
 
 // @public (undocumented)
 export class ExpandingCardBase extends React_2.Component<IExpandingCardProps, IExpandingCardState> {
@@ -1594,10 +1604,10 @@ export class ExtendedSelectedItem extends React_2.Component<ISelectedPeopleItemP
 }
 
 // @public @deprecated (undocumented)
-export const Fabric: React_2.FunctionComponent<IFabricProps>;
+export const Fabric: React_2.FunctionComponent<React_2.PropsWithChildren<IFabricProps>>;
 
 // @public (undocumented)
-export const FabricBase: React_2.FunctionComponent<IFabricProps>;
+export const FabricBase: React_2.FunctionComponent<React_2.PropsWithChildren<IFabricProps>>;
 
 export { FabricPerformance }
 
@@ -1652,7 +1662,7 @@ export enum FabricSlots {
 }
 
 // @public
-export const Facepile: React_2.FunctionComponent<IFacepileProps>;
+export const Facepile: React_2.FunctionComponent<React_2.PropsWithChildren<IFacepileProps>>;
 
 // @public
 export class FacepileBase extends React_2.Component<IFacepileProps, {}> {
@@ -1660,7 +1670,7 @@ export class FacepileBase extends React_2.Component<IFacepileProps, {}> {
     // (undocumented)
     static defaultProps: IFacepileProps;
     // (undocumented)
-    protected onRenderAriaDescription(): "" | JSX.Element | undefined;
+    protected onRenderAriaDescription(): "" | React_2.JSX.Element | undefined;
     // (undocumented)
     render(): JSX.Element;
 }
@@ -1704,10 +1714,10 @@ export { FocusRectsContext }
 export { FocusRectsProvider }
 
 // @public
-export const FocusTrapCallout: React_2.FunctionComponent<IFocusTrapCalloutProps>;
+export const FocusTrapCallout: React_2.FunctionComponent<React_2.PropsWithChildren<IFocusTrapCalloutProps>>;
 
 // @public (undocumented)
-export const FocusTrapZone: React_2.FunctionComponent<IFocusTrapZoneProps> & {
+export const FocusTrapZone: React_2.FunctionComponent<React_2.PropsWithChildren<IFocusTrapZoneProps>> & {
     focusStack?: string[];
 };
 
@@ -1722,7 +1732,7 @@ export { FontClassNames }
 export { fontFace }
 
 // @public
-export const FontIcon: React_2.FunctionComponent<IFontIconProps>;
+export const FontIcon: React_2.FunctionComponent<React_2.PropsWithChildren<IFontIconProps>>;
 
 export { FontSizes }
 
@@ -1831,7 +1841,7 @@ export { getFocusOutlineStyle }
 export { getFocusStyle }
 
 // @public
-export const getFontIcon: (iconName: string, className?: string, ariaLabel?: string) => React_2.ReactElement<any, any> | null;
+export const getFontIcon: (iconName: string, className?: string, ariaLabel?: string) => React_2.ReactNode;
 
 // @public
 export function getFullColorString(color: IColor): string;
@@ -1996,7 +2006,7 @@ export { GlobalClassNames }
 export { GlobalSettings }
 
 // @public (undocumented)
-export const GroupedList: React_2.FunctionComponent<IGroupedListProps>;
+export const GroupedList: React_2.FunctionComponent<React_2.PropsWithChildren<IGroupedListProps>>;
 
 // @public (undocumented)
 export class GroupedListBase extends React_2.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
@@ -2042,19 +2052,19 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
 }
 
 // @public
-export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListV2Props>;
+export const GroupedListV2_unstable: React_2.FunctionComponent<React_2.PropsWithChildren<IGroupedListV2Props>>;
 
 // @public (undocumented)
-export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
+export const GroupFooter: React_2.FunctionComponent<React_2.PropsWithChildren<IGroupFooterProps>>;
 
 // @public (undocumented)
-export const GroupHeader: React_2.FunctionComponent<IGroupHeaderProps>;
+export const GroupHeader: React_2.FunctionComponent<React_2.PropsWithChildren<IGroupHeaderProps>>;
 
 // @public (undocumented)
-export const GroupShowAll: React_2.FunctionComponent<IGroupShowAllProps>;
+export const GroupShowAll: React_2.FunctionComponent<React_2.PropsWithChildren<IGroupShowAllProps>>;
 
 // @public (undocumented)
-export const GroupSpacer: React_2.FunctionComponent<IGroupSpacerProps>;
+export const GroupSpacer: React_2.FunctionComponent<React_2.PropsWithChildren<IGroupSpacerProps>>;
 
 export { hasHorizontalOverflow }
 
@@ -2081,7 +2091,7 @@ export { hoistMethods }
 export { hoistStatics }
 
 // @public (undocumented)
-export const HoverCard: React_2.FunctionComponent<IHoverCardProps>;
+export const HoverCard: React_2.FunctionComponent<React_2.PropsWithChildren<IHoverCardProps>>;
 
 // @public (undocumented)
 export class HoverCardBase extends React_2.Component<IHoverCardProps, IHoverCardState> implements IHoverCard {
@@ -2305,8 +2315,8 @@ export interface IBaseExtendedPickerProps<T> {
     onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
     onItemsRemoved?: (removedItems: T[]) => void;
     onPaste?: (pastedText: string) => T[];
-    onRenderFloatingPicker: React_2.ComponentType<IBaseFloatingPickerProps<T>>;
-    onRenderSelectedItems: React_2.ComponentType<IBaseSelectedItemsListProps<T>>;
+    onRenderFloatingPicker: React_2.ComponentType<React_2.PropsWithChildren<IBaseFloatingPickerProps<T>>>;
+    onRenderSelectedItems: React_2.ComponentType<React_2.PropsWithChildren<IBaseSelectedItemsListProps<T>>>;
     selectedItems?: T[];
     selectedItemsListProps: IBaseSelectedItemsListProps<T>;
     suggestionItems?: T[];
@@ -4083,13 +4093,13 @@ export { IComponentAs }
 export { IComponentAsProps }
 
 // @public
-export const Icon: React_2.FunctionComponent<IIconProps>;
+export const Icon: React_2.FunctionComponent<React_2.PropsWithChildren<IIconProps>>;
 
 // @public (undocumented)
 export class IconBase extends React_2.Component<IIconProps, IIconState> {
     constructor(props: IIconProps);
     // (undocumented)
-    render(): JSX.Element;
+    render(): React_2.JSX.Element;
 }
 
 // @public (undocumented)
@@ -5619,7 +5629,7 @@ export interface IDragOptions {
     dragHandleSelector?: string;
     keepInBounds?: boolean;
     keyboardMoveIconProps?: IIconProps;
-    menu: React_2.FunctionComponent<IContextualMenuProps>;
+    menu: React_2.FunctionComponent<React_2.PropsWithChildren<IContextualMenuProps>>;
     moveMenuItemText: string;
 }
 
@@ -5729,7 +5739,7 @@ export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProp
     // (undocumented)
     onEditingComplete: (oldItem: any, newItem: any) => void;
     // (undocumented)
-    onRenderFloatingPicker?: React_2.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
+    onRenderFloatingPicker?: React_2.ComponentType<React_2.PropsWithChildren<IBaseFloatingPickerProps<IPersonaProps>>>;
 }
 
 // @public (undocumented)
@@ -6427,7 +6437,7 @@ export interface IIconProps extends IBaseProps, React_2.HTMLAttributes<HTMLEleme
     iconName?: string;
     // @deprecated
     iconType?: IconType;
-    imageErrorAs?: React_2.ComponentType<IImageProps>;
+    imageErrorAs?: React_2.ComponentType<React_2.PropsWithChildren<IImageProps>>;
     imageProps?: IImageProps;
     styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
     // (undocumented)
@@ -6884,11 +6894,11 @@ export interface IListState<T = any> {
 }
 
 // @public (undocumented)
-const Image_2: React_2.FunctionComponent<IImageProps>;
+const Image_2: React_2.FunctionComponent<React_2.PropsWithChildren<IImageProps>>;
 export { Image_2 as Image }
 
 // @public (undocumented)
-export const ImageBase: React_2.FunctionComponent<IImageProps>;
+export const ImageBase: React_2.FunctionComponent<React_2.PropsWithChildren<IImageProps>>;
 
 // @public
 export enum ImageCoverStyle {
@@ -6907,7 +6917,7 @@ export enum ImageFit {
 }
 
 // @public
-export const ImageIcon: React_2.FunctionComponent<IImageIconProps>;
+export const ImageIcon: React_2.FunctionComponent<React_2.PropsWithChildren<IImageIconProps>>;
 
 // @public (undocumented)
 export enum ImageLoadState {
@@ -7826,7 +7836,7 @@ export interface IPlainCardStyles extends IBaseCardStyles {
 export { IPoint }
 
 // @public (undocumented)
-export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
@@ -7835,6 +7845,8 @@ export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     enableAriaHiddenSiblings?: boolean;
     onDismiss?: (ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | KeyboardEvent) => any;
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
+    // (undocumented)
+    ref?: React_2.Ref<HTMLDivElement>;
     role?: string;
     // @deprecated
     shouldRestoreFocus?: boolean;
@@ -8349,7 +8361,7 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
     // (undocumented)
     onExpandGroup?: (item: IExtendedPersonaProps) => void;
     // (undocumented)
-    onRenderFloatingPicker?: React_2.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
+    onRenderFloatingPicker?: React_2.ComponentType<React_2.PropsWithChildren<IBaseFloatingPickerProps<IPersonaProps>>>;
     // (undocumented)
     removeMenuItemText?: string;
 }
@@ -9811,7 +9823,7 @@ export namespace KeytipEvents {
 }
 
 // @public (undocumented)
-export const KeytipLayer: React_2.FunctionComponent<IKeytipLayerProps>;
+export const KeytipLayer: React_2.FunctionComponent<React_2.PropsWithChildren<IKeytipLayerProps>>;
 
 // @public
 export class KeytipLayerBase extends React_2.Component<IKeytipLayerProps, IKeytipLayerState> {
@@ -9820,6 +9832,8 @@ export class KeytipLayerBase extends React_2.Component<IKeytipLayerProps, IKeyti
     componentDidMount(): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -9894,7 +9908,7 @@ export function ktpTargetFromId(keytipId: string): string;
 export function ktpTargetFromSequences(keySequences: string[]): string;
 
 // @public (undocumented)
-export const Label: React_2.FunctionComponent<ILabelProps>;
+export const Label: React_2.FunctionComponent<React_2.PropsWithChildren<ILabelProps>>;
 
 // @public (undocumented)
 export class LabelBase extends React_2.Component<ILabelProps, {}> {
@@ -9905,19 +9919,19 @@ export class LabelBase extends React_2.Component<ILabelProps, {}> {
 export { labelProperties }
 
 // @public (undocumented)
-export const Layer: React_2.FunctionComponent<ILayerProps>;
+export const Layer: React_2.FunctionComponent<React_2.PropsWithChildren<ILayerProps>>;
 
 // @public (undocumented)
-export const LayerBase: React_2.FunctionComponent<ILayerProps>;
+export const LayerBase: React_2.ForwardRefExoticComponent<Omit<ILayerProps, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
-export const LayerHost: React_2.FunctionComponent<ILayerHostProps>;
+export const LayerHost: React_2.FunctionComponent<React_2.PropsWithChildren<ILayerHostProps>>;
 
 // @public (undocumented)
-export const Link: React_2.FunctionComponent<ILinkProps>;
+export const Link: React_2.FunctionComponent<React_2.PropsWithChildren<ILinkProps>>;
 
 // @public (undocumented)
-export const LinkBase: React_2.FunctionComponent<ILinkProps>;
+export const LinkBase: React_2.FunctionComponent<React_2.PropsWithChildren<ILinkProps>>;
 
 export { liProperties }
 
@@ -9931,11 +9945,13 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
+    // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
     static defaultProps: {
         startIndex: number;
-        onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
+        onRenderCell: (item: any, index: number, containsFocus: boolean) => React_2.JSX.Element;
         onRenderCellConditional: undefined;
         renderedWindowsAhead: number;
         renderedWindowsBehind: number;
@@ -9957,13 +9973,13 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
 }
 
 // @public (undocumented)
-export const ListPeoplePicker: React_2.FunctionComponent<IPeoplePickerProps>;
+export const ListPeoplePicker: React_2.FunctionComponent<React_2.PropsWithChildren<IPeoplePickerProps>>;
 
 // @public
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
     static defaultProps: {
-        onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => JSX.Element;
+        onRenderItem: (props: IPeoplePickerItemSelectedProps) => React_2.JSX.Element;
+        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => React_2.JSX.Element;
         createGenericItem: typeof createGenericItem;
     };
 }
@@ -9984,10 +10000,10 @@ export function makeStyles<TStyleSet extends {
 export { mapEnumByName }
 
 // @public (undocumented)
-export const MarqueeSelection: React_2.FunctionComponent<IMarqueeSelectionProps>;
+export const MarqueeSelection: React_2.FunctionComponent<React_2.PropsWithChildren<IMarqueeSelectionProps>>;
 
 // @public (undocumented)
-export const MaskedTextField: React_2.FunctionComponent<IMaskedTextFieldProps>;
+export const MaskedTextField: React_2.FunctionComponent<React_2.PropsWithChildren<IMaskedTextFieldProps>>;
 
 // @public (undocumented)
 export const MAX_COLOR_ALPHA = 100;
@@ -10050,10 +10066,10 @@ export { MergeStylesShadowRootProvider }
 export { mergeThemes }
 
 // @public (undocumented)
-export const MessageBar: React_2.FunctionComponent<IMessageBarProps>;
+export const MessageBar: React_2.FunctionComponent<React_2.PropsWithChildren<IMessageBarProps>>;
 
 // @public (undocumented)
-export const MessageBarBase: React_2.FunctionComponent<IMessageBarProps>;
+export const MessageBarBase: React_2.FunctionComponent<React_2.PropsWithChildren<IMessageBarProps>>;
 
 // @public (undocumented)
 export class MessageBarButton extends React_2.Component<IButtonProps, {}> {
@@ -10078,10 +10094,10 @@ export const MIN_HEX_LENGTH = 3;
 export const MIN_RGBA_LENGTH = 1;
 
 // @public (undocumented)
-export const Modal: React_2.FunctionComponent<IModalProps>;
+export const Modal: React_2.FunctionComponent<React_2.PropsWithChildren<IModalProps>>;
 
 // @public (undocumented)
-export const ModalBase: React_2.FunctionComponent<IModalProps>;
+export const ModalBase: React_2.FunctionComponent<React_2.PropsWithChildren<IModalProps>>;
 
 export { modalize }
 
@@ -10094,11 +10110,13 @@ export { MotionDurations }
 export { MotionTimings }
 
 // @public (undocumented)
-export const Nav: React_2.FunctionComponent<INavProps>;
+export const Nav: React_2.FunctionComponent<React_2.PropsWithChildren<INavProps>>;
 
 // @public (undocumented)
 export class NavBase extends React_2.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -10115,13 +10133,13 @@ export { NeutralColors }
 export { normalize }
 
 // @public (undocumented)
-export const NormalPeoplePicker: React_2.FunctionComponent<IPeoplePickerProps>;
+export const NormalPeoplePicker: React_2.FunctionComponent<React_2.PropsWithChildren<IPeoplePickerProps>>;
 
 // @public
 export class NormalPeoplePickerBase extends BasePeoplePicker {
     static defaultProps: {
-        onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => JSX.Element;
+        onRenderItem: (props: IPeoplePickerItemSelectedProps) => React_2.JSX.Element;
+        onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => React_2.JSX.Element;
         createGenericItem: typeof createGenericItem;
     };
 }
@@ -10158,13 +10176,13 @@ export enum OverflowButtonType {
 }
 
 // @public (undocumented)
-export const OverflowSet: React_2.FunctionComponent<IOverflowSetProps>;
+export const OverflowSet: React_2.FunctionComponent<React_2.PropsWithChildren<IOverflowSetProps>>;
 
 // @public (undocumented)
-export const OverflowSetBase: React_2.FunctionComponent<IOverflowSetProps>;
+export const OverflowSetBase: React_2.FunctionComponent<React_2.PropsWithChildren<IOverflowSetProps>>;
 
 // @public (undocumented)
-export const Overlay: React_2.FunctionComponent<IOverlayProps>;
+export const Overlay: React_2.FunctionComponent<React_2.PropsWithChildren<IOverlayProps>>;
 
 // @public (undocumented)
 export class OverlayBase extends React_2.Component<IOverlayProps, {}> {
@@ -10178,7 +10196,7 @@ export class OverlayBase extends React_2.Component<IOverlayProps, {}> {
 }
 
 // @public
-export const Panel: React_2.FunctionComponent<IPanelProps>;
+export const Panel: React_2.FunctionComponent<React_2.PropsWithChildren<IPanelProps>>;
 
 // Warning: (ae-forgotten-export) The symbol "IPanelState" needs to be exported by the entry point index.d.ts
 //
@@ -10193,6 +10211,8 @@ export class PanelBase extends React_2.Component<IPanelProps, IPanelState> imple
     componentDidUpdate(previousProps: IPanelProps, previousState: IPanelState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -10224,28 +10244,28 @@ export enum PanelType {
 export { PartialTheme }
 
 // @public (undocumented)
-export const PeoplePickerItem: React_2.FunctionComponent<IPeoplePickerItemSelectedProps>;
+export const PeoplePickerItem: React_2.FunctionComponent<React_2.PropsWithChildren<IPeoplePickerItemSelectedProps>>;
 
 // @public (undocumented)
-export const PeoplePickerItemBase: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+export const PeoplePickerItemBase: (props: IPeoplePickerItemSelectedProps) => React_2.JSX.Element;
 
 // @public (undocumented)
-export const PeoplePickerItemSuggestion: React_2.FunctionComponent<IPeoplePickerItemSuggestionProps>;
+export const PeoplePickerItemSuggestion: React_2.FunctionComponent<React_2.PropsWithChildren<IPeoplePickerItemSuggestionProps>>;
 
 // @public (undocumented)
-export const PeoplePickerItemSuggestionBase: (props: IPeoplePickerItemSuggestionProps) => JSX.Element;
+export const PeoplePickerItemSuggestionBase: (props: IPeoplePickerItemSuggestionProps) => React_2.JSX.Element;
 
 // @public
-export const Persona: React_2.FunctionComponent<IPersonaProps>;
+export const Persona: React_2.FunctionComponent<React_2.PropsWithChildren<IPersonaProps>>;
 
 // @public
-export const PersonaBase: React_2.FunctionComponent<IPersonaProps>;
+export const PersonaBase: React_2.FunctionComponent<React_2.PropsWithChildren<IPersonaProps>>;
 
 // @public
-export const PersonaCoin: React_2.FunctionComponent<IPersonaCoinProps>;
+export const PersonaCoin: React_2.FunctionComponent<React_2.PropsWithChildren<IPersonaCoinProps>>;
 
 // @public
-export const PersonaCoinBase: React_2.FunctionComponent<IPersonaCoinProps>;
+export const PersonaCoinBase: React_2.FunctionComponent<React_2.PropsWithChildren<IPersonaCoinProps>>;
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
@@ -10399,10 +10419,10 @@ export namespace personaSize {
 }
 
 // @public
-export const Pivot: React_2.FunctionComponent<IPivotProps>;
+export const Pivot: React_2.FunctionComponent<React_2.PropsWithChildren<IPivotProps>>;
 
 // @public (undocumented)
-export const PivotBase: React_2.FunctionComponent<IPivotProps>;
+export const PivotBase: React_2.ForwardRefExoticComponent<Omit<IPivotProps, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export class PivotItem extends React_2.Component<IPivotItemProps, {}> {
@@ -10430,7 +10450,7 @@ export const enum PivotLinkSize {
 export type PivotLinkSizeType = 'normal' | 'large';
 
 // @public (undocumented)
-export const PlainCard: React_2.FunctionComponent<IPlainCardProps>;
+export const PlainCard: React_2.FunctionComponent<React_2.PropsWithChildren<IPlainCardProps>>;
 
 // @public (undocumented)
 export class PlainCardBase extends React_2.Component<IPlainCardProps, {}> {
@@ -10442,7 +10462,7 @@ export class PlainCardBase extends React_2.Component<IPlainCardProps, {}> {
 export { Point }
 
 // @public
-export const Popup: React_2.FunctionComponent<IPopupProps>;
+export const Popup: React_2.ForwardRefExoticComponent<Omit<IPopupProps, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 
 export { portalContainsElement }
 
@@ -10468,7 +10488,7 @@ export function positionCard(props: IPositionProps, hostElement: HTMLElement, el
 export function positionElement(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: IPositionedData, win?: Window): IPositionedData;
 
 // @public (undocumented)
-export const PositioningContainer: React_2.FunctionComponent<IPositioningContainerProps>;
+export const PositioningContainer: React_2.FunctionComponent<React_2.PropsWithChildren<IPositioningContainerProps>>;
 
 export { precisionRound }
 
@@ -10489,7 +10509,7 @@ export class PrimaryButton extends React_2.Component<IButtonProps, {}> {
 }
 
 // @public
-export const ProgressIndicator: React_2.FunctionComponent<IProgressIndicatorProps>;
+export const ProgressIndicator: React_2.FunctionComponent<React_2.PropsWithChildren<IProgressIndicatorProps>>;
 
 // @public
 export class ProgressIndicatorBase extends React_2.Component<IProgressIndicatorProps, {}> {
@@ -10501,7 +10521,7 @@ export class ProgressIndicatorBase extends React_2.Component<IProgressIndicatorP
         width: number;
     };
     // (undocumented)
-    render(): JSX.Element;
+    render(): React_2.JSX.Element;
 }
 
 export { PulsingBeaconAnimationStyles }
@@ -10509,10 +10529,10 @@ export { PulsingBeaconAnimationStyles }
 export { raiseClick }
 
 // @public (undocumented)
-export const Rating: React_2.FunctionComponent<IRatingProps>;
+export const Rating: React_2.FunctionComponent<React_2.PropsWithChildren<IRatingProps>>;
 
 // @public (undocumented)
-export const RatingBase: React_2.FunctionComponent<IRatingProps>;
+export const RatingBase: React_2.FunctionComponent<React_2.PropsWithChildren<IRatingProps>>;
 
 // @public (undocumented)
 export enum RatingSize {
@@ -10567,10 +10587,10 @@ export { resetIds }
 export { resetMemoizations }
 
 // @public (undocumented)
-export const ResizeGroup: React_2.FunctionComponent<IResizeGroupProps>;
+export const ResizeGroup: React_2.FunctionComponent<React_2.PropsWithChildren<IResizeGroupProps>>;
 
 // @public (undocumented)
-export const ResizeGroupBase: React_2.FunctionComponent<IResizeGroupProps>;
+export const ResizeGroupBase: React_2.FunctionComponent<React_2.PropsWithChildren<IResizeGroupProps>>;
 
 // @public (undocumented)
 export enum ResizeGroupDirection {
@@ -10630,7 +10650,7 @@ export { ScreenWidthMinXXLarge }
 export { ScreenWidthMinXXXLarge }
 
 // @public (undocumented)
-export const ScrollablePane: React_2.FunctionComponent<IScrollablePaneProps>;
+export const ScrollablePane: React_2.FunctionComponent<React_2.PropsWithChildren<IScrollablePaneProps>>;
 
 // @public (undocumented)
 export class ScrollablePaneBase extends React_2.Component<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
@@ -10645,6 +10665,8 @@ export class ScrollablePaneBase extends React_2.Component<IScrollablePaneProps, 
     componentWillUnmount(): void;
     // (undocumented)
     get contentContainer(): HTMLDivElement | null;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -10703,10 +10725,10 @@ export const ScrollToMode: {
 export type ScrollToMode = (typeof ScrollToMode)[keyof typeof ScrollToMode];
 
 // @public (undocumented)
-export const SearchBox: React_2.FunctionComponent<ISearchBoxProps>;
+export const SearchBox: React_2.FunctionComponent<React_2.PropsWithChildren<ISearchBoxProps>>;
 
 // @public (undocumented)
-export const SearchBoxBase: React_2.FunctionComponent<ISearchBoxProps>;
+export const SearchBoxBase: React_2.FunctionComponent<React_2.PropsWithChildren<ISearchBoxProps>>;
 
 // @public (undocumented)
 enum SelectableOptionMenuItemType {
@@ -10786,10 +10808,10 @@ export enum SemanticColorSlots {
 }
 
 // @public (undocumented)
-export const Separator: React_2.FunctionComponent<ISeparatorProps>;
+export const Separator: React_2.FunctionComponent<React_2.PropsWithChildren<ISeparatorProps>>;
 
 // @public (undocumented)
-export const SeparatorBase: React_2.FunctionComponent<ISeparatorProps>;
+export const SeparatorBase: React_2.FunctionComponent<React_2.PropsWithChildren<ISeparatorProps>>;
 
 // @public
 export function sequencesToID(keySequences: string[]): string;
@@ -10853,19 +10875,19 @@ export { shallowCompare }
 export { SharedColors }
 
 // @public (undocumented)
-export const Shimmer: React_2.FunctionComponent<IShimmerProps>;
+export const Shimmer: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerProps>>;
 
 // @public (undocumented)
-export const ShimmerBase: React_2.FunctionComponent<IShimmerProps>;
+export const ShimmerBase: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerProps>>;
 
 // @public (undocumented)
-export const ShimmerCircle: React_2.FunctionComponent<IShimmerCircleProps>;
+export const ShimmerCircle: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerCircleProps>>;
 
 // @public (undocumented)
-export const ShimmerCircleBase: React_2.FunctionComponent<IShimmerCircleProps>;
+export const ShimmerCircleBase: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerCircleProps>>;
 
 // @public (undocumented)
-export const ShimmeredDetailsList: React_2.FunctionComponent<IShimmeredDetailsListProps>;
+export const ShimmeredDetailsList: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmeredDetailsListProps>>;
 
 // @public (undocumented)
 export class ShimmeredDetailsListBase extends React_2.Component<IShimmeredDetailsListProps, {}> {
@@ -10882,10 +10904,10 @@ export enum ShimmerElementsDefaultHeights {
 }
 
 // @public (undocumented)
-export const ShimmerElementsGroup: React_2.FunctionComponent<IShimmerElementsGroupProps>;
+export const ShimmerElementsGroup: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerElementsGroupProps>>;
 
 // @public (undocumented)
-export const ShimmerElementsGroupBase: React_2.FunctionComponent<IShimmerElementsGroupProps>;
+export const ShimmerElementsGroupBase: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerElementsGroupProps>>;
 
 // @public
 export enum ShimmerElementType {
@@ -10895,16 +10917,16 @@ export enum ShimmerElementType {
 }
 
 // @public (undocumented)
-export const ShimmerGap: React_2.FunctionComponent<IShimmerGapProps>;
+export const ShimmerGap: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerGapProps>>;
 
 // @public (undocumented)
-export const ShimmerGapBase: React_2.FunctionComponent<IShimmerGapProps>;
+export const ShimmerGapBase: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerGapProps>>;
 
 // @public (undocumented)
-export const ShimmerLine: React_2.FunctionComponent<IShimmerLineProps>;
+export const ShimmerLine: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerLineProps>>;
 
 // @public (undocumented)
-export const ShimmerLineBase: React_2.FunctionComponent<IShimmerLineProps>;
+export const ShimmerLineBase: React_2.FunctionComponent<React_2.PropsWithChildren<IShimmerLineProps>>;
 
 export { shouldWrapFocus }
 
@@ -10930,23 +10952,23 @@ export const sizeToPixels: {
 };
 
 // @public (undocumented)
-export const Slider: React_2.FunctionComponent<ISliderProps>;
+export const Slider: React_2.FunctionComponent<React_2.PropsWithChildren<ISliderProps>>;
 
 // @public (undocumented)
-export const SliderBase: React_2.FunctionComponent<ISliderProps>;
+export const SliderBase: React_2.FunctionComponent<React_2.PropsWithChildren<ISliderProps>>;
 
 // @public
-export const SpinButton: React_2.FunctionComponent<ISpinButtonProps>;
+export const SpinButton: React_2.FunctionComponent<React_2.PropsWithChildren<ISpinButtonProps>>;
 
 // @public (undocumented)
-export const Spinner: React_2.FunctionComponent<ISpinnerProps>;
+export const Spinner: React_2.FunctionComponent<React_2.PropsWithChildren<ISpinnerProps>>;
 
 // @public (undocumented)
 export class SpinnerBase extends React_2.Component<ISpinnerProps, any> {
     // (undocumented)
     static defaultProps: ISpinnerProps;
     // (undocumented)
-    render(): JSX.Element;
+    render(): React_2.JSX.Element;
 }
 
 // @public
@@ -10969,12 +10991,12 @@ export enum SpinnerType {
 }
 
 // @public (undocumented)
-export const Stack: React_2.FunctionComponent<IStackProps> & {
+export const Stack: React_2.FunctionComponent<React_2.PropsWithChildren<IStackProps>> & {
     Item: React_2.FunctionComponent<IStackItemProps>;
 };
 
 // @public (undocumented)
-export const StackItem: React_2.FunctionComponent<IStackItemProps>;
+export const StackItem: React_2.FunctionComponent<React_2.PropsWithChildren<IStackItemProps>>;
 
 // @public (undocumented)
 export class Sticky extends React_2.Component<IStickyProps, IStickyState> {
@@ -10991,6 +11013,8 @@ export class Sticky extends React_2.Component<IStickyProps, IStickyState> {
     componentDidUpdate(prevProps: IStickyProps, prevState: IStickyState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof ScrollablePaneContext>;
     // (undocumented)
     static contextType: React_2.Context<IScrollablePaneContext>;
     // (undocumented)
@@ -11243,34 +11267,34 @@ export type SuggestionsStoreOptions<T> = {
 };
 
 // @public (undocumented)
-export const SwatchColorPicker: React_2.FunctionComponent<ISwatchColorPickerProps>;
+export const SwatchColorPicker: React_2.FunctionComponent<React_2.PropsWithChildren<ISwatchColorPickerProps>>;
 
 // @public (undocumented)
-export const SwatchColorPickerBase: React_2.FunctionComponent<ISwatchColorPickerProps>;
+export const SwatchColorPickerBase: React_2.FunctionComponent<React_2.PropsWithChildren<ISwatchColorPickerProps>>;
 
 export { tableProperties }
 
 // @public (undocumented)
-export const TagItem: React_2.FunctionComponent<ITagItemProps>;
+export const TagItem: React_2.FunctionComponent<React_2.PropsWithChildren<ITagItemProps>>;
 
 // @public (undocumented)
-export const TagItemBase: (props: ITagItemProps) => JSX.Element;
+export const TagItemBase: (props: ITagItemProps) => React_2.JSX.Element;
 
 // @public (undocumented)
-export const TagItemSuggestion: React_2.FunctionComponent<ITagItemSuggestionProps>;
+export const TagItemSuggestion: React_2.FunctionComponent<React_2.PropsWithChildren<ITagItemSuggestionProps>>;
 
 // @public (undocumented)
-export const TagItemSuggestionBase: (props: ITagItemSuggestionProps) => JSX.Element;
+export const TagItemSuggestionBase: (props: ITagItemSuggestionProps) => React_2.JSX.Element;
 
 // @public (undocumented)
-export const TagPicker: React_2.FunctionComponent<ITagPickerProps>;
+export const TagPicker: React_2.FunctionComponent<React_2.PropsWithChildren<ITagPickerProps>>;
 
 // @public (undocumented)
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
     // (undocumented)
     static defaultProps: {
-        onRenderItem: (props: ITagItemProps) => JSX.Element;
-        onRenderSuggestionsItem: (props: ITag) => JSX.Element;
+        onRenderItem: (props: ITagItemProps) => React_2.JSX.Element;
+        onRenderSuggestionsItem: (props: ITag) => React_2.JSX.Element;
     };
 }
 
@@ -11279,25 +11303,25 @@ export { Target }
 export { tdProperties }
 
 // @public (undocumented)
-export const TeachingBubble: React_2.FunctionComponent<ITeachingBubbleProps>;
+export const TeachingBubble: React_2.FunctionComponent<React_2.PropsWithChildren<ITeachingBubbleProps>>;
 
 // @public (undocumented)
-export const TeachingBubbleBase: React_2.FunctionComponent<ITeachingBubbleProps>;
+export const TeachingBubbleBase: React_2.FunctionComponent<React_2.PropsWithChildren<ITeachingBubbleProps>>;
 
 // @public (undocumented)
-export const TeachingBubbleContent: React_2.FunctionComponent<ITeachingBubbleProps>;
+export const TeachingBubbleContent: React_2.FunctionComponent<React_2.PropsWithChildren<ITeachingBubbleProps>>;
 
 // @public (undocumented)
-export const TeachingBubbleContentBase: React_2.FunctionComponent<ITeachingBubbleProps>;
+export const TeachingBubbleContentBase: React_2.FunctionComponent<React_2.PropsWithChildren<ITeachingBubbleProps>>;
 
 // @public (undocumented)
-const Text_2: React_2.FunctionComponent<ITextProps>;
+const Text_2: React_2.FunctionComponent<React_2.PropsWithChildren<React_2.PropsWithChildren<ITextProps>>>;
 export { Text_2 as Text }
 
 export { textAreaProperties }
 
 // @public (undocumented)
-export const TextField: React_2.FunctionComponent<ITextFieldProps>;
+export const TextField: React_2.FunctionComponent<React_2.PropsWithChildren<ITextFieldProps>>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
 // Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldSnapshot" which is marked as @internal
@@ -11351,7 +11375,7 @@ export class ThemeGenerator {
 }
 
 // @public
-export const ThemeProvider: React_2.FunctionComponent<ThemeProviderProps>;
+export const ThemeProvider: React_2.ForwardRefExoticComponent<Omit<ThemeProviderProps, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public
 export interface ThemeProviderProps extends React_2.HTMLAttributes<HTMLDivElement> {
@@ -11371,7 +11395,7 @@ export { thProperties }
 export { TimeConstants }
 
 // @public (undocumented)
-export const TimePicker: React_2.FunctionComponent<ITimePickerProps>;
+export const TimePicker: React_2.FunctionComponent<React_2.PropsWithChildren<ITimePickerProps>>;
 
 // @public
 export type TimePickerValidationResultData = {
@@ -11379,15 +11403,15 @@ export type TimePickerValidationResultData = {
 };
 
 // @public (undocumented)
-export const Toggle: React_2.FunctionComponent<IToggleProps>;
+export const Toggle: React_2.FunctionComponent<React_2.PropsWithChildren<IToggleProps>>;
 
 // @public (undocumented)
-export const ToggleBase: React_2.FunctionComponent<IToggleProps>;
+export const ToggleBase: React_2.FunctionComponent<React_2.PropsWithChildren<IToggleProps>>;
 
 export { toMatrix }
 
 // @public (undocumented)
-export const Tooltip: React_2.FunctionComponent<ITooltipProps>;
+export const Tooltip: React_2.FunctionComponent<React_2.PropsWithChildren<ITooltipProps>>;
 
 // @public (undocumented)
 export class TooltipBase extends React_2.Component<ITooltipProps, any> {
@@ -11406,7 +11430,7 @@ export enum TooltipDelay {
 }
 
 // @public (undocumented)
-export const TooltipHost: React_2.FunctionComponent<ITooltipHostProps>;
+export const TooltipHost: React_2.FunctionComponent<React_2.PropsWithChildren<ITooltipHostProps>>;
 
 // @public (undocumented)
 export class TooltipHostBase extends React_2.Component<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
@@ -11415,6 +11439,8 @@ export class TooltipHostBase extends React_2.Component<ITooltipHostProps, IToolt
     componentDidMount(): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: React_2.ContextType<typeof WindowContext>;
     // (undocumented)
     static contextType: React_2.Context<WindowProviderProps>;
     // (undocumented)
@@ -11519,7 +11545,7 @@ export enum ValidationState {
 export { values }
 
 // @public (undocumented)
-export const VerticalDivider: React_2.FunctionComponent<IVerticalDividerProps>;
+export const VerticalDivider: React_2.FunctionComponent<React_2.PropsWithChildren<IVerticalDividerProps>>;
 
 export { videoProperties }
 
@@ -11550,7 +11576,7 @@ export { warnDeprecations }
 export { warnMutuallyExclusive }
 
 // @public (undocumented)
-export const WeeklyDayPicker: React_2.FunctionComponent<IWeeklyDayPickerProps>;
+export const WeeklyDayPicker: React_2.FunctionComponent<React_2.PropsWithChildren<IWeeklyDayPickerProps>>;
 
 export { WindowContext }
 

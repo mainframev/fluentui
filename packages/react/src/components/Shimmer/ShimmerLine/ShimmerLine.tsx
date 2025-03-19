@@ -4,7 +4,7 @@ import { ShimmerLineBase } from './ShimmerLine.base';
 import { getStyles } from './ShimmerLine.styles';
 import type { IShimmerLineProps, IShimmerLineStyleProps, IShimmerLineStyles } from './ShimmerLine.types';
 
-export const ShimmerLine: React.FunctionComponent<IShimmerLineProps> = styled<
+export const ShimmerLine: React.FunctionComponent<React.PropsWithChildren<IShimmerLineProps>> = styled<
   IShimmerLineProps,
   IShimmerLineStyleProps,
   IShimmerLineStyles

@@ -4,7 +4,7 @@ import { LinkBase } from './Link.base';
 import { getStyles } from './Link.styles';
 import type { ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 
-export const Link: React.FunctionComponent<ILinkProps> = styled<ILinkProps, ILinkStyleProps, ILinkStyles>(
+export const Link: React.FunctionComponent<React.PropsWithChildren<ILinkProps>> = styled<ILinkProps, ILinkStyleProps, ILinkStyles>(
   LinkBase,
   getStyles,
   undefined,

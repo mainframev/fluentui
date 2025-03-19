@@ -5,7 +5,7 @@ import { getStyles } from './CommandBar.styles';
 import type { ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 
 // Create a CommandBar variant which uses these default styles and this styled subcomponent.
-export const CommandBar: React.FunctionComponent<ICommandBarProps> = styled<
+export const CommandBar: React.FunctionComponent<React.PropsWithChildren<ICommandBarProps>> = styled<
   ICommandBarProps,
   ICommandBarStyleProps,
   ICommandBarStyles

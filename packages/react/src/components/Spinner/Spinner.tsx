@@ -4,7 +4,7 @@ import { SpinnerBase } from './Spinner.base';
 import { getStyles } from './Spinner.styles';
 import type { ISpinnerProps, ISpinnerStyles, ISpinnerStyleProps } from './Spinner.types';
 
-export const Spinner: React.FunctionComponent<ISpinnerProps> = styled<
+export const Spinner: React.FunctionComponent<React.PropsWithChildren<ISpinnerProps>> = styled<
   ISpinnerProps,
   ISpinnerStyleProps,
   ISpinnerStyles

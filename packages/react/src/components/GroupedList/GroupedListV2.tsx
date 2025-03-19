@@ -14,7 +14,7 @@ import type { IGroupedListV2Props } from './GroupedListV2.types';
  * that addresses issues GroupedList has with virtualizing nested lists under certain
  * conditions.
  */
-const GroupedListV2: React.FunctionComponent<IGroupedListV2Props> = styled<
+const GroupedListV2: React.FunctionComponent<React.PropsWithChildren<IGroupedListV2Props>> = styled<
   IGroupedListV2Props,
   IGroupedListStyleProps,
   IGroupedListStyles

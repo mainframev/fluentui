@@ -7,7 +7,7 @@ import type { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.ty
 /**
  * @deprecated This component is deprecated as of `@fluentui/react` version 8. Use `ThemeProvider` instead.
  */
-export const Fabric: React.FunctionComponent<IFabricProps> = styled<IFabricProps, IFabricStyleProps, IFabricStyles>(
+export const Fabric: React.FunctionComponent<React.PropsWithChildren<IFabricProps>> = styled<IFabricProps, IFabricStyleProps, IFabricStyles>(
   FabricBase,
   getStyles,
   undefined,

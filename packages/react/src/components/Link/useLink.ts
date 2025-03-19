@@ -65,7 +65,7 @@ const useComponentRef = (props: ILinkProps, link: React.RefObject<ILink>) => {
 };
 
 const adjustPropsForRootType = (
-  RootType: string | React.ComponentClass | React.FunctionComponent,
+  RootType: string | React.ComponentClass | React.FunctionComponent<React.PropsWithChildren<unknown>>,
   props: ILinkProps & { getStyles?: any },
 ): Partial<ILinkProps> => {
   // Deconstruct the props so we remove props like `as`, `theme` and `styles`

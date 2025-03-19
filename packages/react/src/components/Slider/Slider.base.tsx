@@ -7,7 +7,7 @@ import type { ISliderProps } from './Slider.types';
 
 const COMPONENT_NAME = 'SliderBase';
 
-export const SliderBase: React.FunctionComponent<ISliderProps> = React.forwardRef<HTMLDivElement, ISliderProps>(
+export const SliderBase: React.FunctionComponent<React.PropsWithChildren<ISliderProps>> = React.forwardRef<HTMLDivElement, ISliderProps>(
   (props, ref) => {
     const slotProps = useSlider(props, ref);
 

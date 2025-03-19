@@ -4,7 +4,7 @@ import { SearchBoxBase } from './SearchBox.base';
 import { getStyles } from './SearchBox.styles';
 import type { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
-export const SearchBox: React.FunctionComponent<ISearchBoxProps> = styled<
+export const SearchBox: React.FunctionComponent<React.PropsWithChildren<ISearchBoxProps>> = styled<
   ISearchBoxProps,
   ISearchBoxStyleProps,
   ISearchBoxStyles

@@ -459,7 +459,7 @@ function useDebugWarnings(props: IResizeGroupProps) {
 
 const measuredContextValue = { isMeasured: true };
 
-export const ResizeGroupBase: React.FunctionComponent<IResizeGroupProps> = React.forwardRef<
+export const ResizeGroupBase: React.FunctionComponent<React.PropsWithChildren<IResizeGroupProps>> = React.forwardRef<
   HTMLDivElement,
   IResizeGroupProps
 >((props, forwardedRef) => {

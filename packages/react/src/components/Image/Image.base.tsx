@@ -75,7 +75,7 @@ function useLoadState(
   return [loadState, onImageLoaded, onImageError] as const;
 }
 
-export const ImageBase: React.FunctionComponent<IImageProps> = React.forwardRef<HTMLImageElement, IImageProps>(
+export const ImageBase: React.FunctionComponent<React.PropsWithChildren<IImageProps>> = React.forwardRef<HTMLImageElement, IImageProps>(
   (props, forwardedRef) => {
     const frameElement = React.useRef<HTMLDivElement>() as React.RefObject<HTMLDivElement>;
     const imageElement = React.useRef<HTMLImageElement>() as React.RefObject<HTMLImageElement>;

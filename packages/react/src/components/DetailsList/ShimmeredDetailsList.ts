@@ -8,7 +8,7 @@ import type {
   IShimmeredDetailsListStyles,
 } from './ShimmeredDetailsList.types';
 
-export const ShimmeredDetailsList: React.FunctionComponent<IShimmeredDetailsListProps> = styled<
+export const ShimmeredDetailsList: React.FunctionComponent<React.PropsWithChildren<IShimmeredDetailsListProps>> = styled<
   IShimmeredDetailsListProps,
   IShimmeredDetailsListStyleProps,
   IShimmeredDetailsListStyles

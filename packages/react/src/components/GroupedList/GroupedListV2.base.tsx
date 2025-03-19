@@ -239,7 +239,7 @@ const renderGroupFooter = (props: IGroupFooterProps): JSX.Element | null => {
   return null;
 };
 
-export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
+export const GroupedListV2FC: React.FC<React.PropsWithChildren<IGroupedListV2Props>> = props => {
   const {
     selection,
     selectionMode = SelectionMode.multiple,

@@ -8,7 +8,7 @@ import type {
   IShimmerElementsGroupStyles,
 } from './ShimmerElementsGroup.types';
 
-export const ShimmerElementsGroup: React.FunctionComponent<IShimmerElementsGroupProps> = styled<
+export const ShimmerElementsGroup: React.FunctionComponent<React.PropsWithChildren<IShimmerElementsGroupProps>> = styled<
   IShimmerElementsGroupProps,
   IShimmerElementsGroupStyleProps,
   IShimmerElementsGroupStyles

@@ -62,12 +62,12 @@ export interface IBaseExtendedPickerProps<T> {
   /**
    * Function that specifies how the floating picker will appear.
    */
-  onRenderFloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>>;
+  onRenderFloatingPicker: React.ComponentType<React.PropsWithChildren<IBaseFloatingPickerProps<T>>>;
 
   /**
    * Function that specifies how the floating picker will appear.
    */
-  onRenderSelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>>;
+  onRenderSelectedItems: React.ComponentType<React.PropsWithChildren<IBaseSelectedItemsListProps<T>>>;
 
   /**
    * Floating picker properties

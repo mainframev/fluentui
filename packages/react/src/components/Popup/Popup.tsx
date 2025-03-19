@@ -139,58 +139,56 @@ function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivEl
 /**
  * This adds accessibility to Dialog and Panel controls
  */
-export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTMLDivElement, IPopupProps>(
-  (propsWithoutDefaults, forwardedRef) => {
-    const props = getPropsWithDefaults(
-      { shouldRestoreFocus: true, enableAriaHiddenSiblings: true },
-      propsWithoutDefaults,
-    );
+export const Popup = React.forwardRef<HTMLDivElement, IPopupProps>((propsWithoutDefaults, forwardedRef) => {
+  const props = getPropsWithDefaults(
+    { shouldRestoreFocus: true, enableAriaHiddenSiblings: true },
+    propsWithoutDefaults,
+  );
 
-    const root = React.useRef<HTMLDivElement>();
-    const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
+  const root = React.useRef<HTMLDivElement>();
+  const mergedRootRef = useMergedRefs(root, forwardedRef) as React.Ref<HTMLDivElement>;
 
-    useHideSiblingNodes(props, root);
-    useRestoreFocus(props, root);
+  useHideSiblingNodes(props, root);
+  useRestoreFocus(props, root);
 
-    const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
-    const needsVerticalScrollBar = useScrollbarAsync(props, root);
+  const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style, children, onDismiss } = props;
+  const needsVerticalScrollBar = useScrollbarAsync(props, root);
 
-    const onKeyDown = React.useCallback(
-      (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        switch (ev.which) {
-          case KeyCodes.escape:
-            if (onDismiss) {
-              onDismiss(ev);
+  const onKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      switch (ev.which) {
+        case KeyCodes.escape:
+          if (onDismiss) {
+            onDismiss(ev);
 
-              ev.preventDefault();
-              ev.stopPropagation();
-            }
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
 
-            break;
-        }
-      },
-      [onDismiss],
-    );
+          break;
+      }
+    },
+    [onDismiss],
+  );
 
-    const win = useWindow();
-    useOnEvent(win, 'keydown', onKeyDown as (ev: Event) => void);
+  const win = useWindow();
+  useOnEvent(win, 'keydown', onKeyDown as (ev: Event) => void);
 
-    return (
-      <div
-        ref={mergedRootRef}
-        {...getNativeProps(props, divProperties)}
-        className={className}
-        role={role}
-        aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledBy}
-        aria-describedby={ariaDescribedBy}
-        onKeyDown={onKeyDown}
-        style={{ overflowY: needsVerticalScrollBar ? 'scroll' : undefined, outline: 'none', ...style }}
-      >
-        {children}
-      </div>
-    );
-  },
-);
+  return (
+    <div
+      ref={mergedRootRef}
+      {...getNativeProps(props, divProperties)}
+      className={className}
+      role={role}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledBy}
+      aria-describedby={ariaDescribedBy}
+      onKeyDown={onKeyDown}
+      style={{ overflowY: needsVerticalScrollBar ? 'scroll' : undefined, outline: 'none', ...style }}
+    >
+      {children}
+    </div>
+  );
+});
 Popup.displayName = 'Popup';

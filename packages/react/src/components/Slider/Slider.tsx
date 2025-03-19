@@ -4,7 +4,7 @@ import { SliderBase } from './Slider.base';
 import { getStyles } from './Slider.styles';
 import type { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 
-export const Slider: React.FunctionComponent<ISliderProps> = styled<ISliderProps, ISliderStyleProps, ISliderStyles>(
+export const Slider: React.FunctionComponent<React.PropsWithChildren<ISliderProps>> = styled<ISliderProps, ISliderStyleProps, ISliderStyles>(
   SliderBase,
   getStyles,
   undefined,

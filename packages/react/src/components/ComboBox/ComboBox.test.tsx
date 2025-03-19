@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { render, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event';
 
 import { isConformant } from '../../common/isConformant';
 import { useKeytipRef } from '../../Keytips';
@@ -104,7 +104,7 @@ describe('ComboBox', () => {
       keySequences: ['a'],
     };
 
-    const TestComponent: React.FunctionComponent = () => {
+    const TestComponent: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
       const keytipRef = useKeytipRef<HTMLDivElement>({ keytipProps });
       return <ComboBox ariaDescribedBy="test-foo" options={DEFAULT_OPTIONS} ref={keytipRef} />;
     };
@@ -207,7 +207,7 @@ describe('ComboBox', () => {
     const combobox = getByRole('combobox');
     // open combobox to select one option
     userEvent.click(combobox);
-    userEvent.click(getAllByRole('option')[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(getAllByRole('option')[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     // reopen combobox to check selected option
     userEvent.click(combobox);
     expect(getAllByRole('option')[0].getAttribute('aria-selected')).toEqual('true');
@@ -266,7 +266,7 @@ describe('ComboBox', () => {
     const combobox = getByRole('combobox');
     userEvent.click(combobox);
     const selectedOption = getAllByRole('option')[1];
-    userEvent.click(selectedOption, undefined, { skipPointerEventsCheck: true });
+    userEvent.click(selectedOption, { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
 
     // check item is selected
     expect(combobox.getAttribute('value')).toEqual('2');
@@ -279,7 +279,7 @@ describe('ComboBox', () => {
     const combobox = getByRole('combobox');
     userEvent.click(combobox);
     const selectedOption = getAllByRole('option')[1];
-    userEvent.click(selectedOption, undefined, { skipPointerEventsCheck: true });
+    userEvent.click(selectedOption, { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
 
     // check item is not selected since combobox is controlled
     expect(combobox.getAttribute('value')).toEqual('1');
@@ -297,7 +297,7 @@ describe('ComboBox', () => {
     // select second option
     const secondOption = getAllByRole('option')[1];
     expect(secondOption.getAttribute('aria-selected')).toEqual('false'); // ensure it's not already selected
-    userEvent.click(secondOption, undefined, { skipPointerEventsCheck: true });
+    userEvent.click(secondOption, { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
 
     // checkbox selected
     expect(secondOption.getAttribute('aria-selected')).toEqual('true');
@@ -834,9 +834,9 @@ describe('ComboBox', () => {
     userEvent.type(combobox, '{enter}');
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
-    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
-    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
+    userEvent.click(options[1], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
+    userEvent.click(options[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['1', '2', '3']);
   });
 
@@ -853,8 +853,8 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(combobox.getAttribute('value')).toEqual('');
   });
 
@@ -865,8 +865,8 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
-    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
+    userEvent.click(options[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     userEvent.click(combobox);
     userEvent.click(container);
 
@@ -884,8 +884,8 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
-    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
+    userEvent.click(options[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     userEvent.click(combobox);
     userEvent.click(container);
     const keys = [DEFAULT_OPTIONS[0].key, DEFAULT_OPTIONS[2].key];
@@ -902,9 +902,9 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
-    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
-    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
+    userEvent.click(options[1], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
+    userEvent.click(options[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(onItemClickMock).toHaveBeenCalledTimes(3);
   });
 
@@ -922,7 +922,7 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     userEvent.type(combobox, '{esc}');
     userEvent.click(container);
     expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
@@ -945,7 +945,7 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '2', '3']);
   });
 
@@ -963,7 +963,7 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2']);
   });
 
@@ -982,7 +982,7 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', 'selectAll']);
   });
 
@@ -1001,12 +1001,12 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     // un-check one option
-    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[1], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3']);
     // re-check option
-    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[1], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3', '1', 'selectAll']);
   });
 
@@ -1042,11 +1042,11 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[1], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(options[0].getAttribute('aria-checked')).toEqual('mixed');
 
-    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
-    userEvent.click(options[3], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
+    userEvent.click(options[3], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
 
     expect(options[0].getAttribute('aria-checked')).toEqual('mixed');
   });
@@ -1065,7 +1065,7 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
   });
 
@@ -1082,7 +1082,7 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(combobox.getAttribute('value')).toEqual('Select All');
   });
 
@@ -1094,7 +1094,7 @@ describe('ComboBox', () => {
     userEvent.click(combobox);
 
     const options = getAllByRole('option');
-    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     expect(onItemClickMock).toHaveBeenCalledTimes(1);
   });
 
@@ -1227,7 +1227,7 @@ describe('ComboBox', () => {
     const options = getAllByRole('option');
     // This should toggle the checkbox off. With multi-select the currentPendingValue is not reset on input change
     // because it would break keyboard accessibility
-    userEvent.click(options[3], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[3], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     // with 'ManuallyEnteredValue' still in the input, on blur it should toggle the check back to on
     userEvent.click(container);
     expect(combobox.getAttribute('value')).toEqual(comboBoxOption.text);
@@ -1250,7 +1250,7 @@ describe('ComboBox', () => {
 
     userEvent.click(caretdownButton);
     const options = getAllByRole('option');
-    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
     //click on container to trigger onBlur
     userEvent.click(container);
     expect(combobox.getAttribute('value')).toEqual(DEFAULT_OPTIONS[2].text);

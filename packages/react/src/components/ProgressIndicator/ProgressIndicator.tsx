@@ -11,7 +11,7 @@ import type {
 /**
  * ProgressIndicator description
  */
-export const ProgressIndicator: React.FunctionComponent<IProgressIndicatorProps> = styled<
+export const ProgressIndicator: React.FunctionComponent<React.PropsWithChildren<IProgressIndicatorProps>> = styled<
   IProgressIndicatorProps,
   IProgressIndicatorStyleProps,
   IProgressIndicatorStyles

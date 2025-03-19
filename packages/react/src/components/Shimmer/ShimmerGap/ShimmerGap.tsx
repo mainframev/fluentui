@@ -4,7 +4,7 @@ import { ShimmerGapBase } from './ShimmerGap.base';
 import { getStyles } from './ShimmerGap.styles';
 import type { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
 
-export const ShimmerGap: React.FunctionComponent<IShimmerGapProps> = styled<
+export const ShimmerGap: React.FunctionComponent<React.PropsWithChildren<IShimmerGapProps>> = styled<
   IShimmerGapProps,
   IShimmerGapStyleProps,
   IShimmerGapStyles

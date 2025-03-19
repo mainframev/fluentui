@@ -21,11 +21,11 @@ describe('Layer', () => {
   }
   const context = React.createContext<IFooContext>({ foo: undefined });
 
-  const TestChild: React.FunctionComponent<{}> = () => (
+  const TestChild: React.FunctionComponent<React.PropsWithChildren<{}>> = () => (
     <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>
   );
 
-  const Parent: React.FunctionComponent<{ hostId?: string }> = props => (
+  const Parent: React.FunctionComponent<React.PropsWithChildren<{ hostId?: string }>> = props => (
     <context.Provider value={{ foo: 'bar' }}>
       <div id="parent">
         <Layer hostId={props.hostId}>
@@ -35,7 +35,7 @@ describe('Layer', () => {
     </context.Provider>
   );
 
-  const TestApp: React.FunctionComponent<{ hostId?: string }> = props => (
+  const TestApp: React.FunctionComponent<React.PropsWithChildren<{ hostId?: string }>> = props => (
     <div id="app">
       <Parent hostId={props.hostId} />
       <LayerHost id={props.hostId} />

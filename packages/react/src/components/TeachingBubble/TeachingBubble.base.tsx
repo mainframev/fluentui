@@ -36,7 +36,7 @@ const useComponentRef = (
   );
 };
 
-export const TeachingBubbleBase: React.FunctionComponent<ITeachingBubbleProps> = React.forwardRef<
+export const TeachingBubbleBase: React.FunctionComponent<React.PropsWithChildren<ITeachingBubbleProps>> = React.forwardRef<
   HTMLDivElement,
   ITeachingBubbleProps
 >((props, forwardedRef) => {

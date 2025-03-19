@@ -9,7 +9,7 @@ import type { ISpinButtonProps, ISpinButtonStyles } from './SpinButton.types';
  * distinct content categories. SpinButtons allow for navigation between two or more content
  * views and relies on text headers to articulate the different sections of content.
  */
-export const SpinButton: React.FunctionComponent<ISpinButtonProps> = styled<ISpinButtonProps, {}, ISpinButtonStyles>(
+export const SpinButton: React.FunctionComponent<React.PropsWithChildren<ISpinButtonProps>> = styled<ISpinButtonProps, {}, ISpinButtonStyles>(
   SpinButtonBase,
   getStyles,
   undefined,

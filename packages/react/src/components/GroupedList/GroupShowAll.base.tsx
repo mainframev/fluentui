@@ -6,7 +6,7 @@ import type { IGroupShowAllProps, IGroupShowAllStyleProps, IGroupShowAllStyles }
 
 const getClassNames = classNamesFunction<IGroupShowAllStyleProps, IGroupShowAllStyles>();
 
-export const GroupShowAllBase: React.FunctionComponent<IGroupShowAllProps> = props => {
+export const GroupShowAllBase: React.FunctionComponent<React.PropsWithChildren<IGroupShowAllProps>> = props => {
   const { group, groupLevel, showAllLinkText = 'Show All', styles, theme, onToggleSummarize } = props;
   const classNames = getClassNames(styles, { theme: theme! });
 

@@ -11,7 +11,7 @@ import type {
 /**
  * ContextualMenuItem description
  */
-export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps> = styled<
+export const ContextualMenuItem: React.FunctionComponent<React.PropsWithChildren<IContextualMenuItemProps>> = styled<
   IContextualMenuItemProps,
   IContextualMenuItemStyleProps,
   IContextualMenuItemStyles

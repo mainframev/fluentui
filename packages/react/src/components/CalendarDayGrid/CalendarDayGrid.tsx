@@ -4,7 +4,7 @@ import { styles } from './CalendarDayGrid.styles';
 import { styled } from '../../Utilities';
 import type { ICalendarDayGridProps } from './CalendarDayGrid.types';
 
-export const CalendarDayGrid: React.FunctionComponent<ICalendarDayGridProps> = styled(
+export const CalendarDayGrid: React.FunctionComponent<React.PropsWithChildren<ICalendarDayGridProps>> = styled(
   CalendarDayGridBase,
   styles,
   undefined,

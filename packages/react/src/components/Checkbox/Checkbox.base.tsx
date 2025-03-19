@@ -6,7 +6,7 @@ import type { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Che
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
-export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwardRef<HTMLDivElement, ICheckboxProps>(
+export const CheckboxBase: React.FunctionComponent<React.PropsWithChildren<ICheckboxProps>> = React.forwardRef<HTMLDivElement, ICheckboxProps>(
   (props, forwardedRef) => {
     const {
       disabled,

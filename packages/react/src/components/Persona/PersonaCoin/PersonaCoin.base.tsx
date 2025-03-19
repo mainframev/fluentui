@@ -84,7 +84,7 @@ function useImageLoadState({ onPhotoLoadingStateChange, imageUrl }: IPersonaCoin
  * PersonaCoin with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React.forwardRef<
+export const PersonaCoinBase: React.FunctionComponent<React.PropsWithChildren<IPersonaCoinProps>> = React.forwardRef<
   HTMLDivElement,
   IPersonaCoinProps
 >((propsWithoutDefaults, forwardedRef) => {
@@ -182,7 +182,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
           <PersonaPresence {...personaPresenceProps} />
         ) : (
           // Just render Contact Icon if there isn't a Presence prop.
-          <Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />
+          (<Icon iconName="Contact" className={classNames.size10WithoutPresenceIcon} />)
         )
       }
       {props.children}

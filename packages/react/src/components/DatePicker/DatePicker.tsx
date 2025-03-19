@@ -4,6 +4,6 @@ import { DatePickerBase } from './DatePicker.base';
 import { styles } from './DatePicker.styles';
 import type { IDatePickerProps } from './DatePicker.types';
 
-export const DatePicker: React.FunctionComponent<IDatePickerProps> = styled(DatePickerBase, styles, undefined, {
+export const DatePicker: React.FunctionComponent<React.PropsWithChildren<IDatePickerProps>> = styled(DatePickerBase, styles, undefined, {
   scope: 'DatePicker',
 });

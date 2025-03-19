@@ -4,7 +4,7 @@ import { DialogFooterBase } from './DialogFooter.base';
 import { getStyles } from './DialogFooter.styles';
 import type { IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
 
-export const DialogFooter: React.FunctionComponent<IDialogFooterProps> = styled<
+export const DialogFooter: React.FunctionComponent<React.PropsWithChildren<IDialogFooterProps>> = styled<
   IDialogFooterProps,
   IDialogFooterStyleProps,
   IDialogFooterStyles

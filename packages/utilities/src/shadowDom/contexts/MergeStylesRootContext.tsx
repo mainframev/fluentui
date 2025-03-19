@@ -75,7 +75,7 @@ export type MergeStylesRootProviderProps = {
  * Root context provider for mergeStyles shadow DOM.
  * Typically this is placed at the render root of your React application.
  */
-export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = ({
+export const MergeStylesRootProvider: React.FC<React.PropsWithChildren<MergeStylesRootProviderProps>> = ({
   stylesheets: userSheets,
   window: userWindow,
   useAdoptedStylesheet,
@@ -93,7 +93,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     () => userSheets || new Map(),
   );
 
-  const sheetHandler = React.useCallback(({ key, sheet }) => {
+  const sheetHandler = React.useCallback(({ key, sheet }: { key: string; sheet: ExtendedCSSStyleSheet }) => {
     setStylesheets(prev => {
       const next = new Map<string, ExtendedCSSStyleSheet>(prev);
       next.set(key, sheet);

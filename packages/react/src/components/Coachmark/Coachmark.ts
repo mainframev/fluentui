@@ -4,7 +4,7 @@ import { getStyles } from './Coachmark.styles';
 import { CoachmarkBase } from './Coachmark.base';
 import type { ICoachmarkProps, ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
 
-export const Coachmark: React.FunctionComponent<ICoachmarkProps> = styled<
+export const Coachmark: React.FunctionComponent<React.PropsWithChildren<ICoachmarkProps>> = styled<
   ICoachmarkProps,
   ICoachmarkStyleProps,
   ICoachmarkStyles

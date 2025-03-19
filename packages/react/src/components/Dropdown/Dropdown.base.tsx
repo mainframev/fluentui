@@ -163,7 +163,7 @@ function useSelectedItemsState({
   return [selectedIndices, setSelectedIndices] as const;
 }
 
-export const DropdownBase: React.FunctionComponent<IDropdownProps> = React.forwardRef<HTMLDivElement, IDropdownProps>(
+export const DropdownBase: React.FunctionComponent<React.PropsWithChildren<IDropdownProps>> = React.forwardRef<HTMLDivElement, IDropdownProps>(
   (propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
@@ -190,6 +190,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   private _host = React.createRef<HTMLDivElement>();
   private _focusZone = React.createRef<FocusZone>();

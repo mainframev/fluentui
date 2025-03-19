@@ -4,7 +4,7 @@ import { CheckBase } from './Check.base';
 import { getStyles } from './Check.styles';
 import type { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types';
 
-export const Check: React.FunctionComponent<ICheckProps> = styled<ICheckProps, ICheckStyleProps, ICheckStyles>(
+export const Check: React.FunctionComponent<React.PropsWithChildren<ICheckProps>> = styled<ICheckProps, ICheckStyleProps, ICheckStyles>(
   CheckBase,
   getStyles,
   undefined,

@@ -8,7 +8,7 @@ import type {
 
 const getClassNames = classNamesFunction<IVerticalDividerPropsStyles, IVerticalDividerStyles>();
 
-export const VerticalDividerBase: React.FunctionComponent<IVerticalDividerProps> = React.forwardRef<
+export const VerticalDividerBase: React.FunctionComponent<React.PropsWithChildren<IVerticalDividerProps>> = React.forwardRef<
   HTMLDivElement,
   IVerticalDividerProps
 >((props, ref) => {

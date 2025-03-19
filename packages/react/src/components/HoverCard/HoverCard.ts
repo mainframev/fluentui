@@ -4,7 +4,7 @@ import { getStyles } from './HoverCard.styles';
 import { HoverCardBase } from './HoverCard.base';
 import type { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
 
-export const HoverCard: React.FunctionComponent<IHoverCardProps> = styled<
+export const HoverCard: React.FunctionComponent<React.PropsWithChildren<IHoverCardProps>> = styled<
   IHoverCardProps,
   IHoverCardStyleProps,
   IHoverCardStyles

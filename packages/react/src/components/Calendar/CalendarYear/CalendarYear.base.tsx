@@ -46,7 +46,7 @@ interface ICalendarYearGridCell {
   focus(): void;
 }
 
-const CalendarYearGridCell: React.FunctionComponent<ICalendarYearGridCellProps> = props => {
+const CalendarYearGridCell: React.FunctionComponent<React.PropsWithChildren<ICalendarYearGridCellProps>> = props => {
   const {
     styles,
     theme,
@@ -111,7 +111,7 @@ const CalendarYearGridCell: React.FunctionComponent<ICalendarYearGridCellProps> 
 };
 CalendarYearGridCell.displayName = 'CalendarYearGridCell';
 
-const CalendarYearGrid: React.FunctionComponent<ICalendarYearGridProps> = props => {
+const CalendarYearGrid: React.FunctionComponent<React.PropsWithChildren<ICalendarYearGridProps>> = props => {
   const {
     styles,
     theme,
@@ -210,7 +210,7 @@ interface ICalendarYearNavArrowProps extends ICalendarYearHeaderProps {
   direction: CalendarYearNavDirection;
 }
 
-const CalendarYearNavArrow: React.FunctionComponent<ICalendarYearNavArrowProps> = props => {
+const CalendarYearNavArrow: React.FunctionComponent<React.PropsWithChildren<ICalendarYearNavArrowProps>> = props => {
   const {
     styles,
     theme,
@@ -274,7 +274,7 @@ const CalendarYearNavArrow: React.FunctionComponent<ICalendarYearNavArrowProps> 
 };
 CalendarYearNavArrow.displayName = 'CalendarYearNavArrow';
 
-const CalendarYearNav: React.FunctionComponent<ICalendarYearHeaderProps> = props => {
+const CalendarYearNav: React.FunctionComponent<React.PropsWithChildren<ICalendarYearHeaderProps>> = props => {
   const { styles, theme, className } = props;
 
   const classNames = getClassNames(styles, {
@@ -291,7 +291,7 @@ const CalendarYearNav: React.FunctionComponent<ICalendarYearHeaderProps> = props
 };
 CalendarYearNav.displayName = 'CalendarYearNav';
 
-const CalendarYearTitle: React.FunctionComponent<ICalendarYearHeaderProps> = props => {
+const CalendarYearTitle: React.FunctionComponent<React.PropsWithChildren<ICalendarYearHeaderProps>> = props => {
   const {
     styles,
     theme,
@@ -363,7 +363,7 @@ const CalendarYearTitle: React.FunctionComponent<ICalendarYearHeaderProps> = pro
 };
 CalendarYearTitle.displayName = 'CalendarYearTitle';
 
-const CalendarYearHeader: React.FunctionComponent<ICalendarYearHeaderProps> = props => {
+const CalendarYearHeader: React.FunctionComponent<React.PropsWithChildren<ICalendarYearHeaderProps>> = props => {
   const { styles, theme, className, animateBackwards, animationDirection, onRenderTitle } = props;
 
   const classNames = getClassNames(styles, {
@@ -422,7 +422,7 @@ function useYearRangeState({ selectedYear, navigatedYear }: ICalendarYearProps) 
   return [fromYear, toYear, onNavNext, onNavPrevious] as const;
 }
 
-export const CalendarYearBase: React.FunctionComponent<ICalendarYearProps> = props => {
+export const CalendarYearBase: React.FunctionComponent<React.PropsWithChildren<ICalendarYearProps>> = props => {
   const animateBackwards = useAnimateBackwards(props);
   const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState(props);
 

@@ -10,7 +10,7 @@ import type { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.typ
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
-export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props => {
+export const CalendarDayBase: React.FunctionComponent<React.PropsWithChildren<ICalendarDayProps>> = props => {
   const dayGrid = React.useRef<ICalendarDayGrid>(null);
 
   React.useImperativeHandle(

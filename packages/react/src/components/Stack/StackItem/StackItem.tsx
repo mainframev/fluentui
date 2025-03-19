@@ -21,7 +21,7 @@ const StackItemView: IStackItemComponent['view'] = props => {
   return <Slots.root {...nativeProps}>{children}</Slots.root>;
 };
 
-export const StackItem: React.FunctionComponent<IStackItemProps> = createComponent(StackItemView, {
+export const StackItem: React.FunctionComponent<React.PropsWithChildren<IStackItemProps>> = createComponent(StackItemView, {
   displayName: 'StackItem',
   styles,
 });

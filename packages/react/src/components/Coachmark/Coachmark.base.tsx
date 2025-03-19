@@ -409,7 +409,7 @@ function useDeprecationWarning(props: ICoachmarkProps) {
 
 const COMPONENT_NAME = 'CoachmarkBase';
 
-export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.forwardRef<
+export const CoachmarkBase: React.FunctionComponent<React.PropsWithChildren<ICoachmarkProps>> = React.forwardRef<
   HTMLDivElement,
   ICoachmarkProps
 >((propsWithoutDefaults, forwardedRef) => {

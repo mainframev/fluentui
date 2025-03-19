@@ -9,7 +9,7 @@ import type { IIconProps, IIconStyleProps, IIconStyles } from './Icon.types';
  * or `ImageIcon` instead, especially in scenarios where rendering performance is important.
  * {@docCategory Icon}
  */
-export const Icon: React.FunctionComponent<IIconProps> = styled<IIconProps, IIconStyleProps, IIconStyles>(
+export const Icon: React.FunctionComponent<React.PropsWithChildren<IIconProps>> = styled<IIconProps, IIconStyleProps, IIconStyles>(
   IconBase,
   getStyles,
   undefined,

@@ -39,7 +39,7 @@ const getRole = (messageBarType: MessageBarType): 'alert' | 'status' => {
   return 'status';
 };
 
-export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.forwardRef<
+export const MessageBarBase: React.FunctionComponent<React.PropsWithChildren<IMessageBarProps>> = React.forwardRef<
   HTMLDivElement,
   IMessageBarProps
 >((props, ref) => {
@@ -133,7 +133,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
             ) : (
               // this span is probably not necessary, but preserving it for now in case anyone
               // has styling that expects it to be present
-              <span>{children}</span>
+              (<span>{children}</span>)
             )}
           </span>
         </div>

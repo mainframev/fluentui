@@ -8,7 +8,7 @@ import type {
   ISwatchColorPickerStyleProps,
 } from './SwatchColorPicker.types';
 
-export const SwatchColorPicker: React.FunctionComponent<ISwatchColorPickerProps> = styled<
+export const SwatchColorPicker: React.FunctionComponent<React.PropsWithChildren<ISwatchColorPickerProps>> = styled<
   ISwatchColorPickerProps,
   ISwatchColorPickerStyleProps,
   ISwatchColorPickerStyles

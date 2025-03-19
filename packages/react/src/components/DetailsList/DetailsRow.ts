@@ -9,7 +9,7 @@ import type {
   IDetailsRowStyles,
 } from './DetailsRow.types';
 
-export const DetailsRow: React.FunctionComponent<IDetailsRowBaseProps> = styled<
+export const DetailsRow: React.FunctionComponent<React.PropsWithChildren<IDetailsRowBaseProps>> = styled<
   IDetailsRowBaseProps,
   IDetailsRowStyleProps,
   IDetailsRowStyles

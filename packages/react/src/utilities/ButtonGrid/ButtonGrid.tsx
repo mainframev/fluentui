@@ -4,7 +4,7 @@ import { ButtonGridBase } from './ButtonGrid.base';
 import { getStyles } from './ButtonGrid.styles';
 import type { IButtonGridProps, IButtonGridStyleProps, IButtonGridStyles } from './ButtonGrid.types';
 
-export const ButtonGrid: React.FunctionComponent<IButtonGridProps> = styled<
+export const ButtonGrid: React.FunctionComponent<React.PropsWithChildren<IButtonGridProps>> = styled<
   IButtonGridProps,
   IButtonGridStyleProps,
   IButtonGridStyles,

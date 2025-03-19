@@ -4,7 +4,7 @@ import { getStyles } from './GroupFooter.styles';
 import { GroupFooterBase } from './GroupFooter.base';
 import type { IGroupFooterProps, IGroupFooterStyles, IGroupFooterStyleProps } from './GroupFooter.types';
 
-export const GroupFooter: React.FunctionComponent<IGroupFooterProps> = styled<
+export const GroupFooter: React.FunctionComponent<React.PropsWithChildren<IGroupFooterProps>> = styled<
   IGroupFooterProps,
   IGroupFooterStyleProps,
   IGroupFooterStyles

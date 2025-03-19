@@ -21,7 +21,7 @@ const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPre
  * PersonaPresence with no default styles.
  * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export const PersonaPresenceBase: React.FunctionComponent<IPersonaPresenceProps> = React.forwardRef<
+export const PersonaPresenceBase: React.FunctionComponent<React.PropsWithChildren<IPersonaPresenceProps>> = React.forwardRef<
   HTMLDivElement,
   IPersonaPresenceProps
 >((props, forwardedRef) => {

@@ -4,7 +4,7 @@ import type { ISeparatorProps, ISeparatorStyles, ISeparatorStyleProps } from './
 
 const getClassNames = classNamesFunction<ISeparatorStyleProps, ISeparatorStyles>();
 
-export const SeparatorBase: React.FunctionComponent<ISeparatorProps> = React.forwardRef<
+export const SeparatorBase: React.FunctionComponent<React.PropsWithChildren<ISeparatorProps>> = React.forwardRef<
   HTMLDivElement,
   ISeparatorProps
 >((props, ref) => {

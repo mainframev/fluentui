@@ -32,7 +32,7 @@ function useDebugWarnings(props: IPersonaProps) {
  * Persona with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
-export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forwardRef<HTMLDivElement, IPersonaProps>(
+export const PersonaBase: React.FunctionComponent<React.PropsWithChildren<IPersonaProps>> = React.forwardRef<HTMLDivElement, IPersonaProps>(
   (propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 

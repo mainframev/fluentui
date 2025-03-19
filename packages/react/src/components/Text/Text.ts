@@ -4,7 +4,7 @@ import { TextView } from './Text.view';
 import { TextStyles as styles } from './Text.styles';
 import type { ITextProps } from './Text.types';
 
-export const Text: React.FunctionComponent<ITextProps> = createComponent(TextView, {
+export const Text: React.FunctionComponent<React.PropsWithChildren<React.PropsWithChildren<ITextProps>>> = createComponent(TextView, {
   displayName: 'Text',
   styles,
 });

@@ -8,7 +8,7 @@ import type { IBeakStyles } from './Beak.styles';
 export const BEAK_HEIGHT = 10;
 export const BEAK_WIDTH = 18;
 
-export const Beak: React.FunctionComponent<IBeakProps> = React.forwardRef<HTMLDivElement, IBeakProps>(
+export const Beak: React.FunctionComponent<React.PropsWithChildren<IBeakProps>> = React.forwardRef<HTMLDivElement, IBeakProps>(
   (props, forwardedRef) => {
     const { left, top, bottom, right, color, direction = RectangleEdge.top } = props;
 

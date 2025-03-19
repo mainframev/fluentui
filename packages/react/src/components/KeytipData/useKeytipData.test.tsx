@@ -19,7 +19,7 @@ describe('usePrevious', () => {
 
   it('no keytipProps', () => {
     let keytipData;
-    const TestComponent: React.FunctionComponent = () => {
+    const TestComponent: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
       keytipData = useKeytipData({});
       return null;
     };
@@ -36,7 +36,7 @@ describe('usePrevious', () => {
 
   it('return data when keytipProps is passed', () => {
     let keytipData;
-    const TestComponent: React.FunctionComponent = () => {
+    const TestComponent: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
       keytipData = useKeytipData({
         keytipProps: {
           content: '1',
@@ -58,7 +58,7 @@ describe('usePrevious', () => {
 
   it('update when keytipProps has changed', () => {
     let keytipData;
-    const TestComponent: React.FunctionComponent<KeytipDataOptions> = props => {
+    const TestComponent: React.FunctionComponent<React.PropsWithChildren<KeytipDataOptions>> = props => {
       keytipData = useKeytipData(props);
       return null;
     };
