@@ -313,7 +313,7 @@ function _idFromSectionTitle(title: string): string {
   return title.replace(/[^\w-]/g, '');
 }
 
-export const ComponentPage: React.FunctionComponent<IComponentPageProps> = styled<
+export const ComponentPage: React.FunctionComponent<React.PropsWithChildren<IComponentPageProps>> = styled<
   IComponentPageProps,
   IComponentPageStyleProps,
   IComponentPageStyles

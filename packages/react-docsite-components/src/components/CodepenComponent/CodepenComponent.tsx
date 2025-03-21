@@ -27,7 +27,7 @@ interface ICodepenPrefill {
   // and other options--see https://blog.codepen.io/documentation/api/prefill/
 }
 
-const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
+const CodepenComponentBase: React.FunctionComponent<React.PropsWithChildren<ICodepenProps>> = props => {
   const { jsContent = '', buttonAs: ButtonType = CommandButton, styles, theme } = props;
 
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -94,7 +94,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
   );
 };
 
-export const CodepenComponent: React.FunctionComponent<ICodepenProps> = styled<
+export const CodepenComponent: React.FunctionComponent<React.PropsWithChildren<ICodepenProps>> = styled<
   ICodepenProps,
   ICodepenStyleProps,
   ICodepenStyles

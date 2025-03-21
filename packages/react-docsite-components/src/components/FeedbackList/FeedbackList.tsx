@@ -139,7 +139,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
   };
 }
 
-export const FeedbackList: React.FunctionComponent<IFeedbackListProps> = styled<
+export const FeedbackList: React.FunctionComponent<React.PropsWithChildren<IFeedbackListProps>> = styled<
   IFeedbackListProps,
   IFeedbackListStyleProps,
   IFeedbackListStyles

@@ -16,7 +16,7 @@ mergeStyles({
   },
 });
 
-export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent) {
+export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent<React.PropsWithChildren<unknown>>) {
   let rootElement: HTMLElement | null;
 
   function _scrollAnchorLink(): void {
@@ -48,7 +48,7 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
     // Default route.
     appRoutes.push(<Route key="gettingstarted" component={gettingStartedPage} />);
 
-    const App: React.FunctionComponent<IAppProps> = props => (
+    const App: React.FunctionComponent<React.PropsWithChildren<IAppProps>> = props => (
       <AppBase {...props} appDefinition={props.appDefinition || appDefinition} />
     );
 

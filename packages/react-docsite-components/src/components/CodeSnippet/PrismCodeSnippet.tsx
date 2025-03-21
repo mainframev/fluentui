@@ -126,7 +126,9 @@ const languageMapping: { [key: string]: string } = {
   css: 'scss',
 };
 
-const PrismCodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = props => {
+const PrismCodeSnippetBase: React.FunctionComponent<
+  React.PropsWithChildren<React.PropsWithChildren<ICodeSnippetProps>>
+> = props => {
   const classNames = getClassNames(props.styles, {});
   return (
     <SyntaxHighlighter
@@ -140,7 +142,7 @@ const PrismCodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = props =
   );
 };
 
-export const PrismCodeSnippet: React.FunctionComponent<ICodeSnippetProps> = styled<
+export const PrismCodeSnippet: React.FunctionComponent<React.PropsWithChildren<ICodeSnippetProps>> = styled<
   ICodeSnippetProps,
   ICodeSnippetStyleProps,
   ICodeSnippetStyles

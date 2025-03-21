@@ -195,7 +195,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
   };
 }
 
-export const ColorPalette: React.FunctionComponent<IColorPaletteProps> = styled<
+export const ColorPalette: React.FunctionComponent<React.PropsWithChildren<IColorPaletteProps>> = styled<
   IColorPaletteProps,
   IColorPaletteStyleProps,
   IColorPaletteStyles

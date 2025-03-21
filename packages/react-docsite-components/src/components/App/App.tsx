@@ -22,7 +22,7 @@ export interface IAppState {
 const getClassNames = classNamesFunction<IAppStyleProps, IAppStyles>();
 
 @withResponsiveMode
-export class AppBase extends React.Component<IAppProps, IAppState> {
+export class AppBase extends React.Component<React.PropsWithChildren<IAppProps>, IAppState> {
   public state: IAppState = { isMenuVisible: false, isMenuClosing: false };
   private _classNames: IProcessedStyleSet<IAppStyles>;
   private _showOnlyExamples: boolean;
@@ -211,7 +211,7 @@ function _findMatchingLink(links: INavLink[], path: string): INavLink | undefine
   }
 }
 
-export const App: React.FunctionComponent<IAppProps> = styled<IAppProps, IAppStyleProps, IAppStyles>(
+export const App: React.FunctionComponent<React.PropsWithChildren<IAppProps>> = styled<IAppProps, IAppStyleProps, IAppStyles>(
   AppBase,
   getStyles,
   undefined,

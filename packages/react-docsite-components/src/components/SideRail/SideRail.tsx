@@ -165,7 +165,7 @@ function _isElement(x: any): x is JSX.Element {
   return !!(x && (x as JSX.Element).props && (x as JSX.Element).type);
 }
 
-export const SideRail: React.FunctionComponent<ISideRailProps> = styled<
+export const SideRail: React.FunctionComponent<React.PropsWithChildren<ISideRailProps>> = styled<
   ISideRailProps,
   ISideRailStyleProps,
   ISideRailStyles
