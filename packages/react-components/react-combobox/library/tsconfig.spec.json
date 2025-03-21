@@ -3,9 +3,10 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "dist",
-    "types": ["jest", "node", "@testing-library/jest-dom"]
+    "types": ["jest", "node"]
   },
   "include": [
+    "./config/tests.ts",
     "**/*.spec.ts",
     "**/*.spec.tsx",
     "**/*.test.ts",

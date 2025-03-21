@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint-disable */
 
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
@@ -29,6 +28,6 @@ module.exports = {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],
   },
   coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.js'],
+  setupFilesAfterEnv: ['./config/tests.ts'],
   snapshotSerializers: ['@griffel/jest-serializer'],
 };

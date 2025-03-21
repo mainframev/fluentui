@@ -3,7 +3,8 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "dist",
-    "types": ["jest", "node", "@testing-library/jest-dom"]
+    "typeRoots": ["../../../../node_modules/@types", "../../../../node_modules/@testing-library"],
+    "types": ["jest", "node", "jest-dom"]
   },
   "include": [
     "**/*.spec.ts",
