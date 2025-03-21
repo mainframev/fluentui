@@ -17,8 +17,8 @@
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
-    "typeRoots": ["../../../node_modules/@types", "../../../typings"],
-    "types": ["jest", "custom-global", "@testing-library/jest-dom"],
+    "typeRoots": ["../../../node_modules/@types", "../../../typings", "../../../node_modules/@testing-library"],
+    "types": ["jest", "custom-global", "jest-dom"],
     "isolatedModules": true
   },
   "include": ["src"]
