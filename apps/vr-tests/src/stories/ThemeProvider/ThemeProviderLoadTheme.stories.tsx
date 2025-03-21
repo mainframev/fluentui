@@ -21,10 +21,12 @@ export default {
   ],
 };
 
-const LoadThemeTestButton: React.FunctionComponent<{
-  buttonAs?: React.ElementType;
-  buttonProps?: any;
-}> = props => {
+const LoadThemeTestButton: React.FunctionComponent<
+  React.PropsWithChildren<{
+    buttonAs?: React.ElementType;
+    buttonProps?: any;
+  }>
+> = props => {
   const [isThemeCustomized, setIsThemeCustomized] = React.useState(false);
 
   // toggle between default theme and customized theme
