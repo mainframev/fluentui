@@ -10,7 +10,7 @@ export interface IExamplesSectionProps extends IPageSectionPropsWithSectionName 
   examples?: IExample[];
 }
 
-export const ExamplesSection: React.FunctionComponent<IExamplesSectionProps> = props => {
+export const ExamplesSection: React.FunctionComponent<React.PropsWithChildren<IExamplesSectionProps>> = props => {
   const { className, examples, exampleKnobs, readableSectionName = props.sectionName, style, id } = props;
   const [activeEditorTitle, setActiveEditorTitle] = React.useState('');
 

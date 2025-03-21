@@ -128,7 +128,7 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
   };
 }
 
-export const Header: React.FunctionComponent<IHeaderProps> = styled<IHeaderProps, IHeaderStyleProps, IHeaderStyles>(
+export const Header: React.FunctionComponent<React.PropsWithChildren<IHeaderProps>> = styled<IHeaderProps, IHeaderStyleProps, IHeaderStyles>(
   HeaderBase,
   getStyles,
   undefined,

@@ -182,9 +182,9 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 
     return title ? (
       // This heading must be programmatically focusable for simulating jumping to an anchor
-      <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name} tabIndex={-1}>
+      (<Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name} tabIndex={-1}>
         {title}
-      </Text>
+      </Text>)
     ) : undefined;
   }
 }
@@ -192,7 +192,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 /**
  * Memoized DetailsList wrapper handling scenarios specific to API reference tables.
  */
-const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo(props => {
+const ApiDetailsList: React.FunctionComponent<React.PropsWithChildren<IApiDetailsListProps>> = React.memo(props => {
   // Alphabetize the items and add a key to each one.
   const { itemKind, items, ariaLabel } = props;
   const processedItems: IApiEnumProperty[] | IApiInterfaceProperty[] | IMethod[] = useConst(() => {

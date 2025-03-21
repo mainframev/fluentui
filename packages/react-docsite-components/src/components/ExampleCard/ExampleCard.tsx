@@ -164,7 +164,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   editorAriaLabel={`Editor for the example "${title}". The example will be updated as you type.`}
                   modelRef={this._monacoModelRef}
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  previewAs={ExamplePreview as any as React.FunctionComponent<{}>}
+                  previewAs={ExamplePreview as any as React.FunctionComponent<React.PropsWithChildren<unknown>>}
                 >
                   {children}
                 </EditorWrapper>
@@ -176,7 +176,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   }
                 </ExamplePreview>
               )}
-
               {this._getDosAndDonts()}
             </div>
           );
@@ -205,7 +204,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private _getPreviewComponent = memoizeFunction(
-    (activeTheme: Theme | undefined, scheme: ISchemeNames): React.FunctionComponent => {
+    (activeTheme: Theme | undefined, scheme: ISchemeNames): React.FunctionComponent<React.PropsWithChildren> => {
       // Generate a component which renders the children with the current
       return props => {
         const { children } = props;
@@ -282,7 +281,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 }
 
-export const ExampleCard: React.FunctionComponent<IExampleCardProps> = styled<
+export const ExampleCard: React.FunctionComponent<React.PropsWithChildren<IExampleCardProps>> = styled<
   IExampleCardProps,
   IExampleCardStyleProps,
   IExampleCardStyles

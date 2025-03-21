@@ -9,7 +9,7 @@ import {
 import { getStyles } from './PropertiesTableSet.styles';
 import { styled } from '@fluentui/react/lib/Utilities';
 
-const PropertiesTableSetBase: React.FunctionComponent<IPropertiesTableSetProps> = props => {
+const PropertiesTableSetBase: React.FunctionComponent<React.PropsWithChildren<IPropertiesTableSetProps>> = props => {
   const { componentName, componentPath, sources } = props;
   let src: string;
   let properties: IProperty[] = [];
@@ -44,7 +44,7 @@ const PropertiesTableSetBase: React.FunctionComponent<IPropertiesTableSetProps> 
   );
 };
 
-export const PropertiesTableSet: React.FunctionComponent<IPropertiesTableSetProps> = styled<
+export const PropertiesTableSet: React.FunctionComponent<React.PropsWithChildren<IPropertiesTableSetProps>> = styled<
   IPropertiesTableSetProps,
   IPropertiesTableSetStyleProps,
   IPropertiesTableSetStyles
