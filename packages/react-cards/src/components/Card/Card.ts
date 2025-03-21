@@ -18,8 +18,8 @@ const CardStatics = {
  * future.
  */
 export const Card: React.FunctionComponent<ICardProps> & {
-  Item: React.FunctionComponent<ICardItemProps>;
-  Section: React.FunctionComponent<ICardSectionProps>;
+  Item: React.FunctionComponent<React.PropsWithChildren<ICardItemProps>>;
+  Section: React.FunctionComponent<React.PropsWithChildren<ICardSectionProps>>;
 } = createComponent(CardView, {
   displayName: 'Card',
   styles,
