@@ -3,7 +3,7 @@ import { TilesList } from './TilesList';
 import type { IRefObject, IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
 import type { IFocusZone } from '@fluentui/react/lib/FocusZone';
 import type { IListProps } from '@fluentui/react/lib/List';
-import type { IRenderFunction } from '@fluentui/utilities';
+import type { IRenderFunction, IReactProps } from '@fluentui/utilities';
 
 export interface ITilesGridItemCellProps<TItem> {
   item: TItem;
@@ -135,7 +135,7 @@ export interface ITilesGridSegment<TItem> {
 
 export interface ITilesListProps<TItem>
   extends IBaseProps,
-    React.Props<TilesList<TItem>>, // eslint-disable-line @typescript-eslint/no-deprecated
+    IReactProps<TilesList<TItem>>, // eslint-disable-line @typescript-eslint/no-deprecated
     React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.

@@ -9,7 +9,7 @@ export interface IFolderCoverChildrenProps {
   contentSize: ISize;
 }
 
-export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<HTMLDivElement> {
+export interface IFolderCoverProps extends IBaseProps, Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
   /**
    * The breakpoint size of the folder cover.
    */
@@ -39,5 +39,5 @@ export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<HTML
    * The children to pass into the content area of the folder cover.
    */
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  children?: React.Props<{}>['children'] | ((childrenProps: IFolderCoverChildrenProps) => JSX.Element | null);
+  children?: React.ReactNode | ((childrenProps: IFolderCoverChildrenProps) => JSX.Element | null);
 }
