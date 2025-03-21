@@ -2,7 +2,7 @@ import * as React from 'react';
 import { HorizontalBarChart, IChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { ThemeContext } from '@fluentui/react';
 
-export const HorizontalBarChartCustomAccessibilityExample: React.FunctionComponent<{}> = () => {
+export const HorizontalBarChartCustomAccessibilityExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   const theme = React.useContext(ThemeContext);
 
   const getData = (isDarkMode: boolean): IChartProps[] => {

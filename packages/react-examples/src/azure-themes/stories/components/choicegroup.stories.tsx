@@ -12,7 +12,7 @@ const options: IChoiceGroupOption[] = [
   { key: 'D', text: 'Option D' },
 ];
 
-export const ChoiceGroupBasicExample: React.FunctionComponent = () => {
+export const ChoiceGroupBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return <ChoiceGroup defaultSelectedKey="B" options={options} onChange={_onChange} label="Pick one" required={true} />;
 };
 

@@ -68,7 +68,7 @@ const generateStyles = (theme: ITheme) => {
   });
 };
 
-export const ListGridExample: React.FunctionComponent = () => {
+export const ListGridExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const columnCount = React.useRef(0);
   const rowHeight = React.useRef(0);
   const theme = useTheme();

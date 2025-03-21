@@ -34,7 +34,7 @@ const classNames = mergeStyleSets({
   },
 });
 
-export const TooltipOverflowExample: React.FunctionComponent = () => {
+export const TooltipOverflowExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const parentTooltipId = useId('text-tooltip');
   const [shouldOverflow, setShouldOverflow] = React.useState(false);
   const [isParentTooltipVisible, setIsParentTooltipVisible] = React.useState(false);

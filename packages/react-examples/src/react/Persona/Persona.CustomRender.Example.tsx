@@ -14,7 +14,7 @@ import { TestImages } from '@fluentui/example-data';
 const personaStyles: Partial<IPersonaStyles> = { root: { margin: '0 0 10px 0' } };
 const iconStyles: Partial<IIconStyles> = { root: { marginRight: 5 } };
 
-export const PersonaCustomRenderExample: React.FunctionComponent = () => {
+export const PersonaCustomRenderExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const examplePersona: IPersonaSharedProps = {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'AL',

@@ -52,7 +52,7 @@ const generateStyles = (theme: ITheme) => {
   });
 };
 
-export const ListScrollingExample: React.FunctionComponent = () => {
+export const ListScrollingExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const items = useConst(() => createListItems(5000));
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollToMode, setScrollToMode] = React.useState<ScrollToMode>(ScrollToMode.auto);

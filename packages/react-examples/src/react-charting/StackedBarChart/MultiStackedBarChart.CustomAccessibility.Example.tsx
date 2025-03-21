@@ -7,7 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 
-export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionComponent<{}> = () => {
+export const MultiStackedBarChartCustomAccessibilityExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   const firstChartPoints: IChartDataPoint[] = [
     {
       legend: 'Debit card numbers (EU and USA)',

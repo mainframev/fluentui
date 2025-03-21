@@ -60,7 +60,7 @@ const filterSelectedTags = (filterText: string, tagList: ITag[]): ITag[] => {
 
 const getTextFromItem = (item: ITag) => item.name;
 
-export const TagPickerBasicExample: React.FunctionComponent = () => {
+export const TagPickerBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // All pickers extend from BasePicker specifying the item type.
   const picker = React.useRef<IBasePicker<ITag>>(null);
   const [tagPicker, { toggle: toggleIsTagPickerVisible }] = useBoolean(false);

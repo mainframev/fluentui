@@ -13,7 +13,7 @@ const examplePrimaryButtonProps: IButtonProps = {
   children: 'Try it out',
 };
 
-export const TeachingBubbleIllustrationExample: React.FunctionComponent = () => {
+export const TeachingBubbleIllustrationExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
 

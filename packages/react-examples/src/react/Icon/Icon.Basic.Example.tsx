@@ -9,7 +9,7 @@ const iconClass = mergeStyles({
   margin: '0 25px',
 });
 
-export const IconBasicExample: React.FunctionComponent = () => {
+export const IconBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // FontIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here.
   // Provide an `aria-label` for screen reader users if the icon is not accompanied by text

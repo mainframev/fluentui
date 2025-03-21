@@ -38,7 +38,7 @@ const classNames = mergeStyleSets({
   },
 });
 
-export const IconImageSheetExample: React.FunctionComponent = () => {
+export const IconImageSheetExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // ImageIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here (adding the prop `iconType={IconType.image}`).
   // Provide an alt attribute using imageProps.alt for screen reader users if the icon is not

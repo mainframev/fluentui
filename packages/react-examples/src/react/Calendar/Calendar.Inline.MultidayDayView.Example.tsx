@@ -15,7 +15,7 @@ const dayOptions: IDropdownOption[] = [
   { key: '6', text: '6' },
 ];
 
-export const CalendarInlineMultidayDayViewExample: React.FunctionComponent = () => {
+export const CalendarInlineMultidayDayViewExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
   const [daysToSelectInDayView, setDaysToSelectInDayView] = React.useState(4);

@@ -16,7 +16,7 @@ const examplePersona: IPersonaSharedProps = {
   optionalText: 'Available at 4:00pm',
 };
 
-export const PersonaCustomCoinRenderExample: React.FunctionComponent = () => {
+export const PersonaCustomCoinRenderExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={{ childrenGap: 10 }}>
       <div>Custom render function in place of persona coin's image</div>

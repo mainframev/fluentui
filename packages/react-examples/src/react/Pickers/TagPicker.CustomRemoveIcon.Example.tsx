@@ -48,7 +48,7 @@ const filterSuggestedTags = (filterText: string, tagList: ITag[]): ITag[] => {
 
 const getTextFromItem = (item: ITag) => item.name;
 
-export const TagPickerCustomRemoveIconExample: React.FunctionComponent = () => {
+export const TagPickerCustomRemoveIconExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const pickerId = useId('custom-icon-picker');
 
   return (

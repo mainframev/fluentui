@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Shadow } from './ShadowHelper';
 import { NavBasicExample } from '../Nav/Nav.Basic.Example';
 
-export const ShadowDOMNavExample: React.FunctionComponent = () => {
+export const ShadowDOMNavExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Shadow>
       <NavBasicExample />

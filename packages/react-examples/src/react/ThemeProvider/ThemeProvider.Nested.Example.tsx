@@ -16,7 +16,7 @@ const darkTheme: PartialTheme = {
   },
 };
 
-export const ThemeProviderNestedExample: React.FunctionComponent = () => {
+export const ThemeProviderNestedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isLight, setIsLight] = React.useState(true);
 
   return (

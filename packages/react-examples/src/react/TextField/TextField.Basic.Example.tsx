@@ -10,7 +10,7 @@ const columnProps: Partial<IStackProps> = {
   styles: { root: { width: 300 } },
 };
 
-export const TextFieldBasicExample: React.FunctionComponent = () => {
+export const TextFieldBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <form noValidate autoComplete="off">
       <Stack horizontal tokens={stackTokens} styles={stackStyles}>

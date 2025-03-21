@@ -3,7 +3,7 @@ import { Calendar, DateRangeType, DayOfWeek, defaultCalendarStrings } from '@flu
 
 const workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
 
-export const CalendarInlineContiguousWorkWeekDaysExample: React.FunctionComponent = () => {
+export const CalendarInlineContiguousWorkWeekDaysExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 

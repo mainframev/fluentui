@@ -5,7 +5,7 @@ const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
   root: { marginTop: 10 },
 };
 
-export const PivotIconCountExample: React.FunctionComponent = () => {
+export const PivotIconCountExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       <Pivot aria-label="Count and Icon Pivot Example">

@@ -74,7 +74,7 @@ const groupedListProps = {
 const items: IExampleItem[] = createListItems(20);
 const groups: IGroup[] = createGroups(4, 0, 0, 5);
 
-export const GroupedListV2CustomExample: React.FunctionComponent = () => (
+export const GroupedListV2CustomExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <GroupedListV2 items={items} onRenderCell={onRenderCell} groupProps={groupedListProps} groups={groups} />
 );
 

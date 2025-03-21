@@ -16,7 +16,7 @@ const buttonStyles = {
   },
 };
 
-export const ToggleCustomLabelExample: React.FunctionComponent = () => {
+export const ToggleCustomLabelExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [showTooltip, setShowTooltip] = React.useState(false);
   const tooltipId = useId('tooltipId');
 

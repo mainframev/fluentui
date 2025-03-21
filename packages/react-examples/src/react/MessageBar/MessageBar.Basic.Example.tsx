@@ -202,7 +202,7 @@ const choiceOptions = [
   { key: 'warning2', text: 'Warning - multiline' },
 ];
 
-export const MessageBarBasicExample: React.FunctionComponent = () => {
+export const MessageBarBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [choice, setChoice] = React.useState<string | undefined>(undefined);
   const showAll = choice === 'all';
 

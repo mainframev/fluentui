@@ -7,7 +7,7 @@ import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react/l
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { KeyCodes } from '@fluentui/react';
 
-export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {
+export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [items, setItems] = React.useState(menuItems);
 
   const onAbort = React.useCallback(() => {
@@ -22,7 +22,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     if (!filteredItems || !filteredItems.length) {
       filteredItems.push({
         key: 'no_results',
-        onRender: (item, dismissMenu) => (
+        onRender: (item: IContextualMenuItem) => (
           <div key="no_results" style={filteredItemsStyle}>
             <Icon iconName="SearchIssue" title="No actions found" />
             <span>No actions found</span>
@@ -34,13 +34,13 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     setItems(filteredItems);
   }, []);
 
-  const onKeyDown = React.useCallback((e, ...args) => {
+  const onKeyDown = React.useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     /* Key Up, but we are not at the beginning of the text: stop event propagation to prevent ContextualMenu to focus */
-    if (e.target.selectionStart > 0 && e.which === KeyCodes.up) {
+    if (e.currentTarget.selectionStart! > 0 && e.which === KeyCodes.up) {
       e.stopPropagation();
     }
     /* Key Down, but we are not at the end of the text: stop event propagation to prevent ContextualMenu to focus */
-    if (e.target.selectionStart !== e.target.value.length && e.which === KeyCodes.down) {
+    if (e.currentTarget.selectionStart !== e.currentTarget.value.length && e.which === KeyCodes.down) {
       e.stopPropagation();
     }
   }, []);

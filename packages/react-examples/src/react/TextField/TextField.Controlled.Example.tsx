@@ -6,7 +6,7 @@ const textFieldStyles: Partial<ITextFieldStyles> = { fieldGroup: { width: 300 } 
 const narrowTextFieldStyles: Partial<ITextFieldStyles> = { fieldGroup: { width: 100 } };
 const stackTokens = { childrenGap: 15 };
 
-export const TextFieldControlledExample: React.FunctionComponent = () => {
+export const TextFieldControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [firstTextFieldValue, setFirstTextFieldValue] = React.useState('');
   const [secondTextFieldValue, setSecondTextFieldValue] = React.useState('');
   const onChangeFirstTextFieldValue = React.useCallback(

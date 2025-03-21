@@ -13,7 +13,7 @@ const buttonTwoKeytipProps = {
   hasDynamicChildren: true,
 };
 
-export const KeytipsDynamicExample: React.FunctionComponent = () => {
+export const KeytipsDynamicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [currButton, setCurrButton] = React.useState('Button 1');
   const startSequence = currButton === 'Button 1' ? 'gg1' : 'gg2';
   const onClick = (buttonId: string) => {

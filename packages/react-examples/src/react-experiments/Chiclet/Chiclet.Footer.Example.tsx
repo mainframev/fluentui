@@ -3,6 +3,7 @@ import { Chiclet, ChicletSize } from '@fluentui/react-experiments';
 import { IButtonProps, IconButton } from '@fluentui/react/lib/Button';
 import { Text } from '@fluentui/react/lib/Text';
 import { mergeStyles, FontWeights } from '@fluentui/react/lib/Styling';
+import type { IReactProps } from '@fluentui/utilities';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
@@ -44,7 +45,7 @@ const actionStyle = mergeStyles({
   color: '#0078d7',
 });
 
-export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
+export const ChicletFooterExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   const footerButtonProps: IButtonProps[] = [
     { iconProps: { iconName: 'More' } },
     { iconProps: { iconName: 'Save' } },
@@ -64,7 +65,7 @@ export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export interface IFooterComponent extends React.Props<FooterComponent> {
+export interface IFooterComponent extends IReactProps<FooterComponent> {
   buttonProps: IButtonProps[];
   activities: string;
 }

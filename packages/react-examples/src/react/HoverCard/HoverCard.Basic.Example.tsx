@@ -73,7 +73,7 @@ const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn):
   return item[column.key as keyof IExampleItem];
 };
 
-export const HoverCardBasicExample: React.FunctionComponent = () => (
+export const HoverCardBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <ThemeProvider>
     <p>
       Hover over the <i>location</i> cell of a row item to see the card or use the keyboard to navigate to it.

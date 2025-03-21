@@ -48,7 +48,7 @@ const filterSuggestedTags = (filterText: string, tagList: ITag[]): ITag[] => {
 
 const getTextFromItem = (item: ITag) => item.name;
 
-export const TagPickerInlineExample: React.FunctionComponent = () => {
+export const TagPickerInlineExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const pickerId = useId('inline-picker');
 
   return (

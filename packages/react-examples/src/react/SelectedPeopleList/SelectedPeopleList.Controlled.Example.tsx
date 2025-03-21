@@ -18,7 +18,7 @@ const onCopyItems = (items: IExtendedPersonaProps[]): string => {
   return items.map((item: IExtendedPersonaProps) => item.text).join(', ');
 };
 
-export const SelectedPeopleListControlledExample: React.FunctionComponent = () => {
+export const SelectedPeopleListControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IExtendedPersonaProps[]>([people[40]]);
   const selectionList = React.useRef<SelectedPeopleList>(null);

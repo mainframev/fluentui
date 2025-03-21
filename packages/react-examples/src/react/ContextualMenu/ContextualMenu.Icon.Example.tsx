@@ -10,7 +10,7 @@ import {
 import { Icon } from '@fluentui/react/lib/Icon';
 import { mergeStyleSets, getTheme } from '@fluentui/react/lib/Styling';
 
-export const ContextualMenuIconExample: React.FunctionComponent = () => {
+export const ContextualMenuIconExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [showCallout, { setTrue: onShowCallout, setFalse: onHideCallout }] = useBoolean(false);
 
   const menuProps: IContextualMenuProps = useConst({

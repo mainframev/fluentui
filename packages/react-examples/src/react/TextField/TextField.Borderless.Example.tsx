@@ -9,7 +9,7 @@ const columnProps: Partial<IStackProps> = {
   styles: { root: { width: 300 } },
 };
 
-export const TextFieldBorderlessExample: React.FunctionComponent = () => {
+export const TextFieldBorderlessExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack horizontal tokens={stackTokens} styles={stackStyles}>
       <Stack {...columnProps}>

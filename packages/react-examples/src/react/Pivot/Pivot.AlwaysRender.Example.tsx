@@ -3,7 +3,7 @@ import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { useBoolean } from '@fluentui/react-hooks';
 
-const ExpensiveToMount: React.FC = () => {
+const ExpensiveToMount: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => {
     setTimeout(() => {
@@ -13,7 +13,7 @@ const ExpensiveToMount: React.FC = () => {
   return <div>{mounted ? 'Rendered' : 'Mounting...'}</div>;
 };
 
-export const PivotRenderActiveOnlyExample: React.FC = () => {
+export const PivotRenderActiveOnlyExample: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [alwaysRender, { toggle: toggleActiveOnly }] = useBoolean(false);
 
   return (

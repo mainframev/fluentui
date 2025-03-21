@@ -55,7 +55,7 @@ const configureStackTokens: IStackTokens = { childrenGap: 20 };
 const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
 
-const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
+const HorizontalStackConfigureExampleContent: React.FunctionComponent<React.PropsWithChildren<IExampleOptions>> = props => {
   const {
     numItems,
     showBoxShadow,
@@ -143,7 +143,7 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
   );
 };
 
-export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
+export const HorizontalStackConfigureExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [numItems, setNumItems] = React.useState<number>(5);
   const [showBoxShadow, { toggle: toggleShowBoxShadow }] = useBoolean(false);
   const [wrap, { toggle: toggleWrap }] = useBoolean(false);
@@ -201,7 +201,6 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
           </Stack>
         </Stack.Item>
       </Stack>
-
       <Stack enableScopedSelectors horizontal disableShrink tokens={configureStackTokens}>
         <Stack.Item grow>
           <Stack enableScopedSelectors>
@@ -270,7 +269,6 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
           </Stack>
         </Stack.Item>
       </Stack>
-
       <Stack enableScopedSelectors horizontal disableShrink verticalAlign="end" tokens={configureStackTokens}>
         <Stack.Item grow>
           <Dropdown
@@ -312,7 +310,6 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
           />
         </Stack.Item>
       </Stack>
-
       <HorizontalStackConfigureExampleContent
         {...{
           numItems,

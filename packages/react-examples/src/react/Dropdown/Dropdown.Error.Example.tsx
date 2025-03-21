@@ -16,7 +16,7 @@ const DropdownErrorExampleOptions = [
   { key: 'E', text: 'Option e' },
 ];
 
-export const DropdownErrorExample: React.FunctionComponent = () => {
+export const DropdownErrorExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [showError, { toggle: toggleShowError }] = useBoolean(false);
   return (
     <Stack horizontal tokens={stackTokens} verticalAlign="start">

@@ -44,7 +44,7 @@ const wrapStackTokens: IStackTokens = { childrenGap: '30 40' };
 const firstStackTokens: IStackTokens = { childrenGap: '10 30' };
 const secondStackTokens: IStackTokens = { childrenGap: '20 50' };
 
-export const HorizontalStackWrapNestedExample: React.FunctionComponent = () => {
+export const HorizontalStackWrapNestedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [stackWidth, setStackWidth] = React.useState<number>(100);
 
   // Mutating styles definition

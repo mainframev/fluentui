@@ -6,7 +6,7 @@ const maskFormat: { [key: string]: RegExp } = {
 };
 const stackTokens = { maxWidth: 300 };
 
-export const TextFieldMaskedExample: React.FunctionComponent = () => {
+export const TextFieldMaskedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={stackTokens}>
       <p>The mask has been modified here to allow "_"</p>

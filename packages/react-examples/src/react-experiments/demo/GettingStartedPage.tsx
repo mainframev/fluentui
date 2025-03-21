@@ -7,7 +7,7 @@ const rootClass = mergeStyles({
   padding: 40,
 });
 
-export const GettingStartedPage: React.FunctionComponent = () => {
+export const GettingStartedPage: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div className={rootClass}>
       <Markdown>{require<string>('!raw-loader?esModule=false!@fluentui/react-experiments/README.md')}</Markdown>

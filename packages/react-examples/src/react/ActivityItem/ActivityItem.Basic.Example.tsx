@@ -100,7 +100,7 @@ const activityItemExamples = [
   },
 ];
 
-export const ActivityItemBasicExample: React.FunctionComponent = () => {
+export const ActivityItemBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       {activityItemExamples.map((item: { key: string | number }) => (

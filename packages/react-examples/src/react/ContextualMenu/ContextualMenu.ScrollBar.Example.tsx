@@ -3,7 +3,7 @@ import { DirectionalHint } from '@fluentui/react/lib/ContextualMenu';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { useConst } from '@fluentui/react-hooks';
 
-export const ContextualMenuWithScrollBarExample: React.FunctionComponent = () => {
+export const ContextualMenuWithScrollBarExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const menuProps = useConst(() => ({
     shouldFocusOnMount: true,
     directionalHint: DirectionalHint.bottomRightEdge,

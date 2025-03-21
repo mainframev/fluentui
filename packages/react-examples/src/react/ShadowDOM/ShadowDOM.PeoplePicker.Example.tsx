@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Shadow } from './ShadowHelper';
 import { PeoplePickerNormalExample } from '../PeoplePicker/PeoplePicker.Normal.Example';
 
-export const ShadowDOMPeoplePickerExample: React.FunctionComponent = () => {
+export const ShadowDOMPeoplePickerExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Shadow>
       <PeoplePickerNormalExample />

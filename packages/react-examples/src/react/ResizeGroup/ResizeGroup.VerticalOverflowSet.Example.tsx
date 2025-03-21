@@ -86,7 +86,7 @@ const onReduceData = (currentData: any): any => {
   return { primary, overflow };
 };
 
-export const ResizeGroupVerticalOverflowSetExample: React.FunctionComponent = () => (
+export const ResizeGroupVerticalOverflowSetExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <ResizeGroup
     className={resizeRootClassName}
     role="tabpanel"
