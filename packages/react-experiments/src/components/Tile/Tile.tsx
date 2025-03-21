@@ -94,8 +94,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     const isModal = !!selection && !!selection.isModal && selection.isModal();
 
     this.state = {
-      isSelected: isSelected,
-      isModal: isModal,
+      isSelected,
+      isModal,
     };
 
     this._events = new EventGroup(this);
@@ -112,8 +112,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       const isModal = !!nextSelection && nextSelection.isModal && nextSelection.isModal();
 
       this.setState({
-        isSelected: isSelected,
-        isModal: isModal,
+        isSelected,
+        isModal,
       });
     }
   }
@@ -191,8 +191,13 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
     const tileLayout = getTileLayoutFromProps(this.props);
 
-    const background = typeof propsBackground === 'function' ? propsBackground(tileLayout) : propsBackground;
-    const foreground = typeof propsForeground === 'function' ? propsForeground(tileLayout) : propsForeground;
+    const background = (
+      typeof propsBackground === 'function' ? propsBackground(tileLayout) : propsBackground
+    ) as React.JSX.Element;
+
+    const foreground = (
+      typeof propsForeground === 'function' ? propsForeground(tileLayout) : propsForeground
+    ) as React.JSX.Element;
 
     const onRenderBackground = propsOnRenderBackground
       ? composeRenderFunction(propsOnRenderBackground, this._onRenderBackground)
@@ -290,7 +295,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-              isSelected: isSelected,
+              isSelected,
             })
           : null}
       </div>
@@ -406,8 +411,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     const isModal = !!selection && !!selection.isModal && selection.isModal();
 
     this.setState({
-      isSelected: isSelected,
-      isModal: isModal,
+      isSelected,
+      isModal,
     });
   };
 }
