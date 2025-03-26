@@ -30,4 +30,5 @@ export const AttachmentDescription = compose<
 AttachmentDescription.defaultProps = {
   as: 'span',
 };
+// @ts-expect-error React 18
 AttachmentDescription.propTypes = commonPropTypes.createCommon();

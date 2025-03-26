@@ -85,10 +85,12 @@ export const FormFieldCustom = React.forwardRef<HTMLDivElement, FormFieldCustomP
   );
   setEnd();
   return element;
-}) as unknown as React.FC<FormFieldCustomProps> & FluentComponentStaticProps<FormFieldCustomProps>;
+}) as unknown as React.FC<React.PropsWithChildren<FormFieldCustomProps>> &
+  FluentComponentStaticProps<FormFieldCustomProps>;
 
 FormFieldCustom.displayName = 'FormFieldCustom';
 
+// @ts-expect-error React 18
 FormFieldCustom.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

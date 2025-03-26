@@ -3,7 +3,7 @@ import { keyboardKey } from '@fluentui/accessibility';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
-import { Tree } from 'src/components/Tree/Tree';
+import { Tree, type TreeProps } from 'src/components/Tree/Tree';
 import { treeTitleClassName } from 'src/components/Tree/TreeTitle';
 import { treeItemClassName } from 'src/components/Tree/TreeItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
@@ -62,7 +62,7 @@ const items = [
     id: '3',
     title: '3',
   },
-];
+] as TreeProps['items'];
 
 const getTitles = (wrapper: ReactWrapper): CommonWrapper =>
   wrapper.find(`.${treeTitleClassName}`).filterWhere(n => typeof n.type() === 'string');

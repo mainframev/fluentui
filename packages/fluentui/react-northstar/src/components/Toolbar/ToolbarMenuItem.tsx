@@ -509,6 +509,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
   },
 );
 
+// @ts-expect-error React 18
 ToolbarMenuItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,

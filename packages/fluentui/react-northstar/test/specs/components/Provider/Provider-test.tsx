@@ -62,7 +62,7 @@ describe('Provider', () => {
 
     test('do not overwrite by default', () => {
       const getContext = jest.fn();
-      const Consumer: React.FC = () => {
+      const Consumer: React.FC<React.PropsWithChildren<unknown>> = () => {
         getContext(useFluentContext());
         return null;
       };
@@ -89,7 +89,7 @@ describe('Provider', () => {
 
     test('does overwrite when is true', () => {
       const getContext = jest.fn();
-      const Consumer: React.FC = () => {
+      const Consumer: React.FC<React.PropsWithChildren<unknown>> = () => {
         getContext(useFluentContext());
         return null;
       };
@@ -332,7 +332,7 @@ describe('Provider', () => {
   describe('context', () => {
     it('should memoize passed context value', () => {
       const onRender = jest.fn();
-      const Consumer: React.FC = () => {
+      const Consumer: React.FC<React.PropsWithChildren<unknown>> = () => {
         useFluentContext();
         onRender();
 
@@ -351,7 +351,7 @@ describe('Provider', () => {
 
     it('should propagate props updates', () => {
       const onRender = jest.fn();
-      const Consumer: React.FC = () => {
+      const Consumer: React.FC<React.PropsWithChildren<unknown>> = () => {
         useFluentContext();
         onRender();
 

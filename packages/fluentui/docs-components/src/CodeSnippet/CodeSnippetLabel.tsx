@@ -22,7 +22,7 @@ const copyIcon = (
   </svg>
 );
 
-export const CodeSnippetLabel: React.FunctionComponent<CopySnippetLabelProps> = props => {
+export const CodeSnippetLabel: React.FunctionComponent<React.PropsWithChildren<CopySnippetLabelProps>> = props => {
   const { copyable, label, mode, value } = props;
   const hasLabel = label !== false;
 

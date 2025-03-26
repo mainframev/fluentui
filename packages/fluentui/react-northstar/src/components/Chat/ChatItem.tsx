@@ -170,6 +170,7 @@ ChatItem.defaultProps = {
   contentPosition: 'start',
   attached: false,
 };
+// @ts-expect-error React 18
 ChatItem.propTypes = {
   ...commonPropTypes.createCommon({ content: false }),
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),

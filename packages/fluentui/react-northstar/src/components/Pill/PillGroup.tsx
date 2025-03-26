@@ -82,6 +82,7 @@ export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props
 
 PillGroup.displayName = 'PillGroup';
 
+// @ts-expect-error React 18
 PillGroup.propTypes = commonPropTypes.createCommon();
 
 PillGroup.defaultProps = {

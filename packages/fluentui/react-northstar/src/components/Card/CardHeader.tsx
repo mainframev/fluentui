@@ -72,6 +72,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>((pro
 
 CardHeader.displayName = 'CardHeader';
 
+// @ts-expect-error React 18
 CardHeader.propTypes = {
   ...commonPropTypes.createCommon(),
   fitted: PropTypes.bool,

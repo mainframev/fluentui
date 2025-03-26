@@ -76,6 +76,7 @@ export const CardPreview = React.forwardRef<HTMLDivElement, CardPreviewProps>((p
 
 CardPreview.displayName = 'CardPreview';
 
+// @ts-expect-error React 18
 CardPreview.propTypes = {
   ...commonPropTypes.createCommon(),
   horizontal: PropTypes.bool,

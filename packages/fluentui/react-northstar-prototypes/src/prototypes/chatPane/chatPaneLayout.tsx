@@ -6,7 +6,7 @@ import ChatPaneHeader from './chatPaneHeader';
 import ChatPaneContainer from './chatPaneContent';
 import ComposeMessage from './composeMessage';
 
-const ChatPaneLayout: React.FunctionComponent<Props<{ chat: ChatData }>> = ({ chat }) => (
+const ChatPaneLayout: React.FunctionComponent<React.PropsWithChildren<Props<{ chat: ChatData }>>> = ({ chat }) => (
   <Flex
     fill
     column

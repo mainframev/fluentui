@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Dialog } from '@fluentui/react-northstar';
 
-const DialogExampleRtl: React.FC = () => (
+const DialogExampleRtl: React.FC<React.PropsWithChildren<unknown>> = () => (
   <Dialog
     cancelButton="إلغاء"
     confirmButton="تؤكد"

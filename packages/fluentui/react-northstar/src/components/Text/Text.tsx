@@ -174,6 +174,8 @@ Text.displayName = 'Text';
 Text.defaultProps = {
   as: 'span' as const,
 };
+
+// @ts-expect-error prppTypes and ts mismatch
 Text.propTypes = {
   ...commonPropTypes.createCommon({ color: true }),
   atMention: PropTypes.oneOfType<any>([PropTypes.bool, PropTypes.oneOf(['me'])]),

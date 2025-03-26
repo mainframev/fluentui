@@ -18,7 +18,7 @@ type ComponentPropsTable = {
  * Displays a table of a Component's PropTypes.
  * TODO: use Flex or a Table component, when it will be available
  */
-const ComponentPropsTable: React.FunctionComponent<ComponentPropsTable> = props => {
+const ComponentPropsTable: React.FunctionComponent<React.PropsWithChildren<ComponentPropsTable>> = props => {
   const componentProps = useComponentProps(props.componentName);
 
   return (

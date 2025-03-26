@@ -30,4 +30,5 @@ export const AttachmentHeader = compose<
 AttachmentHeader.defaultProps = {
   as: 'span',
 };
+// @ts-expect-error React 18
 AttachmentHeader.propTypes = commonPropTypes.createCommon();

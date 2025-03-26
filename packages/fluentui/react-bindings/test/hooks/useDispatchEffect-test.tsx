@@ -26,7 +26,7 @@ type TestComponentProps = Partial<TestState> & {
   value?: string;
 };
 
-const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
+const TestComponent: React.FunctionComponent<React.PropsWithChildren<TestComponentProps>> = props => {
   const [dispatch, dispatchEffect] = unstable_useDispatchEffect<TestState>((e, prevState, nextState) => {
     if (prevState.value !== nextState.value) {
       props.onChange(e as React.ChangeEvent | React.MouseEvent, {

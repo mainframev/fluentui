@@ -12,7 +12,7 @@ export interface ComponentBundleSizeExampleProps {
   examplePath: string;
 }
 
-const ComponentBundleSizeExample: React.FunctionComponent<ComponentBundleSizeExampleProps> = props => {
+const ComponentBundleSizeExample: React.FunctionComponent<React.PropsWithChildren<ComponentBundleSizeExampleProps>> = props => {
   const { title, description, examplePath } = props;
   // "components/Divider/Performance/Divider.bsize" -> dividerBSizeTsxJs
   const perfTestName = `${_.camelCase(_.last(examplePath.split('/')))}TsxJs`;

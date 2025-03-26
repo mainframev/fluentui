@@ -88,4 +88,5 @@ BreadcrumbLink.defaultProps = {
   as: 'a',
 };
 
+// @ts-expect-error React 18
 BreadcrumbLink.propTypes = commonPropTypes.createCommon();

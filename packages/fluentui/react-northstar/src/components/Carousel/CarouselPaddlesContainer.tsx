@@ -69,6 +69,7 @@ export const CarouselPaddlesContainer = React.forwardRef<HTMLDivElement, Carouse
   FluentComponentStaticProps<CarouselPaddlesContainerProps>;
 
 CarouselPaddlesContainer.displayName = 'CarouselPaddlesContainer';
+// @ts-expect-error React 18
 CarouselPaddlesContainer.propTypes = {
   ...commonPropTypes.createCommon(),
 };

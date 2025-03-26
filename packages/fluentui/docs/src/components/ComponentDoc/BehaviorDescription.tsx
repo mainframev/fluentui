@@ -5,7 +5,7 @@ const AccessibilityDescription = React.lazy(() => import('./InlineMarkdown'));
 
 const item = '- ';
 
-const BehaviorDescription: React.FunctionComponent<{ value: string }> = ({ value }) => {
+const BehaviorDescription: React.FunctionComponent<React.PropsWithChildren<{ value: string }>> = ({ value }) => {
   // doctrine has a bug where it ignores list item indicator (-) if it is in the beginning of the comment
   // because of that, add the list item indicators after parsing
   const markdown =

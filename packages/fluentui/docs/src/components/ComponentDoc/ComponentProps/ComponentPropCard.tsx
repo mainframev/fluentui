@@ -11,7 +11,7 @@ type ComponentPropCardProps = {
   description: string;
 };
 
-const ComponentPropCard: React.FC<ComponentPropCardProps> = ({ name, description }) => (
+const ComponentPropCard: React.FC<React.PropsWithChildren<ComponentPropCardProps>> = ({ name, description }) => (
   <Segment styles={cardStyle}>
     <div>{description}</div>
     <Divider />

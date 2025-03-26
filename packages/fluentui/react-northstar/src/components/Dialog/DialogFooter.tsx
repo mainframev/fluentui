@@ -67,6 +67,7 @@ export const DialogFooter = React.forwardRef<HTMLDivElement, DialogFooterProps>(
 
 DialogFooter.displayName = 'DialogFooter';
 
+// @ts-expect-error React 18
 DialogFooter.propTypes = {
   ...commonPropTypes.createCommon(),
 };

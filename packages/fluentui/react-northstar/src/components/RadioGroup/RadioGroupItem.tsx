@@ -204,6 +204,7 @@ export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemPro
 
 RadioGroupItem.displayName = 'RadioGroupItem';
 
+// @ts-expect-error React 18
 RadioGroupItem.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

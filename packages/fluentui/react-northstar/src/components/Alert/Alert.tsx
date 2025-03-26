@@ -123,7 +123,7 @@ export const alertSlotClassNames: AlertSlotClassNames = {
  * @accessibility
  * Implements [ARIA Alert](https://www.w3.org/TR/wai-aria-practices-1.1/#alert) design pattern.
  */
-export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+export const Alert = React.forwardRef<HTMLDivElement, React.PropsWithChildren<AlertProps>>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Alert.displayName, context.telemetry);
   setStart();

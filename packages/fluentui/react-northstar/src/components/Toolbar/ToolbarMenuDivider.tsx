@@ -71,6 +71,7 @@ export const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, Toolbar
   },
 ) as ComponentWithAs<'li', ToolbarMenuDividerProps>;
 
+// @ts-expect-error React 18
 ToolbarMenuDivider.propTypes = commonPropTypes.createCommon();
 ToolbarMenuDivider.defaultProps = {
   as: 'li',

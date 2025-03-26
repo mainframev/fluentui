@@ -474,7 +474,7 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
   ],
 };
 
-const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
+const CustomToolbar: React.FunctionComponent<React.PropsWithChildren<CustomToolbarProps>> = props => {
   const { layout = 'standard' } = props;
 
   const items = layouts[layout](props).map((item: ToolbarItemProps) => ({

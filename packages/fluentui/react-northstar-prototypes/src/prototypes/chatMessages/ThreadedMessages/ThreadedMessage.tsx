@@ -20,9 +20,12 @@ class ThreadedMessage extends React.Component<ThreadedMessageProps> {
       <div>
         <Flex className={classNames.threadedMessage.innerContent} column>
           <Flex>
+            {/* @ts-expect-error legacy */}
             <Text size="small" className={classNames.threadedMessage.author} content={author} />
+            {/* @ts-expect-error legacy */}
             <Text size="small" className={classNames.threadedMessage.timestamp} content={timestamp} />
           </Flex>
+          {/* @ts-expect-error legacy */}
           {subject && <Text weight="semibold" size="large" content={subject} />}
           {content}
         </Flex>

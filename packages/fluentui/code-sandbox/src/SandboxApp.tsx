@@ -55,7 +55,7 @@ const themes = {
   teamsHighContrastTheme,
 };
 
-export const SandboxApp: React.FunctionComponent = props => {
+export const SandboxApp: React.FunctionComponent<React.PropsWithChildren<unknown>> = props => {
   const { children } = props;
   const [theme, setTheme] = React.useState(items[0].value);
 

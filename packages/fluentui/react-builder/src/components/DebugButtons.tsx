@@ -95,7 +95,7 @@ export const AccessibilityErrorIcon = props => (
   </svg>
 );
 
-export const DebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => {
+export const DebugButton: React.FunctionComponent<React.PropsWithChildren<React.HTMLAttributes<HTMLButtonElement>>> = props => {
   return (
     <button
       tabIndex={-1}
@@ -114,25 +114,25 @@ export const DebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButto
   );
 };
 
-export const TrashDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => (
+export const TrashDebugButton: React.FunctionComponent<React.PropsWithChildren<React.HTMLAttributes<HTMLButtonElement>>> = props => (
   <DebugButton title="Delete" {...props}>
     <TrashAltRegularIcon style={{ widht: '1em', height: '1em' }} />
   </DebugButton>
 );
 
-export const LevelUpDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => (
+export const LevelUpDebugButton: React.FunctionComponent<React.PropsWithChildren<React.HTMLAttributes<HTMLButtonElement>>> = props => (
   <DebugButton title="Go to parent" {...props}>
     <LevelUpAltIcon style={{ widht: '1em', height: '1em' }} />
   </DebugButton>
 );
 
-export const CloneDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => (
+export const CloneDebugButton: React.FunctionComponent<React.PropsWithChildren<React.HTMLAttributes<HTMLButtonElement>>> = props => (
   <DebugButton title="Clone" {...props}>
     <CloneIcon style={{ widht: '1em', height: '1em' }} />
   </DebugButton>
 );
 
-export const MoveDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => (
+export const MoveDebugButton: React.FunctionComponent<React.PropsWithChildren<React.HTMLAttributes<HTMLButtonElement>>> = props => (
   <DebugButton title="Move" {...props}>
     <ArrowsAltSolidIcon style={{ widht: '1em', height: '1em' }} />
   </DebugButton>

@@ -535,6 +535,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, 
 
 Carousel.displayName = 'Carousel';
 
+// @ts-expect-error React 18
 Carousel.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

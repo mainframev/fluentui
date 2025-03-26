@@ -28,6 +28,7 @@ export const FormButton = compose<'button', FormButtonProps, FormButtonStylesPro
   },
 );
 
+// @ts-expect-error React 18
 FormButton.propTypes = commonPropTypes.createCommon({
   content: false, // Should be `true`, but will be passed via unhandled props to a Button
   children: false,

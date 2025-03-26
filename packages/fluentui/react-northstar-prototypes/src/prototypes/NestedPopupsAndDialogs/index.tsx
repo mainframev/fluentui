@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';
 
-const PopupAndDialog: React.FC = () => (
+const PopupAndDialog: React.FC<React.PropsWithChildren<unknown>> = () => (
   <Popup
     content={
       <>
@@ -17,7 +17,7 @@ const PopupAndDialog: React.FC = () => (
   />
 );
 
-const ControlledPopupAndDialog: React.FC = () => {
+const ControlledPopupAndDialog: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [popupOpen, setPopupOpen] = React.useState(false);
 
@@ -47,7 +47,7 @@ const ControlledPopupAndDialog: React.FC = () => {
   );
 };
 
-const NestedDialogs: React.FC = () => (
+const NestedDialogs: React.FC<React.PropsWithChildren<unknown>> = () => (
   <Dialog
     cancelButton="Close"
     header="An outer dialog"
@@ -85,7 +85,7 @@ const NestedDialogs: React.FC = () => (
   />
 );
 
-const NestedPopupsAndDialogs: React.FC = () => {
+const NestedPopupsAndDialogs: React.FC<React.PropsWithChildren<unknown>> = () => {
   return (
     <PrototypeSection title="Nested Popups & Dialogs">
       <ComponentPrototype title="A popup with dialog" description="Popup will be kept open after Dialog">

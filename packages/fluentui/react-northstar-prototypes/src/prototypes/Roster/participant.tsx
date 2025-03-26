@@ -2,14 +2,14 @@ import * as React from 'react';
 import { Avatar, Flex, Text, Animation, MenuButton, FlexItem } from '@fluentui/react-northstar';
 import { MoreIcon, MicOffIcon, ParticipantRemoveIcon, MicIcon } from '@fluentui/react-icons-northstar';
 
-const Participant: React.FC<{
+const Participant: React.FC<React.PropsWithChildren<{
   image?: string;
   name: string;
   status: object;
   position: string;
   isTalking?: boolean;
   isMuted?: boolean;
-}> = ({ image, name, status, position, isTalking, isMuted }) => {
+}>> = ({ image, name, status, position, isTalking, isMuted }) => {
   const [muted, setMuted] = React.useState(isMuted);
   const [talking, setTalking] = React.useState(isTalking);
   const [openMenu, setOpenMenu] = React.useState(false);

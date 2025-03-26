@@ -27,4 +27,5 @@ export const ListItemHeaderMedia = compose<
   },
 });
 
+// @ts-expect-error React 18
 ListItemHeaderMedia.propTypes = commonPropTypes.createCommon();

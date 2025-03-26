@@ -17,7 +17,7 @@ export type ComponentBestPracticesProps = Extendable<{
   dontList?: React.ReactNode[];
 }>;
 
-const ComponentBestPractices: React.FC<ComponentBestPracticesProps> = ({ doList, dontList }) => {
+const ComponentBestPractices: React.FC<React.PropsWithChildren<ComponentBestPracticesProps>> = ({ doList, dontList }) => {
   const updatedDoList: ShorthandCollection<ListItemProps> = [];
   const updatedDontList: ShorthandCollection<ListItemProps> = [];
 

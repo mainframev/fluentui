@@ -10,7 +10,7 @@ import GuidesNavigationFooter, { PageDescriptor } from './GuidesNavigationFooter
 
 type MarkdownPageProps = {
   page: {
-    default: React.ComponentType<any>;
+    default: React.ComponentType<React.PropsWithChildren<any>>;
     meta: {
       previous?: PageDescriptor;
       next?: PageDescriptor;
@@ -51,7 +51,7 @@ const components = {
   img: props => <img style={{ maxWidth: '100%' }} {...props} />,
 };
 
-const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = props => {
+const MarkdownPage: React.FunctionComponent<React.PropsWithChildren<MarkdownPageProps>> = props => {
   const { page } = props;
   const { default: Component, meta } = page;
 

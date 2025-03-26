@@ -91,7 +91,7 @@ export const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, re
     rtl: context.rtl,
   });
 
-  const content = createShorthand(DividerContent, props.content, {});
+  const content = createShorthand(DividerContent, props.content as React.ReactElement, {});
 
   const element = (
     <ElementType
@@ -114,6 +114,7 @@ export const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, re
 
 Divider.displayName = 'Divider';
 
+// @ts-expect-error React 18
 Divider.propTypes = {
   ...commonPropTypes.createCommon({ color: true }),
   fitted: PropTypes.bool,

@@ -19,7 +19,7 @@ type ComposeMessageProps = Props<{
   style?: React.CSSProperties;
 }>;
 
-const ComposeMessage: React.FunctionComponent<ComposeMessageProps> = props => (
+const ComposeMessage: React.FunctionComponent<React.PropsWithChildren<ComposeMessageProps>> = props => (
   <Provider.Consumer
     render={({ siteVariables: siteVars }) => (
       <Flex column role="region" aria-labelledby="chat-compose-reader-text" style={props.style}>

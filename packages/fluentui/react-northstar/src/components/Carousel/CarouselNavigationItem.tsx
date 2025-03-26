@@ -200,6 +200,7 @@ export const CarouselNavigationItem = React.forwardRef<HTMLLIElement, CarouselNa
 
 CarouselNavigationItem.displayName = 'CarouselNavigationItem';
 
+// @ts-expect-error React 18
 CarouselNavigationItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,

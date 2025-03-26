@@ -141,6 +141,7 @@ export const ToolbarCustomItem = compose<'div', ToolbarCustomItemProps, ToolbarC
   },
 );
 
+// @ts-expect-error React 18
 ToolbarCustomItem.propTypes = {
   ...commonPropTypes.createCommon(),
   fitted: PropTypes.oneOfType([

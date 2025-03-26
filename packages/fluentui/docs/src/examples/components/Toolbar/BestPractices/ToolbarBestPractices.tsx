@@ -17,7 +17,7 @@ const doList = [
   'If `Toolbar` contains multiple radio groups in the menu, consider using role="group" and `aria-label` for radio group shorthands',
 ];
 
-const ToolbarBestPractices: React.FunctionComponent<{}> = () => {
+const ToolbarBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

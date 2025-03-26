@@ -192,7 +192,7 @@ export type IViewComponent<TViewProps> = (props: React_2.PropsWithChildren<TView
 export { legacyStyled }
 
 // @public @deprecated
-export const ThemeProvider: React_2.FunctionComponent<IThemeProviderProps>;
+export const ThemeProvider: React_2.FunctionComponent<React_2.PropsWithChildren<IThemeProviderProps>>;
 
 // @public
 export function useControlledState<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps>(props: Readonly<TProps>, propName: TProp, options?: IControlledStateOptions<TProps, TProp, TDefaultProp>): [TProps[TProp] | undefined, React_2.Dispatch<React_2.SetStateAction<TProps[TProp]>>];

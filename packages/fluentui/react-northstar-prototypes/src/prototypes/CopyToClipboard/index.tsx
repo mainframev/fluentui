@@ -12,7 +12,7 @@ type CopyToClipboardPrototypeProps = {
   attached?: boolean;
 };
 
-const CopyToClipboardPrototype: React.FC<CopyToClipboardPrototypeProps> = props => {
+const CopyToClipboardPrototype: React.FC<React.PropsWithChildren<CopyToClipboardPrototypeProps>> = props => {
   return (
     <Flex gap="gap.medium" vAlign="center" padding="padding.medium">
       <Text content="Commit: " />
@@ -28,7 +28,7 @@ const CopyToClipboardPrototype: React.FC<CopyToClipboardPrototypeProps> = props 
   );
 };
 
-const CopyToClipboardInMenu: React.FC = props => {
+const CopyToClipboardInMenu: React.FC<React.PropsWithChildren<unknown>> = props => {
   const item = {
     key: 'edit',
     content: 'Edit',
@@ -47,7 +47,7 @@ const CopyToClipboardInMenu: React.FC = props => {
   return <Menu items={[item]} />;
 };
 
-const CopyToClipboardAttached: React.FC = props => {
+const CopyToClipboardAttached: React.FC<React.PropsWithChildren<unknown>> = props => {
   const [target, setTarget] = React.useState<HTMLElement>(null);
 
   const items = [
@@ -72,10 +72,11 @@ const CopyToClipboardAttached: React.FC = props => {
     },
   ];
 
+  // @ts-expect-error React 18
   return <Menu items={items} />;
 };
 
-const CopyToClipboardPrototypes: React.FC = () => {
+const CopyToClipboardPrototypes: React.FC<React.PropsWithChildren<unknown>> = () => {
   const commitID = '3422f7d';
   return (
     <PrototypeSection title="Copy to Clipboard">

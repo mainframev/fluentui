@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const DebugLine: React.FC<{
+export const DebugLine: React.FC<React.PropsWithChildren<{
   [key: string]: any;
   children: React.ReactNode;
   active?: boolean;
@@ -8,7 +8,7 @@ export const DebugLine: React.FC<{
   style?: React.CSSProperties;
   badge?: string;
   actionable?: boolean;
-}> = ({ active, indent = 0, actionable, children, style, badge, ...rest }) => (
+}>> = ({ active, indent = 0, actionable, children, style, badge, ...rest }) => (
   <a
     style={{
       display: 'flex',

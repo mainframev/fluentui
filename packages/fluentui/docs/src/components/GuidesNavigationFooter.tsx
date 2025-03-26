@@ -13,7 +13,7 @@ type GuidesNavigationFooterProps = {
   next?: PageDescriptor;
 };
 
-const GuidesNavigationFooter: React.FC<GuidesNavigationFooterProps> = ({ previous, next }) => (
+const GuidesNavigationFooter: React.FC<React.PropsWithChildren<GuidesNavigationFooterProps>> = ({ previous, next }) => (
   <>
     <br />
     <Divider size={1} />

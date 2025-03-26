@@ -398,6 +398,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
   },
 );
 
+// @ts-expect-error React 18
 ToolbarItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,

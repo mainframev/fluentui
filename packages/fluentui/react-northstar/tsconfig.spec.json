@@ -4,7 +4,8 @@
     "noEmit": true,
     "emitDeclarationOnly": false,
     "composite": false,
-    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "typeRoots": ["../../../node_modules/@types", "../../../node_modules/@testing-library"],
+    "types": ["node", "jest", "jest-dom"],
     "paths": {
       "src/*": ["packages/fluentui/react-northstar/src/*"],
       "test/*": ["packages/fluentui/react-northstar/test/*"]

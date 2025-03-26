@@ -14,7 +14,7 @@ const doList = [
   </Text>,
 ];
 
-const ButtonBestPractices: React.FunctionComponent<{}> = () => {
+const ButtonBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

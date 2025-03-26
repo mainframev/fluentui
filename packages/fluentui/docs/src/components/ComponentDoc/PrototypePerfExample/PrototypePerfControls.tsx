@@ -9,7 +9,7 @@ export interface PrototypeExampleControlsProps {
   examplePath: string;
 }
 
-const PrototypeExampleControls: React.FC<PrototypeExampleControlsProps> = props => {
+const PrototypeExampleControls: React.FC<React.PropsWithChildren<PrototypeExampleControlsProps>> = props => {
   const items = [
     {
       icon: <OpenOutsideIcon style={{ width: '20px', height: '20px' }} />,

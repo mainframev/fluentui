@@ -32,7 +32,7 @@ const unsupportedComponents = [
   'Ref',
 ];
 
-const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = props => {
+const ComponentPlayground: React.FunctionComponent<React.PropsWithChildren<ComponentPlaygroundProps>> = props => {
   if (unsupportedComponents.indexOf(props.componentName) !== -1) {
     return null;
   }
@@ -43,7 +43,7 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
   );
 
   if (playgroundPath) {
-    const component: React.FC = examplePlaygroundContext(playgroundPath).default;
+    const component: React.FC<React.PropsWithChildren<unknown>> = examplePlaygroundContext(playgroundPath).default;
 
     return <ComponentPlaygroundTemplate component={component} fluid={props.componentName === 'Chat'} />;
   }
@@ -74,7 +74,7 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
 
 export default props => (
   /* KnobProvider should be defined outside otherwise hooks will not properly register */
-  <KnobProvider>
+  (<KnobProvider>
     <ComponentPlayground {...props} />
-  </KnobProvider>
+  </KnobProvider>)
 );

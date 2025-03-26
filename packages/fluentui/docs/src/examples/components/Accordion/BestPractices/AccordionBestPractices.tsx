@@ -7,7 +7,7 @@ const doList = [
   'Use Tree component to display a hierarchical structure that allows user to select one item.',
 ];
 
-const AccordionBestPractices: React.FunctionComponent<{}> = () => {
+const AccordionBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

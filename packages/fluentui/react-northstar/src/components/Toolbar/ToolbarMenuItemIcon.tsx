@@ -37,4 +37,6 @@ export const ToolbarMenuItemIcon = compose<
 ToolbarMenuItemIcon.defaultProps = {
   as: 'span',
 };
+
+// @ts-expect-error React 18
 ToolbarMenuItemIcon.propTypes = commonPropTypes.createCommon();

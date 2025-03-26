@@ -10,7 +10,7 @@ interface ResponsiveTableProps extends TableProps {
   id?: string;
 }
 
-const ResponsiveTableContainer: React.FC<ResponsiveTableProps> = props => {
+const ResponsiveTableContainer: React.FC<React.PropsWithChildren<ResponsiveTableProps>> = props => {
   const { columns: config, children } = props;
 
   const responsiveTableID = React.useMemo(

@@ -30,4 +30,5 @@ FormLabel.defaultProps = {
   as: 'label',
 };
 
+// @ts-expect-error React 18
 FormLabel.propTypes = commonPropTypes.createCommon();

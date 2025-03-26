@@ -63,6 +63,7 @@ describe('useStyles', () => {
     it('does not resolve styles', () => {
       const styles = jest.fn();
       mount(<TestComponent unstyled={true} color="green" />, {
+        // @ts-expect-error React 18
         wrappingComponent: Unstable_FluentContextProvider,
         wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles) } },
       });
@@ -75,6 +76,7 @@ describe('useStyles', () => {
     it('passes props mapped via "mapPropsToStyles" to styles functions', () => {
       const styles = jest.fn();
       mount(<TestComponent color="green" />, {
+        // @ts-expect-error React 18
         wrappingComponent: Unstable_FluentContextProvider,
         wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles) } },
       });

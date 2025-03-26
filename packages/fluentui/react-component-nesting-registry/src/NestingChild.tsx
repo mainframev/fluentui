@@ -23,7 +23,7 @@ class NestingChildInner<T extends Node> extends React.Component<NestingChildInne
   }
 }
 
-export const NestingChild: React.FunctionComponent<NestingProps> = ({ children }) => (
+export const NestingChild: React.FunctionComponent<React.PropsWithChildren<NestingProps>> = ({ children }) => (
   <NestingContext.Consumer>
     {(contextValue: NestingContextValue) => <NestingChildInner {...contextValue}>{children}</NestingChildInner>}
   </NestingContext.Consumer>

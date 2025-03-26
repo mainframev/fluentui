@@ -112,6 +112,7 @@ AccordionContent.shorthandConfig = {
   mappedProp: 'content',
 };
 
+// @ts-expect-error React 18
 AccordionContent.propTypes = {
   ...commonPropTypes.createCommon(),
   accordionTitleId: PropTypes.string,

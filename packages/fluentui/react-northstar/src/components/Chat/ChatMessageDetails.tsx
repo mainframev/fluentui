@@ -44,6 +44,7 @@ export const ChatMessageDetails = compose<
   shorthandConfig: { mappedProp: 'content' },
 });
 
+// @ts-expect-error React 18
 ChatMessageDetails.propTypes = {
   ...commonPropTypes.createCommon(),
   attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'top' | 'bottom'>(['top', 'bottom'])]),

@@ -44,7 +44,7 @@ const reactionGroup: ShorthandCollection<ReactionProps> = [
   { key: 'smile', icon: <EmojiIcon />, content: 3 },
 ];
 
-const ChatPlayground: React.FunctionComponent = () => {
+const ChatPlayground: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // ChatProps
   const [density] = useSelectKnob({ name: 'density', initialValue: 'comfy', values: ['compact', 'comfy'] });
 

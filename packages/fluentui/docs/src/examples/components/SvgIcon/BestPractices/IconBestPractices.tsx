@@ -6,7 +6,7 @@ const dontList = [
   "Don't use as a replacement for actionable component - use `Button` text variant with an icon instead.",
 ];
 
-const FormBestPractices: React.FunctionComponent<{}> = () => {
+const FormBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices dontList={dontList} />;
 };
 

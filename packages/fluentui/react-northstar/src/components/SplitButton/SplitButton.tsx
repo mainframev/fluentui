@@ -290,6 +290,7 @@ SplitButton.displayName = 'SplitButton';
 
 SplitButton.Toggle = SplitButtonToggle;
 
+// @ts-expect-error React 18
 SplitButton.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

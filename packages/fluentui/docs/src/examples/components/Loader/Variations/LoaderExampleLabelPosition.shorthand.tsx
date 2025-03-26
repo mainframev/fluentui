@@ -1,7 +1,7 @@
 import { Grid, Loader } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const LoaderExampleLabel: React.FC = () => (
+const LoaderExampleLabel: React.FC<React.PropsWithChildren<unknown>> = () => (
   <Grid columns={2} variables={{ gridGap: '20px' }}>
     <Loader label="At start" labelPosition="start" />
     <Loader label="At end" labelPosition="end" />

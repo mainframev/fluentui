@@ -80,6 +80,7 @@ export const AvatarIcon = React.forwardRef<HTMLSpanElement, AvatarIconProps>((pr
   FluentComponentStaticProps<AvatarIconProps>;
 
 AvatarIcon.displayName = 'AvatarIcon';
+// @ts-expect-error React 18
 AvatarIcon.propTypes = {
   ...commonPropTypes.createCommon(),
   square: PropTypes.bool,

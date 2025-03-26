@@ -154,6 +154,7 @@ function createMessageContentWithAttachments(content: string, messageId: string)
             icon={<WordIcon />}
             aria-label={`File attachment ${fileName}. Press tab for more options Press Enter to open the file`}
             header={fileName}
+            // @ts-expect-error TODO
             action={action}
             data-is-focusable={true}
             styles={{

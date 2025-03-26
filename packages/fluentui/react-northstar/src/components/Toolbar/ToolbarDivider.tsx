@@ -72,4 +72,5 @@ export const ToolbarDivider = compose<'div', ToolbarDividerProps, ToolbarDivider
   },
 );
 
+// @ts-expect-error React 18
 ToolbarDivider.propTypes = commonPropTypes.createCommon();

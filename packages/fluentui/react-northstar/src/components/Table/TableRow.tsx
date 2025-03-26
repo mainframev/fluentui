@@ -53,7 +53,7 @@ export type TableRowStylesProps = Pick<TableRowProps, 'header' | 'compact'>;
 /**
  * Component represents a single row in a tabular structure
  */
-export const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>((props, ref) => {
+export const TableRow = React.forwardRef<HTMLDivElement, React.PropsWithChildren<TableRowProps>>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TableRow.displayName, context.telemetry);
   setStart();

@@ -6,7 +6,7 @@ type LogInspectorProps = {
   silent?: boolean;
 };
 
-export const LogInspector: React.FunctionComponent<LogInspectorProps> = props => {
+export const LogInspector: React.FunctionComponent<React.PropsWithChildren<LogInspectorProps>> = props => {
   const { components } = React.useContext(KnobContext);
 
   const { clearLog } = React.useContext(LogContextFunctions);

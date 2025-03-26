@@ -28,7 +28,7 @@ const getGroupName = (variableName: string): string => {
   return 'Other';
 };
 
-const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariablesProps> = props => {
+const ComponentExampleVariables: React.FunctionComponent<React.PropsWithChildren<ComponentExampleVariablesProps>> = props => {
   const { onChange, overriddenVariables, usedVariables } = props;
 
   const { theme } = useFluentContext();
@@ -70,7 +70,6 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
       {/*  onChange={(e, data) => setHideUnused(!data.checked)} */}
       {/*  styles={{ float: 'right', top: '1.25rem', right: '1.25rem' }} */}
       {/* /> */}
-
       {_.map(filteredVariables, (componentVariables, componentName) => {
         const groupedVariables: Record<string, string[]> = _.groupBy(
           Object.keys(componentVariables).sort(),
@@ -82,7 +81,6 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
             <Header as="h2" styles={{ marginTop: 0 }}>
               {componentName}
             </Header>
-
             {_.map(groupedVariables, (variableNames, groupName) => (
               <>
                 <Header as="h3" styles={{ marginTop: '4px', marginBottom: '4px' }}>

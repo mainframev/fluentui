@@ -30,4 +30,5 @@ export const ListItemMedia = compose<'div', ListItemMediaOwnProps, ListItemMedia
   },
 );
 
+// @ts-expect-error React 18
 ListItemMedia.propTypes = commonPropTypes.createCommon();

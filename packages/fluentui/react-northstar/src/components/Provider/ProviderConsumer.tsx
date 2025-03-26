@@ -14,7 +14,7 @@ export interface ProviderConsumerProps {
 /**
  * A ProviderConsumer is used to consume Fluent UI context from Provider.
  */
-export const ProviderConsumer: React.FunctionComponent<ProviderConsumerProps> = props => {
+export const ProviderConsumer: React.FunctionComponent<React.PropsWithChildren<ProviderConsumerProps>> = props => {
   const { render } = props;
   const context = useFluentContext();
 

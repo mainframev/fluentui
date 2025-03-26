@@ -15,7 +15,9 @@ function createSnapshot(component: JSX.Element, theme = {}) {
   felaRenderer.clear();
 
   ReactDOM.render(
+    // @ts-expect-error fela and react 18
     <RendererProvider renderer={felaRenderer}>
+      {/* @ts-expect-error fela and react 18 */}
       <ThemeProvider theme={{ direction: 'ltr', ...theme }}>{component}</ThemeProvider>
     </RendererProvider>,
     div,

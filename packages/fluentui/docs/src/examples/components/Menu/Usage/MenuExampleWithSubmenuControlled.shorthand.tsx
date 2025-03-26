@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Menu, Header } from '@fluentui/react-northstar';
 
-const MenuWithSubmenuControlledExample: React.FunctionComponent = () => {
+const MenuWithSubmenuControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [menuOpen, setMenuOpen] = React.useState<boolean>(false);
 
   const handleMenuOpenChange = (e, { menuOpen }) => {

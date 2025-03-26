@@ -32,7 +32,7 @@ type TestComponentProps = Partial<TestState> & {
   value?: string;
 };
 
-const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
+const TestComponent: React.FunctionComponent<React.PropsWithChildren<TestComponentProps>> = props => {
   const { state, actions } = useStateManager(createTestManager, {
     mapPropsToInitialState: () => ({
       open: props.defaultOpen,
@@ -68,7 +68,7 @@ type ActionsComponentProps = {
   onUpdate: () => void;
 };
 
-const ActionsComponent: React.FunctionComponent<ActionsComponentProps> = props => {
+const ActionsComponent: React.FunctionComponent<React.PropsWithChildren<ActionsComponentProps>> = props => {
   const { onRender, onUpdate } = props;
 
   const { actions, state } = useStateManager(createTestManager);

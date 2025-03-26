@@ -5,12 +5,12 @@ import { Dropdown, DropdownItemProps, Provider } from '@fluentui/react-northstar
 import { MentionsContainerProps } from './MentionsEditor';
 
 type RenderItem = {
-  Item: React.ReactType;
+  Item: React.ElementType;
   props: DropdownItemProps;
   fontWeight: Property.FontWeight;
 };
 
-const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props => {
+const MentionsDropdown: React.FunctionComponent<React.PropsWithChildren<MentionsContainerProps>> = props => {
   const { searchQuery, items, onOpenChange, onSearchQueryChange, onInputKeyDown } = props;
 
   const renderItem = React.useCallback((args: RenderItem) => getCustomItem({ ...args, searchQuery }), [searchQuery]);
@@ -43,7 +43,7 @@ const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props 
 };
 
 const getCustomItem = (args: {
-  Item: React.ReactType;
+  Item: React.ElementType;
   props: DropdownItemProps;
   searchQuery: string;
   fontWeight: Property.FontWeight;

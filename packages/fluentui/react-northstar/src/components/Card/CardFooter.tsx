@@ -71,6 +71,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>((pro
 
 CardFooter.displayName = 'CardFooter';
 
+// @ts-expect-error React 18
 CardFooter.propTypes = {
   ...commonPropTypes.createCommon(),
   fitted: PropTypes.bool,

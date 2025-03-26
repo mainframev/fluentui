@@ -30,6 +30,7 @@ export const ButtonContent = compose<'span', ButtonContentProps, ButtonContentSt
 ButtonContent.defaultProps = {
   as: 'span',
 };
+// @ts-expect-error React 18
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,

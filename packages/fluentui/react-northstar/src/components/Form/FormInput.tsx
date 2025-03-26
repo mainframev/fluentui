@@ -42,6 +42,7 @@ export const FormInput = compose<'input', FormInputProps, FormInputStylesProps, 
   },
 );
 
+// @ts-expect-error React 18
 FormInput.propTypes = commonPropTypes.createCommon({
   children: false,
   content: false,

@@ -31,4 +31,5 @@ export const ToolbarMenuItemContent = compose<
 ToolbarMenuItemContent.defaultProps = {
   as: 'span',
 };
+// @ts-expect-error React 18
 ToolbarMenuItemContent.propTypes = commonPropTypes.createCommon();

@@ -41,6 +41,7 @@ export const FormCheckbox = compose<
   }),
 });
 
+// @ts-expect-error React 18
 FormCheckbox.propTypes = commonPropTypes.createCommon({
   content: false,
   children: false,

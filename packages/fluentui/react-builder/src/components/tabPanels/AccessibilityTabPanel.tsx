@@ -17,7 +17,7 @@ export type AccessibilityTabPanelProps = {
   selectedComponent?: JSONTreeElement;
 };
 
-export const AccessibilityTabPanel: React.FunctionComponent<AccessibilityTabPanelProps> = (
+export const AccessibilityTabPanel: React.FunctionComponent<React.PropsWithChildren<AccessibilityTabPanelProps>> = (
   props: AccessibilityTabPanelProps,
 ) => {
   const currentChildren = props.jsonTree?.props?.children;

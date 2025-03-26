@@ -17,6 +17,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         unstable_layout="refresh"
         content="Hello"
         author="Robin Counts"
+        // @ts-expect-error React 18
         timestamp={{
           content: '10:15 PM',
           children: (Component, props) => (

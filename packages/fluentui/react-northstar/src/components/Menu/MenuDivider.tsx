@@ -134,6 +134,7 @@ MenuDivider.defaultProps = {
 
 MenuDivider.displayName = 'MenuDivider';
 
+// @ts-expect-error React 18
 MenuDivider.propTypes = {
   ...commonPropTypes.createCommon(),
   primary: PropTypes.bool,

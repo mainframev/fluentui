@@ -158,6 +158,7 @@ SplitButtonToggle.defaultProps = {
 
 SplitButtonToggle.displayName = 'SplitButtonToggle';
 
+// @ts-expect-error React 18
 SplitButtonToggle.propTypes = {
   ...commonPropTypes.createCommon({}),
   disabled: PropTypes.bool,

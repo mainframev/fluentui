@@ -7,7 +7,7 @@ import { TelemetryDataTotals } from './useTelemetryData';
 
 export type CellAlign = 'left' | 'right' | 'center';
 
-const TelemetryTableFilter: React.FC<FilterProps<{}> & { column: UseFiltersColumnProps<{}> }> = ({ column }) => {
+const TelemetryTableFilter: React.FC<React.PropsWithChildren<FilterProps<{}> & { column: UseFiltersColumnProps<{}> }>> = ({ column }) => {
   const { filterValue, setFilter } = column;
 
   return (
@@ -20,14 +20,14 @@ const TelemetryTableFilter: React.FC<FilterProps<{}> & { column: UseFiltersColum
   );
 };
 
-const TelemetryTableRoundingCell: React.FC<CellProps<{}>> = ({ value }) => <>{_.round(value, 2).toFixed(2)}</>;
+const TelemetryTableRoundingCell: React.FC<React.PropsWithChildren<CellProps<{}>>> = ({ value }) => <>{_.round(value, 2).toFixed(2)}</>;
 
-const TelemetryTableRoundingFooter: React.FC<HeaderProps<{}> & { totals: TelemetryDataTotals }> = ({
+const TelemetryTableRoundingFooter: React.FC<React.PropsWithChildren<HeaderProps<{}> & { totals: TelemetryDataTotals }>> = ({
   column,
   totals,
 }) => <>{_.round(totals[column.id as keyof TelemetryDataTotals], 2).toFixed(2)}</>;
 
-const TelemetryTableSumFooter: React.FC<HeaderProps<{}> & { totals: TelemetryDataTotals }> = ({ column, totals }) => (
+const TelemetryTableSumFooter: React.FC<React.PropsWithChildren<HeaderProps<{}> & { totals: TelemetryDataTotals }>> = ({ column, totals }) => (
   <>{totals[column.id as keyof TelemetryDataTotals]}</>
 );
 

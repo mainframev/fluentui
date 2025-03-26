@@ -125,6 +125,7 @@ export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentPro
 
 TooltipContent.displayName = 'TooltipContent';
 
+// @ts-expect-error React 18
 TooltipContent.propTypes = {
   ...commonPropTypes.createCommon(),
   placement: PropTypes.oneOf<PopperJsPlacement>([

@@ -119,7 +119,7 @@ export const pillClassName = 'ui-pill';
 /**
  * Pills should be used when representing an input, as a way to filter content, or to represent an attribute.
  */
-export const Pill = React.forwardRef<HTMLSpanElement, PillProps>((props, ref) => {
+export const Pill = React.forwardRef<HTMLSpanElement, React.PropsWithChildren<PillProps>>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Pill.displayName, context.telemetry);
   setStart();

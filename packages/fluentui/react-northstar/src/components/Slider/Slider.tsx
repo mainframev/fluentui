@@ -275,6 +275,7 @@ Slider.defaultProps = {
   min: 0,
   step: 1,
 };
+// @ts-expect-error React 18
 Slider.propTypes = {
   ...commonPropTypes.createCommon({ content: false }),
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

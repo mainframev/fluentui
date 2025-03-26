@@ -200,6 +200,7 @@ Checkbox.defaultProps = {
   indicator: {},
   labelPosition: 'end',
 };
+// @ts-expect-error React 18
 Checkbox.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

@@ -15,7 +15,7 @@ import { runAxe } from '../hooks/runAxe';
 
 const HEADER_HEIGHT = '3rem';
 
-export const Designer: React.FunctionComponent = () => {
+export const Designer: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   debug('render');
 
   const dragAndDropData = React.useRef<{

@@ -23,4 +23,5 @@ export const DividerContent = compose<
   overrideStyles: true,
 });
 
+// @ts-expect-error React 18
 DividerContent.propTypes = commonPropTypes.createCommon();

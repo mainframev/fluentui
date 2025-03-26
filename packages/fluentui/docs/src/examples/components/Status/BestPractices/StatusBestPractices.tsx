@@ -7,7 +7,7 @@ const doList = [
   'The `title` attribute has to be provided on status component. Then reader narrate content of `title` attribute.',
 ];
 
-const StatusBestPractices: React.FunctionComponent<{}> = () => {
+const StatusBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

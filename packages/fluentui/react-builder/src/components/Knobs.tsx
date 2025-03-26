@@ -152,7 +152,7 @@ const isHandledType = (type: string): boolean => {
   return ['boolean', 'string', 'literal', 'React.ElementType', 'number'].includes(type);
 };
 
-export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
+export const Knobs: React.FunctionComponent<React.PropsWithChildren<DesignKnobProps>> = ({
   elementAccessibilityErrors,
   info,
   jsonTreeElement,
@@ -234,7 +234,6 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
               />
             );
           })}
-
       {menuActivePane === 'accessibility' &&
         A11YPROPS.filter(prop => !/default[A-Z]/.test(prop.name)).map(prop => {
           const { types, options, value } = getValues(prop);

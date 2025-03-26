@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, List, Image } from '@fluentui/react-northstar';
 
-const SelectableListControlledExample: React.FunctionComponent = () => {
+const SelectableListControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
 
   const items = [

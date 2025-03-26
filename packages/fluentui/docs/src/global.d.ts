@@ -16,7 +16,7 @@ declare module '*.mdx' {
   export const meta: {
     title: string;
   };
-  const value: React.ComponentType;
+  const value: React.ComponentType<React.PropsWithChildren<unknown>>;
 
   export default value;
 }

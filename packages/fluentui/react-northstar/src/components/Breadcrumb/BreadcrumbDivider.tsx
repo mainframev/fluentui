@@ -84,4 +84,5 @@ BreadcrumbDivider.defaultProps = {
   accessibility: breadcrumbDividerBehavior,
 };
 
+// @ts-expect-error React 18
 BreadcrumbDivider.propTypes = commonPropTypes.createCommon();

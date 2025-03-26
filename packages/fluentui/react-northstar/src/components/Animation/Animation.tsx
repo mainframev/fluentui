@@ -175,7 +175,10 @@ export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props
   }
 
   const isChildrenFunction = typeof children === 'function';
-  const child = childrenExist(children) && !isChildrenFunction && (React.Children.only(children) as React.ReactElement);
+  const child =
+    childrenExist(children as React.ReactNode) &&
+    !isChildrenFunction &&
+    (React.Children.only(children) as React.ReactElement);
 
   const element = (
     <Transition
@@ -224,6 +227,8 @@ Animation.propTypes = {
     content: false,
     children: false,
   }),
+
+  // @ts-expect-error React 18
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
   name: PropTypes.string,
   delay: PropTypes.string,

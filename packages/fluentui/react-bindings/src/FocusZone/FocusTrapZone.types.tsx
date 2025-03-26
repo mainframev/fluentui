@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface FocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
   /** @docSiteIgnore */
-  as?: React.ReactType;
+  as?: React.ElementType;
 
   /**
    * Additional CSS class name(s) to apply.

@@ -589,6 +589,7 @@ export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inpu
 
 MenuItem.displayName = 'MenuItem';
 
+// @ts-expect-error React 18
 MenuItem.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',

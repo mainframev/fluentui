@@ -7,7 +7,7 @@ import * as React from 'react';
 /**
  * Displays a knob with the ability to switch between data `types`.
  */
-export const MultiTypeKnob: React.FunctionComponent<{
+export const MultiTypeKnob: React.FunctionComponent<React.PropsWithChildren<{
   label: string;
   types: ('boolean' | 'number' | 'string' | 'literal')[];
   value: any;
@@ -16,7 +16,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
   onRemoveProp: () => void;
   options: string[];
   required: boolean;
-}> = ({ label, types, value, onChange, onPropUpdate, onRemoveProp, options, required }) => {
+}>> = ({ label, types, value, onChange, onPropUpdate, onRemoveProp, options, required }) => {
   const defaultType = types[0];
   const [type, setType] = React.useState(defaultType);
 

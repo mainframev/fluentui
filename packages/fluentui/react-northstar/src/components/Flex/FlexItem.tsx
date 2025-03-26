@@ -123,6 +123,7 @@ FlexItem.propTypes = {
     accessibility: false,
     content: false,
   }),
+  // @ts-expect-error React 18
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 
   align: PropTypes.oneOf(['auto', 'start', 'end', 'center', 'baseline', 'stretch']),

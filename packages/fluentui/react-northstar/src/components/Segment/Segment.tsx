@@ -96,6 +96,7 @@ export const Segment = React.forwardRef<HTMLDivElement, SegmentProps>((props, re
 
 Segment.displayName = 'Segment';
 
+// @ts-expect-error React 18
 Segment.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',

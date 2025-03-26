@@ -35,7 +35,7 @@ type ComponentControlsProps = {
   titleForAriaLabel?: string;
 };
 
-const ComponentControls: React.FC<ComponentControlsProps> = props => {
+const ComponentControls: React.FC<React.PropsWithChildren<ComponentControlsProps>> = props => {
   const {
     anchorName,
     exampleCode,

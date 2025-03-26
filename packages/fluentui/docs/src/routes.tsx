@@ -72,7 +72,7 @@ const _Builder = React.lazy(async () => ({
   default: (await import(/* webpackChunkName: "builder" */ '@fluentui/react-builder')).Builder,
 }));
 
-const Builder: React.FunctionComponent = () => (
+const Builder: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <LazyWithBabel>
     <_Builder />
   </LazyWithBabel>

@@ -10,6 +10,7 @@ export default () => (
       title="Editable Area with Dropdown"
       description="Type text into editable area below. Use the '@' key to mention people."
     >
+      {/* @ts-expect-error TODO */}
       <MentionsEditor children={props => <MentionsDropdown {...props} />} />
     </ComponentPrototype>
   </PrototypeSection>

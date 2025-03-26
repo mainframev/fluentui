@@ -118,6 +118,7 @@ export const Header = React.forwardRef<HTMLHeadingElement, HeaderProps>((props, 
 
 Header.displayName = 'Header';
 
+// @ts-expect-error React 18
 Header.propTypes = {
   ...commonPropTypes.createCommon({ color: true }),
   description: customPropTypes.itemShorthand,

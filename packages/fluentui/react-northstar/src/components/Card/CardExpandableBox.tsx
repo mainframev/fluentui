@@ -26,4 +26,5 @@ export const CardExpandableBox = compose<
   },
 });
 
+// @ts-expect-error React 18
 CardExpandableBox.propTypes = commonPropTypes.createCommon();

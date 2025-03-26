@@ -29,4 +29,5 @@ DatepickerCalendarHeaderCell.defaultProps = {
   as: 'th',
 };
 
+// @ts-expect-error React 18
 DatepickerCalendarHeaderCell.propTypes = commonPropTypes.createCommon();

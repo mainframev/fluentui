@@ -99,6 +99,7 @@ PillIcon.defaultProps = {
 
 PillIcon.displayName = 'PillIcon';
 
+// @ts-expect-error React 18
 PillIcon.propTypes = {
   ...commonPropTypes.createCommon(),
   selectable: PropTypes.bool,

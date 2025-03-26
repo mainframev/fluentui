@@ -36,6 +36,7 @@ export const FormRadioGroup = compose<
   }),
 });
 
+// @ts-expect-error React 18
 FormRadioGroup.propTypes = commonPropTypes.createCommon({
   children: false,
   content: false,

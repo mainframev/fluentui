@@ -13,7 +13,7 @@ export type KnobName = string;
 
 export type KnobSet = Record<KnobName, KnobDefinition>;
 
-export type KnobComponent<P = KnobComponentProps> = React.FunctionComponent<P>;
+export type KnobComponent<P = KnobComponentProps> = React.FunctionComponent<React.PropsWithChildren<P>>;
 
 export type KnobComponents = {
   KnobField: KnobComponent;
@@ -26,7 +26,7 @@ export type KnobComponents = {
   KnobSelect: KnobComponent;
   KnobString: KnobComponent;
 
-  LogInspector: React.FunctionComponent<LogInspectorProps>;
+  LogInspector: React.FunctionComponent<React.PropsWithChildren<LogInspectorProps>>;
 };
 
 export type KnobComponentProps = KnobDefinition & {

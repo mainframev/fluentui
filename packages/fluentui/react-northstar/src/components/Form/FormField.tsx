@@ -188,6 +188,7 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props
 
 FormField.displayName = 'FormField';
 
+// @ts-expect-error React 18
 FormField.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

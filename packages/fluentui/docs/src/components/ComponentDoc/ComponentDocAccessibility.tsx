@@ -81,7 +81,7 @@ function getAllAvailableBehaviors(
   return _.union(behaviorVariantsWithoutDefault, otherAvailableVariants);
 }
 
-export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({ info }) => {
+export const ComponentDocAccessibility: React.FC<React.PropsWithChildren<ComponentDocAccessibility>> = ({ info }) => {
   const defaultBehaviorName = getDefaultBehaviorName(info);
   const defaultBehaviorFileName = `${_.camelCase(defaultBehaviorName)}.ts`;
   const description = getDescription(info);

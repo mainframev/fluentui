@@ -7,7 +7,7 @@ import { toolbarItems } from './mockData';
 import classNames from './classNames';
 import { SendIcon } from '@fluentui/react-icons-northstar';
 
-const ThreadReplyEditor: React.FC = () => {
+const ThreadReplyEditor: React.FC<React.PropsWithChildren<unknown>> = () => {
   const buttonRef = React.useRef(null);
   const inputRef = React.useRef(null);
   const [editMode, setEditMode] = React.useState(false);

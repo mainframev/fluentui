@@ -6,7 +6,7 @@ type EditorToolbarTableProps = {
   onClick: () => void;
 };
 
-const EditorToolbarTable: React.FC<EditorToolbarTableProps> = props => (
+const EditorToolbarTable: React.FC<React.PropsWithChildren<EditorToolbarTableProps>> = props => (
   <Grid columns={3}>
     {_.times(9, i => (
       <button

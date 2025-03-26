@@ -40,12 +40,14 @@ export const handlesAccessibility = (
   const { requiredProps = {}, defaultRootRole, partSelector = '', usesWrapperSlot = false } = options;
 
   test('gets default accessibility when no override used', () => {
+    // @ts-expect-error enzyme < 18
     const rendered = mountWithProviderAndGetComponent(Component, <Component {...requiredProps} />);
     const role = getRenderedAttribute(rendered, 'role', partSelector);
     expect(role).toBe(defaultRootRole);
   });
 
   test('does not get role when overrides to null', () => {
+    // @ts-expect-error enzyme < 18
     const rendered = mountWithProviderAndGetComponent(Component, <Component {...requiredProps} accessibility={null} />);
     const role = getRenderedAttribute(rendered, 'role', partSelector);
     expect(role).toBeFalsy();
@@ -60,6 +62,8 @@ export const handlesAccessibility = (
       ) : (
         <Component {...requiredProps} accessibility={TestBehavior} />
       );
+
+      // @ts-expect-error enzyme < 18
       const rendered = mountWithProviderAndGetComponent(Component, element);
       const role = getRenderedAttribute(rendered, 'role', partSelector);
       expect(role).toBe(testRole);
@@ -72,6 +76,8 @@ export const handlesAccessibility = (
       ) : (
         <Component {...requiredProps} role={testRole} />
       );
+
+      // @ts-expect-error enzyme < 18
       const rendered = mountWithProviderAndGetComponent(Component, element);
       const role = getRenderedAttribute(rendered, 'role', partSelector);
       expect(role).toBe(testRole);
@@ -84,6 +90,8 @@ export const handlesAccessibility = (
       ) : (
         <Component {...requiredProps} accessibility={TestBehavior} role={testRole} />
       );
+
+      // @ts-expect-error enzyme < 18
       const rendered = mountWithProviderAndGetComponent(Component, element);
       const role = getRenderedAttribute(rendered, 'role', partSelector);
       expect(role).toBe(testRole);

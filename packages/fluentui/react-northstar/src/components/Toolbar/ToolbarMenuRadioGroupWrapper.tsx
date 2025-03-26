@@ -30,4 +30,6 @@ ToolbarMenuRadioGroupWrapper.defaultProps = {
   as: 'li',
   accessibility: toolbarMenuRadioGroupWrapperBehavior,
 };
+
+// @ts-expect-error React 18
 ToolbarMenuRadioGroupWrapper.propTypes = commonPropTypes.createCommon();

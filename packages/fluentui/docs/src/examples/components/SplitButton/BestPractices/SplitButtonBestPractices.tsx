@@ -9,7 +9,7 @@ const doList = [
 
 const dontList = [];
 
-const SplitButtonBestPractices: React.FunctionComponent<{}> = () => {
+const SplitButtonBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} dontList={dontList} />;
 };
 

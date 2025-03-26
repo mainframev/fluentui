@@ -182,6 +182,7 @@ CarouselPaddle.defaultProps = {
 
 CarouselPaddle.displayName = 'CarouselPaddle';
 
+// @ts-expect-error React 18
 CarouselPaddle.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',

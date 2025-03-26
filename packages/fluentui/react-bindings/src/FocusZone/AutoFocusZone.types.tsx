@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface AutoFocusZoneProps extends React.HTMLAttributes<HTMLDivElement> {
   /** @docSiteIgnore */
-  as?: React.ReactType;
+  as?: React.ElementType;
 
   /**
    * Indicates the selector for first focusable item. By default, the first tabbable element will get focus.

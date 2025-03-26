@@ -205,7 +205,7 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
   ],
 };
 
-const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
+const CustomToolbar: React.FunctionComponent<React.PropsWithChildren<CustomToolbarProps>> = props => {
   const { layout = 'standard' } = props;
 
   return <Toolbar variables={{ isCt: true }} items={layouts[layout](props)} />;

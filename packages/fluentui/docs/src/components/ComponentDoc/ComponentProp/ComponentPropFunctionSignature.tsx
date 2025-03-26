@@ -30,7 +30,7 @@ const rowStyle: any = {
 
 const getTagType = tag => (tag.type ? (tag.type.type === 'AllLiteral' ? 'any' : tag.type.name) : '');
 
-const ComponentPropFunctionSignature: React.SFC<ComponentPropFunctionProps> = ({ name, tags }) => {
+const ComponentPropFunctionSignature: React.FC<React.PropsWithChildren<ComponentPropFunctionProps>> = ({ name, tags }) => {
   const params = _.filter(tags, { title: 'param' });
   const returns = _.find(tags, { title: 'returns' });
 

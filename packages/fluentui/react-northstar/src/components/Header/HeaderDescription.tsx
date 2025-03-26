@@ -86,6 +86,7 @@ export const HeaderDescription = React.forwardRef<HTMLParagraphElement, HeaderDe
 
 HeaderDescription.displayName = 'HeaderDescription';
 
+// @ts-expect-error React 18
 HeaderDescription.propTypes = {
   ...commonPropTypes.createCommon({ color: true }),
 };

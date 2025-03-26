@@ -31,4 +31,5 @@ export const ToolbarMenuItemActiveIndicator = compose<
 ToolbarMenuItemActiveIndicator.defaultProps = {
   as: 'span',
 };
+// @ts-expect-error React 18
 ToolbarMenuItemActiveIndicator.propTypes = commonPropTypes.createCommon();

@@ -13,7 +13,7 @@ const inputItems = [
   'Robin Counts',
 ];
 
-const DropdownExampleRender: React.FC = () => (
+const DropdownExampleRender: React.FC<React.PropsWithChildren<unknown>> = () => (
   <Dropdown
     multiple
     search

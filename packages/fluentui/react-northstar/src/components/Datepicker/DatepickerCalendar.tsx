@@ -389,16 +389,19 @@ export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCal
           },
         }),
       })}
+      {/* @ts-expect-error TODO */}
       {createShorthand(DatepickerCalendarGrid, calendarGrid, {
         defaultProps: () =>
           getA11yProps('calendarGrid', {
             content: (
               <>
                 <thead>
+                  {/* @ts-expect-error TODO */}
                   {createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
                     defaultProps: () =>
                       getA11yProps('calendarGridRow', {
                         children: _.times(DAYS_IN_WEEK, dayNumber =>
+                          // @ts-expect-error TODO
                           createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
                             defaultProps: () =>
                               getA11yProps('calendarHeaderCell', {
@@ -413,6 +416,7 @@ export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCal
                 </thead>
                 <tbody>
                   {_.map(visibleGrid, week =>
+                    // @ts-expect-error TODO
                     createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
                       defaultProps: () =>
                         getA11yProps('calendarGridRow', {

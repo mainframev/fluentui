@@ -3,7 +3,7 @@ import { Button, Dialog } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
-const DialogExampleHeaderAction: React.FC = () => {
+const DialogExampleHeaderAction: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [open, setOpen] = useBooleanKnob({ name: 'open' });
   return (
     <Dialog

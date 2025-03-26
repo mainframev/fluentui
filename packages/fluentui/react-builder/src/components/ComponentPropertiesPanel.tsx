@@ -20,7 +20,7 @@ export type ComponentPropertiesPanelProps = {
   selectedJSONTreeElement: JSONTreeElement;
 };
 
-export const ComponentPropertiesPanel: React.FunctionComponent<ComponentPropertiesPanelProps> = (
+export const ComponentPropertiesPanel: React.FunctionComponent<React.PropsWithChildren<ComponentPropertiesPanelProps>> = (
   props: ComponentPropertiesPanelProps,
 ) => {
   return (

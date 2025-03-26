@@ -45,6 +45,7 @@ export const ChatMessageContent = compose<
   shorthandConfig: { mappedProp: 'content' },
 });
 
+// @ts-expect-error React 18
 ChatMessageContent.propTypes = {
   ...commonPropTypes.createCommon(),
   badgePosition: PropTypes.oneOf(['start', 'end']),

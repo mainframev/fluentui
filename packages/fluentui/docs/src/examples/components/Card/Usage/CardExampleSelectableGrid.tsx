@@ -21,7 +21,7 @@ type SelectableCardProps = {
   onClick?: (e: React.SyntheticEvent) => void;
 };
 
-const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected, onClick, ...rest }) => {
+const SelectableCard: React.FC<React.PropsWithChildren<SelectableCardProps>> = ({ title, index, selected, onClick, ...rest }) => {
   const selectedMessageId = `selectedMessageId${index}`;
   const selectedMessage = 'selected';
   const notSelectedMessage = 'not selected';

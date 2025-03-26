@@ -125,6 +125,7 @@ export const Reaction = React.forwardRef<HTMLSpanElement, ReactionProps>((props,
 
 Reaction.displayName = 'Reaction';
 
+// @ts-expect-error React 18
 Reaction.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',

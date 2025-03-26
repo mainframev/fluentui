@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Dialog, Flex, FlexItem } from '@fluentui/react-northstar';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
-const DialogExampleZoomContent: React.FC = () => (
+const DialogExampleZoomContent: React.FC<React.PropsWithChildren<unknown>> = () => (
   <Dialog
     cancelButton="Cancel"
     confirmButton="Confirm"

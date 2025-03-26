@@ -36,7 +36,7 @@ const formatXAxis = val => {
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 };
 
-const Chart: React.FC<ChartProps> = ({ perfData, yAxisLabel, group, Tooltip, dataSeries }) => {
+const Chart: React.FC<React.PropsWithChildren<ChartProps>> = ({ perfData, yAxisLabel, group, Tooltip, dataSeries }) => {
   const availableCharts: string[] = perfData
     .reduce((acc, next) => {
       return Array.from(new Set([...acc, ...Object.keys(next[group])]));

@@ -260,6 +260,8 @@ Provider.propTypes = {
     enableStylesCaching: PropTypes.bool,
     enableVariablesCaching: PropTypes.bool,
   }),
+
+  // @ts-expect-error React 18
   children: PropTypes.node.isRequired,
   overwrite: PropTypes.bool,
   target: PropTypes.object as PropTypes.Validator<Document>,

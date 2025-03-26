@@ -38,7 +38,7 @@ export type CanvasProps = {
   selectedComponentAccessibilityErrors?: AccessibilityError[];
 };
 
-export const Canvas: React.FunctionComponent<CanvasProps> = ({
+export const Canvas: React.FunctionComponent<React.PropsWithChildren<CanvasProps>> = ({
   draggingElement,
   isExpanding,
   isSelecting,
