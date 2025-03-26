@@ -8,7 +8,7 @@ export type NavBarItemProps = {
   onClickHandler: () => void;
 };
 
-export const NavBarItem: React.FunctionComponent<NavBarItemProps> = ({ title, icon, isSelected, onClickHandler }) => {
+export const NavBarItem: React.FunctionComponent<React.PropsWithChildren<NavBarItemProps>> = ({ title, icon, isSelected, onClickHandler }) => {
   return (
     <Box
       styles={({ theme }) => ({

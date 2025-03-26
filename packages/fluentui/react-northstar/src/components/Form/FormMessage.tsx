@@ -31,4 +31,5 @@ export const FormMessage = compose<'span', FormMessageProps, FormMessageStylesPr
 FormMessage.defaultProps = {
   as: 'span',
 };
+// @ts-expect-error React 18
 FormMessage.propTypes = commonPropTypes.createCommon();

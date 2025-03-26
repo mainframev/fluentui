@@ -58,11 +58,9 @@ const stateReducer = (state: MentionsEditorState, action: MentionsEditorAction) 
   }
 };
 
-const MentionsEditor: React.FunctionComponent<
-  MentionsContainerProps & {
-    children: (props: MentionsContainerProps) => React.ReactNode;
-  }
-> = props => {
+const MentionsEditor: React.FunctionComponent<React.PropsWithChildren<MentionsContainerProps & {
+  children: (props: MentionsContainerProps) => React.ReactNode;
+}>> = props => {
   const { children, ...rest } = props;
   const contendEditableRef = React.useRef(null);
   const [state, dispatch] = React.useReducer(stateReducer, {
@@ -130,6 +128,7 @@ const MentionsEditor: React.FunctionComponent<
   return (
     <>
       <div contentEditable ref={contendEditableRef} onInput={handleEditorKeyChange} style={editorStyle} />
+
       <PortalAtCursorPosition open={state.open}>
         {children({
           items: atMentionItems,

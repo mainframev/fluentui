@@ -4,7 +4,7 @@ import ComponentBestPractices from '../../../../components/ComponentBestPractice
 
 const doList = ['Provide label to the `Tree` component using `aria-label` or `aria-labelledby` prop.'];
 
-const TreeBestPractices: React.FunctionComponent<{}> = () => {
+const TreeBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

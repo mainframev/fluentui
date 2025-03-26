@@ -29,6 +29,7 @@ class ReactionPopup extends React.Component<ReactionProps, { open: boolean }> {
       <Popup
         autoFocus
         trigger={<Reaction as="button" aria-haspopup="true" {...this.props} aria-label={getAriaLabel(this.props)} />}
+        // @ts-expect-error React 18 TODO
         content={{
           children: () => (
             <Menu

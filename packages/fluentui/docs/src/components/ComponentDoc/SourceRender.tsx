@@ -12,7 +12,7 @@ type SourceRenderProps = {
   onRender?: (error: Error | null) => void;
 };
 
-export const SourceRender: React.FC<SourceRenderProps> = props => (
+export const SourceRender: React.FC<React.PropsWithChildren<SourceRenderProps>> = props => (
   <LazyWithBabel>
     <_SourceRender {...props} />
   </LazyWithBabel>

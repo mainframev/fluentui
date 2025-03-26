@@ -84,6 +84,7 @@ function VirtualizedTable(props: VirtualizedTableProps) {
           {({ width }) => {
             return height ? (
               <Table accessibility={gridNestedBehavior} aria-rowcount={itemsCount} aria-label={props.label}>
+                {/* @ts-expect-error React 18 */}
                 <div ref={el => registerChild(el)} {...accessibilityWrapperProperties}>
                   <ReactVirtualizedList
                     autoHeight

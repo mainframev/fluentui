@@ -11,7 +11,7 @@ import cx from 'classnames';
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
 
-const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
+const TestProvider = (props: React.PropsWithChildren<ThemeInput>) => {
   const value: ProviderContextPrepared = {
     disableAnimations: false,
     renderer: {
@@ -46,7 +46,7 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
 type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonElement>;
 type BaseComponentStylesProps = { color: string | undefined; open: boolean };
 
-const BaseComponent: React.FC<BaseComponentProps> = compose<
+const BaseComponent: React.FC<React.PropsWithChildren<BaseComponentProps>> = compose<
   'button',
   BaseComponentProps,
   BaseComponentStylesProps,
@@ -116,7 +116,7 @@ type BaseComponentWithSlotsProps = {
 } & React.HTMLAttributes<HTMLButtonElement>;
 type BaseComponentWithSlotsStylesProps = {};
 
-const BaseComponentWithSlots: React.FC<BaseComponentProps> = compose<
+const BaseComponentWithSlots: React.FC<React.PropsWithChildren<BaseComponentProps>> = compose<
   'button',
   BaseComponentWithSlotsProps,
   BaseComponentWithSlotsStylesProps,

@@ -7,6 +7,7 @@ import * as React from 'react';
 export const EmptyThemeProvider: React.FunctionComponent<{
   disableAnimations?: boolean;
   telemetry?: Telemetry;
+  children?: React.ReactNode;
   renderer?: Renderer;
   theme?: ThemePrepared;
   rtl?: boolean;
@@ -48,6 +49,7 @@ export const mountWithProvider = <C extends React.Component, P = C['props'], S =
   options?: MountRendererProps,
 ) => {
   return mount(node, {
+    // @ts-expect-error enzyme types <= 18
     wrappingComponent: EmptyThemeProvider,
     ...options,
   });

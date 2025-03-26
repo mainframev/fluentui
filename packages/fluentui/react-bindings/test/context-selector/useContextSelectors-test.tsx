@@ -8,7 +8,7 @@ const TestContext = createContext<{ index: number; value: string }>({
   value: '',
 });
 
-const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props => {
+const TestComponent: React.FC<React.PropsWithChildren<{ index: number; onUpdate?: () => void }>> = props => {
   const context = useContextSelectors(TestContext, {
     active: v => v.index === props.index,
     value: v => v.value,
@@ -21,7 +21,7 @@ const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props 
   return <div className="test-component" data-active={context.active} data-value={context.value} />;
 };
 
-const TestProvider: React.FC<{ value: any; children: any }> = props => {
+const TestProvider: React.FC<React.PropsWithChildren<{ value: any; children: any }>> = props => {
   const [index, setIndex] = React.useState<number>(+props.value.index);
   const [value, setValue] = React.useState<string>(props.value.value);
 

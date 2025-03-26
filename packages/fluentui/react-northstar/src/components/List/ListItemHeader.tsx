@@ -33,4 +33,5 @@ export const ListItemHeader = compose<
   },
 });
 
+// @ts-expect-error React 18
 ListItemHeader.propTypes = commonPropTypes.createCommon();

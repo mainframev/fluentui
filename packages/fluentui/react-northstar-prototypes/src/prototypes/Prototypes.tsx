@@ -12,7 +12,7 @@ interface ComponentPrototypeProps extends PrototypeSectionProps {
   description?: React.ReactNode;
 }
 
-export const PrototypeSection: React.FunctionComponent<PrototypeSectionProps> = ({ children, styles, title }) => (
+export const PrototypeSection: React.FunctionComponent<React.PropsWithChildren<PrototypeSectionProps>> = ({ children, styles, title }) => (
   <Box styles={{ margin: '20px', ...styles }}>
     <DocumentTitle title={`Fluent UI - ${title || 'Prototype'}`} />
     <Header as="h1">{title}</Header>
@@ -20,7 +20,7 @@ export const PrototypeSection: React.FunctionComponent<PrototypeSectionProps> = 
   </Box>
 );
 
-export const ComponentPrototype: React.FunctionComponent<ComponentPrototypeProps> = ({
+export const ComponentPrototype: React.FunctionComponent<React.PropsWithChildren<ComponentPrototypeProps>> = ({
   children,
   description,
   styles,

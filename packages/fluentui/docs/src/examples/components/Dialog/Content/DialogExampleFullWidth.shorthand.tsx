@@ -1,7 +1,7 @@
 import { Button, Dialog, Input } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const DialogExampleFullWidth: React.FC = () => (
+const DialogExampleFullWidth: React.FC<React.PropsWithChildren<unknown>> = () => (
   <Dialog
     cancelButton="Cancel"
     confirmButton="Confirm"

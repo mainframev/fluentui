@@ -33,7 +33,7 @@ const themes = {
   teamsDarkV2: teamsDarkV2Theme,
 };
 
-const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
+const ExternalExampleLayout: React.FC<React.PropsWithChildren<ExternalExampleLayoutProps>> = props => {
   const { exampleName, rtl } = props.match.params;
 
   const [renderId, setRenderId] = React.useState<number>(0);

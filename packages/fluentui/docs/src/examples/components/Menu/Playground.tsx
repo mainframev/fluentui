@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import useAccessibilityKnob from '../../../components/ComponentDoc/useAccessibilityKnob';
 
-const MenuPlayground: React.FunctionComponent = () => {
+const MenuPlayground: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const accessibility = useAccessibilityKnob('Menu');
   const [pointing] = useBooleanKnob({ name: 'pointing' });
   const [primary] = useBooleanKnob({ name: 'primary' });

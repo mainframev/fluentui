@@ -42,6 +42,7 @@ export const FormTextArea = compose<
   }),
 });
 
+// @ts-expect-error React 18
 FormTextArea.propTypes = commonPropTypes.createCommon({
   children: false,
   content: false,

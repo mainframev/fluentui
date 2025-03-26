@@ -86,5 +86,6 @@ export const Box = compose<'div', BoxProps, BoxStylesProps, {}, {}>(
   },
 ) as ComponentWithAs<'div', BoxProps> & { create: ShorthandFactory<BoxProps> };
 
+// @ts-expect-error React 18
 Box.propTypes = commonPropTypes.createCommon();
 Box.create = createShorthandFactory({ Component: Box });

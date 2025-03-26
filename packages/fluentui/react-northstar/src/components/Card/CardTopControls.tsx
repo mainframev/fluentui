@@ -68,6 +68,7 @@ export const CardTopControls = React.forwardRef<HTMLDivElement, CardTopControlsP
 
 CardTopControls.displayName = 'CardTopControls';
 
+// @ts-expect-error React 18
 CardTopControls.propTypes = {
   ...commonPropTypes.createCommon(),
 };

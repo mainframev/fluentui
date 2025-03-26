@@ -20,7 +20,7 @@ export type Renderer = {
   renderFont: RendererRenderFont;
   renderRule: RendererRenderRule;
 
-  Provider: React.FC<{ target: Document | undefined }>;
+  Provider: React.FC<React.PropsWithChildren<{ target: Document | undefined }>>;
 };
 
 export type CreateRenderer = (target?: Document) => Renderer;

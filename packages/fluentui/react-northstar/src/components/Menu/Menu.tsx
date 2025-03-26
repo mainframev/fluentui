@@ -363,6 +363,7 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
 
 Menu.displayName = 'Menu';
 
+// @ts-expect-error React 18
 Menu.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

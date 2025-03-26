@@ -3,7 +3,7 @@ import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 import FormValidateFormik from './Formik';
 import FormValidateHooks from './FormHooks';
 
-const FormValidationPrototype: React.FC = () => {
+const FormValidationPrototype: React.FC<React.PropsWithChildren<unknown>> = () => {
   return (
     <>
       <PrototypeSection title="Formik">

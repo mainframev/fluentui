@@ -31,11 +31,9 @@ import {
 type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>;
 type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: keyof ToolbarMenuItemShorthandKinds }>;
 
-const FrameRenderer: React.FC<
-  React.IframeHTMLAttributes<HTMLIFrameElement> & {
-    children: (externalDocument: Document) => React.ReactElement;
-  }
-> = props => {
+const FrameRenderer: React.FC<React.PropsWithChildren<React.IframeHTMLAttributes<HTMLIFrameElement> & {
+  children: (externalDocument: Document) => React.ReactElement;
+}>> = props => {
   const { children, ...rest } = props;
   const [node, setNode] = React.useState<HTMLIFrameElement>();
 
@@ -57,7 +55,7 @@ const FrameRenderer: React.FC<
   );
 };
 
-const EditorToolbar: React.FC<Pick<ToolbarProps, 'overflowSentinel'>> = ({ overflowSentinel }) => {
+const EditorToolbar: React.FC<React.PropsWithChildren<Pick<ToolbarProps, 'overflowSentinel'>>> = ({ overflowSentinel }) => {
   const [overflowOpen, setOverflowOpen] = React.useState<boolean>(false);
   const overflowIndex = React.useRef<number>();
 
@@ -141,7 +139,7 @@ const EditorToolbar: React.FC<Pick<ToolbarProps, 'overflowSentinel'>> = ({ overf
   );
 };
 
-const ToolbarExampleOverflowPositioningShorthand: React.FC<{ dir: 'ltr' | 'rtl' }> = ({ dir }) => (
+const ToolbarExampleOverflowPositioningShorthand: React.FC<React.PropsWithChildren<{ dir: 'ltr' | 'rtl' }>> = ({ dir }) => (
   <FrameRenderer
     frameBorder="0"
     width="300px"

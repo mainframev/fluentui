@@ -40,7 +40,7 @@ type TelemetryHeaderGroup = HeaderGroup &
     subgroup: 'styles' | 'timers';
   };
 
-export const TelemetryTable: React.FC<TelemetryTableProps> = props => {
+export const TelemetryTable: React.FC<React.PropsWithChildren<TelemetryTableProps>> = props => {
   const { expand, componentFilter, sort, onComponentFilterChange, onExpandChange, onSortChange, telemetry } = props;
 
   const [interval, setInterval] = React.useState(2000);

@@ -7,7 +7,7 @@ export interface PortalAtCursorPositionProps {
   open?: boolean;
 }
 
-export class PortalAtCursorPosition extends React.Component<PortalAtCursorPositionProps> {
+export class PortalAtCursorPosition extends React.Component<React.PropsWithChildren<PortalAtCursorPositionProps>> {
   mountNodeInstance: HTMLElement = null;
 
   static defaultProps = {

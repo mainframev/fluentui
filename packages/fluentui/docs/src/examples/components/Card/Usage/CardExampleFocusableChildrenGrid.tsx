@@ -63,7 +63,7 @@ const positions = [
   'Computer Specialist',
 ];
 
-const SampleCard: React.FC<SampleCardProps> = ({ index, ...unhandledProps }) => {
+const SampleCard: React.FC<React.PropsWithChildren<SampleCardProps>> = ({ index, ...unhandledProps }) => {
   return (
     <Card
       id={`card_${index}`}

@@ -321,6 +321,7 @@ export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((pro
 
 Accordion.displayName = 'Accordion';
 
+// @ts-expect-error React 18
 Accordion.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

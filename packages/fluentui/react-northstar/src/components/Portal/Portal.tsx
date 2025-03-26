@@ -83,7 +83,8 @@ export interface PortalProps extends ChildrenComponentProps, ContentComponentPro
  *
  * @deprecated Please use "Popup" or "Dialog" components instead.
  */
-export const Portal: React.FC<PortalProps> & FluentComponentStaticProps<PortalProps> = props => {
+export const Portal: React.FC<React.PropsWithChildren<PortalProps>> &
+  FluentComponentStaticProps<PortalProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Portal.displayName, context.telemetry);
   setStart();
@@ -182,6 +183,7 @@ Portal.propTypes = {
   onMount: PropTypes.func,
   onUnmount: PropTypes.func,
   open: PropTypes.bool,
+  // @ts-expect-error React 18
   trigger: PropTypes.element,
   triggerRef: customPropTypes.ref,
   triggerAccessibility: PropTypes.object,

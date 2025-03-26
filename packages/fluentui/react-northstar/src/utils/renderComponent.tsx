@@ -65,7 +65,7 @@ export const renderComponent = <P extends {}>(
 
   setStart();
 
-  const ElementType = getElementType(props) as React.ReactType<P>;
+  const ElementType = getElementType(props) as React.ElementType<P>;
   const unhandledProps = getUnhandledProps(handledProps, props);
   const stateAndProps = { ...state, ...props };
 

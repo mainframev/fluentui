@@ -172,6 +172,7 @@ export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) 
 
 Label.displayName = 'Label';
 
+// @ts-expect-error React 18
 Label.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
   circular: PropTypes.bool,

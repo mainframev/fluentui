@@ -1,4 +1,4 @@
-import { defaultComposeOptions, ComposeOptions, ComposePreparedOptions, Input } from './consts';
+import { defaultComposeOptions, ComposeOptions, ComposePreparedOptions, ComposeRenderFunction, Input } from './consts';
 import { computeDisplayNames } from './computeDisplayNames';
 
 export function mergeComposeOptions(
@@ -49,7 +49,7 @@ export function mergeComposeOptions(
       ? [...parentOptions.mapPropsToStylesPropsChain, inputOptions.mapPropsToStylesProps]
       : parentOptions.mapPropsToStylesPropsChain,
 
-    render: typeof input === 'function' ? input : parentOptions.render,
+    render: typeof input === 'function' ? (input as ComposeRenderFunction<'div', {}, {}>) : parentOptions.render,
 
     handledProps: [...parentOptions.handledProps, ...((inputOptions.handledProps as never[]) || ([] as never[]))],
 

@@ -47,7 +47,7 @@ export type BuilderProps = {
   state: DesignerState;
 };
 
-export const Builder: React.FunctionComponent<BuilderProps> = (props: BuilderProps) => {
+export const Builder: React.FunctionComponent<React.PropsWithChildren<BuilderProps>> = (props: BuilderProps) => {
   return (
     <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
       <NavigationPanel

@@ -7,7 +7,7 @@ const doList = [
   'Add textual representation to the `icon` slot if it only contains an icon (using `title` or `aria-label` props on the slot).',
 ];
 
-const ReactionBestPractices: React.FunctionComponent<{}> = () => {
+const ReactionBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

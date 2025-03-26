@@ -14,7 +14,7 @@ type ClickableCardProps = {
   index?: number;
 };
 
-const ClickableCard: React.FC<ClickableCardProps> = ({ index }) => {
+const ClickableCard: React.FC<React.PropsWithChildren<ClickableCardProps>> = ({ index }) => {
   const [clickCount, setClickCount] = React.useState(0);
   const updateClickCount = () => {
     setClickCount(count => count + 1);

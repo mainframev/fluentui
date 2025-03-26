@@ -10,7 +10,7 @@ import { highContrastThemeOverrides } from './highContrastThemeOverrides';
 
 import CustomToolbar, { CustomToolbarProps } from './CustomToolbar';
 
-const CustomToolbarPrototype: React.FunctionComponent = () => {
+const CustomToolbarPrototype: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [rtl] = useBooleanKnob({
     name: 'RTL',
     initialValue: false,

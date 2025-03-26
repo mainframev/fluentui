@@ -3,7 +3,7 @@ import { Grid } from '@fluentui/react-northstar';
 import ColorBox from './ColorBox';
 import { systemColors } from '../utils';
 
-const SystemColors: React.FC = () => {
+const SystemColors: React.FC<React.PropsWithChildren<unknown>> = () => {
   return (
     <Grid columns={2} variables={{ gridGap: '.5rem', padding: '.75rem' }}>
       {systemColors.map(color => (

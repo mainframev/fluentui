@@ -39,6 +39,7 @@ const menu = (uuid, handleAddComponent, handleDeleteComponent) => [
   { key: 'remove', content: 'Remove', onClick: () => handleDeleteComponent(uuid) },
 ];
 
+// @ts-expect-error React 18
 const jsonTreeToTreeItems: (
   tree: JSONTreeElement | string,
   selectedComponentId: string,
@@ -120,7 +121,7 @@ const jsonTreeToTreeItems: (
   };
 };
 
-export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
+export const ComponentTree: React.FunctionComponent<React.PropsWithChildren<ComponentTreeProps>> = ({
   tree,
   selectedComponent,
   onSelectComponent,

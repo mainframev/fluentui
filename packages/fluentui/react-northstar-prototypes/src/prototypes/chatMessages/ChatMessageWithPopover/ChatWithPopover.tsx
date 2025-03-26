@@ -13,6 +13,7 @@ import { Ref } from '@fluentui/react-component-ref';
 import { AcceptIcon, EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
+  // @ts-expect-error React 18 TODO
   {
     icon: <LikeIcon />,
     content: '1K',
@@ -20,6 +21,7 @@ const reactions: ShorthandCollection<ReactionProps> = [
     variables: { meReacting: true },
     children: (Component, props) => <ReactionPopup {...props} />,
   },
+  // @ts-expect-error React 18 TODO
   {
     icon: <EmojiIcon />,
     content: 2,
@@ -125,7 +127,7 @@ const ChatWithPopover = () => {
   );
 };
 
-const TeamsChatMessage: React.FC<ChatMessageProps> = (props: ChatMessageProps) => {
+const TeamsChatMessage: React.FC<React.PropsWithChildren<ChatMessageProps>> = (props: ChatMessageProps) => {
   const [showActionMenu, setShowActionMenu] = React.useState(false);
   const [forceShowActionMenu, setForceShowActionMenu] = React.useState(false);
   const [chatMessageElement, setChatMessageElement] = React.useState<HTMLElement>(null);
@@ -136,6 +138,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (props: ChatMessageProps) =
     <Ref innerRef={setChatMessageElement}>
       <Chat.Message
         {...props}
+        // @ts-expect-error React 18 TODO
         actionMenu={{
           children: (Component, props) => (
             <Popover

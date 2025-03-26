@@ -8,7 +8,7 @@ type MemoItemProps = {
   onRender: (index: number) => void;
 };
 
-const RenderLogger: React.FC<MemoItemProps & { 'data-id': number }> = props => {
+const RenderLogger: React.FC<React.PropsWithChildren<MemoItemProps & { 'data-id': number }>> = props => {
   const { 'data-id': id, onRender, ...rest } = props;
   onRender(id);
 

@@ -11,7 +11,7 @@ const InlineMarkdown = React.lazy(() => import('../InlineMarkdown'));
 
 type ComponentPropsRowProps = ComponentProp;
 
-const ComponentPropValue: React.FunctionComponent<ComponentPropType> = props => {
+const ComponentPropValue: React.FunctionComponent<React.PropsWithChildren<ComponentPropType>> = props => {
   const { name, parameters } = props;
 
   if (name === 'literal') return <span>enum</span>;
@@ -43,7 +43,7 @@ const ComponentPropValue: React.FunctionComponent<ComponentPropType> = props => 
   return <span>{name}</span>;
 };
 
-const ComponentPropsRow: React.FunctionComponent<ComponentPropsRowProps> = props => {
+const ComponentPropsRow: React.FunctionComponent<React.PropsWithChildren<ComponentPropsRowProps>> = props => {
   const { defaultValue, description, name, required, types } = props;
 
   const shorthand = types.some(type => type.name === 'ShorthandValue' || type.name === 'ShorthandCollection');

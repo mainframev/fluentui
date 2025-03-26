@@ -231,6 +231,7 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
 
 Attachment.create = createShorthandFactory({ Component: Attachment, mappedProp: 'header' });
 
+// @ts-expect-error React 18
 Attachment.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

@@ -35,7 +35,7 @@ export interface IFocusZone {
  */
 export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttributes<HTMLElement> {
   /** @docSiteIgnore */
-  as?: React.ReactType;
+  as?: React.ElementType;
   /**
    * Additional class name to provide on the root element, in addition to the ms-FocusZone class.
    */

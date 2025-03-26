@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-northstar';
 import { useCopyToClipboard } from '@fluentui/docs-components';
 
-export const GetShareableLink: React.FunctionComponent<{
+export const GetShareableLink: React.FunctionComponent<React.PropsWithChildren<{
   getShareableLink: () => string;
   style?: React.CSSProperties;
-}> = ({ getShareableLink, style }) => {
+}>> = ({ getShareableLink, style }) => {
   const [active, onCopy] = useCopyToClipboard(getShareableLink);
   return (
     <Button style={style} onClick={onCopy} disabled={active}>

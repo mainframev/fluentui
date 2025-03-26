@@ -398,6 +398,7 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
   Label: typeof InputLabel;
 };
 
+// @ts-expect-error React 18
 Input.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

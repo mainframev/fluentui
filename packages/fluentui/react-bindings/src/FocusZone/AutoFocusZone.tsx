@@ -25,7 +25,7 @@ export class AutoFocusZone extends React.Component<AutoFocusZoneProps> {
     this.findElementAndFocusAsync();
   }
 
-  render(): JSX.Element {
+  render(): React.JSX.Element {
     const unhandledProps = getUnhandledProps(AutoFocusZone.handledProps, this.props);
     const ElementType = getElementType(this.props);
 

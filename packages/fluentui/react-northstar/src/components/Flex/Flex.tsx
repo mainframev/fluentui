@@ -127,6 +127,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => 
 
 Flex.displayName = 'Flex';
 
+// @ts-expect-error React 18
 Flex.propTypes = {
   ...commonPropTypes.createCommon({
     accessibility: false,

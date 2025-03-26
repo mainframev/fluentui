@@ -27,4 +27,5 @@ export const ChatMessageHeader = compose<
   overrideStyles: true,
 });
 
+// @ts-expect-error React 18
 ChatMessageHeader.propTypes = commonPropTypes.createCommon();

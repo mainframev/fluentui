@@ -7,7 +7,7 @@ export type ErrorPanelProps = {
   elementAccessibilityErrors: AccessibilityError[];
 };
 
-export const ErrorPanel: React.FunctionComponent<ErrorPanelProps> = ({ elementAccessibilityErrors }) => {
+export const ErrorPanel: React.FunctionComponent<React.PropsWithChildren<ErrorPanelProps>> = ({ elementAccessibilityErrors }) => {
   const numberAccessibilityErrors = elementAccessibilityErrors.length;
   const uuid = elementAccessibilityErrors[0].elementUuid;
 

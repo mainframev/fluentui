@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Popup, Button, Divider, Text, Grid, Ref } from '@fluentui/react-northstar';
 import { QnaIcon } from '@fluentui/react-icons-northstar';
 
-const PopupCustomTargetExample: React.FC = () => {
+const PopupCustomTargetExample: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [textRef, setTextRef] = React.useState<HTMLSpanElement | null>(null);
 
   return (

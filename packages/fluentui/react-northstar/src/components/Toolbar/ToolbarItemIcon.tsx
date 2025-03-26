@@ -22,4 +22,5 @@ export const ToolbarItemIcon = compose<'div', ToolbarItemIconProps, ToolbarItemI
   },
 });
 
+// @ts-expect-error React 18
 ToolbarItemIcon.propTypes = commonPropTypes.createCommon();

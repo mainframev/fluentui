@@ -16,7 +16,7 @@ export type NavigatorTabPanelProps = {
   selectedComponent?: JSONTreeElement;
 };
 
-export const NavigatorTabPanel: React.FunctionComponent<NavigatorTabPanelProps> = (props: NavigatorTabPanelProps) => {
+export const NavigatorTabPanel: React.FunctionComponent<React.PropsWithChildren<NavigatorTabPanelProps>> = (props: NavigatorTabPanelProps) => {
   return (
     <div>
       {(!props.jsonTree?.props?.children || props.jsonTree?.props?.children?.length === 0) && (

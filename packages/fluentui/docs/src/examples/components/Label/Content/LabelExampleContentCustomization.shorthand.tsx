@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-northstar';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
 
-const LabelExampleContentCustomizationShorthand: React.FunctionComponent = () => {
+const LabelExampleContentCustomizationShorthand: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [hidden, setHidden] = React.useState<boolean>(false);
 
   const hide = () => {
