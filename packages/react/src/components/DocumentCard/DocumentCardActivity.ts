@@ -8,7 +8,7 @@ import type {
   IDocumentCardActivityStyles,
 } from './DocumentCardActivity.types';
 
-export const DocumentCardActivity: React.FunctionComponent<IDocumentCardActivityProps> = styled<
+export const DocumentCardActivity: React.FunctionComponent<React.PropsWithChildren<IDocumentCardActivityProps>> = styled<
   IDocumentCardActivityProps,
   IDocumentCardActivityStyleProps,
   IDocumentCardActivityStyles

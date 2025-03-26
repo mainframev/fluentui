@@ -20,7 +20,7 @@ const medColor = '#555555';
 const tpiColor = '#387fc2';
 const minColor = '#59b359';
 
-const PerfChart: React.FC<PerfChartProps> = ({ perfData, filter }) => {
+const PerfChart: React.FC<React.PropsWithChildren<PerfChartProps>> = ({ perfData, filter }) => {
   const dataSeries: ChartDataSeries[] = [
     filter?.extremes && {
       name: 'max',

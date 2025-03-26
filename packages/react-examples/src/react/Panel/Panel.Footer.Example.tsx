@@ -5,7 +5,7 @@ import { useBoolean } from '@fluentui/react-hooks';
 
 const buttonStyles = { root: { marginRight: 8 } };
 
-export const PanelFooterExample: React.FunctionComponent = () => {
+export const PanelFooterExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   // This panel doesn't actually save anything; the buttons are just an example of what

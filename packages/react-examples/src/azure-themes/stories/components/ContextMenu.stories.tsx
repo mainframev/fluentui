@@ -6,7 +6,7 @@ export default {
   title: 'Components/ContextualMenu',
 };
 
-export const ContextualMenuDefaultExample: React.FunctionComponent = () => {
+export const ContextualMenuDefaultExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
 };
 

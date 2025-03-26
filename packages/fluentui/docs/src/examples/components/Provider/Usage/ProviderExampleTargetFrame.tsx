@@ -6,7 +6,7 @@ type PortalFrameProps = {
   children: (externalDocument: Document) => React.ReactElement;
 };
 
-const PortalFrame: React.FunctionComponent<PortalFrameProps> = ({ children }) => {
+const PortalFrame: React.FunctionComponent<React.PropsWithChildren<PortalFrameProps>> = ({ children }) => {
   const frameRef = React.useRef<HTMLIFrameElement>(null);
   const [mounted, setMounted] = React.useState<boolean>(false);
 

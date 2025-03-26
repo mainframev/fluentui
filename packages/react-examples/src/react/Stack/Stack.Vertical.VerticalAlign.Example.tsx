@@ -23,7 +23,7 @@ const itemStyles: React.CSSProperties = {
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const headingStackTokens: IStackTokens = { childrenGap: 30 };
 
-export const VerticalStackVerticalAlignExample: React.FunctionComponent = () => {
+export const VerticalStackVerticalAlignExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack enableScopedSelectors tokens={sectionStackTokens}>
       <Stack enableScopedSelectors horizontal disableShrink horizontalAlign="space-between" tokens={headingStackTokens}>

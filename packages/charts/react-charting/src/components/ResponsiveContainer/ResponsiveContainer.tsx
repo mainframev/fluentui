@@ -78,7 +78,9 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
           // Keep components styles
           ...child.props.styles,
           root: {
-            ...child.props.styles?.root,
+            ...(typeof child.props.styles !== 'function' && typeof child.props.styles?.root === 'object'
+              ? child.props?.styles?.root
+              : {}),
             // Ensure the child element fills the parent container
             // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
             width: calculatedWidth,

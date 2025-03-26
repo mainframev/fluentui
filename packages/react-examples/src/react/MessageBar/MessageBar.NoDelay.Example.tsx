@@ -7,7 +7,7 @@ const wrapperClass = mergeStyles({
   '> * > *:not(:last-child)': { marginBottom: '0.5em' },
 });
 
-export const MessageBarNoDelayExample: React.FunctionComponent = () => {
+export const MessageBarNoDelayExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [showAlert, { toggle: toggleShowAlert }] = useBoolean(false);
   const [showStatus, { toggle: toggleShowStatus }] = useBoolean(false);
 

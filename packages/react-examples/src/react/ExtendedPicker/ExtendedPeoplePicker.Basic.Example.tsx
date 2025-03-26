@@ -34,7 +34,7 @@ const focusZoneProps = {
   handleTabKey: FocusZoneTabbableElements.all,
 };
 
-export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
+export const ExtendedPeoplePickerBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const picker = React.useRef<ExtendedPeoplePicker>(null);
   const [peopleList, setPeopleList] = React.useState<IPersonaProps[]>(people);
   const [mostRecentlyUsed, setMostRecentlyUsed] = React.useState<IPersonaProps[]>(mru);

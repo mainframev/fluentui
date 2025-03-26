@@ -73,7 +73,7 @@ const onRenderItem = (item: any) => (
   />
 );
 
-export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
+export const ResizeGroupOverflowSetExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [numberOfItems, setNumberOfItems] = React.useState(20);
   const [buttonsChecked, { toggle: toggleButtonsChecked }] = useBoolean(false);
   const [cachingEnabled, { toggle: toggleCachingEnabled }] = useBoolean(false);

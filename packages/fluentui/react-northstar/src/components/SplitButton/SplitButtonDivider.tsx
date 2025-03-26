@@ -84,6 +84,7 @@ export const SplitButtonDivider = React.forwardRef<HTMLDivElement, SplitButtonDi
 
 SplitButtonDivider.displayName = 'SplitButtonDivider';
 
+// @ts-expect-error React 18
 SplitButtonDivider.propTypes = {
   ...commonPropTypes.createCommon(),
   primary: PropTypes.bool,

@@ -23,7 +23,7 @@ function intToRGB(i) {
   return '00000'.substring(0, 6 - c.length) + c;
 }
 
-const ResourcesChart: React.FC<ResourcesChartProps> = ({ perfData, filter = [] }) => {
+const ResourcesChart: React.FC<React.PropsWithChildren<ResourcesChartProps>> = ({ perfData, filter = [] }) => {
   const dataSeries: ChartDataSeries[] = filter.map(d => ({
     name: d,
     data: `flamegrill.profile.metrics.${d}`,

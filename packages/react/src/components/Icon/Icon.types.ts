@@ -62,7 +62,7 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   /**
    * If rendering an image icon, this component will be rendered in the event that loading the image fails.
    */
-  imageErrorAs?: React.ComponentType<IImageProps>;
+  imageErrorAs?: React.ComponentType<React.PropsWithChildren<IImageProps>>;
 
   /**
    * Gets the styles for an Icon.

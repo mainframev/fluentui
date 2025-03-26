@@ -33,6 +33,7 @@ export const ChatMessageReadStatus = compose<
   shorthandConfig: { mappedProp: 'content' },
 });
 
+// @ts-expect-error React 18
 ChatMessageReadStatus.propTypes = {
   ...commonPropTypes.createCommon(),
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),

@@ -37,4 +37,5 @@ DatepickerCalendarGridRow.defaultProps = {
   as: 'tr',
 };
 
+// @ts-expect-error React 18
 DatepickerCalendarGridRow.propTypes = commonPropTypes.createCommon();

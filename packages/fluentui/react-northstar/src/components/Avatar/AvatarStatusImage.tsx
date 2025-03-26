@@ -33,42 +33,46 @@ export const avatarStatusImageClassName = 'ui-avatar__statusimage';
 /**
  * A AvatarStatusImage provides a status image for the Avatar.
  */
-export const AvatarStatusImage = React.forwardRef<HTMLImageElement, AvatarStatusImageProps>((props, ref) => {
-  const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AvatarStatusImage.displayName, context.telemetry);
-  setStart();
+export const AvatarStatusImage = React.forwardRef<HTMLImageElement, React.PropsWithChildren<AvatarStatusImageProps>>(
+  (props, ref) => {
+    const context = useFluentContext();
+    const { setStart, setEnd } = useTelemetry(AvatarStatusImage.displayName, context.telemetry);
+    setStart();
 
-  const { children, className, design, size, styles, variables } = props;
+    const { children, className, design, size, styles, variables } = props;
 
-  const { classes } = useStyles<AvatarStatusImageStylesProps>(AvatarStatusImage.displayName, {
-    className: avatarStatusImageClassName,
-    mapPropsToStyles: () => ({
-      size,
-    }),
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables,
-    }),
-    rtl: context.rtl,
-  });
+    const { classes } = useStyles<AvatarStatusImageStylesProps>(AvatarStatusImage.displayName, {
+      className: avatarStatusImageClassName,
+      mapPropsToStyles: () => ({
+        size,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+    });
 
-  const getA11Props = useAccessibility(props.accessibility, {
-    debugName: AvatarStatusImage.displayName,
-    rtl: context.rtl,
-  });
+    const getA11Props = useAccessibility(props.accessibility, {
+      debugName: AvatarStatusImage.displayName,
+      rtl: context.rtl,
+    });
 
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(AvatarStatusImage.handledProps, props);
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(AvatarStatusImage.handledProps, props);
 
-  const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>{children}</ElementType>
-  );
-  setEnd();
+    const element = (
+      <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+        {children}
+      </ElementType>
+    );
+    setEnd();
 
-  return element;
-}) as unknown as ForwardRefWithAs<'img', HTMLImageElement, AvatarStatusImageProps> &
+    return element;
+  },
+) as unknown as ForwardRefWithAs<'img', HTMLImageElement, AvatarStatusImageProps> &
   FluentComponentStaticProps<AvatarStatusImageProps>;
 
 AvatarStatusImage.displayName = 'AvatarStatusImage';
@@ -87,6 +91,7 @@ AvatarStatusImage.shorthandConfig = {
   allowsJSX: false,
   mappedProp: 'src',
 };
+
 AvatarStatusImage.create = createShorthandFactory({
   allowsJSX: false,
   Component: AvatarStatusImage,

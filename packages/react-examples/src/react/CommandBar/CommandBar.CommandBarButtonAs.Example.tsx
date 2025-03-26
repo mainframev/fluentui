@@ -17,7 +17,9 @@ interface ICoachmarkCommandBarButtonProps extends IComponentAsProps<ICommandBarI
 }
 
 /** Command bar button with a coachmark and teaching bubble */
-const CoachmarkCommandBarButton: React.FunctionComponent<ICoachmarkCommandBarButtonProps> = props => {
+const CoachmarkCommandBarButton: React.FunctionComponent<
+  React.PropsWithChildren<ICoachmarkCommandBarButtonProps>
+> = props => {
   const targetButton = React.useRef<HTMLDivElement | null>(null);
   const { defaultRender, isCoachmarkVisible, onDismiss, ...buttonProps } = props;
   const ButtonComponent = defaultRender || CommandBarButton;
@@ -61,7 +63,7 @@ const overflowButtonProps: IButtonProps = {
 /** Command bar which renders the Share button with a coachmark */
 // eslint-disable-next-line @fluentui/max-len
 const IndividualCommandBarButtonAsExample: React.FunctionComponent<
-  IIndividualCommandBarButtonAsExampleProps
+  React.PropsWithChildren<IIndividualCommandBarButtonAsExampleProps>
 > = props => {
   const { onDismissCoachmark, isCoachmarkVisible } = props;
   const items: ICommandBarItemProps[] = React.useMemo(() => {
@@ -94,7 +96,9 @@ const IndividualCommandBarButtonAsExample: React.FunctionComponent<
   return <CommandBar overflowButtonProps={overflowButtonProps} items={items} />;
 };
 
-export const IndividualCommandBarButtonAsExampleWrapper: React.FunctionComponent = () => {
+export const IndividualCommandBarButtonAsExampleWrapper: React.FunctionComponent<
+  React.PropsWithChildren<unknown>
+> = () => {
   const [isCoachmarkVisible, setIsCoachmarkVisible] = React.useState(true);
 
   const onDismissCoachmark = React.useCallback(() => setIsCoachmarkVisible(false), []);

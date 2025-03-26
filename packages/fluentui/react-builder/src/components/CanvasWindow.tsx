@@ -35,7 +35,7 @@ export type CanvasWindowProps = {
   onSwitchToStore: () => void;
 };
 
-export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: CanvasWindowProps) => {
+export const CanvasWindow: React.FunctionComponent<React.PropsWithChildren<CanvasWindowProps>> = (props: CanvasWindowProps) => {
   const HEADER_HEIGHT = '3rem';
   const [headerMessage, setHeaderMessage] = React.useState('');
   const codeSandboxData = getCodeSandboxInfo(

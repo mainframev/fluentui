@@ -8,7 +8,7 @@ import type {
   IChoiceGroupOptionStyles,
 } from './ChoiceGroupOption.types';
 
-export const ChoiceGroupOption: React.FunctionComponent<IChoiceGroupOptionProps> = styled<
+export const ChoiceGroupOption: React.FunctionComponent<React.PropsWithChildren<IChoiceGroupOptionProps>> = styled<
   IChoiceGroupOptionProps,
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles

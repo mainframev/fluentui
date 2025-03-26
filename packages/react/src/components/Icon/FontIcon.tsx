@@ -39,7 +39,7 @@ export const getIconContent = memoizeFunction(
  * To style the icon, use `className` or reference `ms-Icon` in CSS.
  * {@docCategory Icon}
  */
-export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
+export const FontIcon: React.FunctionComponent<React.PropsWithChildren<IFontIconProps>> = props => {
   const { iconName, className, style = {} } = props;
   const iconContent = getIconContent(iconName) || {};
   const { iconClassName, children, fontFamily, mergeImageProps } = iconContent;

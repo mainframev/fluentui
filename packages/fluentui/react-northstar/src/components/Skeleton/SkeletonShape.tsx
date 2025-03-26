@@ -28,6 +28,7 @@ export const SkeletonShape = compose<'span', SkeletonShapeOwnProps, SkeletonShap
   },
 );
 
+// @ts-expect-error React 18
 SkeletonShape.propTypes = {
   ...commonPropTypes.createCommon(),
   width: PropTypes.string,

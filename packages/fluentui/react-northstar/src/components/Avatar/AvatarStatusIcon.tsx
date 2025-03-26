@@ -32,43 +32,47 @@ export const avatarStatusIconClassName = 'ui-avatar__statusicon';
 /**
  * A AvatarStatusIcon provides a status icon for the Avatar.
  */
-export const AvatarStatusIcon = React.forwardRef<HTMLSpanElement, AvatarStatusIconProps>((props, ref) => {
-  const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AvatarStatusIcon.displayName, context.telemetry);
-  setStart();
+export const AvatarStatusIcon = React.forwardRef<HTMLSpanElement, React.PropsWithChildren<AvatarStatusIconProps>>(
+  (props, ref) => {
+    const context = useFluentContext();
+    const { setStart, setEnd } = useTelemetry(AvatarStatusIcon.displayName, context.telemetry);
+    setStart();
 
-  const { children, className, design, size, state, styles, variables } = props;
+    const { children, className, design, size, state, styles, variables } = props;
 
-  const { classes } = useStyles<AvatarStatusIconStylesProps>(AvatarStatusIcon.displayName, {
-    className: avatarStatusIconClassName,
-    mapPropsToStyles: () => ({
-      size,
-      state,
-    }),
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables,
-    }),
-    rtl: context.rtl,
-  });
+    const { classes } = useStyles<AvatarStatusIconStylesProps>(AvatarStatusIcon.displayName, {
+      className: avatarStatusIconClassName,
+      mapPropsToStyles: () => ({
+        size,
+        state,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+    });
 
-  const getA11Props = useAccessibility(props.accessibility, {
-    debugName: AvatarStatusIcon.displayName,
-    rtl: context.rtl,
-  });
+    const getA11Props = useAccessibility(props.accessibility, {
+      debugName: AvatarStatusIcon.displayName,
+      rtl: context.rtl,
+    });
 
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(AvatarStatusIcon.handledProps, props);
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(AvatarStatusIcon.handledProps, props);
 
-  const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>{children}</ElementType>
-  );
-  setEnd();
+    const element = (
+      <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+        {children}
+      </ElementType>
+    );
+    setEnd();
 
-  return element;
-}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusIconProps> & FluentComponentStaticProps;
+    return element;
+  },
+) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusIconProps> & FluentComponentStaticProps;
 
 AvatarStatusIcon.displayName = 'AvatarStatusIcon';
 AvatarStatusIcon.propTypes = {

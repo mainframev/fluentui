@@ -93,7 +93,7 @@ const ScrollbarDropdownPrototype = () => {
   );
 };
 
-const CustomScrollbarPrototypes: React.FC = () => {
+const CustomScrollbarPrototypes: React.FC<React.PropsWithChildren<unknown>> = () => {
   return (
     <PrototypeSection title="Custom Scrollbar">
       <Text>

@@ -8,7 +8,7 @@ import type { IPersonaProps, IPersonaStyleProps, IPersonaStyles } from './Person
  * Personas are used for rendering an individual's avatar, presence and details.
  * They are used within the PeoplePicker components.
  */
-export const Persona: React.FunctionComponent<IPersonaProps> = styled<
+export const Persona: React.FunctionComponent<React.PropsWithChildren<IPersonaProps>> = styled<
   IPersonaProps,
   IPersonaStyleProps,
   IPersonaStyles

@@ -23,7 +23,7 @@ export class DocumentCardActionsBase extends React.Component<IDocumentCardAction
     initializeComponentRef(this);
   }
 
-  public render(): JSX.Element {
+  public render(): React.JSX.Element {
     const { actions, views, styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -45,7 +45,7 @@ export class DocumentCardActionsBase extends React.Component<IDocumentCardAction
         {(views as number) > 0 && (
           <div className={this._classNames.views}>
             <Icon iconName="View" className={this._classNames.viewsIcon} />
-            {views}
+            {views as number}
           </div>
         )}
       </div>

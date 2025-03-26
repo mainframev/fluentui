@@ -5,7 +5,7 @@ import { Stack, IStackProps, IStackStyles } from '@fluentui/react/lib/Stack';
 const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
 const stackTokens = { childrenGap: 50 };
 
-export const TextFieldPrefixAndSuffixExample: React.FunctionComponent = () => {
+export const TextFieldPrefixAndSuffixExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const columnProps: Partial<IStackProps> = {
     tokens: { childrenGap: 15 },
     styles: { root: { width: 300 } },

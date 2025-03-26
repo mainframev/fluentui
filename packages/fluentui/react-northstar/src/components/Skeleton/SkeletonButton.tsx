@@ -47,6 +47,7 @@ export const SkeletonButton = compose<
   }),
 });
 
+// @ts-expect-error React 18
 SkeletonButton.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,

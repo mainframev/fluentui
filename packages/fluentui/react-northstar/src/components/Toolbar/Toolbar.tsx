@@ -650,6 +650,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
   RadioGroup: typeof ToolbarRadioGroup;
 };
 
+// @ts-expect-error React 18
 Toolbar.propTypes = {
   ...commonPropTypes.createCommon(),
   items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item', 'group', 'toggle', 'custom']),

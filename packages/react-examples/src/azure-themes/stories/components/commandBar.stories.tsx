@@ -8,7 +8,7 @@ export default {
 
 const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 
-export const CommandBarBasicExample: React.FunctionComponent = () => {
+export const CommandBarBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       <CommandBar

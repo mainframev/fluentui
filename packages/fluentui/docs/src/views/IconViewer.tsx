@@ -32,7 +32,7 @@ const cardsStyles = {
   overflow: 'unset',
 };
 
-const icons = Object.keys(exports).reduce((acc: React.FC<SvgIconProps>[], exportName) => {
+const icons = Object.keys(exports).reduce((acc: React.FC<React.PropsWithChildren<SvgIconProps>>[], exportName) => {
   if (!!exports[exportName].displayName) {
     acc.push(exports[exportName]);
   }

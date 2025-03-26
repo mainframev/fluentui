@@ -21,7 +21,7 @@ const options: IDropdownOption[] = [
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
 
-export const DropdownBasicExample: React.FunctionComponent = () => {
+export const DropdownBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={stackTokens}>
       <Dropdown

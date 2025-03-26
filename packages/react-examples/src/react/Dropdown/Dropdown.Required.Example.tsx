@@ -5,7 +5,7 @@ import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 
 const dropdownStyles = { dropdown: { width: 300 } };
 
-export const DropdownRequiredExample: React.FunctionComponent = () => {
+export const DropdownRequiredExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const dropdownRef = React.createRef<IDropdown>();
   const onSetFocus = () => dropdownRef.current!.focus(true);
 

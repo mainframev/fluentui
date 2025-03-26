@@ -218,7 +218,7 @@ function useErrorMessage(
   ] as const;
 }
 
-export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.forwardRef<
+export const DatePickerBase: React.FunctionComponent<React.PropsWithChildren<IDatePickerProps>> = React.forwardRef<
   HTMLDivElement,
   IDatePickerProps
 >((propsWithoutDefaults, forwardedRef) => {
@@ -431,7 +431,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
       <div {...divProps} className={readOnlyTextFieldClassName} tabIndex={tabIndex || 0}>
         {formattedDate || (
           // Putting the placeholder in a separate span fixes specificity issues for the text color
-          <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>
+          (<span className={classNames.readOnlyPlaceholder}>{placeholder}</span>)
         )}
       </div>
     );

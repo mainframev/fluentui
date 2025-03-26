@@ -200,6 +200,7 @@ List.defaultProps = {
   accessibility: listBehavior,
   wrap: children => children,
 };
+// @ts-expect-error React 18
 List.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

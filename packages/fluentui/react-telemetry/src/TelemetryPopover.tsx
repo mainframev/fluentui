@@ -17,7 +17,7 @@ function defaultHotKeyHandler(e: KeyboardEvent) {
   return e.altKey && e.shiftKey && e.code === 'KeyT';
 }
 
-export const TelemetryPopover: React.FC<TelemetryPopoverProps> = props => {
+export const TelemetryPopover: React.FC<React.PropsWithChildren<TelemetryPopoverProps>> = props => {
   const { children, hotKeyHandler = defaultHotKeyHandler, mountNode = document.body } = props;
 
   const telemetry = React.useMemo(() => new Telemetry(), []);

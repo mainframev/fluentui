@@ -47,6 +47,7 @@ Skeleton.Button = SkeletonButton;
 Skeleton.Text = SkeletonText;
 Skeleton.Input = SkeletonInput;
 Skeleton.Avatar = SkeletonAvatar;
+// @ts-expect-error React 18
 Skeleton.propTypes = {
   ...commonPropTypes.createCommon({
     accessibility: false,

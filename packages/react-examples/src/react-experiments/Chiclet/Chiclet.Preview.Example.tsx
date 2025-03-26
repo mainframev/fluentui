@@ -3,8 +3,8 @@ import { Chiclet, ChicletSize } from '@fluentui/react-experiments/lib/Chiclet';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
-export const ChicletPreviewExample: React.FunctionComponent<{}> = () => {
-  const Preview: React.FunctionComponent<{}> = props => {
+export const ChicletPreviewExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
+  const Preview: React.FunctionComponent<React.PropsWithChildren<{}>> = props => {
     return (
       <img
         src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"

@@ -11,7 +11,7 @@ const getClassNames = classNamesFunction<IEditSectionStyleProps, IEditSectionSty
 /**
  * Component for displaying an edit button next to a section header.
  */
-export const EditSectionBase: React.FunctionComponent<IEditSectionProps> = props => {
+export const EditSectionBase: React.FunctionComponent<React.PropsWithChildren<IEditSectionProps>> = props => {
   const { className, section, title, url, styles, theme } = props;
 
   // Check if url is falsey.
@@ -38,7 +38,7 @@ export const EditSectionBase: React.FunctionComponent<IEditSectionProps> = props
   );
 };
 
-export const EditSection: React.FunctionComponent<IEditSectionProps> = styled<
+export const EditSection: React.FunctionComponent<React.PropsWithChildren<IEditSectionProps>> = styled<
   IEditSectionProps,
   IEditSectionStyleProps,
   IEditSectionStyles

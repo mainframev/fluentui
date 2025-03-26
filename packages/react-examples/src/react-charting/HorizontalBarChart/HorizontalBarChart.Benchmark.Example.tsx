@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HorizontalBarChart, IChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 
-export const HorizontalBarChartBenchmarkExample: React.FunctionComponent<{}> = () => {
+export const HorizontalBarChartBenchmarkExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   const hideRatio: boolean[] = [true, false];
 
   const data: IChartProps[] = [

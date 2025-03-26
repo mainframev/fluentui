@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { ISelectedItemProps } from '../SelectedItemsList.types';
 
 export type TriggerProps<T> = ISelectedItemProps<T> & {
+  item: T;
   onTrigger?: () => void;
 };
 

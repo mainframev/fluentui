@@ -8,7 +8,7 @@ import type {
   IDocumentCardTitleStyles,
 } from './DocumentCardTitle.types';
 
-export const DocumentCardTitle: React.FunctionComponent<IDocumentCardTitleProps> = styled<
+export const DocumentCardTitle: React.FunctionComponent<React.PropsWithChildren<IDocumentCardTitleProps>> = styled<
   IDocumentCardTitleProps,
   IDocumentCardTitleStyleProps,
   IDocumentCardTitleStyles

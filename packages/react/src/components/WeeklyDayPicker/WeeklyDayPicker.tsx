@@ -4,7 +4,7 @@ import { styles } from './WeeklyDayPicker.styles';
 import { styled } from '../../Utilities';
 import type { IWeeklyDayPickerProps } from './WeeklyDayPicker.types';
 
-export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps> = styled(
+export const WeeklyDayPicker: React.FunctionComponent<React.PropsWithChildren<IWeeklyDayPickerProps>> = styled(
   WeeklyDayPickerBase,
   styles,
   undefined,

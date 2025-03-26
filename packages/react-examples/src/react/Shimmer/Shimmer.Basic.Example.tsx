@@ -50,7 +50,7 @@ const shimmerVerticalElement: IShimmerElement[] = [
   { type: ShimmerElementType.line, height: 10, verticalAlign: 'bottom' },
 ];
 
-export const ShimmerBasicExample: React.FunctionComponent = () => {
+export const ShimmerBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <ThemeProvider className={wrapperClass}>
       Basic Shimmer with no elements provided. It defaults to a line of 16px height.

@@ -50,7 +50,7 @@ const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn):
   return item[column.key as keyof IExampleItem];
 };
 
-export const HoverCardPlainCardExample: React.FunctionComponent = () => {
+export const HoverCardPlainCardExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <ThemeProvider>
       <p>

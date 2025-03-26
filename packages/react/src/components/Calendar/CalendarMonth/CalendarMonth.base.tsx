@@ -71,7 +71,7 @@ function useFocusLogic({ componentRef }: ICalendarMonthProps) {
   return [navigatedMonthRef, calendarYearRef, focusOnNextUpdate] as const;
 }
 
-export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = propsWithoutDefaults => {
+export const CalendarMonthBase: React.FunctionComponent<React.PropsWithChildren<ICalendarMonthProps>> = propsWithoutDefaults => {
   const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
   const [navigatedMonthRef, calendarYearRef, focusOnNextUpdate] = useFocusLogic(props);
   const [isYearPickerVisible, setIsYearPickerVisible] = React.useState(false);

@@ -215,6 +215,7 @@ export const ToolbarMenu = compose<'ul', ToolbarMenuProps, ToolbarMenuStylesProp
   },
 );
 
+// @ts-expect-error React 18
 ToolbarMenu.propTypes = {
   ...commonPropTypes.createCommon(),
   items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item']),

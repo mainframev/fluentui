@@ -154,7 +154,7 @@ function useFocusLogic({ componentRef }: ICalendarProps, isDayPickerVisible: boo
   return [dayPicker, monthPicker, focusOnNextUpdate] as const;
 }
 
-export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwardRef<HTMLDivElement, ICalendarProps>(
+export const CalendarBase: React.FunctionComponent<React.PropsWithChildren<ICalendarProps>> = React.forwardRef<HTMLDivElement, ICalendarProps>(
   (propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 

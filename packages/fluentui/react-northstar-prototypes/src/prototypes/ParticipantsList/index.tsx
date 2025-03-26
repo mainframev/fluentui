@@ -41,7 +41,7 @@ const ParticipantsList = () => (
   </>
 );
 
-const ParticipantsListPrototype: React.FC = () => {
+const ParticipantsListPrototype: React.FC<React.PropsWithChildren<unknown>> = () => {
   return (
     <PrototypeSection title="Participants list">
       <ComponentPrototype

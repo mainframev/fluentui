@@ -4,7 +4,7 @@ import { TeachingBubbleBase } from './TeachingBubble.base';
 import { getStyles } from './TeachingBubble.styles';
 import type { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 
-export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps> = styled<
+export const TeachingBubble: React.FunctionComponent<React.PropsWithChildren<ITeachingBubbleProps>> = styled<
   ITeachingBubbleProps,
   ITeachingBubbleStyleProps,
   ITeachingBubbleStyles

@@ -20,7 +20,7 @@ const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimm
 /**
  * {@docCategory Shimmer}
  */
-export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsGroupProps> = props => {
+export const ShimmerElementsGroupBase: React.FunctionComponent<React.PropsWithChildren<IShimmerElementsGroupProps>> = props => {
   const {
     styles,
     width = 'auto',

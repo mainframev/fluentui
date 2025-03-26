@@ -4,7 +4,7 @@ import { ChoiceGroupBase } from './ChoiceGroup.base';
 import { getStyles } from './ChoiceGroup.styles';
 import type { IChoiceGroupProps, IChoiceGroupStyles, IChoiceGroupStyleProps } from './ChoiceGroup.types';
 
-export const ChoiceGroup: React.FunctionComponent<IChoiceGroupProps> = styled<
+export const ChoiceGroup: React.FunctionComponent<React.PropsWithChildren<IChoiceGroupProps>> = styled<
   IChoiceGroupProps,
   IChoiceGroupStyleProps,
   IChoiceGroupStyles

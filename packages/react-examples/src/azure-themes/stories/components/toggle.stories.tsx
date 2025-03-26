@@ -8,7 +8,7 @@ export default {
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
 
-export const ToggleBasicExample: React.FunctionComponent = () => {
+export const ToggleBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={stackTokens}>
       <Toggle label="Enabled and checked" defaultChecked onText="On" offText="Off" onChange={_onChange} />

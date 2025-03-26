@@ -71,15 +71,18 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
         let { component } = route.props;
 
         // The loaded component is stored as a prop on the loader function...because obviously
-        const getComponent: (Required<IRouteProps>['getComponent'] & { component?: React.ComponentType }) | undefined =
-          route.props.getComponent;
+        const getComponent:
+          | (Required<IRouteProps>['getComponent'] & {
+              component?: React.ComponentType<React.PropsWithChildren<unknown>>;
+            })
+          | undefined = route.props.getComponent;
         if (getComponent) {
           let asynchronouslyResolved = false;
 
           if (getComponent.component) {
             component = getComponent.component;
           } else {
-            getComponent((resolved: React.ComponentType) => {
+            getComponent((resolved: React.ComponentType<React.PropsWithChildren<unknown>>) => {
               if (!resolved) {
                 throw new Error(
                   `Router: Calling getComponent for the route with path ${route.props.path} ` +

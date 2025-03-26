@@ -15,7 +15,7 @@ export interface IImplementationSectionProps extends IPageSectionPropsWithSectio
   hideImplementationTitle?: boolean;
 }
 
-export const ImplementationSection: React.FunctionComponent<IImplementationSectionProps> = props => {
+export const ImplementationSection: React.FunctionComponent<React.PropsWithChildren<IImplementationSectionProps>> = props => {
   const {
     className,
     readableSectionName = props.sectionName,
@@ -38,7 +38,7 @@ export const ImplementationSection: React.FunctionComponent<IImplementationSecti
       {jsonDocs && (
         // In this context, the table shouldn't handle jumping to anchors, because Page delay-renders
         // its sections and the table shouldn't need to know about or handle that.
-        <ApiReferencesTableSet jsonDocs={jsonDocs} jumpToAnchors={false} />
+        (<ApiReferencesTableSet jsonDocs={jsonDocs} jumpToAnchors={false} />)
       )}
       {!jsonDocs && _getNativePropsInfo(props)}
       {!jsonDocs && <PropertiesTableSet sources={propertiesTablesSources} />}

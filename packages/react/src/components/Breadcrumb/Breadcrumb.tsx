@@ -4,7 +4,7 @@ import { BreadcrumbBase } from './Breadcrumb.base';
 import { getStyles } from './Breadcrumb.styles';
 import type { IBreadcrumbProps, IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 
-export const Breadcrumb: React.FunctionComponent<IBreadcrumbProps> = styled<
+export const Breadcrumb: React.FunctionComponent<React.PropsWithChildren<IBreadcrumbProps>> = styled<
   IBreadcrumbProps,
   IBreadcrumbStyleProps,
   IBreadcrumbStyles

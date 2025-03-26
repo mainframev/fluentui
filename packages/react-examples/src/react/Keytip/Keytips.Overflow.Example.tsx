@@ -85,7 +85,7 @@ const initialOverflowItems = [
   },
 ];
 
-export const KeytipsOverflowExample: React.FunctionComponent = () => {
+export const KeytipsOverflowExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [items, setItems] = React.useState(initialItems);
   const [overflowItems, setOverflowItems] = React.useState<typeof initialItems>(initialOverflowItems);
 

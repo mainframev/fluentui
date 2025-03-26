@@ -4,7 +4,7 @@ import { getStyles } from './ShimmerCircle.styles';
 import { ShimmerCircleBase } from './ShimmerCircle.base';
 import type { IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.types';
 
-export const ShimmerCircle: React.FunctionComponent<IShimmerCircleProps> = styled<
+export const ShimmerCircle: React.FunctionComponent<React.PropsWithChildren<IShimmerCircleProps>> = styled<
   IShimmerCircleProps,
   IShimmerCircleStyleProps,
   IShimmerCircleStyles

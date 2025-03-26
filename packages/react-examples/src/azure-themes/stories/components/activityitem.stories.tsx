@@ -14,7 +14,7 @@ const classNames = mergeStyleSets({
   },
 });
 
-export const ActivityItemBasicExample: React.FunctionComponent = () => {
+export const ActivityItemBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const activityItemExamples = [
     {
       key: 1,

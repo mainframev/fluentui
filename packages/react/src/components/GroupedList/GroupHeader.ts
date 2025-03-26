@@ -4,7 +4,7 @@ import { getStyles } from './GroupHeader.styles';
 import { GroupHeaderBase } from './GroupHeader.base';
 import type { IGroupHeaderProps, IGroupHeaderStyles, IGroupHeaderStyleProps } from './GroupHeader.types';
 
-export const GroupHeader: React.FunctionComponent<IGroupHeaderProps> = styled<
+export const GroupHeader: React.FunctionComponent<React.PropsWithChildren<IGroupHeaderProps>> = styled<
   IGroupHeaderProps,
   IGroupHeaderStyleProps,
   IGroupHeaderStyles

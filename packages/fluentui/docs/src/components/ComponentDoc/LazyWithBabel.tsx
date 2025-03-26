@@ -2,7 +2,7 @@ import * as React from 'react';
 import useScript from '@charlietango/use-script';
 import { Loader } from '@fluentui/react-northstar';
 
-export const LazyWithBabel: React.FunctionComponent = ({ children }) => {
+export const LazyWithBabel: React.FunctionComponent<React.PropsWithChildren<unknown>> = ({ children }) => {
   const url = `https://cdn.jsdelivr.net/npm/@babel/standalone@${window['versions'].babelStandalone}/babel.min.js`;
   const [ready] = useScript(url);
 

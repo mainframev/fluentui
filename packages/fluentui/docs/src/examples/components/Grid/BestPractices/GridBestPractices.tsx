@@ -10,7 +10,7 @@ const doList = [
 
 const dontList = ["Don't use grid component as a replacement for table."];
 
-const GridBestPractices: React.FunctionComponent<{}> = () => {
+const GridBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} dontList={dontList} />;
 };
 

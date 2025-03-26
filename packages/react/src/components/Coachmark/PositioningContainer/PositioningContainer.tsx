@@ -306,7 +306,7 @@ export function useHeightOffset(
   return heightOffset.value;
 }
 
-export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps> = React.forwardRef<
+export const PositioningContainer: React.FunctionComponent<React.PropsWithChildren<IPositioningContainerProps>> = React.forwardRef<
   HTMLDivElement,
   IPositioningContainerProps
 >((propsWithoutDefaults, forwardedRef) => {

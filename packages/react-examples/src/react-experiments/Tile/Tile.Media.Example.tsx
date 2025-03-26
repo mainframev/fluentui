@@ -108,7 +108,9 @@ interface IImageTileProps {
   item: (typeof ITEMS)[0];
 }
 
-const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTileProps): JSX.Element => {
+const ImageTile: React.FunctionComponent<React.PropsWithChildren<IImageTileProps>> = (
+  props: IImageTileProps,
+): JSX.Element => {
   const tile = (
     <Tile
       contentSize={props.tileSize}

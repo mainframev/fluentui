@@ -73,7 +73,7 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
 
 const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyles>();
 
-const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
+const PageHeaderBase: React.FunctionComponent<React.PropsWithChildren<IPageHeaderProps>> = props => {
   const { className, pageTitle = 'Page title', pageSubTitle, theme, versionSwitcherDefinition } = props;
   const styles = getClassNames(getStyles, { className, pageTitle, theme });
 
@@ -105,7 +105,7 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
   );
 };
 
-export const PageHeader: React.FunctionComponent<IPageHeaderProps> = styled<
+export const PageHeader: React.FunctionComponent<React.PropsWithChildren<IPageHeaderProps>> = styled<
   IPageHeaderProps,
   IPageHeaderStyleProps,
   IPageHeaderStyles

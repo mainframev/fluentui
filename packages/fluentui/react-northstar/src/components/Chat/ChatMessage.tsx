@@ -761,10 +761,12 @@ ChatMessage.propTypes = {
   unstable_overflow: PropTypes.bool,
   unstable_layout: PropTypes.oneOf(['default', 'refresh']),
   failed: PropTypes.bool,
+  // @ts-expect-error React 18
   headerContent: PropTypes.node,
   body: customPropTypes.itemShorthand,
   bubble: customPropTypes.itemShorthand,
   bubbleInset: customPropTypes.itemShorthand,
+  // @ts-expect-error React 18
   bubbleInsetContent: PropTypes.node,
 };
 

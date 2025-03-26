@@ -32,6 +32,7 @@ export const FormSlider = compose<'div', FormSliderProps, FormSliderStylesProps,
   },
 );
 
+// @ts-expect-error React 18
 FormSlider.propTypes = commonPropTypes.createCommon({
   children: false,
   content: false,

@@ -33,7 +33,10 @@ declare module 'fela-dom' {
   function rehydrate(renderer: FelaRenderer, targetDocument?: Document): void;
 }
 
-export class RendererProvider extends React.Component<RendererProviderProps, Record<string, unknown>> {
+export class RendererProvider extends React.Component<
+  React.PropsWithChildren<RendererProviderProps>,
+  Record<string, unknown>
+> {
   constructor(props: RendererProviderProps) {
     super(props);
     this._renderStyle();

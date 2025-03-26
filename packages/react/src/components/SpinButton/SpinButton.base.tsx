@@ -93,7 +93,7 @@ const clampValue = (value: number, { min, max }: { max?: number; min?: number })
   return value;
 };
 
-export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.forwardRef<
+export const SpinButtonBase: React.FunctionComponent<React.PropsWithChildren<ISpinButtonProps>> = React.forwardRef<
   HTMLDivElement,
   ISpinButtonProps
 >((propsWithoutDefaults, ref) => {

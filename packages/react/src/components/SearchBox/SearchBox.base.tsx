@@ -30,7 +30,7 @@ const useComponentRef = (
   );
 };
 
-export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.forwardRef<
+export const SearchBoxBase: React.FunctionComponent<React.PropsWithChildren<ISearchBoxProps>> = React.forwardRef<
   HTMLDivElement,
   ISearchBoxProps
 >((props, forwardedRef) => {

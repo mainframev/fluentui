@@ -4,7 +4,7 @@ import { styled } from '../../../Utilities';
 import { CalendarYearBase } from './CalendarYear.base';
 import type { ICalendarYearProps } from './CalendarYear.types';
 
-export const CalendarYear: React.FunctionComponent<ICalendarYearProps> = styled(
+export const CalendarYear: React.FunctionComponent<React.PropsWithChildren<ICalendarYearProps>> = styled(
   CalendarYearBase,
   getStyles,
   undefined,

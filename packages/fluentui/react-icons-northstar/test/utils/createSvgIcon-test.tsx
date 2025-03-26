@@ -28,6 +28,7 @@ describe('createSvgIcon', () => {
     const TestIcon = createSvgIcon({ svg: testSvg, displayName: 'TestIcon' });
 
     const wrapper = mount(<TestIcon id="test-id" />, {
+      // @ts-expect-error React 18
       wrappingComponent: Unstable_FluentContextProvider,
       wrappingComponentProps: { value: { performance: {}, theme: createTheme() } },
     });
@@ -46,6 +47,7 @@ describe('createSvgIcon', () => {
     });
 
     const wrapper = mount(<BookIcon foo outline />, {
+      // @ts-expect-error React 18
       wrappingComponent: Unstable_FluentContextProvider,
       wrappingComponentProps: { value: { performance: {}, theme: createTheme() } },
     });

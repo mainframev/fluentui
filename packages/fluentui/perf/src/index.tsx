@@ -25,7 +25,7 @@ const asyncRender = (element: React.ReactElement, container: Element) =>
 
 const renderCycle = async (
   exampleName: string,
-  Component: React.ComponentType,
+  Component: React.ComponentType<React.PropsWithChildren<unknown>>,
   exampleIndex: number,
 ): Promise<ProfilerMeasure> => {
   let profilerMeasure: ProfilerMeasure;
@@ -95,7 +95,7 @@ window.runMeasures = async (filter: string = '') => {
 //
 // Control tools
 //
-const Control: React.FunctionComponent = () => {
+const Control: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [filter, setFilter] = React.useState('');
 
   return (
@@ -107,11 +107,9 @@ const Control: React.FunctionComponent = () => {
         Filter (use <code>minimatch</code>):
       </label>
       <input onChange={e => setFilter(e.target.value)} type="text" value={filter} />
-
       <pre>
         {_.filter(performanceExamplesContext.keys(), exampleName => satisfiesFilter(exampleName, filter)).join('\n')}
       </pre>
-
       <button
         onClick={async () => {
           console.table(await window.runMeasures(filter));

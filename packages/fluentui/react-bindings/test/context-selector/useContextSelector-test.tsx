@@ -5,7 +5,7 @@ import * as React from 'react';
 
 const TestContext = createContext<{ index: number }>({ index: -1 });
 
-const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props => {
+const TestComponent: React.FC<React.PropsWithChildren<{ index: number; onUpdate?: () => void }>> = props => {
   const active = useContextSelector(TestContext, v => v.index === props.index);
 
   React.useEffect(() => {
@@ -15,7 +15,7 @@ const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props 
   return <div className="test-component" data-active={active} />;
 };
 
-const TestProvider: React.FC = props => {
+const TestProvider: React.FC<React.PropsWithChildren<unknown>> = props => {
   const [index, setIndex] = React.useState<number>(0);
 
   return (

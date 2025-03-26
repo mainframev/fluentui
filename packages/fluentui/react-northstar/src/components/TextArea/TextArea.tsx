@@ -136,6 +136,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((pr
 
 TextArea.displayName = 'TextArea';
 
+// @ts-expect-error React 18
 TextArea.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

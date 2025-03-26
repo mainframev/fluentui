@@ -1,7 +1,7 @@
 import { Button, Divider, Flex } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const ButtonExampleSizeShorthand: React.FC = () => (
+const ButtonExampleSizeShorthand: React.FC<React.PropsWithChildren<unknown>> = () => (
   <>
     <Flex gap="gap.smaller">
       <Button size="small" content="Small" />

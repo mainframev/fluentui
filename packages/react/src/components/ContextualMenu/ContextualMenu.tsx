@@ -9,7 +9,7 @@ function onRenderSubMenu(subMenuProps: IContextualMenuProps) {
 }
 
 // This is to prevent cyclic import with ContextualMenu.base.tsx.
-const LocalContextualMenu: React.FunctionComponent<IContextualMenuProps> = styled<
+const LocalContextualMenu: React.FunctionComponent<React.PropsWithChildren<IContextualMenuProps>> = styled<
   IContextualMenuProps,
   IContextualMenuStyleProps,
   IContextualMenuStyles
@@ -27,5 +27,5 @@ const LocalContextualMenu: React.FunctionComponent<IContextualMenuProps> = style
 /**
  * ContextualMenu description
  */
-export const ContextualMenu: React.FunctionComponent<IContextualMenuProps> = LocalContextualMenu;
+export const ContextualMenu: React.FunctionComponent<React.PropsWithChildren<IContextualMenuProps>> = LocalContextualMenu;
 ContextualMenu.displayName = 'ContextualMenu';

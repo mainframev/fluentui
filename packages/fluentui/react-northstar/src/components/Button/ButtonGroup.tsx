@@ -122,6 +122,7 @@ export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((p
 
 ButtonGroup.displayName = 'ButtonGroup';
 
+// @ts-expect-error React 18
 ButtonGroup.propTypes = {
   ...commonPropTypes.createCommon(),
   buttons: customPropTypes.collectionShorthand,

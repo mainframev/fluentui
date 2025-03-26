@@ -87,7 +87,7 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
 
 const getClassNames = classNamesFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles>();
 
-const MarkdownHeaderBase: React.FunctionComponent<IMarkdownHeaderProps> = props => {
+const MarkdownHeaderBase: React.FunctionComponent<React.PropsWithChildren<IMarkdownHeaderProps>> = props => {
   const { as: RootType = 'h1', children, id, styles, className } = props;
 
   const classNames = getClassNames(styles, { as: RootType, className });
@@ -98,7 +98,7 @@ const MarkdownHeaderBase: React.FunctionComponent<IMarkdownHeaderProps> = props 
   );
 };
 
-export const MarkdownHeader: React.FunctionComponent<IMarkdownHeaderProps> = styled<
+export const MarkdownHeader: React.FunctionComponent<React.PropsWithChildren<IMarkdownHeaderProps>> = styled<
   IMarkdownHeaderProps,
   IMarkdownHeaderStyleProps,
   IMarkdownHeaderStyles

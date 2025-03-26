@@ -4,7 +4,7 @@ import { ProgressIndicator } from '@fluentui/react/lib/ProgressIndicator';
 const intervalDelay = 100;
 const intervalIncrement = 0.01;
 
-export const ProgressIndicatorBasicExample: React.FunctionComponent = () => {
+export const ProgressIndicatorBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [percentComplete, setPercentComplete] = React.useState(0);
 
   React.useEffect(() => {

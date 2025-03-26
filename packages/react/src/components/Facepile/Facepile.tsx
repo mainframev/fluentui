@@ -7,7 +7,7 @@ import type { IFacepileProps, IFacepileStyleProps, IFacepileStyles } from './Fac
 /**
  * The Facepile shows a list of faces or initials in a horizontal lockup. Each circle represents a person.
  */
-export const Facepile: React.FunctionComponent<IFacepileProps> = styled<
+export const Facepile: React.FunctionComponent<React.PropsWithChildren<IFacepileProps>> = styled<
   IFacepileProps,
   IFacepileStyleProps,
   IFacepileStyles

@@ -10,7 +10,7 @@ export interface ICalendarGridDayCellProps extends ICalendarGridRowProps {
   dayIndex: number;
 }
 
-export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellProps> = props => {
+export const CalendarGridDayCell: React.FunctionComponent<React.PropsWithChildren<ICalendarGridDayCellProps>> = props => {
   const {
     navigatedDate,
     dateTimeFormatter,

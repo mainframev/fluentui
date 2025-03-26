@@ -82,7 +82,7 @@ const getStarId = (id: string, starNum: number) => {
   return `${id}-star-${starNum - 1}`;
 };
 
-export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRef<HTMLDivElement, IRatingProps>(
+export const RatingBase: React.FunctionComponent<React.PropsWithChildren<IRatingProps>> = React.forwardRef<HTMLDivElement, IRatingProps>(
   (props, forwardedRef) => {
     const id = useId('Rating');
     const labelId = useId('RatingLabel');

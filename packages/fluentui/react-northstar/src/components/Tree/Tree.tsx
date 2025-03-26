@@ -219,6 +219,7 @@ export const Tree = React.forwardRef<HTMLDivElement, TreeProps>((props, ref) => 
 
 Tree.displayName = 'Tree';
 
+// @ts-expect-error React 18
 Tree.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

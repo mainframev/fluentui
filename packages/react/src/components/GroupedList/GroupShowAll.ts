@@ -4,7 +4,7 @@ import { getStyles } from './GroupShowAll.styles';
 import { GroupShowAllBase } from './GroupShowAll.base';
 import type { IGroupShowAllProps, IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 
-export const GroupShowAll: React.FunctionComponent<IGroupShowAllProps> = styled<
+export const GroupShowAll: React.FunctionComponent<React.PropsWithChildren<IGroupShowAllProps>> = styled<
   IGroupShowAllProps,
   IGroupShowAllStyleProps,
   IGroupShowAllStyles

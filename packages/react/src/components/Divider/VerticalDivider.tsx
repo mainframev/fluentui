@@ -8,7 +8,7 @@ import type {
   IVerticalDividerPropsStyles,
 } from './VerticalDivider.types';
 
-export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps> = styled<
+export const VerticalDivider: React.FunctionComponent<React.PropsWithChildren<IVerticalDividerProps>> = styled<
   IVerticalDividerProps,
   IVerticalDividerPropsStyles,
   IVerticalDividerStyles

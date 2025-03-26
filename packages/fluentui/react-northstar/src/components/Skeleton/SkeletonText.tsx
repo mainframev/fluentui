@@ -32,6 +32,7 @@ export const SkeletonText = compose<
   }),
 });
 
+// @ts-expect-error React 18
 SkeletonText.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,

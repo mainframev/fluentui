@@ -7,18 +7,18 @@ import ComponentPlaygroundSnippet from './ComponentPlaygroundSnippet';
 
 type ComponentPlaygroundTemplateProps = {
   element?: React.ReactElement;
-  component?: React.FunctionComponent;
+  component?: React.FunctionComponent<React.PropsWithChildren<unknown>>;
   fluid?: boolean;
 };
 
-const NoopKnobProvider: React.FunctionComponent = props => {
+const NoopKnobProvider: React.FunctionComponent<React.PropsWithChildren<unknown>> = props => {
   const knobContext = React.useContext(unstable_KnobContext);
   const noopContext = { ...knobContext, registerKnob: _.noop, unregisterKnob: _.noop };
 
   return <unstable_KnobContext.Provider value={noopContext}>{props.children}</unstable_KnobContext.Provider>;
 };
 
-const ComponentPlaygroundTemplate: React.FunctionComponent<ComponentPlaygroundTemplateProps> = props => (
+const ComponentPlaygroundTemplate: React.FunctionComponent<React.PropsWithChildren<ComponentPlaygroundTemplateProps>> = props => (
   <Flex fill gap="gap.medium">
     <Flex
       column

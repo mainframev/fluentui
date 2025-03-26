@@ -23,7 +23,7 @@ const snapTimeToUpdatedDateAnchor = (datePickerDate: Date, currentTime: Date) =>
   return snappedTime;
 };
 
-export const TimePickerDateTimePickerExample: React.FC = () => {
+export const TimePickerDateTimePickerExample: React.FC<React.PropsWithChildren<unknown>> = () => {
   const currentDate = new Date('2023-02-01 05:00:00');
   const [datePickerDate, setDatePickerDate] = React.useState<Date>(currentDate);
   const [currentTime, setCurrentTime] = React.useState<Date>();

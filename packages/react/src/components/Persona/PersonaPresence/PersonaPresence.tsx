@@ -7,7 +7,7 @@ import type { IPersonaPresenceProps, IPersonaPresenceStyleProps, IPersonaPresenc
 /**
  * PersonaPresence is used to render an individual's presence.
  */
-export const PersonaPresence: React.FunctionComponent<IPersonaPresenceProps> = styled<
+export const PersonaPresence: React.FunctionComponent<React.PropsWithChildren<IPersonaPresenceProps>> = styled<
   IPersonaPresenceProps,
   IPersonaPresenceStyleProps,
   IPersonaPresenceStyles

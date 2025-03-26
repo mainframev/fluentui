@@ -5,7 +5,7 @@ import type { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types'
 
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 
-export const CheckBase: React.FunctionComponent<ICheckProps> = React.forwardRef<HTMLDivElement, ICheckProps>(
+export const CheckBase: React.FunctionComponent<React.PropsWithChildren<ICheckProps>> = React.forwardRef<HTMLDivElement, ICheckProps>(
   (props, ref) => {
     const { checked = false, className, theme, styles, useFastIcons = true } = props;
 

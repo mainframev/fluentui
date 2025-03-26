@@ -13,7 +13,7 @@ export type DebugFrameProps = {
 };
 
 // FIXME: temporary hacky implementation! reuse DebugRect
-export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
+export const DebugFrame: React.FunctionComponent<React.PropsWithChildren<DebugFrameProps>> = ({
   target,
   selector,
   componentName,

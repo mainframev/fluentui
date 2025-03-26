@@ -62,7 +62,7 @@ const selectableItemTypes = {
 
 const ITEM_COUNT = 100;
 
-const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> = (
+const SelectionItemExample: React.FunctionComponent<React.PropsWithChildren<ISelectionItemExampleProps>> = (
   props: ISelectionItemExampleProps,
 ) => {
   const { item, itemIndex, selection } = props;
@@ -90,7 +90,7 @@ const SelectionItemExample: React.FunctionComponent<ISelectionItemExampleProps> 
   );
 };
 
-export const SelectionBasicExample: React.FunctionComponent = () => {
+export const SelectionBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectableItemType, setSelectableItemType] = React.useState<'all' | 'vowels'>('all');
   const [selectionMode, setSelectionMode] = React.useState(SelectionMode.multiple);
   const forceUpdate = useForceUpdate();

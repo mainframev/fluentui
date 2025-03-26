@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, Text } from '@fluentui/react';
 
-export const LinkBasicExample: React.FunctionComponent = () => {
+export const LinkBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       <Text>

@@ -7,7 +7,7 @@ import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Customizer } from '@fluentui/react/lib/Utilities';
 import { useId, useBoolean } from '@fluentui/react-hooks';
 
-export const LayerCustomizedExample: React.FunctionComponent = () => {
+export const LayerCustomizedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isPanelOpen, { setTrue: showPanel, setFalse: dismissPanel }] = useBoolean(false);
   const [trapPanel, { toggle: toggleTrapPanel }] = useBoolean(false);
 

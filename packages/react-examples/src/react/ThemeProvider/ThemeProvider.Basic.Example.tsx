@@ -13,7 +13,7 @@ const App = () => {
   return <Checkbox defaultChecked={true} label="My Checkbox" />;
 };
 
-export const ThemeProviderBasicExample: React.FunctionComponent = () => {
+export const ThemeProviderBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <ThemeProvider theme={myTheme}>
       <App />

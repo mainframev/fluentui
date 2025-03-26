@@ -230,6 +230,7 @@ export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((pr
 
 TreeTitle.displayName = 'TreeTitle';
 
+// @ts-expect-error React 18
 TreeTitle.propTypes = {
   ...commonPropTypes.createCommon(),
   id: PropTypes.string,

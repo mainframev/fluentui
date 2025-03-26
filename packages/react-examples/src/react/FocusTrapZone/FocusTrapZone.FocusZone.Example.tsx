@@ -20,7 +20,7 @@ const focusZoneStackStyles: Partial<IStackStyles> = {
   },
 };
 
-export const FocusTrapZoneFocusZoneExample: React.FunctionComponent = () => {
+export const FocusTrapZoneFocusZoneExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
   const toggle = React.useRef<IToggle>(null);
   return (

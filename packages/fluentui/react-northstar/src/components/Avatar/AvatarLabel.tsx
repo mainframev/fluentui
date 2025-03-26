@@ -94,6 +94,7 @@ export const AvatarLabel = React.forwardRef<HTMLSpanElement, AvatarLabelProps>((
 
 AvatarLabel.displayName = 'AvatarLabel';
 
+// @ts-expect-error React 18
 AvatarLabel.propTypes = {
   ...commonPropTypes.createCommon(),
   square: PropTypes.bool,

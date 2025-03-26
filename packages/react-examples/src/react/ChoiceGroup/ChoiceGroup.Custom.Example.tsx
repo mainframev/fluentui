@@ -3,7 +3,7 @@ import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { CatIcon } from '@fluentui/react-icons-mdl2';
 
-export const ChoiceGroupCustomExample: React.FunctionComponent = () => {
+export const ChoiceGroupCustomExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return <ChoiceGroup defaultSelectedKey="B" options={options} label="Pick one" />;
 };
 

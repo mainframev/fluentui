@@ -21,7 +21,7 @@ export const svgIconHandledProps: (keyof SvgIconProps)[] = [
 ];
 
 export const createSvgIcon = <TProps = {}>({ svg, displayName, handledProps = [] }: SvgIconCreateFnParams<TProps>) => {
-  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & SvgIconProps> & {
+  const Component: React.FC<React.PropsWithChildren<React.HTMLAttributes<HTMLSpanElement> & TProps & SvgIconProps>> & {
     handledProps: (keyof (TProps & SvgIconProps))[];
   } = props => {
     const context = useFluentContext();

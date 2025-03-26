@@ -76,7 +76,7 @@ const useComponentRef = (
 
 const COMPONENT_NAME = 'ChoiceGroup';
 
-export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React.forwardRef<
+export const ChoiceGroupBase: React.FunctionComponent<React.PropsWithChildren<IChoiceGroupProps>> = React.forwardRef<
   HTMLDivElement,
   IChoiceGroupProps
 >((props, forwardedRef) => {

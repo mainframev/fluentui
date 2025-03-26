@@ -4,7 +4,7 @@ import { ModalBase } from './Modal.base';
 import { getStyles } from './Modal.styles';
 import type { IModalProps, IModalStyleProps, IModalStyles } from './Modal.types';
 
-export const Modal: React.FunctionComponent<IModalProps> = styled<IModalProps, IModalStyleProps, IModalStyles>(
+export const Modal: React.FunctionComponent<React.PropsWithChildren<IModalProps>> = styled<IModalProps, IModalStyleProps, IModalStyles>(
   ModalBase,
   getStyles,
   undefined,

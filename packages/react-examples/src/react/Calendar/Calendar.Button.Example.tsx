@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
 
-export const CalendarButtonExample: React.FunctionComponent = () => {
+export const CalendarButtonExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
   const [showCalendar, { toggle: toggleShowCalendar, setFalse: hideCalendar }] = useBoolean(false);
   const buttonContainerRef = React.useRef<HTMLDivElement>(null);

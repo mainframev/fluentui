@@ -9,7 +9,7 @@ import type { IImageIconProps } from './Icon.types';
  * To style the icon, use `className` or reference `ms-Icon` in CSS.
  * {@docCategory Icon}
  */
-export const ImageIcon: React.FunctionComponent<IImageIconProps> = props => {
+export const ImageIcon: React.FunctionComponent<React.PropsWithChildren<IImageIconProps>> = props => {
   const { className, imageProps } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties, [

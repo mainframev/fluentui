@@ -166,6 +166,7 @@ Table.create = createShorthandFactory({
   Component: Table,
 });
 
+// @ts-expect-error React 18
 Table.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

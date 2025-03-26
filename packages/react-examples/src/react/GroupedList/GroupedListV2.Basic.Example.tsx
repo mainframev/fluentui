@@ -24,7 +24,7 @@ const columns = Object.keys(items[0])
 
 const groups = createGroups(groupCount, groupDepth, 0, groupCount);
 
-export const GroupedListV2BasicExample: React.FunctionComponent = () => {
+export const GroupedListV2BasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isCompactMode, { toggle: toggleIsCompactMode }] = useBoolean(false);
   const selection = useConst(() => {
     const s = new Selection();

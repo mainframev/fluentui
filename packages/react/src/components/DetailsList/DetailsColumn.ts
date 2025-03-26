@@ -4,7 +4,7 @@ import { DetailsColumnBase } from './DetailsColumn.base';
 import { getDetailsColumnStyles } from './DetailsColumn.styles';
 import type { IDetailsColumnProps, IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
 
-export const DetailsColumn: React.FunctionComponent<IDetailsColumnProps> = styled<
+export const DetailsColumn: React.FunctionComponent<React.PropsWithChildren<IDetailsColumnProps>> = styled<
   IDetailsColumnProps,
   IDetailsColumnStyleProps,
   IDetailsColumnStyles

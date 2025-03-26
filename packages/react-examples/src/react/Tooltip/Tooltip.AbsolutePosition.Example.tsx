@@ -8,7 +8,7 @@ const buttonStyles: Partial<IButtonStyles> = {
   root: { position: 'absolute', left: 200 },
 };
 
-export const TooltipAbsolutePositionExample: React.FunctionComponent = () => {
+export const TooltipAbsolutePositionExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // Use useId() to ensure that the ID is unique on the page.
   // (It's also okay to use a plain string and manually ensure uniqueness.)
   const tooltipId = useId('tooltip');

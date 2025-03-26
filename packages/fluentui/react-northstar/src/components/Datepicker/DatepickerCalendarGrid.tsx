@@ -29,4 +29,5 @@ DatepickerCalendarGrid.defaultProps = {
   as: 'table',
 };
 
+// @ts-expect-error React 18
 DatepickerCalendarGrid.propTypes = commonPropTypes.createCommon();

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-export const DOMFunction: React.FunctionComponent = props => <div {...props} id="node" />;
+export const DOMFunction: React.FunctionComponent<React.PropsWithChildren<unknown>> = props => <div {...props} id="node" />;
 
-export const CompositeFunction: React.FunctionComponent = props => <DOMFunction {...props} />;
+export const CompositeFunction: React.FunctionComponent<React.PropsWithChildren<unknown>> = props => <DOMFunction {...props} />;
 
 export class DOMClass extends React.Component {
   render() {

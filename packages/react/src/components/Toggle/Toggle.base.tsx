@@ -8,7 +8,7 @@ const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 
 const COMPONENT_NAME = 'Toggle';
 
-export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRef<HTMLElement, IToggleProps>(
+export const ToggleBase: React.FunctionComponent<React.PropsWithChildren<IToggleProps>> = React.forwardRef<HTMLElement, IToggleProps>(
   (props, forwardedRef) => {
     const {
       as: RootType = 'div',

@@ -17,7 +17,7 @@ describe('useResponsiveMode', () => {
   let responsiveModes: ResponsiveMode[] = [];
   let wrapper: ReactWrapper | undefined;
 
-  const TestComponent: React.FunctionComponent = () => {
+  const TestComponent: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
     const ref = React.useRef(null);
 
     responsiveModes.push(useResponsiveMode(ref));

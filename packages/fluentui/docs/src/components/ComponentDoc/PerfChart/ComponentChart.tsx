@@ -12,7 +12,7 @@ enum FILTER_BY {
 
 export type ComponentChartProps = { chartData; Filter?; Chart };
 
-const ComponentChart: React.FunctionComponent<ComponentChartProps> = ({ chartData, Filter, Chart }) => {
+const ComponentChart: React.FunctionComponent<React.PropsWithChildren<ComponentChartProps>> = ({ chartData, Filter, Chart }) => {
   const { loading, error, data } = chartData;
 
   const [filterBy, setFilterBy] = React.useState(FILTER_BY.CI_BUILD);

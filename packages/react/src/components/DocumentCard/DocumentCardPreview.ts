@@ -8,7 +8,7 @@ import type {
   IDocumentCardPreviewStyles,
 } from './DocumentCardPreview.types';
 
-export const DocumentCardPreview: React.FunctionComponent<IDocumentCardPreviewProps> = styled<
+export const DocumentCardPreview: React.FunctionComponent<React.PropsWithChildren<IDocumentCardPreviewProps>> = styled<
   IDocumentCardPreviewProps,
   IDocumentCardPreviewStyleProps,
   IDocumentCardPreviewStyles

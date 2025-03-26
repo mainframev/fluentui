@@ -4,6 +4,6 @@ import { OverflowSetBase } from './OverflowSet.base';
 import { getStyles } from './OverflowSet.styles';
 import type { IOverflowSetProps } from './OverflowSet.types';
 
-export const OverflowSet: React.FunctionComponent<IOverflowSetProps> = styled(OverflowSetBase, getStyles, undefined, {
+export const OverflowSet: React.FunctionComponent<React.PropsWithChildren<IOverflowSetProps>> = styled(OverflowSetBase, getStyles, undefined, {
   scope: 'OverflowSet',
 });

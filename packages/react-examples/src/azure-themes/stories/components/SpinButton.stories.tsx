@@ -10,7 +10,7 @@ const stackTokens: IStackTokens = { childrenGap: 20 };
 // By default the field grows to fit available width. Constrain the width instead.
 const styles: Partial<ISpinButtonStyles> = { spinButtonWrapper: { width: 75 } };
 const iconProps: IIconProps = { iconName: 'IncreaseIndentLegacy' };
-export const SpinButtonBasicExample: React.FunctionComponent = () => {
+export const SpinButtonBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={stackTokens}>
       <SpinButton

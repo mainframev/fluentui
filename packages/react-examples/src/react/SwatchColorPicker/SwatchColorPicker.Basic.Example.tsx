@@ -35,7 +35,7 @@ const colorCellsExample3 = [
   { id: 'h', label: 'gray', color: '#7a7574' },
 ];
 
-export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
+export const SwatchColorPickerBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [previewColor, setPreviewColor] = React.useState<string>();
   const baseId = useId('colorpicker');
 

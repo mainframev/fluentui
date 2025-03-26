@@ -13,7 +13,7 @@ import type { ITheme } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
-const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = props => {
+const DetailsRowCheckBase: React.FunctionComponent<React.PropsWithChildren<IDetailsRowCheckProps>> = props => {
   const {
     isVisible = false,
     canSelect = false,
@@ -71,7 +71,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     </div>
   ) : (
     // eslint-disable-next-line @typescript-eslint/no-deprecated
-    <div {...divProps} className={css(classNames.root, classNames.check)} />
+    (<div {...divProps} className={css(classNames.root, classNames.check)} />)
   );
 };
 

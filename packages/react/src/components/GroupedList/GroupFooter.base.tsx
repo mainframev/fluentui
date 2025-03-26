@@ -5,7 +5,7 @@ import type { IGroupFooterStyleProps, IGroupFooterStyles, IGroupFooterProps } fr
 
 const getClassNames = classNamesFunction<IGroupFooterStyleProps, IGroupFooterStyles>();
 
-export const GroupFooterBase: React.FunctionComponent<IGroupFooterProps> = props => {
+export const GroupFooterBase: React.FunctionComponent<React.PropsWithChildren<IGroupFooterProps>> = props => {
   const { group, groupLevel, footerText, indentWidth, styles, theme } = props;
   const classNames = getClassNames(styles, { theme: theme! });
 

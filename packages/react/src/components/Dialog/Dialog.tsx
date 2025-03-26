@@ -4,7 +4,7 @@ import { DialogBase } from './Dialog.base';
 import { getStyles } from './Dialog.styles';
 import type { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 
-export const Dialog: React.FunctionComponent<IDialogProps> = styled<IDialogProps, IDialogStyleProps, IDialogStyles>(
+export const Dialog: React.FunctionComponent<React.PropsWithChildren<IDialogProps>> = styled<IDialogProps, IDialogStyleProps, IDialogStyles>(
   DialogBase,
   getStyles,
   undefined,

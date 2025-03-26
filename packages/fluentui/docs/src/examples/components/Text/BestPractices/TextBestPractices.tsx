@@ -8,7 +8,7 @@ const doList = [
   'For other `content` value types (i.e. that use elements inside), in order to properly jandle RTL mode, ensure that `dir="auto"` attribute is applied for all places in content where necessary.',
 ];
 
-const TextBestPractices: React.FunctionComponent<{}> = () => {
+const TextBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

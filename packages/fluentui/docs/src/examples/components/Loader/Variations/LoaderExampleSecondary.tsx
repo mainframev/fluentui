@@ -1,7 +1,7 @@
 import { Loader, Flex, Provider } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const LoaderExampleSecondary: React.FC = () => {
+const LoaderExampleSecondary: React.FC<React.PropsWithChildren<unknown>> = () => {
   return (
     <Provider.Consumer
       render={theme => {

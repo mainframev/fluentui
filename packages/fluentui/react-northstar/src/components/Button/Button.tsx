@@ -345,6 +345,7 @@ Button.defaultProps = {
   size: 'medium',
 };
 
+// @ts-expect-error React 18
 Button.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',

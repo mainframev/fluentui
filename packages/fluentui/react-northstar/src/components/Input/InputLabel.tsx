@@ -38,6 +38,7 @@ InputLabel.defaultProps = {
   as: 'label',
 };
 
+// @ts-expect-error React 18
 InputLabel.propTypes = {
   ...commonPropTypes.createCommon(),
   labelPosition: PropTypes.oneOf<LabelPosition>(['inline', 'above', 'inside']),

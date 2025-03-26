@@ -34,7 +34,7 @@ export interface PortalInnerProps extends ChildrenComponentProps {
 /**
  * A PortalInner is a container for Portal's content.
  */
-export const PortalInner: React.FC<PortalInnerProps> = props => {
+export const PortalInner: React.FC<React.PropsWithChildren<PortalInnerProps>> = props => {
   const { children, mountNode } = props;
 
   const { className } = React.useContext(PortalContext);
@@ -59,6 +59,7 @@ export const PortalInner: React.FC<PortalInnerProps> = props => {
   return container && ReactDOM.createPortal(children, container);
 };
 
+// @ts-expect-error React 18
 PortalInner.propTypes = {
   ...commonPropTypes.createCommon({
     accessibility: false,

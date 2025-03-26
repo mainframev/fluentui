@@ -8,11 +8,14 @@ import { CardItemView } from './CardItem.view';
  * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the
  * future.
  */
-export const CardItem: React.FunctionComponent<ICardItemProps> = createComponent(CardItemView, {
-  displayName: 'CardItem',
-  styles,
-  tokens,
-});
+export const CardItem: React.FunctionComponent<React.PropsWithChildren<ICardItemProps>> = createComponent(
+  CardItemView,
+  {
+    displayName: 'CardItem',
+    styles,
+    tokens,
+  },
+);
 
 /**
  * @deprecated This component was experimental and is no longer being developed on, nor will it be supported in the

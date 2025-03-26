@@ -28,7 +28,7 @@ const options: IComboBoxOption[] = [
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
 const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
-export const ComboBoxErrorHandlingExample: React.FunctionComponent = () => {
+export const ComboBoxErrorHandlingExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedKey, setSelectedKey] = React.useState<string | undefined>('');
   const onChange: IComboBoxProps['onChange'] = (event, option) => setSelectedKey(option!.key as string);
 

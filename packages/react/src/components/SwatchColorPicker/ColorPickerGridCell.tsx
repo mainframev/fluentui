@@ -8,7 +8,7 @@ import type {
   IColorPickerGridCellStyles,
 } from './ColorPickerGridCell.types';
 
-export const ColorPickerGridCell: React.FunctionComponent<IColorPickerGridCellProps> = styled<
+export const ColorPickerGridCell: React.FunctionComponent<React.PropsWithChildren<IColorPickerGridCellProps>> = styled<
   IColorPickerGridCellProps,
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles

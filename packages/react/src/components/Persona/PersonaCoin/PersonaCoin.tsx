@@ -7,7 +7,7 @@ import type { IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles } fr
 /**
  * PersonaCoin is used to render an individual's avatar and presence.
  */
-export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps> = styled<
+export const PersonaCoin: React.FunctionComponent<React.PropsWithChildren<IPersonaCoinProps>> = styled<
   IPersonaCoinProps,
   IPersonaCoinStyleProps,
   IPersonaCoinStyles

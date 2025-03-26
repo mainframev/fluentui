@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Slider, SliderProps, Flex, Form, Label, Input } from '@fluentui/react-northstar';
 
-const CustomSlider: React.FunctionComponent<SliderProps> = props => {
+const CustomSlider: React.FunctionComponent<React.PropsWithChildren<SliderProps>> = props => {
   const [value, setValue] = React.useState<string>('35');
   return (
     <Flex inline hAlign="center" vAlign="center" gap="gap.smaller">

@@ -55,7 +55,7 @@ const useComponentRef = (
   );
 };
 
-export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
+export const FocusTrapZone: React.FunctionComponent<React.PropsWithChildren<IFocusTrapZoneProps>> & {
   /**
    * Stack of active FocusTrapZone identifiers, exposed for testing purposes only.
    * (This is always set, just marked as optional to avoid a cast in the component definition.)

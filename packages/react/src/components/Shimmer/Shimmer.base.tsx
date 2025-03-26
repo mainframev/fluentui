@@ -12,7 +12,7 @@ const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 /**
  * {@docCategory Shimmer}
  */
-export const ShimmerBase: React.FunctionComponent<IShimmerProps> = React.forwardRef<HTMLDivElement, IShimmerProps>(
+export const ShimmerBase: React.FunctionComponent<React.PropsWithChildren<IShimmerProps>> = React.forwardRef<HTMLDivElement, IShimmerProps>(
   (props, ref) => {
     const {
       styles,

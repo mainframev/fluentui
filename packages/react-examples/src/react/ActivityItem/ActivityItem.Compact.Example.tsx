@@ -66,7 +66,7 @@ const activityItemExamples: Partial<IActivityItemProps & React.ClassAttributes<{
   },
 ];
 
-export const ActivityItemCompactExample: React.FunctionComponent = () => {
+export const ActivityItemCompactExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       {activityItemExamples.map((item: { key: string | number }) => (

@@ -40,7 +40,7 @@ const personaStyles: Partial<IPersonaStyles> = {
   },
 };
 
-export const PeoplePickerListExample: React.FunctionComponent = () => {
+export const PeoplePickerListExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [delayResults, setDelayResults] = React.useState(false);
   const [isPickerDisabled, setIsPickerDisabled] = React.useState(false);
   const [pickerLabel, setPickerLabel] = React.useState<string | undefined>('Choose People');

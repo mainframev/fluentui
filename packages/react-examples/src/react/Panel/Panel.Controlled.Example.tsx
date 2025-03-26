@@ -3,7 +3,7 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Panel } from '@fluentui/react/lib/Panel';
 import { useBoolean } from '@fluentui/react-hooks';
 
-export const PanelControlledExample: React.FunctionComponent = () => {
+export const PanelControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   return (

@@ -14,7 +14,7 @@ import {
 } from '@fluentui/react';
 import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 
-export const ModalBasicExample: React.FunctionComponent = () => {
+export const ModalBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
   const [keepInBounds, { toggle: toggleKeepInBounds }] = useBoolean(false);

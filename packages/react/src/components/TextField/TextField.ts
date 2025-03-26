@@ -4,7 +4,7 @@ import { TextFieldBase } from './TextField.base';
 import { getStyles } from './TextField.styles';
 import type { ITextFieldProps, ITextFieldStyles, ITextFieldStyleProps } from './TextField.types';
 
-export const TextField: React.FunctionComponent<ITextFieldProps> = styled<
+export const TextField: React.FunctionComponent<React.PropsWithChildren<ITextFieldProps>> = styled<
   ITextFieldProps,
   ITextFieldStyleProps,
   ITextFieldStyles

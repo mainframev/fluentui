@@ -20,12 +20,12 @@ import * as React_2 from 'react';
 
 // @public @deprecated (undocumented)
 export const Card: React_2.FunctionComponent<ICardProps> & {
-    Item: React_2.FunctionComponent<ICardItemProps>;
-    Section: React_2.FunctionComponent<ICardSectionProps>;
+    Item: React_2.FunctionComponent<React_2.PropsWithChildren<ICardItemProps>>;
+    Section: React_2.FunctionComponent<React_2.PropsWithChildren<ICardSectionProps>>;
 };
 
 // @public @deprecated (undocumented)
-export const CardItem: React_2.FunctionComponent<ICardItemProps>;
+export const CardItem: React_2.FunctionComponent<React_2.PropsWithChildren<ICardItemProps>>;
 
 // @public @deprecated (undocumented)
 export const CardSection: React_2.FunctionComponent<ICardSectionProps>;

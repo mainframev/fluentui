@@ -7,7 +7,7 @@ import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 
-export const CommandBarBasicExample: React.FunctionComponent = () => {
+export const CommandBarBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [enableFocusTrap, setEnableFocusTrap] = React.useState(false);
 
   const onChangeEnableFocusTrap = React.useCallback(

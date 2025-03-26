@@ -7,7 +7,7 @@ type PortalWindowProps = {
   onClose?: () => void;
 };
 
-const PortalWindow: React.FunctionComponent<PortalWindowProps> = ({ children, onClose }) => {
+const PortalWindow: React.FunctionComponent<React.PropsWithChildren<PortalWindowProps>> = ({ children, onClose }) => {
   const externalContainer = React.useRef<HTMLDivElement>(null);
   const externalWindow = React.useRef<Window>(null);
   const [mounted, setMounted] = React.useState<boolean>(false);

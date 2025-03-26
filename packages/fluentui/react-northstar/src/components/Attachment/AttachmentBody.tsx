@@ -28,4 +28,5 @@ export const AttachmentBody = compose<
   },
 });
 
+// @ts-expect-error React 18
 AttachmentBody.propTypes = commonPropTypes.createCommon();

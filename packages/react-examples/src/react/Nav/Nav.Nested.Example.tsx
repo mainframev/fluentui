@@ -57,6 +57,6 @@ const navLinkGroups: INavLinkGroup[] = [
   },
 ];
 
-export const NavNestedExample: React.FunctionComponent = () => {
+export const NavNestedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return <Nav ariaLabel="Nav example with nested links" groups={navLinkGroups} />;
 };

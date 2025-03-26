@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ProgressIndicator } from '@fluentui/react/lib/ProgressIndicator';
 
-export const ProgressIndicatorIndeterminateExample: React.FunctionComponent = () => (
+export const ProgressIndicatorIndeterminateExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <ProgressIndicator label="Example title" description="Example description" />
 );

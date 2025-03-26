@@ -4,7 +4,7 @@ import { DocumentCardBase } from './DocumentCard.base';
 import { getStyles } from './DocumentCard.styles';
 import type { IDocumentCardProps, IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 
-export const DocumentCard: React.FunctionComponent<IDocumentCardProps> = styled<
+export const DocumentCard: React.FunctionComponent<React.PropsWithChildren<IDocumentCardProps>> = styled<
   IDocumentCardProps,
   IDocumentCardStyleProps,
   IDocumentCardStyles

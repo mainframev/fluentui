@@ -53,7 +53,7 @@ function useRendererFactory(): CreateRenderer {
   return rendererFactory;
 }
 
-const App: React.FC = () => {
+const App: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [themeName, setThemeName] = React.useState<ThemeName>(themeContextDefaults.themeName);
   // State also contains the updater function so it will
   // be passed down into the context provider

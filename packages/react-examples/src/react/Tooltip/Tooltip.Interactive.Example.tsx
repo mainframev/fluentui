@@ -6,7 +6,7 @@ import { useId } from '@fluentui/react-hooks';
 const styles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
 const calloutProps = { gapSpace: 0 };
 
-export const TooltipInteractiveExample: React.FunctionComponent = () => {
+export const TooltipInteractiveExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // Use useId() to ensure that the ID is unique on the page.
   // (It's also okay to use a plain string and manually ensure uniqueness.)
   const tooltipId = useId('tooltip');

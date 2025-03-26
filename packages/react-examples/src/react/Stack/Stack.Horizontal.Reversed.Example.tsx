@@ -35,7 +35,7 @@ const clickableStackTokens: IStackTokens = {
   padding: 10,
 };
 
-export const HorizontalStackReversedExample: React.FunctionComponent = () => {
+export const HorizontalStackReversedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack enableScopedSelectors tokens={containerStackTokens}>
       <span>Default horizontal stack</span>

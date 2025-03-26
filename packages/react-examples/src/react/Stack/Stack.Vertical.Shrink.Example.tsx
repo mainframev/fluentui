@@ -36,7 +36,7 @@ const innerStackTokens: IStackTokens = {
   padding: 10,
 };
 
-export const VerticalStackShrinkExample: React.FunctionComponent = () => {
+export const VerticalStackShrinkExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [stackHeight, setStackHeight] = React.useState<number>(100);
 
   // Mutating styles definition

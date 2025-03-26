@@ -2,7 +2,7 @@ import { Grid, Divider, Header, SvgIconProps } from '@fluentui/react-northstar';
 import * as exports from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 
-const icons = Object.keys(exports).reduce((acc: React.FC<SvgIconProps>[], exportName) => {
+const icons = Object.keys(exports).reduce((acc: React.FC<React.PropsWithChildren<SvgIconProps>>[], exportName) => {
   if (!!exports[exportName].displayName) {
     acc.push(exports[exportName]);
   }

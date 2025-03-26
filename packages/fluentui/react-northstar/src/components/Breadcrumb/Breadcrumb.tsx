@@ -129,6 +129,7 @@ Breadcrumb.defaultProps = {
   accessibility: breadcrumbBehavior,
 };
 
+// @ts-expect-error React 18
 Breadcrumb.propTypes = {
   ...commonPropTypes.createCommon(),
   size: PropTypes.oneOf(['smaller', 'small', 'medium', 'large']),

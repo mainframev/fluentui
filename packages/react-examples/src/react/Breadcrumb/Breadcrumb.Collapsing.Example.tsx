@@ -15,7 +15,7 @@ const items: IBreadcrumbItem[] = [
   { text: 'This is folder 5', key: 'f5', onClick: _onBreadcrumbItemClicked, isCurrentItem: true },
 ];
 
-export const BreadcrumbCollapsingExample: React.FunctionComponent = () => {
+export const BreadcrumbCollapsingExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       <Label styles={labelStyles}>With no maxDisplayedItems</Label>

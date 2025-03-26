@@ -3,7 +3,7 @@ import { Chiclet, ChicletSize } from '@fluentui/react-experiments';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
-export const ChicletXsmallExample: React.FunctionComponent<{}> = () => {
+export const ChicletXsmallExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return (
     <Chiclet
       url={SAMPLE_URL}

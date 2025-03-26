@@ -14,7 +14,7 @@ const checkboxRef: IRefObject<ICheckbox> = (ref: ICheckbox | null) => {
   checkbox = ref!;
 };
 
-const IndeterminateControlledCheckbox: React.FunctionComponent = () => {
+const IndeterminateControlledCheckbox: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [indeterminate, setIndeterminate] = React.useState(true);
   const [checked, setChecked] = React.useState(false);
   const onChange = (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, newChecked?: boolean): void => {

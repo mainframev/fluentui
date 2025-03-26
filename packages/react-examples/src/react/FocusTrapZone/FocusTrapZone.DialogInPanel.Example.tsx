@@ -17,7 +17,7 @@ const modelProps = {
   styles: { main: { maxWidth: 450 } },
 };
 
-export const FocusTrapZoneDialogInPanelExample: React.FunctionComponent = () => {
+export const FocusTrapZoneDialogInPanelExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [showPanel, { toggle: toggleShowPanel }] = useBoolean(false);
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
   return (

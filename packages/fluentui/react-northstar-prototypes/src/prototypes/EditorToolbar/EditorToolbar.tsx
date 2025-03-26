@@ -47,7 +47,7 @@ type EditorToolbarProps = EditorToolbarState & {
 type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>;
 type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: keyof ToolbarMenuItemShorthandKinds }>;
 
-const EditorToolbar: React.FC<EditorToolbarProps> = props => {
+const EditorToolbar: React.FC<React.PropsWithChildren<EditorToolbarProps>> = props => {
   const overflowIndex = React.useRef<number>();
 
   const linkItemRef = React.useRef<HTMLElement>(null);
@@ -127,6 +127,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
           </Flex>
         ),
       },
+      // @ts-expect-error TODO React 18
       overflowItem: {
         popup: {
           align: 'center',
@@ -180,6 +181,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     { toolbarItem: { key: 'divider-3', kind: 'divider' } },
 
     {
+      // @ts-expect-error TODO React 18
       toolbarItem: {
         key: 'link',
         icon: <LinkIcon />,

@@ -7,7 +7,7 @@ type ZoneProps = {
   depth: number;
 };
 
-const Zone: React.FC<ZoneProps> = ({ zoneNumber, depth, children }) => {
+const Zone: React.FC<React.PropsWithChildren<React.PropsWithChildren<ZoneProps>>> = ({ zoneNumber, depth, children }) => {
   const [disabled, setDisabled] = React.useState(true);
   const buttonsConstructed = React.useRef(false);
 
@@ -58,7 +58,7 @@ const Zone: React.FC<ZoneProps> = ({ zoneNumber, depth, children }) => {
   );
 };
 
-export const ShadowDOMFocusTrapZoneNestedChildShadowDomExample: React.FunctionComponent = () => {
+export const ShadowDOMFocusTrapZoneNestedChildShadowDomExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Shadow>
       <Zone zoneNumber={1} depth={0}>

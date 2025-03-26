@@ -86,7 +86,7 @@ const CustomLabel = (props: ITextFieldProps): JSX.Element => {
   );
 };
 
-export const TextFieldCustomRenderExample: React.FunctionComponent = () => {
+export const TextFieldCustomRenderExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const labelId: string = useId('label');
   const onRenderLabel = (props: ITextFieldProps) => <CustomLabel id={labelId} {...props} />;
 

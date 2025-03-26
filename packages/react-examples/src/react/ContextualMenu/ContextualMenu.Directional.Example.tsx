@@ -12,7 +12,7 @@ import { getRTL } from '@fluentui/react/lib/Utilities';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 import { useBoolean } from '@fluentui/react-hooks';
 
-export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
+export const ContextualMenuDirectionalExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isBeakVisible, { toggle: toggleIsBeakVisible }] = useBoolean(false);
   const [useDirectionalHintForRTL, { toggle: toggleUseDirectionalHintForRTL }] = useBoolean(false);
   const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);

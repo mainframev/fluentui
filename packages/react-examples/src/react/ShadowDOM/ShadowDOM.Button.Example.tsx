@@ -12,7 +12,7 @@ import { ButtonIconExample } from '../Button/Button.Icon.Example';
 import { ButtonToggleExample } from '../Button/Button.Toggle.Example';
 import { Checkbox } from '@fluentui/react';
 
-export const ShadowDOMButtonExample: React.FunctionComponent = () => {
+export const ShadowDOMButtonExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [disabled, setDisabled] = React.useState(false);
 
   const onChange = () => {

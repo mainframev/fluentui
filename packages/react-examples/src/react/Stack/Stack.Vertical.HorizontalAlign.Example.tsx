@@ -21,7 +21,7 @@ const itemStyles: React.CSSProperties = {
 // Tokens definition
 const stackTokens: IStackTokens = { childrenGap: 5 };
 
-export const VerticalStackHorizontalAlignExample: React.FunctionComponent = () => {
+export const VerticalStackHorizontalAlignExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack enableScopedSelectors tokens={stackTokens}>
       <span>Left-aligned</span>
