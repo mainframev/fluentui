@@ -11,7 +11,10 @@ interface FluentDocsContainerProps {
 /**
  * A container that wraps storybook's native docs container to add extra components to the docs experience
  */
-export const FluentDocsContainer: React.FC<FluentDocsContainerProps> = ({ children, context }) => {
+export const FluentDocsContainer: React.FC<React.PropsWithChildren<FluentDocsContainerProps>> = ({
+  children,
+  context,
+}) => {
   return (
     <>
       {/** TODO add table of contents */}
