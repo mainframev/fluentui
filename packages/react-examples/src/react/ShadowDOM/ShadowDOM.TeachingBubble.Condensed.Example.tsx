@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Shadow } from './ShadowHelper';
 import { TeachingBubbleCondensedExample } from '../TeachingBubble/TeachingBubble.Condensed.Example';
 
-export const ShadowDOMTeachingBubbleCondensedExample: React.FunctionComponent = () => {
+export const ShadowDOMTeachingBubbleCondensedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Shadow>
       <TeachingBubbleCondensedExample />

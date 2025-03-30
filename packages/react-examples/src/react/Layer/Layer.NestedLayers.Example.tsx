@@ -5,7 +5,7 @@ import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { IModalProps } from '@fluentui/react/lib/Modal';
 import { useBoolean } from '@fluentui/react-hooks';
 
-export const LayerNestedLayersExample: React.FunctionComponent = () => {
+export const LayerNestedLayersExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isDialogOpen, { setTrue: showDialog, setFalse: hideDialog }] = useBoolean(false);
   const [isPanelOpen, { setTrue: showPanel, setFalse: dismissPanel }] = useBoolean(false);
 

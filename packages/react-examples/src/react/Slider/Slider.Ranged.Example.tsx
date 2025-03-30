@@ -6,7 +6,7 @@ const stackTokens: IStackTokens = { childrenGap: 20 };
 const sliderAriaValueText = (value: number) => `${value} percent`;
 const sliderValueFormat = (value: number) => `${value}%`;
 
-export const SliderRangedExample: React.FunctionComponent = () => {
+export const SliderRangedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [sliderValue, setSliderValue] = React.useState(0);
   const [sliderLowerValue, setSliderLowerValue] = React.useState(0);
   const onChange = (_: unknown, range: [number, number]) => {

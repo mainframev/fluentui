@@ -12,7 +12,7 @@ const options: IChoiceGroupOption[] = [
   { key: 'D', text: 'Option D' },
 ];
 
-export const ChoiceGroupLabelExample: React.FunctionComponent = () => {
+export const ChoiceGroupLabelExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // Use the useId() hook to ensure that the label ID is unique on the page. Notes:
   // - It's also okay to use a plain string and manually ensure its uniqueness.
   // - In a function component, we get the ID with the useId() hook so that it will stay the same.

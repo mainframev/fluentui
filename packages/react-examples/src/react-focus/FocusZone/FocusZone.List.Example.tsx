@@ -44,7 +44,7 @@ const COLUMNS: IColumn[] = [
 
 const detailsRowStyles: Partial<IDetailsRowStyles> = { root: { display: 'block', width: '100%' } };
 
-export const FocusZoneListExample: React.FunctionComponent = () => {
+export const FocusZoneListExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   //  Initialize the selection when the component is first rendered (same instance will be reused)
   const selection = useConst(() => {
     const sel = new Selection();

@@ -22,7 +22,7 @@ const timePickerStyles: Partial<IComboBoxStyles> = {
   },
 };
 
-export const TimePickerBasicExample: React.FC = () => {
+export const TimePickerBasicExample: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [basicExampleTimeString, setBasicExampleTimeString] = React.useState<string>('');
   const [nonDefaultOptionsExampleTimeString, setNonDefaultOptionsExampleTimeString] = React.useState<string>('');
   const basicDateAnchor = new Date('November 25, 2021 09:00:00');
@@ -32,9 +32,12 @@ export const TimePickerBasicExample: React.FC = () => {
     setBasicExampleTimeString(basicExampleTime.toString());
   }, []);
 
-  const onNonDefaultOptionsExampleChange = React.useCallback((_, nonDefaultOptionsExampleTime: Date) => {
-    setNonDefaultOptionsExampleTimeString(nonDefaultOptionsExampleTime?.toString());
-  }, []);
+  const onNonDefaultOptionsExampleChange = React.useCallback(
+    (_: React.FormEvent<IComboBox>, nonDefaultOptionsExampleTime: Date) => {
+      setNonDefaultOptionsExampleTimeString(nonDefaultOptionsExampleTime?.toString());
+    },
+    [],
+  );
 
   const timeRange: ITimeRange = {
     start: 8,

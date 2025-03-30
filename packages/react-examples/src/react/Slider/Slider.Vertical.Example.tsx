@@ -6,7 +6,7 @@ const stackTokens: IStackTokens = { childrenGap: 20 };
 
 const valueFormat = (value: number) => `${value}%`;
 
-export const SliderVerticalExample: React.FunctionComponent = () => {
+export const SliderVerticalExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack horizontal tokens={stackTokens} styles={stackStyles}>
       <Slider // prettier-ignore

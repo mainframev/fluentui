@@ -57,7 +57,7 @@ const generateStyles = (theme: ITheme) => {
   });
 };
 
-export const ListBasicExample: React.FunctionComponent = () => {
+export const ListBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const originalItems = useConst(() => createListItems(5000));
   const [items, setItems] = React.useState(originalItems);
   const theme = useTheme();

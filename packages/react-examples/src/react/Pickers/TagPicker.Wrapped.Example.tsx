@@ -51,7 +51,7 @@ const onRenderSuggestionItem = (props: ITag) => {
   return <TagItemSuggestion styles={tagStyles}>{props.name}</TagItemSuggestion>;
 };
 
-export const TagPickerWrappedExample: React.FunctionComponent = () => {
+export const TagPickerWrappedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const pickerId = useId('wrapped-picker');
   const picker = React.useRef<IBasePicker<ITag>>(null);
 

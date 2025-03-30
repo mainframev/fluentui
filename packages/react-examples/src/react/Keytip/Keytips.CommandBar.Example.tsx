@@ -64,7 +64,7 @@ const commandBarFarItemsProps = [
   },
 ];
 
-export const KeytipsCommandBarExample: React.FunctionComponent = () => {
+export const KeytipsCommandBarExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [showModal, { toggle: toggleShowModal }] = useBoolean(false);
   const [showMessageBar, { toggle: toggleShowMessageBar }] = useBoolean(false);
   const commandBarItems = useConst(() => [

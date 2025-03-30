@@ -3,7 +3,7 @@ import { Spinner } from '@fluentui/react/lib/Spinner';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 import { Label } from '@fluentui/react/lib/Label';
 
-export const SpinnerLabeledExample: React.FunctionComponent = () => {
+export const SpinnerLabeledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const stackTokens: IStackTokens = {
     childrenGap: 20,
     maxWidth: 250,

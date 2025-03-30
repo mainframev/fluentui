@@ -3,7 +3,7 @@ import { createListItems } from '@fluentui/example-data';
 import { DetailsList, buildColumns, IColumn, IDetailsColumnFieldProps } from '@fluentui/react/lib/DetailsList';
 import { IRenderFunction } from '@fluentui/utilities';
 
-export const DetailsListOnRenderExample: React.FC<{}> = (props: {}): JSX.Element => {
+export const DetailsListOnRenderExample: React.FC<React.PropsWithChildren<{}>> = (props: {}): JSX.Element => {
   const [items] = React.useState(() => {
     return createListItems(500);
   });

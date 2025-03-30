@@ -7,7 +7,7 @@ import {
 } from '@fluentui/react/lib/ContextualMenu';
 import { useConst } from '@fluentui/react-hooks';
 
-export const ContextualMenuIconCustomLayoutExample: React.FunctionComponent = () => {
+export const ContextualMenuIconCustomLayoutExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const menuProps = useConst<IContextualMenuProps>(() => ({
     shouldFocusOnMount: true,
     styles: {

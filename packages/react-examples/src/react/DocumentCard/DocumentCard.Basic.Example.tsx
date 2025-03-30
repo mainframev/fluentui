@@ -27,7 +27,7 @@ const previewProps: IDocumentCardPreviewProps = {
 };
 const DocumentCardActivityPeople = [{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }];
 
-export const DocumentCardBasicExample: React.FunctionComponent = () => (
+export const DocumentCardBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <DocumentCard
     aria-label="Default Document Card with large file name. Created by Annie Lindqvist a few minutes ago."
     onClickHref="http://bing.com"

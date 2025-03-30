@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Shadow } from './ShadowHelper';
 import { FocusTrapZone, Toggle } from '@fluentui/react';
 
-export const ShadowDOMFocusTrapZoneChildShadowDomExample: React.FunctionComponent = () => {
+export const ShadowDOMFocusTrapZoneChildShadowDomExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [disabled, setDisabled] = React.useState(true);
   const buttonsConstructed = React.useRef(false);
 

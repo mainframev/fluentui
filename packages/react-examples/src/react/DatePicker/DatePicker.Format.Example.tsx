@@ -10,7 +10,7 @@ const onFormatDate = (date?: Date): string => {
   return !date ? '' : date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
 };
 
-export const DatePickerFormatExample: React.FunctionComponent = () => {
+export const DatePickerFormatExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [value, setValue] = React.useState<Date | undefined>();
   const datePickerRef = React.useRef<IDatePicker>(null);
 

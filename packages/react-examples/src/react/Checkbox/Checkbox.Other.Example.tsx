@@ -13,7 +13,7 @@ const inputProps: ICheckboxProps['inputProps'] = {
 // Used to add spacing between example checkboxes
 const stackTokens = { childrenGap: 10 };
 
-export const CheckboxOtherExample: React.FunctionComponent = () => {
+export const CheckboxOtherExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // Only for the first checkbox, which is controlled
   const [isChecked, setIsChecked] = React.useState(true);
   const onChange = React.useCallback(

@@ -3,7 +3,7 @@ import { IContextualMenuItem, IContextualMenuProps } from '@fluentui/react/lib/C
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { useConst } from '@fluentui/react-hooks';
 
-export const ContextualMenuScreenReaderExample: React.FunctionComponent = () => {
+export const ContextualMenuScreenReaderExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const menuItems: IContextualMenuItem[] = [
     {
       key: 'newItem',

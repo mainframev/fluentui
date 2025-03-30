@@ -48,7 +48,7 @@ const getPersonaPresence = (personaName: string): PersonaPresence => {
   return presences[personaName.charCodeAt(1) % 5];
 };
 
-export const FacepileBasicExample: React.FunctionComponent = () => {
+export const FacepileBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [imagesFadeIn, { toggle: toggleImagesFadeIn }] = useBoolean(true);
   const [numberOfFaces, setNumberOfFaces] = React.useState(3);
   const [personaSize, setPersonaSize] = React.useState(PersonaSize.size32);

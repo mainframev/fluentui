@@ -10,7 +10,7 @@ for (let i = 0; i < 1000; i++) {
 }
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: '300px' } };
 
-export const ComboBoxVirtualizedExample: React.FunctionComponent = () => {
+export const ComboBoxVirtualizedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <VirtualizedComboBox
       defaultSelectedKey="547"

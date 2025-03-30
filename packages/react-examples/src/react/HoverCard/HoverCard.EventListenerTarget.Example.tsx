@@ -26,11 +26,11 @@ const onRenderPlainCard = (): JSX.Element => {
   return <div className={classNames.plainCard}>plain card</div>;
 };
 
-export const HoverCardEventListenerTargetExample: React.FunctionComponent = () => {
+export const HoverCardEventListenerTargetExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const targetRef = React.useRef<HTMLElement | null>(null);
   const eventListenerTargetRef = React.useRef<HTMLElement | null>(null);
   const plainCardProps: IPlainCardProps = {
-    onRenderPlainCard: onRenderPlainCard,
+    onRenderPlainCard,
     directionalHint: DirectionalHint.rightTopEdge,
   };
   return (

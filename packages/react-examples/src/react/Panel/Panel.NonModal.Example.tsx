@@ -6,7 +6,7 @@ import { useBoolean } from '@fluentui/react-hooks';
 const explanation =
   "This panel is non-modal: even when it's open, it allows interacting with content outside the panel.";
 
-export const PanelNonModalExample: React.FunctionComponent = () => {
+export const PanelNonModalExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   return (

@@ -4,7 +4,7 @@ import { IButtonProps } from '@fluentui/react/lib/Button';
 
 const overflowButtonProps: IButtonProps = { ariaLabel: 'More commands' };
 
-export const CommandBarSplitDisabledExample: React.FunctionComponent = () => {
+export const CommandBarSplitDisabledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       <CommandBar items={_items} overflowButtonProps={overflowButtonProps} />

@@ -5,7 +5,7 @@ import { AnimationClassNames, mergeStyleSets, getTheme } from '@fluentui/react/l
 import { IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { useId, useBoolean } from '@fluentui/react-hooks';
 
-export const LayerHostedExample: React.FunctionComponent = () => {
+export const LayerHostedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [showLayer, { toggle: toggleShowLayer }] = useBoolean(false);
   const [showLayerNoId, { toggle: toggleShowLayerNoId }] = useBoolean(false);
   const [showHost, { toggle: toggleShowHost }] = useBoolean(true);

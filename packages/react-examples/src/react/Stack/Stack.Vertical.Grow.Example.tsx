@@ -26,7 +26,7 @@ const innerStackTokens: IStackTokens = {
   padding: 10,
 };
 
-export const VerticalStackGrowExample: React.FunctionComponent = () => {
+export const VerticalStackGrowExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack enableScopedSelectors tokens={outerStackTokens}>
       <Stack enableScopedSelectors styles={stackStyles} tokens={innerStackTokens}>

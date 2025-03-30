@@ -24,7 +24,7 @@ const generateData = (count: number, cachingEnabled: boolean, checked: boolean):
       key: `item${index}`,
       name: `Item ${index}`,
       icon: icons[index % icons.length],
-      checked: checked,
+      checked,
     };
   });
   let result: IOverflowData = {
@@ -86,7 +86,7 @@ const onReduceData = (currentData: any): any => {
   return { primary, overflow };
 };
 
-export const ResizeGroupVerticalOverflowSetExample: React.FunctionComponent = () => (
+export const ResizeGroupVerticalOverflowSetExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <ResizeGroup
     className={resizeRootClassName}
     role="tabpanel"

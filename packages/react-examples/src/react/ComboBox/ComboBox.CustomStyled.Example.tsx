@@ -72,7 +72,7 @@ const onRenderOption = (item: IComboBoxOption) => {
         fontFamily = fontMapping[newFontName] = `"${newFontName}","Segoe UI",Tahoma,Sans-Serif`;
       }
 
-      return <span style={{ fontFamily: fontFamily }}>{item.text}</span>;
+      return <span style={{ fontFamily }}>{item.text}</span>;
   }
 };
 
@@ -80,7 +80,7 @@ const onRenderOption = (item: IComboBoxOption) => {
 const basicStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
 const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
-export const ComboBoxCustomStyledExample: React.FunctionComponent = () => {
+export const ComboBoxCustomStyledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={stackTokens}>
       <ComboBox

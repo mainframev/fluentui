@@ -12,7 +12,7 @@ const calloutProps = { gapSpace: 0 };
 // If that's causing sizing issues or tooltip positioning issues, try overriding to inline-block.
 const hostStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
 
-export const TooltipBasicExample: React.FunctionComponent = () => {
+export const TooltipBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // Use useId() to ensure that the ID is unique on the page.
   // (It's also okay to use a plain string and manually ensure uniqueness.)
   const tooltipId = useId('tooltip');

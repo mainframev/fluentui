@@ -30,7 +30,7 @@ const clickableStackTokens: IStackTokens = {
   padding: 10,
 };
 
-export const VerticalStackBasicExample: React.FunctionComponent = () => {
+export const VerticalStackBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack enableScopedSelectors tokens={containerStackTokens}>
       <span>Default vertical stack</span>

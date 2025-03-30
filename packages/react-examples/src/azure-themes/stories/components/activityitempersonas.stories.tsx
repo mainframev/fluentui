@@ -15,7 +15,7 @@ const classNames = mergeStyleSets({
   },
 });
 
-export const ActivityItemPersonaExample: React.FunctionComponent = () => {
+export const ActivityItemPersonaExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const activityItemExamples: (IActivityItemProps & { key: string | number })[] = [
     {
       key: 1,

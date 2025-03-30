@@ -4,7 +4,7 @@ import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { useBoolean, useId } from '@fluentui/react-hooks';
 
-export const TeachingBubbleWideExample: React.FunctionComponent = () => {
+export const TeachingBubbleWideExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
 

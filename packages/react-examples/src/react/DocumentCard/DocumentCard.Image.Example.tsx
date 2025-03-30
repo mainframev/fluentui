@@ -24,7 +24,7 @@ const oneNoteIconProps: IIconProps = {
   styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } },
 };
 
-export const DocumentCardImageExample: React.FunctionComponent = () => {
+export const DocumentCardImageExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const cardStyles: IDocumentCardStyles = {
     root: { display: 'inline-block', marginRight: 20, marginBottom: 20, width: 320 },
   };

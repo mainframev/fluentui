@@ -47,7 +47,9 @@ const iconClass = mergeStyles({
   margin: '0 25px',
 });
 
-const BorderBlindsIcon: React.FunctionComponent<{ color1?: string; color2?: string; color3?: string }> = props => {
+const BorderBlindsIcon: React.FunctionComponent<
+  React.PropsWithChildren<{ color1?: string; color2?: string; color3?: string }>
+> = props => {
   const { color1 = 'red', color2 = 'green', color3 = 'blue' } = props;
 
   // FontIcon is an optimized variant of standard Icon.
@@ -78,7 +80,7 @@ const BorderBlindsIcon: React.FunctionComponent<{ color1?: string; color2?: stri
   );
 };
 
-export const IconSvgExample: React.FunctionComponent = () => {
+export const IconSvgExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // FontIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here.
   // Provide an `aria-label` for screen reader users if the icon is not accompanied by text

@@ -10,12 +10,18 @@ import {
 
 // This is our customized component making use of default CollapsibleSectionTitle while using slots
 // to add the tooltip and icon. This would also have to be modified to add a prop for tooltip content (not done here)
-const CustomizedCollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSectionTitleProps> = props => {
+const CustomizedCollapsibleSectionTitle: React.FunctionComponent<
+  React.PropsWithChildren<ICollapsibleSectionTitleProps>
+> = props => {
   const titleText: ICollapsibleSectionTitleProps['slots'] = {
     text: {
-      render: (renderProps, DefaultComponent) => (
+      render: (
+        renderProps: React.PropsWithChildren<ICollapsibleSectionTitleProps>,
+        DefaultComponent: React.ComponentType<React.PropsWithChildren<unknown>>,
+      ) => (
         // Supplement the default title text with an icon. Wrap in a Stack for proper placement.
         <Stack grow horizontal horizontalAlign="space-between">
+          {/* @ts-expect-error TODO */}
           <DefaultComponent {...renderProps}>{props.text}</DefaultComponent>
           <Icon iconName="warning" styles={{ root: { color: 'red' } }} />
         </Stack>

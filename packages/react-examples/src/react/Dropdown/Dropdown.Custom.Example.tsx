@@ -77,7 +77,7 @@ const onRenderPlaceholder = (props: IDropdownProps): JSX.Element => {
 
 const dropdownStyles = { dropdown: { width: 300 } };
 
-export const DropdownCustomExample: React.FunctionComponent = () => (
+export const DropdownCustomExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <Stack tokens={stackTokens}>
     <Dropdown
       placeholder="Select an option"

@@ -11,7 +11,7 @@ import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { css } from '@fluentui/react/lib/Utilities';
 import { useConst } from '@fluentui/react-hooks';
 
-export const ContextualMenuCustomizationExample: React.FunctionComponent = () => {
+export const ContextualMenuCustomizationExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const menuProps = useConst<IContextualMenuProps>(() => ({
     shouldFocusOnMount: true,
     directionalHint: DirectionalHint.bottomLeftEdge,

@@ -20,7 +20,7 @@ const dragOptions: IDragOptions = {
 };
 const cancelIcon: IIconProps = { iconName: 'Cancel' };
 
-export const ModalModelessExample: React.FunctionComponent = () => {
+export const ModalModelessExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isModalOpen, { setTrue: showModal, setFalse: hideModal }] = useBoolean(false);
   const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
 

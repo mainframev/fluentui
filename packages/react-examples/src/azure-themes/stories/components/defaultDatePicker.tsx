@@ -7,7 +7,7 @@ export default {
 
 const rootClass = mergeStyles({ minWidth: 170, selectors: { '> *': { marginBottom: 15 } } });
 
-export const DatePickerBasicExample: React.FunctionComponent = () => {
+export const DatePickerBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 
   return (

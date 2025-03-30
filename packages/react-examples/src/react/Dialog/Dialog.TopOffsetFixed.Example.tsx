@@ -27,7 +27,7 @@ const options = [
   },
 ];
 
-export const DialogTopOffsetFixedExample: React.FunctionComponent = () => {
+export const DialogTopOffsetFixedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
   const [optionSelected, setOptionSelected] = React.useState('A');
 

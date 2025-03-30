@@ -15,7 +15,7 @@ const columns = Object.keys(items[0])
   .slice(0, 3)
   .map(
     (key: string): IColumn => ({
-      key: key,
+      key,
       name: key,
       fieldName: key,
       minWidth: 300,
@@ -24,7 +24,7 @@ const columns = Object.keys(items[0])
 
 const groups = createGroups(groupCount, groupDepth, 0, groupCount);
 
-export const GroupedListV2BasicExample: React.FunctionComponent = () => {
+export const GroupedListV2BasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isCompactMode, { toggle: toggleIsCompactMode }] = useBoolean(false);
   const selection = useConst(() => {
     const s = new Selection();

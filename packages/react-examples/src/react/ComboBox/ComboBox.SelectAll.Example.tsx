@@ -26,7 +26,7 @@ const selectableOptions = options.filter(
     (option.itemType === SelectableOptionMenuItemType.Normal || option.itemType === undefined) && !option.disabled,
 );
 
-export const ComboBoxSelectAllExample: React.FunctionComponent = () => {
+export const ComboBoxSelectAllExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedKeys, setSelectedKeys] = React.useState<string[]>(['A', 'D']);
   const onChange = (
     event: React.FormEvent<IComboBox>,

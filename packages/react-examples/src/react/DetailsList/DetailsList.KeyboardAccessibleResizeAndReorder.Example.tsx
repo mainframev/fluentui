@@ -47,7 +47,7 @@ function copyAndSort<T>(items: T[], columnKey: string, isSortedDescending?: bool
   return items.slice(0).sort((a: T, b: T) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
 }
 
-export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.FunctionComponent = () => {
+export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const handleColumnReorder = (draggedIndex: number, targetIndex: number) => {
     const draggedItems = columns[draggedIndex];
     const newColumns: IColumn[] = [...columns];

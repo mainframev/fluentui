@@ -4,7 +4,7 @@ import { Checkbox, Stack } from '@fluentui/react';
 // Used to add spacing between example checkboxes
 const stackTokens = { childrenGap: 10 };
 
-export const CheckboxIndeterminateExample: React.FunctionComponent = () => {
+export const CheckboxIndeterminateExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // Only used for the controlled checkbox (the last one)
   const [isIndeterminate, setIsIndeterminate] = React.useState(true);
   const [isChecked, setIsChecked] = React.useState(false);

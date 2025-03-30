@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TimePicker, Text, IStackTokens, Stack, IStackStyles, IComboBoxStyles } from '@fluentui/react';
+import { TimePicker, Text, IStackTokens, Stack, IStackStyles, IComboBoxStyles, type IComboBox } from '@fluentui/react';
 
 const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
@@ -13,7 +13,7 @@ const timePickerStyles: Partial<IComboBoxStyles> = {
   },
 };
 
-export const TimePickerCustomTimeStringsExample: React.FC = () => {
+export const TimePickerCustomTimeStringsExample: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [customTimeString, setCustomTimeString] = React.useState<string>('');
   const dateAnchor = new Date('February 27, 2023 08:00:00');
   const onFormatDate = React.useCallback((date: Date) => `Custom prefix + ${date.toLocaleTimeString()}`, []);
@@ -24,7 +24,7 @@ export const TimePickerCustomTimeStringsExample: React.FC = () => {
     return '';
   }, []);
 
-  const onChange = React.useCallback((_, time: Date) => {
+  const onChange = React.useCallback((_: React.FormEvent<IComboBox>, time: Date) => {
     console.log('Selected time: ', time);
     setCustomTimeString(time.toString());
   }, []);

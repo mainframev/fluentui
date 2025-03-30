@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Calendar, defaultCalendarStrings } from '@fluentui/react';
 
-export const CalendarInlineOverlaidMonthExample: React.FunctionComponent = () => {
+export const CalendarInlineOverlaidMonthExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const onSelectDate = React.useCallback((date: Date, dateRangeArray: Date[]): void => {

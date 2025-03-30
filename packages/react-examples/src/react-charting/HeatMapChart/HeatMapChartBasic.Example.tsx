@@ -2,7 +2,7 @@ import * as React from 'react';
 import { HeatMapChart, IHeatMapChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { Label, ThemeContext } from '@fluentui/react';
 
-export const HeatMapChartBasicExample: React.FunctionComponent<{}> = () => {
+export const HeatMapChartBasicExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   const theme = React.useContext(ThemeContext);
   const [width, setWidth] = React.useState<number>(450);
   const [height, setHeight] = React.useState<number>(350);

@@ -4,7 +4,7 @@ import { Layer } from '@fluentui/react/lib/Layer';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { useBoolean } from '@fluentui/react-hooks';
 
-export const LayerBasicExample: React.FunctionComponent = () => {
+export const LayerBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [showLayer, { toggle: toggleShowLayer }] = useBoolean(false);
 
   const content = <div className={contentClass}>Hello world</div>;

@@ -28,7 +28,7 @@ const checkboxStyles = {
   },
 };
 
-export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
+export const PeoplePickerLimitedSearchExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [delayResults, setDelayResults] = React.useState(false);
   const [isPickerDisabled, setIsPickerDisabled] = React.useState(false);
   const [mostRecentlyUsed, setMostRecentlyUsed] = React.useState<IPersonaProps[]>(mru);

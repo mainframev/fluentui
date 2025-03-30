@@ -65,7 +65,7 @@ const onRenderExpandedCard = (item: IExampleItem): JSX.Element => {
  * Used for the hoverable "key" cell. In this case, the implementation uses hooks to control
  * open/closed state, so it must be a function component (not just code within a render callback).
  */
-const KeyCellWithHoverCard: React.FunctionComponent<{ item: IExampleItem }> = ({ item }) => {
+const KeyCellWithHoverCard: React.FunctionComponent<React.PropsWithChildren<{ item: IExampleItem }>> = ({ item }) => {
   const [contentRendered, { toggle: toggleContentRendered }] = useBoolean(false);
   const targetElementRef: React.RefObject<HTMLDivElement> = React.useRef<HTMLDivElement>(null);
   const expandingCardProps: IExpandingCardProps = useConst({
@@ -108,7 +108,7 @@ const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn):
   return item[column.key as keyof IExampleItem];
 };
 
-export const HoverCardTargetExample: React.FunctionComponent = () => {
+export const HoverCardTargetExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <ThemeProvider>
       <p>

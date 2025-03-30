@@ -40,7 +40,7 @@ const itemsWithHeading: IBreadcrumbItem[] = [
   { text: 'Folder 2', key: 'd2', isCurrentItem: true, as: 'h4' },
 ];
 
-export const BreadcrumbBasicExample: React.FunctionComponent = () => {
+export const BreadcrumbBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       <Label styles={labelStyles}>With items rendered as buttons</Label>

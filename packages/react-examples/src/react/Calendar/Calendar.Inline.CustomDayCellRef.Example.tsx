@@ -13,7 +13,7 @@ const calendarDayProps: Partial<ICalendarDayProps> = {
   },
 };
 
-export const CalendarInlineCustomDayCellRefExample: React.FunctionComponent = () => {
+export const CalendarInlineCustomDayCellRefExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const onSelectDate = React.useCallback((date: Date, dateRangeArray: Date[]): void => {

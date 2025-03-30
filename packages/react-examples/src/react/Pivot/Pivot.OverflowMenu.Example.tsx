@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Fabric, Icon, Label, Pivot, IPivotItemProps, PivotItem, Toggle } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
 
-export const PivotOverflowMenuExample: React.FunctionComponent = () => {
+export const PivotOverflowMenuExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [overflow, { toggle: toggleOverflow }] = useBoolean(true);
   const [tabs, { toggle: toggleTabs }] = useBoolean(false);
   const [rtl, { toggle: toggleRtl }] = useBoolean(false);

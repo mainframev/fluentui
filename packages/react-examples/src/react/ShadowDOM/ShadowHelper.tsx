@@ -6,7 +6,7 @@ export type ShadowProps = {
   window?: Window;
 };
 
-export const Shadow: React.FC<ShadowProps> = ({ window, children }) => {
+export const Shadow: React.FC<React.PropsWithChildren<ShadowProps>> = ({ window, children }) => {
   // This is a ref but we're using state to manage it so we can force
   // a re-render.
   const [shadowRootEl, setShadowRootEl] = React.useState<HTMLElement | null>(null);

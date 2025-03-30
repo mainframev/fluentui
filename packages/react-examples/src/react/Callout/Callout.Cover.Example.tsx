@@ -3,7 +3,7 @@ import { Callout, getTheme, mergeStyleSets, FontWeights, Text } from '@fluentui/
 import { useBoolean, useId } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
-export const CalloutCoverExample: React.FunctionComponent = () => {
+export const CalloutCoverExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   const buttonId = useId('callout-button');
   const labelId = useId('callout-label');

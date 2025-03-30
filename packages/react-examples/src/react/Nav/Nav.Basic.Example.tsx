@@ -71,7 +71,7 @@ const navLinkGroups: INavLinkGroup[] = [
   },
 ];
 
-export const NavBasicExample: React.FunctionComponent = () => {
+export const NavBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Nav
       onLinkClick={_onLinkClick}

@@ -33,7 +33,7 @@ const innerStackTokens: IStackTokens = {
   padding: 10,
 };
 
-export const HorizontalStackShrinkExample: React.FunctionComponent = () => {
+export const HorizontalStackShrinkExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [stackWidth, setStackWidth] = React.useState<number>(100);
 
   // Mutating styles definition

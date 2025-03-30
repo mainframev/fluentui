@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Shadow } from './ShadowHelper';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
-export const ShadowDOMFocusZoneHorizontalMenuShadowDomExample: React.FunctionComponent = () => {
+export const ShadowDOMFocusZoneHorizontalMenuShadowDomExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const buttonsConstructed = React.useRef(false);
 
   const setRef = (node: HTMLElement | null) => {

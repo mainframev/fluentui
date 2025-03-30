@@ -15,7 +15,7 @@ import {
 import { useBoolean, useId } from '@fluentui/react-hooks';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
-export const CalloutDirectionalExample: React.FunctionComponent = () => {
+export const CalloutDirectionalExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   const [isBeakVisible, { toggle: toggleIsBeakVisible }] = useBoolean(true);
   const [gapSpace, setGapSpace] = React.useState<number>();

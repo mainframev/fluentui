@@ -11,7 +11,7 @@ import { useConst } from '@fluentui/react-hooks';
 
 const datePickerStyles: Partial<IDatePickerStyles> = { root: { maxWidth: 300, marginTop: 15 } };
 
-export const DatePickerBoundedExample: React.FunctionComponent = () => {
+export const DatePickerBoundedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const today = useConst(new Date(Date.now()));
   const minDate = useConst(addMonths(today, -1));
   const maxDate = useConst(addYears(today, 1));

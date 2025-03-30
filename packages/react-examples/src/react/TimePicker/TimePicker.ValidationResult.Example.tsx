@@ -10,6 +10,7 @@ import {
   IComboBoxStyles,
   PrimaryButton,
   Label,
+  type IComboBox,
 } from '@fluentui/react';
 
 const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
@@ -29,21 +30,24 @@ const timeRange: ITimeRange = {
   end: 17,
 };
 
-export const TimePickerValidationResultExample: React.FC = () => {
+export const TimePickerValidationResultExample: React.FC<React.PropsWithChildren<unknown>> = () => {
   const dateAnchor = new Date('February 27, 2023 08:00:00');
   const [time, setTime] = React.useState<Date>(new Date('January 1, 2023 08:00:00'));
   const [disableButton, setDisableButton] = React.useState<boolean>(false);
 
-  const onControlledExampleChange = React.useCallback((_, newTime: Date) => {
+  const onControlledExampleChange = React.useCallback((_: React.FormEvent<IComboBox>, newTime: Date) => {
     setTime(newTime);
   }, []);
 
-  const onValidationResult = React.useCallback((_, timePickerValidationResultData: TimePickerValidationResultData) => {
-    if (timePickerValidationResultData.errorMessage !== undefined) {
-      console.log('Validation error message received: ', timePickerValidationResultData.errorMessage);
-      setDisableButton(timePickerValidationResultData.errorMessage.length > 0);
-    }
-  }, []);
+  const onValidationResult = React.useCallback(
+    (_: React.FormEvent<IComboBox>, timePickerValidationResultData: TimePickerValidationResultData) => {
+      if (timePickerValidationResultData.errorMessage !== undefined) {
+        console.log('Validation error message received: ', timePickerValidationResultData.errorMessage);
+        setDisableButton(timePickerValidationResultData.errorMessage.length > 0);
+      }
+    },
+    [],
+  );
 
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>

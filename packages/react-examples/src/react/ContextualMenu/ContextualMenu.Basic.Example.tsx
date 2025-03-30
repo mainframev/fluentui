@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 
-export const ContextualMenuBasicExample: React.FunctionComponent = () => {
+export const ContextualMenuBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const linkRef = React.useRef(null);
   const [showContextualMenu, setShowContextualMenu] = React.useState(false);
   const onShowContextualMenu = React.useCallback((ev: React.MouseEvent<HTMLElement>) => {

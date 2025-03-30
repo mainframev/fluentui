@@ -19,7 +19,7 @@ const days: IDropdownOption[] = [
 ];
 const rootClass = mergeStyles({ maxWidth: 300, selectors: { '> *': { marginBottom: 15 } } });
 
-export const DatePickerWeekNumbersExample: React.FunctionComponent = () => {
+export const DatePickerWeekNumbersExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 
   const onDropdownChange = React.useCallback((event: React.FormEvent<HTMLDivElement>, option: IDropdownOption) => {

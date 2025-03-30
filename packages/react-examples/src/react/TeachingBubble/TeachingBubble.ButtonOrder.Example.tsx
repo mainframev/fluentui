@@ -7,7 +7,7 @@ const examplePrimaryButtonProps: IButtonProps = {
   children: 'Try it out',
 };
 
-export const TeachingBubbleButtonOrderExample: React.FunctionComponent = () => {
+export const TeachingBubbleButtonOrderExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
   const exampleSecondaryButtonProps: IButtonProps = React.useMemo(

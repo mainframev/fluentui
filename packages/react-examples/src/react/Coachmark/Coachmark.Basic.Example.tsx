@@ -45,7 +45,7 @@ const dropdownOptions: IDropdownOption[] = [
   { key: 'N', text: 'Right bottom edge', data: DirectionalHint.rightBottomEdge },
 ];
 
-export const CoachmarkBasicExample: React.FunctionComponent = () => {
+export const CoachmarkBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const targetButton = React.useRef<HTMLDivElement>(null);
   const [isCoachmarkVisible, { setFalse: hideCoachmark, setTrue: showCoachmark }] = useBoolean(false);
   const [coachmarkPosition, setCoachmarkPosition] = React.useState<DirectionalHint>(DirectionalHint.bottomAutoEdge);

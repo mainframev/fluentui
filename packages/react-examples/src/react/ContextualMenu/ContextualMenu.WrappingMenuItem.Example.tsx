@@ -30,7 +30,7 @@ const menuStyles: Partial<IContextualMenuStyles> = {
   },
 };
 
-export const ContextualMenuWithWrappingMenuItemExample: React.FunctionComponent = () => {
+export const ContextualMenuWithWrappingMenuItemExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const menuProps: IContextualMenuProps = useConst(() => ({
     shouldFocusOnMount: true,
     styles: menuStyles,

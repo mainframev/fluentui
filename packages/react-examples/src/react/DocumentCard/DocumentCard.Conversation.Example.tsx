@@ -25,7 +25,7 @@ const people: IDocumentCardActivityPerson[] = [
   { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
 ];
 
-export const DocumentCardConversationExample: React.FunctionComponent = () => {
+export const DocumentCardConversationExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const logoProps: IDocumentCardLogoProps = {
     logoIcon: 'OutlookLogo',
   };

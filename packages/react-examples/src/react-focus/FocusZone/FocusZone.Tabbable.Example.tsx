@@ -19,7 +19,7 @@ const menuProps = {
     },
   ],
 };
-export const FocusZoneTabbableExample: React.FunctionComponent = () => {
+export const FocusZoneTabbableExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const tokens = { childrenGap: 20 };
   return (
     <Stack tokens={tokens} horizontalAlign="start">

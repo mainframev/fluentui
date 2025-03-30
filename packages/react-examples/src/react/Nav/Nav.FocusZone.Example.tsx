@@ -26,7 +26,7 @@ const navLinkGroups: INavLinkGroup[] = [
   },
 ];
 
-export const NavFocusZoneExample: React.FunctionComponent = () => {
+export const NavFocusZoneExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Nav
       styles={navStyles}

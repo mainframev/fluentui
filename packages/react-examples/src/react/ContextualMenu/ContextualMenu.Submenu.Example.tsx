@@ -15,7 +15,7 @@ export interface IContextualMenuSubmenuExampleState {
   hoverDelay: number;
 }
 
-export const ContextualMenuSubmenuExample: React.FunctionComponent = () => {
+export const ContextualMenuSubmenuExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [hoverDelay, setHoverDelay] = React.useState(250);
 
   const onHoverDelayChanged = React.useCallback(

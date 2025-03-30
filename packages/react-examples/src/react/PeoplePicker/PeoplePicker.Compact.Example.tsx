@@ -20,7 +20,7 @@ const checkboxStyles = {
   },
 };
 
-export const PeoplePickerCompactExample: React.FunctionComponent = () => {
+export const PeoplePickerCompactExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [delayResults, setDelayResults] = React.useState(false);
   const [isPickerDisabled, setIsPickerDisabled] = React.useState(false);
   const [mostRecentlyUsed, setMostRecentlyUsed] = React.useState<IPersonaProps[]>(mru);

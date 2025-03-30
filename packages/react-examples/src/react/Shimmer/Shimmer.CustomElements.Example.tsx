@@ -94,7 +94,7 @@ const getCustomElementsExampleThree = (): JSX.Element => {
   );
 };
 
-export const ShimmerCustomElementsExample: React.FunctionComponent = () => (
+export const ShimmerCustomElementsExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <ThemeProvider className={wrapperClass}>
     Using ShimmerElementsGroup component to build complex structures of the placeholder you need.
     <Shimmer customElementsGroup={getCustomElementsExampleOne()} width="350" />

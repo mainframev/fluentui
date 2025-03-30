@@ -34,7 +34,7 @@ const downArrowButtonStyles: Partial<IButtonStyles> = {
   },
 };
 
-export const SpinButtonCustomStyledExample: React.FunctionComponent = () => {
+export const SpinButtonCustomStyledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <SpinButton
       styles={styles}

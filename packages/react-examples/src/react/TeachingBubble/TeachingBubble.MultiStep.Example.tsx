@@ -6,7 +6,7 @@ import { useBoolean, useId } from '@fluentui/react-hooks';
 const examplePrimaryButtonProps: IButtonProps = {
   children: 'Next',
 };
-export const TeachingBubbleMultiStepExample: React.FunctionComponent = () => {
+export const TeachingBubbleMultiStepExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
 

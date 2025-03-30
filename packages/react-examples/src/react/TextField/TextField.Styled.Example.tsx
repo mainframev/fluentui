@@ -6,7 +6,7 @@ import { Stack } from '@fluentui/react/lib/Stack';
 
 const textStyles: Partial<ITextStyles> = { root: { maxWidth: 600 } };
 
-export const TextFieldStyledExample: React.FunctionComponent = () => {
+export const TextFieldStyledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={{ childrenGap: 15 }}>
       <Text styles={textStyles}>

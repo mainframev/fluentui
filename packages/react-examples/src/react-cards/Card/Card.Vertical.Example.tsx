@@ -97,7 +97,7 @@ const backgroundImageCardSectionTokens: ICardSectionTokens = { padding: 12 };
 const agendaCardSectionTokens: ICardSectionTokens = { childrenGap: 0 };
 const attendantsCardSectionTokens: ICardSectionTokens = { childrenGap: 6 };
 
-export const CardVerticalExample: React.FunctionComponent = () => {
+export const CardVerticalExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack horizontal tokens={sectionStackTokens}>
       <Card aria-label="Basic vertical card">

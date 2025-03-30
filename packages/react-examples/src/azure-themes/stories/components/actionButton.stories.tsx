@@ -14,7 +14,7 @@ export interface IButtonExampleProps {
 
 const addFriendIcon: IIconProps = { iconName: 'AddFriend' };
 
-export const ButtonActionExample: React.FunctionComponent<IButtonExampleProps> = props => {
+export const ButtonActionExample: React.FunctionComponent<React.PropsWithChildren<IButtonExampleProps>> = props => {
   const { disabled } = props;
 
   return (

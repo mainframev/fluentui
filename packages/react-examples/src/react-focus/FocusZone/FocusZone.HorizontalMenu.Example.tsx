@@ -8,7 +8,7 @@ const ITEMS = createArray(5, index => ({
   name: 'Item-' + index,
 }));
 
-export const FocusZoneHorizontalMenuExample: React.FunctionComponent = () => {
+export const FocusZoneHorizontalMenuExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <FocusZone direction={FocusZoneDirection.domOrder} role="menubar">
       {ITEMS.map(item => (

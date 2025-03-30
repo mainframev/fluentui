@@ -3,7 +3,7 @@ import { DatePicker, mergeStyles, defaultDatePickerStrings } from '@fluentui/rea
 
 const rootClass = mergeStyles({ maxWidth: 300, selectors: { '> *': { marginBottom: 15 } } });
 
-export const DatePickerDisabledExample: React.FunctionComponent = () => {
+export const DatePickerDisabledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div className={rootClass}>
       <DatePicker

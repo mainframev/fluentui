@@ -16,7 +16,7 @@ const exampleImageProps: IImageProps = {
 
 const CalloutProps = { directionalHint: DirectionalHint.bottomCenter };
 
-export const TeachingBubbleWideIllustrationExample: React.FunctionComponent = () => {
+export const TeachingBubbleWideIllustrationExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
   const exampleSecondaryButtonProps: IButtonProps = React.useMemo(

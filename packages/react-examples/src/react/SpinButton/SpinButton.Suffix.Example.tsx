@@ -51,7 +51,7 @@ const onChange = (event: React.SyntheticEvent<HTMLElement>, value?: string): voi
   console.log('Value changed to ' + value);
 };
 
-export const SpinButtonSuffixExample: React.FunctionComponent = () => {
+export const SpinButtonSuffixExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       This SpinButton includes a suffix in the value and defines custom <code>onIncrement</code>,{' '}

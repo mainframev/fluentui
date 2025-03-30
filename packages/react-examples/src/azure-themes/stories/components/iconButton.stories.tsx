@@ -30,7 +30,7 @@ const menuProps: IContextualMenuProps = {
   directionalHintFixed: true,
 };
 
-export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = props => {
+export const ButtonIconExample: React.FunctionComponent<React.PropsWithChildren<IButtonExampleProps>> = props => {
   const { disabled, checked } = props;
 
   return (

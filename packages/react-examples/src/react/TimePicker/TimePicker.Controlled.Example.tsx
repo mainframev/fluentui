@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TimePicker, Text, IStackTokens, Stack, IStackStyles, IComboBoxStyles } from '@fluentui/react';
+import { TimePicker, Text, IStackTokens, Stack, IStackStyles, IComboBoxStyles, type IComboBox } from '@fluentui/react';
 
 const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
@@ -13,11 +13,11 @@ const timePickerStyles: Partial<IComboBoxStyles> = {
   },
 };
 
-export const TimePickerControlledExample: React.FC = () => {
+export const TimePickerControlledExample: React.FC<React.PropsWithChildren<unknown>> = () => {
   const dateAnchor = new Date('February 27, 2023 08:00:00');
   const [time, setTime] = React.useState<Date>(new Date('February 27, 2023 10:00:00'));
 
-  const onControlledExampleChange = React.useCallback((_, newTime: Date) => {
+  const onControlledExampleChange = React.useCallback((_: React.FormEvent<IComboBox>, newTime: Date) => {
     setTime(newTime);
   }, []);
 

@@ -17,7 +17,7 @@ const onCopyItems = (items: IExtendedPersonaProps[]): string => {
   return items.map((item: IExtendedPersonaProps) => item.text).join(', ');
 };
 
-export const SelectedPeopleListBasicExample: React.FunctionComponent = () => {
+export const SelectedPeopleListBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [nextPersonIndex, setNextPersonIndex] = React.useState(0);
   const selectionList = React.useRef<SelectedPeopleList>(null);
   const onExpandItem = (item: IExtendedPersonaProps): void => {

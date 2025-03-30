@@ -7,7 +7,7 @@ const getRatingComponentAriaLabel =
     return `${label} rating value is ${rating} of ${maxRating}`;
   };
 
-export const RatingBasicExample: React.FunctionComponent = () => {
+export const RatingBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       Large stars:

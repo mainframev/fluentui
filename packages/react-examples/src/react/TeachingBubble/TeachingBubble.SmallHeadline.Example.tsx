@@ -3,7 +3,7 @@ import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { useBoolean, useId } from '@fluentui/react-hooks';
 
-export const TeachingBubbleSmallHeadlineExample: React.FunctionComponent = () => {
+export const TeachingBubbleSmallHeadlineExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
   const examplePrimaryButtonProps: IButtonProps = {

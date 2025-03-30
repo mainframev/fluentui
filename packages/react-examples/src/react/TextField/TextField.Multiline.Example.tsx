@@ -12,7 +12,7 @@ const columnProps: Partial<IStackProps> = {
   styles: { root: { width: 300 } },
 };
 
-export const TextFieldMultilineExample: React.FunctionComponent = () => {
+export const TextFieldMultilineExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [multiline, { toggle: toggleMultiline }] = useBoolean(false);
 

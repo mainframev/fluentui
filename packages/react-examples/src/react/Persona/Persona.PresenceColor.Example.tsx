@@ -33,7 +33,7 @@ const rootClass = mergeStyles({
   },
 });
 
-export const PersonaPresenceColorExample: React.FunctionComponent = () => {
+export const PersonaPresenceColorExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div className={rootClass}>
       <Stack horizontal>

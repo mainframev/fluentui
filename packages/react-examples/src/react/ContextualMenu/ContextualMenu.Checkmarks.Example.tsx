@@ -25,7 +25,7 @@ const keys: string[] = [
   'disabledPrimarySplit',
 ];
 
-export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
+export const ContextualMenuCheckmarksExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selection, setSelection] = React.useState<{ [key: string]: boolean }>({});
 
   const onToggleSelect = React.useCallback(

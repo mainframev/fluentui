@@ -61,7 +61,7 @@ const getItems = (): IPhoto[] => {
   return items;
 };
 
-export const FocusZonePhotosExample: React.FunctionComponent = () => {
+export const FocusZonePhotosExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   //  Initialize the items when the component is first rendered (same array will be reused)
   const items = useConst(getItems);
   return (

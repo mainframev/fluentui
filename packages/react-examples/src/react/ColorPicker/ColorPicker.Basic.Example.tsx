@@ -14,7 +14,7 @@ import {
 
 const white = getColorFromString('#ffffff')!;
 
-export const ColorPickerBasicExample: React.FunctionComponent = () => {
+export const ColorPickerBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [color, setColor] = React.useState(white);
   const [showPreview, setShowPreview] = React.useState(true);
   const [alphaType, setAlphaType] = React.useState<IColorPickerProps['alphaType']>('alpha');

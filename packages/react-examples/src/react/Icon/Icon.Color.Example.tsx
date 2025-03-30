@@ -14,7 +14,7 @@ const classNames = mergeStyleSets({
   salmon: [{ color: 'salmon' }, iconClass],
 });
 
-export const IconColorExample: React.FunctionComponent = () => {
+export const IconColorExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // FontIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here.
   // Provide an `aria-label` for screen reader users if the icon is not accompanied by text

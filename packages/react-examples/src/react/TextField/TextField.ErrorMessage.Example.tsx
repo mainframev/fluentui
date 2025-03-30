@@ -36,7 +36,7 @@ const getRichErrorMessage = (value: string) => {
   );
 };
 
-export const TextFieldErrorMessageExample: React.FunctionComponent = () => {
+export const TextFieldErrorMessageExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [showFields, { toggle: toggleShowFields }] = useBoolean(false);
 
   return (

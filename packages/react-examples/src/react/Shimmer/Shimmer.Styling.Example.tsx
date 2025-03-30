@@ -116,7 +116,7 @@ const getShimmerStyles = (props: IShimmerStyleProps): IShimmerStyles => {
   };
 };
 
-export const ShimmerStylingExample: React.FunctionComponent = () => {
+export const ShimmerStylingExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <>
       <div>

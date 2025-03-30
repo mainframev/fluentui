@@ -53,7 +53,7 @@ const styles = mergeStyleSets({
   },
 });
 
-export const MarqueeSelectionBasicExample: React.FunctionComponent = () => {
+export const MarqueeSelectionBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isMarqueeEnabled, { toggle: toggleIsMarqueeEnabled }] = useBoolean(true);
   const forceUpdate = useForceUpdate();
 

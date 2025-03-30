@@ -3,7 +3,7 @@ import { IContextualMenuProps } from '@fluentui/react/lib/ContextualMenu';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { useConst } from '@fluentui/react-hooks';
 
-export const ContextualMenuPersistedExample: React.FunctionComponent = () => {
+export const ContextualMenuPersistedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const menuProps = useConst<IContextualMenuProps>(() => ({
     shouldFocusOnMount: true,
     shouldFocusOnContainer: true,

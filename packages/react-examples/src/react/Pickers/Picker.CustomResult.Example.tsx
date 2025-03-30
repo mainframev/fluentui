@@ -370,7 +370,7 @@ const onFilterChanged = (filterText: string, items?: IFullDocumentCardProps[]): 
     : [];
 };
 
-export const PickerCustomResultExample: React.FunctionComponent = () => {
+export const PickerCustomResultExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isPickerDisabled, { toggle: toggleIsPickerDisabled }] = useBoolean(false);
 
   return (

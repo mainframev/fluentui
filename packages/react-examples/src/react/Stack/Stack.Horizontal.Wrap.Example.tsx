@@ -16,7 +16,7 @@ const itemStyles: React.CSSProperties = {
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 
-export const HorizontalStackWrapExample: React.FunctionComponent = () => {
+export const HorizontalStackWrapExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [stackWidth, setStackWidth] = React.useState<number>(100);
   // Mutating styles definition
   const stackStyles: IStackStyles = {

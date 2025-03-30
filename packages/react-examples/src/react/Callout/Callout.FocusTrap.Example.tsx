@@ -11,7 +11,7 @@ import {
 import { useBoolean, useId } from '@fluentui/react-hooks';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
-export const CalloutFocusTrapExample: React.FunctionComponent = () => {
+export const CalloutFocusTrapExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   const buttonId = useId('callout-button');
 

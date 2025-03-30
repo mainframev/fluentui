@@ -43,7 +43,7 @@ const sectionStackTokens: IStackTokens = { childrenGap: 20 };
 const cardTokens: ICardTokens = { childrenMargin: 12 };
 const footerCardSectionTokens: ICardSectionTokens = { padding: '0px 0px 0px 12px' };
 
-export const CardHorizontalExample: React.FunctionComponent = () => {
+export const CardHorizontalExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={sectionStackTokens}>
       <Card aria-label="Basic horizontal card" horizontal tokens={cardTokens}>

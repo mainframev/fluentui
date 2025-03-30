@@ -39,7 +39,7 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
   );
 };
 
-export const OverflowSetVerticalExample: React.FunctionComponent = () => (
+export const OverflowSetVerticalExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <OverflowSet
     aria-label="Vertical Example"
     vertical

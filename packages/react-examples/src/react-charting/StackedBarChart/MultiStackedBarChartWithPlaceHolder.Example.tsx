@@ -7,7 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 
-export const MultiStackedBarChartWithPlaceholderExample: React.FunctionComponent<{}> = () => {
+export const MultiStackedBarChartWithPlaceholderExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   const firstChartPoints: IChartDataPoint[] = [
     { legend: 'Malware', data: 40, color: getColorFromToken(DataVizPalette.color1) },
     { legend: 'Phishing', data: 23, color: getColorFromToken(DataVizPalette.color2) },

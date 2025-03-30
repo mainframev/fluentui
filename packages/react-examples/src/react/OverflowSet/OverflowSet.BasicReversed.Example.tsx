@@ -32,7 +32,7 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
   );
 };
 
-export const OverflowSetBasicReversedExample: React.FunctionComponent = () => (
+export const OverflowSetBasicReversedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <OverflowSet
     aria-label="Basic Menu Example"
     items={[

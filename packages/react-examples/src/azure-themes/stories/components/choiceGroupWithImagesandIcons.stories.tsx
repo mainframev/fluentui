@@ -28,7 +28,7 @@ const options: IChoiceGroupOption[] = [
   { key: 'week', text: 'Week', iconProps: { iconName: 'CalendarWeek' } },
 ];
 
-export const ChoiceGroupImageExample: React.FunctionComponent = () => {
+export const ChoiceGroupImageExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <>
       <ChoiceGroup label="Pick one image" defaultSelectedKey="bar" options={options} />

@@ -4,6 +4,7 @@ import { IButtonProps, IconButton } from '@fluentui/react/lib/Button';
 import { Icon, IIconProps } from '@fluentui/react/lib/Icon';
 import { Text } from '@fluentui/react/lib/Text';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { IReactProps } from '@fluentui/utilities';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
@@ -38,7 +39,7 @@ const sizeStyle = mergeStyles({
   letterSpacing: 'normal',
 });
 
-export const ChicletXsmallFooterExample: React.FunctionComponent<{}> = () => {
+export const ChicletXsmallFooterExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   const footerButtonProps: IButtonProps[] = [
     { iconProps: { iconName: 'More' } },
     { iconProps: { iconName: 'CloudUpload' } },
@@ -66,7 +67,7 @@ class FooterComponent extends React.Component<IFooterComponent, {}> {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-interface IFooterComponent extends React.Props<FooterComponent> {
+interface IFooterComponent extends IReactProps<FooterComponent> {
   buttonProps: IButtonProps[];
   attachProps: IIconProps;
 }

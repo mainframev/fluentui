@@ -25,7 +25,7 @@ const controlClass = mergeStyleSets({
   },
 });
 
-export const DatePickerBoundedExample: React.FC = () => (
+export const DatePickerBoundedExample: React.FC<React.PropsWithChildren<unknown>> = () => (
   <div>
     <DatePicker
       className={controlClass.control}

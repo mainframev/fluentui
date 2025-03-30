@@ -28,7 +28,7 @@ const options: IComboBoxOption[] = [
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
 const buttonStyles: Partial<IButtonStyles> = { root: { display: 'block', margin: '10px 0 20px' } };
 
-export const ComboBoxBasicExample: React.FunctionComponent = () => {
+export const ComboBoxBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const comboBoxRef = React.useRef<IComboBox>(null);
   const onOpenClick = React.useCallback(() => comboBoxRef.current?.focus(true), []);
 

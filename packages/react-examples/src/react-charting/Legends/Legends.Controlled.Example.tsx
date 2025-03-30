@@ -24,7 +24,7 @@ const legends: ILegend[] = [
   },
 ];
 
-export const LegendsControlledExample: React.FunctionComponent = () => {
+export const LegendsControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
 
   const onChange = (keys: string[]) => {

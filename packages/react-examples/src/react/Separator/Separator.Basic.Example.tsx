@@ -32,7 +32,7 @@ const verticalStyle = mergeStyles({
 
 const content = 'Today';
 
-export const SeparatorBasicExample: React.FC = () => (
+export const SeparatorBasicExample: React.FC<React.PropsWithChildren<unknown>> = () => (
   <Stack tokens={stackTokens}>
     <HorizontalSeparatorStack>
       <>

@@ -27,9 +27,9 @@ const classes = mergeStyleSets({
   },
 });
 
-const icons = Object.keys(ReactIcons).reduce((acc: React.FC[], exportName) => {
+const icons = Object.keys(ReactIcons).reduce((acc: React.FC<React.PropsWithChildren<unknown>>[], exportName) => {
   if ((ReactIcons as any)[exportName]?.displayName) {
-    acc.push((ReactIcons as any)[exportName] as React.FunctionComponent);
+    acc.push((ReactIcons as any)[exportName] as React.FunctionComponent<React.PropsWithChildren<unknown>>);
   }
 
   return acc;
@@ -38,7 +38,7 @@ const icons = Object.keys(ReactIcons).reduce((acc: React.FC[], exportName) => {
 const numOfIcons = icons.length;
 const numOfPages = parseInt((numOfIcons / 100).toString(), 10) + (numOfIcons % 100 > 0 ? 1 : 0);
 
-export const IconSvgFactoryExample: React.FunctionComponent = () => {
+export const IconSvgFactoryExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [page, setPage] = React.useState(1);
   const nextPage = () => setPage(page + 1);
   const prevPage = () => setPage(page - 1);
@@ -67,7 +67,7 @@ export const IconSvgFactoryExample: React.FunctionComponent = () => {
       <div>
         {icons
           .slice((page - 1) * 100, (page - 1) * 100 + 100)
-          .map((Icon: React.FunctionComponent<ReactIcons.ISvgIconProps>) => (
+          .map((Icon: React.FunctionComponent<React.PropsWithChildren<ReactIcons.ISvgIconProps>>) => (
             <div key={Icon.displayName} className={classes.cell}>
               {/*
                 Provide an `aria-label` for screen reader users if the icon is not accompanied by

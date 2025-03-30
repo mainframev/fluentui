@@ -85,7 +85,7 @@ const navLinkGroups: INavLinkGroup[] = [
   },
 ];
 
-export const NavWrappedExample: React.FunctionComponent = () => {
+export const NavWrappedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Nav selectedKey="key6" ariaLabel="Nav example with wrapped link text" styles={navStyles} groups={navLinkGroups} />
   );

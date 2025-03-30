@@ -15,12 +15,12 @@ const dialogModalProps = {
   styles: { main: { maxWidth: 450 } },
 };
 
-export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
+export const PanelLightDismissCustomExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isPanelOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
   const [isDialogVisible, { setTrue: showDialog, setFalse: hideDialog }] = useBoolean(false);
 
   const onHideDialog = React.useCallback(
-    ev => {
+    (ev: React.MouseEvent<HTMLButtonElement>) => {
       ev.preventDefault();
       hideDialog();
     },

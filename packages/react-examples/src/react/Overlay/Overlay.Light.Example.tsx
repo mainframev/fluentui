@@ -25,7 +25,7 @@ const exampleStyles: IOverlayExampleStyles = {
 const getClassNames = classNamesFunction<{}, IOverlayExampleStyles>();
 const classNames = getClassNames(exampleStyles, {});
 
-export const OverlayLightExample: React.FunctionComponent = () => {
+export const OverlayLightExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isOverlayVisible, { toggle: toggleIsOverlayVisible }] = useBoolean(false);
   return (
     <>

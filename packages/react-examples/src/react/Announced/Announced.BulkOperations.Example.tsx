@@ -25,7 +25,7 @@ const columns: IColumn[] = [
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
 
-export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
+export const AnnouncedBulkOperationsExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const selection = useConst(() => new Selection());
   const [items, setItems] = React.useState<IExampleItem[]>(() =>
     createArray(20, i => ({

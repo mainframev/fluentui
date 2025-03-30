@@ -27,7 +27,7 @@ const menuProps: IContextualMenuProps = {
 
 const addIcon: IIconProps = { iconName: 'Add' };
 
-export const ButtonCommandExample: React.FunctionComponent<IButtonExampleProps> = props => {
+export const ButtonCommandExample: React.FunctionComponent<React.PropsWithChildren<IButtonExampleProps>> = props => {
   const { disabled, checked } = props;
 
   return (

@@ -23,7 +23,7 @@ const checkboxStyles = {
 
 const defaultButtonStyles: Partial<IButtonStyles> = { root: { height: 'auto' } };
 
-export const PeoplePickerControlledExample: React.FunctionComponent = () => {
+export const PeoplePickerControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersonaProps[]>([]);
   const [delayResults, setDelayResults] = React.useState(false);
   const [isPickerDisabled, setIsPickerDisabled] = React.useState(false);

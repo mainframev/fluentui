@@ -6,7 +6,7 @@ const styles = mergeStyleSets({
   control: { maxWidth: 300, marginBottom: 15 },
 });
 
-export const DatePickerInputExample: React.FunctionComponent = () => {
+export const DatePickerInputExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [value, setValue] = React.useState<Date | undefined>();
   const datePickerRef = React.useRef<IDatePicker>(null);
 

@@ -24,7 +24,7 @@ const legends: ILegend[] = [
   },
 ];
 
-export const LegendsOnChangeExample: React.FunctionComponent = () => {
+export const LegendsOnChangeExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const defaultSelectedLegends = ['Legend 1', 'Legend 3'];
   const [isMulti, { toggle: toggleIsMulti }] = useBoolean(true);
 

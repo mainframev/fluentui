@@ -27,7 +27,7 @@ const dropdownOptions = [
   { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
 ];
 
-export const FacepileOverflowExample: React.FunctionComponent = () => {
+export const FacepileOverflowExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [displayedPersonas, setDisplayedPersonas] = React.useState(5);
   const [overflowButtonType, setOverflowButtonType] = React.useState(OverflowButtonType.none);
 

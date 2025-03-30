@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Calendar, defaultCalendarStrings } from '@fluentui/react';
 
-export const CalendarInlineExample: React.FunctionComponent = () => {
+export const CalendarInlineExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
 
   return (

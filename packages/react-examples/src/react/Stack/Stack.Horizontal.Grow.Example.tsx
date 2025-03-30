@@ -24,7 +24,7 @@ const stackTokens: IStackTokens = {
   padding: 10,
 };
 
-export const HorizontalStackGrowExample: React.FunctionComponent = () => {
+export const HorizontalStackGrowExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={stackTokens}>
       <Stack.Item grow={3} styles={stackItemStyles}>

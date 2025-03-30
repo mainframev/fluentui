@@ -10,7 +10,7 @@ import {
 import { DirectionalHint, ThemeContext } from '@fluentui/react';
 import * as d3 from 'd3-format';
 
-export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}> = () => {
+export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   const hideRatio: boolean[] = [true, false];
 
   const theme = React.useContext(ThemeContext);

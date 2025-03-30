@@ -44,7 +44,7 @@ interface IDocumentTileWithThumbnailProps {
   item: (typeof ITEMS)[0];
 }
 
-const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbnailProps> = (
+const DocumentTileWithThumbnail: React.FunctionComponent<React.PropsWithChildren<IDocumentTileWithThumbnailProps>> = (
   props: IDocumentTileWithThumbnailProps,
 ): JSX.Element => {
   const tile = (

@@ -13,7 +13,7 @@ const dialogModalProps = {
   styles: { main: { maxWidth: 450 } },
 };
 
-export const PanelConfirmDismissExample: React.FunctionComponent = () => {
+export const PanelConfirmDismissExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isPanelOpen, setIsPanelOpen] = React.useState(false);
   const [isDialogVisible, setIsDialogVisible] = React.useState(false);
 

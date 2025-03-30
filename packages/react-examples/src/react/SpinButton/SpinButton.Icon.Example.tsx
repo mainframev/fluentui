@@ -6,7 +6,7 @@ const iconProps: IIconProps = { iconName: 'IncreaseIndentLegacy' };
 // By default the field grows to fit available width. Constrain the width instead.
 const styles: Partial<ISpinButtonStyles> = { spinButtonWrapper: { width: 75 } };
 
-export const SpinButtonIconExample: React.FunctionComponent = () => {
+export const SpinButtonIconExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={stackTokens}>
       <SpinButton

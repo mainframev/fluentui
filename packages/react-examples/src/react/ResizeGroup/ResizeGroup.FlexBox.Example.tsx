@@ -34,9 +34,9 @@ interface ILeftRightBoxSetProps {
   cacheKey: string;
 }
 
-const BoxWithLabel: React.FunctionComponent<IBoxWithLabelProps> = (props: IBoxWithLabelProps) => (
-  <div className={getNumberedBoxClassName(props.backgroundColor)}>{props.label}</div>
-);
+const BoxWithLabel: React.FunctionComponent<React.PropsWithChildren<IBoxWithLabelProps>> = (
+  props: IBoxWithLabelProps,
+) => <div className={getNumberedBoxClassName(props.backgroundColor)}>{props.label}</div>;
 
 function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Element[] {
   const result: JSX.Element[] = [];
@@ -46,7 +46,9 @@ function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Elemen
   return result;
 }
 
-const LeftRightBoxSet: React.FunctionComponent<ILeftRightBoxSetProps> = (props: ILeftRightBoxSetProps) => (
+const LeftRightBoxSet: React.FunctionComponent<React.PropsWithChildren<ILeftRightBoxSetProps>> = (
+  props: ILeftRightBoxSetProps,
+) => (
   <div className={leftRightBoxClassName}>
     <div>{renderBoxWithLabels(props.leftCount, 'orange')}</div>
     <div>{renderBoxWithLabels(props.rightCount, 'green')}</div>
@@ -69,7 +71,7 @@ function onReduceData(props: ILeftRightBoxSetProps): ILeftRightBoxSetProps | und
   return { ...result, cacheKey: `${result.leftCount + result.rightCount}` };
 }
 
-export const FlexBoxResizeGroupExample: React.FunctionComponent<{}> = () => {
+export const FlexBoxResizeGroupExample: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   const data: ILeftRightBoxSetProps = { leftCount: 5, rightCount: 5, cacheKey: '10' };
   return (
     <ResizeGroup

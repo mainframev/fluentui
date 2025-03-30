@@ -50,7 +50,7 @@ const themedExtraLargeStackTokens: IStackTokens = {
   padding: 'l2',
 };
 
-export const VerticalStackSpacingExample: React.FunctionComponent = () => {
+export const VerticalStackSpacingExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack enableScopedSelectors tokens={sectionStackTokens}>
       <Stack enableScopedSelectors horizontal disableShrink tokens={headingStackTokens}>

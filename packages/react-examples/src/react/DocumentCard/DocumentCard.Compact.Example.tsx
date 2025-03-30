@@ -104,7 +104,7 @@ const previewOutlookUsingIcon: IDocumentCardPreviewProps = {
   },
 };
 
-export const DocumentCardCompactExample: React.FunctionComponent = () => {
+export const DocumentCardCompactExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={stackTokens}>
       <DocumentCard

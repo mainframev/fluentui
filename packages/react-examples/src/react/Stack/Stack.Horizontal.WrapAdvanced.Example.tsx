@@ -51,7 +51,9 @@ const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
 const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 
-const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampleOptions> = props => {
+const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<
+  React.PropsWithChildren<IExampleOptions>
+> = props => {
   const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = props;
 
   // Mutating styles definition
@@ -86,7 +88,7 @@ const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampl
   );
 };
 
-export const HorizontalStackWrapAdvancedExample: React.FunctionComponent = () => {
+export const HorizontalStackWrapAdvancedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [stackWidth, setStackWidth] = React.useState<number>(100);
   const [containerHeight, setContainerHeight] = React.useState<number>(150);
   const [horizontalAlignment, setHorizontalAlignment] = React.useState<IStackProps['horizontalAlign']>('start');

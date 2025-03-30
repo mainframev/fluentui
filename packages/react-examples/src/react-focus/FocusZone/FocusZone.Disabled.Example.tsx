@@ -7,7 +7,7 @@ import { Stack } from '@fluentui/react/lib/Stack';
 
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 200 } };
 
-export const FocusZoneDisabledExample: React.FunctionComponent = () => {
+export const FocusZoneDisabledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const tokens = { childrenGap: 20 };
   return (
     <Stack tokens={tokens} horizontalAlign="start">

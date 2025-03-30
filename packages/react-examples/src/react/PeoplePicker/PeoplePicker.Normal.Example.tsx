@@ -27,7 +27,7 @@ const checkboxStyles = {
   },
 };
 
-export const PeoplePickerNormalExample: React.FunctionComponent = () => {
+export const PeoplePickerNormalExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [delayResults, setDelayResults] = React.useState(false);
   const [isPickerDisabled, setIsPickerDisabled] = React.useState(false);
   const [pickerLabel, setPickerLabel] = React.useState<string | undefined>('Choose People');

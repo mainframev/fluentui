@@ -36,7 +36,7 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
   );
 };
 
-export const OverflowSetCustomExample: React.FunctionComponent = () => (
+export const OverflowSetCustomExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <OverflowSet
     aria-label="Custom Example"
     items={[

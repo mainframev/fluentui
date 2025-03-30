@@ -15,7 +15,7 @@ const getStackStyles = memoizeFunction(
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
 const stackTokens = { childrenGap: 15 };
 
-export const FocusTrapZoneBoxClickExample: React.FunctionComponent = () => {
+export const FocusTrapZoneBoxClickExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
   const toggle = React.useRef<IToggle>(null);
   return (

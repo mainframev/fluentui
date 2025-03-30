@@ -11,7 +11,7 @@ const explanation =
   'some other obvious way for users to close the panel.';
 const searchboxStyles = { root: { margin: '5px', height: 'auto', width: '100%' } };
 
-export const PanelNavigationExample: React.FunctionComponent = () => {
+export const PanelNavigationExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   const onRenderNavigationContent: IRenderFunction<IPanelProps> = React.useCallback(

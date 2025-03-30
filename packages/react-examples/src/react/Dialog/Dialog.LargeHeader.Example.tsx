@@ -19,7 +19,7 @@ const dialogContentProps = {
   subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.',
 };
 
-export const DialogLargeHeaderExample: React.FunctionComponent = () => {
+export const DialogLargeHeaderExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
 
   return (

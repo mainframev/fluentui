@@ -14,7 +14,7 @@ const iconStyles: IIconStyles = {
 
 const stackTokens: IStackTokens = { childrenGap: 12 };
 
-export const SeparatorIconExample: React.FC = () => (
+export const SeparatorIconExample: React.FC<React.PropsWithChildren<unknown>> = () => (
   <Stack tokens={stackTokens}>
     <Text>Horizontal center aligned with an icon as content</Text>
     <Separator>

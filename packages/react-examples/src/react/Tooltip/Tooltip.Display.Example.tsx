@@ -18,7 +18,7 @@ const inlineBlockStyle: Partial<ITooltipHostStyles> = {
   root: { display: 'inline-block' },
 };
 
-export const TooltipDisplayExample: React.FunctionComponent = () => {
+export const TooltipDisplayExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // Use useId() to ensure that the ID is unique on the page.
   // (It's also okay to use a plain string and manually ensure uniqueness.)
   const tooltip1Id = useId('tooltip1');

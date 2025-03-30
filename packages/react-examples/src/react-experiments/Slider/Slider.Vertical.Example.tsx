@@ -11,7 +11,7 @@ export interface ISliderVerticalExampleState {
 }
 const stackTokens: IStackTokens = { childrenGap: 20 };
 /* eslint-disable react/jsx-no-bind */
-export const SliderVerticalExample: React.FunctionComponent = () => {
+export const SliderVerticalExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const marks = [
     {
       value: 0,

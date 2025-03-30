@@ -7,7 +7,7 @@ export default {
   title: 'Components/Spinner',
 };
 
-export const SpinnerBasicExample: React.FunctionComponent = () => {
+export const SpinnerBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // This is just for laying out the label and spinner (spinners don't have to be inside a Stack)
   const rowProps: IStackProps = { horizontal: true, verticalAlign: 'center' };
 

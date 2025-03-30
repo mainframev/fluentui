@@ -54,7 +54,7 @@ const createContentArea = (item: IScrollablePaneExampleItem) => (
   </div>
 );
 const contentAreas = items.map(createContentArea);
-export const ScrollablePaneDefaultExample: React.FunctionComponent = () => (
+export const ScrollablePaneDefaultExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <div className={classNames.wrapper}>
     <ScrollablePane
       scrollContainerFocus={true}
