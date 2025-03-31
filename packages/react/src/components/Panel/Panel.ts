@@ -7,7 +7,7 @@ import type { IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types'
 /**
  * Panel description
  */
-export const Panel: React.FunctionComponent<IPanelProps> = styled<IPanelProps, IPanelStyleProps, IPanelStyles>(
+export const Panel: React.FunctionComponent<React.PropsWithChildren<IPanelProps>> = styled<IPanelProps, IPanelStyleProps, IPanelStyles>(
   PanelBase,
   getStyles,
   undefined,

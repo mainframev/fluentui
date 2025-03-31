@@ -4,7 +4,7 @@ import { KeytipLayerBase } from './KeytipLayer.base';
 import { getStyles } from './KeytipLayer.styles';
 import type { IKeytipLayerProps, IKeytipLayerStyleProps, IKeytipLayerStyles } from './KeytipLayer.types';
 
-export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps> = styled<
+export const KeytipLayer: React.FunctionComponent<React.PropsWithChildren<IKeytipLayerProps>> = styled<
   IKeytipLayerProps,
   IKeytipLayerStyleProps,
   IKeytipLayerStyles

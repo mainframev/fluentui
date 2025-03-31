@@ -4,7 +4,7 @@ import { getStyles } from './PlainCard.styles';
 import { PlainCardBase } from './PlainCard.base';
 import type { IPlainCardProps, IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 
-export const PlainCard: React.FunctionComponent<IPlainCardProps> = styled<
+export const PlainCard: React.FunctionComponent<React.PropsWithChildren<IPlainCardProps>> = styled<
   IPlainCardProps,
   IPlainCardStyleProps,
   IPlainCardStyles

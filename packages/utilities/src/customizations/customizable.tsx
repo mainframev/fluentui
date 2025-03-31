@@ -34,6 +34,8 @@ export function customizable(
       public static displayName: string = 'Customized' + scope;
       public static contextType = WindowContext;
 
+      public declare context: React.ContextType<typeof WindowContext>;
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       private _styleCache: { default?: any; component?: any; merged?: any } = {};
 

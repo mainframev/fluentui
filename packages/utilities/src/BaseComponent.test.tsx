@@ -10,7 +10,7 @@ describe('BaseComponent', () => {
       public root!: HTMLElement;
 
       public render(): JSX.Element {
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        // @ts-expect-error legacy eslint-disable-next-line @typescript-eslint/no-deprecated
         return <div ref={this._resolveRef('root')} />;
       }
     }

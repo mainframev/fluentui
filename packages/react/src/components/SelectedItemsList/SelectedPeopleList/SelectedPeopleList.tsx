@@ -39,7 +39,7 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
   copyMenuItemText?: string;
   editMenuItemText?: string;
   getEditingItemText?: (item: IExtendedPersonaProps) => string;
-  onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
+  onRenderFloatingPicker?: React.ComponentType<React.PropsWithChildren<IBaseFloatingPickerProps<IPersonaProps>>>;
   floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
 }
 
@@ -67,7 +67,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     const props = {
       item,
       index,
-      key: item.key ? item.key : index,
+      key: String(item.key ? item.key : index),
       selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
       onItemChange: this.onItemChange,

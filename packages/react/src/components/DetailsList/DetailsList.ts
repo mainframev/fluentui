@@ -4,7 +4,7 @@ import { DetailsListBase } from './DetailsList.base';
 import { getDetailsListStyles } from './DetailsList.styles';
 import type { IDetailsListProps, IDetailsListStyleProps, IDetailsListStyles } from './DetailsList.types';
 
-export const DetailsList: React.FunctionComponent<IDetailsListProps> = styled<
+export const DetailsList: React.FunctionComponent<React.PropsWithChildren<IDetailsListProps>> = styled<
   IDetailsListProps,
   IDetailsListStyleProps,
   IDetailsListStyles

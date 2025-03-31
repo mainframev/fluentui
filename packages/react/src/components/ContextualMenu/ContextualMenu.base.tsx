@@ -370,10 +370,9 @@ function useKeyHandlers(
   const shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     return (
       // eslint-disable-next-line @typescript-eslint/no-deprecated
+      (// eslint-disable-next-line @typescript-eslint/no-deprecated
       ev.which === KeyCodes.escape ||
-      shouldCloseSubMenu(ev) ||
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey))
+      shouldCloseSubMenu(ev) || (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey)))
     );
   };
 
@@ -724,8 +723,9 @@ function useMouseHandlers(
 }
 //#endregion
 
-export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.memo(
+export const ContextualMenuBase: React.FunctionComponent<React.PropsWithChildren<IContextualMenuProps>> = React.memo(
   React.forwardRef<HTMLDivElement, IContextualMenuProps>((propsWithoutDefaults, forwardedRef) => {
+    // @ts-expect-error TODO: React18 omits ref from forwarded props
     const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
     const hostElement = React.useRef<HTMLDivElement>(null);
     const asyncTracker = useAsync();
@@ -1385,7 +1385,7 @@ function onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLEle
 function onDefaultRenderSubMenu(
   subMenuProps: IContextualMenuProps,
   defaultRender?: IRenderFunction<IContextualMenuProps>,
-): JSX.Element {
+): React.JSX.Element {
   throw Error(
     'ContextualMenuBase: onRenderSubMenu callback is null or undefined. ' +
       'Please ensure to set `onRenderSubMenu` property either manually or with `styled` helper.',

@@ -4,7 +4,7 @@ import { ColorRectangleBase } from './ColorRectangle.base';
 import { getStyles } from './ColorRectangle.styles';
 import type { IColorRectangleProps, IColorRectangleStyles, IColorRectangleStyleProps } from './ColorRectangle.types';
 
-export const ColorRectangle: React.FunctionComponent<IColorRectangleProps> = styled<
+export const ColorRectangle: React.FunctionComponent<React.PropsWithChildren<IColorRectangleProps>> = styled<
   IColorRectangleProps,
   IColorRectangleStyleProps,
   IColorRectangleStyles

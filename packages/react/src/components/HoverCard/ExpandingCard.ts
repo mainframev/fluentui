@@ -4,7 +4,7 @@ import { getStyles } from './ExpandingCard.styles';
 import { ExpandingCardBase } from './ExpandingCard.base';
 import type { IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 
-export const ExpandingCard: React.FunctionComponent<IExpandingCardProps> = styled<
+export const ExpandingCard: React.FunctionComponent<React.PropsWithChildren<IExpandingCardProps>> = styled<
   IExpandingCardProps,
   IExpandingCardStyleProps,
   IExpandingCardStyles

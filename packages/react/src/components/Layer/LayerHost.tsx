@@ -4,7 +4,7 @@ import { css, getId } from '../../Utilities';
 import { notifyHostChanged, registerLayerHost, unregisterLayerHost } from './Layer.notification';
 import type { ILayerHost, ILayerHostProps } from './LayerHost.types';
 
-export const LayerHost: React.FunctionComponent<ILayerHostProps> = props => {
+export const LayerHost: React.FunctionComponent<React.PropsWithChildren<ILayerHostProps>> = props => {
   const { className } = props;
 
   const [layerHostId] = React.useState(() => getId());

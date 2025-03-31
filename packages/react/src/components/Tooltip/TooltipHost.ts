@@ -4,7 +4,7 @@ import { TooltipHostBase } from './TooltipHost.base';
 import { getStyles } from './TooltipHost.styles';
 import type { ITooltipHostProps, ITooltipHostStyleProps, ITooltipHostStyles } from './TooltipHost.types';
 
-export const TooltipHost: React.FunctionComponent<ITooltipHostProps> = styled<
+export const TooltipHost: React.FunctionComponent<React.PropsWithChildren<ITooltipHostProps>> = styled<
   ITooltipHostProps,
   ITooltipHostStyleProps,
   ITooltipHostStyles

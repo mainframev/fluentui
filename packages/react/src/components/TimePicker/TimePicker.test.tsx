@@ -6,7 +6,7 @@ import { mount } from 'enzyme';
 import type { IComboBox } from '../ComboBox/ComboBox.types';
 import { KeyCodes } from '../../Utilities';
 import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import userEvent, { PointerEventsCheckLevel } from '@testing-library/user-event';
 
 describe('TimePicker', () => {
   it('renders correctly', () => {
@@ -68,7 +68,7 @@ describe('TimePicker', () => {
 
     userEvent.click(timePickerComboBox);
     const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
-    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(timePickerOptions[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
 
     const formattedSelectedTime = _selectedTime.toLocaleTimeString([], {
       hour: 'numeric',
@@ -106,7 +106,7 @@ describe('TimePicker', () => {
 
     userEvent.click(timePickerComboBox);
     const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
-    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(timePickerOptions[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
 
     const formattedSelectedTime = _selectedTime.toLocaleTimeString([], {
       hour: 'numeric',
@@ -139,7 +139,7 @@ describe('TimePicker', () => {
     const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
     userEvent.click(timePickerComboBox);
     const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
-    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(timePickerOptions[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
 
     expect(onChange).toHaveBeenLastCalledWith(expect.anything(), new Date('February 27, 2023 08:30:00'));
 
@@ -163,7 +163,7 @@ describe('TimePicker', () => {
 
     userEvent.click(timePickerComboBox);
     const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
-    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(timePickerOptions[2], { pointerEventsCheck: PointerEventsCheckLevel.EachTarget });
 
     expect(timePickerComboBox.value).toEqual('14:00');
   });

@@ -9,7 +9,7 @@ import type {
   IDetailsHeaderStyles,
 } from './DetailsHeader.types';
 
-export const DetailsHeader: React.FunctionComponent<IDetailsHeaderBaseProps> = styled<
+export const DetailsHeader: React.FunctionComponent<React.PropsWithChildren<IDetailsHeaderBaseProps>> = styled<
   IDetailsHeaderBaseProps,
   IDetailsHeaderStyleProps,
   IDetailsHeaderStyles

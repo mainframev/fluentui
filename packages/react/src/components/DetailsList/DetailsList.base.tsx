@@ -113,7 +113,7 @@ type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
  * Since many existing consumers of DetailsList expect `ref` to return a `DetailsList`,
  * this inner component handles rendering while the outer maintains compatibility.
  */
-const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
+const DetailsListInner: React.ComponentType<React.PropsWithChildren<IDetailsListInnerProps>> = (
   props: IDetailsListInnerProps,
 ): JSX.Element | null => {
   const { selection } = props;
@@ -782,6 +782,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   };
 
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   // References
   private _async: Async;

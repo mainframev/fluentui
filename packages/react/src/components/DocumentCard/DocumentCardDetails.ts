@@ -8,7 +8,7 @@ import type {
   IDocumentCardDetailsStyles,
 } from './DocumentCardDetails.types';
 
-export const DocumentCardDetails: React.FunctionComponent<IDocumentCardDetailsProps> = styled<
+export const DocumentCardDetails: React.FunctionComponent<React.PropsWithChildren<IDocumentCardDetailsProps>> = styled<
   IDocumentCardDetailsProps,
   IDocumentCardDetailsStyleProps,
   IDocumentCardDetailsStyles

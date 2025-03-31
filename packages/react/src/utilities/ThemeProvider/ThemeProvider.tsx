@@ -7,7 +7,8 @@ import type { ThemeProviderProps } from './ThemeProvider.types';
 /**
  * ThemeProvider, used for providing css variables and registering stylesheets.
  */
-export const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = React.forwardRef<
+// @ts-expect-error React 18 RefAttibutes LegacyRef issue
+export const ThemeProvider: React.FunctionComponent<React.PropsWithChildren<ThemeProviderProps>> = React.forwardRef<
   HTMLDivElement,
   ThemeProviderProps
 >((props: ThemeProviderProps, ref: React.Ref<HTMLDivElement>) => {

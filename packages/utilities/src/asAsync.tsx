@@ -51,7 +51,7 @@ const _syncModuleCache =
  */
 export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>) {
   class Async extends React.Component<
-    TProps & {
+    React.PropsWithoutRef<TProps> & {
       asyncPlaceholder?: React.ElementType;
       forwardedRef: React.Ref<React.ElementType<TProps>>;
     },

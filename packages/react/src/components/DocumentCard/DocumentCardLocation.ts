@@ -8,7 +8,7 @@ import type {
   IDocumentCardLocationStyles,
 } from './DocumentCardLocation.types';
 
-export const DocumentCardLocation: React.FunctionComponent<IDocumentCardLocationProps> = styled<
+export const DocumentCardLocation: React.FunctionComponent<React.PropsWithChildren<IDocumentCardLocationProps>> = styled<
   IDocumentCardLocationProps,
   IDocumentCardLocationStyleProps,
   IDocumentCardLocationStyles

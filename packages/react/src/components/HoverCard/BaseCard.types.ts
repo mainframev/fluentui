@@ -8,7 +8,8 @@ import type { ICalloutProps } from '../../Callout';
 /**
  * Interface containing props common for all types of cards.
  */
-export interface IBaseCardProps<TComponent, TStyles, TStyleProps> extends React.HTMLAttributes<HTMLDivElement> {
+export interface IBaseCardProps<TComponent, TStyles, TStyleProps>
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'content'> {
   /**
    * Optional callback to access the TComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

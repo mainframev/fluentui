@@ -8,7 +8,7 @@ import type { ICalloutProps } from '../../../Callout';
 
 export interface ICardCalloutProps extends IBaseCardProps<{}, {}, {}> {
   finalHeight?: number;
-  content?: JSX.Element;
+  content?: React.JSX.Element;
 }
 
 export const CardCallout = (props: ICardCalloutProps) => {

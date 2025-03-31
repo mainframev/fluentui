@@ -8,7 +8,7 @@ import type { IFocusTrapCalloutProps } from './FocusTrapCallout.types';
  * A special Callout that uses FocusTrapZone to trap focus
  * @param props - Props for the component
  */
-export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps> = (
+export const FocusTrapCallout: React.FunctionComponent<React.PropsWithChildren<IFocusTrapCalloutProps>> = (
   props: IFocusTrapCalloutProps,
 ): JSX.Element => {
   return (

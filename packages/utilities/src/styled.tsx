@@ -66,7 +66,7 @@ export function styled<
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps,
   pure?: boolean,
-): React.FunctionComponent<TComponentProps>;
+): React.FunctionComponent<React.PropsWithChildren<TComponentProps>>;
 export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
   TStyleProps,
@@ -95,12 +95,12 @@ export function styled<
 
   const { scope, fields = DefaultFields } = customizable;
 
-  const Wrapped = React.forwardRef((props: TComponentProps, forwardedRef: React.Ref<TRef>) => {
+  const Wrapped = React.forwardRef<TRef, TComponentProps>((props, forwardedRef) => {
     const styles = React.useRef<StyleFunction<TStyleProps, TStyleSet>>();
 
     const settings = useCustomizationSettings(fields, scope);
     const { styles: customizedStyles, dir, ...rest } = settings;
-    const additionalProps = getProps ? getProps(props) : undefined;
+    const additionalProps = getProps ? getProps(props as TComponentProps) : undefined;
 
     const { useStyled } = useMergeStylesHooks();
 
@@ -130,7 +130,15 @@ export function styled<
 
     styles.current.__shadowConfig__ = useStyled(scope);
 
-    return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
+    return (
+      <Component
+        ref={forwardedRef}
+        {...rest}
+        {...additionalProps}
+        {...(props as TComponentProps)}
+        styles={styles.current}
+      />
+    );
   });
   // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
   // able to drop IE 11 support and compile with ES6 libs

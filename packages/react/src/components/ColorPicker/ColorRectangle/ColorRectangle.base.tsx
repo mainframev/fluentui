@@ -29,12 +29,15 @@ export class ColorRectangleBase
   implements IColorRectangle
 {
   public static contextType = WindowContext;
+
   public static defaultProps: Partial<IColorRectangleProps> = {
     minSize: 220,
     ariaLabel: 'Saturation and brightness',
     ariaValueFormat: 'Saturation {0} brightness {1}',
     ariaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
   };
+
+  public context: React.ContextType<typeof WindowContext>;
 
   private _disposables: (() => void)[] = [];
   private _root = React.createRef<HTMLDivElement>();

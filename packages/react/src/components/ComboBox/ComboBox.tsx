@@ -173,7 +173,7 @@ function useOptionsState({ options, defaultSelectedKey, selectedKey }: IComboBox
   ] as const;
 }
 
-export const ComboBox: React.FunctionComponent<IComboBoxProps> = React.forwardRef<HTMLDivElement, IComboBoxProps>(
+export const ComboBox: React.FunctionComponent<React.PropsWithChildren<IComboBoxProps>> = React.forwardRef<HTMLDivElement, IComboBoxProps>(
   (propsWithoutDefaults: IComboBoxProps, forwardedRef: React.Ref<HTMLDivElement>) => {
     const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
     const rootRef = React.useRef<HTMLDivElement>(null);
@@ -247,6 +247,7 @@ function findFirstDescendant(element: HTMLElement, match: (element: HTMLElement)
 @customizable('ComboBox', ['theme', 'styles'], true)
 class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> implements IComboBox {
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   /** The input aspect of the combo box */
   private _autofill = React.createRef<IAutofill>();

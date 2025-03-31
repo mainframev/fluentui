@@ -28,7 +28,7 @@ export type MergeStylesShadowRootProviderProps = {
 /**
  * Context for a shadow root.
  */
-export const MergeStylesShadowRootProvider: React.FC<MergeStylesShadowRootProviderProps> = ({
+export const MergeStylesShadowRootProvider: React.FC<React.PropsWithChildren<MergeStylesShadowRootProviderProps>> = ({
   shadowRoot,
   ...props
 }) => {
