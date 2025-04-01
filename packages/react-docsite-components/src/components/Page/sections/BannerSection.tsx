@@ -4,7 +4,7 @@ import { css, hiddenContentStyle } from '@fluentui/react';
 import { IBanner, IPageSectionPropsWithSectionName } from '../Page.types';
 import { Markdown } from '../../Markdown/index';
 
-export const BannerSection: React.FunctionComponent<IPageSectionPropsWithSectionName & IBanner> = props => {
+export const BannerSection: React.FunctionComponent<React.PropsWithChildren<IPageSectionPropsWithSectionName & IBanner>> = props => {
   const { className, title = props.sectionName, content, style, id } = props;
   return (
     <div className={css(styles.banner, className)} style={style}>

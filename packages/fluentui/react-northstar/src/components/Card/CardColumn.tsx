@@ -66,6 +66,7 @@ export const CardColumn = React.forwardRef<HTMLDivElement, CardColumnProps>((pro
 
 CardColumn.displayName = 'CardColumn';
 
+// @ts-expect-error React 18
 CardColumn.propTypes = {
   ...commonPropTypes.createCommon(),
 };

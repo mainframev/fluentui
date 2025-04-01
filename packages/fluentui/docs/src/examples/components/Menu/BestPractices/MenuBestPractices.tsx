@@ -18,7 +18,7 @@ const doList = [
 
 const dontList = ['Do not render focusable or clickable elements inside of the menu item.'];
 
-const MenuBestPractices: React.FunctionComponent<{}> = () => {
+const MenuBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} dontList={dontList} />;
 };
 

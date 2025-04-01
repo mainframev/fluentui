@@ -24,7 +24,7 @@ function createTableData(rows: number, columns: number) {
   return data;
 }
 
-export const DetailsListColumnResizeExample: React.FC<{}> = (props: {}): JSX.Element => {
+export const DetailsListColumnResizeExample: React.FC<React.PropsWithChildren<{}>> = (props: {}): JSX.Element => {
   const [rows, setRowCount] = React.useState<number>(1);
   const [columns, setColumns] = React.useState<number>(4);
 

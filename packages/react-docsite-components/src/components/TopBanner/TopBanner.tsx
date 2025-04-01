@@ -3,7 +3,7 @@ import * as styles from './TopBanner.module.scss';
 
 import type { ITopBannerProps } from './TopBanner.types';
 
-export const TopBanner: React.FC<ITopBannerProps> = ({ cdnUrl }) => (
+export const TopBanner: React.FC<React.PropsWithChildren<ITopBannerProps>> = ({ cdnUrl }) => (
   <div className={styles.topBanner}>
     <div className={styles.topBannerContent}>
       <span className={styles.topBannerHeader}>

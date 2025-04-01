@@ -5,6 +5,7 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { List } from './List';
 import { ListItem } from '../ListItem';
+import type { ListProps } from './List.types';
 import { SelectionItemId } from '@fluentui/react-utilities';
 
 const mount = (element: JSX.Element) => {
@@ -72,11 +73,11 @@ type SelectionTestListProps = {
 const SelectionTestList = ({ selectionMode, defaultSelectedItems, controlled }: SelectionTestListProps) => {
   const [selectedItems, setSelectedItems] = React.useState(defaultSelectedItems || []);
 
-  const onChange = React.useCallback((_, { selectedItems: selected }) => {
+  const onChange = React.useCallback<NonNullable<ListProps['onSelectionChange']>>((_, { selectedItems: selected }) => {
     setSelectedItems(selected);
   }, []);
 
-  const onSelectLastClick = React.useCallback(_ => {
+  const onSelectLastClick = React.useCallback(() => {
     setSelectedItems(['list-item-3']);
   }, []);
 

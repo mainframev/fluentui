@@ -359,7 +359,7 @@ const getSectionsWithPrototypeSectionIfApplicable = (currentSections, allPrototy
   return currentSections.concat(prototypeTreeSection);
 };
 
-const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
+const Sidebar: React.FC<React.PropsWithChildren<RouteComponentProps & SidebarProps>> = props => {
   const [query, setQuery] = React.useState('');
   const [activeItemIds, setActiveItemIds] = React.useState<string[]>([]);
   const searchInputRef = React.useRef<HTMLInputElement>();

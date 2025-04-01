@@ -89,6 +89,7 @@ export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => 
 
 Grid.displayName = 'Grid';
 
+// @ts-expect-error React 18
 Grid.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

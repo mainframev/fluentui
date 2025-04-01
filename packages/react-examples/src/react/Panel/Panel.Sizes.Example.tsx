@@ -6,7 +6,9 @@ import { Link } from '@fluentui/react/lib/Link';
 import { useBoolean } from '@fluentui/react-hooks';
 
 // The panel type and description are passed in by the PanelSizesExample component (later in this file)
-const PanelExample: React.FunctionComponent<{ panelType: PanelType; description: string }> = props => {
+const PanelExample: React.FunctionComponent<
+  React.PropsWithChildren<{ panelType: PanelType; description: string }>
+> = props => {
   const { description, panelType } = props;
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
@@ -49,7 +51,7 @@ const options: IDropdownOption[] = [
 const dropdownStyles = { root: { maxWidth: 250, marginBottom: 16 } };
 const firstPStyle = { marginTop: 0 };
 
-export const PanelSizesExample: React.FunctionComponent = () => {
+export const PanelSizesExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [option, setOption] = React.useState<IDropdownOption>(options[0]);
   const updateOption = React.useCallback((ev: any, opt: IDropdownOption) => setOption(opt), []);
 

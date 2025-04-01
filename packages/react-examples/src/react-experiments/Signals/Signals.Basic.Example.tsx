@@ -39,7 +39,9 @@ interface ISignalExampleProps {
   text?: string;
 }
 
-const SignalExample: React.FunctionComponent<ISignalExampleProps> = (props: ISignalExampleProps): JSX.Element => {
+const SignalExample: React.FunctionComponent<React.PropsWithChildren<ISignalExampleProps>> = (
+  props: ISignalExampleProps,
+): JSX.Element => {
   const { text = lorem(4) } = props;
 
   return (

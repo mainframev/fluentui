@@ -4,7 +4,7 @@ import { ColorPickerBase } from './ColorPicker.base';
 import { getStyles } from './ColorPicker.styles';
 import type { IColorPickerProps, IColorPickerStyles, IColorPickerStyleProps } from './ColorPicker.types';
 
-export const ColorPicker: React.FunctionComponent<IColorPickerProps> = styled<
+export const ColorPicker: React.FunctionComponent<React.PropsWithChildren<IColorPickerProps>> = styled<
   IColorPickerProps,
   IColorPickerStyleProps,
   IColorPickerStyles

@@ -37,7 +37,7 @@ const getCustomElements = (): JSX.Element => {
   );
 };
 
-export const ShimmerLoadDataExample: React.FunctionComponent = () => {
+export const ShimmerLoadDataExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [examplePersona, setExamplePersona] = React.useState({});
   const [contentOne, setContentOne] = React.useState('');
   const [isDataLoadedOne, { toggle: toggleIsDataLoadedOne }] = useBoolean(false);

@@ -14,7 +14,7 @@ const personaWithInitials: IPersonaSharedProps = {
   imageInitials: 'MS',
 };
 
-export const PersonaInitialsExample: React.FunctionComponent = () => {
+export const PersonaInitialsExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={{ childrenGap: 10 }}>
       <Persona {...examplePersona} text="Kat Larrson" size={PersonaSize.size24} />

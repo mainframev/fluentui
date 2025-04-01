@@ -40,7 +40,7 @@ const onRenderDetailsHeader = (props: IDetailsHeaderProps) => {
   return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Expand collapse groups'} />;
 };
 
-export const DetailsListGroupedV2LargeExample: React.FC = () => {
+export const DetailsListGroupedV2LargeExample: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [items] = React.useState<IDetailsListGroupedLargeExampleItem[]>(() => getInitialItems());
   const [groups] = React.useState<IGroup[]>(() => getInitialGroups());
   const [columns] = React.useState<IColumn[]>([

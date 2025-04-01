@@ -87,7 +87,7 @@ const OverflowMenuItem = (props: OverflowMenuItemProps) => {
 
   return (
     <MenuItem key={tag.value} className={styles.menuItem}>
-      <Tag {...tag} as="span" className={styles.tag} />
+      <Tag {...tag} className={styles.tag} />
     </MenuItem>
   );
 };

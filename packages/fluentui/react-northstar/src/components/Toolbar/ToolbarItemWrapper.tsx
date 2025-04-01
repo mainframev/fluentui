@@ -25,4 +25,5 @@ export const ToolbarItemWrapper = compose<'div', ToolbarItemWrapperProps, Toolba
   },
 );
 
+// @ts-expect-error React 18
 ToolbarItemWrapper.propTypes = commonPropTypes.createCommon();

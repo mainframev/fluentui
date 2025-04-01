@@ -25,7 +25,9 @@ const itemStyles: React.CSSProperties = {
   width: 50,
 };
 
-const VerticalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampleOptions> = props => {
+const VerticalStackWrapAdvancedExampleContent: React.FunctionComponent<
+  React.PropsWithChildren<IExampleOptions>
+> = props => {
   const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = props;
 
   // Mutating styles definition
@@ -82,7 +84,7 @@ const overflowOptions: IDropdownOption[] = [
   { key: 'hidden', text: 'Hidden' },
 ];
 
-export const VerticalStackWrapAdvancedExample: React.FunctionComponent = () => {
+export const VerticalStackWrapAdvancedExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [stackWidth, setStackWidth] = React.useState<number>(100);
   const [containerHeight, setContainerHeight] = React.useState<number>(420);
   const [horizontalAlignment, setHorizontalAlignment] = React.useState<IStackProps['horizontalAlign']>('start');

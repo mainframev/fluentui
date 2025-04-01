@@ -161,6 +161,7 @@ export const ToolbarMenuRadioGroup = compose<
   },
 );
 
+// @ts-expect-error React 18
 ToolbarMenuRadioGroup.propTypes = {
   ...commonPropTypes.createCommon(),
   activeIndex: PropTypes.number,

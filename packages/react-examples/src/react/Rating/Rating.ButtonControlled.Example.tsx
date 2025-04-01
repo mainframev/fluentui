@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Rating } from '@fluentui/react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 
-export const RatingButtonControlledExample: React.FunctionComponent = () => {
+export const RatingButtonControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [currentRating, setCurrentRating] = React.useState(5);
   const currentRatingToggle = React.useCallback(() => {
     setCurrentRating(oldRating => (oldRating === 0 ? 5 : 0));

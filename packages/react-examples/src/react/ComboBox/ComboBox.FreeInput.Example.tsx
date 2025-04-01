@@ -22,7 +22,7 @@ const options: IComboBoxOption[] = [
 // Optional styling to make the example look nicer
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
 
-export const ComboBoxFreeInputExample: React.FunctionComponent = () => {
+export const ComboBoxFreeInputExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div>
       <ComboBox

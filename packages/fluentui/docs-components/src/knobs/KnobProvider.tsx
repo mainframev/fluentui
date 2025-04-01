@@ -14,7 +14,7 @@ type KnobProviderProps = {
   components?: Partial<KnobComponents>;
 };
 
-export const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
+export const KnobProvider: React.FunctionComponent<React.PropsWithChildren<KnobProviderProps>> = props => {
   const { children, components } = props;
 
   const [knobs, setKnobs] = React.useState<KnobSet>({});

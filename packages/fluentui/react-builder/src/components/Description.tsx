@@ -8,7 +8,7 @@ export type DescriptionProps = {
   componentInfo: ComponentInfo;
 };
 
-export const Description: React.FunctionComponent<DescriptionProps> = ({ selectedJSONTreeElement, componentInfo }) => {
+export const Description: React.FunctionComponent<React.PropsWithChildren<DescriptionProps>> = ({ selectedJSONTreeElement, componentInfo }) => {
   if (!componentInfo) {
     return null;
   }

@@ -21,7 +21,7 @@ const formatXAxis = val => {
  * x-axis is a build number
  * y-axis is a bundle size
  */
-const BundleSizeChart: React.FC<BundleSizeChartProps> = ({ perfData }) => {
+const BundleSizeChart: React.FC<React.PropsWithChildren<BundleSizeChartProps>> = ({ perfData }) => {
   const availableCharts: string[] = perfData
     .reduce((acc, next) => {
       return Array.from(new Set([...acc, ...Object.keys(next.bundleSize)]));

@@ -388,7 +388,8 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
 
     let { suggestions } = this.props;
 
-    const StyledTypedSuggestionsItem: React.FunctionComponent<ISuggestionItemProps<T>> = StyledSuggestionsItem;
+    const StyledTypedSuggestionsItem: React.FunctionComponent<React.PropsWithChildren<ISuggestionItemProps<T>>> =
+      StyledSuggestionsItem;
 
     let selectedIndex = -1;
     suggestions.some((element, index) => {

@@ -31,7 +31,7 @@ let newKey = 1;
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
 const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
-export const ComboBoxControlledExample: React.FunctionComponent = () => {
+export const ComboBoxControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>('C');
   // Manually updating the options list is only necessary when allowFreeform is true
   const [options, setOptions] = React.useState(INITIAL_OPTIONS);

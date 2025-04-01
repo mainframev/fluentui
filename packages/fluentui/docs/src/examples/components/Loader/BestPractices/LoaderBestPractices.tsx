@@ -7,7 +7,7 @@ const doList = [
   'If loader is only the element in the screen or region, consider making it focusable by setting `tabIndex` prop to the `Loader`. In most of these cases value of `tabIndex` should be 0.',
 ];
 
-const LoaderBestPractices: React.FunctionComponent<{}> = () => {
+const LoaderBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

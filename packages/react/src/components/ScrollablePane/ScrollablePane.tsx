@@ -4,7 +4,7 @@ import { ScrollablePaneBase } from './ScrollablePane.base';
 import { styled } from '../../Utilities';
 import type { IScrollablePaneProps, IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
 
-export const ScrollablePane: React.FunctionComponent<IScrollablePaneProps> = styled<
+export const ScrollablePane: React.FunctionComponent<React.PropsWithChildren<IScrollablePaneProps>> = styled<
   IScrollablePaneProps,
   IScrollablePaneStyleProps,
   IScrollablePaneStyles

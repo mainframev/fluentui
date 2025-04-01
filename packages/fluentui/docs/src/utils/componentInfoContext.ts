@@ -22,7 +22,7 @@ const infoObjects = importAll([
 
 const componentInfoContext: {
   byDisplayName: { [componentName: string]: ComponentInfo };
-  fromComponent: (Component: React.ComponentType) => ComponentInfo;
+  fromComponent: (Component: React.ComponentType<React.PropsWithChildren<unknown>>) => ComponentInfo;
   parents: ComponentInfo[];
 } = {} as any;
 

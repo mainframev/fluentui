@@ -7,7 +7,7 @@ const items = [
   { key: 'events', content: 'Upcoming Events' },
 ];
 
-const MenuExampleTabShorthand: React.FC = props => (
+const MenuExampleTabShorthand: React.FC<React.PropsWithChildren<unknown>> = props => (
   <Menu
     defaultActiveIndex={0}
     items={items}

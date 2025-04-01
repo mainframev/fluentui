@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const getDisplayName = (Component: React.ReactType) => {
+export const getDisplayName = (Component: React.ElementType) => {
   return (
     (Component as React.ComponentType).displayName ||
     (Component as React.ComponentType).name ||

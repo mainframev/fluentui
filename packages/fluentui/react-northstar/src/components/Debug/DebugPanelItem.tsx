@@ -11,7 +11,7 @@ interface DebugPanelItemProps {
   commentKeyPredicate?: (val: any) => boolean;
 }
 
-export const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
+export const DebugPanelItem: React.FC<React.PropsWithChildren<DebugPanelItemProps>> = props => {
   const [value, setValue] = React.useState('');
   const { data: propData, valueKey, commentKey, commentKeyPredicate, idKey } = props;
 

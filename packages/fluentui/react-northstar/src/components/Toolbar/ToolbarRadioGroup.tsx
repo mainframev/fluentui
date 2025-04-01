@@ -204,6 +204,7 @@ export const ToolbarRadioGroup = compose<'div', ToolbarRadioGroupProps, ToolbarR
   },
 );
 
+// @ts-expect-error React 18
 ToolbarRadioGroup.propTypes = {
   ...commonPropTypes.createCommon(),
   activeIndex: PropTypes.number,

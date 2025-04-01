@@ -47,7 +47,9 @@ const horizontalAlignmentOptions: IDropdownOption[] = [
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
 
-const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
+const VerticalStackConfigureExampleContent: React.FunctionComponent<
+  React.PropsWithChildren<IExampleOptions>
+> = props => {
   const {
     numItems,
     showBoxShadow,
@@ -129,7 +131,7 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
   );
 };
 
-export const VerticalStackConfigureExample: React.FunctionComponent = () => {
+export const VerticalStackConfigureExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [numItems, setNumItems] = React.useState<number>(5);
   const [showBoxShadow, { toggle: toggleShowBoxShadow }] = useBoolean(false);
   const [preventOverflow, { toggle: togglePreventOverflow }] = useBoolean(false);
@@ -177,7 +179,6 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
           </Stack>
         </Stack.Item>
       </Stack>
-
       <Stack enableScopedSelectors horizontal tokens={configureStackTokens}>
         <Stack.Item grow>
           <Stack enableScopedSelectors>
@@ -278,7 +279,6 @@ export const VerticalStackConfigureExample: React.FunctionComponent = () => {
           </Stack>
         </Stack.Item>
       </Stack>
-
       <VerticalStackConfigureExampleContent
         {...{
           numItems,

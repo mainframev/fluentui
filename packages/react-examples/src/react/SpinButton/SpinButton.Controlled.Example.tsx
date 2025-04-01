@@ -4,7 +4,7 @@ import { SpinButton, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
 // By default the field grows to fit available width. Constrain the width instead.
 const styles: Partial<ISpinButtonStyles> = { spinButtonWrapper: { width: 75 } };
 
-export const SpinButtonControlledExample: React.FunctionComponent = () => {
+export const SpinButtonControlledExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [value, setValue] = React.useState('5');
 
   const onChange = React.useCallback((event: React.SyntheticEvent<HTMLElement>, newValue?: string) => {

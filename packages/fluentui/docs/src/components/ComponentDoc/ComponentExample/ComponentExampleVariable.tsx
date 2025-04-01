@@ -10,7 +10,7 @@ export type ComponentExampleVariableProps = {
   variableValue: string;
 };
 
-const ComponentExampleVariable: React.FunctionComponent<ComponentExampleVariableProps> = props => {
+const ComponentExampleVariable: React.FunctionComponent<React.PropsWithChildren<ComponentExampleVariableProps>> = props => {
   const { componentName, onChange, variableName, variableType, variableValue } = props;
 
   const handleInputChange = React.useCallback(

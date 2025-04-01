@@ -4,7 +4,7 @@ import { SpinButton, ISpinButtonStyles, Position } from '@fluentui/react';
 // By default the field grows to fit available width. Constrain the width instead.
 const styles: Partial<ISpinButtonStyles> = { spinButtonWrapper: { width: 75 } };
 
-export const SpinButtonTopPositionExample: React.FunctionComponent = () => {
+export const SpinButtonTopPositionExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <SpinButton
       label="With label above"

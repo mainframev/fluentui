@@ -35,6 +35,7 @@ const EditorToolbarInWindowPrototype = () => {
 
       {open && (
         <PortalWindow onClose={handleClose}>
+          {/* @ts-expect-error React 18 */}
           {externalDocument => (
             <Provider
               rtl={rtl}
@@ -51,7 +52,7 @@ const EditorToolbarInWindowPrototype = () => {
   );
 };
 
-const EditorToolbarPrototypes: React.FC = () => (
+const EditorToolbarPrototypes: React.FC<React.PropsWithChildren<unknown>> = () => (
   <PrototypeSection title="Editor Toolbar">
     <ComponentPrototype
       description={

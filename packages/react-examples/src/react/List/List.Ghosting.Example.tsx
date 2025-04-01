@@ -57,7 +57,7 @@ const generateStyles = (theme: ITheme) => {
   });
 };
 
-export const ListGhostingExample: React.FunctionComponent = () => {
+export const ListGhostingExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const items = useConst(() => createListItems(5000));
   const theme = useTheme();
   const classNames = React.useMemo(() => generateStyles(theme), [theme]);

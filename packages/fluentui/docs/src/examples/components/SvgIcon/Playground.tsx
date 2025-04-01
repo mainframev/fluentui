@@ -2,7 +2,7 @@ import { useBooleanKnob, useNumberKnob, useSelectKnob } from '@fluentui/docs-com
 import { CalendarIcon, SvgIconSizeValue } from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 
-const SvgPlayground: React.FunctionComponent = () => {
+const SvgPlayground: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [bordered] = useBooleanKnob({ name: 'bordered' });
   const [circular] = useBooleanKnob({ name: 'circular' });
   const [outline] = useBooleanKnob({ name: 'outline' });

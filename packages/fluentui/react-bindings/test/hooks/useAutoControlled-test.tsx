@@ -12,7 +12,7 @@ type TestComponentProps = {
   onChange?: (value: string) => void;
 };
 
-const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
+const TestComponent: React.FunctionComponent<React.PropsWithChildren<TestComponentProps>> = props => {
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
     value: props.value,

@@ -7,7 +7,7 @@ const explanation =
   'This panel uses "light dismiss" behavior: it can be closed by clicking or tapping ' +
   'the area outside the panel (or using the close button as usual).';
 
-export const PanelLightDismissExample: React.FunctionComponent = () => {
+export const PanelLightDismissExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   return (

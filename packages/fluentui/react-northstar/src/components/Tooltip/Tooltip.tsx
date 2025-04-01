@@ -309,6 +309,7 @@ Tooltip.defaultProps = {
   accessibility: tooltipAsLabelBehavior,
   offset: [4, 4],
 };
+
 Tooltip.propTypes = {
   ...commonPropTypes.createCommon({
     as: false,
@@ -318,6 +319,7 @@ Tooltip.propTypes = {
   mouseEnterDelay: PropTypes.number,
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
   subtle: PropTypes.bool,
+  // @ts-expect-error React 18
   children: PropTypes.element,
   defaultOpen: PropTypes.bool,
   mountNode: customPropTypes.domNode,

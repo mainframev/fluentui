@@ -14,7 +14,7 @@ interface IExampleItem {
   name: string;
 }
 
-export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
+export const AnnouncedQuickActionsExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const detailsList = React.useRef<IDetailsList>(null);
   const textField = React.useRef<ITextField>(null);
   const selection = useConst(() => new Selection());

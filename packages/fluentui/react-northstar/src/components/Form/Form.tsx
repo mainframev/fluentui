@@ -112,6 +112,7 @@ export const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) =>
 
 Form.displayName = 'Form';
 
+// @ts-expect-error React 18
 Form.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

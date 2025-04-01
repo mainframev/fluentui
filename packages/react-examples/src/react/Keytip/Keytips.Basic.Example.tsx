@@ -20,7 +20,7 @@ const sampleOptions = [
   { key: 'C', text: 'Option 3' },
 ];
 
-export const KeytipsBasicExample: React.FunctionComponent = () => {
+export const KeytipsBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const checkboxRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.CheckboxKeytip });
   const linkRef = useKeytipRef<HTMLAnchorElement>({ keytipProps: keytipMap.LinkKeytip });
   const toggleRef = useKeytipRef<HTMLDivElement>({ keytipProps: keytipMap.ToggleKeytip });

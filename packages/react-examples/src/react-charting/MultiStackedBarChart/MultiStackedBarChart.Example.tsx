@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
-export const MultiStackedBarChartBasicExample: React.FunctionComponent = () => {
+export const MultiStackedBarChartBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [enableGradient, setEnableGradient] = React.useState(false);
   const [roundCorners, setRoundCorners] = React.useState(false);
 

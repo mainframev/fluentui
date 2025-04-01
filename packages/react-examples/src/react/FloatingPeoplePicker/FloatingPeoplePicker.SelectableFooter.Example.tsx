@@ -28,7 +28,7 @@ const startsWith = (text: string, filterText: string): boolean => {
   return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
 };
 
-export const FloatingPeoplePickerTypesSelectableFooterExample: React.FunctionComponent = () => {
+export const FloatingPeoplePickerTypesSelectableFooterExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const inputElementRef = React.useRef<HTMLInputElement>(null);
   const suggestionsStore = useConst(() => new SuggestionsStore<IPersonaProps>());
   const [peopleList, setPeopleList] = React.useState(people);

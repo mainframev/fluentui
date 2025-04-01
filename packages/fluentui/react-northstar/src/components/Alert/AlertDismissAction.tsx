@@ -187,6 +187,7 @@ AlertDismissAction.defaultProps = {
 
 AlertDismissAction.displayName = 'AlertDismissAction';
 
+// @ts-expect-error React 18
 AlertDismissAction.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',

@@ -26,7 +26,7 @@ export type NavigationPanelProps = {
   selectedComponent?: JSONTreeElement;
 };
 
-export const NavigationPanel: React.FunctionComponent<NavigationPanelProps> = (props: NavigationPanelProps) => {
+export const NavigationPanel: React.FunctionComponent<React.PropsWithChildren<NavigationPanelProps>> = (props: NavigationPanelProps) => {
   const [{ mode }] = useMode();
 
   const accessErrorLabelStyle = {

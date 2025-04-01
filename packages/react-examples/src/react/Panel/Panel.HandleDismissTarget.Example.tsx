@@ -7,7 +7,7 @@ const explanation =
   'This example demonstrates detecting whether a panel was dismissed using the close button ' +
   'or using "light dismiss" (a click outside the panel area).';
 
-export const PanelHandleDismissTargetExample: React.FunctionComponent = () => {
+export const PanelHandleDismissTargetExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   const onDismiss = React.useCallback(

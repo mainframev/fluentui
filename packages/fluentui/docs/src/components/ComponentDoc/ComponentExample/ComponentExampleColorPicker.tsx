@@ -8,7 +8,7 @@ type ComponentExampleColorPickerProps = {
   variableValue: string;
 };
 
-const ComponentExampleColorPicker: React.FunctionComponent<ComponentExampleColorPickerProps> = props => {
+const ComponentExampleColorPicker: React.FunctionComponent<React.PropsWithChildren<ComponentExampleColorPickerProps>> = props => {
   const { onChange, variableValue } = props;
   const { theme } = useFluentContext();
 

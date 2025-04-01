@@ -29,7 +29,7 @@ const options: IComboBoxOption[] = [
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
 const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
-export const ComboBoxTogglesExample: React.FunctionComponent = () => {
+export const ComboBoxTogglesExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [autoComplete, { toggle: toggleAutoComplete }] = useBoolean(false);
   const [allowFreeform, { toggle: toggleAllowFreeform }] = useBoolean(true);
 

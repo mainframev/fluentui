@@ -6,7 +6,7 @@ import type { IStyle } from '../../../../Styling';
 
 export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
   onEditingComplete: (oldItem: any, newItem: any) => void;
-  onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
+  onRenderFloatingPicker?: React.ComponentType<React.PropsWithChildren<IBaseFloatingPickerProps<IPersonaProps>>>;
   floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
   getEditingItemText?: (item: IExtendedPersonaProps) => string;
 }

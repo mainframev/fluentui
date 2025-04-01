@@ -42,7 +42,7 @@ const listContainsDocument = (tag: ITag, tagList: ITag[]) => {
   return tagList.filter(compareTag => compareTag.key === tag.key).length > 0;
 };
 
-export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
+export const AnnouncedSearchResultsExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [hasFilterText, setHasFilterText] = React.useState(false);
   const [suggestionCount, setSuggestionCount] = React.useState(0);
 

@@ -135,7 +135,7 @@ const onRenderDetailsFooter: IRenderFunction<IDetailsFooterProps> = (props, defa
   );
 };
 
-export const ScrollablePaneDetailsListExample: React.FunctionComponent = () => {
+export const ScrollablePaneDetailsListExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const focusZoneProps = {
     className: classNames.focusZone,
     'data-is-scrollable': 'true',

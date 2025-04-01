@@ -121,6 +121,7 @@ export const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>((props
 
 TableCell.displayName = 'TableCell';
 
+// @ts-expect-error React 18
 TableCell.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

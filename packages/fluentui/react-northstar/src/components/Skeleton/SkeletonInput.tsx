@@ -32,6 +32,7 @@ export const SkeletonInput = compose<
   }),
 });
 
+// @ts-expect-error React 18
 SkeletonInput.propTypes = {
   ...commonPropTypes.createCommon(),
   fluid: PropTypes.bool,

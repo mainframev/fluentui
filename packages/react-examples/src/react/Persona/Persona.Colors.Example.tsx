@@ -12,7 +12,7 @@ const sharedPersonaProps: IPersonaProps = {
   },
 };
 
-export const PersonaColorsExample: React.FunctionComponent = () => {
+export const PersonaColorsExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack horizontal wrap>
       <Persona

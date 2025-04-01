@@ -4,7 +4,7 @@ import { LayerBase } from './Layer.base';
 import { getStyles } from './Layer.styles';
 import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 
-export const Layer: React.FunctionComponent<ILayerProps> = styled<ILayerProps, ILayerStyleProps, ILayerStyles>(
+export const Layer: React.FunctionComponent<React.PropsWithChildren<ILayerProps>> = styled<ILayerProps, ILayerStyleProps, ILayerStyles>(
   LayerBase,
   getStyles,
   undefined,

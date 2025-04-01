@@ -115,7 +115,7 @@ type ChildComponentProps = {
   onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
 };
 
-const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
+const TestComponent: React.FunctionComponent<React.PropsWithChildren<TestComponentProps>> = props => {
   const { accessibility = testBehavior, disabled, onClick, onKeyDown, ...rest } = props;
   const getA11Props = useAccessibility(accessibility, {
     mapPropsToBehavior: () => ({
@@ -140,7 +140,7 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
   );
 };
 
-const ChildComponent: React.FunctionComponent<ChildComponentProps> = props => {
+const ChildComponent: React.FunctionComponent<React.PropsWithChildren<ChildComponentProps>> = props => {
   const { accessibility = childBehavior, pressed, onKeyDown, ...rest } = props;
   const getA11Props = useAccessibility(accessibility, {
     mapPropsToBehavior: () => ({
@@ -156,14 +156,14 @@ type FocusZoneComponentProps = {
   rtl?: boolean;
 };
 
-const FocusZoneComponent: React.FunctionComponent<FocusZoneComponentProps> = props => {
+const FocusZoneComponent: React.FunctionComponent<React.PropsWithChildren<FocusZoneComponentProps>> = props => {
   const { as: ElementType = 'div', children, rtl = false } = props;
   const getA11Props = useAccessibility(focusZoneBehavior, { rtl });
 
   return getA11Props.unstable_wrapWithFocusZone(<ElementType {...getA11Props('root', {})}>{children}</ElementType>);
 };
 
-const UnstableBehaviorDefinitionComponent: React.FunctionComponent<TestComponentProps> = props => {
+const UnstableBehaviorDefinitionComponent: React.FunctionComponent<React.PropsWithChildren<TestComponentProps>> = props => {
   const { accessibility = testBehavior } = props;
   const getA11Props = useAccessibility(accessibility, {
     mapPropsToBehavior: () => ({

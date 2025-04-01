@@ -25,7 +25,7 @@ export type DebugPanelProps = {
   onFiberSelected: (fiberNav: FiberNavigator) => void;
 };
 
-export const DebugPanel: React.FC<DebugPanelProps> = props => {
+export const DebugPanel: React.FC<React.PropsWithChildren<DebugPanelProps>> = props => {
   const {
     cssStyles,
     debugData: inputDebugData,

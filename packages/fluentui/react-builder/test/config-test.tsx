@@ -189,7 +189,7 @@ describe('config', () => {
   });
 
   describe('resolveDraggingElement', () => {
-    const FunctionalComponent: React.FunctionComponent<any> = () => <div>fcomponent</div>;
+    const FunctionalComponent: React.FunctionComponent<React.PropsWithChildren<any>> = () => <div>fcomponent</div>;
     FunctionalComponent.displayName = 'FunctionalComponent';
 
     class ClassComponent extends React.Component<any> {

@@ -7,7 +7,7 @@ const doList = [
   'Use `tooltipAsDescriptionBehavior` if adding tooltip to a button or to another visual-only element with text, title or label.',
 ];
 
-const DropdownBestPractices: React.FunctionComponent<{}> = () => {
+const DropdownBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

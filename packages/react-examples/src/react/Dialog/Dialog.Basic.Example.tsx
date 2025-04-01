@@ -21,7 +21,7 @@ const dialogContentProps = {
   subText: 'Do you want to send this message without a subject?',
 };
 
-export const DialogBasicExample: React.FunctionComponent = () => {
+export const DialogBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
   const [isDraggable, { toggle: toggleIsDraggable }] = useBoolean(false);
   const labelId: string = useId('dialogLabel');

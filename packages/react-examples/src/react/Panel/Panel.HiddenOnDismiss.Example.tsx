@@ -8,7 +8,7 @@ const contentExplanation =
   'Try typing something in this text field, closing the panel, and re-opening the panel. ' +
   " The text field's contents should still be here when the panel re-opens.";
 
-export const PanelHiddenOnDismissExample: React.FunctionComponent = () => {
+export const PanelHiddenOnDismissExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 
   return (

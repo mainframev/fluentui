@@ -211,6 +211,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
 
 Card.displayName = 'Card';
 
+// @ts-expect-error React 18
 Card.propTypes = {
   ...commonPropTypes.createCommon(),
   onClick: PropTypes.func,

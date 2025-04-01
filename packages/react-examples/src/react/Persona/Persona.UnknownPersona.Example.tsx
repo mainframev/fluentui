@@ -3,7 +3,7 @@ import { Persona, PersonaSize } from '@fluentui/react/lib/Persona';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { TestImages } from '@fluentui/example-data';
 
-export const UnknownPersonaExample: React.FunctionComponent = () => {
+export const UnknownPersonaExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack tokens={{ childrenGap: 10 }}>
       <Persona

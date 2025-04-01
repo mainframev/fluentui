@@ -160,7 +160,8 @@ export const PopupContent = React.forwardRef<HTMLDivElement, PopupContentProps>(
       ...popupContentProps,
       ...((_.keys(trapFocus).length && trapFocus) as FocusTrapZoneProps),
       as: ElementType,
-    };
+    } as FocusTrapZoneProps;
+
     element = (
       <FocusTrapZone innerRef={ref} {...focusTrapZoneProps}>
         {popupContent}
@@ -171,7 +172,7 @@ export const PopupContent = React.forwardRef<HTMLDivElement, PopupContentProps>(
       ...popupContentProps,
       ...((_.keys(autoFocus).length && autoFocus) as AutoFocusZoneProps),
       as: ElementType,
-    };
+    } as AutoFocusZoneProps;
     element = (
       <AutoFocusZone innerRef={ref} {...autoFocusZoneProps}>
         {popupContent}
@@ -193,6 +194,7 @@ export const PopupContent = React.forwardRef<HTMLDivElement, PopupContentProps>(
 
 PopupContent.displayName = 'PopupContent';
 
+// @ts-expect-error React 18
 PopupContent.propTypes = {
   ...commonPropTypes.createCommon(),
   placement: PropTypes.oneOf<PopperJsPlacement>([

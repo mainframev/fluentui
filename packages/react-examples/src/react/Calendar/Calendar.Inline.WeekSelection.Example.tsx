@@ -17,7 +17,7 @@ const styles = mergeStyleSets({
 const dateRangeType = DateRangeType.Week;
 const firstDayOfWeek = DayOfWeek.Sunday;
 
-export const CalendarInlineWeekSelectionExample: React.FunctionComponent = () => {
+export const CalendarInlineWeekSelectionExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 

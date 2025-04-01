@@ -10,7 +10,7 @@ const items: IBreadcrumbItem[] = [
   { text: 'This is folder 5', key: 'f5', onClick: _onBreadcrumbItemClicked, isCurrentItem: true },
 ];
 
-export const BreadcrumbStaticExample: React.FunctionComponent = () => {
+export const BreadcrumbStaticExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div style={{ display: 'inline-block' }}>
       <Breadcrumb

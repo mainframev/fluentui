@@ -16,7 +16,7 @@ const doList = [
 
 const dontList = ["Don't use Breadcrumbs as a primary way to navigate an app or site."];
 
-const BreadcrumbBestPractices: React.FunctionComponent<{}> = () => {
+const BreadcrumbBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} dontList={dontList} />;
 };
 

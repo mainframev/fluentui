@@ -20,7 +20,7 @@ const style: React.CSSProperties = {
   fontWeight: 'bold',
 };
 
-export const DebugComponentViewer: React.FC<DebugComponentViewerProps> = props => {
+export const DebugComponentViewer: React.FC<React.PropsWithChildren<DebugComponentViewerProps>> = props => {
   const { fiberNav, onFiberChanged, onFiberSelected } = props;
 
   const ownerNav = fiberNav.owner || ({ jsxString: 'unknown' } as FiberNavigator);

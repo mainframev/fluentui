@@ -108,6 +108,7 @@ MenuItemContent.defaultProps = {
   as: 'span',
 };
 
+// @ts-expect-error React 18
 MenuItemContent.propTypes = {
   ...commonPropTypes.createCommon(),
   hasIcon: PropTypes.bool,

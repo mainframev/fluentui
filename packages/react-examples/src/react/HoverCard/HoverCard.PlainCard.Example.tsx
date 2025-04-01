@@ -35,7 +35,7 @@ const onRenderPlainCard = (item: IExampleItem): JSX.Element => {
 };
 const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
   const plainCardProps: IPlainCardProps = {
-    onRenderPlainCard: onRenderPlainCard,
+    onRenderPlainCard,
     renderData: item,
   };
   if (column.key === 'color') {
@@ -50,7 +50,7 @@ const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn):
   return item[column.key as keyof IExampleItem];
 };
 
-export const HoverCardPlainCardExample: React.FunctionComponent = () => {
+export const HoverCardPlainCardExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <ThemeProvider>
       <p>

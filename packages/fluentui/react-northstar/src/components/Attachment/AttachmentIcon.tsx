@@ -30,4 +30,5 @@ export const AttachmentIcon = compose<
 AttachmentIcon.defaultProps = {
   as: 'span',
 };
+// @ts-expect-error React 18
 AttachmentIcon.propTypes = commonPropTypes.createCommon();

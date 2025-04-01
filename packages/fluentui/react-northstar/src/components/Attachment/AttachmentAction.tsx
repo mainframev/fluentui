@@ -49,6 +49,7 @@ AttachmentAction.defaultProps = {
   accessibility: buttonBehavior,
   as: 'button',
 };
+// @ts-expect-error React 18
 AttachmentAction.propTypes = {
   ...commonPropTypes.createCommon({
     content: 'shorthand',

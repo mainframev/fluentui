@@ -154,6 +154,7 @@ MenuItemWrapper.defaultProps = {
   as: 'li',
 };
 
+// @ts-expect-error React 18
 MenuItemWrapper.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,

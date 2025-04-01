@@ -36,7 +36,7 @@ const getDefaultStrings = (useHour12: boolean, showSeconds: boolean): ITimePicke
 /**
  * {@docCategory TimePicker}
  */
-export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
+export const TimePicker: React.FunctionComponent<React.PropsWithChildren<ITimePickerProps>> = ({
   label,
   increments = 30,
   showSeconds = false,

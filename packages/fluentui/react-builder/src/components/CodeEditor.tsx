@@ -10,7 +10,7 @@ export type CodeEditorProps = {
   onCodeError: (code: string, error: string) => void;
 };
 
-export const CodeEditor: React.FunctionComponent<CodeEditorProps> = ({ code, onCodeChange, onCodeError }) => {
+export const CodeEditor: React.FunctionComponent<React.PropsWithChildren<CodeEditorProps>> = ({ code, onCodeChange, onCodeError }) => {
   const handleCodeChange = React.useCallback(
     code => {
       try {

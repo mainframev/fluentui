@@ -17,7 +17,7 @@ const DropdownControlledMultiExampleOptions = [
   { key: 'lettuce', text: 'Lettuce' },
 ];
 
-export const DropdownControlledMultiExample: React.FunctionComponent = () => {
+export const DropdownControlledMultiExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [selectedKeys, setSelectedKeys] = React.useState<string[]>([]);
 
   const onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {

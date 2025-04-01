@@ -380,7 +380,7 @@ describe('ColorPicker', () => {
 
     const redInput = getAllByRole('textbox')[1] as HTMLInputElement;
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '255');
+    userEvent.paste('255');
     expect(onChange1).toHaveBeenCalledTimes(1);
     expect(newColor!.r).toBe(255);
     expect(colorPicker!.color.r).toBe(0);
@@ -550,12 +550,12 @@ describe('ColorPicker', () => {
 
     // new value too long "pasted" => use substring
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '1000');
+    userEvent.paste('1000');
     validateChange({ calls: 4, prop: 'r', value: 100, input: redInput });
 
     // invalid new value too long "pasted" => use substring but don't call onChange
     userEvent.clear(redInput);
-    userEvent.paste(redInput, '4567');
+    userEvent.paste('4567');
 
     validateChange({ calls: 4, prop: 'r', value: 100, input: redInput, inputValue: '456' });
   });
@@ -642,7 +642,7 @@ describe('ColorPicker', () => {
     validateChange({ calls: 1, prop: 'hex', value: '123456', input: hexInput });
 
     // invalid new value too long "pasted" => ignore
-    userEvent.paste(hexInput, 'hello world');
+    userEvent.paste('hello world');
     validateChange({ calls: 1, prop: 'hex', value: '123456', input: hexInput });
   });
 
@@ -719,7 +719,7 @@ describe('ColorPicker', () => {
 
     // value too large => allowed in field but onChange not called
     userEvent.clear(transparencyInput);
-    userEvent.paste(transparencyInput, '123');
+    userEvent.paste('123');
     expect(onChange).toHaveBeenCalledTimes(0);
     expect(colorPicker!.color.a).toBe(30); // original value
     expect(colorPicker!.color.t).toBe(70);

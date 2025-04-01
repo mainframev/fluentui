@@ -89,16 +89,19 @@ class CustomChatMessage extends React.Component {
               iconOnly
               className="actions"
               items={[
+                // @ts-expect-error React 18 TODO
                 {
                   icon: <LikeIcon />,
                   key: 'a',
                   children: this.renderMenuItem,
                 },
+                // @ts-expect-error React 18 TODO
                 {
                   icon: <AcceptIcon />,
                   key: 'b',
                   children: this.renderMenuItem,
                 },
+                // @ts-expect-error React 18 TODO
                 {
                   icon: <MoreIcon />,
                   key: 'c',

@@ -49,7 +49,7 @@ const themedExtraLargeStackTokens: IStackTokens = {
   padding: 'l2',
 };
 
-export const HorizontalStackSpacingExample: React.FunctionComponent = () => {
+export const HorizontalStackSpacingExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Stack enableScopedSelectors tokens={sectionStackTokens}>
       <Stack enableScopedSelectors horizontal disableShrink horizontalAlign="space-between">

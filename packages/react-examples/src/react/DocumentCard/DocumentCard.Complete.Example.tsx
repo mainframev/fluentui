@@ -113,7 +113,7 @@ const documentCardActions = [
   },
 ];
 
-export const DocumentCardCompleteExample: React.FunctionComponent = () => (
+export const DocumentCardCompleteExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => (
   <DocumentCard
     aria-label="Document Card with multiple items, commands and views. Marketing documents. 6 files were uploaded.
 Created by Annie Lindqvist in February 23, 2016. 432 views."

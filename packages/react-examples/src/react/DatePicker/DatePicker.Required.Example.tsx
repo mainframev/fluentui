@@ -6,7 +6,7 @@ const styles = mergeStyleSets({
   control: { maxWidth: 300, marginBottom: 15 },
 });
 
-export const DatePickerRequiredExample: React.FunctionComponent = () => {
+export const DatePickerRequiredExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <div className={styles.root}>
       <div>Validation will happen when the DatePicker loses focus.</div>

@@ -62,7 +62,7 @@ const findBestIndex: (parent: HTMLElement, children: JSONTreeElement[], mouse: {
   return index >= 0 ? index : children.length;
 };
 
-export const DropSelector: React.FunctionComponent<DropSelectorProps> = ({
+export const DropSelector: React.FunctionComponent<React.PropsWithChildren<DropSelectorProps>> = ({
   jsonTree,
   onDropPositionChange,
   mountDocument = isBrowser() ? window.document : null,

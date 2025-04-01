@@ -18,7 +18,7 @@ const navLinkGroups: INavLinkGroup[] = [
   },
 ];
 
-export const NavCustomGroupHeadersExample: React.FunctionComponent = () => {
+export const NavCustomGroupHeadersExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Nav
       onRenderGroupHeader={_onRenderGroupHeader}

@@ -96,6 +96,7 @@ export const ReactionGroup = React.forwardRef<HTMLDivElement, ReactionGroupProps
 
 ReactionGroup.displayName = 'ReactionGroup';
 
+// @ts-expect-error React 18
 ReactionGroup.propTypes = {
   ...commonPropTypes.createCommon(),
   items: customPropTypes.collectionShorthand,

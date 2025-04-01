@@ -107,4 +107,5 @@ BreadcrumbItem.defaultProps = {
   accessibility: breadcrumbItemBehavior,
 };
 
+// @ts-expect-error React 18
 BreadcrumbItem.propTypes = commonPropTypes.createCommon();

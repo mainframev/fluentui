@@ -30,7 +30,7 @@ const onCardHide = (): void => {
   console.log('I am now hidden');
 };
 
-export const HoverCardInstantDismissExample: React.FunctionComponent = () => {
+export const HoverCardInstantDismissExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const hoverCard = React.useRef<IHoverCard>(null);
   const instantDismissCard = (): void => {
     if (hoverCard.current) {
@@ -49,7 +49,7 @@ export const HoverCardInstantDismissExample: React.FunctionComponent = () => {
     );
   };
   const plainCardProps: IPlainCardProps = {
-    onRenderPlainCard: onRenderPlainCard,
+    onRenderPlainCard,
   };
   return (
     <ThemeProvider>

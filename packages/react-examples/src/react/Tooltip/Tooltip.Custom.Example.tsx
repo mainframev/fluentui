@@ -13,7 +13,7 @@ const tooltipProps: ITooltipProps = {
 };
 const hostStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
 
-export const TooltipCustomExample: React.FunctionComponent = () => {
+export const TooltipCustomExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   // Use useId() to ensure that the ID is unique on the page.
   // (It's also okay to use a plain string and manually ensure uniqueness.)
   const tooltipId = useId('tooltip');

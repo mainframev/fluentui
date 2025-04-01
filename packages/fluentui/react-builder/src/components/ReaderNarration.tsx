@@ -19,7 +19,7 @@ export type ReaderNarrationProps = {
   inUseMode: boolean;
 };
 
-export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ vcElement, selector, inUseMode }) => {
+export const ReaderNarration: React.FunctionComponent<React.PropsWithChildren<ReaderNarrationProps>> = ({ vcElement, selector, inUseMode }) => {
   const ref = React.useRef<HTMLElement>();
   const [narrationElement, setNarrationElement] = React.useState<IAriaElement>(null);
   const [narrationText, setNarrationText] = React.useState('');

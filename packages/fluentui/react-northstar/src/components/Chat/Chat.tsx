@@ -129,6 +129,7 @@ Chat.defaultProps = {
   as: 'ul',
   density: defaultChatDensity,
 };
+// @ts-expect-error React 18
 Chat.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,

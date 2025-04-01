@@ -32,6 +32,7 @@ export const SkeletonAvatar = compose<
   }),
 });
 
+// @ts-expect-error React 18
 SkeletonAvatar.propTypes = {
   ...commonPropTypes.createCommon(),
   size: customPropTypes.size,

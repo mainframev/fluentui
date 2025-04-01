@@ -153,7 +153,8 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
               },
             },
             mode === 'use'
-              ? ({
+              ? // @ts-expect-error React 18 types
+                ({
                   key: 'screen-reader',
                   icon: <TranslationIcon outline={true} />,
                   kind: 'toggle',

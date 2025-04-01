@@ -66,7 +66,7 @@ const exampleItems: IExampleItem[] = createListItems(ITEMS_COUNT).map((item: IEx
   return { ...item, thumbnail: randomFileType.url };
 });
 
-export const ShimmerApplicationExample: React.FunctionComponent = () => {
+export const ShimmerApplicationExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const { current: state } = React.useRef<IShimmerApplicationExampleState>({
     lastIntervalId: 0,
     visibleCount: 0,

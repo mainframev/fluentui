@@ -43,7 +43,7 @@ const log =
   () =>
     console.log(text);
 
-export const KeytipsButtonExample: React.FunctionComponent = () => {
+export const KeytipsButtonExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [btnDisabled, { toggle: toggleBtnDisabled }] = useBoolean(false);
   return (
     <div>

@@ -41,7 +41,6 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
 
   React.Children.forEach(React.Children.toArray(props.children), (child: React.ReactNode, index: number) => {
     if (isPivotItem(child)) {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const { linkText, ...pivotItemProps } = child.props;
       const itemKey = child.props.itemKey || index.toString();
       result.links.push({
@@ -58,258 +57,261 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
   return result;
 };
 
+// @ts-expect-error TODO
 const isPivotItem = (item: React.ReactNode): item is PivotItem => {
-  return React.isValidElement(item) && (item.type as React.ComponentType)?.name === PivotItem.name;
+  return (
+    React.isValidElement(item) &&
+    (item.type as React.ComponentType<React.PropsWithChildren<unknown>>)?.name === PivotItem.name
+  );
 };
 
-export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<HTMLDivElement, IPivotProps>(
-  (props, ref) => {
-    const focusZoneRef = React.useRef<IFocusZone>(null);
-    const overflowMenuButtonComponentRef = React.useRef<IButton>(null);
-    const pivotId: string = useId('Pivot');
+export const PivotBase: React.FunctionComponent<React.PropsWithChildren<IPivotProps>> = React.forwardRef<
+  HTMLDivElement,
+  IPivotProps
+>((props, ref) => {
+  const focusZoneRef = React.useRef<IFocusZone>(null);
+  const overflowMenuButtonComponentRef = React.useRef<IButton>(null);
+  const pivotId: string = useId('Pivot');
 
-    const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
+  const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
 
-    const {
-      componentRef,
-      theme,
-      linkSize,
-      linkFormat,
-      overflowBehavior,
-      overflowAriaLabel,
-      focusZoneProps,
-      overflowButtonAs,
-    } = props;
+  const {
+    componentRef,
+    theme,
+    linkSize,
+    linkFormat,
+    overflowBehavior,
+    overflowAriaLabel,
+    focusZoneProps,
+    overflowButtonAs,
+  } = props;
 
-    let classNames: { [key in keyof IPivotStyles]: string };
-    const nameProps = {
-      'aria-label': props['aria-label'],
-      'aria-labelledby': props['aria-labelledby'],
-    };
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, [
-      'aria-label',
-      'aria-labelledby',
-    ]);
+  let classNames: { [key in keyof IPivotStyles]: string };
+  const nameProps = {
+    'aria-label': props['aria-label'],
+    'aria-labelledby': props['aria-labelledby'],
+  };
+  const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, [
+    'aria-label',
+    'aria-labelledby',
+  ]);
 
-    let linkCollection = getLinkItems(props, pivotId);
+  let linkCollection = getLinkItems(props, pivotId);
 
-    React.useImperativeHandle(componentRef as React.RefObject<IPivot>, () => ({
-      focus: () => {
-        focusZoneRef.current?.focus();
-      },
-    }));
+  React.useImperativeHandle(componentRef as React.RefObject<IPivot>, () => ({
+    focus: () => {
+      focusZoneRef.current?.focus();
+    },
+  }));
 
-    const renderLinkContent = (link?: IPivotItemProps): JSX.Element | null => {
-      if (!link) {
-        return null;
-      }
+  const renderLinkContent = (link?: IPivotItemProps): JSX.Element | null => {
+    if (!link) {
+      return null;
+    }
 
-      const { itemCount, itemIcon, headerText } = link;
-      return (
-        <span className={classNames.linkContent}>
-          {itemIcon !== undefined && (
-            <span className={classNames.icon}>
-              <Icon iconName={itemIcon} />
-            </span>
-          )}
-          {headerText !== undefined && <span className={classNames.text}> {link.headerText}</span>}
-          {itemCount !== undefined && <span className={classNames.count}> ({itemCount})</span>}
-        </span>
-      );
-    };
-
-    const renderPivotLink = (
-      renderLinkCollection: PivotLinkCollection,
-      link: IPivotItemProps,
-      renderPivotLinkSelectedKey: string | null | undefined,
-      className: string,
-    ): JSX.Element => {
-      const { itemKey, headerButtonProps, onRenderItemLink } = link;
-      const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
-      let linkContent: JSX.Element | null;
-      const isSelected: boolean = renderPivotLinkSelectedKey === itemKey;
-
-      if (onRenderItemLink) {
-        linkContent = onRenderItemLink(link, renderLinkContent);
-      } else {
-        linkContent = renderLinkContent(link);
-      }
-
-      let contentString = link.headerText || '';
-      contentString += link.itemCount ? ' (' + link.itemCount + ')' : '';
-      // Adding space supplementary for icon
-      contentString += link.itemIcon ? ' xx' : '';
-
-      const itemSemantics =
-        link.role && link.role !== 'tab'
-          ? {
-              role: link.role,
-            }
-          : {
-              role: 'tab',
-              'aria-selected': isSelected,
-            };
-
-      return (
-        <CommandButton
-          {...headerButtonProps}
-          {...itemSemantics}
-          id={tabId}
-          key={itemKey}
-          className={css(className, isSelected && classNames.linkIsSelected)}
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={(ev: React.MouseEvent<HTMLElement>) => onLinkClick(itemKey!, ev)}
-          // eslint-disable-next-line react/jsx-no-bind
-          onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => onKeyDown(itemKey!, ev)}
-          aria-label={link.ariaLabel}
-          name={link.headerText}
-          keytipProps={link.keytipProps}
-          data-content={contentString}
-        >
-          {linkContent}
-        </CommandButton>
-      );
-    };
-
-    const onLinkClick = (itemKey: string, ev: React.MouseEvent<HTMLElement>): void => {
-      ev.preventDefault();
-      updateSelectedItem(itemKey, ev);
-    };
-
-    const onKeyDown = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      if (ev.which === KeyCodes.enter) {
-        ev.preventDefault();
-        updateSelectedItem(itemKey);
-      }
-    };
-
-    const updateSelectedItem = (itemKey: string, ev?: React.MouseEvent<HTMLElement>): void => {
-      setSelectedKey(itemKey);
-      linkCollection = getLinkItems(props, pivotId);
-      if (props.onLinkClick && linkCollection.keyToIndexMapping[itemKey] >= 0) {
-        const selectedIndex = linkCollection.keyToIndexMapping[itemKey];
-        const item = React.Children.toArray(props.children)[selectedIndex];
-        if (isPivotItem(item)) {
-          props.onLinkClick(item, ev);
-        }
-      }
-
-      overflowMenuButtonComponentRef.current?.dismissMenu();
-    };
-
-    const renderPivotItem = (itemKey: string | undefined, isActive: boolean): JSX.Element | null => {
-      if (props.headersOnly || !itemKey) {
-        return null;
-      }
-
-      const index = linkCollection.keyToIndexMapping[itemKey];
-      const selectedTabId = linkCollection.keyToTabIdMapping[itemKey];
-      return (
-        <div
-          role="tabpanel"
-          hidden={!isActive}
-          key={itemKey}
-          aria-hidden={!isActive}
-          aria-labelledby={selectedTabId}
-          className={classNames.itemContainer}
-        >
-          {React.Children.toArray(props.children)[index]}
-        </div>
-      );
-    };
-
-    const isKeyValid = (itemKey: string | null | undefined): boolean => {
-      return itemKey === null || (itemKey !== undefined && linkCollection.keyToIndexMapping[itemKey] !== undefined);
-    };
-
-    const getSelectedKey = () => {
-      if (isKeyValid(selectedKey)) {
-        return selectedKey;
-      }
-      if (linkCollection.links.length) {
-        return linkCollection.links[0].itemKey;
-      }
-      return undefined;
-    };
-
-    classNames = getClassNames(props.styles!, {
-      theme: theme!,
-      linkSize,
-      linkFormat,
-    });
-
-    const renderedSelectedKey = getSelectedKey();
-    const renderedSelectedIndex = renderedSelectedKey ? linkCollection.keyToIndexMapping[renderedSelectedKey] : 0;
-
-    const items = linkCollection.links.map(l =>
-      renderPivotLink(linkCollection, l, renderedSelectedKey, classNames.link),
-    );
-
-    // The overflow menu starts empty and items[] is updated as the overflow items change
-    const overflowMenuProps: IContextualMenuProps = React.useMemo(
-      () => ({
-        items: [],
-        alignTargetEdge: true,
-        directionalHint: DirectionalHint.bottomRightEdge,
-      }),
-      [],
-    );
-
-    const { menuButtonRef: overflowMenuButtonRef } = useOverflow({
-      onOverflowItemsChanged: (overflowIndex, elements) => {
-        // Set data-is-overflowing on each item
-        elements.forEach(({ ele, isOverflowing }) => (ele.dataset.isOverflowing = `${isOverflowing}`));
-
-        // Update the menu items
-        overflowMenuProps.items = linkCollection.links
-          .slice(overflowIndex)
-          .filter(link => link.itemKey !== renderedSelectedKey)
-          .map((link, index) => {
-            link.role = 'menuitem';
-
-            return {
-              key: link.itemKey || `${overflowIndex + index}`,
-              onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
-            };
-          });
-      },
-      rtl: getRTL(theme),
-      pinnedIndex: renderedSelectedIndex,
-    });
-
-    const OverflowButton = overflowButtonAs ? overflowButtonAs : CommandButton;
+    const { itemCount, itemIcon, headerText } = link;
     return (
-      <div ref={ref} {...divProps}>
-        <FocusZone
-          componentRef={focusZoneRef}
-          role="tablist"
-          {...nameProps}
-          direction={FocusZoneDirection.horizontal}
-          {...focusZoneProps}
-          className={css(classNames.root, focusZoneProps?.className)}
-        >
-          {items}
-          {overflowBehavior === 'menu' && (
-            <OverflowButton
-              className={css(classNames.link, classNames.overflowMenuButton)}
-              elementRef={overflowMenuButtonRef}
-              componentRef={overflowMenuButtonComponentRef}
-              menuProps={overflowMenuProps}
-              menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
-              ariaLabel={overflowAriaLabel}
-              role="tab"
-            />
-          )}
-        </FocusZone>
-        {renderedSelectedKey &&
-          linkCollection.links.map(
-            link =>
-              (link.alwaysRender === true || renderedSelectedKey === link.itemKey) &&
-              renderPivotItem(link.itemKey, renderedSelectedKey === link.itemKey),
-          )}
+      <span className={classNames.linkContent}>
+        {itemIcon !== undefined && (
+          <span className={classNames.icon}>
+            <Icon iconName={itemIcon} />
+          </span>
+        )}
+        {headerText !== undefined && <span className={classNames.text}> {link.headerText}</span>}
+        {itemCount !== undefined && <span className={classNames.count}> ({itemCount})</span>}
+      </span>
+    );
+  };
+
+  const renderPivotLink = (
+    renderLinkCollection: PivotLinkCollection,
+    link: IPivotItemProps,
+    renderPivotLinkSelectedKey: string | null | undefined,
+    className: string,
+  ): JSX.Element => {
+    const { itemKey, headerButtonProps, onRenderItemLink } = link;
+    const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
+    let linkContent: JSX.Element | null;
+    const isSelected: boolean = renderPivotLinkSelectedKey === itemKey;
+
+    if (onRenderItemLink) {
+      linkContent = onRenderItemLink(link, renderLinkContent);
+    } else {
+      linkContent = renderLinkContent(link);
+    }
+
+    let contentString = link.headerText || '';
+    contentString += link.itemCount ? ' (' + link.itemCount + ')' : '';
+    // Adding space supplementary for icon
+    contentString += link.itemIcon ? ' xx' : '';
+
+    const itemSemantics =
+      link.role && link.role !== 'tab'
+        ? {
+            role: link.role,
+          }
+        : {
+            role: 'tab',
+            'aria-selected': isSelected,
+          };
+
+    return (
+      <CommandButton
+        {...headerButtonProps}
+        {...itemSemantics}
+        id={tabId}
+        key={itemKey}
+        className={css(className, isSelected && classNames.linkIsSelected)}
+        // eslint-disable-next-line react/jsx-no-bind
+        onClick={(ev: React.MouseEvent<HTMLElement>) => onLinkClick(itemKey!, ev)}
+        // eslint-disable-next-line react/jsx-no-bind
+        onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => onKeyDown(itemKey!, ev)}
+        aria-label={link.ariaLabel}
+        name={link.headerText}
+        keytipProps={link.keytipProps}
+        data-content={contentString}
+      >
+        {linkContent}
+      </CommandButton>
+    );
+  };
+
+  const onLinkClick = (itemKey: string, ev: React.MouseEvent<HTMLElement>): void => {
+    ev.preventDefault();
+    updateSelectedItem(itemKey, ev);
+  };
+
+  const onKeyDown = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    if (ev.which === KeyCodes.enter) {
+      ev.preventDefault();
+      updateSelectedItem(itemKey);
+    }
+  };
+
+  const updateSelectedItem = (itemKey: string, ev?: React.MouseEvent<HTMLElement>): void => {
+    setSelectedKey(itemKey);
+    linkCollection = getLinkItems(props, pivotId);
+    if (props.onLinkClick && linkCollection.keyToIndexMapping[itemKey] >= 0) {
+      const selectedIndex = linkCollection.keyToIndexMapping[itemKey];
+      const item = React.Children.toArray(props.children)[selectedIndex];
+      if (isPivotItem(item)) {
+        props.onLinkClick(item, ev);
+      }
+    }
+
+    overflowMenuButtonComponentRef.current?.dismissMenu();
+  };
+
+  const renderPivotItem = (itemKey: string | undefined, isActive: boolean): JSX.Element | null => {
+    if (props.headersOnly || !itemKey) {
+      return null;
+    }
+
+    const index = linkCollection.keyToIndexMapping[itemKey];
+    const selectedTabId = linkCollection.keyToTabIdMapping[itemKey];
+    return (
+      <div
+        role="tabpanel"
+        hidden={!isActive}
+        key={itemKey}
+        aria-hidden={!isActive}
+        aria-labelledby={selectedTabId}
+        className={classNames.itemContainer}
+      >
+        {React.Children.toArray(props.children)[index]}
       </div>
     );
-  },
-);
+  };
+
+  const isKeyValid = (itemKey: string | null | undefined): boolean => {
+    return itemKey === null || (itemKey !== undefined && linkCollection.keyToIndexMapping[itemKey] !== undefined);
+  };
+
+  const getSelectedKey = () => {
+    if (isKeyValid(selectedKey)) {
+      return selectedKey;
+    }
+    if (linkCollection.links.length) {
+      return linkCollection.links[0].itemKey;
+    }
+    return undefined;
+  };
+
+  classNames = getClassNames(props.styles!, {
+    theme: theme!,
+    linkSize,
+    linkFormat,
+  });
+
+  const renderedSelectedKey = getSelectedKey();
+  const renderedSelectedIndex = renderedSelectedKey ? linkCollection.keyToIndexMapping[renderedSelectedKey] : 0;
+
+  const items = linkCollection.links.map(l => renderPivotLink(linkCollection, l, renderedSelectedKey, classNames.link));
+
+  // The overflow menu starts empty and items[] is updated as the overflow items change
+  const overflowMenuProps: IContextualMenuProps = React.useMemo(
+    () => ({
+      items: [],
+      alignTargetEdge: true,
+      directionalHint: DirectionalHint.bottomRightEdge,
+    }),
+    [],
+  );
+
+  const { menuButtonRef: overflowMenuButtonRef } = useOverflow({
+    onOverflowItemsChanged: (overflowIndex, elements) => {
+      // Set data-is-overflowing on each item
+      elements.forEach(({ ele, isOverflowing }) => (ele.dataset.isOverflowing = `${isOverflowing}`));
+
+      // Update the menu items
+      overflowMenuProps.items = linkCollection.links
+        .slice(overflowIndex)
+        .filter(link => link.itemKey !== renderedSelectedKey)
+        .map((link, index) => {
+          link.role = 'menuitem';
+
+          return {
+            key: link.itemKey || `${overflowIndex + index}`,
+            onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
+          };
+        });
+    },
+    rtl: getRTL(theme),
+    pinnedIndex: renderedSelectedIndex,
+  });
+
+  const OverflowButton = overflowButtonAs ? overflowButtonAs : CommandButton;
+  return (
+    <div ref={ref} {...divProps}>
+      <FocusZone
+        componentRef={focusZoneRef}
+        role="tablist"
+        {...nameProps}
+        direction={FocusZoneDirection.horizontal}
+        {...focusZoneProps}
+        className={css(classNames.root, focusZoneProps?.className)}
+      >
+        {items}
+        {overflowBehavior === 'menu' && (
+          <OverflowButton
+            className={css(classNames.link, classNames.overflowMenuButton)}
+            elementRef={overflowMenuButtonRef}
+            componentRef={overflowMenuButtonComponentRef}
+            menuProps={overflowMenuProps}
+            menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
+            ariaLabel={overflowAriaLabel}
+            role="tab"
+          />
+        )}
+      </FocusZone>
+      {renderedSelectedKey &&
+        linkCollection.links.map(
+          link =>
+            (link.alwaysRender === true || renderedSelectedKey === link.itemKey) &&
+            renderPivotItem(link.itemKey, renderedSelectedKey === link.itemKey),
+        )}
+    </div>
+  );
+});
 PivotBase.displayName = COMPONENT_NAME;

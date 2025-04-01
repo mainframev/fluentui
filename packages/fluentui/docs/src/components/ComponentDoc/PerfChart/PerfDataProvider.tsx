@@ -11,7 +11,7 @@ import config from '../../../config';
  * [ ] refresh support
  * [ ] serve static data in public builds
  */
-const PerfDataProvider: React.FC = ({ children }) => {
+const PerfDataProvider: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState();
   const [data, setData] = React.useState();

@@ -4,7 +4,7 @@ import { Context, ContextValue } from './types';
 import { runWithNormalPriority, useIsomorphicLayoutEffect } from './utils';
 
 const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) => {
-  const Provider: React.FC<React.ProviderProps<Value>> = props => {
+  const Provider: React.FC<React.PropsWithChildren<React.ProviderProps<Value>>> = props => {
     // Holds an actual "props.value"
     const valueRef = React.useRef(props.value);
     // Used to sync context updates and avoid stale values, can be considered as render/effect counter of Provider.

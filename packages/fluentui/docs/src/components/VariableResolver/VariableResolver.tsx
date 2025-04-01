@@ -9,7 +9,7 @@ type VariableResolverProps = {
   onResolve: (variables: Record<string, string[]>) => void;
 };
 
-const VariableResolver: React.FunctionComponent<VariableResolverProps> = props => {
+const VariableResolver: React.FunctionComponent<React.PropsWithChildren<VariableResolverProps>> = props => {
   const { onResolve } = props;
 
   const elementRef = React.useRef<HTMLDivElement>();

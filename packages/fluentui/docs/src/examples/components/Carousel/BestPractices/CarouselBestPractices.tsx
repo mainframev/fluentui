@@ -22,7 +22,7 @@ const doList = [
   </Box>,
 ];
 
-const CarouselBestPractices: React.FunctionComponent<{}> = () => {
+const CarouselBestPractices: React.FunctionComponent<React.PropsWithChildren<{}>> = () => {
   return <ComponentBestPractices doList={doList} />;
 };
 

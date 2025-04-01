@@ -88,6 +88,7 @@ export const PillContent = React.forwardRef<HTMLSpanElement, PillContentProps>((
 
 PillContent.displayName = 'PillContent';
 
+// @ts-expect-error React 18
 PillContent.propTypes = {
   ...commonPropTypes.createCommon(),
   actionable: PropTypes.bool,

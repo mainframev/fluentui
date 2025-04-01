@@ -4,7 +4,7 @@ import { KeytipContentBase } from './KeytipContent.base';
 import { getStyles } from './Keytip.styles';
 import type { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 
-export const KeytipContent: React.FunctionComponent<IKeytipProps> = styled<
+export const KeytipContent: React.FunctionComponent<React.PropsWithChildren<IKeytipProps>> = styled<
   IKeytipProps,
   IKeytipStyleProps,
   IKeytipStyles

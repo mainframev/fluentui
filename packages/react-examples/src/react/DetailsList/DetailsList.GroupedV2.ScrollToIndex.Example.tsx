@@ -187,7 +187,7 @@ const measureGroup = (group: IGroup): number => {
   return rowHeaderHeight;
 };
 
-export const DetailsListGroupedV2ScrollToIndexExample: React.FC = () => {
+export const DetailsListGroupedV2ScrollToIndexExample: React.FC<React.PropsWithChildren<unknown>> = () => {
   const root = React.useRef<IDetailsList>(null);
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);

@@ -38,7 +38,7 @@ describe('ChatMessage', () => {
       usePopperSpy = jest.spyOn(positionerApi, 'usePopper');
     });
 
-    function render(wrappingComponent?: React.ComponentType) {
+    function render(wrappingComponent?: React.ComponentType<React.PropsWithChildren<unknown>>) {
       const actionMenu = {
         iconOnly: true,
         items: [
@@ -59,6 +59,7 @@ describe('ChatMessage', () => {
           timestamp="10:15 PM"
           mine
         />,
+        // @ts-expect-error enzyme types <= 18
         { wrappingComponent },
       );
     }

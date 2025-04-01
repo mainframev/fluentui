@@ -8,7 +8,7 @@ const overflowButtonProps = {
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked'),
 };
 
-export const FacepileAddFaceExample: React.FunctionComponent = () => {
+export const FacepileAddFaceExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [numberOfFaces, setNumberOfFaces] = React.useState(0);
 
   const personas = React.useMemo(() => facepilePersonas.slice(0, numberOfFaces), [numberOfFaces]);

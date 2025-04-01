@@ -5,7 +5,7 @@ import { Label } from '@fluentui/react/lib/Label';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { TestImages } from '@fluentui/example-data';
 
-export const PersonaBasicExample: React.FunctionComponent = () => {
+export const PersonaBasicExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const [renderDetails, updateRenderDetails] = React.useState(true);
   const onChange = (ev: unknown, checked: boolean | undefined) => {
     updateRenderDetails(!!checked);

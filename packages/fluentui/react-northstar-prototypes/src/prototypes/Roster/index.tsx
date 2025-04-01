@@ -26,7 +26,7 @@ const treeItems = [
   },
 ];
 
-const RosterPrototype: React.FC = () => {
+const RosterPrototype: React.FC<React.PropsWithChildren<unknown>> = () => {
   return (
     <PrototypeSection title="Roster">
       <ComponentPrototype>

@@ -8,7 +8,7 @@ type TelemetryPerfFlagsProps = {
   onChange: (name: keyof StylesContextPerformance, value: boolean) => void;
 };
 
-export const TelemetryPerfFlags: React.FC<TelemetryPerfFlagsProps> = props => (
+export const TelemetryPerfFlags: React.FC<React.PropsWithChildren<TelemetryPerfFlagsProps>> = props => (
   <div style={styles.performanceFlags()}>
     {Object.keys(defaultPerformanceFlags).map(flag => (
       <div key={flag} style={styles.performanceFlag()}>

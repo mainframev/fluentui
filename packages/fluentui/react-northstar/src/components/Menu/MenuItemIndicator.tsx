@@ -112,6 +112,7 @@ MenuItemIndicator.defaultProps = {
   accessibility: indicatorBehavior,
 };
 
+// @ts-expect-error React 18
 MenuItemIndicator.propTypes = {
   ...commonPropTypes.createCommon(),
   iconOnly: PropTypes.bool,

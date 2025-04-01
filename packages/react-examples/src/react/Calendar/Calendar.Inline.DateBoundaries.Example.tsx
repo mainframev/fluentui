@@ -2,7 +2,7 @@ import * as React from 'react';
 import { addMonths, addYears, addDays, Calendar, defaultCalendarStrings } from '@fluentui/react';
 import { useConst } from '@fluentui/react-hooks';
 
-export const CalendarInlineDateBoundariesExample: React.FunctionComponent = () => {
+export const CalendarInlineDateBoundariesExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const today = useConst(new Date());
   const minDate = useConst(addMonths(today, -1));
   const maxDate = useConst(addYears(today, 1));

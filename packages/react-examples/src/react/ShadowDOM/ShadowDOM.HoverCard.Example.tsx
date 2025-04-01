@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Shadow } from './ShadowHelper';
 import { HoverCardBasicExample } from '../HoverCard/HoverCard.Basic.Example';
 
-export const ShadowDOMHoverCardExample: React.FunctionComponent = () => {
+export const ShadowDOMHoverCardExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   return (
     <Shadow>
       <HoverCardBasicExample />

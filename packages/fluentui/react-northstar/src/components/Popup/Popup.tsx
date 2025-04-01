@@ -141,7 +141,7 @@ export const popupClassName = 'ui-popup';
 /**
  * A Popup displays a non-modal, often rich content, on top of its target element.
  */
-export const Popup: React.FC<PopupProps> &
+export const Popup: React.FC<React.PropsWithChildren<PopupProps>> &
   FluentComponentStaticProps<PopupProps> & {
     Content: typeof PopupContent;
   } = props => {
@@ -645,6 +645,7 @@ export const Popup: React.FC<PopupProps> &
 
 Popup.displayName = 'Popup';
 
+// @ts-expect-error React 18
 Popup.propTypes = {
   ...commonPropTypes.createCommon({
     as: false,

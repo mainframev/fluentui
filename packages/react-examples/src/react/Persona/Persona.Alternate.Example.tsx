@@ -3,7 +3,7 @@ import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from '@flu
 import { Stack } from '@fluentui/react/lib/Stack';
 import { TestImages } from '@fluentui/example-data';
 
-export const PersonaAlternateExample: React.FunctionComponent = () => {
+export const PersonaAlternateExample: React.FunctionComponent<React.PropsWithChildren<unknown>> = () => {
   const examplePersona: IPersonaSharedProps = {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'AR',
