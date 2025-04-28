@@ -5,6 +5,7 @@ export {
   useRadioGroupStyles_unstable,
   useRadioGroup_unstable,
 } from './RadioGroup';
+
 export type {
   RadioGroupContextValue,
   RadioGroupContextValues,
@@ -13,7 +14,14 @@ export type {
   RadioGroupSlots,
   RadioGroupState,
 } from './RadioGroup';
-export { Radio, radioClassNames, renderRadio_unstable, useRadioStyles_unstable, useRadio_unstable } from './Radio';
+export {
+  Radio,
+  RadioV2,
+  radioClassNames,
+  renderRadio_unstable,
+  useRadioStyles_unstable,
+  useRadio_unstable,
+} from './Radio';
 export type { RadioProps, RadioSlots, RadioState, RadioOnChangeData } from './Radio';
 export {
   RadioGroupProvider,
