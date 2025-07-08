@@ -1,0 +1,62 @@
+name: Lint & Build
+
+on:
+  push:
+    branches:
+      - master
+      - 'chore/**'
+  pull_request:
+    branches:
+      - master
+      - 'chore/**'
+  workflow_dispatch:
+
+# concurrency:
+#   group: ${{ github.workflow }}-${{ github.ref }}
+#   cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 6
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+  BROWSERSLIST_IGNORE_OLD_DATA: true
+
+jobs:
+  lint-and-build:
+    runs-on: self-hosted
+    permissions:
+      contents: read
+      actions: read
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive SHAs for `nx affected`
+        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b
+        with:
+          main-branch-name: master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Workspace lint
+        run: |
+          yarn nx run workspace-plugin:check-graph
+          yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
+          yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
+
+      - name: Affected build & lint
+        run: |
+          FLUENT_JEST_WORKER=2 yarn nx affected \
+            -t build lint \
+            --exclude react-19-tests-v9 \
+            --nxBail
