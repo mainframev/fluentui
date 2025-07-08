@@ -3,7 +3,7 @@ import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
 import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';
 import { useFocusWithin } from '@fluentui/react-tabster';
-import type { RadioProps, RadioState } from './Radio.types';
+import type { RadioProps, RadioPropsV2, RadioState, RadioStateV2 } from './Radio.types';
 
 /**
  * Create the state required to render Radio.
@@ -74,3 +74,8 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
     indicator,
   };
 };
+
+export const useRadio_unstableV2 = useRadio_unstable as (
+  props: RadioPropsV2,
+  ref: React.Ref<HTMLInputElement>,
+) => RadioStateV2;

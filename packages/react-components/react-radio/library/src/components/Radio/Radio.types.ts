@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type {
+  ComponentProps as ComponentPropsV2,
+  ComponentState as ComponentStateV2,
+  Slot as SlotV2,
+} from '@fluentui/react-utilities/next';
 
 export type RadioSlots = {
   /**
@@ -30,10 +35,35 @@ export type RadioSlots = {
   indicator: NonNullable<Slot<'div'>>;
 };
 
-/**
- * Radio Props
- */
-export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'onChange' | 'size'> & {
+export type RadioSlotsV2 = {
+  /**
+   * The root element of the Radio.
+   *
+   * The root slot receives the `className` and `style` specified directly on the `<Radio>`.
+   * All other native props will be applied to the primary slot: `input`
+   */
+  root: NonNullable<SlotV2<'span'>>;
+
+  /**
+   * The Radio's label.
+   */
+  label: SlotV2<typeof Label>;
+
+  /**
+   * Hidden input that handles the radio's functionality.
+   *
+   * This is the PRIMARY slot: all native properties specified directly on `<Radio>` will be applied to this slot,
+   * except `className` and `style`, which remain on the root slot.
+   */
+  input: NonNullable<SlotV2<'input'>>;
+
+  /**
+   * A circle outline, with a filled circle icon inside when the Radio is checked.
+   */
+  indicator: NonNullable<SlotV2<'div'>>;
+};
+
+type RadioBaseProps = {
   /**
    * The value of the RadioGroup when this Radio item is selected.
    */
@@ -65,8 +95,11 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'onC
 };
 
 /**
- * Data for the onChange event for Radio.
+ * Radio Props
  */
+export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'onChange' | 'size'> & RadioBaseProps;
+export type RadioPropsV2 = Omit<ComponentPropsV2<Partial<RadioSlots>, 'input'>, 'onChange' | 'size'> & RadioBaseProps;
+
 export type RadioOnChangeData = {
   /**
    * The value prop of this Radio item.
@@ -78,3 +111,4 @@ export type RadioOnChangeData = {
  * State used in rendering Radio
  */
 export type RadioState = ComponentState<RadioSlots> & Required<Pick<RadioProps, 'labelPosition'>>;
+export type RadioStateV2 = ComponentStateV2<RadioSlotsV2> & Required<Pick<RadioPropsV2, 'labelPosition'>>;

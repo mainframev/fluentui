@@ -1,7 +1,7 @@
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { RadioSlots, RadioState } from './Radio.types';
+import type { RadioSlots, RadioState, RadioStateV2 } from './Radio.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const radioClassNames: SlotClassNames<RadioSlots> = {
@@ -250,3 +250,5 @@ export const useRadioStyles_unstable = (state: RadioState): RadioState => {
 
   return state;
 };
+
+export const useRadioStyles_unstableV2 = useRadioStyles_unstable as (state: RadioStateV2) => RadioStateV2;
