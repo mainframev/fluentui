@@ -93,6 +93,7 @@ const useRootCircularBaseClassName = makeResetStyles({
       borderLeft: `${tokens.strokeWidthThin} solid`,
       borderRight: `${tokens.strokeWidthThin} solid`,
       position: 'absolute',
+      height: 'auto',
       top: '-1px',
       left: '-1px',
       right: '-1px',
