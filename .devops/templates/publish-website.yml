@@ -1,4 +1,9 @@
 parameters:
+  - name: dryRun
+    displayName: Dry Run Mode
+    type: boolean
+    default: false
+
   - name: version
     type: string
     default: 8
