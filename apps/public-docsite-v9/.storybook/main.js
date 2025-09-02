@@ -5,6 +5,14 @@ const rootMain = require('../../../.storybook/main');
 
 const tsConfigAllPath = path.join(__dirname, '../../../tsconfig.base.all.json');
 
+const withPublicPath = cfg => {
+  const base = process.env.STORYBOOK_BASE || '/';
+  cfg.output = cfg.output || {};
+  cfg.output.publicPath = base;
+
+  return cfg;
+};
+
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
   stories: [
@@ -35,6 +43,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = /** @type config */ ({ ...rootMain.webpackFinal?.(config, options) });
+    withPublicPath(localConfig);
 
     // add your own webpack tweaks if needed
     registerTsPaths({ configFile: tsConfigAllPath, config: localConfig });
@@ -42,6 +51,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
 
     return localConfig;
   },
+  managerWebpack: cfg => withPublicPath(cfg),
   refs: {
     contrib: {
       title: 'Contributors Packages',
@@ -49,12 +59,13 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
       expanded: false,
       sourceUrl: 'https://github.com/microsoft/fluentui-contrib',
     },
-    charts: {
-      title: 'Charts v9',
-      // Workaround to enable docsite using PR workflow till master workflow is enabled
-      url: 'https://fluentuipr.z22.web.core.windows.net/pull/33270/chart-docsite/storybook',
-      expanded: false,
-      sourceUrl: 'https://github.com/microsoft/fluentui/charts/react-charts',
-    },
+    // charts: {
+    //   title: 'Charts v9',
+    //   url: '/fluentui/charts',
+    // },
+    // react: {
+    //   title: 'React v9',
+    //   url: '/fluentui/react',
+    // },
   },
 });
