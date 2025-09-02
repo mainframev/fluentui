@@ -12,6 +12,12 @@
           "target": "build"
         }
       ]
+    },
+    "deploy-website": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cross-env DEPLOY_PATH=/charts/ yarn nx run chart-docsite:build-storybook"
+      }
     }
   }
 }
