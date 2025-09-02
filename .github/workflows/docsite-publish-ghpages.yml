@@ -4,7 +4,7 @@ name: 'Docsite publish to Github Pages'
 on:
   push:
     branches:
-      - master
+      - chore/ghp-deployments-test
   workflow_dispatch:
 
 jobs:
@@ -26,8 +26,15 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
 
-      - name: Install Playwright Browsers
-        run: yarn playwright install --with-deps
+      # - name: Install Playwright Browsers
+      #   run: yarn playwright install --with-deps
+      #
+      #
+      - name: Affected Deployable Storybooks
+        id: affected_storybooks_count
+        run: |
+          affected_count=$(yarn --silent nx show projects -t build-storybook:docsite --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
 
       - name: Affected Deployable Storybooks
         id: affected_storybooks_count

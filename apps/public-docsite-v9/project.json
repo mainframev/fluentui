@@ -5,11 +5,14 @@
   "implicitDependencies": ["tag:type:stories"],
   "tags": ["platform:web", "vNext"],
   "targets": {
-    "build-storybook": {
+    "build-storybook:docsite": {
+      "executor": "nx:noop",
       "dependsOn": [
+        "build-storybook",
+        "inject-redirect",
         {
-          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
-          "target": "build"
+          "projects": ["chart-docsite", "web-components"],
+          "target": "build-storybook:docsite"
         }
       ]
     },
