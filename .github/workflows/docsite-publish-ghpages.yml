@@ -82,12 +82,7 @@ jobs:
         run: |
           yarn nx run-many -t deploy-website -p "$AFFECTED" --parallel=3 --nxBail
 
-      - name: Stage site for Pages (v9, charts, web components)
-        run: |
-          cp -rv ./apps/chart-docsite/dist/storybook ./apps/public-docsite-v9/dist/storybook/charts/
-          cp -rv ./packages/web-components/dist/storybook ./apps/public-docsite-v9/dist/storybook/web-components/
-
-      - name: Upload Pages artifact
+      - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './apps/public-docsite-v9/dist/storybook/'
