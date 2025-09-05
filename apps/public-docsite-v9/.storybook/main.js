@@ -33,6 +33,9 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],
+  build: {
+    previewUrl: process.env.DEPLOY_PATH,
+  },
   webpackFinal: (config, options) => {
     const localConfig = /** @type config */ ({ ...rootMain.webpackFinal?.(config, options) });
 
@@ -48,13 +51,6 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
       url: 'https://microsoft.github.io/fluentui-contrib/docsite/',
       expanded: false,
       sourceUrl: 'https://github.com/microsoft/fluentui-contrib',
-    },
-    charts: {
-      title: 'Charts v9',
-      // Workaround to enable docsite using PR workflow till master workflow is enabled
-      url: 'https://fluentuipr.z22.web.core.windows.net/pull/33270/chart-docsite/storybook',
-      expanded: false,
-      sourceUrl: 'https://github.com/microsoft/fluentui/charts/react-charts',
     },
   },
 });
