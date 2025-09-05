@@ -23,12 +23,12 @@
       },
       "dependsOn": [
         {
-          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox"],
+          "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
           "target": "build"
         }
       ]
     },
-    "deploy-website": {
+    "build-docsites": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [
@@ -42,6 +42,16 @@
           "target": "deploy-website"
         }
       ]
+    },
+    "deploy-website": {
+      "dependsOn": ["build-docsites"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/public-docsite-v9",
+        "commands": [
+          "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/storybook/react/"
+        ]
+      }
     }
   }
 }
