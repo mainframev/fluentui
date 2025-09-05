@@ -18,7 +18,7 @@
         "react": {
           "cwd": "apps/public-docsite-v9",
           "env": { "DEPLOY_PATH": "/react/", "NODE_OPTIONS": "--max_old_space_size=3072" },
-          "command": "storybook build -o ./dist/storybook/react --docs"
+          "command": "storybook build -o ./dist/react --docs"
         }
       },
       "dependsOn": [
@@ -49,7 +49,7 @@
       "options": {
         "cwd": "apps/public-docsite-v9",
         "commands": [
-          "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/storybook/react/"
+          "node -r ../../scripts/ts-node/src/register ../../scripts/storybook/src/scripts/rewrite-title.ts --title 'Fluent UI React v9' --distPath ./dist/react/"
         ]
       }
     }

@@ -85,7 +85,7 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './apps/public-docsite-v9/dist/storybook/'
+          path: './apps/public-docsite-v9/dist/'
 
   deploy:
     runs-on: ubuntu-latest
