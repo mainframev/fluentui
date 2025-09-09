@@ -9,7 +9,6 @@
       "executor": "nx:noop",
       "dependsOn": [
         "build-storybook",
-        "inject-redirect",
         {
           "projects": ["chart-docsite", "web-components"],
           "target": "build-storybook:docsite"
