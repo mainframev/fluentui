@@ -6,6 +6,7 @@
   "tags": ["platform:web", "vNext"],
   "targets": {
     "build-storybook": {
+      "outputs": ["{projectRoot}/dist/"],
       "dependsOn": [
         {
           "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox", "storybook-llms-extractor"],
@@ -13,9 +14,13 @@
         }
       ]
     },
+    "build-storybook:react": {
+      "outputs": ["{projectRoot}/dist/react"]
+    },
     "build-storybook:docsite": {
       "executor": "nx:noop",
       "dependsOn": [
+        "build-storybook",
         "build-storybook:react",
         {
           "projects": ["chart-docsite", "web-components"],
