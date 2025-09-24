@@ -53,7 +53,7 @@ jobs:
 
           cp -R apps/public-docsite-v9/dist/storybook/* _pages/
           cp -R apps/public-docsite-v9/dist/react/* _pages/react/
-          cp -R apps/chart-docsite/dist/storybook/* _pages/charts/
+          cp -R apps/chart-docsite/dist/charts/* _pages/charts/
           cp -R packages/web-components/dist/storybook/* _pages/web-components
 
       - name: Upload Pages Artifact
