@@ -4,7 +4,7 @@ name: 'Docsite publish to Github Pages'
 on:
   push:
     branches:
-      - master
+      - chore/ghp-deployments-test
   workflow_dispatch:
 
 jobs:
