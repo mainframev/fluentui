@@ -6,7 +6,7 @@ import { Provider } from './Provider';
 
 const providerSelector = '.fui-FluentProvider';
 
-describe('Provider with React 18', () => {
+describe('Provider with React 19', () => {
   describe('FluentProvider', () => {
     it('should apply matching className in strict mode', () => {
       mount(

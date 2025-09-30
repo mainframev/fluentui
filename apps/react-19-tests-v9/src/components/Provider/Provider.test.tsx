@@ -6,7 +6,7 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 
 import { Provider } from './Provider';
 
-describe('Provider with React 18', () => {
+describe('Provider with React 19', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
 
