@@ -9,7 +9,7 @@ const mount = (element: JSXElement) => {
   mountBase(<Provider>{element}</Provider>);
 };
 
-describe('Dialog', () => {
+describe('Dialog with React 19', () => {
   it('should render a Dialog', () => {
     mount(
       <Dialog>

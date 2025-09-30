@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { CustomPopover as Popover } from './Popover';
 
-describe('Popover component with React 18', () => {
+describe('Popover component with React 19', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
 

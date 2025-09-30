@@ -9,7 +9,7 @@ const mount = (element: JSXElement) => {
   mountBase(<Provider>{element}</Provider>);
 };
 
-describe('Menu', () => {
+describe('Menu with React 19', () => {
   it('should render a Menu', () => {
     mount(
       <Menu>

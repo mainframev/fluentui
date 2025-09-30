@@ -9,7 +9,7 @@ const mount = (element: JSXElement) => {
   mountBase(<Provider>{element}</Provider>);
 };
 
-describe('Popover with React 18', () => {
+describe('Popover with React 19', () => {
   it('should render a Popover', () => {
     mount(<Popover />);
 
