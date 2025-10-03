@@ -15,7 +15,6 @@ import {
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
-  useTimeout,
   getTriggerChild,
   mergeCallbacks,
   useEventCallback,
@@ -24,6 +23,7 @@ import {
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
+import { useTooltipTimeout } from './private/useTooltipTimeout';
 import { Escape } from '@fluentui/keyboard-keys';
 
 /**
@@ -40,7 +40,10 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   const context = useTooltipVisibility();
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
-  const [setDelayTimeout, clearDelayTimeout] = useTimeout();
+
+  // Ref to track the trigger element for StrictMode compatibility
+  const triggerElementRef = React.useRef<Element | null>(null);
+  const [setDelayTimeout, clearDelayTimeout] = useTooltipTimeout(triggerElementRef);
 
   const {
     appearance = 'normal',
@@ -271,6 +274,10 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     ref: useMergedRefs(
       getReactElementRef<HTMLButtonElement>(child),
       keyborgListenerCallbackRef,
+      // Capture trigger element for StrictMode timeout management
+      (element: HTMLButtonElement | null) => {
+        triggerElementRef.current = element;
+      },
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,
     ),
