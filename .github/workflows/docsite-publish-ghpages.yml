@@ -4,7 +4,7 @@ name: 'Docsite publish to Github Pages'
 on:
   push:
     branches:
-      - master
+      - docs/remove-old-sb-build
   workflow_dispatch:
 
 jobs:
@@ -51,7 +51,23 @@ jobs:
           rm -rf _pages
           mkdir -p _pages/react _pages/charts _pages/web-components
 
-          cp -R apps/public-docsite-v9/dist/storybook/* _pages/
+          # Root redirect to the new canonical GitHub Pages URL
+          cat > _pages/index.html << 'EOF'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8" />
+              <title>Redirecting…</title>
+              <meta http-equiv="refresh" content="0; url=https://mainframev.github.io/fluentui/react" />
+              <link rel="canonical" href="https://mainframev.github.io/fluentui/react" />
+              <script>location.replace("https://mainframev.github.io/fluentui/react");</script>
+            </head>
+            <body>
+              <p>Redirecting to <a href="https://mainframev.github.io/fluentui/react">mainframev.github.io/fluentui/react</a>…</p>
+            </body>
+          </html>
+          EOF
+
           cp -R apps/public-docsite-v9/dist/react/* _pages/react/
           cp -R apps/chart-docsite/dist/storybook/* _pages/charts/
           cp -R packages/web-components/dist/storybook/* _pages/web-components
