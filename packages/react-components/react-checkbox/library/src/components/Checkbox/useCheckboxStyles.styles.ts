@@ -28,6 +28,7 @@ const useRootBaseClassName = makeResetStyles({
   position: 'relative',
   display: 'inline-flex',
   cursor: 'pointer',
+  justifySelf: 'flex-start',
   verticalAlign: 'middle',
   color: tokens.colorNeutralForeground3,
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
