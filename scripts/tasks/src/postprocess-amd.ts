@@ -9,6 +9,7 @@ export async function postprocessAmdTask() {
   const ts = await import('typescript');
 
   mod('lib-amd/**/*.js').asTypescript((node, modder) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     type TSNode = typeof ts extends { Node: infer N } ? N : any;
     // Type assertion needed due to TypeScript version mismatch between local and riceburn's version
     const tsNode = node as unknown as TSNode;
@@ -26,6 +27,7 @@ export async function postprocessAmdTask() {
 
         const isProduction = "process.env.NODE_ENV === 'production'";
         if (text.includes(isProduction)) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           return modder.replace(tsNode.expression as any, text.replace(isProduction, 'true'));
         }
 
