@@ -81,7 +81,16 @@ module.exports = defineConfig(
     },
   },
   {
-    files: ['**/*.cy.{ts,tsx,js}', '**/isConformant.{ts,tsx,js}'],
+    files: ['cypress.config.ts', '**/*.cy.{ts,tsx}'],
+    languageOptions: {
+      parserOptions: {
+        projectService: false,
+        project: './tsconfig.cy.json',
+      },
+    },
+  },
+  {
+    files: ['**/*.cy.js', '**/isConformant.{ts,tsx,js}'],
     rules: {
       'import/no-extraneous-dependencies': 'off',
       'react/jsx-no-bind': 'off',
