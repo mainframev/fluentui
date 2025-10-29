@@ -2,12 +2,12 @@
 const baseLegacyConfig = require('../base/legacy');
 const reactConfig = require('../react/config');
 const configHelpers = require('../../utils/configHelpers');
-const tseslint = require('typescript-eslint');
 const { reactLegacy: restrictedGlobals } = require('../../shared/restricted-globals');
 const { createReactCrossVersionRules } = require('../../shared/react-cross-version-rules');
+const { defineConfig } = require('eslint/config');
 
-/** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config(
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig(
   {
     extends: [baseLegacyConfig, reactConfig],
     rules: {

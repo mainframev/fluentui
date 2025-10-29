@@ -11,6 +11,7 @@ const { __internal } = require('../internal-flat');
 const { globalIgnores } = require('eslint/config');
 const airbnbConfig = require('eslint-config-airbnb-extended/legacy');
 const rules = require('../rules');
+const { defineConfig } = require('eslint/config');
 
 const IGNORES = [
   '**/coverage',
@@ -193,8 +194,8 @@ const typeAwareRules = {
   '@typescript-eslint/no-deprecated': 'error',
 };
 
-/** @type {import('typescript-eslint').ConfigArray} */
-module.exports = tseslint.config(
+/** @type { import("eslint").Linter.Config } */
+module.exports = defineConfig(
   globalIgnores(IGNORES),
   ...airbnbConfig.configs.base.legacy,
   importPlugin.flatConfigs.typescript,
