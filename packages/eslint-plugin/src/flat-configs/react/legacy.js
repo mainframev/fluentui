@@ -8,8 +8,9 @@ const { defineConfig } = require('eslint/config');
 
 /** @type { import("eslint").Linter.Config } */
 module.exports = defineConfig(
+  baseLegacyConfig,
+  reactConfig,
   {
-    extends: [baseLegacyConfig, reactConfig],
     rules: {
       'jsdoc/check-tag-names': 'off',
       '@griffel/no-shorthands': 'off',

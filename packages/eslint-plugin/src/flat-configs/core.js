@@ -244,8 +244,7 @@ module.exports = defineConfig(
     },
   },
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [tseslint.configs.eslintRecommended],
+    ...tseslint.configs.eslintRecommended,
     languageOptions: {
       parser: tseslint.parser,
     },
@@ -254,6 +253,7 @@ module.exports = defineConfig(
        * `@typescript-eslint`plugin eslint rules
        * @see https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin
        */
+      ...tseslint.configs.eslintRecommended.rules,
       ...configHelpers.getNamingConventionRule(),
       '@typescript-eslint/ban-ts-comment': 'error',
       '@typescript-eslint/explicit-member-accessibility': [

@@ -17,8 +17,9 @@ module.exports = defineConfig(
   {
     files: ['**/src/**/*.{ts,tsx,js}'],
     ignores: [...testFiles, ...storyFiles],
-    extends: [compat.configs['flat/recommended']],
+    ...compat.configs['flat/recommended'],
     rules: {
+      ...compat.configs['flat/recommended'].rules,
       '@rnx-kit/no-export-all': ['error', { expand: 'all' }],
     },
     settings: {
