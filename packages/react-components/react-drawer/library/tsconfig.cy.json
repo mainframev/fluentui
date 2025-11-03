@@ -6,5 +6,5 @@
     "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types"],
     "lib": ["ES2019", "dom"]
   },
-  "include": ["**/*.cy.ts", "**/*.cy.tsx", "./src/e2e/*.tsx"]
+  "include": ["**/*.cy.ts", "**/*.cy.tsx", "./src/e2e/*.tsx", "cypress.config.ts"]
 }

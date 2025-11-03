@@ -5,5 +5,5 @@
     "types": ["node", "cypress", "cypress-real-events"],
     "typeRoots": ["../../../../node_modules", "../../../../node_modules/@types"]
   },
-  "include": ["**/*.cy.ts", "**/*.cy.tsx"]
+  "include": ["**/*.cy.ts", "**/*.cy.tsx", "cypress.config.ts"]
 }
