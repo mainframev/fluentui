@@ -6,7 +6,13 @@ import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/Colors/docs';
+<<<<<<< HEAD
 
+||||||| parent of 24f01ffba6 (chore(apps): migrate apps to flat configs)
+// eslint-disable-next-line import/no-extraneous-dependencies
+=======
+ 
+>>>>>>> 24f01ffba6 (chore(apps): migrate apps to flat configs)
 const sharedColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-shared.json');
 
 export const ColorsSharedPage: React.FunctionComponent<IStylesPageProps> = props => {

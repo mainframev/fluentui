@@ -86,12 +86,12 @@ export const Rounded = () => parse(`<fluent-button id="${buttonId}" shape="round
 export const Circular = () => parse(`<fluent-button id="${buttonId}" shape="circular">Circular</fluent-button>`);
 export const Square = () => parse(`<fluent-button id="${buttonId}" shape="square">Square</fluent-button>`);
 
-const icon: (slot?: 'start' | undefined) => string = slot => `<svg
+const icon = (_slot?: string) => `<svg
       fill="currentColor"
       aria-hidden="true"
       width="1em"
       height="1em"
-      ${slot !== undefined ? `slot="${slot}"` : ''}
+      ${_slot !== undefined ? `slot="${_slot}"` : ''}
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
     >

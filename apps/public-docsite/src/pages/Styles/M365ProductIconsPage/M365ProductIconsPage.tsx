@@ -11,7 +11,19 @@ const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/M365ProductIconsPage/docs';
 const fabricCDN = `${cdnUrl}/assets`;
 
+<<<<<<< HEAD
 const productIcons = require<{ icon: string; name: string }[]>('@fluentui/public-docsite/lib/data/product-icons.json');
+||||||| parent of 24f01ffba6 (chore(apps): migrate apps to flat configs)
+const productIcons = require<
+  { icon: string; name: string }[]
+  // eslint-disable-next-line import/no-extraneous-dependencies
+>('@fluentui/public-docsite/lib/data/product-icons.json');
+=======
+const productIcons = require<
+  { icon: string; name: string }[]
+   
+>('@fluentui/public-docsite/lib/data/product-icons.json');
+>>>>>>> 24f01ffba6 (chore(apps): migrate apps to flat configs)
 
 export const M365ProductIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;

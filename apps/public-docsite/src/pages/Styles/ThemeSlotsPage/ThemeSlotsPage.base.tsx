@@ -18,10 +18,22 @@ const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/ThemeSlotsPage/docs';
 
 // Color palettes
+<<<<<<< HEAD
 
+||||||| parent of 24f01ffba6 (chore(apps): migrate apps to flat configs)
+/* eslint-disable import/no-extraneous-dependencies */
+=======
+ 
+>>>>>>> 24f01ffba6 (chore(apps): migrate apps to flat configs)
 const themeColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-slots.json');
 const neutralColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-neutrals.json');
 const accentColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-accents.json');
+<<<<<<< HEAD
+||||||| parent of 24f01ffba6 (chore(apps): migrate apps to flat configs)
+/* eslint-enable import/no-extraneous-dependencies */
+=======
+ 
+>>>>>>> 24f01ffba6 (chore(apps): migrate apps to flat configs)
 
 export const ThemeSlotsPageBase: React.FunctionComponent<IThemeSlotsPageProps> = props => {
   const { theme, styles, className } = props;
