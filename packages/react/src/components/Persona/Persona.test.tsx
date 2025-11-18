@@ -69,7 +69,7 @@ describe('Persona', () => {
     const { container } = render(
       <Persona
         {...exampleWithoutImage}
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         onRenderCoin={wrapPersona(exampleWithoutImage, true)}
       />,
     );

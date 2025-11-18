@@ -109,6 +109,7 @@ const config = {
     'no-lonely-if': 'off',
     'no-loop-func': 'off',
     'no-multi-assign': 'off',
+    'prefer-regex-literals': 'off',
     'no-nested-ternary': 'off',
     'no-param-reassign': 'off',
     'no-plusplus': 'off',

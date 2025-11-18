@@ -179,7 +179,7 @@ describe('SearchBox', () => {
 
     render(
       <SearchBox
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         onChanged={onChanged}
       />,
     );

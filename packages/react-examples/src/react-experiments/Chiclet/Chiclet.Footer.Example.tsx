@@ -69,7 +69,7 @@ type ReactProps<T> = {
   ref?: React.Ref<T>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+ 
 export interface IFooterComponent extends ReactProps<FooterComponent> {
   buttonProps: IButtonProps[];
   activities: string;

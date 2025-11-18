@@ -5,7 +5,7 @@ import { IPersonaProps, Persona } from '@fluentui/react/lib/Persona';
 import { IBasePickerSuggestionsProps, NormalPeoplePicker } from '@fluentui/react/lib/Pickers';
 import { people } from '@fluentui/example-data';
 
-/* eslint-disable react-hooks/rules-of-hooks */
+ 
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',

@@ -23,7 +23,7 @@ export const SliderBasicExample: React.FunctionComponent = () => {
         max={10}
         value={sliderValue}
         showValue
-        // eslint-disable-next-line react/jsx-no-bind
+         
         onChange={sliderOnChange}
       />
       <Slider

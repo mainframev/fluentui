@@ -122,14 +122,14 @@ describe('Autofill', () => {
 
   it('value changes when updateValueInWillReceiveProps is passed in', () => {
     const propsString = 'Updated';
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+     
     const updateValueInWillReceiveProps = () => propsString;
 
     const { rerender } = render(
       <Autofill
         componentRef={autofillRef as IRefObject<IAutofill>}
         suggestedDisplayValue=""
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         updateValueInWillReceiveProps={updateValueInWillReceiveProps}
       />,
     );
@@ -142,7 +142,7 @@ describe('Autofill', () => {
       <Autofill
         componentRef={autofillRef as IRefObject<IAutofill>}
         suggestedDisplayValue="hello"
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         updateValueInWillReceiveProps={updateValueInWillReceiveProps}
       />,
     );
@@ -184,7 +184,7 @@ describe('Autofill', () => {
     render(
       <Autofill
         componentRef={autofillRef as IRefObject<IAutofill>}
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         onInputChange={onInputChange}
         suggestedDisplayValue="he"
       />,
@@ -263,7 +263,7 @@ describe('Autofill', () => {
     render(
       <Autofill
         componentRef={autofillRef as IRefObject<IAutofill>}
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         onInputChange={onInputChange}
         suggestedDisplayValue="he"
       />,

@@ -94,7 +94,7 @@ describe('Dialog', () => {
 
     const { queryByRole, rerender } = render(
       <DialogBase
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         isOpen
         modalProps={{ onDismissed }}
       />,
@@ -104,7 +104,7 @@ describe('Dialog', () => {
 
     rerender(
       <DialogBase
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         isOpen={false}
         modalProps={{ onDismissed }}
       />,

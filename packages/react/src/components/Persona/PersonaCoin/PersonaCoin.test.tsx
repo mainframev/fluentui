@@ -58,7 +58,7 @@ describe('PersonaCoin', () => {
     const { container } = render(
       <PersonaCoin
         {...coinProp}
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         onRenderCoin={wrapPersona(coinProp)}
         onRenderInitials={wrapPersona(coinProp)}
       />,

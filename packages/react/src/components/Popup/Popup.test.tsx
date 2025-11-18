@@ -35,7 +35,7 @@ describe('Popup', () => {
         <div id="sibling">sibling</div>
         <Popup
           aria-modal
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
+           
           enableAriaHiddenSiblings={false}
         >
           content
@@ -53,7 +53,7 @@ describe('Popup', () => {
       <>
         <div id="sibling">sibling</div>
         <Popup
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
+           
           enableAriaHiddenSiblings
           aria-modal={false}
         >
