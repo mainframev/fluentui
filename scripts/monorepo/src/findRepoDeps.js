@@ -1,4 +1,5 @@
 const { readConfig } = require('@fluentui/scripts-utils');
+
 const getAllPackageInfo = require('./getAllPackageInfo');
 
 /**

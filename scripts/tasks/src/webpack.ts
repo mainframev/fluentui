@@ -1,7 +1,9 @@
-import { webpackCliTask, argv, logger } from 'just-scripts';
-import * as path from 'path';
-import * as fs from 'fs';
 import { execSync } from 'child_process';
+import * as fs from 'fs';
+import * as path from 'path';
+
+import { argv, logger, webpackCliTask } from 'just-scripts';
+
 import { getJustArgv } from './argv';
 
 export function webpack() {

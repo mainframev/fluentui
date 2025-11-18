@@ -1,6 +1,8 @@
-import fs from 'fs-extra';
 import path from 'path';
-import { shEcho, TempPaths } from './utils';
+
+import fs from 'fs-extra';
+
+import { TempPaths, shEcho } from './utils';
 
 /**
  * Install create-react-app in a temporary utility project to avoid polluting global state

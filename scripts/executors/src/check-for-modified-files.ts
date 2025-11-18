@@ -1,6 +1,7 @@
-import { logger } from 'just-scripts';
-import { EOL } from 'os';
 import { execSync } from 'child_process';
+import { EOL } from 'os';
+
+import { logger } from 'just-scripts';
 
 export function checkForModifiedFiles() {
   const notEmpty = (value: string) => value.trim() !== '';

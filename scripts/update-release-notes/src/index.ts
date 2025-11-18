@@ -5,10 +5,11 @@
  */
 
 import type { RestEndpointMethodTypes } from '@octokit/rest';
-import { argv, repoDetails, github } from './init';
+
 import { getTagToChangelogMap, getTags } from './changelogsAndTags';
-import { getReleases } from './releases';
+import { argv, github, repoDetails } from './init';
 import { getMarkdownForEntry } from './markdown';
+import { getReleases } from './releases';
 
 if (!argv.apply) {
   console.warn(

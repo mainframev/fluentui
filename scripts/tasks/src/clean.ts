@@ -1,6 +1,7 @@
 import * as path from 'path';
-import { cleanTask } from 'just-scripts';
+
 import * as glob from 'glob';
+import { cleanTask } from 'just-scripts';
 
 export const clean = cleanTask({
   paths: [

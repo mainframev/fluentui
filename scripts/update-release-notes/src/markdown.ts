@@ -1,4 +1,5 @@
 import { ChangelogEntry } from 'beachball';
+
 import { repoDetails } from './init';
 import { getPullRequest } from './pullRequests';
 import { IChangelogEntry } from './types';

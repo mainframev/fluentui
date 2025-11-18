@@ -1,4 +1,5 @@
 import type { Octokit, RestEndpointMethodTypes } from '@octokit/rest';
+
 import { IPullRequest, IRepoDetails } from './types';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

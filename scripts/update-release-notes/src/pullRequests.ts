@@ -1,7 +1,8 @@
+import { IPullRequest, getPullRequestForCommit, processPullRequestApiResponse } from '@fluentui/scripts-github';
 import type { RestEndpointMethodTypes } from '@octokit/rest';
 import { ChangelogEntry } from 'beachball';
-import { IPullRequest, processPullRequestApiResponse, getPullRequestForCommit } from '@fluentui/scripts-github';
-import { repoDetails, github } from './init';
+
+import { github, repoDetails } from './init';
 import { IExtendedPullRequest } from './types';
 
 /**

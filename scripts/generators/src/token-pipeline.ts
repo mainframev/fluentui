@@ -1,11 +1,12 @@
-import path from 'path';
-import * as fs from 'fs-extra';
-import * as _ from 'lodash';
-import * as yargs from 'yargs';
 import { execSync } from 'child_process';
+import path from 'path';
 
 import { findGitRoot } from '@fluentui/scripts-monorepo';
 import { createTempDir } from '@fluentui/scripts-projects-test';
+import * as fs from 'fs-extra';
+import * as _ from 'lodash';
+import * as yargs from 'yargs';
+
 
 const themes = ['light', 'dark', 'teamsDark', 'highContrast'] as const;
 const repoRoot = findGitRoot();
