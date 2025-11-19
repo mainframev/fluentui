@@ -100,6 +100,7 @@ const disabledRules = {
   'operator-assignment': 'off',
   'prefer-destructuring': 'off',
   'prefer-template': 'off',
+  'prefer-regex-literals': 'off',
   'arrow-body-style': 'off',
   'class-methods-use-this': 'off',
   'consistent-return': 'off',

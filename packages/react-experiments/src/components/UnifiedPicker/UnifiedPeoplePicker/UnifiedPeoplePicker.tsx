@@ -8,10 +8,10 @@ import type { IFloatingPeopleSuggestionsProps } from '../../FloatingSuggestionsC
 import type { ISelectedPeopleListProps } from '../../SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import type { JSXElement } from '@fluentui/utilities';
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+ 
 export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSXElement => {
   const renderSelectedItems = React.useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+     
     (selectedPeopleListProps: ISelectedPeopleListProps<IPersonaProps>): JSXElement => {
       return <SelectedPeopleList {...selectedPeopleListProps} ref={null} />;
     },
@@ -21,7 +21,7 @@ export const UnifiedPeoplePicker = (props: IUnifiedPeoplePickerProps): JSXElemen
   );
 
   const renderFloatingPeopleSuggestions = React.useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+     
     (floatingPeoplePickerProps: IFloatingPeopleSuggestionsProps): JSXElement => {
       return <FloatingPeopleSuggestions {...floatingPeoplePickerProps} />;
     },

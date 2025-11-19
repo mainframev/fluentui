@@ -101,7 +101,7 @@ describe('Button', () => {
       const ref = React.createRef<HTMLElement>();
       render(
         <DefaultButton
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
+           
           elementRef={ref}
         >
           Content
@@ -776,7 +776,7 @@ describe('Button', () => {
             text="Create account"
             split={true}
             onClick={setTrue}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
+             
             onKeyPress={setTrue}
             onKeyUp={setTrue}
             onKeyDown={setTrue}
@@ -812,7 +812,7 @@ describe('Button', () => {
             text="Create account"
             split={false}
             onClick={setTrue}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
+             
             onKeyPress={setTrue}
             onKeyUp={setTrue}
             onKeyDown={setTrue}
@@ -834,7 +834,7 @@ describe('Button', () => {
             text="Create account"
             split={false}
             onClick={setTrue}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
+             
             onKeyPress={setTrue}
             onKeyUp={setTrue}
             onKeyDown={setTrue}
@@ -856,7 +856,7 @@ describe('Button', () => {
             text="Create account"
             split={false}
             onClick={setTrue}
-            // eslint-disable-next-line @typescript-eslint/no-deprecated
+             
             onKeyPress={setTrue}
             onKeyUp={setTrue}
             onKeyDown={setTrue}

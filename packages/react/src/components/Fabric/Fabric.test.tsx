@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-deprecated */
+ 
 import * as React from 'react';
 //import { Customizer } from '@fluentui/utilities';
 import { Fabric } from './Fabric';

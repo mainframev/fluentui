@@ -6,7 +6,7 @@ import * as path from 'path';
 import { errorMessageColors, formatArray, getErrorMessage, formatErrors, getPackagePath } from './utils/index';
 import { prettyDOM } from '@testing-library/react';
 
-/* eslint-disable @typescript-eslint/naming-convention */
+ 
 
 /**
  * General structure of isConformant error messages:

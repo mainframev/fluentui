@@ -1,5 +1,5 @@
 export {
-  // eslint-disable-next-line @fluentui/ban-context-export
+   
   WindowContext,
   useWindow,
   useDocument,

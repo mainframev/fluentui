@@ -76,9 +76,9 @@ describe('ButtonGrid', () => {
         onRenderItem={(item, index: number) => {
           return <button role="gridcell">item.text</button>;
         }}
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         positionInSet={1}
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         setSize={2}
       />,
     );

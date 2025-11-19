@@ -238,7 +238,7 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
                 },
               },
             }}
-            // eslint-disable-next-line react/jsx-no-bind
+             
             {...(this.state.selectedCallout === 'singleCallout' && {
               onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) => {
                 return props ? (

@@ -186,7 +186,7 @@ describe('ComboBox', () => {
     const optionArray = getAllByRole('option');
     expect(optionArray.length).toEqual(3);
 
-    const regex = new RegExp(/ComboBox[0-9]+-list[0-9]+/);
+    const regex = /ComboBox[0-9]+-list[0-9]+/;
     expect(regex.test(optionArray[0].getAttribute('id')!)).toEqual(true);
     expect(regex.test(optionArray[1].getAttribute('id')!)).toEqual(false);
     expect(optionArray[1].getAttribute('id')).toEqual('one');

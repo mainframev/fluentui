@@ -15,7 +15,7 @@ describe('Icon', () => {
     const { container } = render(
       <Icon
         iconName="CompassNW"
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+         
         ariaLabel="asdf"
       />,
     );

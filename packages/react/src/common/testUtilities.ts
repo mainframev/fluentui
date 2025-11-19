@@ -27,6 +27,7 @@ export function expectOneV2(container: HTMLElement, selector: string): void {
 
 /** @deprecated Use fake timers and `jest.runAllTimers()` instead */
 export function delay(millisecond: number): Promise<void> {
+  // eslint-disable-next-line no-promise-executor-return
   return new Promise<void>(resolve => setTimeout(resolve, millisecond));
 }
 

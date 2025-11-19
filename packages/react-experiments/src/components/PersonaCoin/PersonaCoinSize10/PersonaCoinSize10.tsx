@@ -9,7 +9,7 @@ export type IPersonaCoinSize10Slot = ISlotProp<IPersonaCoinSizeProps>;
 
 const styles = { root: { fontSize: 10 } };
 
-// eslint-disable-next-line @typescript-eslint/no-deprecated
+ 
 const PersonaCoinSize10 = (): JSXElement => {
   return <Icon iconName="Contact" styles={styles} />;
 };
