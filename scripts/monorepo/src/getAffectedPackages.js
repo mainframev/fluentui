@@ -1,6 +1,9 @@
 const { spawnSync } = require('child_process');
+const path = require('path');
 
 const { workspaceRoot } = require('./utils');
+
+const nxBin = path.join(workspaceRoot, 'node_modules', '.bin', 'nx');
 
 /**
  * Indicator of what packages have been affected by changes
@@ -19,9 +22,8 @@ function getAffectedPackages(base = 'origin/master') {
     // override NX_VERBOSE_LOGGING in order to emit valid JSON
     `--verbose=false`,
   ];
-  const res = spawnSync('nx', cmdArgs, {
+  const res = spawnSync(nxBin, cmdArgs, {
     cwd: workspaceRoot,
-    shell: true,
   });
 
   if (res.status !== 0) {
