@@ -1258,6 +1258,11 @@ export {
   useToastFooter_unstable,
   renderToastFooter_unstable,
   toastFooterClassNames,
+  ToastLink,
+  useToastLinkStyles_unstable,
+  useToastLink_unstable,
+  renderToastLink_unstable,
+  toastLinkClassNames,
 } from '@fluentui/react-toast';
 
 export type {
@@ -1285,6 +1290,9 @@ export type {
   ToastFooterProps,
   ToastFooterState,
   ToastFooterSlots,
+  ToastLinkProps,
+  ToastLinkState,
+  ToastLinkSlots,
 } from '@fluentui/react-toast';
 
 export {

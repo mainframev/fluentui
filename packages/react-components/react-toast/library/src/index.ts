@@ -43,3 +43,11 @@ export type { ToastFooterProps, ToastFooterState, ToastFooterSlots } from './Toa
 
 export { toastContainerClassNames } from './ToastContainer';
 export type { ToastContainerState } from './ToastContainer';
+export {
+  toastLinkClassNames,
+  ToastLink,
+  renderToastLink_unstable,
+  useToastLink_unstable,
+  useToastLinkStyles_unstable,
+} from './ToastLink';
+export type { ToastLinkProps, ToastLinkState, ToastLinkSlots } from './ToastLink';

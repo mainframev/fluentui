@@ -10,19 +10,32 @@ import {
   ToastTitle,
   ToastBody,
   ToastFooter,
+  ToastLink,
+  makeStyles,
 } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  link: {
+    color: 'red',
+  },
+});
 
 export const InvertedAppearance = (): JSXElement => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
+  const styles = useStyles();
   const notify = () =>
     dispatchToast(
       <Toast appearance="inverted">
-        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
+        <ToastTitle action={<ToastLink>Undo</ToastLink>}>Email sent</ToastTitle>
         <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
         <ToastFooter>
-          <Link>Action</Link>
-          <Link>Action</Link>
+          {/* ToastLink automatically uses brand inverted color */}
+          <ToastLink>Action 1</ToastLink>
+          {/* ToastLink with custom className override */}
+          <ToastLink className={styles.link}>Action 2 (Custom Red)</ToastLink>
+          {/* Regular Link for comparison (uses neutral inverted color) */}
+          <Link>Regular Link</Link>
         </ToastFooter>
       </Toast>,
       { intent: 'success' },
@@ -30,7 +43,7 @@ export const InvertedAppearance = (): JSXElement => {
 
   return (
     <>
-      <Toaster toasterId={toasterId} />
+      <Toaster toasterId={toasterId} timeout={50000} />
       <Button onClick={notify}>Make toast</Button>
     </>
   );
