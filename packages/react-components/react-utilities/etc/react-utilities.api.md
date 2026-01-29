@@ -120,6 +120,27 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
 }) | null;
 
 // @public
+export interface HoverEvent {
+    pointerType: PointerType;
+    target: HTMLElement;
+    type: 'hoverstart' | 'hoverend';
+}
+
+// @public
+export interface HoverProps {
+    isDisabled?: boolean;
+    onHoverChange?: (isHovered: boolean) => void;
+    onHoverEnd?: (e: HoverEvent) => void;
+    onHoverStart?: (e: HoverEvent) => void;
+}
+
+// @public
+export interface HoverResult {
+    hoverProps: React_2.DOMAttributes<HTMLElement>;
+    isHovered: boolean;
+}
+
+// @public
 export const IdPrefixProvider: React_2.Provider<string | undefined>;
 
 // @public
@@ -178,6 +199,9 @@ export type OnSelectionChangeData = {
 function optional<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined | null, options: {
     renderByDefault?: boolean;
 } & SlotOptions<Props>): SlotComponentType<Props> | undefined;
+
+// @public
+export type PointerType = 'mouse' | 'pen';
 
 // @internal (undocumented)
 export interface PriorityQueue<T> {
@@ -375,6 +399,9 @@ export function useFirstMount(): boolean;
 
 // @internal
 export function useForceUpdate(): React_2.DispatchWithoutAction;
+
+// @public
+export function useHover_unstable(props: HoverProps): HoverResult;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;

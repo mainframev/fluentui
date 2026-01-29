@@ -5,6 +5,8 @@ export { useControllableState } from './useControllableState';
 export { useEventCallback } from './useEventCallback';
 export { useFirstMount } from './useFirstMount';
 export { useForceUpdate } from './useForceUpdate';
+export type { HoverEvent, HoverProps, HoverResult, PointerType } from './useHover';
+export { useHover_unstable } from './useHover';
 export { IdPrefixProvider, resetIdsForTests, useId } from './useId';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export type { RefObjectFunction } from './useMergedRefs';
