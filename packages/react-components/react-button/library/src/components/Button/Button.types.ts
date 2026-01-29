@@ -86,6 +86,24 @@ export type ButtonState = ComponentState<ButtonSlots> &
      * @default false
      */
     iconOnly: boolean;
+
+    /**
+     * Whether the button is currently hovered (via pointer-aware hover detection).
+     * This is used when `UNSTABLE_usePointerHover` is enabled on FluentProvider to provide
+     * touch-safe hover behavior that doesn't trigger on touch interactions.
+     *
+     * @default false
+     */
+    isHovered: boolean;
   };
 
-export type ButtonBaseState = DistributiveOmit<ButtonState, ButtonDesignPropNames>;
+export type ButtonBaseState = DistributiveOmit<ButtonState, ButtonDesignPropNames> & {
+  /**
+   * Whether the button is currently hovered (via pointer-aware hover detection).
+   * This is used when `UNSTABLE_usePointerHover` is enabled on FluentProvider to provide
+   * touch-safe hover behavior that doesn't trigger on touch interactions.
+   *
+   * @default false
+   */
+  isHovered: boolean;
+};
