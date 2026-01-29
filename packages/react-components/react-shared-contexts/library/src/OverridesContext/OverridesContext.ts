@@ -8,6 +8,7 @@ import * as React from 'react';
 export type OverridesContextValue = {
   // No 'underline' as it is not supported by TextArea
   inputDefaultAppearance?: 'outline' | 'filled-darker' | 'filled-lighter';
+  smartHover?: boolean;
 };
 
 /**

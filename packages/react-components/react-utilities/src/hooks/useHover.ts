@@ -104,13 +104,13 @@ function setupGlobalTouchEvents() {
  */
 export function useHover_unstable(props: HoverProps): HoverResult {
   const { onHoverStart, onHoverChange, onHoverEnd, isDisabled } = props;
-
   const [isHovered, setHovered] = React.useState(false);
+
   const state = React.useRef({
     isHovered: false,
-    pointerType: '' as string,
+    pointerType: '',
     target: null as HTMLElement | null,
-  });
+  }).current;
 
   // Setup/teardown global touch event listener
   React.useEffect(setupGlobalTouchEvents, []);
@@ -119,15 +119,16 @@ export function useHover_unstable(props: HoverProps): HoverResult {
   const removePointerOverListener = React.useRef<(() => void) | null>(null);
 
   const triggerHoverEnd = useEventCallback((pointerType: string) => {
-    const target = state.current.target;
-    state.current.pointerType = '';
-    state.current.target = null;
+    console.log('triggerHoverEnd', { pointerType, isDisabled, currentHovered: state.isHovered });
+    const target = state.target;
+    state.pointerType = '';
+    state.target = null;
 
-    if (pointerType === 'touch' || !state.current.isHovered || !target) {
+    if (pointerType === 'touch' || !state.isHovered || !target) {
       return;
     }
 
-    state.current.isHovered = false;
+    state.isHovered = false;
 
     // Cleanup global listener
     removePointerOverListener.current?.();
@@ -144,19 +145,20 @@ export function useHover_unstable(props: HoverProps): HoverResult {
   });
 
   const triggerHoverStart = useEventCallback((event: React.PointerEvent<HTMLElement>, pointerType: string) => {
-    state.current.pointerType = pointerType;
+    console.log('triggerHoverStart', { pointerType, isDisabled, currentHovered: state.isHovered });
+    state.pointerType = pointerType;
 
     if (
       isDisabled ||
       pointerType === 'touch' ||
-      state.current.isHovered ||
+      state.isHovered ||
       !elementContains(event.currentTarget, event.target as HTMLElement)
     ) {
       return;
     }
 
-    state.current.isHovered = true;
-    state.current.target = event.currentTarget;
+    state.isHovered = true;
+    state.target = event.currentTarget;
 
     // When an element that is hovered over is removed, no pointerleave event is fired by the browser,
     // even though the originally hovered target may have shrunk in size so it is no longer hovered.
@@ -164,11 +166,7 @@ export function useHover_unstable(props: HoverProps): HoverResult {
     // We use this to detect when hover should end due to element removal.
     const doc = event.currentTarget.ownerDocument;
     const onPointerOver = (e: PointerEvent) => {
-      if (
-        state.current.isHovered &&
-        state.current.target &&
-        !elementContains(state.current.target, e.target as HTMLElement)
-      ) {
+      if (state.isHovered && state.target && !elementContains(state.target, e.target as HTMLElement)) {
         triggerHoverEnd(e.pointerType);
       }
     };
@@ -197,8 +195,8 @@ export function useHover_unstable(props: HoverProps): HoverResult {
 
   // End hover when disabled changes to true
   React.useEffect(() => {
-    if (isDisabled && state.current.isHovered) {
-      triggerHoverEnd(state.current.pointerType);
+    if (isDisabled && state.isHovered) {
+      triggerHoverEnd(state.pointerType);
     }
   }, [isDisabled, triggerHoverEnd]);
 
@@ -206,12 +204,14 @@ export function useHover_unstable(props: HoverProps): HoverResult {
     () => ({
       onPointerEnter: (e: React.PointerEvent<HTMLElement>) => {
         // Ignore emulated mouse events after touch
+        console.log('entered');
         if (globalIgnoreEmulatedMouseEvents && e.pointerType === 'mouse') {
           return;
         }
         triggerHoverStart(e, e.pointerType as PointerType);
       },
       onPointerLeave: (e: React.PointerEvent<HTMLElement>) => {
+        console.log('leave');
         if (!isDisabled && elementContains(e.currentTarget, e.target as HTMLElement)) {
           triggerHoverEnd(e.pointerType);
         }
@@ -219,6 +219,8 @@ export function useHover_unstable(props: HoverProps): HoverResult {
     }),
     [isDisabled, triggerHoverStart, triggerHoverEnd],
   );
+
+  console.log('count', hoverCount);
 
   return {
     hoverProps,

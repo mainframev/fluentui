@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { getIntrinsicElementProps, slot, useHover_unstable } from '@fluentui/react-utilities';
-import { usePointerInteractions_unstable } from '@fluentui/react-shared-contexts';
+import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 import type { ButtonBaseProps, ButtonBaseState } from './Button.types';
 
 /**
@@ -18,19 +18,25 @@ export const useButtonBase_unstable = (
   const { as = 'button', disabled = false, disabledFocusable = false, icon, iconPosition = 'before' } = props;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
 
-  // Check if pointer-aware hover behavior is enabled via FluentProvider
-  const { usePointerHover } = usePointerInteractions_unstable();
+  // Check if smart hover behavior is enabled via FluentProvider
+  const overrides = useOverrides();
+  const smartHover = overrides.smartHover ?? false;
+  console.log('Smart Hover Enabled:', smartHover);
 
-  // Use pointer-aware hover hook - disabled when feature flag is off or button is disabled
+  // Use smart hover hook - disabled when feature flag is off or button is disabled
   const { hoverProps, isHovered } = useHover_unstable({
-    isDisabled: !usePointerHover || disabled || disabledFocusable,
+    isDisabled: !smartHover,
   });
+
+  console.log('hovered', isHovered);
+
+  console.log(hoverProps);
 
   // Get base ARIA button props
   const ariaButtonProps = useARIAButtonProps(props.as, props);
 
-  // Merge hover props with ARIA button props when pointer hover is enabled
-  const mergedProps = usePointerHover
+  // Merge hover props with ARIA button props when smart hover is enabled
+  const mergedProps = smartHover
     ? {
         ...ariaButtonProps,
         ...hoverProps,
