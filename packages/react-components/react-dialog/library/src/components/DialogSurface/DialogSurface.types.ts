@@ -73,4 +73,5 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
      * @deprecated Will be always `undefined`.
      */
     transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
+    backdropAppearance?: DialogBackdropSlotProps['appearance'];
   };

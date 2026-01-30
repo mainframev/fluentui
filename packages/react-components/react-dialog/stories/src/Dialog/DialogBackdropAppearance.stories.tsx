@@ -71,7 +71,7 @@ export const BackdropAppearance = (): JSXElement => {
               onChange={(_, data) => setBackdropAppearance(data.value as BackdropAppearanceOption)}
               aria-labelledby={labelId}
             >
-              <Radio value="default" label="Default (transparent for nested dialogs based on context)" />
+              <Radio value="" label="Default (transparent for nested dialogs based on context)" />
               <Radio value="dimmed" label="Dimmed" />
               <Radio value="transparent" label="Transparent" />
             </RadioGroup>

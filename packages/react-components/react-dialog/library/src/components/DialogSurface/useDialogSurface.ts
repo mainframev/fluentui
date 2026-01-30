@@ -79,8 +79,12 @@ export const useDialogSurface_unstable = (
     elementType: 'div',
   });
 
+  const backdropAppearance = backdrop?.appearance;
+
   if (backdrop) {
     backdrop.onClick = handledBackdropClick;
+    // remove backdrop.appearance so it is not passed to the DOM
+    delete backdrop.appearance;
   }
 
   const { disableBodyScroll, enableBodyScroll } = useDisableBodyScroll();
@@ -109,6 +113,7 @@ export const useDialogSurface_unstable = (
     open,
     backdrop,
     isNestedDialog,
+    backdropAppearance,
     unmountOnClose,
     mountNode: props.mountNode,
     root: slot.always(

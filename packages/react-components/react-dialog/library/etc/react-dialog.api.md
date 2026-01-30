@@ -196,6 +196,7 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<Dialo
     open?: boolean;
     unmountOnClose?: boolean;
     transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
+    backdropAppearance?: DialogBackdropSlotProps['appearance'];
 };
 
 // @public
