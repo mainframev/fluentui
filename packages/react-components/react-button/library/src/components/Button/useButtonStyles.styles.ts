@@ -52,6 +52,15 @@ const useRootBaseClassName = makeResetStyles({
     cursor: 'pointer',
   },
 
+  // Pointer-aware hover styles (used when UNSTABLE_usePointerHover is enabled)
+  '&[data-hovered]': {
+    backgroundColor: tokens.colorNeutralBackground1Hover,
+    borderColor: tokens.colorNeutralStroke1Hover,
+    color: tokens.colorNeutralForeground1Hover,
+
+    cursor: 'pointer',
+  },
+
   ':hover:active,:active:focus-visible': {
     backgroundColor: tokens.colorNeutralBackground1Pressed,
     borderColor: tokens.colorNeutralStroke1Pressed,
@@ -86,6 +95,13 @@ const useRootBaseClassName = makeResetStyles({
     },
 
     ':hover': {
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
+    },
+
+    '&[data-hovered]': {
       backgroundColor: 'HighlightText',
       borderColor: 'Highlight',
       color: 'Highlight',
@@ -144,6 +160,10 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundHover,
     },
 
+    '&[data-hovered]': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+    },
+
     ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
@@ -154,6 +174,12 @@ const useRootStyles = makeStyles({
     color: tokens.colorNeutralForegroundOnBrand,
 
     ':hover': {
+      backgroundColor: tokens.colorBrandBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+
+    '&[data-hovered]': {
       backgroundColor: tokens.colorBrandBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
@@ -177,6 +203,12 @@ const useRootStyles = makeStyles({
         color: 'Highlight',
       },
 
+      '&[data-hovered]': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
+
       ':hover:active,:active:focus-visible': {
         backgroundColor: 'HighlightText',
         ...shorthands.borderColor('Highlight'),
@@ -193,6 +225,21 @@ const useRootStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
 
     ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2Hover,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandHover,
+      },
+    },
+
+    '&[data-hovered]': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Hover,
@@ -230,6 +277,13 @@ const useRootStyles = makeStyles({
           color: 'Highlight',
         },
       },
+      '&[data-hovered]': {
+        color: 'Highlight',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'Highlight',
+        },
+      },
       ':hover:active,:active:focus-visible': {
         color: 'Highlight',
 
@@ -256,6 +310,18 @@ const useRootStyles = makeStyles({
       },
     },
 
+    '&[data-hovered]': {
+      backgroundColor: tokens.colorTransparentBackgroundHover,
+      ...shorthands.borderColor('transparent'),
+      color: tokens.colorNeutralForeground2BrandHover,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+    },
+
     ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
@@ -270,6 +336,10 @@ const useRootStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       ':hover': {
+        backgroundColor: tokens.colorTransparentBackground,
+        color: 'Highlight',
+      },
+      '&[data-hovered]': {
         backgroundColor: tokens.colorTransparentBackground,
         color: 'Highlight',
       },
@@ -349,6 +419,25 @@ const useRootDisabledStyles = makeStyles({
       },
     },
 
+    // Disabled buttons should not show hover styles even when data-hovered is present
+    '&[data-hovered]': {
+      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      color: tokens.colorNeutralForegroundDisabled,
+
+      cursor: 'not-allowed',
+
+      [`& .${iconFilledClassName}`]: {
+        display: 'none',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
+    },
+
     ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
@@ -393,6 +482,16 @@ const useRootDisabledStyles = makeStyles({
         },
       },
 
+      '&[data-hovered]': {
+        backgroundColor: 'ButtonFace',
+        ...shorthands.borderColor('GrayText'),
+        color: 'GrayText',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'GrayText',
+        },
+      },
+
       ':hover:active,:active:focus-visible': {
         backgroundColor: 'ButtonFace',
         ...shorthands.borderColor('GrayText'),
@@ -413,6 +512,10 @@ const useRootDisabledStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackground,
     },
 
+    '&[data-hovered]': {
+      backgroundColor: tokens.colorTransparentBackground,
+    },
+
     ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackground,
     },
@@ -421,6 +524,10 @@ const useRootDisabledStyles = makeStyles({
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
+      ...shorthands.borderColor('transparent'),
+    },
+
+    '&[data-hovered]': {
       ...shorthands.borderColor('transparent'),
     },
 
@@ -440,6 +547,11 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
     },
 
+    '&[data-hovered]': {
+      backgroundColor: tokens.colorTransparentBackground,
+      ...shorthands.borderColor('transparent'),
+    },
+
     ':hover:active,:active:focus-visible': {
       backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
@@ -450,6 +562,11 @@ const useRootDisabledStyles = makeStyles({
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
+      backgroundColor: tokens.colorTransparentBackground,
+      ...shorthands.borderColor('transparent'),
+    },
+
+    '&[data-hovered]': {
       backgroundColor: tokens.colorTransparentBackground,
       ...shorthands.borderColor('transparent'),
     },

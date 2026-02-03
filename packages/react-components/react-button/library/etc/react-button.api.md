@@ -47,6 +47,7 @@ export type ButtonSlots = {
 // @public (undocumented)
 export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
     iconOnly: boolean;
+    isHovered: boolean;
 };
 
 // @public

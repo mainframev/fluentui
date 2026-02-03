@@ -63,6 +63,8 @@ export const useSplitButtonBase_unstable = (
     disabled,
     disabledFocusable,
     iconPosition,
+    // SplitButton container doesn't track hover state - child buttons handle their own hover
+    isHovered: false,
     components: { root: 'div', menuButton: MenuButton, primaryActionButton: Button },
     root: slot.always(getIntrinsicElementProps('div', { ref, ...props }), { elementType: 'div' }),
     menuButton: menuButtonShorthand,

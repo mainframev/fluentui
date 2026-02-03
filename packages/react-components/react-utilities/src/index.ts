@@ -49,6 +49,7 @@ export {
   useEventCallback,
   useFirstMount,
   useForceUpdate,
+  useHover_unstable,
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
@@ -58,7 +59,15 @@ export {
   useScrollbarWidth,
   useTimeout,
 } from './hooks/index';
-export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
+export type {
+  HoverEvent,
+  HoverProps,
+  HoverResult,
+  PointerType,
+  RefObjectFunction,
+  UseControllableStateOptions,
+  UseOnClickOrScrollOutsideOptions,
+} from './hooks/index';
 
 export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
