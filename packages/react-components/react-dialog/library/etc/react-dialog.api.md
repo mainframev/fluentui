@@ -55,16 +55,16 @@ export type DialogActionsSlots = {
 // @public
 export type DialogActionsState = ComponentState<DialogActionsSlots> & Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;
 
+// @public (undocumented)
+export type DialogBackdropContextValue = boolean;
+
+// @public (undocumented)
+export const DialogBackdropProvider: React_2.Provider<boolean | undefined>;
+
 // @public
 export type DialogBackdropSlotProps = ExtractSlotProps<Slot<'div'> & {
     appearance?: 'dimmed' | 'transparent';
 }>;
-
-// @public (undocumented)
-export const DialogBackdropContext: React_2.Context<boolean | undefined>;
-
-// @public (undocumented)
-export const DialogBackdropProvider: React_2.Provider<boolean | undefined>;
 
 // @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
@@ -277,7 +277,7 @@ export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2
 export const useDialogActionsStyles_unstable: (state: DialogActionsState) => DialogActionsState;
 
 // @public (undocumented)
-export const useDialogBackdropContext: (isNestedDialog: boolean) => boolean;
+export const useDialogBackdropContext_unstable: (isNestedDialog: boolean) => DialogBackdropContextValue;
 
 // @public
 export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLElement>) => DialogBodyState;

@@ -2,11 +2,13 @@
 
 import * as React from 'react';
 
-export const DialogBackdropContext = React.createContext<boolean | undefined>(undefined);
+export type DialogBackdropContextValue = boolean;
+
+export const DialogBackdropContext = React.createContext<DialogBackdropContextValue | undefined>(undefined);
 
 export const DialogBackdropProvider = DialogBackdropContext.Provider;
 
-export const useDialogBackdropContext = (isNestedDialog: boolean): boolean => {
+export const useDialogBackdropContext_unstable = (isNestedDialog: boolean): DialogBackdropContextValue => {
   const backdropOverride = React.useContext(DialogBackdropContext);
   return backdropOverride !== undefined ? backdropOverride : isNestedDialog;
 };

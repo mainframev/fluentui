@@ -81,12 +81,11 @@ export {
   useDialogSurfaceContext_unstable,
   DialogProvider,
   DialogSurfaceProvider,
-  DialogBackdropContext,
   DialogBackdropProvider,
-  useDialogBackdropContext,
+  useDialogBackdropContext_unstable,
 } from './contexts/index';
 
-export type { DialogContextValue, DialogSurfaceContextValue } from './contexts/index';
+export type { DialogContextValue, DialogSurfaceContextValue, DialogBackdropContextValue } from './contexts/index';
 
 export {
   DIALOG_MEDIA_QUERY_BREAKPOINT_SELECTOR,
