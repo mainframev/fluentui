@@ -82,12 +82,12 @@ const useStyles = makeStyles({
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   'use no memo';
 
-  const { root, backdrop, open, unmountOnClose, isNestedDialog, backdropAppearance } = state;
+  const { root, backdrop, open, unmountOnClose, treatBackdropAsNested, backdropAppearance } = state;
 
   const rootBaseStyle = useRootBaseStyle();
   const backdropBaseStyle = useBackdropBaseStyle();
   const styles = useStyles();
-  const isBackdropTransparent = backdropAppearance ? backdropAppearance === 'transparent' : isNestedDialog;
+  const isBackdropTransparent = backdropAppearance ? backdropAppearance === 'transparent' : treatBackdropAsNested;
 
   const mountedAndClosed = !unmountOnClose && !open;
 

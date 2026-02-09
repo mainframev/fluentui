@@ -67,6 +67,12 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
     open?: boolean;
     unmountOnClose?: boolean;
     /**
+     * Whether the backdrop should be treated as nested (transparent).
+     * When inside an OverlayDrawer, this is `false` even though `isNestedDialog` may be `true`,
+     * preventing the false-positive transparent backdrop.
+     */
+    treatBackdropAsNested: boolean;
+    /**
      * Transition status for animation.
      * In test environment, this is always `undefined`.
      *

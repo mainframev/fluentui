@@ -60,6 +60,12 @@ export type DialogBackdropSlotProps = ExtractSlotProps<Slot<'div'> & {
     appearance?: 'dimmed' | 'transparent';
 }>;
 
+// @public (undocumented)
+export const DialogBackdropContext: React_2.Context<boolean | undefined>;
+
+// @public (undocumented)
+export const DialogBackdropProvider: React_2.Provider<boolean | undefined>;
+
 // @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
 
@@ -195,6 +201,7 @@ export type DialogSurfaceSlots = {
 export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<DialogContextValue, 'isNestedDialog'> & Pick<PortalProps, 'mountNode'> & {
     open?: boolean;
     unmountOnClose?: boolean;
+    treatBackdropAsNested: boolean;
     transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
     backdropAppearance?: DialogBackdropSlotProps['appearance'];
 };
@@ -268,6 +275,9 @@ export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2
 
 // @public
 export const useDialogActionsStyles_unstable: (state: DialogActionsState) => DialogActionsState;
+
+// @public (undocumented)
+export const useDialogBackdropContext: (isNestedDialog: boolean) => boolean;
 
 // @public
 export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLElement>) => DialogBodyState;

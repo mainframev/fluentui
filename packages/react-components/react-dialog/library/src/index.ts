@@ -81,6 +81,9 @@ export {
   useDialogSurfaceContext_unstable,
   DialogProvider,
   DialogSurfaceProvider,
+  DialogBackdropContext,
+  DialogBackdropProvider,
+  useDialogBackdropContext,
 } from './contexts/index';
 
 export type { DialogContextValue, DialogSurfaceContextValue } from './contexts/index';

@@ -12,7 +12,7 @@ import {
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { useDialogContext_unstable } from '../../contexts';
+import { useDialogContext_unstable, useDialogBackdropContext } from '../../contexts';
 import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
 import { DialogBackdropMotion } from '../DialogBackdropMotion';
 import { useMotionForwardedRef } from '../MotionRefForwarder';
@@ -35,6 +35,7 @@ export const useDialogSurface_unstable = (
 
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
+  const treatBackdropAsNested = useDialogBackdropContext(isNestedDialog);
 
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
@@ -113,6 +114,7 @@ export const useDialogSurface_unstable = (
     open,
     backdrop,
     isNestedDialog,
+    treatBackdropAsNested,
     backdropAppearance,
     unmountOnClose,
     mountNode: props.mountNode,

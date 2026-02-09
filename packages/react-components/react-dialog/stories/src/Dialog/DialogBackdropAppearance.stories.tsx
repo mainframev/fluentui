@@ -71,7 +71,6 @@ export const BackdropAppearance = (): JSXElement => {
               onChange={(_, data) => setBackdropAppearance(data.value as BackdropAppearanceOption)}
               aria-labelledby={labelId}
             >
-              <Radio value="" label="Default (transparent for nested dialogs based on context)" />
               <Radio value="dimmed" label="Dimmed" />
               <Radio value="transparent" label="Transparent" />
             </RadioGroup>
@@ -86,8 +85,8 @@ export const BackdropAppearance = (): JSXElement => {
                 <DialogTitle>Dialog</DialogTitle>
                 <DialogContent>
                   This Dialog is rendered inside an OverlayDrawer, which internally uses Dialog. By default, nested
-                  dialogs have a transparent backdrop to avoid stacking multiple dimmed layers. Use the{' '}
-                  <code>backdrop</code> prop to override this behavior.
+                  dialogs have a backdrop applied based on inner context. Use the <code>backdrop</code> prop to override
+                  this behavior.
                 </DialogContent>
                 <DialogActions>
                   <DialogTrigger disableButtonEnhancement>
