@@ -8,7 +8,6 @@ export const DialogBackdropContext = React.createContext<DialogBackdropContextVa
 
 export const DialogBackdropProvider = DialogBackdropContext.Provider;
 
-export const useDialogBackdropContext_unstable = (isNestedDialog: boolean): DialogBackdropContextValue => {
-  const backdropOverride = React.useContext(DialogBackdropContext);
-  return backdropOverride !== undefined ? backdropOverride : isNestedDialog;
+export const useDialogBackdropContext_unstable = (): DialogBackdropContextValue | undefined => {
+  return React.useContext(DialogBackdropContext);
 };

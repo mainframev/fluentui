@@ -35,7 +35,8 @@ export const useDialogSurface_unstable = (
 
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
-  const treatBackdropAsNested = useDialogBackdropContext_unstable(isNestedDialog);
+  const backdropOverride = useDialogBackdropContext_unstable();
+  const treatBackdropAsNested = backdropOverride ?? isNestedDialog;
 
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);

@@ -277,7 +277,7 @@ export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2
 export const useDialogActionsStyles_unstable: (state: DialogActionsState) => DialogActionsState;
 
 // @public (undocumented)
-export const useDialogBackdropContext_unstable: (isNestedDialog: boolean) => DialogBackdropContextValue;
+export const useDialogBackdropContext_unstable: () => DialogBackdropContextValue | undefined;
 
 // @public
 export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLElement>) => DialogBodyState;
