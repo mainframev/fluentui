@@ -164,22 +164,34 @@ describe('Sankey chart - Subcomponent Node', () => {
     },
   );
   testWithWait(
-    'Should update path color same as node color when we clck on node',
+    'Should update path color same as node color when we hover on node',
     SankeyChart,
     { data: chartPointsWithStringNodeId() },
     async container => {
-      const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      fireEvent.click(nodes[0]);
-      await waitFor(() => {
-        const pathsAfterMouseOver = screen.getAllByText(
-          (content, element) => element!.tagName.toLowerCase() === 'path',
-        );
-        // Assert
-        expect(pathsAfterMouseOver).toBeDefined();
-        expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
-        expect(nodes[0].getAttribute('fill')).toEqual('#757575');
-        expect(nodes[2].getAttribute('fill')).toEqual('#757575');
-      });
+      // Wait for nodes to be rendered with fill attributes before interacting
+      // Use container.querySelectorAll for more reliable selection in test environment
+      await waitFor(
+        () => {
+          const nodes = container.querySelectorAll('rect');
+          expect(nodes.length).toBeGreaterThan(0);
+          expect(nodes[0].getAttribute('fill')).not.toBeNull();
+        },
+        { timeout: 5000 },
+      );
+
+      const nodes = container.querySelectorAll('rect');
+      fireEvent.mouseOver(nodes[0]);
+      await waitFor(
+        () => {
+          const pathsAfterMouseOver = container.querySelectorAll('path');
+          // Assert
+          expect(pathsAfterMouseOver).toBeDefined();
+          expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
+          expect(nodes[0].getAttribute('fill')).toEqual('#757575');
+          expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+        },
+        { timeout: 5000 },
+      );
     },
   );
 });

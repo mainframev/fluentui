@@ -9,11 +9,20 @@ export async function launch(options: LaunchOptions = {}) {
 
   let browser: puppeteer.Browser | undefined;
 
-  console.log(`puppeteer: launching with settings: ${JSON.stringify(options)}`);
+  // In CI environments (especially Linux), Chrome requires --no-sandbox to run properly
+  // See: https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md
+  const isCI = process.env.CI === 'true' || process.env.CI === '1';
+  const defaultArgs = isCI ? ['--no-sandbox', '--disable-setuid-sandbox'] : [];
+  const mergedOptions: LaunchOptions = {
+    ...options,
+    args: [...defaultArgs, ...(options.args || [])],
+  };
+
+  console.log(`puppeteer: launching with settings: ${JSON.stringify(mergedOptions)}`);
 
   while (!browser) {
     try {
-      browser = await puppeteer.launch(options);
+      browser = await puppeteer.launch(mergedOptions);
       console.log('puppeteer: launched...');
     } catch (err) {
       if (attempt === maxAttempts) {
