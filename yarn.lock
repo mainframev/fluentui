@@ -2887,7 +2887,7 @@ __metadata:
   resolution: "@fluentui/chart-web-components@workspace:packages/charts/chart-web-components"
   dependencies:
     "@fluentui/tokens": "npm:^1.0.0-alpha.23"
-    "@fluentui/web-components": "npm:^3.0.0-rc.4"
+    "@fluentui/web-components": "npm:^3.0.0-rc.5"
     "@microsoft/fast-element": "npm:2.0.0"
     "@microsoft/fast-web-utilities": "npm:^6.0.0"
     "@storybook/html": "npm:9.1.16"
@@ -4191,7 +4191,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.72.10, @fluentui/react-components@workspace:packages/react-components/react-components":
+"@fluentui/react-components@npm:*, @fluentui/react-components@npm:^9.72.11, @fluentui/react-components@workspace:packages/react-components/react-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-components@workspace:packages/react-components/react-components"
   dependencies:
@@ -4250,7 +4250,7 @@ __metadata:
     "@fluentui/react-textarea": "npm:^9.6.13"
     "@fluentui/react-theme": "npm:^9.2.1"
     "@fluentui/react-toast": "npm:^9.7.11"
-    "@fluentui/react-toolbar": "npm:^9.7.0"
+    "@fluentui/react-toolbar": "npm:^9.7.1"
     "@fluentui/react-tooltip": "npm:^9.9.0"
     "@fluentui/react-tree": "npm:^9.15.9"
     "@fluentui/react-utilities": "npm:^9.26.1"
@@ -4841,7 +4841,6 @@ __metadata:
   dependencies:
     "@fluentui/react-utilities": "npm:^9.26.1"
     "@swc/helpers": "npm:^0.5.1"
-    react-is: "npm:^17.0.2"
   peerDependencies:
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
@@ -5026,7 +5025,7 @@ __metadata:
   resolution: "@fluentui/react-migration-v0-v9@workspace:packages/react-components/react-migration-v0-v9/library"
   dependencies:
     "@fluentui/react-aria": "npm:^9.17.8"
-    "@fluentui/react-components": "npm:^9.72.10"
+    "@fluentui/react-components": "npm:^9.72.11"
     "@fluentui/react-context-selector": "npm:^9.2.14"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-jsx-runtime": "npm:^9.3.5"
@@ -5058,7 +5057,7 @@ __metadata:
     "@ctrl/tinycolor": "npm:^3.3.4"
     "@fluentui/fluent2-theme": "npm:^8.107.151"
     "@fluentui/react": "npm:^8.125.4"
-    "@fluentui/react-components": "npm:^9.72.10"
+    "@fluentui/react-components": "npm:^9.72.11"
     "@fluentui/react-hooks": "npm:^8.10.2"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@griffel/react": "npm:^1.5.32"
@@ -5395,7 +5394,7 @@ __metadata:
     "@fluentui/react-tabster": "npm:^9.26.12"
     "@swc/helpers": "npm:^0.5.1"
   peerDependencies:
-    "@fluentui/react-components": ^9.72.10
+    "@fluentui/react-components": ^9.72.11
     "@types/react": ">=16.14.0 <20.0.0"
     react: ">=16.14.0 <20.0.0"
   languageName: unknown
@@ -6159,7 +6158,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/react-toolbar@npm:*, @fluentui/react-toolbar@npm:^9.7.0, @fluentui/react-toolbar@workspace:packages/react-components/react-toolbar/library":
+"@fluentui/react-toolbar@npm:*, @fluentui/react-toolbar@npm:^9.7.1, @fluentui/react-toolbar@workspace:packages/react-components/react-toolbar/library":
   version: 0.0.0-use.local
   resolution: "@fluentui/react-toolbar@workspace:packages/react-components/react-toolbar/library"
   dependencies:
@@ -6679,7 +6678,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fluentui/theme-designer@workspace:packages/react-components/theme-designer"
   dependencies:
-    "@fluentui/react-components": "npm:^9.72.10"
+    "@fluentui/react-components": "npm:^9.72.11"
     "@fluentui/react-context-selector": "npm:^9.2.14"
     "@fluentui/react-icons": "npm:^2.0.245"
     "@fluentui/react-storybook-addon-export-to-sandbox": "npm:^0.1.3"
@@ -6923,7 +6922,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/web-components@npm:>=3.0.0-alpha, @fluentui/web-components@npm:^3.0.0-rc.4, @fluentui/web-components@workspace:packages/web-components":
+"@fluentui/web-components@npm:>=3.0.0-alpha, @fluentui/web-components@npm:^3.0.0-rc.5, @fluentui/web-components@workspace:packages/web-components":
   version: 0.0.0-use.local
   resolution: "@fluentui/web-components@workspace:packages/web-components"
   dependencies:
