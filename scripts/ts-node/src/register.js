@@ -8,4 +8,11 @@ tsNode.register({
   // swc: true,
   // remove this once `swc` will start working again
   transpileOnly: true,
+
+  // Explicit compiler options to avoid ts-node inferring NodeNext module from node: imports
+  compilerOptions: {
+    module: 'CommonJS',
+    moduleResolution: 'Node',
+    esModuleInterop: true,
+  },
 });

@@ -37,6 +37,10 @@ export function prepareTempDirs(prefix: string): TempPaths {
   // Putting this in the parent folder ensures that running yarn in any child folder uses it
   fs.writeFileSync(path.join(root, '.yarnrc'), `cache-folder "${yarnCache}"`);
 
+  // Create a minimal package.json in the test app directory for Yarn Modern compatibility
+  // Yarn Modern requires a package.json to exist before running yarn add
+  fs.writeFileSync(path.join(testApp, 'package.json'), JSON.stringify({ name: 'test-app', version: '1.0.0' }, null, 2));
+
   return { root, testApp, yarnCache };
 }
 

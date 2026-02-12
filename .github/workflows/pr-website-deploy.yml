@@ -14,6 +14,10 @@ env:
 
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
+  # Use project-local cache to avoid stale global Berry cache on CI
+  # where workspace packages may collide with published npm versions
+  YARN_ENABLE_GLOBAL_CACHE: false
+
 jobs:
   bundle:
     if: ${{ github.repository_owner == 'microsoft' }}
@@ -41,7 +45,7 @@ jobs:
       - name: NodeJS heap default size
         run: node -e 'console.log(v8.getHeapStatistics().heap_size_limit / 1024 / 1024 + " MB");'
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
 
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps

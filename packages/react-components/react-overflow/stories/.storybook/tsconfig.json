@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "",
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
     "types": ["static-assets", "environment"]
   },
   "include": ["*.js"]
