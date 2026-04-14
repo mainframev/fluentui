@@ -4,7 +4,7 @@ name: 'Docsite publish to Github Pages'
 on:
   push:
     branches:
-      - master
+      - chore/add-docsite-for-headless-components-app
   workflow_dispatch:
 
 jobs:
