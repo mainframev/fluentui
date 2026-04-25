@@ -1,8 +1,8 @@
 import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowless';
 
 import * as rootPreview from '../../../.storybook/preview';
-import { getActiveVariant } from '../../../packages/react-components/react-storybook-addon-variants/src';
-import '../../../packages/react-components/react-storybook-addon-variants/src/styles.css';
+import { getActiveVariant } from '@fluentui/react-storybook-addon-variants';
+import '@fluentui/react-storybook-addon-variants/styles.css';
 
 polyfillBodyAndObserve();
 

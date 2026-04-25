@@ -33,10 +33,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./preset": "./preset.js",
-    "./styles.css": "./dist/styles.css",
+    "./styles.css": "./src/styles.css",
     "./package.json": "./package.json"
   },
   "sideEffects": [
+    "./src/styles.css",
     "./dist/styles.css"
   ],
   "files": [

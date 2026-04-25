@@ -141,26 +141,13 @@
 }
 
 /*
- * Variant "stage": both variants render into the same grid cell so the
- * inactive variant stays mounted but invisible. Switching tabs is a pure
- * `data-active` flip — no React reconciliation, no DOM tear-down, no flicker.
+ * Variant "stage": only the active variant is mounted at any time. React's
+ * keyed reconciliation in `VariantStage` unmounts the previous slot's
+ * subtree on tab switch, so this wrapper is just a plain block container
+ * — no overlap, no visibility toggling.
  */
-.sb-variants-stage {
-  display: grid;
-}
-
 .sb-variants-stage__slot {
-  grid-area: 1 / 1;
   min-width: 0;
-}
-
-.sb-variants-stage__slot[data-active='false'] {
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.sb-variants-stage__slot[data-active='true'] {
-  visibility: visible;
 }
 
 /*

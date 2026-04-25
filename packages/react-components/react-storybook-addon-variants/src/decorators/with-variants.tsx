@@ -14,30 +14,25 @@ const VariantStage: React.FC<{
 
   const selection = React.useSyncExternalStore(subscribeFn, getSnapshot, getSnapshot);
 
+  // Render *only* the active variant. The `key` triggers a clean React
+  // unmount + mount across tab switches so the previous variant's subtree
+  // is fully torn out of the DOM rather than hidden alongside it. Selection
+  // lives in a module-level store (not Storybook globals), so the docs
+  // tree above us doesn't re-prepare on the swap — only this slot does.
   return (
     <div className="sb-variants-stage">
-      {Object.keys(params).map(key => {
-        const isActive = selection.variant === key;
-        return (
-          <div
-            key={key}
-            className="sb-variants-stage__slot"
-            data-active={isActive ? 'true' : 'false'}
-            aria-hidden={!isActive}
-          >
-            {storyChildren(key)}
-          </div>
-        );
-      })}
+      <div key={selection.variant} className="sb-variants-stage__slot">
+        {storyChildren(selection.variant)}
+      </div>
     </div>
   );
 };
 
 /**
- * Decorator: render every variant's component side-by-side in a CSS grid (so
- * switching is a `data-active` flip, no React unmount), inject the variant
- * tabs/file dropdown above the preview, and render a controlled `<Source>`
- * below the canvas that reflects the active selection.
+ * Decorator: render the active variant's component (the others stay out of
+ * the DOM until selected), inject the variant tabs / file dropdown above the
+ * preview, and let the separately-mounted `<SourceBlock>` outlet render the
+ * controlled source code panel below the canvas.
  */
 export const withVariants = (
   storyFn: (context: StoryContext) => React.ReactElement,
