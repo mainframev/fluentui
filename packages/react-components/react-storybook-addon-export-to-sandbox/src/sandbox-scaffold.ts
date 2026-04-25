@@ -59,6 +59,8 @@ function applyTransform(base: Record<string, string>, data: Data): Record<string
     bundler: data.bundler,
     storyExportToken: data.storyExportToken,
     storyFile: data.storyFile,
+    storyId: data.storyId,
+    storyParameters: data.storyParameters,
     dependencies: data.dependencies,
     requiredDependencies: data.requiredDependencies,
     optionalDependencies: data.optionalDependencies,

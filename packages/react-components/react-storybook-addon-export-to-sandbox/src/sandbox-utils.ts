@@ -56,6 +56,8 @@ export type Data = Pick<Required<ParametersConfig>, 'provider' | 'bundler'> & {
   // just get the "Default"
   // @TODO - im not sure this is still needed, wasn't able to repro. Can we remove it ?
   storyExportToken: string;
+  storyId: string;
+  storyParameters: Record<string, unknown>;
   dependencies: Record<string, string>;
   title: string;
   description: string;
@@ -104,6 +106,8 @@ export function prepareData(context: StoryContext): Data | null {
   const demoData: Data = {
     storyFile,
     storyExportToken,
+    storyId: context.id,
+    storyParameters: context.parameters as Record<string, unknown>,
     provider,
     bundler,
     dependencies,

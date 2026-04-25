@@ -14,6 +14,14 @@ export interface SandboxContext {
   requiredDependencies: Record<string, string>;
   optionalDependencies: Record<string, string>;
   devDependencies: Record<string, string>;
+  /** Storybook story id (`context.id`) for the story whose sandbox is being built. */
+  storyId: string;
+  /**
+   * Full story parameters from the rendering Storybook context, so consumers
+   * can read addon-specific settings (e.g. `parameters.variants` from
+   * `@fluentui/react-storybook-addon-variants`).
+   */
+  storyParameters: Record<string, unknown>;
 }
 
 interface ParametersConfig {

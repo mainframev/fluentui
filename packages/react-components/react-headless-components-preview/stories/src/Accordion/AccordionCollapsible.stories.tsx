@@ -2,6 +2,11 @@ import * as React from 'react';
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-headless-components-preview';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
+import { CollapsibleCss } from './AccordionCollapsible.css';
+import collapsibleTailwindSource from './AccordionCollapsible.stories.tsx?raw';
+import collapsibleCssSource from './AccordionCollapsible.css.tsx?raw';
+import collapsibleCssModuleSource from './AccordionCollapsible.module.css?raw';
+
 const items = [
   { value: 'item-1', header: 'Accordion Header 1', panel: 'Accordion Panel 1' },
   { value: 'item-2', header: 'Accordion Header 2', panel: 'Accordion Panel 2' },
@@ -28,3 +33,20 @@ export const Collapsible = (): React.ReactNode => (
     ))}
   </Accordion>
 );
+
+Collapsible.parameters = {
+  variants: {
+    tailwind: {
+      label: 'Tailwind',
+      files: [{ name: 'AccordionCollapsible.tsx', source: collapsibleTailwindSource }],
+    },
+    css: {
+      label: 'CSS',
+      component: CollapsibleCss,
+      files: [
+        { name: 'AccordionCollapsible.tsx', source: collapsibleCssSource, language: 'tsx' },
+        { name: 'AccordionCollapsible.module.css', source: collapsibleCssModuleSource, language: 'css' },
+      ],
+    },
+  },
+};

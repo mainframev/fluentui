@@ -33,7 +33,6 @@ export function addDemoActionButton(context: StoryContext) {
 }
 
 function addActionButton(container: HTMLElement, config: Data, classList: string[]) {
-  const files = scaffold[config.bundler](config);
   const action = actionConfig[config.provider];
 
   const button = document.createElement('button');
@@ -42,7 +41,13 @@ function addActionButton(container: HTMLElement, config: Data, classList: string
 
   container?.prepend(button);
 
+  // Build the sandbox file map at *click* time, not at button-creation time.
+  // `transformFiles` may want to read state that only exists after user
+  // interaction — e.g. the active tab in `@fluentui/react-storybook-addon-variants`,
+  // which is a per-storyId selection in a module-level store. Pre-building
+  // here would freeze the default variant the moment the story renders.
   button.addEventListener('click', _ev => {
+    const files = scaffold[config.bundler](config);
     action.factory(files, config);
   });
 }

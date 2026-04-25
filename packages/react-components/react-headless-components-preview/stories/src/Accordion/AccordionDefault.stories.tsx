@@ -2,6 +2,11 @@ import * as React from 'react';
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-headless-components-preview';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 
+import { DefaultCss } from './AccordionDefault.css';
+import defaultTailwindSource from './AccordionDefault.stories.tsx?raw';
+import defaultCssSource from './AccordionDefault.css.tsx?raw';
+import defaultCssModuleSource from './AccordionDefault.module.css?raw';
+
 const items = [
   { value: 'item-1', header: 'Accordion Header 1', panel: 'Accordion Panel 1' },
   { value: 'item-2', header: 'Accordion Header 2', panel: 'Accordion Panel 2' },
@@ -28,3 +33,20 @@ export const Default = (): React.ReactNode => (
     ))}
   </Accordion>
 );
+
+Default.parameters = {
+  variants: {
+    tailwind: {
+      label: 'Tailwind',
+      files: [{ name: 'AccordionDefault.tsx', source: defaultTailwindSource }],
+    },
+    css: {
+      label: 'CSS',
+      component: DefaultCss,
+      files: [
+        { name: 'AccordionDefault.tsx', source: defaultCssSource, language: 'tsx' },
+        { name: 'AccordionDefault.module.css', source: defaultCssModuleSource, language: 'css' },
+      ],
+    },
+  },
+};
