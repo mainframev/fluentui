@@ -2,6 +2,7 @@ import { polyfillBodyAndObserve } from '@microsoft/focusgroup-polyfill/shadowles
 
 import * as rootPreview from '../../../.storybook/preview';
 import { tailwindSandboxTemplate } from './tailwind-sandbox-template';
+import '../../../packages/react-components/react-storybook-addon-variants/src/styles.css';
 
 polyfillBodyAndObserve();
 

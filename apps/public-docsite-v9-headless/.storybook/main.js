@@ -1,4 +1,6 @@
 const rootMain = require('../../../.storybook/main');
+const { loadWorkspaceAddon } = require('@fluentui/scripts-storybook');
+const path = require('path');
 
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
@@ -11,7 +13,12 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../../../packages/react-components/react-headless-components-preview/stories/src/**/index.stories.@(ts|tsx)',
   ],
   staticDirs: ['../public'],
-  addons: [...rootMain.addons],
+  addons: [
+    ...rootMain.addons,
+    loadWorkspaceAddon('@fluentui/react-storybook-addon-variants', {
+      tsConfigPath: path.resolve(__dirname, '../../../tsconfig.base.json'),
+    }),
+  ],
   build: {
     previewUrl: process.env.DEPLOY_PATH,
   },

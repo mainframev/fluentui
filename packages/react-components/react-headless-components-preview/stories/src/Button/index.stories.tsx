@@ -8,22 +8,28 @@ import defaultTailwindSource from './ButtonDefault.stories.tsx?raw';
 
 import { DefaultCss } from './ButtonDefault.css';
 // @ts-expect-error raw import
-import cssComponentSource from './ButtonDefault.css.tsx?raw';
+import defaultCssSource from './ButtonDefault.css.tsx?raw';
+// @ts-expect-error raw import
+import defaultCssModuleSource from './ButtonDefault.module.css?raw';
 
-DefaultStory.parameters = {
-  ...DefaultStory.parameters,
-  headlessVariants: {
+export const Default = DefaultStory;
+Default.parameters = {
+  ...Default.parameters,
+  variants: {
     tailwind: {
-      source: defaultTailwindSource,
+      label: 'Tailwind',
+      files: [{ name: 'ButtonDefault.tsx', source: defaultTailwindSource }],
     },
     css: {
+      label: 'CSS',
       component: DefaultCss,
-      source: cssComponentSource,
+      files: [
+        { name: 'ButtonDefault.tsx', source: defaultCssSource, language: 'tsx' },
+        { name: 'ButtonDefault.module.css', source: defaultCssModuleSource, language: 'css' },
+      ],
     },
   },
 };
-
-export const Default = DefaultStory;
 
 export default {
   title: 'Headless Components/Button',

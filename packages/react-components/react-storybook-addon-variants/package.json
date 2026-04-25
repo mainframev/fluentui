@@ -1,0 +1,49 @@
+{
+  "name": "@fluentui/react-storybook-addon-variants",
+  "version": "0.1.0",
+  "description": "Storybook addon that shows toggleable variant tabs (e.g. Tailwind / CSS Modules) above each story preview and swaps the rendered component plus source accordingly",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@swc/helpers": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@storybook/react": "^9.1.17",
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "node": "./lib-commonjs/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./preset": "./preset.js",
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "./dist/styles.css"
+  ],
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "dist/styles.css",
+    "lib",
+    "lib-commonjs",
+    "preset.js"
+  ]
+}

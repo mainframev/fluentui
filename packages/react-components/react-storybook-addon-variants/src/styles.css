@@ -1,0 +1,248 @@
+.sb-variants-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  margin: 0 0 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.sb-variants-tabs {
+  display: inline-flex;
+}
+
+.sb-variants-tab {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 4px 10px;
+  border: 0;
+  background: #f8f8f8;
+  color: #201f1e;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.sb-variants-tab:hover {
+  background: #eeeeee;
+}
+
+.sb-variants-tab--active,
+.sb-variants-tab--active:hover {
+  background: #0078d4;
+  color: #ffffff;
+}
+
+.sb-variants-tab:focus-visible {
+  outline: 2px solid #0078d4;
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.sb-variants-file-picker {
+  display: inline-flex;
+  align-items: center;
+}
+
+/*
+ * Storybook positions the auto button row absolutely with `left: -31px` /
+ * `right: 31px` so the bottom-row buttons align with the *outer* canvas
+ * edge. With our full-width grid layout we want the row content (picker on
+ * the left, buttons on the right) to align with `.sb-story` instead — the
+ * inner content edge — so override those offsets.
+ *
+ * Then lay out as a grid with three explicit columns:
+ *
+ *   [ 1fr (picker | empty) ] [ auto (StackBlitz) ] [ auto (Show code) ]
+ *
+ * The 1fr column reserves the picker's space whether or not the picker is
+ * rendered, so toggling between Tailwind (no picker) and CSS (picker) does
+ * not shift StackBlitz / Show code horizontally.
+ */
+.sb-variants-button-row {
+  display: grid !important;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  left: 38px !important;
+  right: 38px !important;
+  width: auto !important;
+}
+
+.sb-variants-button-row > .sb-variants-file-picker {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.sb-variants-button-row > .docblock-code-toggle.with-code-sandbox-button {
+  grid-column: 2;
+}
+
+.sb-variants-button-row > .docblock-code-toggle:not(.with-code-sandbox-button) {
+  grid-column: 3;
+}
+
+/*
+ * Match the visual weight of the auto Show code / Open in Sandbox buttons
+ * (`.docblock-code-toggle`) so the picker reads as a peer in the row:
+ * same height, padding, font, background and top-rounded corners.
+ *
+ * `appearance: none` strips the native `<select>` chrome (the OS-drawn
+ * caret + reserved padding) that otherwise pushes the control past 29px
+ * tall and wider than its content. We draw a minimal caret via a
+ * background SVG so the dropdown affordance is preserved.
+ */
+.sb-variants-file-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  height: 29px;
+  padding: 4px 26px 4px 10px;
+  margin: 0;
+  border: 0;
+  color: #201f1e;
+  background-color: #f8f8f8;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='none' stroke='%23201f1e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l4 4 4-4'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 10px 6px;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  /* Long file names shouldn't push the control past the row. */
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+
+.sb-variants-file-select:hover {
+  background-color: #eeeeee;
+}
+
+.sb-variants-file-select:focus-visible {
+  outline: 2px solid #0078d4;
+  outline-offset: -2px;
+}
+
+.sb-variants-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/*
+ * Variant "stage": both variants render into the same grid cell so the
+ * inactive variant stays mounted but invisible. Switching tabs is a pure
+ * `data-active` flip — no React reconciliation, no DOM tear-down, no flicker.
+ */
+.sb-variants-stage {
+  display: grid;
+}
+
+.sb-variants-stage__slot {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.sb-variants-stage__slot[data-active='false'] {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sb-variants-stage__slot[data-active='true'] {
+  visibility: visible;
+}
+
+/*
+ * Hide Storybook's auto Source panel on variant previews — our
+ * `<SourceBlock>` owns the source rendering, driven by the variant store, so
+ * the auto block would just show duplicate / stale content that doesn't
+ * react to tab/file changes.
+ *
+ * Storybook 9's docs blocks render the auto source inline inside
+ * `.sbdocs-preview` as a `<pre class="prismjs">` (in earlier versions it
+ * was a sibling `.docblock-source`). We cover both layouts. Our own
+ * `.sb-variants-source` is mounted in a sibling outlet outside
+ * `.sbdocs-preview`, so these selectors don't hit it.
+ */
+.sbdocs-preview:has(.sb-variants-bar) .prismjs,
+.sbdocs-preview:has(.sb-variants-bar) ~ .docblock-source,
+.sbdocs-preview:has(.sb-variants-bar) .docblock-source {
+  display: none !important;
+}
+
+/*
+ * Outlet for the controlled `<SourceBlock>`, mounted as a sibling of
+ * `.sbdocs-preview` so the source panel sits below the canvas + Show code /
+ * StackBlitz button row — visually replacing Storybook's auto Source panel
+ * (which is hidden by the rule above).
+ */
+.sb-variants-source-outlet:empty {
+  display: none;
+}
+
+.sb-variants-source {
+  margin: 0;
+}
+
+/*
+ * When Show code is active, fuse the source panel onto the bottom of the
+ * preview: drop the preview's bottom corners, drop our source's top corners,
+ * and remove the gap between them. The auto toggle's `--expanded` class is
+ * the source of truth — addon-docs adds it when the user clicks Show code.
+ */
+.sbdocs-preview:has(.sb-variants-bar):has(.docblock-code-toggle--expanded) {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.sbdocs-preview:has(.sb-variants-bar):has(.docblock-code-toggle--expanded) + .sb-variants-source-outlet {
+  margin-top: 0;
+}
+
+.sbdocs-preview:has(.sb-variants-bar):has(.docblock-code-toggle--expanded)
+  + .sb-variants-source-outlet
+  .sb-variants-source
+  pre.prismjs,
+.sbdocs-preview:has(.sb-variants-bar):has(.docblock-code-toggle--expanded)
+  + .sb-variants-source-outlet
+  .sb-variants-source
+  > div {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/*
+ * `<Source>` from `@storybook/addon-docs/blocks` wraps its `<pre>` in a
+ * `.docblock-source` div that ships with its own top margin (matching the
+ * gap addon-docs leaves between the auto toggle and the source panel). We
+ * mount the source directly under the canvas, so that gap becomes a visible
+ * 25px white strip — zero it when the source is active.
+ */
+.sbdocs-preview:has(.sb-variants-bar):has(.docblock-code-toggle--expanded)
+  + .sb-variants-source-outlet
+  .sb-variants-source
+  .docblock-source {
+  margin-top: 0 !important;
+}
+
+/*
+ * Match the auto Source panel's default text color (pure white). The minimal
+ * theme we feed `ThemeProvider` resolves to a slightly muted gray by default;
+ * the auto block sits in a theme context where `color.defaultText` is white.
+ * Syntax tokens (.token.*) carry their own colors and aren't affected.
+ */
+.sb-variants-source pre.prismjs {
+  color: #ffffff;
+}

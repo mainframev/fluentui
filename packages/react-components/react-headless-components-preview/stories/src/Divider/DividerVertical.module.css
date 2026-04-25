@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 1rem;
+  gap: 1rem;
+}
+
+.divider {
+  width: 1px;
+  height: 100%;
+  background-color: #d1d5db;
+}

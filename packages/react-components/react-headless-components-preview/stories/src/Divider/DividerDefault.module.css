@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 12rem;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.container p {
+  margin: 0;
+}
+
+.divider {
+  height: 1px;
+  background-color: #d1d5db;
+}
