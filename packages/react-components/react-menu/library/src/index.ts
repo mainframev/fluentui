@@ -6,16 +6,8 @@ export type { MenuGroupContextValue } from './contexts/menuGroupContext';
 export { MenuListProvider, useMenuListContext_unstable } from './contexts/menuListContext';
 export type { MenuListContextValue } from './contexts/menuListContext';
 
-export {
-  Menu,
-  renderMenu_unstable,
-  useMenuBase_unstable,
-  useMenuContextValues_unstable,
-  useMenu_unstable,
-} from './Menu';
+export { Menu, renderMenu_unstable, useMenuContextValues_unstable, useMenu_unstable } from './Menu';
 export type {
-  MenuBaseProps,
-  MenuBaseState,
   MenuContextValues,
   MenuOpenChangeData,
   MenuOpenEvent,

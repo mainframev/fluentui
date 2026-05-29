@@ -33,12 +33,6 @@ export const Menu: React_2.FC<MenuProps>;
 export const MENU_ENTER_EVENT = "fuimenuenter";
 
 // @public (undocumented)
-export type MenuBaseProps = Omit<MenuProps, 'surfaceMotion'>;
-
-// @public (undocumented)
-export type MenuBaseState = Omit<MenuState, 'surfaceMotion' | 'components'>;
-
-// @public (undocumented)
 export type MenuCheckedValueChangeData = {
     checkedItems: string[];
     name: string;
@@ -500,13 +494,6 @@ export const useMenu_unstable: (props: MenuProps & {
         timeout?: number;
     };
 }) => MenuState;
-
-// @public
-export const useMenuBase_unstable: (props: MenuBaseProps & {
-    safeZone?: boolean | {
-        timeout?: number;
-    };
-}) => MenuBaseState;
 
 // @public (undocumented)
 export const useMenuContext_unstable: <T>(selector: ContextSelector<MenuContextValue, T>) => T;
