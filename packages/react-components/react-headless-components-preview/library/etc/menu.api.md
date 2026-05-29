@@ -40,11 +40,11 @@ import { MenuOpenEvent } from '@fluentui/react-menu';
 import { MenuPopoverProps } from '@fluentui/react-menu';
 import { MenuPopoverSlots } from '@fluentui/react-menu';
 import { MenuPopoverState } from '@fluentui/react-menu';
-import { MenuBaseProps as MenuProps } from '@fluentui/react-menu';
+import type { MenuProps as MenuProps_2 } from '@fluentui/react-menu';
 import { MenuSplitGroupProps } from '@fluentui/react-menu';
 import { MenuSplitGroupSlots } from '@fluentui/react-menu';
 import { MenuSplitGroupState } from '@fluentui/react-menu';
-import { MenuBaseState as MenuState } from '@fluentui/react-menu';
+import type { MenuState as MenuState_2 } from '@fluentui/react-menu';
 import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
@@ -184,7 +184,8 @@ export { MenuPopoverSlots }
 
 export { MenuPopoverState }
 
-export { MenuProps }
+// @public
+export type MenuProps = Omit<MenuProps_2, 'surfaceMotion'>;
 
 // @public (undocumented)
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
@@ -195,7 +196,8 @@ export { MenuSplitGroupSlots }
 
 export { MenuSplitGroupState }
 
-export { MenuState }
+// @public
+export type MenuState = Omit<MenuState_2, 'surfaceMotion' | 'components'>;
 
 // @public
 export const MenuTrigger: React_2.FC<MenuTriggerProps>;
