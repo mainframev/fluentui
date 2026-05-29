@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: derive Menu types from react-menu MenuProps/MenuState instead of removed base types",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "patch"
+}

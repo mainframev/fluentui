@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: remove redundant useMenuBase_unstable hook and MenuBaseProps/MenuBaseState types",
+  "packageName": "@fluentui/react-menu",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "patch"
+}
