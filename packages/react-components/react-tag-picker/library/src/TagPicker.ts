@@ -1,5 +1,6 @@
 export type {
   TagPickerBaseProps,
+  TagPickerBaseState,
   TagPickerContextValues,
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,

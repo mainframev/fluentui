@@ -118,4 +118,6 @@ export type TagPickerContextValues = {
  * TagPicker Base Props - omits the floating-ui `positioning` prop; the styled wrapper
  * {@link TagPickerProps} re-introduces it via `usePositioning`.
  */
-export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning'>;
+export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning' | 'size' | 'inline'>;
+
+export type TagPickerBaseState = DistributiveOmit<TagPickerState, 'size' | 'inline'>;

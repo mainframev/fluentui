@@ -1,6 +1,7 @@
 export { TagPicker, renderTagPicker_unstable, useTagPicker_unstable, useTagPickerBase_unstable } from './TagPicker';
 export type {
   TagPickerBaseProps,
+  TagPickerBaseState,
   TagPickerContextValues,
   TagPickerProps,
   TagPickerSlots,

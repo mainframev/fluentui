@@ -61,7 +61,10 @@ export const renderTagPickerOptionGroup: (state: TagPickerOptionGroupState) => J
 export const TagPicker: React_2.FC<TagPickerProps>;
 
 // @public
-export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning'>;
+export type TagPickerBaseProps = DistributiveOmit<TagPickerProps, 'positioning' | 'size' | 'inline'>;
+
+// @public
+export type TagPickerBaseState = DistributiveOmit<TagPickerState, 'size' | 'inline'>;
 
 // @public
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;
@@ -285,7 +288,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState
 export const useTagPicker_unstable: (props: TagPickerProps) => TagPickerState;
 
 // @public
-export const useTagPickerBase_unstable: (props: TagPickerBaseProps) => TagPickerState;
+export const useTagPickerBase_unstable: (props: TagPickerBaseProps) => TagPickerBaseState;
 
 // @public
 export const useTagPickerButton_unstable: (props: TagPickerButtonProps, ref: React_2.Ref<HTMLButtonElement>) => TagPickerButtonState;

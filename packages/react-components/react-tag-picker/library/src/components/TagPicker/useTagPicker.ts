@@ -4,6 +4,7 @@ import * as React from 'react';
 import { elementContains, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type {
   TagPickerBaseProps,
+  TagPickerBaseState,
   TagPickerOnOpenChangeData,
   TagPickerOnOptionSelectData,
   TagPickerProps,
@@ -22,13 +23,13 @@ const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after
  * Create the base state required to render TagPicker, without floating-ui positioning.
  * @param props - props from this instance of TagPicker (without `positioning`)
  */
-export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerState => {
+export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerBaseState => {
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
   const passiveTargetRef = React.useRef<HTMLDivElement>(null);
-  const { size = 'medium', inline = false, noPopover = false, disableAutoFocus } = props;
+  const { noPopover = false, disableAutoFocus } = props;
 
   const {
     controller: activeDescendantController,
@@ -63,6 +64,7 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerS
   });
 
   const { trigger, popover } = childrenToTriggerAndPopover(props.children, noPopover);
+
   return {
     activeDescendantController,
     components: {},
@@ -76,15 +78,13 @@ export const useTagPickerBase_unstable = (props: TagPickerBaseProps): TagPickerS
     secondaryActionRef,
     tagPickerGroupRef,
     targetRef: passiveTargetRef,
-    size,
-    inline,
     open: comboboxState.open,
     mountNode: comboboxState.mountNode,
+    appearance: comboboxState.appearance,
     onOptionClick: useEventCallback(event => {
       comboboxState.onOptionClick(event);
       comboboxState.setOpen(event, false);
     }),
-    appearance: comboboxState.appearance,
     clearSelection: comboboxState.clearSelection,
     getOptionById: comboboxState.getOptionById,
     getOptionsMatchingValue: comboboxState.getOptionsMatchingValue,
@@ -136,10 +136,14 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
 
   const baseState = useTagPickerBase_unstable(props);
 
+  const { size = 'medium', inline = false } = props;
+
   return {
     ...baseState,
     targetRef,
     popoverRef: useMergedRefs(baseState.popoverRef, containerRef),
+    size,
+    inline,
   };
 };
 

@@ -1,0 +1,7 @@
+{
+  "type": "fix",
+  "comment": "fix: do not expose size and inline from useTagPickerBase hook",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
