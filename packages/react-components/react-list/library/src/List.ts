@@ -1,4 +1,6 @@
 export type {
+  ListBaseProps,
+  ListBaseState,
   ListContextValue,
   ListContextValues,
   ListNavigationMode,
@@ -11,6 +13,8 @@ export {
   List,
   listClassNames,
   renderList_unstable,
+  useListBase_unstable,
+  useListContextValues_unstable,
   useListStyles_unstable,
   useList_unstable,
 } from './components/List/index';

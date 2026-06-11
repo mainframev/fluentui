@@ -20,11 +20,23 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public (undocumented)
 export const List: ForwardRefComponent<ListProps>;
 
+// @public
+export type ListBaseProps = ListProps;
+
+// @public
+export type ListBaseState = ListState;
+
 // @public (undocumented)
 export const listClassNames: SlotClassNames<ListSlots>;
 
 // @public (undocumented)
 export const ListItem: ForwardRefComponent<ListItemProps>;
+
+// @public
+export type ListItemBaseProps = ListItemProps;
+
+// @public
+export type ListItemBaseState = ListItemState;
 
 // @public (undocumented)
 export const listItemClassNames: SlotClassNames<ListItemSlots>;
@@ -67,16 +79,25 @@ export type ListSlots = {
 export type ListState = ComponentState<ListSlots> & ListContextValue & ListSynchronousContextValue;
 
 // @public
-export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSXElement;
+export const renderList_unstable: (state: ListBaseState, contextValues: ListContextValues) => JSXElement;
 
 // @public
-export const renderListItem_unstable: (state: ListItemState) => JSXElement;
+export const renderListItem_unstable: (state: ListItemBaseState) => JSXElement;
 
 // @public
 export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListState;
 
 // @public
+export const useListBase_unstable: (props: ListBaseProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>) => ListBaseState;
+
+// @public (undocumented)
+export function useListContextValues_unstable(state: ListState): ListContextValues;
+
+// @public
 export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemState;
+
+// @public
+export const useListItemBase_unstable: (props: ListItemBaseProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemBaseState;
 
 // @public
 export const useListItemStyles_unstable: (state: ListItemState) => ListItemState;

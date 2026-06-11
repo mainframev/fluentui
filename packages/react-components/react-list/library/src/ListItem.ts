@@ -1,5 +1,7 @@
 export type {
   ListItemActionEventData,
+  ListItemBaseProps,
+  ListItemBaseState,
   ListItemProps,
   ListItemSlots,
   ListItemState,
@@ -9,6 +11,7 @@ export {
   ListItem,
   listItemClassNames,
   renderListItem_unstable,
+  useListItemBase_unstable,
   useListItemStyles_unstable,
   useListItem_unstable,
 } from './components/ListItem/index';

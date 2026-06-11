@@ -20,7 +20,7 @@ import {
   useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { ListItemProps, ListItemState } from './ListItem.types';
+import type { ListItemBaseProps, ListItemBaseState, ListItemProps, ListItemState } from './ListItem.types';
 import { useListSynchronousContext, useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import type { CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -36,13 +36,33 @@ const DEFAULT_ROOT_EL_TYPE = 'li';
  * The returned state can be modified with hooks such as useListItemStyles_unstable,
  * before being passed to renderListItem_unstable.
  *
+ * Composes with `useListItemBase_unstable`. ListItem has no design props, so this
+ * is a thin pass-through that exists to keep the styled/base hook pairing
+ * consistent with other v9 components.
+ *
  * @param props - props from this instance of ListItem
  * @param ref - reference to root HTMLLIElement | HTMLDivElementof ListItem
  */
 export const useListItem_unstable = (
   props: ListItemProps,
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
-): ListItemState => {
+): ListItemState => useListItemBase_unstable(props, ref);
+
+/**
+ * Base hook for ListItem, which manages selection, keyboard/click handling and
+ * slot structure.
+ *
+ * Unlike the styled `useListItem_unstable`, this hook is intended to be consumed
+ * by headless component packages: pair it with `renderListItem_unstable` and skip
+ * `useListItemStyles_unstable` to render an unstyled ListItem.
+ *
+ * @param props - props from this instance of ListItem
+ * @param ref - reference to root HTMLLIElement | HTMLDivElementof ListItem
+ */
+export const useListItemBase_unstable = (
+  props: ListItemBaseProps,
+  ref: React.Ref<HTMLLIElement | HTMLDivElement>,
+): ListItemBaseState => {
   const id = useId('listItem');
   const { value = id, onKeyDown, onClick, tabIndex, role, onAction, disabledSelection } = props;
 

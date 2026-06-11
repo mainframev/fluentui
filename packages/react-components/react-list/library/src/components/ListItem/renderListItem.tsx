@@ -3,12 +3,12 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { JSXElement } from '@fluentui/react-utilities';
-import type { ListItemState, ListItemSlots } from './ListItem.types';
+import type { ListItemBaseState, ListItemSlots } from './ListItem.types';
 
 /**
  * Render the final JSX of ListItem
  */
-export const renderListItem_unstable = (state: ListItemState): JSXElement => {
+export const renderListItem_unstable = (state: ListItemBaseState): JSXElement => {
   assertSlots<ListItemSlots>(state);
 
   return (

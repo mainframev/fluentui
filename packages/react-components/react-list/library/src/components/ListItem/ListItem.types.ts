@@ -29,3 +29,13 @@ export type ListItemState = ComponentState<ListItemSlots> & {
   navigable: boolean;
   disabled?: boolean;
 };
+
+/**
+ * ListItem base props (same as ListItemProps since ListItem has no design props)
+ */
+export type ListItemBaseProps = ListItemProps;
+
+/**
+ * ListItem base state (same as ListItemState since ListItem has no design props)
+ */
+export type ListItemBaseState = ListItemState;

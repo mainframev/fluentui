@@ -4,7 +4,7 @@ import type * as React from 'react';
 import type { OnSelectionChangeData } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
-import type { ListProps, ListState } from './List.types';
+import type { ListBaseProps, ListBaseState, ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
 import {
   calculateListItemRoleForListRole,
@@ -22,13 +22,32 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
  * The returned state can be modified with hooks such as useListStyles_unstable,
  * before being passed to renderList_unstable.
  *
+ * Composes with `useListBase_unstable`. List has no design props, so this is a
+ * thin pass-through that exists to keep the styled/base hook pairing consistent
+ * with other v9 components.
+ *
  * @param props - props from this instance of List
  * @param ref - reference to root HTMLElement of List
  */
 export const useList_unstable = (
   props: ListProps,
   ref: React.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>,
-): ListState => {
+): ListState => useListBase_unstable(props, ref);
+
+/**
+ * Base hook for List, which manages selection, navigation and slot structure.
+ *
+ * Unlike the styled `useList_unstable`, this hook is intended to be consumed by
+ * headless component packages: pair it with `renderList_unstable` and skip
+ * `useListStyles_unstable` to render an unstyled List.
+ *
+ * @param props - props from this instance of List
+ * @param ref - reference to root HTMLElement of List
+ */
+export const useListBase_unstable = (
+  props: ListBaseProps,
+  ref: React.Ref<HTMLDivElement | HTMLUListElement | HTMLOListElement>,
+): ListBaseState => {
   const { navigationMode, selectionMode, selectedItems, defaultSelectedItems, onSelectionChange } = props;
 
   const as = props.as || navigationMode === 'composite' ? 'div' : DEFAULT_ROOT_EL_TYPE;

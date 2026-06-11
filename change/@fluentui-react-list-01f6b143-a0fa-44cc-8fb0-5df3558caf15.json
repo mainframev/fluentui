@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: export base hooks",
+  "packageName": "@fluentui/react-list",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

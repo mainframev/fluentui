@@ -51,3 +51,13 @@ export type ListContextValues = {
  * State used in rendering List
  */
 export type ListState = ComponentState<ListSlots> & ListContextValue & ListSynchronousContextValue;
+
+/**
+ * List base props (same as ListProps since List has no design props)
+ */
+export type ListBaseProps = ListProps;
+
+/**
+ * List base state (same as ListState since List has no design props)
+ */
+export type ListBaseState = ListState;
