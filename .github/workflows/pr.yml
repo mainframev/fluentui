@@ -72,10 +72,10 @@ jobs:
       #   run: |
       #     yarn nx format:check --base origin/master
 
-      - name: build, test, lint, test-ssr (affected)
+      - name: build and lint
         run: |
-          # FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --exclude react-19-tests-v9 --nxBail
-           FLUENT_JEST_WORKER=2 yarn nx run-many -t build lint --exclude react-19-tests-v9 --nxBail
+          yarn nx run eslint-plugin-react-components:build
+          FLUENT_JEST_WORKER=2 yarn nx run-many -t build lint --exclude react-19-tests-v9 --nxBail
 
   #     - name: 'Check for unstaged changes'
   #       run: |
