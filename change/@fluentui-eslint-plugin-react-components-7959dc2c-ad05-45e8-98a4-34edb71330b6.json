@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: bump @typescript-eslint/utils to 8.64.0 for TypeScript 6.0 support",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "copilot@microsoft.com",
+  "dependentChangeType": "patch"
+}
