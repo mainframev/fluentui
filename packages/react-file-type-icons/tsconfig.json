@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "target": "es2015",
     "module": "commonjs",
     "lib": ["es5", "dom", "ES2015.Iterable", "ES2015.Symbol.WellKnown"],

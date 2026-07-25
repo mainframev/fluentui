@@ -2,11 +2,12 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 import { getJustArgv } from './argv';
+import { findSyntaxAboveTarget } from './ecma-syntax';
 import { ts } from './ts';
 
 jest.mock('just-scripts', () => ({
   logger: { info: jest.fn(), warn: jest.fn(), error: jest.fn(), verbose: jest.fn() },
-  tscTask: jest.fn((options: unknown) => options),
+  tscTask: jest.fn((_options: unknown) => () => Promise.resolve()),
 }));
 jest.mock('./argv', () => ({ getJustArgv: jest.fn(() => ({})) }));
 
@@ -36,17 +37,24 @@ describe(`ts`, () => {
   function readFile(filePath: string) {
     return fs.readFileSync(path.join(root, filePath), 'utf-8');
   }
+  function listGeneratedTsConfigs() {
+    return fs.readdirSync(root).filter(fileName => fileName.startsWith('tsconfig.__generated'));
+  }
+
+  const originalCwd = process.cwd();
 
   beforeEach(() => {
     fs.mkdirSync(tmpRoot, { recursive: true });
     root = fs.mkdtempSync(path.join(tmpRoot, 'ts-task-'));
-    jest.spyOn(process, 'cwd').mockReturnValue(root);
+    // the tasks resolve every path (including the tsconfig passed to `tsc`) relative to the cwd
+    process.chdir(root);
     getJustArgvMock.mockReturnValue({});
     tscTask.mockClear();
   });
 
   afterEach(() => {
     jest.restoreAllMocks();
+    process.chdir(originalCwd);
     fs.rmSync(root, { recursive: true, force: true });
   });
 
@@ -69,6 +77,38 @@ describe(`ts`, () => {
         expect(options.module).not.toEqual('amd');
       }
     });
+
+    it(`should compile projects which use path aliases for DX without them`, async () => {
+      createFile('tsconfig.json', JSON.stringify({ extends: '../../tsconfig.base.v8.json', compilerOptions: {} }));
+      createFile('package.json', JSON.stringify({ name: '@proj/one' }));
+
+      const task = ts.commonjs();
+      const [options] = tscTask.mock.calls[0];
+
+      expect(options.rootDir).toEqual('./src');
+      expect(options.project).toMatch(/tsconfig\.__generated-no-path-aliases-build-.*-tsconfig\.json$/);
+      expect(JSON.parse(readFile(path.basename(options.project)))).toEqual({
+        extends: './tsconfig.json',
+        compilerOptions: { paths: null },
+      });
+
+      // the transient config is removed as soon as the compilation finished - not on process exit
+      await (task as unknown as () => Promise<void>)();
+
+      expect(listGeneratedTsConfigs()).toEqual([]);
+    });
+
+    it(`should remove the transient tsconfig even if the compilation failed`, async () => {
+      createFile('tsconfig.json', JSON.stringify({ extends: '../../tsconfig.base.v8.json', compilerOptions: {} }));
+      createFile('package.json', JSON.stringify({ name: '@proj/one' }));
+
+      tscTask.mockImplementationOnce(() => () => Promise.reject(new Error('tsc failed')));
+
+      const task = ts.commonjs();
+
+      await expect((task as unknown as () => Promise<void>)()).rejects.toThrow('tsc failed');
+      expect(listGeneratedTsConfigs()).toEqual([]);
+    });
   });
 
   describe(`#downlevel`, () => {
@@ -79,9 +119,9 @@ describe(`ts`, () => {
       await ts.downlevel();
 
       expect(readFile('lib/index.js')).toContain(`import { Base } from './base'`);
-      expect(readFile('lib/index.js')).not.toContain('=>');
+      expect(findSyntaxAboveTarget(readFile('lib/index.js'), 'es5')).toEqual([]);
       expect(readFile('lib-commonjs/index.js')).toContain('exports.greet');
-      expect(readFile('lib-commonjs/index.js')).not.toContain('=>');
+      expect(findSyntaxAboveTarget(readFile('lib-commonjs/index.js'), 'es5')).toEqual([]);
     });
 
     it(`should skip module outputs which were not compiled`, async () => {
@@ -100,7 +140,18 @@ describe(`ts`, () => {
       await ts.downlevel();
 
       expect(readFile('lib/index.js')).toEqual(esmOutput);
-      expect(readFile('lib-commonjs/index.js')).not.toContain('=>');
+      expect(findSyntaxAboveTarget(readFile('lib-commonjs/index.js'), 'es5')).toEqual([]);
+    });
+
+    it(`should be idempotent`, async () => {
+      createFile('lib/index.js', esmOutput);
+
+      await ts.downlevel();
+      const firstRun = readFile('lib/index.js');
+
+      await ts.downlevel();
+
+      expect(readFile('lib/index.js')).toEqual(firstRun);
     });
   });
 
@@ -114,11 +165,30 @@ describe(`ts`, () => {
       await ts.amd();
 
       expect(readFile('lib-amd/index.js')).toMatch(/^define\(\[/);
-      expect(readFile('lib-amd/index.js')).not.toContain('=>');
+      expect(findSyntaxAboveTarget(readFile('lib-amd/index.js'), 'es5')).toEqual([]);
       expect(readFile('lib-amd/nested/other.js')).toMatch(/^define\(\[/);
       // declarations are module format agnostic, so they are copied over as is
       expect(readFile('lib-amd/index.d.ts')).toEqual(readFile('lib/index.d.ts'));
       expect(readFile('lib-amd/nested/other.d.ts')).toEqual(readFile('lib/nested/other.d.ts'));
+    });
+
+    it(`should prune stale amd files and declarations`, async () => {
+      createFile('lib/index.js', esmOutput);
+      createFile('lib/index.d.ts', `export declare const greet: (name: string) => string;`);
+      createFile('lib/removed.js', esmOutput);
+      createFile('lib/removed.d.ts', `export declare const removed: string;`);
+
+      await ts.amd();
+
+      fs.rmSync(path.join(root, 'lib/removed.js'));
+      fs.rmSync(path.join(root, 'lib/removed.d.ts'));
+
+      await ts.amd();
+
+      expect(fs.existsSync(path.join(root, 'lib-amd/removed.js'))).toBe(false);
+      expect(fs.existsSync(path.join(root, 'lib-amd/removed.d.ts'))).toBe(false);
+      expect(fs.existsSync(path.join(root, 'lib-amd/index.js'))).toBe(true);
+      expect(fs.existsSync(path.join(root, 'lib-amd/index.d.ts'))).toBe(true);
     });
 
     it(`should throw if there is no ESM output to convert`, async () => {

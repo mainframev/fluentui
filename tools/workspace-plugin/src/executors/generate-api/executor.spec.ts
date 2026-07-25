@@ -169,10 +169,16 @@ describe('GenerateApi Executor', () => {
 
     const output = await executor(options, context);
 
-    expect(execSyncMock.mock.calls.flat()).toEqual([
-      `tsc -p ${paths.projRoot}/tsconfig.__generated-no-path-aliases-generate-api-tsconfig.lib.json --pretty --emitDeclarationOnly`,
-      { stdio: 'inherit' },
-    ]);
+    const [tscCommand, tscOptions] = execSyncMock.mock.calls.flat();
+
+    // the transient config which turns path aliases off is unique per invocation
+    expect(tscCommand).toMatch(
+      new RegExp(
+        `^tsc -p ${paths.projRoot}/tsconfig\\.__generated-no-path-aliases-generate-api-\\d+-\\d+-[a-f0-9]+-tsconfig\\.lib\\.json --pretty --emitDeclarationOnly$`,
+      ),
+    );
+    expect(tscOptions).toEqual({ stdio: 'inherit' });
+    expect(readdirSync(paths.projRoot).filter(fileName => fileName.startsWith('tsconfig.__generated'))).toEqual([]);
 
     const [extractorConfig, extractorArgs] = ExtractorInvokeSpy.mock.calls.flat() as [
       ExtractorConfig,

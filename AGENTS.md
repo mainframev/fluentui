@@ -68,11 +68,12 @@ state.root.className = mergeClasses(
 
 ## Architecture (deep dives)
 
-| Topic                                         | Location                                                                           |
-| --------------------------------------------- | ---------------------------------------------------------------------------------- |
-| V9 component patterns (hooks, slots, Griffel) | [docs/architecture/component-patterns.md](docs/architecture/component-patterns.md) |
-| Design tokens and theming                     | [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md)           |
-| Package dependency layers                     | [docs/architecture/layers.md](docs/architecture/layers.md)                         |
+| Topic                                         | Location                                                                                   |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| V9 component patterns (hooks, slots, Griffel) | [docs/architecture/component-patterns.md](docs/architecture/component-patterns.md)         |
+| Design tokens and theming                     | [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md)                   |
+| Package dependency layers                     | [docs/architecture/layers.md](docs/architecture/layers.md)                                 |
+| v8 published artifacts (ES5/AMD, interop)     | [docs/architecture/v8-published-artifacts.md](docs/architecture/v8-published-artifacts.md) |
 
 ## Workflows
 

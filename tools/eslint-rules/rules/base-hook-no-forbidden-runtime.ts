@@ -660,16 +660,49 @@ function resolveModule(
    * `moduleResolution: bundler` (used across this workspace since the TypeScript 6 migration)
    * leaves `getResolvedModule` empty. Fall back to resolving on demand with the very same
    * compiler options so the rule keeps following imports.
+   *
+   * The rule walks the whole import graph of every linted file, so the same specifier is resolved
+   * over and over again. Resolving hits the file system, therefore it goes through a
+   * `ts.ModuleResolutionCache` which is shared by every resolution made against the same program.
    */
+  const compilerOptions = program.getCompilerOptions();
+
   return ts.resolveModuleName(
     specifier,
     sourceFile.fileName,
-    program.getCompilerOptions(),
+    compilerOptions,
     ts.sys,
-    undefined,
+    getModuleResolutionCache(program, compilerOptions),
     undefined,
     mode,
   ).resolvedModule?.resolvedFileName;
+}
+
+/**
+ * One module resolution cache per program (which eslint creates once per tsconfig/lint run).
+ * Keyed weakly so it is released together with the program.
+ */
+const moduleResolutionCaches = new WeakMap<ts.Program, ts.ModuleResolutionCache>();
+
+export function getModuleResolutionCache(
+  program: ts.Program,
+  compilerOptions: ts.CompilerOptions = program.getCompilerOptions(),
+): ts.ModuleResolutionCache {
+  const cached = moduleResolutionCaches.get(program);
+
+  if (cached) {
+    return cached;
+  }
+
+  const cache = ts.createModuleResolutionCache(
+    program.getCurrentDirectory(),
+    fileName => (ts.sys.useCaseSensitiveFileNames ? fileName : fileName.toLowerCase()),
+    compilerOptions,
+  );
+
+  moduleResolutionCaches.set(program, cache);
+
+  return cache;
 }
 
 /**

@@ -1,7 +1,7 @@
 import { logger, Tree } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from 'nx/src/devkit-testing-exports';
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { basename, dirname, join } from 'node:path';
 import {
   createTsConfigWithoutPathAliases,
   getWorkspaceConfig,
@@ -95,18 +95,25 @@ describe(`utils`, () => {
       rmSync(projectRoot, { recursive: true, force: true });
     });
 
+    function listGenerated() {
+      return readdirSync(projectRoot).filter(fileName => fileName.startsWith('tsconfig.__generated'));
+    }
+
     it('should create a transient config which extends the original one and nulls path aliases', () => {
       const tsConfigPath = join(projectRoot, 'tsconfig.lib.json');
 
       const actual = createTsConfigWithoutPathAliases(tsConfigPath, 'type-check');
 
-      expect(actual.path).toEqual(
-        join(projectRoot, 'tsconfig.__generated-no-path-aliases-type-check-tsconfig.lib.json'),
+      expect(dirname(actual.path)).toEqual(projectRoot);
+      expect(basename(actual.path)).toMatch(
+        /^tsconfig\.__generated-no-path-aliases-type-check-\d+-\d+-[a-f0-9]+-tsconfig\.lib\.json$/,
       );
       expect(JSON.parse(readFileSync(actual.path, 'utf-8'))).toEqual({
         extends: './tsconfig.lib.json',
         compilerOptions: { paths: null },
       });
+
+      actual.cleanup();
     });
 
     it('should remove the transient config on cleanup', () => {
@@ -117,6 +124,59 @@ describe(`utils`, () => {
       actual.cleanup();
 
       expect(existsSync(actual.path)).toBe(false);
+      expect(() => actual.cleanup()).not.toThrow();
+    });
+
+    it("should create a unique file per invocation, so concurrent tsc runs don't race", () => {
+      const first = createTsConfigWithoutPathAliases(join(projectRoot, 'tsconfig.lib.json'), 'type-check');
+      const second = createTsConfigWithoutPathAliases(join(projectRoot, 'tsconfig.lib.json'), 'type-check');
+
+      expect(first.path).not.toEqual(second.path);
+      expect(listGenerated()).toHaveLength(2);
+
+      first.cleanup();
+
+      expect(existsSync(second.path)).toBe(true);
+
+      second.cleanup();
+
+      expect(listGenerated()).toEqual([]);
+    });
+
+    it("should throw if the config to extend doesn't exist", () => {
+      expect(() => createTsConfigWithoutPathAliases(join(projectRoot, 'tsconfig.nope.json'), 'build')).toThrow(
+        /Cannot disable TS path aliases .* doesn't exist/,
+      );
+    });
+
+    it('should register one process listener at most, no matter how many configs are created', () => {
+      const created: Array<{ path: string; cleanup: () => void }> = [];
+      const countOwnListeners = () => ({
+        exit: process.listeners('exit').filter(listener => listener.name === 'cleanupTransientTsConfigs').length,
+        sigint: process.listeners('SIGINT').filter(listener => listener.name === 'cleanupTransientTsConfigsOnSignal')
+          .length,
+      });
+      const before = countOwnListeners();
+
+      // fresh module instance, so the (module scoped) listener registration happens within this test
+      jest.isolateModules(() => {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const utils: typeof import('./utils') = require('./utils');
+
+        for (let i = 0; i < 20; i++) {
+          created.push(utils.createTsConfigWithoutPathAliases(join(projectRoot, 'tsconfig.lib.json'), 'stress'));
+        }
+      });
+
+      const after = countOwnListeners();
+
+      expect(listGenerated()).toHaveLength(20);
+      expect(after.exit - before.exit).toEqual(1);
+      expect(after.sigint - before.sigint).toEqual(1);
+
+      created.forEach(config => config.cleanup());
+
+      expect(listGenerated()).toEqual([]);
     });
   });
 });

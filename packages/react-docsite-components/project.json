@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-docsite-components/src",
-  "tags": ["v8"],
+  "tags": ["v8", "ships-es5"],
   "implicitDependencies": [],
   "targets": {
     "test": {

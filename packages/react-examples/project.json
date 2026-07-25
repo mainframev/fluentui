@@ -4,7 +4,7 @@
   "projectType": "library",
   "implicitDependencies": [],
   "sourceRoot": "packages/react-examples/src",
-  "tags": ["v8"],
+  "tags": ["v8", "ships-es5"],
   "targets": {
     "type-check": { "command": "echo 'type-check is noop for v8 project which uses tsc for build'" }
   }

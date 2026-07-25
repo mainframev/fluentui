@@ -9,7 +9,7 @@
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "eslint src --ext .ts,.tsx",
     "start": "storybook dev",
-    "type-check": "tsc -p . --noEmit",
+    "type-check": "node ../../scripts/tasks/bin/type-check-project.js",
     "test-vr": "storywright --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"
   },
   "dependencies": {

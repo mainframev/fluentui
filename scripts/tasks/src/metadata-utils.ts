@@ -42,6 +42,22 @@ export function getRawMetadata(projectRoot: string) {
     return true;
   }
 
+  /**
+   * Whether the published `lib`/`lib-commonjs` JavaScript of this project is on the ES5 baseline.
+   *
+   * TypeScript 6 removed `target: 'es5'`, so the ES5 emit moved from `tsc` to a SWC downlevel step
+   * (`ts:downlevel`). Which projects are on that baseline cannot be derived from other metadata
+   * (`shipsAMD()`, tags, versions, ...) - eg `@fluentui/react-icons-mdl2` ships AMD but its
+   * `lib`/`lib-commonjs` were emitted as ES2019 - so it is opt-in project metadata: every project
+   * whose tsconfig declared `target: es5` before the TypeScript 6 migration carries the
+   * `ships-es5` tag.
+   *
+   * @see https://github.com/microsoft/fluentui/issues/36409
+   */
+  function shipsES5() {
+    return new Set(project.tags ?? []).has('ships-es5');
+  }
+
   function hasJest() {
     return fs.existsSync(path.join(projectRoot, 'jest.config.js'));
   }
@@ -55,5 +71,5 @@ export function getRawMetadata(projectRoot: string) {
     return glob.sync(path.join(projectRoot, 'src/**/*.scss')).length > 0;
   }
 
-  return { ...metadata, isConverged, shipsAMD, hasJest, hasBabel, hasSass, hasWebpack };
+  return { ...metadata, isConverged, shipsAMD, shipsES5, hasJest, hasBabel, hasSass, hasWebpack };
 }

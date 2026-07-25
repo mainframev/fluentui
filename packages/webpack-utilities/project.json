@@ -3,6 +3,6 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],
-  "tags": ["v8", "platform:node", "tools"],
+  "tags": ["v8", "platform:node", "tools", "ships-es5"],
   "sourceRoot": "packages/webpack-utilities/src"
 }

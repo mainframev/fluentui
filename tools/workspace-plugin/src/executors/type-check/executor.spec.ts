@@ -50,7 +50,10 @@ jest.mock('../../utils', () => {
     createTsConfigWithoutPathAliases: jest.fn((tsConfigPath: string, purpose: string) => {
       const { basename, dirname, join } = jest.requireActual('node:path');
       return {
-        path: join(dirname(tsConfigPath), `tsconfig.__generated-no-path-aliases-${purpose}-${basename(tsConfigPath)}`),
+        path: join(
+          dirname(tsConfigPath),
+          `tsconfig.__generated-no-path-aliases-${purpose}-<unique>-${basename(tsConfigPath)}`,
+        ),
         cleanup: jest.fn(),
       };
     }),
@@ -91,8 +94,8 @@ describe('TypeCheck Executor', () => {
     const output = await executor(options, mockContext);
 
     expect(promisifyCallMock.mock.calls.flat()).toEqual([
-      'tsc -p /root/libs/my-lib/tsconfig.__generated-no-path-aliases-type-check-tsconfig.lib.json --pretty --noEmit',
-      'tsc -p /root/libs/my-lib/tsconfig.__generated-no-path-aliases-type-check-tsconfig.spec.json --pretty --noEmit',
+      'tsc -p /root/libs/my-lib/tsconfig.__generated-no-path-aliases-type-check-<unique>-tsconfig.lib.json --pretty --noEmit',
+      'tsc -p /root/libs/my-lib/tsconfig.__generated-no-path-aliases-type-check-<unique>-tsconfig.spec.json --pretty --noEmit',
     ]);
 
     expect(output.success).toBe(true);
@@ -109,7 +112,7 @@ describe('TypeCheck Executor', () => {
     const output = await executor({ ...options, excludeProject: { spec: true, e2e: false } }, mockContext);
 
     expect(promisifyCallMock.mock.calls.flat()).toEqual([
-      'tsc -p /root/libs/my-lib/tsconfig.__generated-no-path-aliases-type-check-tsconfig.lib.json --pretty --noEmit',
+      'tsc -p /root/libs/my-lib/tsconfig.__generated-no-path-aliases-type-check-<unique>-tsconfig.lib.json --pretty --noEmit',
     ]);
 
     expect(output.success).toBe(true);

@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/font-icons-mdl2/src",
-  "tags": ["v8"],
+  "tags": ["v8", "ships-es5"],
   "implicitDependencies": [],
   "targets": {
     "test": {

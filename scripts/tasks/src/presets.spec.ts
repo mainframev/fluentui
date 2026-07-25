@@ -62,17 +62,26 @@ describe(`preset`, () => {
     module?: { esm: boolean; cjs: boolean; amd: boolean };
     isConverged?: boolean;
     shipsAMD?: boolean;
+    shipsES5?: boolean;
     hasBabel?: boolean;
   }
 
   function setup(options: SetupOptions = {}) {
-    const { production = false, module: moduleFlag, isConverged = false, shipsAMD = true, hasBabel = false } = options;
+    const {
+      production = false,
+      module: moduleFlag,
+      isConverged = false,
+      shipsAMD = true,
+      shipsES5 = true,
+      hasBabel = false,
+    } = options;
 
     registry.clear();
     getJustArgvMockFn.mockReturnValue({ production, ...(moduleFlag ? { module: moduleFlag } : null) });
     getRawMetadataMockFn.mockReturnValue({
       isConverged: () => isConverged,
       shipsAMD: () => shipsAMD,
+      shipsES5: () => shipsES5,
       hasBabel: () => hasBabel,
       hasSass: () => false,
       hasWebpack: () => false,
@@ -139,7 +148,7 @@ describe(`preset`, () => {
   });
 
   it(`should downlevel and create amd output for v8 production builds`, () => {
-    setup({ production: true, shipsAMD: true, isConverged: false });
+    setup({ production: true, shipsAMD: true, shipsES5: true, isConverged: false });
 
     expect(resolveTask('ts:transpile')).toEqual({
       series: ['ts:downlevel (enabled)', 'ts:amd (enabled)'],
@@ -147,7 +156,7 @@ describe(`preset`, () => {
   });
 
   it(`should not create amd output outside of production builds`, () => {
-    setup({ production: false, shipsAMD: true, isConverged: false });
+    setup({ production: false, shipsAMD: true, shipsES5: true, isConverged: false });
 
     expect(resolveTask('ts:transpile')).toEqual({
       series: ['ts:downlevel (enabled)', 'ts:amd (disabled)'],
@@ -155,15 +164,27 @@ describe(`preset`, () => {
   });
 
   it(`should not downlevel packages which don't ship the legacy artifacts`, () => {
-    setup({ production: true, shipsAMD: false, isConverged: true });
+    setup({ production: true, shipsAMD: false, shipsES5: false, isConverged: true });
 
     expect(resolveTask('ts:transpile')).toEqual({
       series: ['ts:downlevel (disabled)', 'ts:amd (disabled)'],
     });
   });
 
+  /**
+   * eg `@fluentui/react-icons-mdl2` ships AMD, but its `lib`/`lib-commonjs` were emitted as ES2019
+   * before the TypeScript 6 migration - downleveling them to ES5 would silently change what is published
+   */
+  it(`should create amd output without downleveling packages which are not on the ES5 baseline`, () => {
+    setup({ production: true, shipsAMD: true, shipsES5: false, isConverged: false });
+
+    expect(resolveTask('ts:transpile')).toEqual({
+      series: ['ts:downlevel (disabled)', 'ts:amd (enabled)'],
+    });
+  });
+
   it(`should honour the --module flag`, () => {
-    setup({ production: false, module: { esm: true, cjs: false, amd: true } });
+    setup({ production: false, shipsES5: true, module: { esm: true, cjs: false, amd: true } });
 
     expect(resolveTask('ts:compile')).toEqual({
       parallel: ['ts:commonjs (disabled)', 'ts:esm (enabled)'],
@@ -177,6 +198,20 @@ describe(`preset`, () => {
     setup({ production: true });
 
     expect(resolveTask('ts:amd')).toEqual({ series: ['<inline task>', 'postprocess:amd'] });
+  });
+
+  it(`should downlevel node only packages, which don't run the "ts" task`, () => {
+    setup({ shipsES5: true });
+
+    expect(resolveTask('build:node-lib')).toEqual({
+      series: ['clean', 'copy', 'ts:commonjs', 'ts:downlevel (enabled)'],
+    });
+
+    setup({ shipsES5: false });
+
+    expect(resolveTask('build:node-lib')).toEqual({
+      series: ['clean', 'copy', 'ts:commonjs', 'ts:downlevel (disabled)'],
+    });
   });
 
   it(`should build v8 packages`, () => {

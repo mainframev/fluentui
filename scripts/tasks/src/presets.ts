@@ -103,7 +103,7 @@ export function preset() {
     const moduleFlag = args.module;
 
     return series(
-      condition('ts:downlevel', () => metadata.shipsAMD()),
+      condition('ts:downlevel', () => metadata.shipsES5()),
       condition('ts:amd', () => (moduleFlag ? moduleFlag.amd : Boolean(args.production) && !metadata.isConverged())),
     );
   });
@@ -143,7 +143,19 @@ export function preset() {
   task('dev:storybook', series('storybook:start'));
   task('dev', series('copy', 'sass', 'webpack-dev-server'));
 
-  task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
+  /**
+   * `tsc` only emits the modern baseline since TypeScript 6, so projects on the ES5 baseline
+   * (`ships-es5`) need the SWC downlevel here as well - `build:node-lib` doesn't run the `ts` task.
+   */
+  task(
+    'build:node-lib',
+    series(
+      'clean',
+      'copy',
+      'ts:commonjs',
+      condition('ts:downlevel', () => metadata.shipsES5()),
+    ),
+  ).cached!();
 
   // === React v8 build  tasks / START ===
   task(

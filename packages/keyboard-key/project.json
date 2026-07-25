@@ -2,6 +2,6 @@
   "name": "keyboard-key",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "tags": ["v8"],
+  "tags": ["v8", "ships-es5"],
   "implicitDependencies": []
 }

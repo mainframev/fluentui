@@ -1,47 +1,11 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
-import * as ts from 'typescript';
-
+import { findSyntaxAboveTarget } from '../ecma-syntax';
 import { transpileEmittedJs } from './transpile';
 
-/**
- * ES2015+ syntax that must not be present in the ES5 baseline that v8 packages publish.
- */
 function findModernSyntax(code: string) {
-  const sourceFile = ts.createSourceFile('output.js', code, ts.ScriptTarget.ESNext, true);
-  const modernSyntaxKinds = new Set([
-    ts.SyntaxKind.ArrowFunction,
-    ts.SyntaxKind.ClassDeclaration,
-    ts.SyntaxKind.ClassExpression,
-    ts.SyntaxKind.TemplateExpression,
-    ts.SyntaxKind.NoSubstitutionTemplateLiteral,
-    ts.SyntaxKind.SpreadElement,
-    ts.SyntaxKind.SpreadAssignment,
-    ts.SyntaxKind.ShorthandPropertyAssignment,
-    ts.SyntaxKind.ObjectBindingPattern,
-    ts.SyntaxKind.ArrayBindingPattern,
-  ]);
-  const found: string[] = [];
-
-  const visit = (node: ts.Node) => {
-    if (modernSyntaxKinds.has(node.kind)) {
-      found.push(ts.SyntaxKind[node.kind]);
-    }
-    if (ts.isVariableDeclarationList(node)) {
-      const declarationKeyword = node.getFirstToken()?.kind;
-
-      if (declarationKeyword === ts.SyntaxKind.LetKeyword || declarationKeyword === ts.SyntaxKind.ConstKeyword) {
-        found.push('LetOrConstDeclaration');
-      }
-    }
-
-    ts.forEachChild(node, visit);
-  };
-
-  ts.forEachChild(sourceFile, visit);
-
-  return found;
+  return findSyntaxAboveTarget(code, 'es5').map(feature => feature.name);
 }
 
 describe(`transpileEmittedJs`, () => {
@@ -101,7 +65,7 @@ describe(`transpileEmittedJs`, () => {
     createFile('lib/index.js', esmOutput);
     createFile('lib/index.js.map', sourceMap);
 
-    const transpiledFiles = await transpileEmittedJs({
+    const result = await transpileEmittedJs({
       root,
       inputPath: 'lib',
       outputPath: 'lib',
@@ -111,7 +75,8 @@ describe(`transpileEmittedJs`, () => {
 
     const actual = readFile('lib/index.js');
 
-    expect(transpiledFiles).toEqual(['index.js']);
+    expect(result.files).toEqual(['index.js']);
+    expect(result.transpiled).toEqual(['index.js']);
     // module format is untouched
     expect(actual).toContain(`import { Base } from './base'`);
     expect(actual).toContain('export');
@@ -146,7 +111,7 @@ describe(`transpileEmittedJs`, () => {
     createFile('lib/nested/other.js', esmOutput);
     createFile('lib/nested/other.js.map', sourceMap);
 
-    const transpiledFiles = await transpileEmittedJs({
+    const result = await transpileEmittedJs({
       root,
       inputPath: 'lib',
       outputPath: 'lib-amd',
@@ -156,7 +121,7 @@ describe(`transpileEmittedJs`, () => {
 
     const actual = readFile('lib-amd/index.js');
 
-    expect(transpiledFiles.sort()).toEqual(['index.js', path.join('nested', 'other.js')]);
+    expect(result.files.sort()).toEqual(['index.js', path.join('nested', 'other.js')]);
     expect(actual).toMatch(/^define\(\[/);
     expect(findModernSyntax(actual)).toEqual([]);
     // source output is left untouched
@@ -195,5 +160,164 @@ describe(`transpileEmittedJs`, () => {
     await expect(
       transpileEmittedJs({ root, inputPath: 'lib', outputPath: 'lib-amd', module: 'amd', target: 'es5' }),
     ).rejects.toThrow(/cannot transpile "lib" -> "lib-amd".*tsc compilation needs to run first/s);
+  });
+
+  describe(`helpers`, () => {
+    /**
+     * every package built by this pipeline declares `@swc/helpers` as runtime dependency, so the
+     * downlevel/module helpers must be imported instead of being inlined into each and every file
+     */
+    it(`should import helpers instead of inlining them into every file`, async () => {
+      const files = ['a.js', 'b.js', 'c.js'];
+
+      for (const fileName of files) {
+        createFile(`lib/${fileName}`, esmOutput);
+      }
+
+      await transpileEmittedJs({ root, inputPath: 'lib', outputPath: 'lib', module: 'es6', target: 'es5' });
+
+      for (const fileName of files) {
+        const actual = readFile(`lib/${fileName}`);
+
+        expect(actual).toContain('from "@swc/helpers/_/_class_call_check"');
+        expect(actual).not.toMatch(/function _class_call_check\(/);
+        expect(actual).not.toMatch(/function _inherits\(/);
+      }
+    });
+
+    it(`should import helpers in AMD output as well`, async () => {
+      createFile('lib/index.js', esmOutput);
+
+      await transpileEmittedJs({ root, inputPath: 'lib', outputPath: 'lib-amd', module: 'amd', target: 'es5' });
+
+      const actual = readFile('lib-amd/index.js');
+
+      expect(actual).toContain('"@swc/helpers/_/_class_call_check"');
+      expect(actual).not.toMatch(/function _class_call_check\(/);
+    });
+  });
+
+  describe(`idempotency`, () => {
+    it(`should not transpile already transpiled in place output again`, async () => {
+      createFile('lib/index.js', esmOutput);
+      createFile('lib/index.js.map', sourceMap);
+
+      const first = await transpileEmittedJs({
+        root,
+        inputPath: 'lib',
+        outputPath: 'lib',
+        module: 'es6',
+        target: 'es5',
+      });
+      const firstOutput = readFile('lib/index.js');
+
+      const second = await transpileEmittedJs({
+        root,
+        inputPath: 'lib',
+        outputPath: 'lib',
+        module: 'es6',
+        target: 'es5',
+      });
+
+      expect(first.transpiled).toEqual(['index.js']);
+      expect(second.transpiled).toEqual([]);
+      // the output (and its source map) is byte identical, it was not re-transformed nor re-chained
+      expect(readFile('lib/index.js')).toEqual(firstOutput);
+    });
+
+    it(`should transpile again when the compiler emitted new output`, async () => {
+      createFile('lib/index.js', esmOutput);
+
+      await transpileEmittedJs({ root, inputPath: 'lib', outputPath: 'lib', module: 'es6', target: 'es5' });
+
+      createFile('lib/index.js', `export const other = () => 'changed';`);
+
+      const result = await transpileEmittedJs({
+        root,
+        inputPath: 'lib',
+        outputPath: 'lib',
+        module: 'es6',
+        target: 'es5',
+      });
+
+      expect(result.transpiled).toEqual(['index.js']);
+      expect(readFile('lib/index.js')).toContain('changed');
+      expect(findModernSyntax(readFile('lib/index.js'))).toEqual([]);
+    });
+
+    it(`should transpile again when the target changed`, async () => {
+      createFile('lib/index.js', esmOutput);
+
+      await transpileEmittedJs({ root, inputPath: 'lib', outputPath: 'lib', module: 'es6', target: 'es5' });
+      const result = await transpileEmittedJs({
+        root,
+        inputPath: 'lib',
+        outputPath: 'lib',
+        module: 'es6',
+        target: 'es2015',
+      });
+
+      expect(result.transpiled).toEqual(['index.js']);
+    });
+
+    it(`should not transpile unchanged derived output again, but restore deleted files`, async () => {
+      createFile('lib/index.js', esmOutput);
+      createFile('lib/nested/other.js', esmOutput);
+
+      await transpileEmittedJs({ root, inputPath: 'lib', outputPath: 'lib-amd', module: 'amd', target: 'es5' });
+
+      fs.rmSync(path.join(root, 'lib-amd/nested/other.js'));
+
+      const result = await transpileEmittedJs({
+        root,
+        inputPath: 'lib',
+        outputPath: 'lib-amd',
+        module: 'amd',
+        target: 'es5',
+      });
+
+      expect(result.transpiled).toEqual([path.join('nested', 'other.js')]);
+      expect(readFile('lib-amd/nested/other.js')).toMatch(/^define\(\[/);
+    });
+  });
+
+  describe(`stale outputs`, () => {
+    it(`should prune derived output which has no compiler emitted counterpart anymore`, async () => {
+      createFile('lib/index.js', esmOutput);
+      createFile('lib/removed.js', esmOutput);
+
+      await transpileEmittedJs({ root, inputPath: 'lib', outputPath: 'lib-amd', module: 'amd', target: 'es5' });
+
+      expect(fs.existsSync(path.join(root, 'lib-amd/removed.js'))).toBe(true);
+
+      fs.rmSync(path.join(root, 'lib/removed.js'));
+
+      const result = await transpileEmittedJs({
+        root,
+        inputPath: 'lib',
+        outputPath: 'lib-amd',
+        module: 'amd',
+        target: 'es5',
+      });
+
+      expect(result.pruned).toEqual(['removed.js']);
+      expect(fs.existsSync(path.join(root, 'lib-amd/removed.js'))).toBe(false);
+      expect(fs.existsSync(path.join(root, 'lib-amd/index.js'))).toBe(true);
+    });
+
+    it(`should never prune in place output`, async () => {
+      createFile('lib/index.js', esmOutput);
+
+      const result = await transpileEmittedJs({
+        root,
+        inputPath: 'lib',
+        outputPath: 'lib',
+        module: 'es6',
+        target: 'es5',
+      });
+
+      expect(result.pruned).toEqual([]);
+      expect(fs.existsSync(path.join(root, 'lib/index.js'))).toBe(true);
+    });
   });
 });

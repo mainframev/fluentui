@@ -1,6 +1,7 @@
 import * as path from 'node:path';
 import { RuleTester } from '@typescript-eslint/rule-tester';
-import { rule, RULE_NAME } from './base-hook-no-forbidden-runtime';
+import * as ts from 'typescript';
+import { getModuleResolutionCache, rule, RULE_NAME } from './base-hook-no-forbidden-runtime';
 
 const FIXTURE_ROOT = path.join(__dirname, '__fixtures__/base-hook-no-forbidden-runtime');
 const TYPED_FILENAME = 'src/test.ts';
@@ -415,4 +416,51 @@ typedRuleTester.run(`${RULE_NAME} (typed)`, rule, {
       ],
     },
   ],
+});
+
+// ---------------------------------------------------------------------------
+// Module resolution cache
+//
+// TypeScript 6 does not populate the program level resolution cache for `moduleResolution: bundler`,
+// so the rule resolves imports on demand. Because it walks the whole import graph of every linted
+// file, those resolutions must be cached - otherwise each import hits the file system again.
+// ---------------------------------------------------------------------------
+describe(`${RULE_NAME}/moduleResolutionCache`, () => {
+  const configPath = path.join(FIXTURE_ROOT, 'tsconfig.json');
+
+  function createProgram() {
+    const configFile = ts.readConfigFile(configPath, ts.sys.readFile);
+    const parsed = ts.parseJsonConfigFileContent(configFile.config, ts.sys, FIXTURE_ROOT, undefined, configPath);
+
+    return ts.createProgram({ rootNames: parsed.fileNames, options: parsed.options });
+  }
+
+  it(`should reuse a single cache per program`, () => {
+    const program = createProgram();
+
+    expect(getModuleResolutionCache(program)).toBe(getModuleResolutionCache(program));
+    expect(getModuleResolutionCache(createProgram())).not.toBe(getModuleResolutionCache(program));
+  });
+
+  it(`should not hit the file system for an already resolved specifier`, () => {
+    const program = createProgram();
+    const options = program.getCompilerOptions();
+    const cache = getModuleResolutionCache(program);
+    const containingFile = path.join(FIXTURE_ROOT, 'src/test.ts');
+
+    const fileExistsSpy = jest.spyOn(ts.sys, 'fileExists');
+
+    const first = ts.resolveModuleName('watched-pkg', containingFile, options, ts.sys, cache);
+    const fileSystemCallsAfterFirst = fileExistsSpy.mock.calls.length;
+
+    const second = ts.resolveModuleName('watched-pkg', containingFile, options, ts.sys, cache);
+
+    expect(first.resolvedModule?.resolvedFileName).toEqual(second.resolvedModule?.resolvedFileName);
+    expect(first.resolvedModule?.resolvedFileName).toContain('stubs/watched-pkg/index.ts');
+    expect(fileSystemCallsAfterFirst).toBeGreaterThan(0);
+    // second resolution is served from the cache
+    expect(fileExistsSpy.mock.calls.length).toEqual(fileSystemCallsAfterFirst);
+
+    fileExistsSpy.mockRestore();
+  });
 });

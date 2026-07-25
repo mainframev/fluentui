@@ -29,5 +29,8 @@
       "types": "./lib-commonjs/index.d.ts",
       "require": "./lib-commonjs/index.js"
     }
+  },
+  "dependencies": {
+    "@swc/helpers": "^0.5.1"
   }
 }

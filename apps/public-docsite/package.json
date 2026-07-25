@@ -19,7 +19,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "start": "just-scripts dev",
-    "type-check": "tsc -p . --noEmit"
+    "type-check": "node ../../scripts/tasks/bin/type-check-project.js"
   },
   "license": "MIT",
   "devDependencies": {
