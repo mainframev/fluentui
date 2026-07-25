@@ -5,7 +5,7 @@ import { logger } from 'just-scripts';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { exec } from 'just-scripts-utils';
 
-import { type TsConfig, getTsPathAliasesConfig } from './utils';
+import { type TsConfig, createTsConfigWithoutPathAliases, getTsPathAliasesConfig } from './utils';
 
 export function typeCheck(): Promise<void> | undefined {
   const { isUsingTsSolutionConfigs, tsConfigs } = getTsPathAliasesConfig();
@@ -24,9 +24,13 @@ export function typeCheck(): Promise<void> | undefined {
   const tsConfigsRefs = getTsConfigs(config, { spec: false, e2e: false });
 
   const asyncQueue: Array<ReturnType<typeof exec>> = [];
+  const cleanupQueue: Array<() => void> = [];
 
   for (const ref of tsConfigsRefs) {
-    const program = `tsc -p ${ref} --pretty --baseUrl . --noEmit`;
+    const noPathAliasesConfig = createTsConfigWithoutPathAliases(ref, 'type-check');
+    cleanupQueue.push(noPathAliasesConfig.cleanup);
+
+    const program = `tsc -p ${noPathAliasesConfig.path} --pretty --noEmit`;
     asyncQueue.push(exec(program));
   }
 
@@ -38,6 +42,9 @@ export function typeCheck(): Promise<void> | undefined {
     .catch(err => {
       console.error(err.stdout);
       process.exit(1);
+    })
+    .finally(() => {
+      cleanupQueue.forEach(cleanup => cleanup());
     });
 }
 
@@ -51,6 +58,7 @@ export async function typeCheckWithConfigOverride(
   const tsConfigsRefs = getTsConfigs(rootTsConfig, { spec: false, e2e: false });
 
   const configs: { [path: string]: Record<string, unknown> } = {};
+  const cleanupQueue: Array<() => void> = [];
 
   for (const ref of tsConfigsRefs) {
     const refPath = path.join(cwd, ref);
@@ -65,7 +73,10 @@ export async function typeCheckWithConfigOverride(
     const asyncQueue: Array<ReturnType<typeof exec>> = [];
 
     for (const ref of tsConfigsRefs) {
-      const program = `tsc -p ${ref} --pretty --baseUrl . --noEmit`;
+      const noPathAliasesConfig = createTsConfigWithoutPathAliases(ref, 'type-check');
+      cleanupQueue.push(noPathAliasesConfig.cleanup);
+
+      const program = `tsc -p ${noPathAliasesConfig.path} --pretty --noEmit`;
       asyncQueue.push(exec(program));
     }
 
@@ -79,6 +90,8 @@ export async function typeCheckWithConfigOverride(
     // set exit code to 1 to exit process naturally and allow finally block to run
     process.exitCode = 1;
   } finally {
+    cleanupQueue.forEach(cleanup => cleanup());
+
     const entries = Object.entries(configs);
     for (const [configPath, config] of entries) {
       fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf-8');

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "rootDir": "./src",
+    "target": "es2015",
     "outDir": "lib",
     "module": "commonjs",
     "lib": ["es5", "es2015.promise", "dom"],
@@ -13,7 +14,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "typeRoots": ["../../node_modules/@types", "../../typings"],

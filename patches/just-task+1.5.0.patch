@@ -1,0 +1,12 @@
+diff --git a/node_modules/just-task/lib/enableTypeScript.js b/node_modules/just-task/lib/enableTypeScript.js
+--- a/node_modules/just-task/lib/enableTypeScript.js
++++ b/node_modules/just-task/lib/enableTypeScript.js
+@@ -17,7 +17,7 @@
+                 strict: false,
+                 skipLibCheck: true,
+                 skipDefaultLibCheck: true,
+-                moduleResolution: 'node',
++                moduleResolution: 'bundler',
+                 allowJs: true,
+                 esModuleInterop: true,
+             },

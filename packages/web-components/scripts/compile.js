@@ -6,6 +6,8 @@ import { dirname, join } from 'node:path';
 
 import chalk from 'chalk';
 
+import { createTsConfigWithoutPathAliases } from './tsconfig-utils.js';
+
 const SRC = 'src';
 const OUT = 'dist/esm';
 
@@ -33,7 +35,12 @@ async function compile() {
   execSync(`node ./scripts/generate-tokens`, { stdio: 'inherit' });
 
   console.log(chalk.blueBright(`compile: running tsc`));
-  execSync(`tsc -p tsconfig.lib.json --rootDir ./src --baseUrl .`, { stdio: 'inherit' });
+  const noPathAliasesConfig = createTsConfigWithoutPathAliases('tsconfig.lib.json', 'compile');
+  try {
+    execSync(`tsc -p ${noPathAliasesConfig.path} --rootDir ./src`, { stdio: 'inherit' });
+  } finally {
+    noPathAliasesConfig.cleanup();
+  }
 
   console.log(chalk.blueBright(`compile: copying SSR assets`));
   await copySsrAssets();

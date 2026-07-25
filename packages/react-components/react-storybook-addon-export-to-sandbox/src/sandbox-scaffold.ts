@@ -160,13 +160,12 @@ const Vite = {
       compilerOptions: {
         target: 'ES2020',
         useDefineForClassFields: true,
-        lib: ['ES2020', 'DOM', 'DOM.Iterable'],
+        lib: ['ES2020', 'DOM'],
         module: 'ESNext',
         skipLibCheck: true,
 
         /* Bundler mode */
-        moduleResolution: 'node',
-        // moduleResolution: 'bundler',
+        moduleResolution: 'bundler',
         allowImportingTsExtensions: true,
         resolveJsonModule: true,
         isolatedModules: true,

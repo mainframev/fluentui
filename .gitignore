@@ -135,6 +135,9 @@ package-lock.json
 # Copied monaco-editor files
 /packages/monaco-editor/esm
 
+# transient tsconfigs created by build/type-check tasks to opt out of TS path aliases
+tsconfig.__generated-no-path-aliases-*.json
+
 # tsdoc
 tsdoc-metadata.json
 

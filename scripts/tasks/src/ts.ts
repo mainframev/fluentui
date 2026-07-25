@@ -3,7 +3,7 @@ import * as path from 'path';
 import { TscTaskOptions, logger, tscTask } from 'just-scripts';
 
 import { getJustArgv } from './argv';
-import { getTsPathAliasesConfig, getTsPathAliasesConfigUsedOnlyForDx } from './utils';
+import { createTsConfigWithoutPathAliases, getTsPathAliasesConfig, getTsPathAliasesConfigUsedOnlyForDx } from './utils';
 
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
@@ -28,9 +28,8 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
 
   if (isUsingPathAliasesForDx()) {
     logger.info(`📣 TSC: Project is using TS path aliases for DX. Disabling aliases for build.`);
-    options.baseUrl = '.';
     options.rootDir = './src';
-    options.project = tsConfigFileForCompilation;
+    options.project = createTsConfigWithoutPathAliases(tsConfigFileForCompilation, 'build').path;
 
     return options;
   }

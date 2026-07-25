@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "rootDir": "./src",
+    "target": "es2015",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -10,7 +11,7 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "noImplicitThis": true,

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "target": "ES2019",
     "jsx": "react",
     "skipLibCheck": true,

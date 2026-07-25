@@ -1,0 +1,23 @@
+diff --git a/node_modules/@swc-node/register/lib/read-default-tsconfig.js b/node_modules/@swc-node/register/lib/read-default-tsconfig.js
+index eb755f4099..ca5a9cbcf8 100644
+--- a/node_modules/@swc-node/register/lib/read-default-tsconfig.js
++++ b/node_modules/@swc-node/register/lib/read-default-tsconfig.js
+@@ -153,12 +153,16 @@ function tsCompilerOptionsToSwcConfig(options, filename) {
+                 useBuiltins: true,
+             }
+             : undefined,
+-        baseUrl: options.baseUrl ? (0, path_1.resolve)(options.baseUrl) : undefined,
++        baseUrl: options.baseUrl
++            ? (0, path_1.resolve)(options.baseUrl)
++            : options.pathsBasePath
++                ? (0, path_1.resolve)(options.pathsBasePath)
++                : undefined,
+         paths: Object.fromEntries(Object.entries((_l = options.paths) !== null && _l !== void 0 ? _l : {}).map(([aliasKey, aliasPaths]) => {
+             var _a;
+             return [
+                 aliasKey,
+-                ((_a = aliasPaths) !== null && _a !== void 0 ? _a : []).map((path) => { var _a; return (0, path_1.resolve)((_a = options.baseUrl) !== null && _a !== void 0 ? _a : './', path); }),
++                ((_a = aliasPaths) !== null && _a !== void 0 ? _a : []).map((path) => { var _a, _b; return (0, path_1.resolve)((_b = (_a = options.baseUrl) !== null && _a !== void 0 ? _a : options.pathsBasePath) !== null && _b !== void 0 ? _b : './', path); }),
+             ];
+         })),
+         ignoreDynamic: Boolean(process.env.SWC_NODE_IGNORE_DYNAMIC),

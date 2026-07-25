@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "target": "esnext",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "typeRoots": ["node_modules/@types", "node_modules/just-stack-single-lib/node_modules/@types"]
   },

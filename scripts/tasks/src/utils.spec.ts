@@ -43,9 +43,7 @@ describe(`utils`, () => {
         definitionsRootPath: 'dist/for/types',
       });
 
-      expect(actual.overrideTsconfig.compilerOptions).toEqual(
-        expect.objectContaining({ paths: undefined, baseUrl: '.' }),
-      );
+      expect(actual.overrideTsconfig.compilerOptions).toEqual(expect.objectContaining({ paths: undefined }));
     });
 
     // This is not used unless api-extractor resolves resolving workspace d.ts packages - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339

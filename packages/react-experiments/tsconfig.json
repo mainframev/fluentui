@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": "./src",
     "outDir": "dist",
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -12,7 +12,7 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom", "ES2016.Array.Include", "ES2015.Core"],

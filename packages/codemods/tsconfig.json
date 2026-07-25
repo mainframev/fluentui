@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": "./src",
     "outDir": "lib",
     "target": "es6",
     "module": "commonjs",
@@ -13,7 +13,7 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "preserveConstEnums": true,
     "esModuleInterop": true,
     "lib": ["dom", "es2015.promise", "es2017"],

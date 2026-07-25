@@ -10,7 +10,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "storybook dev -p 3000",
-    "type-check": "tsc -p . --noEmit --baseUrl .",
+    "type-check": "tsc -p . --noEmit",
     "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --stepsApi parameters --bailOnStoriesError"
   },
   "dependencies": {

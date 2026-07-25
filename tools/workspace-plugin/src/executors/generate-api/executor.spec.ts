@@ -170,7 +170,7 @@ describe('GenerateApi Executor', () => {
     const output = await executor(options, context);
 
     expect(execSyncMock.mock.calls.flat()).toEqual([
-      `tsc -p ${paths.projRoot}/tsconfig.lib.json --pretty --emitDeclarationOnly --baseUrl ${paths.projRoot}`,
+      `tsc -p ${paths.projRoot}/tsconfig.__generated-no-path-aliases-generate-api-tsconfig.lib.json --pretty --emitDeclarationOnly`,
       { stdio: 'inherit' },
     ]);
 
@@ -180,7 +180,6 @@ describe('GenerateApi Executor', () => {
     ];
 
     expect((extractorConfig.overrideTsconfig as TsConfig).compilerOptions).toEqual({
-      baseUrl: '.',
       declarationDir: 'dts',
       emitDeclarationOnly: true,
       isolatedModules: false,

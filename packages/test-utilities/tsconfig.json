@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": "./src",
     "outDir": "dist",
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -13,7 +13,7 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "preserveConstEnums": true,
     "lib": ["es2017", "dom"],
     "types": ["jest"],

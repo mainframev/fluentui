@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": "./src",
     "outDir": "dist",
     "target": "ES2019",
     "module": "CommonJS",
@@ -11,7 +11,7 @@
     "importHelpers": true,
     "noUnusedLocals": true,
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "preserveConstEnums": true,
     "lib": ["ES2019", "DOM"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],

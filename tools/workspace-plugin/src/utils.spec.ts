@@ -1,6 +1,13 @@
 import { logger, Tree } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from 'nx/src/devkit-testing-exports';
-import { getWorkspaceConfig, getProjectNameWithoutScope, printUserLogs } from './utils';
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import {
+  createTsConfigWithoutPathAliases,
+  getWorkspaceConfig,
+  getProjectNameWithoutScope,
+  printUserLogs,
+} from './utils';
 
 describe(`utils`, () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -73,6 +80,43 @@ describe(`utils`, () => {
       expect(loggerInfoSpy).toHaveBeenCalledWith('info log');
       expect(loggerWarnSpy).toHaveBeenCalledWith('warn log');
       expect(loggerErrorSpy).toHaveBeenCalledWith('error log');
+    });
+  });
+
+  describe('#createTsConfigWithoutPathAliases', () => {
+    let projectRoot: string;
+
+    beforeEach(() => {
+      projectRoot = mkdtempSync(join(__dirname, '__tmp-ts6-no-path-aliases-'));
+      writeFileSync(join(projectRoot, 'tsconfig.lib.json'), JSON.stringify({ include: ['src'] }), 'utf-8');
+    });
+
+    afterEach(() => {
+      rmSync(projectRoot, { recursive: true, force: true });
+    });
+
+    it('should create a transient config which extends the original one and nulls path aliases', () => {
+      const tsConfigPath = join(projectRoot, 'tsconfig.lib.json');
+
+      const actual = createTsConfigWithoutPathAliases(tsConfigPath, 'type-check');
+
+      expect(actual.path).toEqual(
+        join(projectRoot, 'tsconfig.__generated-no-path-aliases-type-check-tsconfig.lib.json'),
+      );
+      expect(JSON.parse(readFileSync(actual.path, 'utf-8'))).toEqual({
+        extends: './tsconfig.lib.json',
+        compilerOptions: { paths: null },
+      });
+    });
+
+    it('should remove the transient config on cleanup', () => {
+      const actual = createTsConfigWithoutPathAliases(join(projectRoot, 'tsconfig.lib.json'), 'generate-api');
+
+      expect(existsSync(actual.path)).toBe(true);
+
+      actual.cleanup();
+
+      expect(existsSync(actual.path)).toBe(false);
     });
   });
 });

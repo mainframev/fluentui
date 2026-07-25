@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "target": "es5",
+    "rootDir": "./src",
+    "target": "es2015",
     "outDir": "lib",
     "module": "commonjs",
     "lib": ["es5", "dom", "ES2015.Iterable", "ES2015.Symbol.WellKnown"],
@@ -14,7 +14,7 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "preserveConstEnums": true,
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global"]

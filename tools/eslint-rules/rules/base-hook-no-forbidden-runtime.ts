@@ -630,6 +630,12 @@ function resolveModule(
   specifier: string,
   literal: ts.StringLiteralLike,
 ): string | undefined {
+  const mode = (
+    ts as unknown as {
+      getModeForUsageLocation?: (file: ts.SourceFile, usage: ts.StringLiteralLike) => ts.ResolutionMode;
+    }
+  ).getModeForUsageLocation?.(sourceFile, literal);
+
   const getResolvedModule = (
     program as unknown as {
       getResolvedModule?: (
@@ -639,18 +645,31 @@ function resolveModule(
       ) => { resolvedModule?: ts.ResolvedModuleFull } | undefined;
     }
   ).getResolvedModule;
-  if (typeof getResolvedModule !== 'function') {
-    return undefined;
+
+  const cached =
+    typeof getResolvedModule === 'function'
+      ? getResolvedModule.call(program, sourceFile, specifier, mode)?.resolvedModule?.resolvedFileName
+      : undefined;
+
+  if (cached) {
+    return cached;
   }
 
-  const mode = (
-    ts as unknown as {
-      getModeForUsageLocation?: (file: ts.SourceFile, usage: ts.StringLiteralLike) => ts.ResolutionMode;
-    }
-  ).getModeForUsageLocation?.(sourceFile, literal);
-
-  const resolutionResult = getResolvedModule.call(program, sourceFile, specifier, mode);
-  return resolutionResult?.resolvedModule?.resolvedFileName;
+  /**
+   * The program level resolution cache is not populated for every resolution mode - notably
+   * `moduleResolution: bundler` (used across this workspace since the TypeScript 6 migration)
+   * leaves `getResolvedModule` empty. Fall back to resolving on demand with the very same
+   * compiler options so the rule keeps following imports.
+   */
+  return ts.resolveModuleName(
+    specifier,
+    sourceFile.fileName,
+    program.getCompilerOptions(),
+    ts.sys,
+    undefined,
+    undefined,
+    mode,
+  ).resolvedModule?.resolvedFileName;
 }
 
 /**

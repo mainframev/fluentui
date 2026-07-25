@@ -6,7 +6,7 @@ import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-ext
 
 import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
-import { measureEnd, measureStart } from '../../utils';
+import { createTsConfigWithoutPathAliases, measureEnd, measureStart } from '../../utils';
 import { isCI, verboseLog } from './lib/shared';
 import { getExportSubpathConfigs } from './lib/utils';
 
@@ -96,14 +96,9 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
 }
 
 function generateTypeDeclarations(options: NormalizedOptions) {
-  const cmd = [
-    'tsc',
-    `-p ${options.tsConfigPathForCompilation}`,
-    '--pretty',
-    '--emitDeclarationOnly',
-    // turn off path aliases.
-    `--baseUrl ${options.projectAbsolutePath}`,
-  ].join(' ');
+  // turn off path aliases.
+  const noPathAliasesConfig = createTsConfigWithoutPathAliases(options.tsConfigPathForCompilation, 'generate-api');
+  const cmd = ['tsc', `-p ${noPathAliasesConfig.path}`, '--pretty', '--emitDeclarationOnly'].join(' ');
 
   verboseLog(`Emitting '.d.ts' files via: "${cmd}"`);
 
@@ -113,6 +108,8 @@ function generateTypeDeclarations(options: NormalizedOptions) {
   } catch (err) {
     logger.error(err);
     return false;
+  } finally {
+    noPathAliasesConfig.cleanup();
   }
 }
 
@@ -226,10 +223,6 @@ function getTsConfigForApiExtractor(options: {
        *
        */
       paths: undefined,
-      /**
-       * Turn off path aliases.
-       */
-      baseUrl: '.',
     },
   };
 

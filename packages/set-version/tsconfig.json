@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "rootDir": "./src",
+    "target": "es2015",
     "outDir": "lib",
     "module": "commonjs",
     "lib": ["ES5", "ES2015.Collection", "ES2015.Iterable", "ES2015.Symbol.WellKnown", "dom"],
@@ -9,7 +10,7 @@
     "importHelpers": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "isolatedModules": true,
     "types": ["jest"]
   },

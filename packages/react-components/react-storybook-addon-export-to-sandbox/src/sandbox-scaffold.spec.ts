@@ -425,12 +425,11 @@ describe(`sabdbox-scaffold`, () => {
             \\"useDefineForClassFields\\": true,
             \\"lib\\": [
               \\"ES2020\\",
-              \\"DOM\\",
-              \\"DOM.Iterable\\"
+              \\"DOM\\"
             ],
             \\"module\\": \\"ESNext\\",
             \\"skipLibCheck\\": true,
-            \\"moduleResolution\\": \\"node\\",
+            \\"moduleResolution\\": \\"bundler\\",
             \\"allowImportingTsExtensions\\": true,
             \\"resolveJsonModule\\": true,
             \\"isolatedModules\\": true,
@@ -552,12 +551,11 @@ describe(`sabdbox-scaffold`, () => {
             \\"useDefineForClassFields\\": true,
             \\"lib\\": [
               \\"ES2020\\",
-              \\"DOM\\",
-              \\"DOM.Iterable\\"
+              \\"DOM\\"
             ],
             \\"module\\": \\"ESNext\\",
             \\"skipLibCheck\\": true,
-            \\"moduleResolution\\": \\"node\\",
+            \\"moduleResolution\\": \\"bundler\\",
             \\"allowImportingTsExtensions\\": true,
             \\"resolveJsonModule\\": true,
             \\"isolatedModules\\": true,

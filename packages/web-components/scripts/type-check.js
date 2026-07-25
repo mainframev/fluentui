@@ -6,6 +6,8 @@ import { promisify } from 'node:util';
 import { exec } from 'node:child_process';
 import { exit } from 'node:process';
 
+import { createTsConfigWithoutPathAliases } from './tsconfig-utils.js';
+
 const asyncExec = promisify(exec);
 
 main().catch(err => {
@@ -23,15 +25,24 @@ async function main() {
 
   const asyncQueue = [];
 
+  const cleanupQueue = [];
+
   for (const ref of tsConfigsRefs) {
-    const program = `tsc -p ${ref} --pretty --noEmit --baseUrl .`;
+    const noPathAliasesConfig = createTsConfigWithoutPathAliases(ref, 'type-check');
+    cleanupQueue.push(noPathAliasesConfig.cleanup);
+
+    const program = `tsc -p ${noPathAliasesConfig.path} --pretty --noEmit`;
     asyncQueue.push(asyncExec(program));
   }
 
-  return Promise.all(asyncQueue).catch(err => {
-    console.error(err.stdout);
-    exit(1);
-  });
+  return Promise.all(asyncQueue)
+    .catch(err => {
+      console.error(err.stdout);
+      exit(1);
+    })
+    .finally(() => {
+      cleanupQueue.forEach(cleanup => cleanup());
+    });
 }
 
 /**
