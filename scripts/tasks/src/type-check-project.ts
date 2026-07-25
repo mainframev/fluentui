@@ -49,6 +49,11 @@ export function typeCheckProject(options: TypeCheckProjectOptions = {}): number 
 
 export function main(argv: string[] = process.argv.slice(2)) {
   const projectFlagIndex = argv.findIndex(arg => arg === '-p' || arg === '--project');
+
+  if (projectFlagIndex !== -1 && argv[projectFlagIndex + 1] === undefined) {
+    throw new Error(`"${argv[projectFlagIndex]}" requires a value (eg "-p tsconfig.json")`);
+  }
+
   const project = projectFlagIndex === -1 ? undefined : argv[projectFlagIndex + 1];
 
   process.exitCode = typeCheckProject({ project });

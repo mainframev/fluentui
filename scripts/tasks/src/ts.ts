@@ -79,6 +79,18 @@ function noop() {
 }
 
 /**
+ * Detects both native `Promise`s and thenables (eg zone.js-wrapped promises, or any other
+ * spec-compliant thenable a task might return) - `instanceof Promise` alone misses those.
+ */
+function isThenable(value: unknown): value is PromiseLike<unknown> {
+  return (
+    (typeof value === 'object' || typeof value === 'function') &&
+    value !== null &&
+    typeof (value as { then?: unknown }).then === 'function'
+  );
+}
+
+/**
  * Guarantees that transient build artifacts (the generated "no path aliases" tsconfig) are removed
  * as soon as the compilation finished, instead of relying on the process exit hook only.
  */
@@ -93,7 +105,7 @@ function withCleanup(taskFn: TaskFunction, cleanup: () => void): TaskFunction {
       throw err;
     }
 
-    if (result instanceof Promise) {
+    if (isThenable(result)) {
       return result.then(
         value => {
           cleanup();

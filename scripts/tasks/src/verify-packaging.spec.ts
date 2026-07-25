@@ -219,12 +219,12 @@ describe(`verifyPackaging`, () => {
     );
   });
 
-  it(`should fail if the declared "@swc/helpers" range allows a version older than the one verified to provide the imported helpers`, () => {
+  it(`should fail if the declared "@swc/helpers" range does not accept the resolved helper version`, () => {
     setup({
-      // the installed/resolved copy of @swc/helpers is verified to provide `_class_call_check`,
-      // but this range's lower bound (0.5.1) predates it - a consumer resolving the bottom of the
-      // range would hit "MODULE_NOT_FOUND"
-      dependencies: { '@swc/helpers': '^0.5.1' },
+      // the installed/resolved copy of @swc/helpers (0.5.23) is verified to provide `_class_call_check`,
+      // but this range only accepts the "0.4.x" line - a consumer resolving this range would never
+      // actually get the version that was verified to provide the imported helper
+      dependencies: { '@swc/helpers': '^0.4.0' },
       files: {
         'lib/index.js': [
           `import { _ as _class_call_check } from "@swc/helpers/_/_class_call_check";`,
@@ -237,13 +237,33 @@ describe(`verifyPackaging`, () => {
     });
 
     expect(() => verifyPackaging({ production: false })).toThrow(
-      /declared "@swc\/helpers" dependency \("\^0\.5\.1"\) allows a version as old as/,
+      /declared "@swc\/helpers" dependency \("\^0\.4\.0"\) does not accept "0\.5\.23"/,
     );
   });
 
   it(`should accept helper imports which the declared dependency provides`, () => {
     setup({
       dependencies: { '@swc/helpers': '^0.5.23' },
+      files: {
+        'lib/index.js': [
+          `import { _ as _class_call_check } from "@swc/helpers/_/_class_call_check";`,
+          `export var Greeter = function () {};`,
+        ].join('\n'),
+        'lib/index.d.ts': declaration,
+        'lib-commonjs/index.js': es5CommonJs,
+        'lib-commonjs/index.d.ts': declaration,
+      },
+    });
+
+    expect(() => verifyPackaging({ production: false })).not.toThrow();
+  });
+
+  it(`should accept a declared range whose floor predates the resolved version, as long as the range still covers it`, () => {
+    // a declared range like "^0.5.1" covers the actually resolved "0.5.23" helper version even though
+    // its lower bound is older - this must not be flagged as an error, otherwise every compatible
+    // "@swc/helpers" bump would break every package that imports runtime helpers
+    setup({
+      dependencies: { '@swc/helpers': '^0.5.1' },
       files: {
         'lib/index.js': [
           `import { _ as _class_call_check } from "@swc/helpers/_/_class_call_check";`,

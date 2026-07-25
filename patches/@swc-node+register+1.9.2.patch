@@ -16,7 +16,7 @@ diff --git a/node_modules/@swc-node/register/lib/read-default-tsconfig.js b/node
              ];
          })),
          ignoreDynamic: Boolean(process.env.SWC_NODE_IGNORE_DYNAMIC),
-@@ -168,5 +168,27 @@
+@@ -168,5 +168,30 @@
          },
      };
  }
@@ -25,7 +25,10 @@ diff --git a/node_modules/@swc-node/register/lib/read-default-tsconfig.js b/node
 + * exposing it as `pathsBasePath`. `@swc-node/register` only maps `baseUrl`, which makes SWC panic
 + * (or silently resolve aliases against the process cwd) for baseUrl-less configs.
 + *
-+ * @see https://github.com/swc-project/swc-node - fixed upstream, this repo is pinned to 1.9.2 (the version @nx/js installs)
++ * @see https://github.com/swc-project/swc-node - fixed upstream in a later release; this repo pins
++ *      the direct "@swc-node/register" devDependency to "1.9.2" (it is only an optional peer
++ *      dependency of `nx` itself, not installed by "@nx/js") specifically to install this patch.
++ *      Bump the pin and drop this patch once an unpatched release maps "pathsBasePath" upstream.
 + */
 +function resolvePathsBase(options, filename) {
 +    var base = options.baseUrl || options.pathsBasePath;

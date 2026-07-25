@@ -8,16 +8,21 @@ Every patch must be documented here with **what** it changes and **when it can b
 
 ## `@swc-node/register+1.9.2`
 
-`@swc-node/register` is what Nx uses to execute the TypeScript files of this workspace
-(`just.config.ts`, executors, generators, plugins, ...).
+`@swc-node/register` is only an _optional peer dependency_ of `nx` itself (see
+`node_modules/nx/package.json`) - it is not installed by `@nx/js` or any other Nx package. Without
+it present in the workspace, Nx falls back to its `ts-node` transpiler to execute the TypeScript
+files of this workspace (`just.config.ts`, executors, generators, plugins, ...), and that fallback
+is not TypeScript 6 compatible. This branch adds `@swc-node/register` directly to the root
+`package.json` `devDependencies` so it is actually installed, which makes Nx pick it over the
+`ts-node` fallback and execute those files as SWC transpile-only instead.
 
-**What it changes:** `tsCompilerOptionsToSwcConfig()` maps the TypeScript `baseUrl` to SWC's
+**What the patch changes:** `tsCompilerOptionsToSwcConfig()` maps the TypeScript `baseUrl` to SWC's
 `jsc.baseUrl`, which is the base every `paths` alias is resolved against. TypeScript 6 removed
 `baseUrl` and resolves `paths` relative to the tsconfig file which declares them, reporting that
 directory as `pathsBasePath`. Without the patch SWC either panics or resolves every alias against
-the process cwd. The patch falls back to `pathsBasePath` (matching what newer Nx versions ship) and
-throws an actionable error when `paths` are declared but neither base is available, instead of
-silently resolving aliases against the wrong directory.
+the process cwd. The patch falls back to `pathsBasePath` (matching what newer `@swc-node/register`
+versions ship) and throws an actionable error when `paths` are declared but neither base is
+available, instead of silently resolving aliases against the wrong directory.
 
 **Related pin:** `resolutions["@swc-node/core"] = "1.13.3"` in the root `package.json`.
 `@swc-node/register@1.9.2` depends on `@swc-node/core@^1.13.1`. Newer `@swc-node/core` releases
@@ -25,8 +30,13 @@ raise their `@swc/core` peer requirement above the repo wide `@swc/core@1.11.24`
 resolution the install resolves to a version whose peer dependency cannot be satisfied. `1.13.3`
 declares `"@swc/core": ">= 1.4.13"`, which `1.11.24` satisfies.
 
-**Removal:** drop the patch (and re-evaluate the pin) once the workspace moves to an `@nx/js`
-version that installs `@swc-node/register >= 1.10`, which handles `pathsBasePath` upstream.
+**Removal:** this is actionable, not merely aspirational - bump the direct `@swc-node/register` pin
+(and drop this patch, and re-evaluate the `@swc-node/core` resolution) as soon as an unpatched
+`@swc-node/register` release maps `pathsBasePath` upstream (tracked in the `@swc-node/register`
+release notes and CHANGELOG for a version `> 1.9.2`, expected around `1.10`+). Once such a version
+is installed, first try removing the patch alone: if `yarn install` (patch-package) and
+`scripts/package-manager/src/patches.spec.ts` succeed without it, the pin/patch pair is obsolete and
+both can be removed together.
 
 **Tests:** `scripts/package-manager/src/patches.spec.ts`
 

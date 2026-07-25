@@ -2,7 +2,7 @@ import { spawnSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
-import { typeCheckProject } from './type-check-project';
+import { main, typeCheckProject } from './type-check-project';
 
 /**
  * Behavioural regression test for the `--baseUrl .` replacement.
@@ -88,5 +88,58 @@ describe(`typeCheckProject`, () => {
 
     expect(typeCheckProject({ cwd: appRoot })).toEqual(0);
     expect(listGeneratedTsConfigs()).toEqual([]);
+  });
+
+  describe(`#main`, () => {
+    const originalCwd = process.cwd();
+    const originalExitCode = process.exitCode;
+
+    afterEach(() => {
+      process.chdir(originalCwd);
+      process.exitCode = originalExitCode;
+    });
+
+    it.each(['-p', '--project'])(`should reject "%s" without a value instead of silently falling back`, flag => {
+      expect(() => main([flag])).toThrow(/"(-p|--project)" requires a value/);
+    });
+
+    it(`should not throw the argv-validation error when "-p"/"--project" is given a value`, () => {
+      fs.mkdirSync(path.join(appRoot, 'node_modules/@proj/dep'), { recursive: true });
+      fs.writeFileSync(
+        path.join(appRoot, 'node_modules/@proj/dep/package.json'),
+        JSON.stringify({ name: '@proj/dep', version: '1.0.0', types: './index.d.ts', main: './index.js' }),
+        'utf-8',
+      );
+      fs.writeFileSync(
+        path.join(appRoot, 'node_modules/@proj/dep/index.d.ts'),
+        `export declare const dep: string;`,
+        'utf-8',
+      );
+
+      process.chdir(appRoot);
+
+      expect(() => main(['-p', 'tsconfig.json'])).not.toThrow();
+      expect(process.exitCode).toEqual(0);
+      expect(listGeneratedTsConfigs()).toEqual([]);
+    });
+
+    it(`should default to "tsconfig.json" when no "-p"/"--project" flag is given`, () => {
+      fs.mkdirSync(path.join(appRoot, 'node_modules/@proj/dep'), { recursive: true });
+      fs.writeFileSync(
+        path.join(appRoot, 'node_modules/@proj/dep/package.json'),
+        JSON.stringify({ name: '@proj/dep', version: '1.0.0', types: './index.d.ts', main: './index.js' }),
+        'utf-8',
+      );
+      fs.writeFileSync(
+        path.join(appRoot, 'node_modules/@proj/dep/index.d.ts'),
+        `export declare const dep: string;`,
+        'utf-8',
+      );
+
+      process.chdir(appRoot);
+
+      expect(() => main([])).not.toThrow();
+      expect(process.exitCode).toEqual(0);
+    });
   });
 });

@@ -2,6 +2,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 import { findSyntaxAboveTarget } from '../ecma-syntax';
+
 import { transpileEmittedJs } from './transpile';
 
 function findModernSyntax(code: string) {

@@ -109,6 +109,21 @@ describe(`ts`, () => {
       await expect((task as unknown as () => Promise<void>)()).rejects.toThrow('tsc failed');
       expect(listGeneratedTsConfigs()).toEqual([]);
     });
+
+    it(`should remove the transient tsconfig for a thenable (non-native-Promise) task result`, async () => {
+      createFile('tsconfig.json', JSON.stringify({ extends: '../../tsconfig.base.v8.json', compilerOptions: {} }));
+      createFile('package.json', JSON.stringify({ name: '@proj/one' }));
+
+      // a spec-compliant thenable which is not an `instanceof Promise` - eg what some task runners/zones return
+      const thenable = { then: (onFulfilled: (value: void) => void) => onFulfilled(undefined) };
+      tscTask.mockImplementationOnce(() => () => thenable);
+
+      const task = ts.commonjs();
+
+      await (task as unknown as () => Promise<void>)();
+
+      expect(listGeneratedTsConfigs()).toEqual([]);
+    });
   });
 
   describe(`#downlevel`, () => {
