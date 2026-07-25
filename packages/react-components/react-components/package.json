@@ -62,7 +62,7 @@
     "@fluentui/react-virtualizer": "9.0.0-alpha.114",
     "@fluentui/react-tree": "^9.16.3",
     "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1",
+    "@swc/helpers": "^0.5.23",
     "@fluentui/react-message-bar": "^9.7.3",
     "@fluentui/react-breadcrumb": "^9.4.4",
     "@fluentui/react-aria": "^9.17.13",

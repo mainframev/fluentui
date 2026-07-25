@@ -38,9 +38,16 @@ describe(`verifyPackaging`, () => {
       /** files reported by `npm pack --dry-run` on top of the ones written to disk */
       extraPackedFiles?: string[];
       omitFromPack?: string[];
+      dependencies?: Record<string, string>;
     } = {},
   ) {
-    const { tags = ['v8', 'ships-es5'], target = 'es2015', extraPackedFiles = [], omitFromPack = [] } = options;
+    const {
+      tags = ['v8', 'ships-es5'],
+      target = 'es2015',
+      extraPackedFiles = [],
+      omitFromPack = [],
+      dependencies,
+    } = options;
     const files = options.files ?? {
       'lib/index.js': es5Esm,
       'lib/index.d.ts': declaration,
@@ -50,7 +57,10 @@ describe(`verifyPackaging`, () => {
       'lib-amd/index.d.ts': declaration,
     };
 
-    createFile('package.json', JSON.stringify({ name: '@proj/one', version: '1.0.0', main: 'lib-commonjs/index.js' }));
+    createFile(
+      'package.json',
+      JSON.stringify({ name: '@proj/one', version: '1.0.0', main: 'lib-commonjs/index.js', dependencies }),
+    );
     createFile('project.json', JSON.stringify({ name: 'one', tags }));
     createFile('tsconfig.json', JSON.stringify({ compilerOptions: { target } }));
     createFile('CHANGELOG.md', '# changelog');
@@ -174,6 +184,7 @@ describe(`verifyPackaging`, () => {
 
   it(`should fail if an emitted helper import cannot be resolved`, () => {
     setup({
+      dependencies: { '@swc/helpers': '^0.5.23' },
       files: {
         'lib/index.js': [
           `import { _ as _call_super } from "@swc/helpers/_/__not_a_helper__";`,
@@ -190,8 +201,49 @@ describe(`verifyPackaging`, () => {
     );
   });
 
+  it(`should fail if the package imports runtime helpers without declaring "@swc/helpers"`, () => {
+    setup({
+      files: {
+        'lib/index.js': [
+          `import { _ as _class_call_check } from "@swc/helpers/_/_class_call_check";`,
+          `export var Greeter = function () {};`,
+        ].join('\n'),
+        'lib/index.d.ts': declaration,
+        'lib-commonjs/index.js': es5CommonJs,
+        'lib-commonjs/index.d.ts': declaration,
+      },
+    });
+
+    expect(() => verifyPackaging({ production: false })).toThrow(
+      /"lib" imports @swc\/helpers runtime helpers.*but the package does not declare "@swc\/helpers" as a dependency/s,
+    );
+  });
+
+  it(`should fail if the declared "@swc/helpers" range allows a version older than the one verified to provide the imported helpers`, () => {
+    setup({
+      // the installed/resolved copy of @swc/helpers is verified to provide `_class_call_check`,
+      // but this range's lower bound (0.5.1) predates it - a consumer resolving the bottom of the
+      // range would hit "MODULE_NOT_FOUND"
+      dependencies: { '@swc/helpers': '^0.5.1' },
+      files: {
+        'lib/index.js': [
+          `import { _ as _class_call_check } from "@swc/helpers/_/_class_call_check";`,
+          `export var Greeter = function () {};`,
+        ].join('\n'),
+        'lib/index.d.ts': declaration,
+        'lib-commonjs/index.js': es5CommonJs,
+        'lib-commonjs/index.d.ts': declaration,
+      },
+    });
+
+    expect(() => verifyPackaging({ production: false })).toThrow(
+      /declared "@swc\/helpers" dependency \("\^0\.5\.1"\) allows a version as old as/,
+    );
+  });
+
   it(`should accept helper imports which the declared dependency provides`, () => {
     setup({
+      dependencies: { '@swc/helpers': '^0.5.23' },
       files: {
         'lib/index.js': [
           `import { _ as _class_call_check } from "@swc/helpers/_/_class_call_check";`,

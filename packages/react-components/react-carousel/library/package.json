@@ -29,7 +29,7 @@
     "@fluentui/react-theme": "^9.2.1",
     "@fluentui/react-utilities": "^9.26.5",
     "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1",
+    "@swc/helpers": "^0.5.23",
     "embla-carousel": "^8.5.1",
     "embla-carousel-autoplay": "^8.5.1",
     "embla-carousel-fade": "^8.5.1"

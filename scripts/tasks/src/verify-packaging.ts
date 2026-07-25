@@ -4,6 +4,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
 import micromatch from 'micromatch';
+import * as semver from 'semver';
 import * as ts from 'typescript';
 
 import type { JustArgs } from './argv';
@@ -41,7 +42,9 @@ const runtimeHelperSpecifierRegex = /["'](@swc\/helpers\/[^"']+)["']/g;
 interface Options extends Partial<JustArgs> {}
 export function verifyPackaging(options: Options) {
   const cwd = process.cwd();
-  const packageJSON: { private?: boolean } = JSON.parse(readFileSync(path.join(cwd, 'package.json'), 'utf-8'));
+  const packageJSON: { private?: boolean; dependencies?: Record<string, string> } = JSON.parse(
+    readFileSync(path.join(cwd, 'package.json'), 'utf-8'),
+  );
 
   // no need to check if package is not being published yet
   if (packageJSON.private) {
@@ -112,7 +115,13 @@ export function verifyPackaging(options: Options) {
     assert.ok(micromatch(processedResultArr, 'lib-amd/**/*.(js|map)').length, 'ships amd');
   }
 
-  verifyArtifacts({ cwd, packedFiles: processedResultArr, isV8package, shipsES5 });
+  verifyArtifacts({
+    cwd,
+    packedFiles: processedResultArr,
+    isV8package,
+    shipsES5,
+    dependencies: packageJSON.dependencies ?? {},
+  });
 }
 
 /**
@@ -123,8 +132,14 @@ export function verifyPackaging(options: Options) {
  * and re-modularizes it. Asserting on the file list only would not notice if that step silently
  * stopped running, ran with the wrong target or left stale files behind.
  */
-function verifyArtifacts(options: { cwd: string; packedFiles: string[]; isV8package: boolean; shipsES5: boolean }) {
-  const { cwd, packedFiles, isV8package, shipsES5 } = options;
+function verifyArtifacts(options: {
+  cwd: string;
+  packedFiles: string[];
+  isV8package: boolean;
+  shipsES5: boolean;
+  dependencies: Record<string, string>;
+}) {
+  const { cwd, packedFiles, isV8package, shipsES5, dependencies } = options;
 
   if (!isV8package) {
     return;
@@ -151,7 +166,7 @@ function verifyArtifacts(options: { cwd: string; packedFiles: string[]; isV8pack
     }
 
     verifyDeclarationCoverage({ packedFiles, dir: artifact.dir, jsFiles });
-    verifyRuntimeHelpers({ cwd, dir: artifact.dir, jsFiles });
+    verifyRuntimeHelpers({ cwd, dir: artifact.dir, jsFiles, dependencies });
 
     if (artifact.dir === 'lib-amd' && libFiles.length > 0) {
       assert.deepEqual(
@@ -227,9 +242,22 @@ function allowedShapes(options: {
  * `@swc/core` grows/renames its helper set over time (eg `_create_super` -> `_call_super`), so the
  * emitted output and the declared runtime dependency can silently drift apart - the artifact would
  * then fail with `MODULE_NOT_FOUND` in a consumer's app instead of during the build.
+ *
+ * Resolving the imported specifiers only tells us that *some* installed copy of `@swc/helpers`
+ * provides them - in a workspace every package's dependency range is (mostly) hoisted to a single
+ * installed copy, so a regression of one package's declared range (eg back to `^0.5.1`) would stay
+ * unnoticed as long as some other package still pulls a newer one in. To catch that, the declared
+ * range's lower bound is checked too: it must allow, at minimum, the version that was just verified
+ * to provide every imported helper - otherwise a consumer whose install resolves the low end of the
+ * range would still hit the same `MODULE_NOT_FOUND`.
  */
-function verifyRuntimeHelpers(options: { cwd: string; dir: string; jsFiles: string[] }) {
-  const { cwd, dir, jsFiles } = options;
+function verifyRuntimeHelpers(options: {
+  cwd: string;
+  dir: string;
+  jsFiles: string[];
+  dependencies: Record<string, string>;
+}) {
+  const { cwd, dir, jsFiles, dependencies } = options;
   const helperSpecifiers = new Set<string>();
 
   for (const fileName of jsFiles) {
@@ -243,6 +271,18 @@ function verifyRuntimeHelpers(options: { cwd: string; dir: string; jsFiles: stri
       helperSpecifiers.add(match[1]);
     }
   }
+
+  if (helperSpecifiers.size === 0) {
+    return;
+  }
+
+  const declaredRange = dependencies['@swc/helpers'];
+
+  assert.ok(
+    declaredRange,
+    `"${dir}" imports @swc/helpers runtime helpers (${[...helperSpecifiers].join(', ')}), ` +
+      `but the package does not declare "@swc/helpers" as a dependency`,
+  );
 
   const unresolvable = [...helperSpecifiers].filter(specifier => {
     try {
@@ -258,6 +298,18 @@ function verifyRuntimeHelpers(options: { cwd: string; dir: string; jsFiles: stri
     [],
     `every runtime helper imported by "${dir}" is provided by the declared "@swc/helpers" dependency ` +
       `(raise the declared version range if the emitted helper set moved on)`,
+  );
+
+  const resolvedPackageJsonPath = require.resolve('@swc/helpers/package.json', { paths: [cwd] });
+  const resolvedVersion: string = JSON.parse(readFileSync(resolvedPackageJsonPath, 'utf-8')).version;
+  const minDeclaredVersion = semver.minVersion(declaredRange);
+
+  assert.ok(
+    minDeclaredVersion && semver.gte(minDeclaredVersion, resolvedVersion),
+    `"${dir}"'s declared "@swc/helpers" dependency ("${declaredRange}") allows a version as old as ` +
+      `"${minDeclaredVersion}", which predates "${resolvedVersion}" - the version that was just verified to ` +
+      `provide every imported helper. Raise the lower bound of the declared range so a consumer resolving the ` +
+      `bottom of the range does not hit "MODULE_NOT_FOUND".`,
   );
 }
 

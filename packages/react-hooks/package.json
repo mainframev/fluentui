@@ -21,7 +21,7 @@
     "@fluentui/react-window-provider": "^2.3.2",
     "@fluentui/set-version": "^8.2.24",
     "@fluentui/utilities": "^8.17.2",
-    "@swc/helpers": "^0.5.1",
+    "@swc/helpers": "^0.5.23",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -15,7 +15,7 @@
     "lint": "just-scripts lint"
   },
   "dependencies": {
-    "@swc/helpers": "^0.5.1",
+    "@swc/helpers": "^0.5.23",
     "loader-utils": "^2.0.0",
     "tslib": "^2.1.0"
   },

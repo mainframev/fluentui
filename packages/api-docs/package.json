@@ -19,7 +19,7 @@
   "dependencies": {
     "@microsoft/api-extractor-model": "7.31.2",
     "@microsoft/tsdoc": "0.15.1",
-    "@swc/helpers": "^0.5.1",
+    "@swc/helpers": "^0.5.23",
     "fs-extra": "^8.1.0"
   }
 }

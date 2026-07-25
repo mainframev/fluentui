@@ -33,7 +33,7 @@
     "@fluentui/keyboard-keys": "^9.0.8",
     "@fluentui/react-field": "^9.5.3",
     "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.23"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

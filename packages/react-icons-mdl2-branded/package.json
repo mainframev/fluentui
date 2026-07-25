@@ -23,7 +23,7 @@
   "dependencies": {
     "@fluentui/set-version": "^8.2.24",
     "@fluentui/react-icons-mdl2": "^1.4.7",
-    "@swc/helpers": "^0.5.1",
+    "@swc/helpers": "^0.5.23",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
