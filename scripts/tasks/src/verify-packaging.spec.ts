@@ -237,7 +237,7 @@ describe(`verifyPackaging`, () => {
     });
 
     expect(() => verifyPackaging({ production: false })).toThrow(
-      /declared "@swc\/helpers" dependency \("\^0\.4\.0"\) does not accept "0\.5\.23"/,
+      /declared "@swc\/helpers" dependency \("\^0\.4\.0"\) permits versions older than "0\.5\.23"/,
     );
   });
 
@@ -258,10 +258,7 @@ describe(`verifyPackaging`, () => {
     expect(() => verifyPackaging({ production: false })).not.toThrow();
   });
 
-  it(`should accept a declared range whose floor predates the resolved version, as long as the range still covers it`, () => {
-    // a declared range like "^0.5.1" covers the actually resolved "0.5.23" helper version even though
-    // its lower bound is older - this must not be flagged as an error, otherwise every compatible
-    // "@swc/helpers" bump would break every package that imports runtime helpers
+  it(`should fail if the declared range permits helper versions older than the required floor`, () => {
     setup({
       dependencies: { '@swc/helpers': '^0.5.1' },
       files: {
@@ -275,7 +272,9 @@ describe(`verifyPackaging`, () => {
       },
     });
 
-    expect(() => verifyPackaging({ production: false })).not.toThrow();
+    expect(() => verifyPackaging({ production: false })).toThrow(
+      /declared "@swc\/helpers" dependency \("\^0\.5\.1"\) permits versions older than "0\.5\.23"/,
+    );
   });
 
   it(`should fail if a module ships without its declaration`, () => {

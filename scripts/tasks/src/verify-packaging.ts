@@ -302,13 +302,20 @@ function verifyRuntimeHelpers(options: {
 
   const resolvedPackageJsonPath = require.resolve('@swc/helpers/package.json', { paths: [cwd] });
   const resolvedVersion: string = JSON.parse(readFileSync(resolvedPackageJsonPath, 'utf-8')).version;
+  const minimumHelpersVersion = '0.5.23';
+  const minimumDeclaredVersion = semver.minVersion(declaredRange);
 
   assert.ok(
-    // `includePrerelease` so a declared range like "^0.5.1" also accepts a resolved prerelease
-    // (e.g. "0.5.2-nightly.0") of the same line, instead of rejecting it purely for being a prerelease.
+    minimumDeclaredVersion && semver.gte(minimumDeclaredVersion, minimumHelpersVersion),
+    `"${dir}"'s declared "@swc/helpers" dependency ("${declaredRange}") permits versions older than ` +
+      `"${minimumHelpersVersion}", which do not provide every helper emitted by the current SWC transform. ` +
+      `Raise the declared range floor to at least "${minimumHelpersVersion}".`,
+  );
+
+  assert.ok(
     semver.satisfies(resolvedVersion, declaredRange, { includePrerelease: true }),
     `"${dir}"'s declared "@swc/helpers" dependency ("${declaredRange}") does not accept "${resolvedVersion}" - ` +
-      `the version that was just verified to provide every imported helper. Widen/raise the declared range so ` +
+      `the installed version that was just verified to provide every imported helper. Widen the declared range so ` +
       `it actually covers the resolved "@swc/helpers" version.`,
   );
 }
