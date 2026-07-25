@@ -247,9 +247,10 @@ function allowedShapes(options: {
  * provides them - in a workspace every package's dependency range is (mostly) hoisted to a single
  * installed copy, so a regression of one package's declared range (eg back to `^0.5.1`) would stay
  * unnoticed as long as some other package still pulls a newer one in. To catch that, the declared
- * range's lower bound is checked too: it must allow, at minimum, the version that was just verified
- * to provide every imported helper - otherwise a consumer whose install resolves the low end of the
- * range would still hit the same `MODULE_NOT_FOUND`.
+ * range's lower bound must be at least 0.5.23, the first repository-supported version that provides
+ * `_call_super` and the other helpers emitted by the current transform. The installed version is
+ * checked separately against the declared range. When SWC starts emitting a helper introduced after
+ * 0.5.23, raise this floor together with the repository-wide dependency range.
  */
 function verifyRuntimeHelpers(options: {
   cwd: string;
