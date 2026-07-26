@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import * as path from 'path';
 
 import type { ExtractorMessageCategory, ExtractorResult } from '@microsoft/api-extractor';
@@ -6,10 +5,12 @@ import { workspaceRoot } from '@nx/devkit';
 import chalk from 'chalk';
 import { isCI } from 'ci-info';
 import * as glob from 'glob';
-import { ApiExtractorOptions, TaskFunction, apiExtractorVerifyTask, logger, series, task } from 'just-scripts';
+import type { ApiExtractorOptions, TaskFunction } from 'just-scripts';
+import { apiExtractorVerifyTask, logger, series, task } from 'just-scripts';
 import type * as ApiExtractorTypes from 'just-scripts/src/tasks/apiExtractorTypes';
 
 import { getJustArgv } from './argv';
+import { assertSelfContainedDtsRollups } from './dts-rollup';
 import { getTsPathAliasesApiExtractorConfig, getTsPathAliasesConfig } from './utils';
 
 const compilerMessages = {
@@ -40,30 +41,6 @@ const messageCategories: CreateStrictDictionary<typeof ExtractorMessageCategory>
 };
 
 /**
- * Finds module specifiers that a `.d.ts` rollup must never contain.
- *
- * A rollup is published as a single self contained file, so every relative specifier within it points to a
- * module that does not exist for consumers.
- *
- * This happens when TypeScript declaration output references a type through an inline `import('./module')`
- * type: API Extractor resolves such references as external packages whenever a modern `moduleResolution`
- * (`bundler`, `node16`, `nodenext`) is used, instead of inlining the referenced declaration.
- * The fix belongs in the source file - annotate the exported value with a type that is imported statically.
- *
- * @see https://github.com/microsoft/rushstack/issues/3335
- */
-export function findRelativeImportsInDtsRollup(rollupContents: string): string[] {
-  const relativeModuleSpecifier = /^\s*(?:import|export)\b[^;'"]*?(?:from\s+)?['"](\.[^'"]*)['"]/gm;
-  const specifiers = new Set<string>();
-
-  for (const [, specifier] of rollupContents.matchAll(relativeModuleSpecifier)) {
-    specifiers.add(specifier);
-  }
-
-  return [...specifiers];
-}
-
-/**
  * @see https://api-extractor.com/pages/commands/api-extractor_run/
  */
 interface ApiExtractorCliRunCommandArgs {
@@ -80,6 +57,11 @@ export function apiExtractor(): TaskFunction {
     TS7016: [] as string[],
     TS2305: [] as string[],
   };
+  /**
+   * Shared across every config executed by this task so that a rollup emitted by more than one entry
+   * point config is only parsed once.
+   */
+  const scannedRollupPaths = new Set<string>();
 
   const args: ReturnType<typeof getJustArgv> & Partial<ApiExtractorCliRunCommandArgs> = getJustArgv();
   const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
@@ -162,17 +144,9 @@ export function apiExtractor(): TaskFunction {
   }
 
   function onResult(result: ExtractorResult, _extractorOptions: ApiExtractorTypes.IExtractorInvokeOptions): void {
-    assertSelfContainedDtsRollup(result);
-
-    if (!isUsingTsSolutionConfigs) {
-      return;
-    }
-
-    if (result.succeeded === true) {
-      return;
-    }
-
-    if (messages.TS7016.length) {
+    // surface the actionable api-extractor diagnostics first - the rollup guard reports a different class
+    // of problem and must not mask them
+    if (isUsingTsSolutionConfigs && result.succeeded !== true && messages.TS7016.length) {
       const errTitle = [
         chalk.bgRed.white.bold(`api-extractor | MISSING DEPENDENCY TYPE DECLARATIONS:`),
         chalk.red(`  Package dependencies are missing index.d.ts type definitions:`),
@@ -187,35 +161,9 @@ export function apiExtractor(): TaskFunction {
 
       logger.error(errTitle, logErr, '\n', logFix, '\n');
     }
+
+    assertSelfContainedDtsRollups(result.extractorConfig, { scannedFilePaths: scannedRollupPaths });
   }
-}
-
-function assertSelfContainedDtsRollup(result: ExtractorResult): void {
-  const { rollupEnabled, untrimmedFilePath, projectFolder } = result.extractorConfig;
-
-  if (!rollupEnabled || !untrimmedFilePath || !fs.existsSync(untrimmedFilePath)) {
-    return;
-  }
-
-  const relativeImports = findRelativeImportsInDtsRollup(fs.readFileSync(untrimmedFilePath, 'utf-8'));
-
-  if (relativeImports.length === 0) {
-    return;
-  }
-
-  throw new Error(
-    [
-      `api-extractor | BROKEN TYPE DECLARATION ROLLUP:`,
-      `  ${path.relative(workspaceRoot, untrimmedFilePath)} imports modules that are not published:`,
-      ...relativeImports.map(specifier => `    - ${specifier}`),
-      ``,
-      `  This happens when declaration output references a type through an inline \`import('./module')\` type.`,
-      `  🛠 FIX: annotate the affected export in ${path.relative(
-        workspaceRoot,
-        projectFolder,
-      )} with a statically imported type.`,
-    ].join('\n'),
-  );
 }
 
 function getConfig() {

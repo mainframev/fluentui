@@ -1,4 +1,4 @@
-import { type ExecutorContext, serializeJson } from '@nx/devkit';
+import { type ExecutorContext, logger, serializeJson } from '@nx/devkit';
 import {
   Extractor,
   type IExtractorInvokeOptions,
@@ -496,5 +496,183 @@ describe('GenerateApi Executor – export subpath resolution', () => {
     // primary (1) + utils (1) + wildcard sub-dirs (2)
     expect(ExtractorInvokeSpy).toHaveBeenCalledTimes(1 + 1 + subDirs.length);
     expect(output.success).toBe(true);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Self contained `.d.ts` rollup guard
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('GenerateApi Executor – self contained rollup guard', () => {
+  const selfContainedRollup = `export declare const Foo: number;\nexport { }\n`;
+  const brokenRollup = `export declare const Foo: import('./types').Foo;\nexport { }\n`;
+
+  let loggerErrorSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    loggerErrorSpy = jest.spyOn(logger, 'error').mockImplementation(() => {
+      /* silence expected error output */
+    });
+  });
+
+  afterEach(() => {
+    cleanup();
+    jest.restoreAllMocks();
+  });
+
+  /**
+   * Creates a package fixture whose primary api-extractor config emits explicit rollup variants, plus an
+   * optional `./utils` export subpath entry.
+   */
+  function prepareRollupFixture(config: {
+    dtsRollup: Record<string, unknown>;
+    namedExport?: string;
+    rollupContents: Record<string, string>;
+  }) {
+    const { paths, context } = prepareFixture('valid', {});
+    const { projRoot } = paths;
+
+    const exports: Record<string, unknown> = {
+      '.': { types: './dist/index.d.ts', import: './lib/index.js' },
+    };
+    if (config.namedExport) {
+      exports[`./${config.namedExport}`] = {
+        types: `./dist/${config.namedExport}/index.d.ts`,
+        import: `./lib/${config.namedExport}/index.js`,
+      };
+    }
+
+    writeFileSync(
+      join(projRoot, 'package.json'),
+      serializeJson({ name: '@proj/proj', types: 'dist/index.d.ts', exports }),
+      'utf-8',
+    );
+
+    writeFileSync(
+      join(projRoot, 'config', 'api-extractor.json'),
+      serializeJson({
+        mainEntryPointFilePath: '../dts/src/index.d.ts',
+        apiReport: { enabled: false },
+        docModel: { enabled: false },
+        dtsRollup: { enabled: true, ...config.dtsRollup },
+        tsdocMetadata: { enabled: false },
+      }),
+      'utf-8',
+    );
+
+    execSyncMock.mockImplementation(() => {
+      mkdirSync(join(projRoot, 'dts', 'src'), { recursive: true });
+      writeFileSync(join(projRoot, 'dts', 'src', 'index.d.ts'), 'export const root: 1;', 'utf-8');
+      if (config.namedExport) {
+        mkdirSync(join(projRoot, 'dts', 'src', config.namedExport), { recursive: true });
+        writeFileSync(join(projRoot, 'dts', 'src', config.namedExport, 'index.d.ts'), 'export const util: 1;', 'utf-8');
+      }
+    });
+
+    // api-extractor is mocked, so emit the rollups it would have written
+    jest.spyOn(Extractor, 'invoke').mockImplementation(() => {
+      for (const [relativePath, contents] of Object.entries(config.rollupContents)) {
+        const filePath = join(projRoot, relativePath);
+        mkdirSync(join(filePath, '..'), { recursive: true });
+        writeFileSync(filePath, contents, 'utf-8');
+      }
+      return { succeeded: true } as ExtractorResult;
+    });
+
+    return { paths, context };
+  }
+
+  it('fails when the untrimmed rollup imports an unpublished relative module', async () => {
+    const { context } = prepareRollupFixture({
+      dtsRollup: { untrimmedFilePath: '<projectFolder>/dist/index.d.ts' },
+      rollupContents: { 'dist/index.d.ts': brokenRollup },
+    });
+
+    const output = await executor(options, context);
+
+    expect(output.success).toBe(false);
+    expect(loggerErrorSpy.mock.calls.flat().join('\n')).toEqual(
+      expect.stringContaining('api-extractor | BROKEN TYPE DECLARATION ROLLUP'),
+    );
+    expect(loggerErrorSpy.mock.calls.flat().join('\n')).toEqual(expect.stringContaining('- ./types'));
+  });
+
+  it('fails when a trimmed rollup variant imports an unpublished relative module', async () => {
+    const { context } = prepareRollupFixture({
+      dtsRollup: {
+        untrimmedFilePath: '<projectFolder>/dist/index.d.ts',
+        publicTrimmedFilePath: '<projectFolder>/dist/index.public.d.ts',
+      },
+      rollupContents: {
+        'dist/index.d.ts': selfContainedRollup,
+        'dist/index.public.d.ts': brokenRollup,
+      },
+    });
+
+    const output = await executor(options, context);
+
+    expect(output.success).toBe(false);
+    expect(loggerErrorSpy.mock.calls.flat().join('\n')).toEqual(
+      expect.stringContaining(join('dist', 'index.public.d.ts') + ' imports modules that are not published'),
+    );
+  });
+
+  it('fails when an export subpath rollup imports an unpublished relative module', async () => {
+    const { context } = prepareRollupFixture({
+      dtsRollup: { untrimmedFilePath: '<projectFolder>/dist/index.d.ts' },
+      namedExport: 'utils',
+      rollupContents: {
+        'dist/index.d.ts': selfContainedRollup,
+        'dist/utils/index.d.ts': brokenRollup,
+      },
+    });
+
+    const output = await executor({ ...options, exportSubpaths: true }, context);
+
+    expect(output.success).toBe(false);
+    expect(loggerErrorSpy.mock.calls.flat().join('\n')).toEqual(
+      expect.stringContaining(join('dist', 'utils', 'index.d.ts') + ' imports modules that are not published'),
+    );
+  });
+
+  it('succeeds when every generated rollup variant is self contained', async () => {
+    const { context } = prepareRollupFixture({
+      dtsRollup: {
+        untrimmedFilePath: '<projectFolder>/dist/index.d.ts',
+        publicTrimmedFilePath: '<projectFolder>/dist/index.public.d.ts',
+        betaTrimmedFilePath: '<projectFolder>/dist/index.beta.d.ts',
+      },
+      namedExport: 'utils',
+      rollupContents: {
+        'dist/index.d.ts': selfContainedRollup,
+        'dist/index.public.d.ts': selfContainedRollup,
+        'dist/index.beta.d.ts': selfContainedRollup,
+        'dist/utils/index.d.ts': selfContainedRollup,
+      },
+    });
+
+    const output = await executor({ ...options, exportSubpaths: true }, context);
+
+    expect(loggerErrorSpy).not.toHaveBeenCalled();
+    expect(output.success).toBe(true);
+  });
+
+  it('surfaces api-extractor diagnostics and skips the rollup guard when extraction fails', async () => {
+    const { context } = prepareRollupFixture({
+      dtsRollup: { untrimmedFilePath: '<projectFolder>/dist/index.d.ts' },
+      rollupContents: { 'dist/index.d.ts': brokenRollup },
+    });
+
+    jest.spyOn(Extractor, 'invoke').mockImplementation(() => {
+      return { succeeded: false, errorCount: 2, warningCount: 1 } as ExtractorResult;
+    });
+
+    const output = await executor(options, context);
+
+    expect(output.success).toBe(false);
+    expect(loggerErrorSpy).toHaveBeenCalledWith('API Extractor completed with 2 errors and 1 warnings');
+    expect(loggerErrorSpy.mock.calls.flat().join('\n')).not.toEqual(
+      expect.stringContaining('BROKEN TYPE DECLARATION ROLLUP'),
+    );
   });
 });

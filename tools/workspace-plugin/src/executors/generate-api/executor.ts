@@ -7,6 +7,7 @@ import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-ext
 import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
 import { createTsConfigWithoutPathAliases, measureEnd, measureStart } from '../../utils';
+import { assertSelfContainedDtsRollups } from './lib/dts-rollup';
 import { isCI, verboseLog } from './lib/shared';
 import { getExportSubpathConfigs } from './lib/utils';
 
@@ -33,8 +34,14 @@ async function runGenerateApi(options: NormalizedOptions, context: ExecutorConte
     return false;
   }
 
+  /**
+   * Shared across every `Extractor.invoke` of this run so that a rollup emitted by more than one entry
+   * point config is only parsed once.
+   */
+  const scannedRollupPaths = new Set<string>();
+
   // Run primary api-extractor config
-  if (!apiExtractor({ configPath: options.config }, options, context)) {
+  if (!apiExtractor({ configPath: options.config }, options, context, scannedRollupPaths)) {
     return false;
   }
 
@@ -43,7 +50,7 @@ async function runGenerateApi(options: NormalizedOptions, context: ExecutorConte
     const subpathConfigs = getExportSubpathConfigs(options);
     for (const configObject of subpathConfigs) {
       verboseLog(`Running api-extractor for export subpath entry: ${configObject.mainEntryPointFilePath}`);
-      if (!apiExtractor({ configObject }, options, context)) {
+      if (!apiExtractor({ configObject }, options, context, scannedRollupPaths)) {
         return false;
       }
     }
@@ -117,6 +124,7 @@ function apiExtractor(
   configSource: { configPath: string } | { configObject: IConfigFile },
   options: NormalizedOptions,
   context: ExecutorContext,
+  scannedRollupPaths: Set<string>,
 ) {
   const { rawConfig, fullPath } = resolveConfigSource();
 
@@ -138,16 +146,33 @@ function apiExtractor(
     showDiagnostics: options.diagnostics,
   });
 
-  if (extractorResult.succeeded) {
-    verboseLog(`API Extractor completed successfully`);
-    return true;
+  if (!extractorResult.succeeded) {
+    // surface the actionable api-extractor diagnostics first - the rollup guard below reports a different
+    // class of problem and must not mask them
+    logger.error(
+      `API Extractor completed with ${extractorResult.errorCount} errors` +
+        ` and ${extractorResult.warningCount} warnings`,
+    );
+    return false;
   }
 
-  logger.error(
-    `API Extractor completed with ${extractorResult.errorCount} errors` +
-      ` and ${extractorResult.warningCount} warnings`,
-  );
-  return false;
+  verboseLog(`API Extractor completed successfully`);
+
+  return assertGeneratedRollups();
+
+  /**
+   * A `.d.ts` rollup is published as a single self contained file, so api-extractor "succeeding" is not
+   * enough - every rollup variant it emitted has to be verified to not reference unpublished modules.
+   */
+  function assertGeneratedRollups(): boolean {
+    try {
+      assertSelfContainedDtsRollups(extractorConfig, { scannedFilePaths: scannedRollupPaths });
+      return true;
+    } catch (err) {
+      logger.error(err instanceof Error ? err.message : String(err));
+      return false;
+    }
+  }
 
   /**
    * Resolves the config source into a raw IConfigFile and the full path used for token resolution.

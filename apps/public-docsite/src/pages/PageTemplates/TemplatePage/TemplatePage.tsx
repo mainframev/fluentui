@@ -103,7 +103,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           ),
 
           // Optionally wrap the section with a className. Use the `css` utility from Fluent UI to concatenate
-          // classNames that may be falsey.
+          // classNames.
           className: css(styles.customSection, 'customGlobalClassName'),
         },
       ];
