@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bound the \"typescript\" peerDependency to \">=5.0.0 <7.0.0\": TypeScript 5.x and 6.x are verified against the published rule types, while the unbounded \">= 5.0.0\" range also advertised support for the unreleased TypeScript 7 compiler",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}
