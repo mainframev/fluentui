@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "annotate `Provider` with its `React.ForwardRefExoticComponent<ProviderProps & React.RefAttributes<HTMLDivElement>>` type so the published type declaration rollup no longer imports the unpublished `./Provider.types` module",
+  "comment": "annotate `Provider` with its public forward-ref type, using `RefAttributes` from `@fluentui/react-utilities` to avoid leaking string refs and unpublished modules into the declaration rollup",
   "packageName": "@fluentui/react-headless-components-preview",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"

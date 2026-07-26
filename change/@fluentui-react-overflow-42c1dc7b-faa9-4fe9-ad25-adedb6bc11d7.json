@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "annotate `Overflow` with its `React.ForwardRefExoticComponent<OverflowProps & React.RefAttributes<unknown>>` type so the published type declaration rollup no longer imports the unpublished `./Overflow.types` module",
+  "comment": "annotate `Overflow` with its public forward-ref type, using `RefAttributes` from `@fluentui/react-utilities` to avoid leaking string refs and unpublished modules into the declaration rollup",
   "packageName": "@fluentui/react-overflow",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
