@@ -6,6 +6,7 @@
 
 import type { JSXElement } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
@@ -219,7 +220,7 @@ export interface CalendarPickerStyles {
 }
 
 // @public (undocumented)
-export interface CalendarProps extends React_2.RefAttributes<HTMLDivElement> {
+export interface CalendarProps extends RefAttributes<HTMLDivElement> {
     allFocusable?: boolean;
     calendarDayProps?: Partial<CalendarDayProps>;
     calendarMonthProps?: Partial<CalendarMonthProps>;

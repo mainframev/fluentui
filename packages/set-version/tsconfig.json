@@ -9,6 +9,7 @@
     "sourceMap": true,
     "importHelpers": true,
     "noImplicitAny": true,
+    "strict": false,
     "strictNullChecks": true,
     "moduleResolution": "bundler",
     "isolatedModules": true,

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "use `RefAttributes` from `@fluentui/react-utilities` instead of `React.RefAttributes`, which leaks string refs into the public `CalendarProps` contract",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

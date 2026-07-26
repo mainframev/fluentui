@@ -3,7 +3,7 @@
 import type { GriffelStyle } from '@griffel/react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ScatterChartProps, ScatterChartStyles } from './ScatterChart.types';
-import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { getMarkerLabelStyle, getTooltipStyle } from '../../utilities/index';
 
 /**

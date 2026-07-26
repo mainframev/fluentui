@@ -10,8 +10,13 @@
     "importHelpers": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
+    "strict": false,
     "strictNullChecks": true,
     "moduleResolution": "bundler",
+    // `markdown-to-jsx` only publishes complete type declarations behind its `import` export condition;
+    // its `require` declarations omit the `MarkdownToJSX` namespace. The docsite is bundled as ESM, so
+    // resolve package types through the `import` condition.
+    "customConditions": ["import"],
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "noImplicitThis": true,

@@ -1,3 +1,4 @@
+import type { RefAttributes } from '@fluentui/react-utilities';
 import type { ChartProps } from './index';
 import type { CartesianChartStyleProps } from '../CommonComponents/index';
 
@@ -7,7 +8,7 @@ export interface SparklineStyleProps extends CartesianChartStyleProps {}
  * Sparkline properties
  * {@docCategory SparklineChart}
  */
-export interface SparklineProps extends React.RefAttributes<HTMLDivElement> {
+export interface SparklineProps extends RefAttributes<HTMLDivElement> {
   /**
    * An array of chart data points for the Sparkline chart
    */

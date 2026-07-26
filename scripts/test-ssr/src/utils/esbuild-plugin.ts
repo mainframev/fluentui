@@ -1,7 +1,7 @@
 import * as path from 'node:path';
 
 import type { Plugin } from 'esbuild';
-import { loadConfig } from 'tsconfig-paths';
+import * as ts from 'typescript';
 
 function assertPathAliasesSetup(paths: Record<string, string[]>): never | void {
   for (const [key, mapping] of Object.entries(paths)) {
@@ -13,14 +13,40 @@ function assertPathAliasesSetup(paths: Record<string, string[]>): never | void {
   }
 }
 
-export function tsConfigPathsPlugin(options: { cwd: string }): Plugin {
-  const tsConfig = loadConfig(options.cwd);
+/**
+ * Since TypeScript 6 `baseUrl` is deprecated, so `compilerOptions.paths` entries are resolved relative to the
+ * config file that declares them. TypeScript exposes that directory on the parsed options as `pathsBasePath`.
+ */
+function loadPathAliases(cwd: string) {
+  const configFilePath = ts.findConfigFile(cwd, ts.sys.fileExists);
 
-  if (tsConfig.resultType === 'failed') {
-    throw new Error(tsConfig.message);
+  if (!configFilePath) {
+    throw new Error(`No tsconfig.json found for "${cwd}"`);
   }
 
-  const pathAliases = tsConfig.paths;
+  const parsedConfig = ts.getParsedCommandLineOfConfigFile(configFilePath, {}, {
+    ...ts.sys,
+    onUnRecoverableConfigFileDiagnostic: diagnostic => {
+      throw new Error(ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'));
+    },
+  } as ts.ParseConfigFileHost);
+
+  if (!parsedConfig) {
+    throw new Error(`Unable to parse "${configFilePath}"`);
+  }
+
+  const { paths = {}, pathsBasePath } = parsedConfig.options as ts.CompilerOptions & {
+    pathsBasePath?: string;
+  };
+
+  return {
+    paths: paths as Record<string, string[]>,
+    pathAliasesBasePath: pathsBasePath ?? path.dirname(configFilePath),
+  };
+}
+
+export function tsConfigPathsPlugin(options: { cwd: string }): Plugin {
+  const { paths: pathAliases, pathAliasesBasePath } = loadPathAliases(options.cwd);
 
   assertPathAliasesSetup(pathAliases);
 
@@ -34,7 +60,7 @@ export function tsConfigPathsPlugin(options: { cwd: string }): Plugin {
           return null;
         }
 
-        const absoluteImportPath = path.join(tsConfig.absoluteBaseUrl, pathMapping[0]);
+        const absoluteImportPath = path.resolve(pathAliasesBasePath, pathMapping[0]);
 
         return { path: absoluteImportPath };
       });

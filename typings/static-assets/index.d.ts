@@ -36,3 +36,9 @@ declare module '*.module.css' {
   const classes: { readonly [key: string]: string };
   export default classes;
 }
+
+/**
+ * Plain stylesheets are only ever imported for their side effects; the bundler injects them.
+ * Declared so `noUncheckedSideEffectImports` (default since TypeScript 6) can resolve them.
+ */
+declare module '*.css';

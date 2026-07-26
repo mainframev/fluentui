@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    // `jest.config.ts` is loaded through ts-node, which resolves this config and not `tsconfig.spec.json`.
+    // TypeScript 6 defaults `types` to `[]`, so Node globals have to be requested explicitly here.
+    "types": ["node"],
     "target": "ES2020",
     "noEmit": true,
     "isolatedModules": true,

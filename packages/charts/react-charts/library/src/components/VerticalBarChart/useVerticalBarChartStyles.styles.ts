@@ -3,7 +3,7 @@
 import type { GriffelStyle } from '@griffel/react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { VerticalBarChartProps, VerticalBarChartStyles } from '../../index';
-import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { HighContrastSelector } from '../../utilities/utilities';
 import { getBarLabelStyle, getTooltipStyle } from '../../utilities/index';

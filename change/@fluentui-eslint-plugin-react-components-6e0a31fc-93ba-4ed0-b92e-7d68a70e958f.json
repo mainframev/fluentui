@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "export the `RuleOptions` type from the package entry point and give the flat config `plugins` map an explicit index signature, so the generated type declarations stop referencing `../package.json` and unpublished module paths",
+  "packageName": "@fluentui/eslint-plugin-react-components",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

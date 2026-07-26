@@ -92,7 +92,6 @@ export class Tooltip extends FASTElement {
       return;
     }
 
-    // @ts-expect-error - Baseline 2024
     const anchorName = this.anchorElement.style.anchorName || `--${this.anchor}`;
 
     const describedBy = this.anchorElement.getAttribute('aria-describedby');
@@ -105,9 +104,7 @@ export class Tooltip extends FASTElement {
 
     if (AnchorPositioningCSSSupported) {
       if (!AnchorPositioningHTMLSupported) {
-        // @ts-expect-error - Baseline 2024
         this.anchorElement.style.anchorName = anchorName;
-        // @ts-expect-error - Baseline 2024
         this.style.positionAnchor = anchorName;
       }
       return;
@@ -211,7 +208,6 @@ export class Tooltip extends FASTElement {
     if (!this.anchorElement) {
       return;
     }
-    // @ts-expect-error - Baseline 2024
     const anchorName = this.anchorElement.style.anchorName || `--${this.anchor}`;
 
     // Provide style fallback for browsers that do not support anchor positioning

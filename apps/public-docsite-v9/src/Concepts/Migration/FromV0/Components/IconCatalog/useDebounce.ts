@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-export const useDebounce = (fn: (...args: unknown[]) => void, duration: number) => {
+export const useDebounce = <TArgs extends unknown[]>(fn: (...args: TArgs) => void, duration: number) => {
   const timeoutRef = React.useRef(0);
 
   return React.useCallback(
-    (...args: unknown[]) => {
+    (...args: TArgs) => {
       // eslint-disable-next-line @nx/workspace-no-restricted-globals
       window.clearTimeout(timeoutRef.current);
       // eslint-disable-next-line @nx/workspace-no-restricted-globals

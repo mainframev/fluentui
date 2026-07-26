@@ -291,7 +291,7 @@ function getPackageStoriesGlob(options) {
   function getMetadata(
     /** @type {string}*/ packageName,
     /** @type {ReturnType<typeof getAllProjects>}*/ allProjects,
-    /** @type {Partial<{throwIfNotFound:boolean}>}*/ _options,
+    /** @type {Partial<{throwIfNotFound:boolean}>}*/ _options = {},
   ) {
     const { throwIfNotFound = true } = { ..._options };
     const metadata = allProjects.get(packageName);

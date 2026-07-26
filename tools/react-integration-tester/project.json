@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "tools/react-integration-tester/src",
   "projectType": "library",
+  "implicitDependencies": ["!eslint-plugin"],
   "release": {
     "version": {
       "generatorOptions": {

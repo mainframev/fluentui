@@ -11,6 +11,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noImplicitAny": true,
+    "strict": false,
     "strictNullChecks": true,
     "moduleResolution": "bundler",
     "preserveConstEnums": true,

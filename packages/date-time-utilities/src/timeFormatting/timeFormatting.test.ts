@@ -11,7 +11,7 @@ describe('timeFormatting', () => {
    * thus it will be determined on users physical location - making the test non-deterministic
    *
    */
-  const toLocaleTimeStringMock: (locales?: string | string[], options?: Intl.DateTimeFormatOptions) => string = (
+  const toLocaleTimeStringMock: (locales?: Intl.LocalesArgument, options?: Intl.DateTimeFormatOptions) => string = (
     locales,
     options,
   ) => {

@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "tools/visual-regression-assert/src",
   "projectType": "library",
+  "implicitDependencies": ["!eslint-plugin"],
   "tags": ["platform:any", "tools"],
   "targets": {
     "build": {
