@@ -162,7 +162,12 @@ export function apiExtractor(): TaskFunction {
       logger.error(errTitle, logErr, '\n', logFix, '\n');
     }
 
-    assertSelfContainedDtsRollups(result.extractorConfig, { scannedFilePaths: scannedRollupPaths });
+    // matches the vNext `generate-api` executor: the rollup guard reports a different class of problem
+    // than API Extractor's own diagnostics, so it must only run once API Extractor itself succeeded -
+    // otherwise a rollup guard failure would mask (or be masked by) the real API Extractor errors above.
+    if (result.succeeded === true) {
+      assertSelfContainedDtsRollups(result.extractorConfig, { scannedFilePaths: scannedRollupPaths });
+    }
   }
 }
 

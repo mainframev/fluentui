@@ -1,4 +1,5 @@
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import * as os from 'node:os';
 import { join } from 'node:path';
 
 import { workspaceRoot } from '@nx/devkit';
@@ -132,20 +133,46 @@ describe(`findRelativeImportsInDtsRollup`, () => {
     expect(findRelativeImportsInDtsRollup(rollup)).toEqual([String.raw`.\Foo.types`, String.raw`..\shared\types`]);
   });
 
-  it(`should not report package or absolute specifiers`, () => {
+  it(`should not report package specifiers, 'node:' builtins, or URLs`, () => {
     const rollup = [
       `import { compiler } from 'markdown-to-jsx';`,
       `import type { Options } from '@fluentui/react-utilities';`,
       `import prettier from 'prettier/parser-html.js';`,
       `import node from 'node:path';`,
-      `import absolute from '/opt/generated/types';`,
+      `import url from 'https://example.com/module.js';`,
+      `import protocolRelative from '//example.com/module.js';`,
       `export declare const theme: import('@fluentui/react-theme').Theme;`,
     ].join('\n');
 
     expect(findRelativeImportsInDtsRollup(rollup)).toEqual([]);
   });
 
-  it(`should not report string literal types that look like relative specifiers`, () => {
+  it(`should report absolute filesystem specifiers`, () => {
+    const rollup = [
+      `import posix from '/opt/generated/types';`,
+      String.raw`import windows from 'C:\\generated\\types';`,
+      `export declare const alt: import('/opt/generated/alt').Alt;`,
+    ].join('\n');
+
+    expect(findRelativeImportsInDtsRollup(rollup)).toEqual([
+      '/opt/generated/types',
+      String.raw`C:\generated\types`,
+      '/opt/generated/alt',
+    ]);
+  });
+
+  it(`should report triple-slash reference path directives`, () => {
+    const rollup = [
+      `/// <reference path="./Breadcrumb.types.d.ts" />`,
+      `/// <reference path="/opt/generated/types.d.ts" />`,
+      `/// <reference types="react" />`,
+      `export declare const Foo: number;`,
+    ].join('\n');
+
+    expect(findRelativeImportsInDtsRollup(rollup)).toEqual(['./Breadcrumb.types.d.ts', '/opt/generated/types.d.ts']);
+  });
+
+  it(`should not report string literal types that look like relative or absolute specifiers`, () => {
     const rollup = [
       `export declare const numberFormat: '.2f';`,
       `export declare type Separator = '.' | '..' | './';`,
@@ -154,6 +181,7 @@ describe(`findRelativeImportsInDtsRollup`, () => {
       `export declare const doc: {`,
       `    value: '../not-an-import';`,
       `};`,
+      `export declare const rootPath: '/opt/generated/types';`,
     ].join('\n');
 
     expect(findRelativeImportsInDtsRollup(rollup)).toEqual([]);
@@ -174,7 +202,6 @@ describe(`findRelativeImportsInDtsRollup`, () => {
 });
 
 describe(`getGeneratedDtsRollupPaths / assertSelfContainedDtsRollups`, () => {
-  const fixturesRootDir = join(__dirname, '__fixtures__', 'dts-rollup');
   let projectFolder: string;
 
   const selfContained = `export declare const Foo: number;\nexport { }\n`;
@@ -199,12 +226,13 @@ describe(`getGeneratedDtsRollupPaths / assertSelfContainedDtsRollups`, () => {
   }
 
   beforeEach(() => {
-    mkdirSync(fixturesRootDir, { recursive: true });
-    projectFolder = mkdtempSync(join(fixturesRootDir, 'proj-'));
+    // written under the OS temp directory (never inside a source tree) so an interrupted run cannot leave
+    // fixture files behind for git/tsconfig to pick up
+    projectFolder = mkdtempSync(join(os.tmpdir(), 'dts-rollup-'));
   });
 
   afterEach(() => {
-    rmSync(fixturesRootDir, { recursive: true, force: true });
+    rmSync(projectFolder, { recursive: true, force: true });
   });
 
   it(`should return no paths when the rollup is disabled`, () => {

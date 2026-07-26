@@ -3,5 +3,16 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/tasks/src",
   "projectType": "library",
-  "tags": ["tools"]
+  "tags": ["tools"],
+  "targets": {
+    "test": {
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/tools/workspace-plugin/src/executors/generate-api/lib/dts-rollup.ts",
+        "{workspaceRoot}/tools/workspace-plugin/src/executors/generate-api/lib/dts-rollup.spec.ts"
+      ]
+    }
+  }
 }

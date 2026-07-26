@@ -60,8 +60,12 @@ function loadPathAliases(cwd: string) {
     throw new Error(`Unable to parse "${configFilePath}"`);
   }
 
-  if (parsedConfig.errors.length > 0) {
-    throw createConfigParseError(configFilePath, parsedConfig.errors);
+  // `parsedConfig.errors` is misleadingly named: TypeScript can also put `Warning`/`Suggestion` category
+  // diagnostics in it (e.g. deprecated compiler option notices), which must not fail the build.
+  const configErrors = parsedConfig.errors.filter(diagnostic => diagnostic.category === ts.DiagnosticCategory.Error);
+
+  if (configErrors.length > 0) {
+    throw createConfigParseError(configFilePath, configErrors);
   }
 
   const options = parsedConfig.options as ts.CompilerOptions & { pathsBasePath?: string };

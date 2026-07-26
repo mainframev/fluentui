@@ -40,5 +40,10 @@ declare module '*.module.css' {
 /**
  * Plain stylesheets are only ever imported for their side effects; the bundler injects them.
  * Declared so `noUncheckedSideEffectImports` (default since TypeScript 6) can resolve them.
+ *
+ * The empty module body is intentional: a shorthand ambient module (`declare module '*.css';` with no
+ * body) makes every export `any`, so a value/default/named import from a plain stylesheet would silently
+ * type-check. An explicit empty body still allows `import './foo.css';` for its side effect, but a
+ * value/default/named import fails to compile because the module declares no exports.
  */
-declare module '*.css';
+declare module '*.css' {}

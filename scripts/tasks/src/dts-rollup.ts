@@ -51,14 +51,33 @@ function isRelativeModuleSpecifier(moduleSpecifier: string): boolean {
 }
 
 /**
+ * Detects an absolute filesystem path - as opposed to a package specifier (`@fluentui/react-theme`), a
+ * `node:` builtin, or a URL (`https://...`) - none of which are portable outside of the machine/environment
+ * that generated the rollup.
+ */
+function isAbsoluteFilesystemModuleSpecifier(moduleSpecifier: string): boolean {
+  // POSIX absolute path, e.g. '/opt/generated/types'. A leading '//' is excluded because it denotes a
+  // protocol relative URL (`//example.com/...`), not a filesystem path.
+  if (moduleSpecifier.startsWith('/') && !moduleSpecifier.startsWith('//')) {
+    return true;
+  }
+
+  // Windows absolute path with a drive letter, e.g. 'C:\generated\types' or 'C:/generated/types'. A URL
+  // scheme such as 'https:' never matches because schemes are more than one character before the colon.
+  return /^[A-Za-z]:[\\/]/.test(moduleSpecifier);
+}
+
+/**
  * Finds module specifiers that a `.d.ts` rollup must never contain.
  *
- * A rollup is published as a single self contained file, so every relative specifier within it points to a
- * module that does not exist for consumers.
+ * A rollup is published as a single self contained file, so every relative or absolute-filesystem
+ * specifier within it points to a module that does not exist for consumers.
  *
  * This happens when TypeScript declaration output references a type through an inline `import('./module')`
  * type: API Extractor resolves such references as external packages whenever a modern `moduleResolution`
- * (`bundler`, `node16`, `nodenext`) is used, instead of inlining the referenced declaration.
+ * (`bundler`, `node16`, `nodenext`) is used, instead of inlining the referenced declaration. It can also
+ * happen through a triple-slash `/// <reference path="./module.d.ts" />` directive, which API Extractor
+ * does not rewrite either.
  * The fix belongs in the source file - annotate the exported value with a type that is imported statically.
  *
  * The rollup is parsed with the TypeScript compiler instead of scanned with a regular expression so that
@@ -77,6 +96,11 @@ export function findRelativeImportsInDtsRollup(rollupContents: string): string[]
   );
   const moduleSpecifiers = new Set<string>();
 
+  // `/// <reference path="./module.d.ts" />` - collected separately by the parser, not part of the AST
+  for (const reference of sourceFile.referencedFiles) {
+    addIfNotSelfContained(reference.fileName);
+  }
+
   visit(sourceFile);
 
   return [...moduleSpecifiers];
@@ -89,35 +113,39 @@ export function findRelativeImportsInDtsRollup(rollupContents: string): string[]
   function collectModuleSpecifier(node: ts.Node): void {
     // `import ... from './module'`, `export ... from './module'`, `export * from './module'`
     if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) {
-      addIfRelative(node.moduleSpecifier);
+      addIfNotSelfContainedNode(node.moduleSpecifier);
       return;
     }
 
     // `import('./module').Foo` - anywhere in a type position, exported or not
     if (ts.isImportTypeNode(node)) {
-      addIfRelative(ts.isLiteralTypeNode(node.argument) ? node.argument.literal : undefined);
+      addIfNotSelfContainedNode(ts.isLiteralTypeNode(node.argument) ? node.argument.literal : undefined);
       return;
     }
 
     // `import Foo = require('./module')`
     if (ts.isImportEqualsDeclaration(node) && ts.isExternalModuleReference(node.moduleReference)) {
-      addIfRelative(node.moduleReference.expression);
+      addIfNotSelfContainedNode(node.moduleReference.expression);
       return;
     }
 
     // `declare module './module' { ... }`
     if (ts.isModuleDeclaration(node)) {
-      addIfRelative(node.name);
+      addIfNotSelfContainedNode(node.name);
     }
   }
 
-  function addIfRelative(node: ts.Node | undefined): void {
+  function addIfNotSelfContainedNode(node: ts.Node | undefined): void {
     if (!node || !ts.isStringLiteralLike(node)) {
       return;
     }
 
-    if (isRelativeModuleSpecifier(node.text)) {
-      moduleSpecifiers.add(node.text);
+    addIfNotSelfContained(node.text);
+  }
+
+  function addIfNotSelfContained(moduleSpecifier: string): void {
+    if (isRelativeModuleSpecifier(moduleSpecifier) || isAbsoluteFilesystemModuleSpecifier(moduleSpecifier)) {
+      moduleSpecifiers.add(moduleSpecifier);
     }
   }
 }

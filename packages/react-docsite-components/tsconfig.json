@@ -13,17 +13,20 @@
     "strict": false,
     "strictNullChecks": true,
     "moduleResolution": "bundler",
-    // `markdown-to-jsx` only publishes complete type declarations behind its `import` export condition;
-    // its `require` declarations omit the `MarkdownToJSX` namespace. The docsite is bundled as ESM, so
-    // resolve package types through the `import` condition.
-    "customConditions": ["import"],
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "noImplicitThis": true,
     "outDir": "lib",
     "lib": ["es5", "dom", "es2015.promise", "ES2015.Symbol.WellKnown"],
     "types": ["webpack-env", "jest"],
-    "isolatedModules": true
+    "isolatedModules": true,
+    // `markdown-to-jsx` only publishes the `MarkdownToJSX` namespace behind its `import` export condition;
+    // its `require` declarations (`dist/index.cjs.d.ts`) omit the namespace re-export entirely. Map the
+    // specifier directly at its `import`-condition declaration file instead of flipping `customConditions`,
+    // which would resolve every other dependency's types through the `import` condition too.
+    "paths": {
+      "markdown-to-jsx": ["../../node_modules/markdown-to-jsx/dist/index.d.ts"]
+    }
   },
   "include": ["src"]
 }

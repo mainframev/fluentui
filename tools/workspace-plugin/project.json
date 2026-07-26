@@ -42,6 +42,15 @@
       "options": {
         "cwd": "{projectRoot}"
       }
+    },
+    "test": {
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/scripts/tasks/src/dts-rollup.ts",
+        "{workspaceRoot}/scripts/tasks/src/dts-rollup.spec.ts"
+      ]
     }
   }
 }
