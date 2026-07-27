@@ -23,11 +23,9 @@ const { readWorkspacePathAliases } = require('./ts-paths');
  */
 
 /**
- * @typedef {Cypress.ConfigOptions & {
- *   component: Cypress.Config['component'] & {
- *     devServer: { bundler: 'webpack'; framework: 'react'; webpackConfig: Configuration };
- *   };
- * }} BaseConfig
+ * `./index` (this package's public type entry point, `src/index.d.ts`) is the single source of truth
+ * for `BaseConfig` - re-declaring its shape here would let the two drift apart.
+ * @typedef {import('./index').BaseConfig} BaseConfig
  */
 
 const workspaceRoot = path.resolve(__dirname, '../../..');

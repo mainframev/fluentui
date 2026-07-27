@@ -13,6 +13,10 @@ export type BaseConfig = Cypress.ConfigOptions & {
 export declare const baseConfig: BaseConfig;
 export declare const baseWebpackConfig: Configuration;
 
+// =========== TS PATH ALIASES ==================
+
+export declare const readWorkspacePathAliases: typeof import('./ts-paths').readWorkspacePathAliases;
+
 // =========== BROWSER APIs ==================
 
 // TODO: Browser related APIs should be exposed via export maps or moved to separate package

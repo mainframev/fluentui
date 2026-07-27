@@ -21,6 +21,24 @@ function findGitRoot(cwd: string) {
 
   return output.toString().trim();
 }
+
+/**
+ * Normalizes a `path.relative`/`path.join` result to POSIX (`/`) separators.
+ *
+ * These relative paths get embedded verbatim into generated `tsconfig.json` `extends`/`include`/
+ * `exclude` entries and `require(...)` module specifiers inside the RIT templates (e.g.
+ * `` `${relativePathToProjectRoot}/tsconfig.json` ``). On Windows `path.relative`/`path.join` return
+ * backslash-separated strings, so splicing them straight into those templates produces backslashes
+ * mixed with the templates' hardcoded forward slashes - an invalid escape sequence in the generated
+ * JSON and a silently mangled string literal in the generated JS. Both `require` and TypeScript's
+ * module resolution accept POSIX separators on every platform (including Windows), so normalizing
+ * unconditionally here - rather than branching on the *host* OS running this code - keeps the
+ * generated output, and its snapshots, identical regardless of which OS produced them.
+ */
+export function toPosixPath(value: string): string {
+  return value.split('\\').join('/');
+}
+
 /**
  * Generate a unique name for running CLI commands
  * @param prefix
@@ -231,7 +249,7 @@ function prepareTsConfigTemplate(options: {
   const filesDefaults = [
     // TODO: this should be actually transformed from origin provided `compilerOptions.types`
     // ATM this is hardcoded and coupled to fluent repo
-    join(relative(options.projectPath, options.workspaceRoot), 'typings/static-assets/index.d.ts'),
+    toPosixPath(join(relative(options.projectPath, options.workspaceRoot), 'typings/static-assets/index.d.ts')),
   ];
 
   const tsConfig: TsConfig = parseJson(join(options.projectRoot, options.projectTsConfigPath));
@@ -242,16 +260,16 @@ function prepareTsConfigTemplate(options: {
   // if user config has exclude, always use those
   const excludePaths = tsConfig?.exclude ?? excludeDefaults;
   const relativeExcludePaths = excludePaths.map(excludePath => {
-    return relative(options.projectPath, join(options.projectRoot, excludePath));
+    return toPosixPath(relative(options.projectPath, join(options.projectRoot, excludePath)));
   });
 
   const relativeIncludePaths = tsConfig.include?.map(includePath => {
-    return relative(options.projectPath, join(options.projectRoot, includePath));
+    return toPosixPath(relative(options.projectPath, join(options.projectRoot, includePath)));
   });
 
   const relativeFilesPaths = (tsConfig.files ?? [])
     .map(includePath => {
-      return relative(options.projectPath, join(options.projectRoot, includePath));
+      return toPosixPath(relative(options.projectPath, join(options.projectRoot, includePath)));
     })
     .concat(filesDefaults);
 
@@ -436,10 +454,13 @@ export async function setup(
     react,
     configPath: options.configPath,
     tmpl: {
-      relativePathToProjectRoot: relative(projectPath, projectRoot),
-      relativePathToWorkspaceRoot: relative(projectPath, workspaceRoot),
+      // POSIX-normalized: these are spliced verbatim into generated JSON (`extends`) and JS
+      // `require(...)` string literals, where a raw Windows backslash is either an invalid JSON
+      // escape or silently drops characters in a JS string literal.
+      relativePathToProjectRoot: toPosixPath(relative(projectPath, projectRoot)),
+      relativePathToWorkspaceRoot: toPosixPath(relative(projectPath, workspaceRoot)),
       // path from project to its react root (where shared node_modules live)
-      usedNodeModulesDirRelative: relative(projectPath, reactRootPath),
+      usedNodeModulesDirRelative: toPosixPath(relative(projectPath, reactRootPath)),
       projectName: createdProjectName,
       react,
       tsconfig: prepareTsConfigTemplate({

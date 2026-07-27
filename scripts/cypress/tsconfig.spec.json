@@ -11,5 +11,11 @@
   // namespace (via `cypress`'s own ambient globals), which collides with `@types/jest`'s ambient
   // `expect`/`Assertion` globals if both end up in the same program. It isn't needed to type-check the
   // Jest specs themselves, so it's excluded here rather than widening this project's `types`.
-  "exclude": ["src/index.d.ts"]
+  //
+  // `src/index.test.js` is excluded for the same reason: it `require`s `./index`, which pulls in
+  // `./index.d.ts` as a dependency (not just as a root file), reintroducing the exact ambient
+  // collision above even though `index.d.ts` itself is excluded - `@ts-nocheck` on the test file does
+  // not help, because the collision comes from both ambient global namespaces sharing one Program,
+  // not from checking the test file's own contents.
+  "exclude": ["src/index.d.ts", "src/index.test.js"]
 }

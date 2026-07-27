@@ -6,8 +6,7 @@ const ts = require('typescript');
 
 /**
  * @typedef {Object} WorkspacePathAliases
- * @property {string} absoluteBaseUrl directory every entry of {@link WorkspacePathAliases.paths} is resolved against
- * @property {Record<string, string[]>} paths raw `compilerOptions.paths` of the config
+ * @property {string} absoluteBaseUrl directory `paths` entries are resolved against
  */
 
 /** @type {import('typescript').FormatDiagnosticsHost} */
@@ -15,6 +14,24 @@ const diagnosticsHost = {
   getCanonicalFileName: fileName => fileName,
   getCurrentDirectory: () => ts.sys.getCurrentDirectory(),
   getNewLine: () => ts.sys.newLine,
+};
+
+/**
+ * Host passed to `parseJsonConfigFileContent`, deliberately restricted to what this module actually
+ * needs: `compilerOptions` (through an `extends` chain) and parse diagnostics. `readDirectory` is only
+ * used by TypeScript to expand `include`/`exclude`/`files` into the config's resulting file list, which
+ * this module never reads (`readWorkspacePathAliases` only returns `absoluteBaseUrl`) - answering it
+ * with `[]` skips enumerating the whole monorepo for every call. `fileExists`/`readFile` still delegate
+ * to the real filesystem (`ts.sys`) because they drive the `extends` chain resolution and parse
+ * diagnostics (e.g. TS5083 "Cannot read file" for a missing `extends` target).
+ *
+ * @type {import('typescript').ParseConfigHost}
+ */
+const parseConfigHost = {
+  useCaseSensitiveFileNames: ts.sys.useCaseSensitiveFileNames,
+  readDirectory: () => [],
+  fileExists: ts.sys.fileExists,
+  readFile: ts.sys.readFile,
 };
 
 /**
@@ -73,7 +90,7 @@ function readWorkspacePathAliases(tsConfigPath) {
 
   const parsedConfig = ts.parseJsonConfigFileContent(
     config,
-    ts.sys,
+    parseConfigHost,
     path.dirname(tsConfigPath),
     /* existingOptions */ undefined,
     // Required for `pathsBasePath` to be computed correctly through `extends` chains - without it
@@ -83,8 +100,15 @@ function readWorkspacePathAliases(tsConfigPath) {
 
   // `parsedConfig.errors` is misleadingly named: TypeScript can also put `Warning`/`Suggestion` category
   // diagnostics in it (e.g. deprecated compiler option notices), which must not fail alias resolution -
-  // only genuine `Error` category diagnostics may.
-  const configErrors = parsedConfig.errors.filter(diagnostic => diagnostic.category === ts.DiagnosticCategory.Error);
+  // only genuine `Error` category diagnostics may. TS18003 ("No inputs were found in config file ...")
+  // is filtered separately: it is a direct, expected artifact of `parseConfigHost.readDirectory` above
+  // always answering `[]` - every workspace config that relies on the default `include: ["**/*"]` (no
+  // explicit `files`) would otherwise fail here even though its `compilerOptions`/`paths` parsed fine.
+  const NO_INPUTS_FOUND_DIAGNOSTIC_CODE = 18003;
+  const configErrors = parsedConfig.errors.filter(
+    diagnostic =>
+      diagnostic.category === ts.DiagnosticCategory.Error && diagnostic.code !== NO_INPUTS_FOUND_DIAGNOSTIC_CODE,
+  );
 
   if (configErrors.length > 0) {
     throw createConfigParseError(tsConfigPath, configErrors);
@@ -96,7 +120,6 @@ function readWorkspacePathAliases(tsConfigPath) {
 
   return {
     absoluteBaseUrl: pathsBasePath ? path.resolve(pathsBasePath) : path.dirname(tsConfigPath),
-    paths: options.paths ?? {},
   };
 }
 

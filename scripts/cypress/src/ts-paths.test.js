@@ -97,15 +97,28 @@ describe('readWorkspacePathAliases', () => {
     fixture = undefined;
   });
 
-  it('resolves paths declared in an extended base config that has no baseUrl', () => {
+  it('resolves the base directory of paths declared in an extended base config that has no baseUrl', () => {
     fixture = prepareFixture();
 
     const result = readWorkspacePathAliases(fixture.paths.tsConfigPath);
 
-    expect(result).toEqual({
-      absoluteBaseUrl: fixture.paths.root,
-      paths: { '@proj/dep': ['./packages/dep/src/index.ts'] },
+    expect(result).toEqual({ absoluteBaseUrl: fixture.paths.root });
+  });
+
+  it('does not enumerate the workspace to resolve the base directory', () => {
+    // `readDirectory` backs `include`/`exclude`/`files` glob expansion, which this module never reads -
+    // a real filesystem walk here would be both wasted work and a footgun for monorepo-wide configs.
+    fixture = prepareFixture({
+      packageConfig: {
+        extends: '../../tsconfig.base.json',
+        compilerOptions: { noEmit: true },
+        // deliberately omit `include`/`files` so a real `readDirectory` would enumerate the fixture root
+      },
     });
+
+    const result = readWorkspacePathAliases(fixture.paths.tsConfigPath);
+
+    expect(result).toEqual({ absoluteBaseUrl: fixture.paths.root });
   });
 
   it('throws with formatted diagnostics when the config extends a missing file', () => {

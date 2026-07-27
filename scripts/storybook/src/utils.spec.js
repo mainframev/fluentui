@@ -6,12 +6,14 @@ const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
 const { stripIndents, workspaceRoot } = require('@nx/devkit');
 const semver = require('semver');
 const tmp = require('tmp');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 const {
   loadWorkspaceAddon,
   getPackageStoriesGlob,
   getImportMappingsForExportToSandboxAddon,
   processBabelLoaderOptions,
+  registerTsPaths,
 } = require('./utils');
 
 tmp.setGracefulCleanup();
@@ -219,6 +221,79 @@ describe(`utils`, () => {
 
         module.exports = { managerWebpack, managerEntries, config, ...preset };"
       `);
+    });
+  });
+
+  describe(`#registerTsPaths`, () => {
+    /**
+     * `TsconfigPathsPlugin`'s constructor eagerly reads `configFile` off disk, so a real fixture is
+     * required (an arbitrary/non-existent path throws synchronously before any of the assertions here
+     * are reached).
+     * @param {{compilerOptions?: Record<string, unknown>}} [overrides]
+     */
+    function writeTsConfigFixture(overrides = {}) {
+      const { name: rootDir } = tmp.dirSync({ prefix: 'sb-utils-register-ts-paths', unsafeCleanup: true });
+      const tsConfigPath = path.join(rootDir, 'tsconfig.json');
+      fs.writeFileSync(
+        tsConfigPath,
+        JSON.stringify({ compilerOptions: { paths: { '@proj/*': ['./src/*'] }, ...overrides.compilerOptions } }),
+        'utf-8',
+      );
+      return tsConfigPath;
+    }
+
+    /**
+     * `registerTsPaths` always sets `config.resolve.plugins`, but `Configuration['resolve']['plugins']`
+     * is typed as optional - this narrows that away for the assertions below instead of repeating an
+     * unsafe optional chain (`?.`) at every call site.
+     * @param {import('webpack').Configuration} config
+     */
+    function getRegisteredPlugins(config) {
+      if (!config.resolve || !config.resolve.plugins) {
+        throw new Error('expected registerTsPaths to have set config.resolve.plugins');
+      }
+      return config.resolve.plugins;
+    }
+
+    it(`registers a single TsconfigPathsPlugin instance on the webpack config`, () => {
+      const configFile = writeTsConfigFixture();
+      /** @type {import('webpack').Configuration} */
+      const config = {};
+
+      registerTsPaths({ config, configFile });
+
+      const plugins = getRegisteredPlugins(config);
+      expect(plugins).toHaveLength(1);
+      expect(plugins[0]).toBeInstanceOf(TsconfigPathsPlugin);
+      expect(/** @type {TsconfigPathsPlugin} */ (plugins[0]).baseUrl).toBeUndefined();
+    });
+
+    it(`threads an explicit baseUrl through to TsconfigPathsPlugin, backward compatibly (no baseUrl -> plugin's own fallback)`, () => {
+      const configFile = writeTsConfigFixture();
+      /** @type {import('webpack').Configuration} */
+      const config = {};
+
+      registerTsPaths({
+        config,
+        configFile,
+        baseUrl: '/workspace',
+      });
+
+      const plugin = /** @type {TsconfigPathsPlugin} */ (getRegisteredPlugins(config)[0]);
+      expect(plugin.baseUrl).toBe('/workspace');
+    });
+
+    it(`replaces a previously registered TsconfigPathsPlugin instead of stacking a second one`, () => {
+      const configFile = writeTsConfigFixture();
+      /** @type {import('webpack').Configuration} */
+      const config = {};
+
+      registerTsPaths({ config, configFile });
+      registerTsPaths({ config, configFile, baseUrl: '/workspace' });
+
+      const plugins = getRegisteredPlugins(config);
+      expect(plugins).toHaveLength(1);
+      expect(/** @type {TsconfigPathsPlugin} */ (plugins[0]).baseUrl).toBe('/workspace');
     });
   });
 
