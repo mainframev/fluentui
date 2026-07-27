@@ -3,6 +3,7 @@
 const { baseConfig, baseWebpackConfig } = require('@fluentui/scripts-cypress');
 const { createStorybookWebpackConfig } = require('@fluentui/scripts-webpack');
 
+/** @type {import('@fluentui/scripts-cypress').BaseConfig} */
 const config = { ...baseConfig };
 const v8webpackConfig = createStorybookWebpackConfig(baseWebpackConfig);
 

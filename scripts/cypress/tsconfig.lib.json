@@ -7,6 +7,6 @@
     "outDir": "../../dist/out-tsc",
     "types": ["node", "cypress"]
   },
-  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.spec.js", "**/*.test.js"],
   "include": ["./src/**/*.ts", "./src/**/*.js"]
 }

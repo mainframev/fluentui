@@ -365,6 +365,7 @@ describe('rit CLI e2e', () => {
       // Resolve dependencies from the shared react-version root folder (injected by CLI)
       const usedNodeModulesPath = join(__dirname, '..', 'node_modules');
 
+      /** @type {import('@fluentui/scripts-cypress').BaseConfig} */
       const config = { ...baseConfig };
 
       const specs = [

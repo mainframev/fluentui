@@ -55,10 +55,14 @@ by webpack/esbuild-loader and never touched by Cypress' `ts-node`.
 
 Path aliases for the bundler are wired explicitly by `scripts/cypress/src/ts-paths.js`, which
 resolves `paths` against the compiler reported `pathsBasePath` of `tsconfig.base.json` and hands
-that base to `tsconfig-paths-webpack-plugin`. Cypress' own `tsconfig-paths` registration (Node
-side) logs `Missing baseUrl in compilerOptions. tsconfig-paths will be skipped` for `baseUrl`-less
-(TypeScript 6) configs - that is inconsequential, the Cypress Node process resolves every workspace
-package through its Yarn workspace `node_modules` symlink.
+that base to `tsconfig-paths-webpack-plugin`. `pathsBasePath` is only populated correctly through
+`extends` chains when the config file's identity is passed to TypeScript's `parseJsonConfigFileContent`
+(as `configFileName`) - without it, `paths` declared in a shared base config resolve against the
+wrong directory. Cypress' own `tsconfig-paths` registration (Node side) does _not_ skip resolution
+just because `baseUrl` is missing - as of `tsconfig-paths@4.2` it only gives up when no
+`tsconfig.json` can be found at all, and otherwise anchors `paths` at the directory of the _nearest_
+config file instead of the one that declares them. That is inconsequential here - the Cypress Node
+process resolves every workspace package through its Yarn workspace `node_modules` symlink.
 
 ## Conformance Tests
 
