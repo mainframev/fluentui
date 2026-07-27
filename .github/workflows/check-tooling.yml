@@ -42,12 +42,9 @@ jobs:
       # pre-build react-jsx-runtime - as generate-api executor doesn't provide copy assets capability
       - run: yarn nx run react-jsx-runtime:build
 
-      - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@microsoft/fluentui-react-build' --kind standard --no-interactive
-        env:
-          # The generator forces a second install to link the new workspace. Dependencies and patches
-          # were prepared above, so rerunning root lifecycle scripts is unnecessary and crashes patch
-          # reapplication on Ubuntu.
-          YARN_IGNORE_SCRIPTS: 1
+      # The workflow validates generated files and follow-on generators after installing above.
+      # Avoid a redundant native dependency rebuild on the smaller Ubuntu runner.
+      - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@microsoft/fluentui-react-build' --kind standard --skip-install --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:react-component --project hello-world-preview --name Aiur --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world-preview --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project hello-world-preview --no-interactive

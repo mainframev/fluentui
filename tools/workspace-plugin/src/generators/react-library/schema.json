@@ -38,6 +38,11 @@
       "x-prompt": {
         "message": "What kind of react-components library do you wanna create?"
       }
+    },
+    "skipInstall": {
+      "type": "boolean",
+      "description": "Skip installing dependencies after generating the library",
+      "default": false
     }
   },
   "required": ["name", "owner"]

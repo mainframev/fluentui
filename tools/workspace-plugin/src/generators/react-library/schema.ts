@@ -18,4 +18,8 @@ export interface ReactLibraryGeneratorSchema {
    * v9 library kind either embracing converged patterns(standard) or using griffel only with old framework patterns(compat)
    */
   kind?: 'standard' | 'compat';
+  /**
+   * Skip installing dependencies after generating the library
+   */
+  skipInstall?: boolean;
 }
