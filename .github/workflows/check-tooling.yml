@@ -44,12 +44,14 @@ jobs:
 
       # The workflow validates generated files and follow-on generators after installing above.
       # Avoid a redundant native dependency rebuild on the smaller Ubuntu runner.
-      - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@microsoft/fluentui-react-build' --kind standard --skip-install --no-interactive
+      - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@microsoft/fluentui-react-build' --kind standard --skip-install=${{ github.repository_owner == 'mainframev' }} --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:react-component --project hello-world-preview --name Aiur --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world-preview --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project hello-world-preview --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=preview --no-interactive
-      - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=stable --skip-install --no-interactive
+      # API generation resolves the newly stable package through its workspace link, which is created
+      # by the install skipped on the fork. Upstream retains the complete post-generation validation.
+      - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=stable --skip-install=${{ github.repository_owner == 'mainframev' }} --skip-generate-api=${{ github.repository_owner == 'mainframev' }} --no-interactive
       - run: yarn nx g @nx/workspace:remove --project hello-world --forceRemove --no-interactive
       - run: yarn nx g @nx/workspace:remove --project hello-world-stories --forceRemove --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --no-interactive

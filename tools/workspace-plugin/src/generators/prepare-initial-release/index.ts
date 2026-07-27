@@ -243,7 +243,9 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
       message: `feat: add ${newPackage.npmName} to suite`,
       changeType: 'minor',
     });
-    generateApiMarkdownTask(tree, suiteProjectName);
+    if (!options.skipGenerateApi) {
+      generateApiMarkdownTask(tree, suiteProjectName);
+    }
   };
 
   async function updateProjectsThatUsedPreviewPackage() {
