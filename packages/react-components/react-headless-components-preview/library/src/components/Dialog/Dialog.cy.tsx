@@ -186,7 +186,9 @@ describe('Dialog', () => {
     cy.get('#open-popover-btn').should('have.focus');
 
     // Open Tooltip, wait for the tooltip to appear and then close it with Escape
-    cy.get(dialogTriggerCloseSelector).focus().wait(0).realType('{esc}');
+    cy.get(dialogTriggerCloseSelector).focus();
+    cy.get('[role="tooltip"]').should('be.visible');
+    cy.focused().realType('{esc}');
     cy.get(dialogSurfaceSelector).should('exist');
   });
 
