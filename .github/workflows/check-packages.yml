@@ -5,7 +5,8 @@ on:
 jobs:
   dependency-deduplication:
     runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'microsoft' }}
+    # upstream repo + the fork used to validate large migrations before they are opened upstream
+    if: ${{ github.repository_owner == 'microsoft' || github.repository_owner == 'mainframev' }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -38,7 +39,8 @@ jobs:
 
   dependency-mismatches:
     runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'microsoft' }}
+    # upstream repo + the fork used to validate large migrations before they are opened upstream
+    if: ${{ github.repository_owner == 'microsoft' || github.repository_owner == 'mainframev' }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -65,7 +67,8 @@ jobs:
 
   change-files:
     runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'microsoft' }}
+    # upstream repo + the fork used to validate large migrations before they are opened upstream
+    if: ${{ github.repository_owner == 'microsoft' || github.repository_owner == 'mainframev' }}
     steps:
       - uses: actions/checkout@v6
         with:

@@ -14,11 +14,14 @@ env:
 
 jobs:
   check-tools:
-    if: ${{ github.repository_owner == 'microsoft' }}
+    # upstream repo + the fork used to validate large migrations before they are opened upstream
+    if: ${{ github.repository_owner == 'microsoft' || github.repository_owner == 'mainframev' }}
     strategy:
       matrix:
+        # both are GitHub hosted runners, no change needed for fork validation
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v6
         with:
