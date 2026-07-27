@@ -18,4 +18,8 @@ export interface ReleasePackageGeneratorSchema {
    * Skip installing dependencies after preparing the release
    */
   skipInstall?: boolean;
+  /**
+   * Skip generating API documentation after preparing a stable release
+   */
+  skipGenerateApi?: boolean;
 }
