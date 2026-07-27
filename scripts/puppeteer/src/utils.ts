@@ -4,16 +4,20 @@ import type { LaunchOptions } from './types';
 
 export async function launch(options: LaunchOptions = {}) {
   const maxAttempts = 5;
+  const launchOptions =
+    process.platform === 'linux' && process.env.CI
+      ? { ...options, args: [...(options.args ?? []), '--no-sandbox', '--disable-setuid-sandbox'] }
+      : options;
 
   let attempt = 1;
 
   let browser: puppeteer.Browser | undefined;
 
-  console.log(`puppeteer: launching with settings: ${JSON.stringify(options)}`);
+  console.log(`puppeteer: launching with settings: ${JSON.stringify(launchOptions)}`);
 
   while (!browser) {
     try {
-      browser = await puppeteer.launch(options);
+      browser = await puppeteer.launch(launchOptions);
       console.log('puppeteer: launched...');
     } catch (err) {
       if (attempt === maxAttempts) {
