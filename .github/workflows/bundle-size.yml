@@ -8,15 +8,18 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  # Keep the upstream larger-runner tuning; leave one core free on the fork's Ubuntu runner.
+  NX_PARALLEL: ${{ github.repository_owner == 'mainframev' && '3' || '6' }}
   NX_VERBOSE_LOGGING: true
 
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
 jobs:
   bundle-size:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    # upstream repo + the fork used to validate large migrations before they are opened upstream
+    if: ${{ github.repository_owner == 'microsoft' || github.repository_owner == 'mainframev' }}
+    runs-on: ${{ github.repository_owner == 'mainframev' && 'ubuntu-latest' || 'macos-14-xlarge' }}
+    timeout-minutes: 180
     permissions:
       contents: 'read'
       actions: 'read'
@@ -51,9 +54,33 @@ jobs:
 
       - name: Compare bundle size with base
         if: ${{ github.event.pull_request.base.ref == 'master' }}
-        run: npx monosize compare-reports --branch=${{ github.event.pull_request.base.ref }} --output=markdown --quiet > ./monosize-report.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # passed via env (not inlined into the script) so nothing from the event payload is
+          # evaluated by the shell
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          REPOSITORY: ${{ github.repository }}
+          # base reports are read from the `microsoft/fluentui` "Bundle size Base" artifacts
+          # (see `storage` in monosize.config.mjs). A fork's GITHUB_TOKEN cannot read those, so a
+          # missing/unreachable baseline must not fail PR validation there - upstream keeps failing hard.
+          ALLOW_MISSING_BASE_REPORT: ${{ github.repository != 'microsoft/fluentui' }}
+        run: |
+          if npx monosize compare-reports --branch="$BASE_REF" --output=markdown --quiet > ./monosize-report.md; then
+            exit 0
+          fi
+
+          if [ "$ALLOW_MISSING_BASE_REPORT" != 'true' ]; then
+            echo "::error::'monosize compare-reports' failed."
+            exit 1
+          fi
+
+          echo "::warning::Bundle size comparison unavailable - the base report published by 'microsoft/fluentui' is not readable from '$REPOSITORY'. The bundle-size builds themselves passed."
+          {
+            printf '### 📦 Bundle size\n\n'
+            printf 'Bundle size **builds passed**, but no comparison could be produced.\n\n'
+            printf 'Baseline reports are published by the `Bundle size Base` workflow of '
+            printf '`microsoft/fluentui` and are not readable from `%s`.\n' "$REPOSITORY"
+          } > ./monosize-report.md
 
       - name: Save PR number
         if: ${{ github.event.pull_request.base.ref == 'master' }}

@@ -11,7 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  # Keep the upstream larger-runner tuning; limit memory-heavy Storybook/Playwright work on the fork.
+  NX_PARALLEL: ${{ github.repository_owner == 'mainframev' && '2' || '6' }}
   NX_VERBOSE_LOGGING: true
 
 permissions:
@@ -20,10 +21,12 @@ permissions:
 
 jobs:
   generate_vrt_screenshots:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    # upstream repo + the fork used to validate large migrations before they are opened upstream
+    if: ${{ github.repository_owner == 'microsoft' || github.repository_owner == 'mainframev' }}
+    # The fork validates screenshot generation on Ubuntu. Upstream stays on macOS to match its baseline.
+    runs-on: ${{ github.repository_owner == 'mainframev' && 'ubuntu-latest' || 'macos-14-xlarge' }}
     name: Generate screenshots
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v6
         with:
@@ -38,6 +41,14 @@ jobs:
         with:
           cache: 'yarn'
           node-version: '22'
+
+      # storybook builds + playwright browsers do not fit next to the preinstalled SDKs of the image
+      - name: Free up runner disk space
+        if: ${{ github.repository_owner == 'mainframev' }}
+        run: |
+          df -h /
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL || true
+          df -h /
 
       - run: yarn install --frozen-lockfile
       - run: yarn playwright install --with-deps

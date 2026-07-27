@@ -17,6 +17,11 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # NOTE: intentionally upstream only - uploading to the `fluentuipr` storage account requires the
+    # Azure OIDC credentials (`AZURE_CLIENT_ID`/`AZURE_TENANT_ID`/`AZURE_SUBSCRIPTION_ID`), which do
+    # not exist in forks. Keeping it skipped there (the dependent `comment` job is skipped with it)
+    # means PR validation is not failed by a missing deployment target - the website artifact itself
+    # is still built and validated by `pr-website-deploy.yml`.
     if: ${{ github.repository_owner == 'microsoft' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     outputs:
       pr_number: ${{ steps.pr_number.outputs.result }}

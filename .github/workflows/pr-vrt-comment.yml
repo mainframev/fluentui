@@ -6,12 +6,17 @@ on:
       - completed
 
 env:
-  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  # this workflow runs on `ubuntu-latest` = 4-core CPU / 16 GB of RAM
+  NX_PARALLEL: 4
   NX_VERBOSE_LOGGING: true
 
 jobs:
   run_vr_diff:
     runs-on: ubuntu-latest
+    # NOTE: intentionally upstream only - the VR approval CLI authenticates against Azure via OIDC
+    # (`AZURE_VRT_CLIENT_ID`/`AZURE_TENANT_ID`/`AZURE_SUBSCRIPTION_ID`) and writes to the shared
+    # baseline storage. Forks do not have those secrets, so this stays skipped there instead of
+    # failing PR validation - screenshot *generation* is still validated by `pr-vrt.yml`.
     if: ${{ github.repository_owner == 'microsoft' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     permissions:
       # necessary to write comments to the PR from the vr-approval-cli
@@ -27,7 +32,7 @@ jobs:
 
       # downloaded artifacts will contain screenshots from affected project including 'screenshots-report.json' which contains proper image mappings for affected project
       # - see @{link file://./../scripts/prepare-vr-screenshots-for-upload.js#45}
-      # - see @{link file://./pr-vrt.yml#56}
+      # - see @{link file://./pr-vrt.yml#80}
 
       - uses: actions/download-artifact@v7
         with:
