@@ -37,6 +37,11 @@
           }
         ]
       }
+    },
+    "skipInstall": {
+      "type": "boolean",
+      "description": "Skip installing dependencies after preparing the release",
+      "default": false
     }
   },
   "required": ["project", "phase"]
