@@ -221,6 +221,7 @@ export async function main(params: MainParams) {
 
   try {
     browser = await launch({
+      args: process.platform === 'linux' && process.env.CI ? ['--no-sandbox', '--disable-setuid-sandbox'] : undefined,
       ignoreDefaultArgs: [
         // If sidebars are hidden, they will have "0px" width. It's not the same as in a real browser
         // https://github.com/microsoft/fluentui/issues/27357
