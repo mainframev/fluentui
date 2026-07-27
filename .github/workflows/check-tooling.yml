@@ -10,6 +10,7 @@ on:
 env:
   __FORCE_API_MD_UPDATE__: true
   __FORCE_SNAPSHOT_UPDATE__: true
+  HUSKY: 0
   NX_VERBOSE_LOGGING: true
 
 jobs:
