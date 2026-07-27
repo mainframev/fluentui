@@ -9,10 +9,6 @@
     "experimentalDecorators": true,
     "strict": false,
     "moduleResolution": "bundler",
-    // Keep package.json "exports" resolution disabled here: some of the generated RIT stories still
-    // deep-import from `@fluentui/react-experiments/lib/*`, which isn't exposed through that
-    // package's "exports" map. Enabling this would make those (intentional) deep-import compatibility
-    // tests fail to resolve.
     "resolvePackageJsonExports": false,
     "isolatedModules": true
   },
