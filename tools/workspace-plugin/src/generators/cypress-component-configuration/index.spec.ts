@@ -23,7 +23,7 @@ describe(`cypress-component-configuration`, () => {
 
     await generator(tree, { project });
 
-    expect(tree.exists('apps/app-one/cypress.config.ts')).toBe(false);
+    expect(tree.exists('apps/app-one/cypress.config.js')).toBe(false);
   });
 
   it(`should setup cypress component testing for existing project`, async () => {
@@ -32,10 +32,12 @@ describe(`cypress-component-configuration`, () => {
 
     await generator(tree, { project });
 
-    expect(tree.read('packages/one/cypress.config.ts', 'utf-8')).toMatchInlineSnapshot(`
-      "import { baseConfig } from '@fluentui/scripts-cypress';
+    expect(tree.read('packages/one/cypress.config.js', 'utf-8')).toMatchInlineSnapshot(`
+      "// @ts-check
 
-      export default baseConfig;
+      const { baseConfig } = require('@fluentui/scripts-cypress');
+
+      module.exports = baseConfig;
       "
     `);
     expect(readJson(tree, 'packages/one/tsconfig.json').references).toEqual(

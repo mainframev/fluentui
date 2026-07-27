@@ -535,7 +535,7 @@ function buildE2eTarget(
   config: TaskBuilderConfig,
 ): TargetConfiguration | null {
   const hasCypress =
-    existsSync(join(projectRoot, 'cypress.config.ts')) && existsSync(join(projectRoot, 'tsconfig.cy.json'));
+    existsSync(join(projectRoot, 'cypress.config.js')) && existsSync(join(projectRoot, 'tsconfig.cy.json'));
   const hasPlaywright =
     existsSync(join(projectRoot, 'playwright.config.ts')) &&
     (existsSync(join(projectRoot, 'tsconfig.e2e.json')) ||
@@ -553,7 +553,7 @@ function buildE2eTarget(
       },
       inputs: [
         'default',
-        '{projectRoot}/cypress.config.ts',
+        '{projectRoot}/cypress.config.js',
         '!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?',
         { externalDependencies: ['cypress', '@cypress/react'] },
       ],
@@ -862,7 +862,7 @@ function buildReactIntegrationTesterProjectConfiguration(
   ): { hasTypeCheck: boolean; hasE2E: boolean; hasTest: boolean } {
     const defaults = {
       hasTypeCheck: storybookAdjacent || libraryWithStoriesAdj,
-      hasE2E: existsSync(join(projectRootPath, 'cypress.config.ts')) && !storybookAdjacent,
+      hasE2E: existsSync(join(projectRootPath, 'cypress.config.js')) && !storybookAdjacent,
       hasTest:
         (existsSync(join(projectRootPath, 'jest.config.js')) || existsSync(join(projectRootPath, 'jest.config.ts'))) &&
         !storybookAdjacent,

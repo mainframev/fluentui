@@ -9,6 +9,7 @@
     "strict": true,
     "skipLibCheck": true,
     "pretty": true,
+    "esModuleInterop": true,
     "typeRoots": ["node_modules/@types", "./typings"],
     "paths": {
       "@fluentui/babel-preset-global-context": ["./packages/react-components/babel-preset-global-context/src/index.ts"],

@@ -16,6 +16,19 @@ is not TypeScript 6 compatible. This branch adds `@swc-node/register` directly t
 `package.json` `devDependencies` so it is actually installed, which makes Nx pick it over the
 `ts-node` fallback and execute those files as SWC transpile-only instead.
 
+**Related CI setting:** Nx only picks SWC when `NX_PREFER_TS_NODE` is _not_ `true` (see
+`node_modules/nx/src/plugins/js/utils/register.js`). The variable used to be set in every GitHub
+workflow and in `.devops/templates/variables.yml`; it was removed there because the `ts-node`
+fallback it forces hardcodes `moduleResolution: node10` and therefore fails with TS5107 under
+TypeScript 6. Do not reintroduce it.
+
+**Related root tsconfig setting:** `tsconfig.base.json` spells out `"esModuleInterop": true`, which
+is already the TypeScript 6 default. `@swc-node/register@1.9.2` reads the raw `compilerOptions` and
+falls back to the pre TypeScript 6 default of `false` when the option is absent, which strips the
+interop wrappers and makes `import x from '<commonjs module>'` resolve to `undefined` in everything
+Nx executes (generators, executors, `verify-packaging`, ...). Covered by
+`scripts/package-manager/src/patches.spec.ts`.
+
 **What the patch changes:** `tsCompilerOptionsToSwcConfig()` maps the TypeScript `baseUrl` to SWC's
 `jsc.baseUrl`, which is the base every `paths` alias is resolved against. TypeScript 6 removed
 `baseUrl` and resolves `paths` relative to the tsconfig file which declares them, reporting that

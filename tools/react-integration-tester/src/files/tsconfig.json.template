@@ -13,7 +13,6 @@
     "skipLibCheck": true,
     "types": [],
     "typeRoots": ["<%= usedNodeModulesDirRelative %>/node_modules/@types"],
-    "baseUrl": ".",
     "paths": {
       "react/jsx-runtime": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/jsx-runtime.d.ts"],
       "react": ["<%= usedNodeModulesDirRelative %>/node_modules/@types/react/index.d.ts"],

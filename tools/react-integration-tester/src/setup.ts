@@ -260,7 +260,15 @@ function prepareTsConfigTemplate(options: {
 
   const target = tsConfig.compilerOptions?.target ?? 'ES2019';
   const lib = tsConfig.compilerOptions?.lib ?? ['ES2019', 'DOM'];
-  const moduleResolution = tsConfig.compilerOptions?.moduleResolution ?? 'node';
+  /**
+   * NOTE: `bundler` mirrors the workspace wide default (`tsconfig.base.json`). It has to be a
+   * modern resolution mode - TypeScript 6 rejects the previous `node`/node10 default with TS5107.
+   *
+   * The generated config declares no `baseUrl` for the very same reason (TS5101): TypeScript 6
+   * resolves `paths` relative to the config file which declares them, which is exactly what
+   * `baseUrl: '.'` used to express here.
+   */
+  const moduleResolution = tsConfig.compilerOptions?.moduleResolution ?? 'bundler';
 
   return {
     pathToProjectConfig: options.projectTsConfigPath,
@@ -479,13 +487,13 @@ export async function setup(
     renderTemplateToFile(join(__dirname, 'files', '.swcrc.template'), metadata.tmpl, join(projectPath, '.swcrc'));
   }
 
-  // 3) Create cypress.config.ts and tsconfig.cy.json from template with EJS (only if origin project has Cypress setup)
+  // 3) Create cypress.config.js and tsconfig.cy.json from template with EJS (only if origin project has Cypress setup)
   if (existsSync(join(projectRoot, templatePrepared.configs['e2e']))) {
     useCommands['e2e'] = templatePrepared.commands['e2e'];
     renderTemplateToFile(
-      join(__dirname, 'files', 'cypress.config.ts.template'),
+      join(__dirname, 'files', 'cypress.config.js.template'),
       metadata.tmpl,
-      join(projectPath, 'cypress.config.ts'),
+      join(projectPath, 'cypress.config.js'),
     );
     renderTemplateToFile(
       join(__dirname, 'files', 'tsconfig.cy.json.template'),

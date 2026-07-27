@@ -62,7 +62,7 @@
     "e2e": {
       "dependsOn": [],
       "cache": true,
-      "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
+      "inputs": ["default", "{projectRoot}/cypress.config.js", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
     },
     "lint": {
       "executor": "nx:run-commands",

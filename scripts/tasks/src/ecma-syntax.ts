@@ -11,17 +11,7 @@ import * as ts from 'typescript';
 
 export type EsTarget = 'es5' | 'es2015' | 'es2016' | 'es2017' | 'es2018' | 'es2019' | 'es2020' | 'es2021' | 'es2022';
 
-const targetOrder: EsTarget[] = [
-  'es5',
-  'es2015',
-  'es2016',
-  'es2017',
-  'es2018',
-  'es2019',
-  'es2020',
-  'es2021',
-  'es2022',
-];
+const targetOrder: EsTarget[] = ['es5', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022'];
 
 export interface EsFeature {
   /** syntax construct which was found, eg `ArrowFunction` */

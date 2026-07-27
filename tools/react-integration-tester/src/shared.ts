@@ -123,7 +123,7 @@ export function getMergedTemplate(
       commands: Record<SupportedCommand, string>;
       dependencies: Record<string, string>;
     }>(builtinPath),
-    configs: { e2e: 'cypress.config.ts', test: 'jest.config.js', 'type-check': 'tsconfig.lib.json' } as Record<
+    configs: { e2e: 'cypress.config.js', test: 'jest.config.js', 'type-check': 'tsconfig.lib.json' } as Record<
       SupportedCommand,
       string
     >,

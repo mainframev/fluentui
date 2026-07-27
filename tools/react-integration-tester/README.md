@@ -143,17 +143,17 @@ If you omit a property, the builtin default is used (both for the command and th
 | ---------- | ------------------------------------------------ | ----------------------------------------- |
 | test       | `jest --runInBand`                               | `jest.config.js`                          |
 | type-check | `tsc -p tsconfig.lib.json --pretty`              | `tsconfig.lib.json`                       |
-| e2e        | `cypress run` (exact args may vary per template) | `cypress.config.ts` (falls back to `.js`) |
+| e2e        | `cypress run` (exact args may vary per template) | `cypress.config.js`                       |
 
 ### Config file resolution & fallback
 
 When deciding whether to expose a script in the prepared project, RIT checks for the existence of the associated config file in the origin project:
 
 1. If your override provides `configPath`, that exact file must exist (otherwise the script is skipped).
-2. If no override is provided for `e2e` or `test`, RIT first looks for the TypeScript form (`cypress.config.ts`, `jest.config.ts`) only where applicable; for Jest we default to `jest.config.js`. For Cypress we attempt `cypress.config.ts` and, if missing, fall back to `cypress.config.js` automatically.
+2. If no override is provided for `e2e` or `test`, RIT uses the JavaScript form (`cypress.config.js`, `jest.config.js`). Cypress configs have to be JavaScript because Cypress loads them through its own bundled `ts-node`, which is not TypeScript 6 compatible (see `scripts/cypress/src/base.config.js`).
 3. For TypeScript (`type-check`), the presence of the referenced tsconfig (default `tsconfig.lib.json` unless you override) controls whether the `type-check` script is added.
 
-This means you can run in projects that still use `.js` Cypress config files without adding an override.
+This means you can point at a differently named config file by adding an override.
 
 ### Minimal config example (override command only)
 

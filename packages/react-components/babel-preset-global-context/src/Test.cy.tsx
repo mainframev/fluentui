@@ -1,5 +1,5 @@
 /*
- * These tests are run with the specific cypress.config.ts file
+ * These tests are run with the specific cypress.config.js file
  * in this project in order to consume @fluentui/babel-preset-global-context during bundling
  */
 
@@ -68,7 +68,7 @@ describe('babel-preset-global-context', () => {
   });
 
   // The contexts used in these tests should be ignored by babel preset
-  // configured in cypress.config.ts
+  // configured in cypress.config.js
   describe('untargeted packages', () => {
     const v1Foo = 'v1-foo';
     // eslint-disable-next-line @typescript-eslint/naming-convention

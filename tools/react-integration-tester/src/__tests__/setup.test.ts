@@ -153,7 +153,7 @@ describe('setup()', () => {
       JSON.stringify({ include: ['src/index.ts'], compilerOptions: { target: 'ES2020', lib: ['ES2020', 'DOM'] } }),
     );
     writeFileSync(join(fs.tempDir, 'jest.config.js'), 'module.exports = {};');
-    writeFileSync(join(fs.tempDir, 'cypress.config.ts'), 'export default {};');
+    writeFileSync(join(fs.tempDir, 'cypress.config.js'), 'module.exports = {};');
 
     mockGitRoot(fs.tempDir);
 
@@ -189,7 +189,7 @@ describe('setup()', () => {
       'tsconfig.json',
       'jest.config.js',
       '.swcrc',
-      'cypress.config.ts',
+      'cypress.config.js',
       'tsconfig.cy.json',
       'package.json',
     ];
