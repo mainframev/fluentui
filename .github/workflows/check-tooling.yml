@@ -49,7 +49,7 @@ jobs:
       - run: yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world-preview --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project hello-world-preview --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=preview --no-interactive
-      - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=stable --no-interactive
+      - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=stable --skip-install --no-interactive
       - run: yarn nx g @nx/workspace:remove --project hello-world --forceRemove --no-interactive
       - run: yarn nx g @nx/workspace:remove --project hello-world-stories --forceRemove --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --no-interactive
