@@ -37,6 +37,16 @@
           }
         ]
       }
+    },
+    "skipInstall": {
+      "type": "boolean",
+      "description": "Skip installing dependencies after preparing the release",
+      "default": false
+    },
+    "skipGenerateApi": {
+      "type": "boolean",
+      "description": "Skip generating API documentation after preparing a stable release",
+      "default": false
     }
   },
   "required": ["project", "phase"]

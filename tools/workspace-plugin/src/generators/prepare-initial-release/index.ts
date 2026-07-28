@@ -235,13 +235,17 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   }
 
   return (_tree: Tree) => {
-    installPackagesTask(tree, true);
+    if (!options.skipInstall) {
+      installPackagesTask(tree, true);
+    }
     generateChangefileTask(tree, newPackage.npmName, { message: 'feat: release stable', changeType: 'minor' });
     generateChangefileTask(tree, suiteNpmProjectName, {
       message: `feat: add ${newPackage.npmName} to suite`,
       changeType: 'minor',
     });
-    generateApiMarkdownTask(tree, suiteProjectName);
+    if (!options.skipGenerateApi) {
+      generateApiMarkdownTask(tree, suiteProjectName);
+    }
   };
 
   async function updateProjectsThatUsedPreviewPackage() {

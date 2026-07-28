@@ -40,6 +40,10 @@ export default async function (tree: Tree, schema: ReactLibraryGeneratorSchema) 
 
   await formatFiles(tree);
 
+  if (schema.skipInstall) {
+    return;
+  }
+
   return () => {
     installPackagesTask(
       tree,

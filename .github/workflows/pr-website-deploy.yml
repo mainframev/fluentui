@@ -8,16 +8,20 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
-  NX_PREFER_TS_NODE: true
+  # Keep the upstream larger-runner tuning; limit memory-heavy webpack work on the fork.
+  NX_PARALLEL: ${{ github.repository_owner == 'mainframev' && '2' || '6' }}
   NX_VERBOSE_LOGGING: true
 
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
 jobs:
   bundle:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: macos-14-xlarge
+    # upstream repo + the fork used to validate large migrations before they are opened upstream.
+    # NOTE: this job only *builds* the PR website artifact - uploading it to Azure happens in
+    # `pr-website-deploy-comment.yml`, which stays upstream only (needs Azure credentials).
+    if: ${{ github.repository_owner == 'microsoft' || github.repository_owner == 'mainframev' }}
+    runs-on: ${{ github.repository_owner == 'mainframev' && 'ubuntu-latest' || 'macos-14-xlarge' }}
+    timeout-minutes: 240
     permissions:
       contents: 'read'
       actions: 'read'
@@ -40,6 +44,14 @@ jobs:
       - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
       - name: NodeJS heap default size
         run: node -e 'console.log(v8.getHeapStatistics().heap_size_limit / 1024 / 1024 + " MB");'
+
+      # bundles + storybook builds of the whole workspace do not fit next to the preinstalled SDKs
+      - name: Free up runner disk space
+        if: ${{ github.repository_owner == 'mainframev' }}
+        run: |
+          df -h /
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL || true
+          df -h /
 
       - run: yarn install --frozen-lockfile
 
