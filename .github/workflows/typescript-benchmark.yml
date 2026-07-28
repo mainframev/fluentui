@@ -1,0 +1,55 @@
+name: TypeScript benchmark
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  type-check:
+    if: ${{ github.repository_owner == 'mainframev' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      NX_PARALLEL: 4
+      NX_VERBOSE_LOGGING: true
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          cache: yarn
+          node-version: 22
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Report TypeScript version
+        run: yarn tsc --version
+
+      - name: Run uncached workspace type-check
+        shell: bash
+        run: |
+          started_at=$(date +%s)
+          set +e
+          yarn nx run-many -t type-check --all --parallel="$NX_PARALLEL" --skip-nx-cache
+          status=$?
+          set -e
+          duration_seconds=$(($(date +%s) - started_at))
+
+          {
+            echo "## TypeScript type-check benchmark"
+            echo
+            echo "- Duration: ${duration_seconds} seconds"
+            echo "- Parallelism: ${NX_PARALLEL}"
+            echo "- Nx cache: disabled"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          exit "$status"
