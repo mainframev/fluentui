@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "bump the declared \"@swc/helpers\" runtime dependency floor to \"^0.5.23\": versions below it predate the \"_call_super\" helper `@swc/core` emits for downleveled classes, so a fresh install resolving the bottom of the previous \"^0.5.1\" range could hit \"MODULE_NOT_FOUND\"",
+  "comment": "Raise the @swc/helpers runtime dependency floor.",
   "packageName": "@fluentui/react-divider",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
