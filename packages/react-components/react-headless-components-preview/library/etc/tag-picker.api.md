@@ -7,11 +7,11 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { ListboxProps as ListboxProps_2 } from '@fluentui/react-combobox';
 import type { OptionGroupProps } from '@fluentui/react-combobox';
 import type { OptionGroupSlots } from '@fluentui/react-combobox';
-import { OptionGroupState } from '@fluentui/react-combobox';
+import type { OptionGroupState } from '@fluentui/react-combobox';
 import type { OptionProps as OptionProps_2 } from '@fluentui/react-combobox';
 import type { OptionSlots as OptionSlots_2 } from '@fluentui/react-combobox';
 import type { OptionState as OptionState_2 } from '@fluentui/react-combobox';
@@ -24,6 +24,7 @@ import { renderTagPickerGroup_unstable as renderTagPickerGroup } from '@fluentui
 import { renderTagPickerInput_unstable as renderTagPickerInput } from '@fluentui/react-tag-picker';
 import { renderTagPickerList_unstable as renderTagPickerList } from '@fluentui/react-tag-picker';
 import { renderTagPickerOption_unstable as renderTagPickerOption } from '@fluentui/react-tag-picker';
+import { renderOptionGroup_unstable as renderTagPickerOptionGroup } from '@fluentui/react-combobox';
 import type { Slot } from '@fluentui/react-utilities';
 import type { TagPickerBaseProps } from '@fluentui/react-tag-picker';
 import type { TagPickerButtonBaseState } from '@fluentui/react-tag-picker';
@@ -62,8 +63,7 @@ export { renderTagPickerList }
 
 export { renderTagPickerOption }
 
-// @public
-export const renderTagPickerOptionGroup: (state: OptionGroupState) => JSXElement;
+export { renderTagPickerOptionGroup }
 
 // @public
 export const TagPicker: {

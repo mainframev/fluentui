@@ -10,6 +10,8 @@ import {
 
 import descriptionMd from './TagPickerDescription.md';
 
+import { getBrowserSupportNotice } from '../shared/browserSupportNotice';
+
 export { Default } from './TagPickerDefault.stories';
 export { Filtering } from './TagPickerFiltering.stories';
 export { SecondaryAction } from './TagPickerSecondaryAction.stories';
@@ -25,7 +27,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, getBrowserSupportNotice('TagPicker')].join('\n'),
       },
     },
   },
