@@ -1,4 +1,5 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
+import type { TagGroupBaseProps } from '@fluentui/react-tags';
 import type { TagPickerGroupBaseState, TagPickerGroupSlots } from '@fluentui/react-tag-picker';
 
 export type { TagPickerGroupSlots };
@@ -6,7 +7,8 @@ export type { TagPickerGroupSlots };
 /**
  * TagPickerGroup Props
  */
-export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots>;
+export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots> &
+  Pick<TagGroupBaseProps, 'dismissible' | 'onDismiss'>;
 
 /**
  * State used in rendering the headless TagPickerGroup.

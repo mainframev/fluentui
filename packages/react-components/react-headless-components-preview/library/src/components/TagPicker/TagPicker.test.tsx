@@ -27,7 +27,9 @@ const renderTagPicker = (props: Partial<Pick<TagPickerProps, 'disabled' | 'posit
       </TagPickerControl>
       <TagPickerList>
         <TagPickerOption value="cat">Cat</TagPickerOption>
-        <TagPickerOption disabled value="ferret">Ferret</TagPickerOption>
+        <TagPickerOption disabled value="ferret">
+          Ferret
+        </TagPickerOption>
         <TagPickerOption value="dog">Dog</TagPickerOption>
       </TagPickerList>
     </TagPicker>,

@@ -11,7 +11,11 @@ import { TagPickerOption } from './TagPickerOption';
 describe('TagPickerOption type contract', () => {
   it('accepts disabled as a valid prop (was missing before the fix)', () => {
     // This must NOT be annotated @ts-expect-error: disabled is a valid public prop.
-    const el = <TagPickerOption value="cat" disabled>Cat</TagPickerOption>;
+    const el = (
+      <TagPickerOption value="cat" disabled>
+        Cat
+      </TagPickerOption>
+    );
     expect(el).toBeDefined();
   });
 

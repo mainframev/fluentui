@@ -27,7 +27,12 @@ export type { TagPickerInputProps, TagPickerInputSlots, TagPickerInputState } fr
 export { TagPickerButton, renderTagPickerButton, useTagPickerButton } from './TagPickerButton';
 export type { TagPickerButtonProps, TagPickerButtonSlots, TagPickerButtonState } from './TagPickerButton';
 
-export { TagPickerGroup, renderTagPickerGroup, useTagPickerGroup, useTagPickerGroupContextValues } from './TagPickerGroup';
+export {
+  TagPickerGroup,
+  renderTagPickerGroup,
+  useTagPickerGroup,
+  useTagPickerGroupContextValues,
+} from './TagPickerGroup';
 export type { TagPickerGroupProps, TagPickerGroupSlots, TagPickerGroupState } from './TagPickerGroup';
 
 export { TagPickerList, renderTagPickerList, useTagPickerList } from './TagPickerList';
