@@ -28,6 +28,11 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
  * - `disabled` is forwarded to useOption so disabled options cannot be selected.
  */
 export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> &
+  // Pick<OptionProps, 'disabled'> rather than a literal `{ disabled?: boolean }` so that
+  // the headless layer tracks the upstream contract exactly. The styled
+  // @fluentui/react-tag-picker TagPickerOption does not surface `disabled` in its own
+  // props definition, but the headless layer intentionally exposes it so consumers can
+  // mark individual options as disabled without workarounds.
   Pick<OptionProps, 'disabled'> & {
     /** Unique string value for this option, used to track selection state. */
     value: string;
