@@ -5,7 +5,6 @@ import { slot } from '@fluentui/react-utilities';
 import { optionClassNames } from '@fluentui/react-combobox';
 
 import { useOption } from '../../Dropdown/Option';
-import type { OptionProps } from '../../Dropdown/Option';
 import type { TagPickerOptionProps, TagPickerOptionState } from './TagPickerOption.types';
 
 /**
@@ -13,19 +12,11 @@ import type { TagPickerOptionProps, TagPickerOptionState } from './TagPickerOpti
  *
  */
 export const useTagPickerOption = (props: TagPickerOptionProps, ref: React.Ref<HTMLElement>): TagPickerOptionState => {
-  const { media, secondaryContent, ...optionProps } = props;
-  // TagPickerOptionProps is a structural subtype of OptionProps for its application-level
-  // fields (value: string satisfies value?: string; disabled? is identical; the
-  // text/children discriminated union is identical). TypeScript cannot prove compatibility
-  // across the ComponentProps<> generic boundary (both root slots resolve to div, but the
-  // instantiations are opaque to the type checker), so a single widening assertion is used.
-  //
-  // Structural guard: if OptionProps changes `disabled` or `value` incompatibly, the
-  // satisfies expression below fails to compile. If OptionProps gains new required
-  // non-HTML fields, add them to TagPickerOptionProps and extend the Pick here so this
-  // guard covers them automatically.
-  void (optionProps satisfies Pick<OptionProps, 'disabled' | 'value'>);
-  const optionState = useOption(optionProps as OptionProps, ref);
+  // TagPickerOptionProps is a structural supertype of OptionProps (it adds media/secondaryContent
+  // slots and narrows value to required). Passing props directly preserves the discriminated
+  // text/children union that rest-destructuring would collapse. Extra slot props are harmlessly
+  // ignored by useOption.
+  const optionState = useOption(props, ref);
 
   /* eslint-disable react-hooks/immutability -- decorate the base option state */
   // optionClassNames.root MUST be present on every option element.
@@ -51,7 +42,7 @@ export const useTagPickerOption = (props: TagPickerOptionProps, ref: React.Ref<H
       media: 'div',
       secondaryContent: 'span',
     },
-    media: slot.optional(media, { elementType: 'div' }),
-    secondaryContent: slot.optional(secondaryContent, { elementType: 'span' }),
+    media: slot.optional(props.media, { elementType: 'div' }),
+    secondaryContent: slot.optional(props.secondaryContent, { elementType: 'span' }),
   };
 };

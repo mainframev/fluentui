@@ -1,5 +1,4 @@
-import type * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentState, Slot } from '@fluentui/react-utilities';
 import type { OptionProps, OptionSlots, OptionState } from '../../Dropdown/Option';
 
 // Only the root slot is surfaced in TagPickerOptionSlots.
@@ -20,40 +19,33 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
 /**
  * TagPickerOption Props
  *
- * Mirrors the public shape of the styled @fluentui/react-tag-picker TagPickerOption:
- * - `value` is required so that the upstream useTagPickerBase_unstable active-descendant
- *   controller can track and navigate options by value.
- * - The discriminated `text`/`children` union ensures display text is always resolvable
- *   for type-ahead matching and combobox input population.
- * - `disabled` is forwarded to useOption so disabled options cannot be selected.
+ * Extends OptionProps directly so that the type is a structural subtype of OptionProps
+ * and can be passed to `useOption` without any assertion or runtime guard. This also
+ * ensures that any new required fields added to OptionProps automatically surface in
+ * TagPickerOptionProps and cause a compile error if omitted by consumers.
+ *
+ * - The OptionProps base provides root HTML attributes, `disabled`, the text/children
+ *   discriminated union, and `checkIcon` (which remains optional and internal — it is
+ *   NOT included in TagPickerOptionSlots so it does not appear in state or rendering).
+ *   The styled @fluentui/react-tag-picker TagPickerOption does not surface `disabled`
+ *   in its own props definition, but the headless layer intentionally exposes it (via
+ *   OptionProps) so consumers can mark individual options as disabled without workarounds.
+ * - `value` is narrowed from optional to required so the active-descendant controller
+ *   can track options by value.
+ * - `media` and `secondaryContent` are additional TagPickerOption-specific slots.
  */
-export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> &
-  // Pick<OptionProps, 'disabled'> rather than a literal `{ disabled?: boolean }` so that
-  // the headless layer tracks the upstream contract exactly. The styled
-  // @fluentui/react-tag-picker TagPickerOption does not surface `disabled` in its own
-  // props definition, but the headless layer intentionally exposes it so consumers can
-  // mark individual options as disabled without workarounds.
-  Pick<OptionProps, 'disabled'> & {
-    /** Unique string value for this option, used to track selection state. */
-    value: string;
-  } & (
-    | {
-        /**
-         * An optional override for the option's display text, defaulting to the child string.
-         * Used for type-ahead matching and combobox input population.
-         */
-        text?: string;
-        children: string;
-      }
-    | {
-        /**
-         * Required when children is not a plain string.
-         * Used for type-ahead matching and combobox input population.
-         */
-        text: string;
-        children?: React.ReactNode;
-      }
-  );
+export type TagPickerOptionProps = OptionProps & {
+  /** Unique string value for this option, used to track selection state. */
+  value: string;
+  /**
+   * Media rendered before the option's text content (e.g. an avatar or icon).
+   */
+  media?: Slot<'div'>;
+  /**
+   * Secondary text rendered after the option's text content.
+   */
+  secondaryContent?: Slot<'span'>;
+};
 
 /**
  * State used in rendering the headless TagPickerOption.
