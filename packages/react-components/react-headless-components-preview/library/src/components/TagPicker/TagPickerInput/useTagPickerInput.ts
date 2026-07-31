@@ -6,7 +6,7 @@ import { ArrowLeft, Backspace } from '@fluentui/keyboard-keys';
 import { useTagPickerContext_unstable, useTagPickerInputBase_unstable } from '@fluentui/react-tag-picker';
 
 import type { TagPickerInputProps, TagPickerInputState } from './TagPickerInput.types';
-import { stringifyDataAttribute } from '../../../utils/stringifyDataAttribute';
+import { focusLastTag, stringifyDataAttribute } from '../../../utils';
 
 /**
  * Returns the state for a headless TagPickerInput.
@@ -37,12 +37,4 @@ export const useTagPickerInput = (
   return state;
 };
 
-/**
- * Moves focus to the last focusable element within the tag group. The focusgroup polyfill
- * manages roving `tabindex` on the tags, so the items carry `tabindex="-1"`; they remain
- * programmatically focusable, which is why we don't filter on `tabindex`.
- */
-function focusLastTag(container: HTMLElement): void {
-  const focusable = container.querySelectorAll<HTMLElement>('button, [tabindex]');
-  focusable[focusable.length - 1]?.focus();
-}
+

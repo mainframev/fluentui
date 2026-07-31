@@ -7,7 +7,7 @@ import { isHTMLElement, useEventCallback, useMergedRefs } from '@fluentui/react-
 import { ArrowRight } from '@fluentui/keyboard-keys';
 
 import type { TagPickerGroupProps, TagPickerGroupState } from './TagPickerGroup.types';
-import { stringifyDataAttribute } from '../../../utils/stringifyDataAttribute';
+import { isLastFocusableTag, stringifyDataAttribute } from '../../../utils';
 
 /**
  * Returns the state for a headless TagPickerGroup.
@@ -60,8 +60,3 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
 
   return { ...state, hasSelectedOptions };
 };
-
-function isLastFocusableTag(container: HTMLElement, target: HTMLElement): boolean {
-  const focusableTags = container.querySelectorAll<HTMLElement>('button, [tabindex]');
-  return focusableTags[focusableTags.length - 1] === target;
-}
