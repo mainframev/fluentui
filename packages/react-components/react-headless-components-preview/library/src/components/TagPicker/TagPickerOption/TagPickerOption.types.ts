@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { OptionSlots, OptionState } from '../../Dropdown/Option';
+import type { OptionProps, OptionSlots, OptionState } from '../../Dropdown/Option';
 
 // Only the root slot is surfaced in TagPickerOptionSlots.
 // checkIcon (the other OptionSlots member) is an internal rendering detail managed by
@@ -25,11 +25,13 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
  *   controller can track and navigate options by value.
  * - The discriminated `text`/`children` union ensures display text is always resolvable
  *   for type-ahead matching and combobox input population.
+ * - `disabled` is forwarded to useOption so disabled options cannot be selected.
  */
-export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> & {
-  /** Unique string value for this option, used to track selection state. */
-  value: string;
-} & (
+export type TagPickerOptionProps = ComponentProps<TagPickerOptionSlots> &
+  Pick<OptionProps, 'disabled'> & {
+    /** Unique string value for this option, used to track selection state. */
+    value: string;
+  } & (
     | {
         /**
          * An optional override for the option's display text, defaulting to the child string.

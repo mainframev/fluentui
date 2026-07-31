@@ -14,9 +14,12 @@ import type { TagPickerOptionProps, TagPickerOptionState } from './TagPickerOpti
  */
 export const useTagPickerOption = (props: TagPickerOptionProps, ref: React.Ref<HTMLElement>): TagPickerOptionState => {
   const { media, secondaryContent, ...optionProps } = props;
-  // TagPickerOptionProps uses a narrower type than OptionProps (value: string vs value?: string),
-  // but is structurally compatible; assert here so useOption's call signature is satisfied.
-  const optionState = useOption(optionProps as unknown as OptionProps, ref);
+  // TagPickerOptionProps is a structural subtype of OptionProps:
+  //   value: string satisfies value?: string, disabled? is identical, the
+  //   text/children discriminated union is identical, and the root slot HTML props
+  //   resolve to the same shape. TypeScript cannot prove this across the ComponentProps<>
+  //   generic boundary, so a single widening assertion is used here.
+  const optionState = useOption(optionProps as OptionProps, ref);
 
   /* eslint-disable react-hooks/immutability -- decorate the base option state */
   // optionClassNames.root MUST be present on every option element.
