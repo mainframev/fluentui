@@ -26,9 +26,9 @@ const renderTagPicker = (props: Partial<Pick<TagPickerProps, 'disabled' | 'posit
         <TagPickerInput aria-label="Select animals" />
       </TagPickerControl>
       <TagPickerList>
-        <TagPickerOption>Cat</TagPickerOption>
-        <TagPickerOption disabled>Ferret</TagPickerOption>
-        <TagPickerOption>Dog</TagPickerOption>
+        <TagPickerOption value="cat">Cat</TagPickerOption>
+        <TagPickerOption disabled value="ferret">Ferret</TagPickerOption>
+        <TagPickerOption value="dog">Dog</TagPickerOption>
       </TagPickerList>
     </TagPicker>,
   );
@@ -141,7 +141,7 @@ describe('TagPickerGroup composition', () => {
           <TagPickerInput aria-label="Select animals" />
         </TagPickerControl>
         <TagPickerList>
-          <TagPickerOption>Cat</TagPickerOption>
+          <TagPickerOption value="cat">Cat</TagPickerOption>
         </TagPickerList>
       </TagPicker>,
     );
@@ -172,8 +172,8 @@ describe('TagPickerGroup composition', () => {
           <TagPickerInput aria-label="Select animals" />
         </TagPickerControl>
         <TagPickerList>
-          <TagPickerOption>Cat</TagPickerOption>
-          <TagPickerOption>Dog</TagPickerOption>
+          <TagPickerOption value="cat">Cat</TagPickerOption>
+          <TagPickerOption value="dog">Dog</TagPickerOption>
         </TagPickerList>
       </TagPicker>,
     );

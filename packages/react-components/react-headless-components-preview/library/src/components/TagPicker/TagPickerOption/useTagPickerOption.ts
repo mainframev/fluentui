@@ -3,6 +3,7 @@
 import type * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import { optionClassNames } from '@fluentui/react-combobox';
+import type { OptionProps } from '@fluentui/react-combobox';
 
 import { useOption } from '../../Dropdown/Option';
 import type { TagPickerOptionProps, TagPickerOptionState } from './TagPickerOption.types';
@@ -13,10 +14,16 @@ import type { TagPickerOptionProps, TagPickerOptionState } from './TagPickerOpti
  */
 export const useTagPickerOption = (props: TagPickerOptionProps, ref: React.Ref<HTMLElement>): TagPickerOptionState => {
   const { media, secondaryContent, ...optionProps } = props;
-  const optionState = useOption(optionProps, ref);
+  // TagPickerOptionProps uses a narrower type than OptionProps (value: string vs value?: string),
+  // but is structurally compatible; assert here so useOption's call signature is satisfied.
+  const optionState = useOption(optionProps as unknown as OptionProps, ref);
 
   /* eslint-disable react-hooks/immutability -- decorate the base option state */
-  // Mark the option so the active-descendant controller (matching by class) can navigate it.
+  // optionClassNames.root MUST be present on every option element.
+  // The upstream useTagPickerBase_unstable active-descendant controller uses
+  //   matchOption: el => el.classList.contains(optionClassNames.root)
+  // to discover navigable options. Removing or replacing this class would silently
+  // break arrow-key navigation in the TagPicker dropdown.
   optionState.root.className = optionState.root.className
     ? `${optionClassNames.root} ${optionState.root.className}`
     : optionClassNames.root;
