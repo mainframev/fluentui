@@ -36,5 +36,3 @@ export const useTagPickerInput = (
 
   return state;
 };
-
-
