@@ -5,7 +5,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 import { useTagPickerGroup } from './useTagPickerGroup';
 import { renderTagPickerGroup } from './renderTagPickerGroup';
-import { useTagGroupContextValues } from '../../TagGroup/useTagGroupContextValues';
+import { useTagPickerGroupContextValues } from './useTagPickerGroupContextValues';
 import type { TagPickerGroupProps } from './TagPickerGroup.types';
 
 /**
@@ -14,7 +14,7 @@ import type { TagPickerGroupProps } from './TagPickerGroup.types';
  */
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps> = React.forwardRef((props, ref) => {
   const state = useTagPickerGroup(props, ref);
-  const contextValues = useTagGroupContextValues(state);
+  const contextValues = useTagPickerGroupContextValues(state);
 
   return renderTagPickerGroup(state, contextValues);
 });

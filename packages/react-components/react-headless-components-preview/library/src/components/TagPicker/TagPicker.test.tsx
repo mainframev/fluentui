@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { act, fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render, within } from '@testing-library/react';
 import { TagPicker } from './TagPicker';
 import type { TagPickerProps } from './TagPicker.types';
 import { TagPickerControl } from './TagPickerControl';
 import { TagPickerGroup } from './TagPickerGroup';
+import { useTagPickerGroupContextValues } from './TagPickerGroup';
 import { TagPickerInput } from './TagPickerInput';
 import { TagPickerList } from './TagPickerList';
 import { TagPickerOption } from './TagPickerOption';
@@ -120,5 +121,70 @@ describe('TagPicker', () => {
     const { getByRole } = renderTagPicker();
 
     expect(getByRole('listbox')).toHaveStyle({ margin: '0px' });
+  });
+});
+
+describe('TagPickerGroup composition', () => {
+  it('defaults to role="listbox" so consumers can landmark the group without extra config', () => {
+    const { getByRole } = renderTagPicker({ selectedOptions: ['Cat'] });
+
+    expect(getByRole('listbox', { name: 'Selected animals' })).toBeInTheDocument();
+  });
+
+  it('allows consumers to override the default role via props', () => {
+    const { getByRole, queryByRole } = render(
+      <TagPicker open selectedOptions={['Cat']}>
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected animals" role="group">
+            <Tag value="Cat">Cat</Tag>
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select animals" />
+        </TagPickerControl>
+        <TagPickerList>
+          <TagPickerOption>Cat</TagPickerOption>
+        </TagPickerList>
+      </TagPicker>,
+    );
+
+    expect(getByRole('group', { name: 'Selected animals' })).toBeInTheDocument();
+    expect(queryByRole('listbox', { name: 'Selected animals' })).not.toBeInTheDocument();
+  });
+
+  it('makes tags dismissible by default via group context', () => {
+    const { getByRole } = renderTagPicker({ selectedOptions: ['Cat', 'Dog'] });
+
+    // Tags inside a listbox get role="option"; data-dismissible is set on each
+    // when the group propagates dismissible: true via TagGroup context
+    const group = getByRole('listbox', { name: 'Selected animals' });
+    const options = within(group).getAllByRole('option');
+    expect(options).toHaveLength(2);
+    options.forEach(option => expect(option).toHaveAttribute('data-dismissible'));
+  });
+
+  it('allows consumers to suppress dismissal by passing dismissible={false}', () => {
+    const { getByRole } = render(
+      <TagPicker open selectedOptions={['Cat', 'Dog']}>
+        <TagPickerControl>
+          <TagPickerGroup aria-label="Selected animals" dismissible={false}>
+            <Tag value="Cat">Cat</Tag>
+            <Tag value="Dog">Dog</Tag>
+          </TagPickerGroup>
+          <TagPickerInput aria-label="Select animals" />
+        </TagPickerControl>
+        <TagPickerList>
+          <TagPickerOption>Cat</TagPickerOption>
+          <TagPickerOption>Dog</TagPickerOption>
+        </TagPickerList>
+      </TagPicker>,
+    );
+
+    const group = getByRole('listbox', { name: 'Selected animals' });
+    const options = within(group).getAllByRole('option');
+    expect(options).toHaveLength(2);
+    options.forEach(option => expect(option).not.toHaveAttribute('data-dismissible'));
+  });
+
+  it('exports useTagPickerGroupContextValues as a composable hook', () => {
+    expect(typeof useTagPickerGroupContextValues).toBe('function');
   });
 });

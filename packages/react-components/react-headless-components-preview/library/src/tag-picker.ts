@@ -16,6 +16,7 @@ export {
   TagPickerGroup,
   renderTagPickerGroup,
   useTagPickerGroup,
+  useTagPickerGroupContextValues,
   TagPickerList,
   renderTagPickerList,
   useTagPickerList,

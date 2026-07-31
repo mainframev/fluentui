@@ -24,8 +24,8 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
     {
       role: 'listbox',
       disabled,
-      ...props,
       dismissible: true,
+      ...props,
       onKeyDown: useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
         props.onKeyDown?.(event);
         if (
@@ -37,6 +37,7 @@ export const useTagPickerGroup = (props: TagPickerGroupProps, ref: React.Ref<HTM
         }
       }),
       onDismiss: useEventCallback((event, data) => {
+        props.onDismiss?.(event, data);
         selectOption(event as React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>, {
           value: data.value,
           // These values no longer exist because the option has unregistered itself
