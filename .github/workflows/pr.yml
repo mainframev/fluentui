@@ -207,3 +207,119 @@ jobs:
             apps/*/cypress/screenshots/**/*.png
             packages/**/cypress/screenshots/**/*.png
           retention-days: 1
+
+  # ---------------------------------------------------------------------------
+  # Lint performance benchmark (fork only).
+  #
+  # Measures the wall-clock cost of a full, uncached workspace lint so that the
+  # delta introduced by a new ESLint rule can be quantified. Runs only in the
+  # `mainframev` fork; every job above is gated on `microsoft` and therefore
+  # skips there, leaving this job the whole runner.
+  # ---------------------------------------------------------------------------
+  lint-benchmark:
+    name: Lint benchmark
+    if: ${{ github.repository_owner == 'mainframev' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: 'read'
+      actions: 'read'
+
+    env:
+      # ubuntu-latest is a 4-core runner; the workflow-level default of 6 is tuned
+      # for macos-14-xlarge. Pinned so both sides of the benchmark match exactly.
+      NX_PARALLEL: 4
+      # the workflow-level default of `true` adds I/O overhead and log noise
+      NX_VERBOSE_LOGGING: false
+      LINT_BENCHMARK_RUNS: 3
+      TIMING_PACKAGE: packages/react-components/react-button/library
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          cache: 'yarn'
+          node-version: '22'
+
+      - run: yarn install --immutable
+
+      - name: Record environment
+        run: |
+          {
+            echo "## Lint benchmark environment"
+            echo ""
+            echo "| Property | Value |"
+            echo "| --- | --- |"
+            echo "| Commit | \`${GITHUB_SHA}\` |"
+            echo "| Runner | \`${RUNNER_OS}\` / \`$(getconf _NPROCESSORS_ONLN)\` CPUs |"
+            echo "| Node | \`$(node --version)\` |"
+            echo "| ESLint | \`$(yarn run -T eslint --version)\` |"
+            echo "| Nx parallelism | \`${NX_PARALLEL}\` |"
+            echo "| Nx cache | disabled (\`--skipNxCache\`) |"
+            echo "| Task dependencies | excluded (\`--excludeTaskDependencies\`) |"
+            echo "| Projects with a \`lint\` target | \`$(yarn nx show projects --with-target lint | wc -l | tr -d ' ')\` |"
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Full workspace lint (timed, uncached)
+        run: |
+          {
+            echo "## Full workspace lint"
+            echo ""
+            echo "\`yarn nx run-many -t lint --all --parallel=${NX_PARALLEL} --skipNxCache --excludeTaskDependencies\`"
+            echo ""
+            echo "| Run | Duration (s) | Exit code |"
+            echo "| --- | --- | --- |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          best=""
+
+          for run in $(seq 1 "$LINT_BENCHMARK_RUNS"); do
+            started_at=$(date +%s)
+
+            set +e
+            yarn nx run-many -t lint --all --parallel="$NX_PARALLEL" --skipNxCache --excludeTaskDependencies
+            status=$?
+            set -e
+
+            duration=$(( $(date +%s) - started_at ))
+            echo "| ${run} | ${duration} | ${status} |" >> "$GITHUB_STEP_SUMMARY"
+
+            if [ -z "$best" ] || [ "$duration" -lt "$best" ]; then
+              best=$duration
+            fi
+          done
+
+          {
+            echo ""
+            echo "**Fastest run: ${best}s**"
+            echo ""
+            echo "> A non-zero exit code is expected when the benchmarked rule reports"
+            echo "> violations. It does not affect the timing: no \`--nxBail\` is used, so"
+            echo "> every project is linted on every run."
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Per-rule timing (single package)
+        working-directory: ${{ env.TIMING_PACKAGE }}
+        run: |
+          set +e
+          TIMING=25 yarn run -T eslint src 2>&1 | tee eslint-timing.log
+          set -e
+
+          {
+            echo "## Per-rule timing — \`${TIMING_PACKAGE}\`"
+            echo ""
+            echo "Runner-independent attribution from ESLint's built-in profiler"
+            echo "(\`TIMING=25 eslint src\`)."
+            echo ""
+            echo '```'
+            sed -n '/^Rule/,$p' eslint-timing.log
+            echo '```'
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          rm -f eslint-timing.log
