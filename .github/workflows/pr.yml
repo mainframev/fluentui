@@ -246,6 +246,13 @@ jobs:
 
       - run: yarn install --immutable
 
+      # NOT timed. `packages/eslint-plugin/src/configs/react/config.js` requires the
+      # *built* `@fluentui/eslint-plugin-react-components`, so without this every
+      # package consuming the react config dies with "Cannot find module" before
+      # linting a single file. Nx builds this project's dependencies transitively.
+      - name: Build lint prerequisites (not timed)
+        run: yarn nx run-many -t build -p eslint-plugin-react-components
+
       - name: Record environment
         run: |
           {
@@ -271,8 +278,8 @@ jobs:
             echo ""
             echo "\`yarn nx run-many -t lint --all --parallel=${NX_PARALLEL} --skipNxCache --excludeTaskDependencies\`"
             echo ""
-            echo "| Run | Duration (s) | Exit code |"
-            echo "| --- | --- | --- |"
+            echo "| Run | Duration (s) | Failed tasks | Exit code |"
+            echo "| --- | --- | --- | --- |"
           } >> "$GITHUB_STEP_SUMMARY"
 
           best=""
@@ -281,17 +288,30 @@ jobs:
             started_at=$(date +%s)
 
             set +e
-            yarn nx run-many -t lint --all --parallel="$NX_PARALLEL" --skipNxCache --excludeTaskDependencies
-            status=$?
+            yarn nx run-many -t lint --all --parallel="$NX_PARALLEL" --skipNxCache --excludeTaskDependencies \
+              2>&1 | tee "lint-run-${run}.log"
+            status=${PIPESTATUS[0]}
             set -e
 
             duration=$(( $(date +%s) - started_at ))
-            echo "| ${run} | ${duration} | ${status} |" >> "$GITHUB_STEP_SUMMARY"
+
+            # A high count means projects died before linting anything (e.g. a missing
+            # build), which would make the duration meaningless. Surfaced so the
+            # measurement can be sanity-checked rather than trusted blindly.
+            failed_tasks=$(grep -cE '^- \S+:lint$' "lint-run-${run}.log" || true)
+
+            # echoed to stdout as well: step summaries are not retrievable via the API
+            echo "BENCHMARK_RESULT run=${run} duration_seconds=${duration} failed_tasks=${failed_tasks} exit=${status}"
+            echo "| ${run} | ${duration} | ${failed_tasks} | ${status} |" >> "$GITHUB_STEP_SUMMARY"
+
+            rm -f "lint-run-${run}.log"
 
             if [ -z "$best" ] || [ "$duration" -lt "$best" ]; then
               best=$duration
             fi
           done
+
+          echo "BENCHMARK_BEST duration_seconds=${best}"
 
           {
             echo ""
