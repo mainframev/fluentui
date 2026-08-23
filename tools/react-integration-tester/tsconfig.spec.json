@@ -12,8 +12,8 @@
      * would break those very tests, because jest resolves the request against `cli.ts` sources.
      * `bundler` is the modern (non deprecated) resolution which models jest's resolver.
      */
-    "module": "commonjs",
-    "moduleResolution": "bundler",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "types": ["jest", "node"]
   },
   "include": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts", "src/**/*.d.ts"]

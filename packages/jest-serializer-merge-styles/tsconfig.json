@@ -11,7 +11,8 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "strict": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
     "preserveConstEnums": true,
     "types": ["jest"],
     "isolatedModules": true

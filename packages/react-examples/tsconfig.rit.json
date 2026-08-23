@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "target": "ES2019",
-    "module": "esnext",
+    "module": "nodenext",
     "strictFunctionTypes": false,
     "strictPropertyInitialization": false,
     "noEmit": true,
     "jsx": "react",
     "experimentalDecorators": true,
     "strict": false,
-    "moduleResolution": "bundler",
+    "moduleResolution": "nodenext",
     "resolvePackageJsonExports": false,
     "isolatedModules": true
   },

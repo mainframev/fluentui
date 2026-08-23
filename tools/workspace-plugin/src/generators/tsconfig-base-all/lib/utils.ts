@@ -17,7 +17,8 @@ export function createPathAliasesConfig(tree: Tree) {
   const tsConfigBase = '.';
   const mergedTsConfig = {
     compilerOptions: {
-      moduleResolution: 'bundler',
+      moduleResolution: 'nodenext',
+      module: 'nodenext',
       skipLibCheck: true,
       typeRoots: ['node_modules/@types', './typings'],
       isolatedModules: true,

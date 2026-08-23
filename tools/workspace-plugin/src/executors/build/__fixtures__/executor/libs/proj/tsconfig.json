@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "moduleResolution": "bundler",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "target": "ES2019",
     "skipLibCheck": true,
     "pretty": true

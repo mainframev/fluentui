@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "moduleResolution": "bundler",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types", "./typings"],
     "isolatedModules": true,

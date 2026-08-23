@@ -4,10 +4,16 @@
 
 /**
  * Generic typings for sass files.
+ *
+ * Both a `default` export and named string members are declared so that either
+ * `import styles from './x.scss'` or `import * as styles from './x.scss'` resolves the
+ * class-name map. Under `moduleResolution: nodenext` (with the implied `esModuleInterop`),
+ * a namespace import of a default-only module exposes just `{ default }`, so the named
+ * index signature is required for the legacy `import * as styles` access pattern.
  */
 declare module '*.scss' {
   const styles: { [className: string]: string };
-  export default styles;
+  export = styles;
 }
 
 // These declarations are meant to represent the parts of Map/WeakMap/Set that exist in IE 11.

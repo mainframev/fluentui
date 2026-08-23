@@ -2,8 +2,8 @@
   "compilerOptions": {
     "rootDir": ".",
     "target": "ES2019",
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "lib": ["ES2019", "dom"],
     "sourceMap": true,
     "strict": true,
