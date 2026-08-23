@@ -6,6 +6,8 @@
 import { execSync } from 'child_process';
 import chalk from 'chalk';
 
+import { createTsConfigWithoutPathAliases } from './tsconfig-utils.js';
+
 main();
 
 function compile() {
@@ -13,7 +15,12 @@ function compile() {
     console.log(chalk.bold(`🎬 compile:start`));
 
     console.log(chalk.blueBright(`compile: running tsc`));
-    execSync(`tsc -p tsconfig.lib.json --rootDir ./src --baseUrl .`, { stdio: 'inherit' });
+    const noPathAliasesConfig = createTsConfigWithoutPathAliases('tsconfig.lib.json', 'compile');
+    try {
+      execSync(`tsc -p ${noPathAliasesConfig.path} --rootDir ./src`, { stdio: 'inherit' });
+    } finally {
+      noPathAliasesConfig.cleanup();
+    }
 
     console.log(chalk.bold(`🏁 compile:end`));
   } catch (err) {

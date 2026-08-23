@@ -1,7 +1,7 @@
 {
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES2015",
     "lib": ["ES5", "ES2015.Iterable", "dom"],
     "noEmit": true,
     "isolatedModules": true,

@@ -5,7 +5,7 @@ import { promisify } from 'node:util';
 import { exec } from 'node:child_process';
 
 import { type TypeCheckExecutorSchema } from './schema';
-import { measureEnd, measureStart } from '../../utils';
+import { createTsConfigWithoutPathAliases, measureEnd, measureStart } from '../../utils';
 
 const asyncExec = promisify(exec);
 
@@ -41,9 +41,13 @@ async function runTypeCheck(options: NormalizedOptions, context: ExecutorContext
 
   const tsConfigsRefs = getTsConfigs(baseTsConfig, projectRootAbsolutePath, options.excludeProject);
   const asyncQueue = [];
+  const cleanupQueue: Array<() => void> = [];
 
   for (const ref of tsConfigsRefs) {
-    const program = `tsc -p ${ref} --pretty --noEmit --baseUrl ${projectRootAbsolutePath}`;
+    const noPathAliasesConfig = createTsConfigWithoutPathAliases(ref, 'type-check');
+    cleanupQueue.push(noPathAliasesConfig.cleanup);
+
+    const program = `tsc -p ${noPathAliasesConfig.path} --pretty --noEmit`;
 
     verboseLog(`Running "${program}"`);
 
@@ -57,6 +61,9 @@ async function runTypeCheck(options: NormalizedOptions, context: ExecutorContext
     .catch(err => {
       console.error(err.stdout);
       return false;
+    })
+    .finally(() => {
+      cleanupQueue.forEach(cleanup => cleanup());
     });
 }
 

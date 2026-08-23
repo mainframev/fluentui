@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "lib",
     "target": "es6",
     "module": "commonjs",
@@ -9,7 +10,8 @@
     "sourceMap": true,
     "importHelpers": true,
     "noUnusedLocals": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
     "preserveConstEnums": true,
     "lib": ["ES2019", "DOM"],
     "types": ["jest"],

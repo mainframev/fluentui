@@ -366,10 +366,10 @@ describe(`workspace-plugin`, () => {
             name: '@proj/proj',
             private: true,
           } satisfies Partial<PackageJson>),
-          'proj/library/cypress.config.ts': `
-           import { baseConfig } from '@proj/cypress';
+          'proj/library/cypress.config.js': `
+           const { baseConfig } = require('@proj/cypress');
 
-           export default baseConfig;
+           module.exports = baseConfig;
           `,
         });
 
@@ -463,7 +463,7 @@ describe(`workspace-plugin`, () => {
             }
         }`,
         // create the referenced tsconfig so the logic sees it as present
-        'proj/library/cypress.config.ts': 'export default {}',
+        'proj/library/cypress.config.js': 'module.exports = {}',
         'proj/library/tsconfig.baz.json': '{}',
         // also create a jest.config.js to show that rit.config.js takes precedence
         'proj/library/jest-custom.config.js': 'module.exports = {}',

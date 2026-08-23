@@ -1,0 +1,50 @@
+diff --git a/node_modules/@swc-node/register/lib/read-default-tsconfig.js b/node_modules/@swc-node/register/lib/read-default-tsconfig.js
+--- a/node_modules/@swc-node/register/lib/read-default-tsconfig.js
++++ b/node_modules/@swc-node/register/lib/read-default-tsconfig.js
+@@ -153,12 +153,12 @@
+                 useBuiltins: true,
+             }
+             : undefined,
+-        baseUrl: options.baseUrl ? (0, path_1.resolve)(options.baseUrl) : undefined,
++        baseUrl: resolvePathsBase(options, filename),
+         paths: Object.fromEntries(Object.entries((_l = options.paths) !== null && _l !== void 0 ? _l : {}).map(([aliasKey, aliasPaths]) => {
+             var _a;
+             return [
+                 aliasKey,
+-                ((_a = aliasPaths) !== null && _a !== void 0 ? _a : []).map((path) => { var _a; return (0, path_1.resolve)((_a = options.baseUrl) !== null && _a !== void 0 ? _a : './', path); }),
++                ((_a = aliasPaths) !== null && _a !== void 0 ? _a : []).map((path) => { var _a; return (0, path_1.resolve)((_a = resolvePathsBase(options, filename)) !== null && _a !== void 0 ? _a : './', path); }),
+             ];
+         })),
+         ignoreDynamic: Boolean(process.env.SWC_NODE_IGNORE_DYNAMIC),
+@@ -168,5 +168,30 @@
+         },
+     };
+ }
++/**
++ * TypeScript 6 removed `baseUrl` and resolves `paths` relative to the tsconfig which declares them,
++ * exposing it as `pathsBasePath`. `@swc-node/register` only maps `baseUrl`, which makes SWC panic
++ * (or silently resolve aliases against the process cwd) for baseUrl-less configs.
++ *
++ * @see https://github.com/swc-project/swc-node - fixed upstream in a later release; this repo pins
++ *      the direct "@swc-node/register" devDependency to "1.9.2" (it is only an optional peer
++ *      dependency of `nx` itself, not installed by "@nx/js") specifically to install this patch.
++ *      Bump the pin and drop this patch once an unpatched release maps "pathsBasePath" upstream.
++ */
++function resolvePathsBase(options, filename) {
++    var base = options.baseUrl || options.pathsBasePath;
++    if (base) {
++        return (0, path_1.resolve)(base);
++    }
++    if (options.paths && Object.keys(options.paths).length > 0) {
++        throw new Error('[@swc-node/register] Cannot resolve tsconfig "paths"' +
++            (filename ? ' for "' + filename + '"' : '') +
++            ': neither "baseUrl" nor "pathsBasePath" is set.\n' +
++            'TypeScript 6 resolves "paths" relative to the config file which declares them and reports that as "pathsBasePath". ' +
++            'Getting neither means the compiler options were not read from a tsconfig file (eg they were passed in programmatically) - ' +
++            'pass the tsconfig path/`pathsBasePath` explicitly, otherwise every path alias would silently resolve against the current working directory.');
++    }
++    return undefined;
++}
+ exports.tsCompilerOptionsToSwcConfig = tsCompilerOptionsToSwcConfig;
+ //# sourceMappingURL=read-default-tsconfig.js.map
+\ No newline at end of file

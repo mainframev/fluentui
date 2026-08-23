@@ -20,16 +20,16 @@ describe('tsconfig-base-all generator', () => {
     writeJson(tree, '/tsconfig.base.v8.json', {
       compilerOptions: {
         paths: {
-          '@proj/v8-one': ['packages/v8-one/src/index.ts'],
-          '@proj/v8-two': ['packages/v8-two/src/index.ts'],
+          '@proj/v8-one': ['./packages/v8-one/src/index.ts'],
+          '@proj/v8-two': ['./packages/v8-two/src/index.ts'],
         },
       },
     });
     writeJson(tree, '/tsconfig.base.json', {
       compilerOptions: {
         paths: {
-          '@proj/one': ['packages/one/src/index.ts'],
-          '@proj/two': ['packages/two/src/index.ts'],
+          '@proj/one': ['./packages/one/src/index.ts'],
+          '@proj/two': ['./packages/two/src/index.ts'],
         },
       },
     });
@@ -42,21 +42,21 @@ describe('tsconfig-base-all generator', () => {
     expect(baseAllJson).toMatchInlineSnapshot(`
       Object {
         "compilerOptions": Object {
-          "baseUrl": ".",
           "isolatedModules": true,
-          "moduleResolution": "node",
+          "module": "nodenext",
+          "moduleResolution": "nodenext",
           "paths": Object {
             "@proj/one": Array [
-              "packages/one/src/index.ts",
+              "./packages/one/src/index.ts",
             ],
             "@proj/two": Array [
-              "packages/two/src/index.ts",
+              "./packages/two/src/index.ts",
             ],
             "@proj/v8-one": Array [
-              "packages/v8-one/src/index.ts",
+              "./packages/v8-one/src/index.ts",
             ],
             "@proj/v8-two": Array [
-              "packages/v8-two/src/index.ts",
+              "./packages/v8-two/src/index.ts",
             ],
           },
           "preserveConstEnums": true,
@@ -73,13 +73,29 @@ describe('tsconfig-base-all generator', () => {
     `);
   });
 
+  it('should not contain a `baseUrl` or legacy Node module resolution, and should keep aliases relative', async () => {
+    await generator(tree, options);
+    const { compilerOptions } = readJson(tree, '/tsconfig.base.all.json');
+
+    expect(compilerOptions.baseUrl).toBeUndefined();
+    expect(compilerOptions.moduleResolution).not.toMatch(/^node$/i);
+    expect(compilerOptions.moduleResolution).not.toMatch(/^node10$/i);
+    expect(compilerOptions.moduleResolution).not.toMatch(/^classic$/i);
+
+    for (const targets of Object.values(compilerOptions.paths) as string[][]) {
+      for (const target of targets) {
+        expect(target.startsWith('./') || target.startsWith('../')).toBe(true);
+      }
+    }
+  });
+
   describe(`--verify`, () => {
     it(`should pass if base all config is up to date`, async () => {
       expect.assertions(1);
       await generator(tree, {});
 
       updateJson(tree, '/tsconfig.base.json', json => {
-        json.compilerOptions.paths['@proj/three'] = ['packages/three/src/index.ts'];
+        json.compilerOptions.paths['@proj/three'] = ['./packages/three/src/index.ts'];
         return json;
       });
 
@@ -93,7 +109,7 @@ describe('tsconfig-base-all generator', () => {
       await generator(tree, {});
 
       updateJson(tree, '/tsconfig.base.json', json => {
-        json.compilerOptions.paths['@proj/three'] = ['packages/three/src/index.ts'];
+        json.compilerOptions.paths['@proj/three'] = ['./packages/three/src/index.ts'];
         return json;
       });
 

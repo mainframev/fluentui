@@ -41,6 +41,29 @@ yarn nx run <project>:test -u
 
 Review the snapshot diff to verify the change is correct before committing.
 
+## E2E (Cypress Component Testing)
+
+`cypress.config.js` files are **JavaScript on purpose** - do not convert them to TypeScript.
+
+Cypress loads the config file in a child process where it registers its own bundled `ts-node` with
+a hardcoded `moduleResolution: 'node'` (node10). TypeScript 6 rejects that with TS5107, so every
+TypeScript file reachable from a `cypress.config.*` fails to load. The whole Node side of the
+Cypress setup - the per project configs and the shared `@fluentui/scripts-cypress` entry point
+(`scripts/cypress/src/base.config.js`) - is therefore plain CommonJS checked with `// @ts-check`.
+The browser side (`scripts/cypress/src/browser`, `*.cy.tsx` specs) stays TypeScript, it is bundled
+by webpack/esbuild-loader and never touched by Cypress' `ts-node`.
+
+Path aliases for the bundler are wired explicitly by `scripts/cypress/src/ts-paths.js`, which
+resolves `paths` against the compiler reported `pathsBasePath` of `tsconfig.base.json` and hands
+that base to `tsconfig-paths-webpack-plugin`. `pathsBasePath` is only populated correctly through
+`extends` chains when the config file's identity is passed to TypeScript's `parseJsonConfigFileContent`
+(as `configFileName`) - without it, `paths` declared in a shared base config resolve against the
+wrong directory. Cypress' own `tsconfig-paths` registration (Node side) does _not_ skip resolution
+just because `baseUrl` is missing - as of `tsconfig-paths@4.2` it only gives up when no
+`tsconfig.json` can be found at all, and otherwise anchors `paths` at the directory of the _nearest_
+config file instead of the one that declares them. That is inconsequential here - the Cypress Node
+process resolves every workspace package through its Yarn workspace `node_modules` symlink.
+
 ## Conformance Tests
 
 Every component package has a `testing/isConformant.ts` file that validates:

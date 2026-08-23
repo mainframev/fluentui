@@ -62,7 +62,7 @@ function createProject(
     writeFileSync(join(rootDir, 'jest.config.js'), 'module.exports = {};');
   }
   if (options?.withCypress) {
-    writeFileSync(join(rootDir, 'cypress.config.ts'), 'export default {};');
+    writeFileSync(join(rootDir, 'cypress.config.js'), 'module.exports = {};');
   }
 }
 
@@ -187,7 +187,6 @@ describe('rit CLI e2e', () => {
     expect(readJSON(join(ritProjectPath, 'tsconfig.json'))).toMatchInlineSnapshot(`
       Object {
         "compilerOptions": Object {
-          "baseUrl": ".",
           "isolatedModules": true,
           "jsx": "react",
           "lib": Array [
@@ -195,7 +194,7 @@ describe('rit CLI e2e', () => {
             "DOM",
           ],
           "module": "esnext",
-          "moduleResolution": "node",
+          "moduleResolution": "bundler",
           "noEmit": true,
           "paths": Object {
             "react": Array [
@@ -350,19 +349,23 @@ describe('rit CLI e2e', () => {
     `);
 
     // and cypress config since origin had jest setup
-    const cypressConfigPath = join(ritProjectPath, 'cypress.config.ts');
+    const cypressConfigPath = join(ritProjectPath, 'cypress.config.js');
     expect(existsSync(cypressConfigPath)).toBe(true);
 
     const cyContent = readFile(cypressConfigPath);
-    expect(cyContent).toContain("import baseConfig from '../../../../proj/cypress.config");
+    expect(cyContent).toContain("require('../../../../proj/cypress.config");
     // check whole template
     expect(cyContent).toMatchInlineSnapshot(`
-      "import { join, resolve } from 'node:path';
-      import baseConfig from '../../../../proj/cypress.config.ts';
+      "// @ts-check
+
+      const { join, resolve } = require('node:path');
+
+      const baseConfig = require('../../../../proj/cypress.config.js');
 
       // Resolve dependencies from the shared react-version root folder (injected by CLI)
       const usedNodeModulesPath = join(__dirname, '..', 'node_modules');
 
+      /** @type {import('@fluentui/scripts-cypress').BaseConfig} */
       const config = { ...baseConfig };
 
       const specs = [
@@ -380,7 +383,7 @@ describe('rit CLI e2e', () => {
         'react-dom': resolve(usedNodeModulesPath, './react-dom'),
       };
 
-      export default config;
+      module.exports = config;
       "
     `);
   });

@@ -4,7 +4,7 @@ import type { SandboxContext } from './public-types';
 import type { Data } from './sandbox-utils';
 import { serializeJson } from './utils';
 
-const commonDevDeps = { '@types/react': '^17', '@types/react-dom': '^17', typescript: '~4.7.0' };
+const commonDevDeps = { '@types/react': '^17', '@types/react-dom': '^17', typescript: '~6.0.0' };
 
 export const scaffold = {
   vite: (data: Data): Record<string, string> => {
@@ -160,13 +160,12 @@ const Vite = {
       compilerOptions: {
         target: 'ES2020',
         useDefineForClassFields: true,
-        lib: ['ES2020', 'DOM', 'DOM.Iterable'],
+        lib: ['ES2020', 'DOM'],
         module: 'ESNext',
         skipLibCheck: true,
 
         /* Bundler mode */
-        moduleResolution: 'node',
-        // moduleResolution: 'bundler',
+        moduleResolution: 'bundler',
         allowImportingTsExtensions: true,
         resolveJsonModule: true,
         isolatedModules: true,

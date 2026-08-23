@@ -10,9 +10,10 @@ import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
 import { OverflowEventPayload } from '@fluentui/priority-overflow';
 import type { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
-import { OverflowOptions } from '@fluentui/priority-overflow';
+import type { OverflowOptions } from '@fluentui/priority-overflow';
 import type { OverflowSnapshot } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const DATA_OVERFLOW_DIVIDER = "data-overflow-divider";
@@ -35,10 +36,7 @@ export { OnUpdateItemVisibility }
 export { OnUpdateOverflow }
 
 // @public
-export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<OverflowOptions, "overflowAxis" | "overflowDirection" | "padding" | "minimumVisible" | "hasHiddenItems">> & {
-    children: React_2.ReactElement;
-    onOverflowChange?: (ev: null, data: OverflowState) => void;
-} & React_2.RefAttributes<unknown>>;
+export const Overflow: React_2.ForwardRefExoticComponent<OverflowProps & RefAttributes<unknown>>;
 
 // @public
 export type OverflowComponentState = UseOverflowContainerReturn<HTMLElement> & {

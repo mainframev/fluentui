@@ -63,6 +63,7 @@ export function preset() {
   task('postprocess:amd', postprocessAmdTask);
   task('ts:commonjs', ts.commonjs);
   task('ts:esm', ts.esm);
+  task('ts:downlevel', ts.downlevel);
   task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('eslint', eslint);
   task('webpack', webpack);
@@ -82,17 +83,28 @@ export function preset() {
     const moduleFlag = args.module;
     // default behaviour
     if (!moduleFlag) {
-      return parallel(
-        'ts:commonjs',
-        'ts:esm',
-        condition('ts:amd', () => !!args.production && !metadata.isConverged()),
-      );
+      return parallel('ts:commonjs', 'ts:esm');
     }
 
     return parallel(
       condition('ts:commonjs', () => moduleFlag.cjs),
       condition('ts:esm', () => moduleFlag.esm),
-      condition('ts:amd', () => moduleFlag.amd),
+    );
+  });
+
+  /**
+   * Post compilation JS transforms.
+   *
+   * These run on `tsc` emitted output (thus after `copy-compiled`, which is what materializes `lib`/`lib-commonjs`
+   * for packages compiling to `dist/out-tsc`) because TypeScript 6 removed `target: 'es5'` and `module: 'amd'`,
+   * which used to produce the published v8 artifacts.
+   */
+  task('ts:transpile', () => {
+    const moduleFlag = args.module;
+
+    return series(
+      condition('ts:downlevel', () => metadata.shipsES5()),
+      condition('ts:amd', () => (moduleFlag ? moduleFlag.amd : Boolean(args.production) && !metadata.isConverged())),
     );
   });
 
@@ -100,6 +112,7 @@ export function preset() {
     return series(
       'ts:compile',
       'copy-compiled',
+      'ts:transpile',
       'ts:postprocess',
       condition('babel:postprocess', () => metadata.hasBabel()),
     );
@@ -130,7 +143,19 @@ export function preset() {
   task('dev:storybook', series('storybook:start'));
   task('dev', series('copy', 'sass', 'webpack-dev-server'));
 
-  task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
+  /**
+   * `tsc` only emits the modern baseline since TypeScript 6, so projects on the ES5 baseline
+   * (`ships-es5`) need the SWC downlevel here as well - `build:node-lib` doesn't run the `ts` task.
+   */
+  task(
+    'build:node-lib',
+    series(
+      'clean',
+      'copy',
+      'ts:commonjs',
+      condition('ts:downlevel', () => metadata.shipsES5()),
+    ),
+  ).cached!();
 
   // === React v8 build  tasks / START ===
   task(

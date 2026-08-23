@@ -87,6 +87,7 @@ export type {
 export { preset } from './presets';
 export { expandSourcePath } from './copy';
 export { typeCheckWithConfigOverride } from './type-check';
+export { typeCheckProject } from './type-check-project';
 export { postprocessTask } from './postprocess';
 export {
   getPerfRegressions,

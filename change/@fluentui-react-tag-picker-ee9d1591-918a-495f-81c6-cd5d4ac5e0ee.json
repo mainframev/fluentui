@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "import `TagAppearance`/`TagSize` from the `@fluentui/react-tags` package entry instead of its internal `/src/index` path, which is not resolvable through the package exports map",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,5 +1,4 @@
-import type * as React from 'react';
-import type { JSXElement } from '@fluentui/react-utilities';
+import type { JSXElement, RefAttributes } from '@fluentui/react-utilities';
 import type { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import type { ChartDataPoint, ChartProps } from './index';
 import type { LegendsProps } from '../Legends/index';
@@ -8,7 +7,7 @@ import type { LegendsProps } from '../Legends/index';
  * Horizontal Bar Chart properties
  * {@docCategory HorizontalBarChart}
  */
-export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElement> {
+export interface HorizontalBarChartProps extends RefAttributes<HTMLDivElement> {
   /**
    * An array of chart data points for the Horizontal bar chart
    */

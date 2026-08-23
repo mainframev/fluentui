@@ -65,6 +65,7 @@ jest.mock('node:fs/promises', () => {
 
 jest.mock('../../utils', () => {
   return {
+    ...jest.requireActual('../../utils'),
     measureStart: jest.fn(),
     measureEnd: jest.fn(),
   };

@@ -35,6 +35,24 @@ async function loadModule() {
   });
 }
 
+describe('toPosixPath()', () => {
+  afterEach(() => {
+    jest.resetModules();
+  });
+
+  test('converts backslash separators to forward slashes', async () => {
+    const { toPosixPath } = await loadModule();
+
+    expect(toPosixPath('..\\..\\packages\\dep\\src\\index.ts')).toBe('../../packages/dep/src/index.ts');
+  });
+
+  test('is a no-op for already POSIX-separated paths', async () => {
+    const { toPosixPath } = await loadModule();
+
+    expect(toPosixPath('../../packages/dep/src/index.ts')).toBe('../../packages/dep/src/index.ts');
+  });
+});
+
 describe('setup()', () => {
   let fs: TempFs;
 
@@ -153,7 +171,7 @@ describe('setup()', () => {
       JSON.stringify({ include: ['src/index.ts'], compilerOptions: { target: 'ES2020', lib: ['ES2020', 'DOM'] } }),
     );
     writeFileSync(join(fs.tempDir, 'jest.config.js'), 'module.exports = {};');
-    writeFileSync(join(fs.tempDir, 'cypress.config.ts'), 'export default {};');
+    writeFileSync(join(fs.tempDir, 'cypress.config.js'), 'module.exports = {};');
 
     mockGitRoot(fs.tempDir);
 
@@ -189,7 +207,7 @@ describe('setup()', () => {
       'tsconfig.json',
       'jest.config.js',
       '.swcrc',
-      'cypress.config.ts',
+      'cypress.config.js',
       'tsconfig.cy.json',
       'package.json',
     ];
@@ -394,6 +412,73 @@ describe('setup()', () => {
     expect(generated.exclude).toEqual(['../../../../src/custom-override/**']);
 
     // Ensure we attempted installation under react root
+    expect(runCmdMock).toHaveBeenCalled();
+  });
+
+  test('normalizes generated tsconfig paths to POSIX separators even when path.relative returns Windows-style backslashes', async () => {
+    fs = new TempFs('rit-setup-windows-separators');
+
+    const originPkg = { name: '@scope/origin-proj' };
+    writeFileSync(join(fs.tempDir, 'package.json'), JSON.stringify(originPkg));
+    writeFileSync(
+      join(fs.tempDir, 'tsconfig.lib.json'),
+      JSON.stringify({
+        include: ['src/index.ts'],
+        exclude: ['src/custom-override/**'],
+        compilerOptions: { target: 'ES2020', lib: ['ES2020', 'DOM'] },
+      }),
+    );
+
+    mockGitRoot(fs.tempDir);
+
+    // Simulate `path.relative`/`path.join` running on Windows (backslash separated results), while
+    // every other `node:path` API (used for real filesystem access in this module and `shared.ts`)
+    // keeps its actual POSIX behaviour so the fixture files on disk are still resolved correctly.
+    jest.doMock('node:path', () => {
+      const actual = jest.requireActual('node:path');
+      return {
+        ...actual,
+        relative: (...args: [string, string]) =>
+          actual
+            .relative(...args)
+            .split('/')
+            .join('\\'),
+      };
+    });
+
+    let runCmdMock: any;
+    jest.doMock('../shared', () => {
+      const actual = jest.requireActual('../shared');
+      runCmdMock = jest.fn().mockResolvedValue(undefined);
+      return { ...actual, runCmd: runCmdMock };
+    });
+
+    const { setup } = await loadModule();
+
+    const args: Required<Args> = {
+      react: 18,
+      configPath: '',
+      run: [],
+      verbose: false,
+      cleanup: true,
+      cwd: fs.tempDir,
+      prepareOnly: true,
+      noInstall: false,
+      installDeps: false,
+      projectId: '',
+      force: false,
+    };
+
+    const project = await setup(args, logger);
+
+    const generatedTsConfigRaw = readFileSync(join(project.projectPath, 'tsconfig.json'), 'utf-8');
+    // The raw file content must be valid JSON (a stray backslash would produce an invalid escape).
+    const generated = JSON.parse(generatedTsConfigRaw);
+    expect(generatedTsConfigRaw).not.toContain('\\');
+    expect(generated.extends).toBe('../../../../tsconfig.lib.json');
+    expect(generated.include).toEqual(['../../../../src/index.ts']);
+    expect(generated.exclude).toEqual(['../../../../src/custom-override/**']);
+
     expect(runCmdMock).toHaveBeenCalled();
   });
 });

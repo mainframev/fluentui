@@ -27,12 +27,7 @@ export type FieldBaseState = DistributiveOmit<FieldState, 'orientation' | 'size'
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public (undocumented)
-export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "required" | "size" | "orientation" | "validationState" | "generatedControlId"> & {
-    labelFor?: string;
-    labelId?: string;
-    validationMessageId?: string;
-    hintId?: string;
-}> | undefined>;
+export const FieldContextProvider: React_2.Provider<FieldContextValue | undefined>;
 
 // @public (undocumented)
 export type FieldContextValue = Readonly<Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {

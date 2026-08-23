@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "rootDir": "./src",
+    "target": "es2015",
     "outDir": "lib",
     "module": "commonjs",
     "lib": ["es2017", "dom"],
@@ -10,7 +11,8 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
     "preserveConstEnums": true,
     "types": ["jest"],
     "isolatedModules": true

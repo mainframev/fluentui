@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "annotate `Overflow` with its public forward-ref type, using `RefAttributes` from `@fluentui/react-utilities` to avoid leaking string refs and unpublished modules into the declaration rollup",
+  "packageName": "@fluentui/react-overflow",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

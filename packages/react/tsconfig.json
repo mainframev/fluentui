@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": "./src",
     "outDir": "lib",
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
     "jsx": "react",
     "isolatedModules": true,
@@ -11,9 +11,11 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
+    "strict": false,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
     "preserveConstEnums": true,
     "lib": ["es5", "dom", "es2015.promise", "ES2015.Symbol.WellKnown"],
     "skipLibCheck": true,

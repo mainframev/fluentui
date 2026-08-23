@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "moduleResolution": "Node",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "target": "ES2019",
     "jsx": "react",
     "skipLibCheck": true,

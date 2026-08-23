@@ -38,6 +38,8 @@ import prettier from 'prettier';
 import { generateStylesheets } from '@microsoft/fast-test-harness/build/generate-stylesheets.js';
 import { generateFTemplates } from '@microsoft/fast-test-harness/build/generate-templates.js';
 
+import { createTsConfigWithoutPathAliases } from './tsconfig-utils.js';
+
 const cwd = process.cwd();
 const TEMP_PARENT = join(cwd, 'temp');
 const checkMode = process.argv.includes('--check');
@@ -55,9 +57,14 @@ async function main() {
     console.log(chalk.bold(`🎬 ${label} start`));
 
     console.log(chalk.blueBright(`${label}: compiling src → ${tempDir}`));
-    execSync(`tsc -p tsconfig.lib.json --rootDir ./src --baseUrl . --outDir ${tempDir} --declaration false`, {
-      stdio: 'inherit',
-    });
+    const noPathAliasesConfig = createTsConfigWithoutPathAliases('tsconfig.lib.json', 'generate-ssr');
+    try {
+      execSync(`tsc -p ${noPathAliasesConfig.path} --rootDir ./src --outDir ${tempDir} --declaration false`, {
+        stdio: 'inherit',
+      });
+    } finally {
+      noPathAliasesConfig.cleanup();
+    }
 
     console.log(chalk.blueBright(`${label}: writing *.template.html → ${outDir}/`));
     await generateFTemplates({

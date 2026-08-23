@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "widen the \"typescript\" peerDependency to \">=4.3.0 <7.0.0\" so TypeScript 5.x and 6.x consumers satisfy the peer; the previous \"^4.3.0\" range excluded every TypeScript release after 4.9",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

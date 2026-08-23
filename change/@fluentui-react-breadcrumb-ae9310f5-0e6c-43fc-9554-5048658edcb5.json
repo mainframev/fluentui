@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "annotate `BreadcrumbProvider` with `React.Provider<BreadcrumbContextValues | undefined>` so the published type declaration rollup no longer imports the unpublished `./Breadcrumb.types` module",
+  "packageName": "@fluentui/react-breadcrumb",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

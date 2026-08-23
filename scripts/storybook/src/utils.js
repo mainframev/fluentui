@@ -291,7 +291,7 @@ function getPackageStoriesGlob(options) {
   function getMetadata(
     /** @type {string}*/ packageName,
     /** @type {ReturnType<typeof getAllProjects>}*/ allProjects,
-    /** @type {Partial<{throwIfNotFound:boolean}>}*/ _options,
+    /** @type {Partial<{throwIfNotFound:boolean}>}*/ _options = {},
   ) {
     const { throwIfNotFound = true } = { ..._options };
     const metadata = allProjects.get(packageName);
@@ -314,12 +314,22 @@ function getPackageStoriesGlob(options) {
  * @param {Object} options
  * @param {string} options.configFile - absolute path to tsconfig that contains path aliases
  * @param {Configuration} options.config - webpack config
+ * @param {string=} options.baseUrl - explicit absolute directory `paths` entries are resolved against.
+ * TypeScript 6 deprecated `baseUrl`, so `paths` are resolved relative to the config file that
+ * *declares* them - which, through an `extends` chain, is not necessarily `configFile` itself.
+ * `TsconfigPathsPlugin` cannot see that identity: without an explicit `baseUrl` it falls back to
+ * anchoring `paths` at the directory of `configFile`, silently breaking aliases declared in a shared
+ * base config. Pass the `absoluteBaseUrl` returned by `@fluentui/scripts-cypress`'s
+ * `readWorkspacePathAliases(configFile)` (or an equivalent `pathsBasePath` lookup) here to keep that
+ * mapping correct. Omitted for backward compatibility with existing callers whose aliases are declared
+ * directly in `configFile` (where the plugin's own fallback is already correct).
  * @returns
  */
 function registerTsPaths(options) {
-  const { config, configFile } = options;
+  const { config, configFile, baseUrl } = options;
   const tsPaths = new TsconfigPathsPlugin({
     configFile,
+    baseUrl,
   });
 
   config.resolve = config.resolve ?? {};

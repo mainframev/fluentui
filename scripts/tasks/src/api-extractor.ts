@@ -5,10 +5,12 @@ import { workspaceRoot } from '@nx/devkit';
 import chalk from 'chalk';
 import { isCI } from 'ci-info';
 import * as glob from 'glob';
-import { ApiExtractorOptions, TaskFunction, apiExtractorVerifyTask, logger, series, task } from 'just-scripts';
+import type { ApiExtractorOptions, TaskFunction } from 'just-scripts';
+import { apiExtractorVerifyTask, logger, series, task } from 'just-scripts';
 import type * as ApiExtractorTypes from 'just-scripts/src/tasks/apiExtractorTypes';
 
 import { getJustArgv } from './argv';
+import { assertSelfContainedDtsRollups } from './dts-rollup';
 import { getTsPathAliasesApiExtractorConfig, getTsPathAliasesConfig } from './utils';
 
 const compilerMessages = {
@@ -55,6 +57,11 @@ export function apiExtractor(): TaskFunction {
     TS7016: [] as string[],
     TS2305: [] as string[],
   };
+  /**
+   * Shared across every config executed by this task so that a rollup emitted by more than one entry
+   * point config is only parsed once.
+   */
+  const scannedRollupPaths = new Set<string>();
 
   const args: ReturnType<typeof getJustArgv> & Partial<ApiExtractorCliRunCommandArgs> = getJustArgv();
   const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
@@ -137,15 +144,9 @@ export function apiExtractor(): TaskFunction {
   }
 
   function onResult(result: ExtractorResult, _extractorOptions: ApiExtractorTypes.IExtractorInvokeOptions): void {
-    if (!isUsingTsSolutionConfigs) {
-      return;
-    }
-
-    if (result.succeeded === true) {
-      return;
-    }
-
-    if (messages.TS7016.length) {
+    // surface the actionable api-extractor diagnostics first - the rollup guard reports a different class
+    // of problem and must not mask them
+    if (isUsingTsSolutionConfigs && result.succeeded !== true && messages.TS7016.length) {
       const errTitle = [
         chalk.bgRed.white.bold(`api-extractor | MISSING DEPENDENCY TYPE DECLARATIONS:`),
         chalk.red(`  Package dependencies are missing index.d.ts type definitions:`),
@@ -159,6 +160,13 @@ export function apiExtractor(): TaskFunction {
       );
 
       logger.error(errTitle, logErr, '\n', logFix, '\n');
+    }
+
+    // matches the vNext `generate-api` executor: the rollup guard reports a different class of problem
+    // than API Extractor's own diagnostics, so it must only run once API Extractor itself succeeded -
+    // otherwise a rollup guard failure would mask (or be masked by) the real API Extractor errors above.
+    if (result.succeeded === true) {
+      assertSelfContainedDtsRollups(result.extractorConfig, { scannedFilePaths: scannedRollupPaths });
     }
   }
 }

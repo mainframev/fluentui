@@ -17,7 +17,8 @@ export function createPathAliasesConfig(tree: Tree) {
   const tsConfigBase = '.';
   const mergedTsConfig = {
     compilerOptions: {
-      moduleResolution: 'node',
+      moduleResolution: 'nodenext',
+      module: 'nodenext',
       skipLibCheck: true,
       typeRoots: ['node_modules/@types', './typings'],
       isolatedModules: true,
@@ -25,7 +26,9 @@ export function createPathAliasesConfig(tree: Tree) {
       sourceMap: true,
       pretty: true,
       rootDir: tsConfigBase,
-      baseUrl: tsConfigBase,
+      // NOTE: no `baseUrl` - TypeScript 6+ resolves `paths` relative to this config file's
+      // directory, so every entry in `paths` (merged from the v8/v9 base configs below) must
+      // already be an explicitly relative path (e.g. prefixed with `./`).
       paths: {
         ...baseConfigs.v8.compilerOptions.paths,
         ...baseConfigs.v9.compilerOptions.paths,

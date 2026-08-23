@@ -93,6 +93,7 @@ export const mockAnimation: () => Animation = () => ({
   addEventListener: jest.fn(),
   dispatchEvent: jest.fn(),
   onremove: null,
+  overallProgress: null,
   pending: false,
   replaceState: 'active',
   commitStyles: jest.fn(),

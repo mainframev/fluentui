@@ -409,7 +409,7 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 **/tsconfig.json @microsoft/fluentui-react-build
 **/tsconfig.lib.json @microsoft/fluentui-react-build
 **/tsconfig.spec.json @microsoft/fluentui-react-build
-**/cypress.config.ts @microsoft/fluentui-react-build
+**/cypress.config.js @microsoft/fluentui-react-build
 **/api-extractor.json @microsoft/fluentui-react-build
 **/api-extractor.unstable.json @microsoft/fluentui-react-build
 **/.swcrc @microsoft/fluentui-react-build

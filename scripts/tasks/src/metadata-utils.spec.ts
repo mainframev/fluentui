@@ -24,9 +24,26 @@ describe(`metadata-utils`, () => {
     expect(actual.hasJest()).toEqual(false);
     expect(actual.hasSass()).toEqual(true);
   });
+
+  describe(`#shipsES5`, () => {
+    it(`should be opt-in via the "ships-es5" project tag`, () => {
+      const { root } = setup('react-one', { tags: ['v8', 'ships-es5'] });
+
+      expect(getRawMetadata(root).shipsES5()).toEqual(true);
+    });
+
+    it(`should not be inferred from any other metadata`, () => {
+      // `shipsAMD()` is true for this one, its `lib`/`lib-commonjs` are still on a modern baseline
+      const { root } = setup('react-one', { tags: ['v8', 'ships-amd'], projectType: 'library' });
+      const actual = getRawMetadata(root);
+
+      expect(actual.shipsAMD()).toEqual(true);
+      expect(actual.shipsES5()).toEqual(false);
+    });
+  });
 });
 
-function setup(projectRootDirName: string) {
+function setup(projectRootDirName: string, projectJson: Record<string, unknown> = {}) {
   function tmpFolder() {
     return `${workspaceRoot}/tmp`;
   }
@@ -46,7 +63,7 @@ function setup(projectRootDirName: string) {
     `${root}/package.json`,
     JSON.stringify({ name: `@proj/${projectRootDirName}`, version: '0.0.0', private: true }),
   );
-  fs.writeFileSync(`${root}/project.json`, JSON.stringify({ name: `@proj/${projectRootDirName}` }));
+  fs.writeFileSync(`${root}/project.json`, JSON.stringify({ name: `@proj/${projectRootDirName}`, ...projectJson }));
 
   fs.mkdirSync(`${root}/src/foo`, { recursive: true });
   fs.writeFileSync(`${root}/src/foo/hello.scss`, 'body { color: red; }', 'utf-8');

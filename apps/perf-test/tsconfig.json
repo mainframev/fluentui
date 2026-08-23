@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
     "experimentalDecorators": true,
     "preserveConstEnums": true

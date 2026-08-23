@@ -11,6 +11,7 @@ import type { Margin } from '@fluentui/chart-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Ref } from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 import type { SankeyGraph } from 'd3-sankey';
 import type { SankeyLayout } from 'd3-sankey';
 import type { SankeyLink } from 'd3-sankey';
@@ -713,7 +714,7 @@ export const DataVizPalette: {
 export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 
 // @public
-export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
+export interface DeclarativeChartProps extends RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
     colorwayType?: ColorwayType;
     componentRef?: React_2.Ref<IDeclarativeChart>;
@@ -1109,7 +1110,7 @@ export interface HeatMapChartStyles extends CartesianChartStyles {
 export const HorizontalBarChart: React_2.FunctionComponent<HorizontalBarChartProps>;
 
 // @public
-export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivElement> {
+export interface HorizontalBarChartProps extends RefAttributes<HTMLDivElement> {
     barHeight?: number;
     calloutProps?: ChartPopoverProps;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
@@ -1809,7 +1810,7 @@ export type SNode = SankeyNode<SNodeExtra, SLinkExtra>;
 export const Sparkline: React_2.FunctionComponent<SparklineProps>;
 
 // @public
-export interface SparklineProps extends React.RefAttributes<HTMLDivElement> {
+export interface SparklineProps extends RefAttributes<HTMLDivElement> {
     className?: string;
     culture?: string;
     data?: ChartProps;

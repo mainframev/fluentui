@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": "./src",
     "outDir": "dist",
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
     "lib": ["ES5", "DOM", "ES2015.Collection", "ES2015.Iterable", "ES2015.Symbol.WellKnown"],
     "jsx": "react",
@@ -11,9 +11,11 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
+    "strict": false,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
     "preserveConstEnums": true,
     "types": ["jest"],
     "isolatedModules": true

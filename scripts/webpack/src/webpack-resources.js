@@ -189,9 +189,10 @@ const api = {
    * Note that this assumes a base directory (for serving and output) of `dist/demo`.
    * @param {Partial<WebpackServeConfig>} customConfig - partial custom webpack config, merged into the full config
    * @param {string} [outputFolder] - output folder (package-relative) if not `dist/demo`
+   * @param {{ typescriptConfigFile?: string }} [options] - serve-specific TypeScript options
    * @returns {WebpackServeConfig}
    */
-  createServeConfig(customConfig, outputFolder = 'dist/demo') {
+  createServeConfig(customConfig, outputFolder = 'dist/demo', options = {}) {
     const outputPath = path.join(process.cwd(), outputFolder);
     return merge(
       {
@@ -228,7 +229,12 @@ const api = {
               use: {
                 loader: 'ts-loader',
                 options: {
+                  configFile: options.typescriptConfigFile,
                   experimentalWatchApi: true,
+                  // ForkTsChecker validates the repository-wide source program. ts-loader transpiles
+                  // each aliased source file independently, where TypeScript 6 reports misleading
+                  // rootDir diagnostics before loader compiler overrides are applied.
+                  ignoreDiagnostics: [5011, 6059],
                   transpileOnly: true,
                 },
               },
@@ -267,7 +273,17 @@ const api = {
         },
 
         plugins: [
-          ...(process.env.TF_BUILD || process.env.SKIP_TYPECHECK ? [] : [new ForkTsCheckerWebpackPlugin()]),
+          ...(process.env.TF_BUILD || process.env.SKIP_TYPECHECK
+            ? []
+            : [
+                new ForkTsCheckerWebpackPlugin({
+                  typescript: {
+                    configFile: options.typescriptConfigFile,
+                    // Serve configs resolve workspace packages to source, so the checker program spans the repository.
+                    configOverwrite: { compilerOptions: { rootDir: gitRoot } },
+                  },
+                }),
+              ]),
           ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin({})]),
         ],
 

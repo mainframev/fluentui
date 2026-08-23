@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "rootDir": "./src",
+    "target": "es2015",
     "module": "commonjs",
     "lib": ["es5", "dom"],
     "jsx": "react",
@@ -9,7 +10,8 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
     "skipLibCheck": true,
     "preserveConstEnums": false,
     "types": []

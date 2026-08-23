@@ -15,7 +15,7 @@
     "lib-commonjs"
   ],
   "dependencies": {
-    "@swc/helpers": "^0.5.1",
+    "@swc/helpers": "^0.5.23",
     "playwright": "^1.55.1",
     "turndown": "^7.2.0",
     "turndown-plugin-gfm": "^1.0.2",

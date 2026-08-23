@@ -65,7 +65,7 @@ import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveCo
 import { ChartTable } from '../ChartTable/index';
 import type { LegendsProps, LegendContainer } from '../Legends/index';
 import { Legends } from '../Legends/index';
-import type { JSXElement } from '@fluentui/react-utilities/src/index';
+import type { JSXElement, RefAttributes } from '@fluentui/react-utilities';
 import { resolveCSSVariables, useRtl } from '../../utilities/index';
 import { exportChartsAsImage } from '../../utilities/image-export-utils';
 
@@ -105,7 +105,7 @@ export interface Schema {
  * DeclarativeChart props.
  * {@docCategory DeclarativeChart}
  */
-export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElement> {
+export interface DeclarativeChartProps extends RefAttributes<HTMLDivElement> {
   /**
    * The schema representing the chart data, layout and configuration
    */

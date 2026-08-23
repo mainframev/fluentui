@@ -107,7 +107,7 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
 };
 
 // @internal (undocumented)
-export const BreadcrumbProvider: React_2.Provider<Required<Pick<BreadcrumbProps, "size">> | undefined>;
+export const BreadcrumbProvider: React_2.Provider<BreadcrumbContextValues | undefined>;
 
 // @public (undocumented)
 export type BreadcrumbSlots = {

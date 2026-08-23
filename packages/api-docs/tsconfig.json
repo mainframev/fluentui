@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "rootDir": "./src",
     "outDir": "dist",
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -10,13 +10,14 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noUnusedLocals": true,
+    "strict": false,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
     "preserveConstEnums": true,
-    "downlevelIteration": true,
     "lib": ["es2017"],
     "types": [],
     "isolatedModules": true

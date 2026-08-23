@@ -42,6 +42,23 @@ jest.mock('node:util', () => {
     __asyncExecMock: asyncExecMock,
   };
 });
+jest.mock('../../utils', () => {
+  return {
+    ...jest.requireActual('../../utils'),
+    // the real implementation writes a transient tsconfig next to the project config, which
+    // does not exist in this unit test - assert on the generated file name instead
+    createTsConfigWithoutPathAliases: jest.fn((tsConfigPath: string, purpose: string) => {
+      const { basename, dirname, join } = jest.requireActual('node:path');
+      return {
+        path: join(
+          dirname(tsConfigPath),
+          `tsconfig.__generated-no-path-aliases-${purpose}-<unique>-${basename(tsConfigPath)}`,
+        ),
+        cleanup: jest.fn(),
+      };
+    }),
+  };
+});
 jest.mock('@nx/devkit', () => {
   return {
     ...jest.requireActual('@nx/devkit'),
@@ -77,8 +94,8 @@ describe('TypeCheck Executor', () => {
     const output = await executor(options, mockContext);
 
     expect(promisifyCallMock.mock.calls.flat()).toEqual([
-      'tsc -p /root/libs/my-lib/tsconfig.lib.json --pretty --noEmit --baseUrl /root/libs/my-lib',
-      'tsc -p /root/libs/my-lib/tsconfig.spec.json --pretty --noEmit --baseUrl /root/libs/my-lib',
+      'tsc -p /root/libs/my-lib/tsconfig.__generated-no-path-aliases-type-check-<unique>-tsconfig.lib.json --pretty --noEmit',
+      'tsc -p /root/libs/my-lib/tsconfig.__generated-no-path-aliases-type-check-<unique>-tsconfig.spec.json --pretty --noEmit',
     ]);
 
     expect(output.success).toBe(true);
@@ -95,7 +112,7 @@ describe('TypeCheck Executor', () => {
     const output = await executor({ ...options, excludeProject: { spec: true, e2e: false } }, mockContext);
 
     expect(promisifyCallMock.mock.calls.flat()).toEqual([
-      'tsc -p /root/libs/my-lib/tsconfig.lib.json --pretty --noEmit --baseUrl /root/libs/my-lib',
+      'tsc -p /root/libs/my-lib/tsconfig.__generated-no-path-aliases-type-check-<unique>-tsconfig.lib.json --pretty --noEmit',
     ]);
 
     expect(output.success).toBe(true);

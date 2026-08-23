@@ -26,9 +26,12 @@ const createStorybookWebpackConfig = config => {
         {
           loader: require.resolve('ts-loader'),
           options: {
-            transpileOnly: true,
-            experimentalWatchApi: true,
             configFile: path.join(process.cwd(), 'tsconfig.json'),
+            experimentalWatchApi: true,
+            // Storybook resolves examples and workspace packages to source. TypeScript 6 reports
+            // rootDir diagnostics for each file before ts-loader's transpile-only compilation.
+            ignoreDiagnostics: [5011, 6059],
+            transpileOnly: true,
           },
         },
       ],

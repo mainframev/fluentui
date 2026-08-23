@@ -142,10 +142,10 @@ createRoot(document.getElementById('root')!).render(
       compilerOptions: {
         target: 'ES2020',
         useDefineForClassFields: true,
-        lib: ['ES2020', 'DOM', 'DOM.Iterable'],
+        lib: ['ES2020', 'DOM'],
         module: 'ESNext',
         skipLibCheck: true,
-        moduleResolution: 'node',
+        moduleResolution: 'bundler',
         resolveJsonModule: true,
         isolatedModules: true,
         noEmit: true,

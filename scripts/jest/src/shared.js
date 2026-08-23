@@ -9,7 +9,8 @@
  * based on testing spawning only 50% of available workers is fastest on both Local Machine and CI env atm ( 8 Core machine, 16GB RAM)
  */
 
-// - for macos large runner on GHA we need to set it to 2 {@link file://./../../../.github/workflows/pr.yml#77}
+// - on GHA `FLUENT_JEST_WORKER` is set per runner size because Nx already runs tasks concurrently
+//   {@link file://./../../../.github/workflows/pr.yml}
 // - for ADO runners it's 50%
 // - temporary adding FLUENT_JEST_WORKER var in order to make it pass on both GHA and ADO
 const workersConfig = { maxWorkers: process.env.FLUENT_JEST_WORKER || '50%' };

@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "lib",
-    "target": "es5",
+    "target": "es2015",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
     "preserveConstEnums": true,
     "strict": true,
     "noUnusedLocals": true,

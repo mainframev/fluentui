@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "import `SlotClassNames`/`JSXElement` from the `@fluentui/react-utilities` package entry instead of its internal `/src/index` path, and use its `RefAttributes` type instead of `React.RefAttributes`, which leaks string refs",
+  "packageName": "@fluentui/react-charts",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

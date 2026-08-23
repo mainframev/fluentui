@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/foundation-legacy/src",
-  "tags": ["v8", "ships-bundle"],
+  "tags": ["v8", "ships-bundle", "ships-es5"],
   "targets": {
     "test": {
       "dependsOn": ["^build"]

@@ -142,8 +142,12 @@ describe('typings', () => {
 describe('withSlots', () => {
   let reactCalls: number;
 
+  // `import * as React` compiles to a namespace object whose members are non-configurable accessors, so it
+  // cannot be spied on directly. Those accessors read through to the underlying CommonJS module, which can.
+  const reactModule: typeof React = jest.requireActual('react');
+
   beforeEach(() => {
-    jest.spyOn(React, 'createElement').mockImplementation((() => {
+    jest.spyOn(reactModule, 'createElement').mockImplementation((() => {
       reactCalls += 1;
     }) as any);
     reactCalls = 0;

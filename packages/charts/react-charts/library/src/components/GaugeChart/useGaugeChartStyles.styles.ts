@@ -1,7 +1,7 @@
 'use client';
 
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { SlotClassNames } from '@fluentui/react-utilities/src/index';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { GriffelStyle } from '@griffel/react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { GaugeChartProps, GaugeChartStyles } from './GaugeChart.types';

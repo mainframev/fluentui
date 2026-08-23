@@ -1,10 +1,21 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "Node10",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "dist",
     "types": ["jest", "node"]
   },
-  "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"]
+  "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.spec.js", "**/*.test.js", "**/*.d.ts"],
+  // `src/index.d.ts` is the package's public type entry point - it references the global `Cypress`
+  // namespace (via `cypress`'s own ambient globals), which collides with `@types/jest`'s ambient
+  // `expect`/`Assertion` globals if both end up in the same program. It isn't needed to type-check the
+  // Jest specs themselves, so it's excluded here rather than widening this project's `types`.
+  //
+  // `src/index.test.js` is excluded for the same reason: it `require`s `./index`, which pulls in
+  // `./index.d.ts` as a dependency (not just as a root file), reintroducing the exact ambient
+  // collision above even though `index.d.ts` itself is excluded - `@ts-nocheck` on the test file does
+  // not help, because the collision comes from both ambient global namespaces sharing one Program,
+  // not from checking the test file's own contents.
+  "exclude": ["src/index.d.ts", "src/index.test.js"]
 }

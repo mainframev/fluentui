@@ -2,8 +2,18 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "module": "commonjs",
-    "moduleResolution": "node10",
+    /**
+     * Jest resolves modules like a bundler (extensionless relative specifiers, `main`/`exports`
+     * conditions), and `@swc/jest` rewrites `import()` to `require()`.
+     *
+     * Paired `NodeNext` - which is what the other node executed configs of this repo use - is
+     * therefore not applicable here: it errors with TS2835 on the extensionless dynamic imports
+     * (`import('../cli')` in `src/__tests__/*.test.ts`) and adding the `.js` extension it asks for
+     * would break those very tests, because jest resolves the request against `cli.ts` sources.
+     * `bundler` is the modern (non deprecated) resolution which models jest's resolver.
+     */
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "types": ["jest", "node"]
   },
   "include": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts", "src/**/*.d.ts"]

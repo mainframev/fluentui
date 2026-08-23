@@ -15,7 +15,7 @@ export const breadcrumbDefaultValue: BreadcrumbContextValues = {
 /**
  * @internal
  */
-export const BreadcrumbProvider = BreadcrumbContext.Provider;
+export const BreadcrumbProvider: React.Provider<BreadcrumbContextValues | undefined> = BreadcrumbContext.Provider;
 
 /**
  * @internal

@@ -26,4 +26,5 @@ module.exports = resources.createServeConfig(
     { outDir },
   ),
   outDirRelative,
+  { typescriptConfigFile: path.join(__dirname, 'tsconfig.webpack.json') },
 );

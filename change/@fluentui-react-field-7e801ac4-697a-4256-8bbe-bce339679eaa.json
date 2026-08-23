@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "annotate `FieldContextProvider` with `React.Provider<FieldContextValue | undefined>` so the published type declaration rollup no longer imports an unpublished relative module",
+  "packageName": "@fluentui/react-field",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -44,8 +44,10 @@ const storyFiles = ['**/*.stories.tsx', '**/*.stories.ts'];
 
 const configFiles = [
   './just.config.ts',
-  './cypress.config.ts',
   './gulpfile.ts',
+  // `cypress.config.*` is always plain JavaScript (Cypress loads it through a bundled `ts-node` that
+  // rejects TypeScript 6 projects), so it's already covered by `./*.js` below rather than needing its
+  // own `.ts` entry here.
   './*.js',
   './.*.js',
   './config/**',
