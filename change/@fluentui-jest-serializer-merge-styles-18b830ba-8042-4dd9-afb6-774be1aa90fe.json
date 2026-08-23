@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add `@swc/helpers` runtime dependency: the ES5/AMD artifacts are downleveled by swc since TypeScript 6 removed `target: es5`/`module: amd` - swc imports its downlevel helpers from `@swc/helpers` instead of inlining a copy into every emitted file",
-  "packageName": "@fluentui/jest-serializer-merge-styles",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

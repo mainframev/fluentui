@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Raise the @swc/helpers runtime dependency floor.",
-  "packageName": "@fluentui/babel-preset-global-context",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

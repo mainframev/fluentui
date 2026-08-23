@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Raise the @swc/helpers runtime dependency floor.",
-  "packageName": "@fluentui/react-portal-compat-context",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

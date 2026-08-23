@@ -49,7 +49,6 @@
     "@fluentui/set-version": "*",
     "@fluentui/theme-samples": "*",
     "@fluentui/react-monaco-editor": "*",
-    "@swc/helpers": "^0.5.23",
     "office-ui-fabric-core": "^11.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",

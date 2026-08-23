@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.23"
+    "@swc/helpers": "^0.5.1"
   },
   "beachball": {
     "disallowedChangeTypes": [

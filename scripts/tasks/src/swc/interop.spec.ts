@@ -7,10 +7,11 @@ import { transpileEmittedJs } from './transpile';
 /**
  * Smoke tests for the module interoperability shape of the published v8 artifacts.
  *
- * TypeScript 6 defaults `esModuleInterop` to `true` (and deprecates turning it off), so the
- * CommonJS/AMD emit of v8 packages - which never set the option - now wraps namespace/default
- * imports. `lib-commonjs` gets `tslib.__importStar` from `tsc`, `lib-amd` gets
- * `_interop_require_wildcard` from the SWC module transform.
+ * v8 packages never set `esModuleInterop`, so their CommonJS emit is the plain `require` form and
+ * is unchanged by the migration. The AMD output, however, is produced by the SWC module transform
+ * (TypeScript 6 removed `module: amd`), which wraps namespace/default imports with
+ * `_interop_require_wildcard`. That helper is **inlined** into the emitted file (SWC
+ * `externalHelpers: false`), so the artifact carries no `@swc/helpers` runtime dependency.
  *
  * @see ../../../../docs/architecture/v8-published-artifacts.md
  */
@@ -76,27 +77,20 @@ describe(`esModuleInterop`, () => {
     return exports;
   }
 
-  function resolveSwcHelper(specifier: string) {
-    // `@swc/helpers/_/_interop_require_wildcard` -> the CommonJS build shipped by the package
-    const helperName = specifier.split('/').pop();
-
-    return require(require.resolve(`@swc/helpers/cjs/${helperName}.cjs`));
-  }
-
   it(`should wrap namespace and default imports of the AMD output`, async () => {
     await transpileEmittedJs({ root, inputPath: 'lib', outputPath: 'lib-amd', module: 'amd', target: 'es5' });
 
     const code = fs.readFileSync(path.join(root, 'lib-amd/index.js'), 'utf-8');
 
     expect(code).toMatch(/^define\(\[/);
-    // both imports of the same module share one interop namespace, the default is read off it
-    expect(code).toContain('"@swc/helpers/_/_interop_require_wildcard"');
+    // the interop helper is inlined, so the AMD dependency list declares no `@swc/helpers` module
+    const amdDependencies = code.slice(0, code.indexOf(']'));
+    expect(amdDependencies).not.toContain('@swc/helpers');
+    expect(code).toContain('function _interop_require_wildcard');
 
     // a CommonJS style dependency, ie one without `__esModule`
     const dep = { a: 'named export' };
     const dependencies: Record<string, unknown> = { dep };
-
-    dependencies['@swc/helpers/_/_interop_require_wildcard'] = resolveSwcHelper('_interop_require_wildcard');
 
     const module = loadAmd(code, dependencies) as {
       getNamespace: () => Record<string, unknown>;
@@ -120,10 +114,7 @@ describe(`esModuleInterop`, () => {
 
     const code = fs.readFileSync(path.join(root, 'lib-amd/index.js'), 'utf-8');
     const dep = { __esModule: true, a: 'named export', default: 'the default' };
-    const dependencies: Record<string, unknown> = {
-      dep,
-      '@swc/helpers/_/_interop_require_wildcard': resolveSwcHelper('_interop_require_wildcard'),
-    };
+    const dependencies: Record<string, unknown> = { dep };
 
     const module = loadAmd(code, dependencies) as {
       getNamespace: () => Record<string, unknown>;

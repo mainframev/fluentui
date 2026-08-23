@@ -23,7 +23,5 @@
     "lint": "just-scripts lint && eslint ./bin/*.js ./scripts/*.js"
   },
   "license": "MIT",
-  "dependencies": {
-    "@swc/helpers": "^0.5.23"
-  }
+  "dependencies": {}
 }

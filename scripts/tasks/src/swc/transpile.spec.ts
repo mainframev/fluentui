@@ -165,10 +165,10 @@ describe(`transpileEmittedJs`, () => {
 
   describe(`helpers`, () => {
     /**
-     * every package built by this pipeline declares `@swc/helpers` as runtime dependency, so the
-     * downlevel/module helpers must be imported instead of being inlined into each and every file
+     * v8 packages are maintenance-only, so the pipeline inlines the downlevel/module helpers
+     * rather than adding `@swc/helpers` as a new runtime dependency to every published package.
      */
-    it(`should import helpers instead of inlining them into every file`, async () => {
+    it(`should inline helpers instead of importing them from @swc/helpers`, async () => {
       const files = ['a.js', 'b.js', 'c.js'];
 
       for (const fileName of files) {
@@ -180,21 +180,23 @@ describe(`transpileEmittedJs`, () => {
       for (const fileName of files) {
         const actual = readFile(`lib/${fileName}`);
 
-        expect(actual).toContain('from "@swc/helpers/_/_class_call_check"');
-        expect(actual).not.toMatch(/function _class_call_check\(/);
-        expect(actual).not.toMatch(/function _inherits\(/);
+        // helper is inlined as a local function, not imported from `@swc/helpers`
+        expect(actual).not.toMatch(/from ["']@swc\/helpers/);
+        expect(actual).toMatch(/function _class_call_check\(/);
       }
     });
 
-    it(`should import helpers in AMD output as well`, async () => {
+    it(`should inline helpers in AMD output as well`, async () => {
       createFile('lib/index.js', esmOutput);
 
       await transpileEmittedJs({ root, inputPath: 'lib', outputPath: 'lib-amd', module: 'amd', target: 'es5' });
 
       const actual = readFile('lib-amd/index.js');
 
-      expect(actual).toContain('"@swc/helpers/_/_class_call_check"');
-      expect(actual).not.toMatch(/function _class_call_check\(/);
+      // the AMD dependency list (everything up to the first `]`) declares no `@swc/helpers` module
+      const amdDependencies = actual.slice(0, actual.indexOf(']'));
+      expect(amdDependencies).not.toContain('@swc/helpers');
+      expect(actual).toMatch(/function _class_call_check\(/);
     });
   });
 

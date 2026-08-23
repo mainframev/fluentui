@@ -19,7 +19,7 @@
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-hooks": "^8.10.2",
     "@griffel/react": "^1.5.32",
-    "@swc/helpers": "^0.5.23"
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <20.0.0",

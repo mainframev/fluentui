@@ -121,7 +121,7 @@ const sourceMappingUrlRegex = /\n?\/\/# sourceMappingURL=\S*/g;
  * Bump whenever the emitted output changes (swc options, postprocessing, ...) so that stale
  * manifests never mark outdated output as up to date.
  */
-const manifestVersion = 1;
+const manifestVersion = 2;
 
 interface ManifestEntry {
   /** hash of the compiler emitted input (`.js` + `.js.map`) the output was created from */
@@ -223,14 +223,15 @@ async function transpileFile(options: {
       parser: { syntax: 'ecmascript' },
       target,
       /**
-       * Helpers are imported from `@swc/helpers` instead of being inlined into every emitted file.
+       * Helpers are inlined into every emitted file rather than imported from `@swc/helpers`.
        *
-       * Inlining duplicates the (downlevel + module interop) helpers per file, which measurably
-       * bloats the published artifacts (~13% of `lib`, ~21% of `lib-amd` for `@fluentui/utilities`).
-       * Every package built with this pipeline declares `@swc/helpers` as a runtime dependency -
-       * the very same contract that converged packages compiled by `swc` already ship.
+       * External helpers would add `@swc/helpers` as a new runtime dependency to every v8
+       * (`ships-es5`) package. v8 is maintenance-only, and adding a runtime dependency to ~40
+       * published maintenance packages is a contract change we deliberately avoid; inlining keeps
+       * the dependency graph unchanged at the cost of a small size increase (~13% of `lib`,
+       * ~21% of `lib-amd`) that is immaterial for frozen legacy artifacts.
        */
-      externalHelpers: true,
+      externalHelpers: false,
     },
     sourceMaps: Boolean(inputSourceMap),
     inputSourceMap,

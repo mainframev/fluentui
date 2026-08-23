@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Raise the @swc/helpers runtime dependency floor.",
-  "packageName": "@fluentui/react-infobutton",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

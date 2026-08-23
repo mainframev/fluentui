@@ -1,9 +1,25 @@
 # v8 published artifacts (post TypeScript 6)
 
-TypeScript 6 removed `target: es5` and `module: amd`, and flipped the `esModuleInterop` default.
-v8 packages (`packages/react` & friends) publish exactly those artifacts, so the way they are
-produced - and in two places what they look like - changed. This page documents the contract and
-what consumers can observe.
+TypeScript 6 removed `target: es5` and `module: amd`. v8 packages (`packages/react` &
+friends) publish exactly those artifacts, so the way they are produced changed even though the
+published contract did not. This page documents the contract and what consumers can observe.
+
+## Module configuration
+
+v8 packages emit their published JavaScript with `tsc` directly (via `just-scripts build`), so the
+`module` compiler option controls the shipped artifact. To keep the CommonJS output byte-stable,
+v8 packages keep `module: commonjs`.
+
+TypeScript 6 deprecates the classic Node resolver (`moduleResolution: node`/`node10`) with
+`TS5107`, and the modern resolvers (`node16`/`nodenext`) cannot be paired with `module: commonjs`
+(`TS5110`). Because changing `module` would change the published artifact, v8 stays on
+`module: commonjs` + `moduleResolution: node10` and silences the deprecation with
+`ignoreDeprecations: "6.0"` in `tsconfig.base.v8.json`. This is a scoped, maintenance-only stopgap:
+`node10` is removed in TypeScript 7, at which point v8 (or its resolver) must be revisited.
+
+v9 packages differ: they emit JS via SWC (`.swcrc`), so `tsc` only type-checks and emits
+declarations. They use the non-deprecated `module: nodenext` + `moduleResolution: nodenext`, which
+does not affect their shipped JS.
 
 ## What each artifact is and how it is produced
 
@@ -32,56 +48,23 @@ ECMAScript baseline, declaration counterparts, `lib-amd`/`lib` parity).
 
 ## Behaviour changes for consumers
 
-### 1. `@swc/helpers` is a new runtime dependency
+### 1. SWC downlevel helpers are inlined (no new runtime dependency)
 
-The downlevel/module helpers are imported from `@swc/helpers` instead of being inlined into every
-emitted file (which added ~13% to `lib` and ~21% to `lib-amd`). Every affected package declares
-`@swc/helpers` as a `dependency`, exactly like the converged packages compiled by SWC.
+TypeScript 6 removed `target: es5`, so the ES5/AMD downlevel moved out of the compiler into SWC.
+SWC's downlevel and module-interop helpers are **inlined** into each emitted file rather than
+imported from `@swc/helpers`.
 
-For AMD consumers this means the emitted `define([...])` lists `@swc/helpers/_/<helper>` modules in
-addition to the already present `tslib`.
+Inlining is deliberate: external helpers would add `@swc/helpers` as a new runtime dependency to
+every `ships-es5` v8 package. v8 is maintenance-only, and adding a runtime dependency to ~40
+published maintenance packages is a contract change we avoid. The cost is a small size increase
+(~13% of `lib`, ~21% of `lib-amd`), which is immaterial for frozen legacy artifacts. The v8
+dependency graph is therefore unchanged from before the migration.
 
-`@swc/core` grows and renames its helper set over time (eg `_create_super` was replaced by
-`_call_super`), so the emitted output and the declared `@swc/helpers` range can drift apart - the
-artifact would then fail with `MODULE_NOT_FOUND` in a consumer's app. `verify-packaging` therefore
-resolves every `@swc/helpers/...` specifier found in the published JavaScript against the package
-itself and fails the build when one of them is not provided. If that check trips, raise the
-`@swc/helpers` version **repo wide** (all packages declare the same range, which `syncpack`
-enforces) instead of per package.
+### 2. `esModuleInterop` is unchanged for v8
 
-### 2. `esModuleInterop` is on (CJS + AMD only)
+`esModuleInterop` is **not** implied by `module: commonjs`, so v8's CommonJS emit is unchanged: v8
+packages never set `esModuleInterop` and still do not, so `import * as React from 'react'` keeps
+emitting the plain `var React = require('react')` form it always did.
 
-TypeScript 6 deprecates `esModuleInterop: false` (TS5107) and defaults the option to `true`. v8
-packages never set it, so their CommonJS emit changed:
-
-```ts
-// src
-import * as React from 'react';
-```
-
-```js
-// lib-commonjs - before (esModuleInterop: false)
-var React = require('react');
-
-// lib-commonjs - now (esModuleInterop: true, `importHelpers` -> helper comes from tslib)
-var tslib_1 = require('tslib');
-var React = tslib_1.__importStar(require('react'));
-```
-
-`lib-amd` gets the same treatment through the SWC helper (`_interop_require_wildcard`), which
-additionally caches the created namespace object per module.
-
-What this means:
-
-- **Public API is unchanged.** Named and default exports of our packages resolve exactly as before.
-- **Namespace objects are copies.** Inside our emitted CJS/AMD code, `React` is no longer the very
-  same object as `require('react')` - it is a namespace object with the module's own properties
-  plus a `default`. Identity checks (`ns === require('x')`) and mutation of an imported namespace
-  are the only observable differences, and neither is a supported pattern.
-- **ESM output (`lib`) is unaffected** - interop only exists in the CommonJS/AMD emit.
-
-This is not opt-out-able: `esModuleInterop: false` is removed in TypeScript 7 and the repo does not
-use `ignoreDeprecations`.
-
-Smoke tests for the emitted interoperability shape live in
-`scripts/tasks/src/swc/interop.spec.ts`.
+(Note: `module: nodenext` *does* imply `esModuleInterop: true`, so the v9 base sets it explicitly to
+match its own module mode; that only affects v9 declaration/type-checking, not the v8 CJS emit.)

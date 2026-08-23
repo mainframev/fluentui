@@ -22,7 +22,6 @@
     "test": "just-scripts test"
   },
   "dependencies": {
-    "@swc/helpers": "^0.5.23",
     "tslib": "^2.1.0"
   },
   "exports": {
