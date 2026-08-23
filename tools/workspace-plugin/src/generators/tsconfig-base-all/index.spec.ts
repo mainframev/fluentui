@@ -42,9 +42,9 @@ describe('tsconfig-base-all generator', () => {
     expect(baseAllJson).toMatchInlineSnapshot(`
       Object {
         "compilerOptions": Object {
-           "isolatedModules": true,
-           "module": "nodenext",
-           "moduleResolution": "nodenext",
+          "isolatedModules": true,
+          "module": "nodenext",
+          "moduleResolution": "nodenext",
           "paths": Object {
             "@proj/one": Array [
               "./packages/one/src/index.ts",
