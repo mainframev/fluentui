@@ -1,5 +1,6 @@
 export {
   Dropdown,
+  dropdownDataAttributes,
   renderDropdown,
   useDropdown,
   useDropdownContextValues,
@@ -8,6 +9,7 @@ export {
   useListbox,
   useListboxContextValues,
   Option,
+  optionDataAttributes,
   renderOption,
   useOption,
   OptionGroup,

@@ -87,6 +87,14 @@ export type NavCategoryItemContextValues = {
 };
 
 // @public
+export const navCategoryItemDataAttributes: {
+    readonly root: {
+        readonly open: "data-open";
+        readonly selected: "data-selected";
+    };
+};
+
+// @public
 export type NavCategoryItemProps = ComponentProps<NavCategoryItemSlots>;
 
 export { NavCategoryItemProvider }
@@ -181,6 +189,13 @@ export type NavDrawerState = ComponentState<NavDrawerSlots> & Omit<NavContextVal
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
 
+// @public
+export const navItemDataAttributes: {
+    readonly root: {
+        readonly selected: "data-selected";
+    };
+};
+
 export { NavItemProps }
 
 export { NavItemRegisterData }
@@ -220,6 +235,13 @@ export { NavState }
 
 // @public
 export const NavSubItem: ForwardRefComponent<NavSubItemProps>;
+
+// @public
+export const navSubItemDataAttributes: {
+    readonly root: {
+        readonly selected: "data-selected";
+    };
+};
 
 // @public
 export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps>;

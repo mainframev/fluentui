@@ -1,11 +1,18 @@
 import {
   Toolbar,
+  toolbarDataAttributes,
   ToolbarButton,
+  toolbarButtonDataAttributes,
   ToolbarDivider,
+  toolbarDividerDataAttributes,
   ToolbarGroup,
+  toolbarGroupDataAttributes,
   ToolbarRadioButton,
+  toolbarRadioButtonDataAttributes,
   ToolbarRadioGroup,
+  toolbarRadioGroupDataAttributes,
   ToolbarToggleButton,
+  toolbarToggleButtonDataAttributes,
 } from '@fluentui/react-headless-components-preview/toolbar';
 
 import descriptionMd from './ToolbarDescription.md';
@@ -29,6 +36,21 @@ export default {
     ToolbarToggleButton,
   },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            Toolbar: { attributes: toolbarDataAttributes },
+            ToolbarButton: { attributes: toolbarButtonDataAttributes },
+            ToolbarDivider: { attributes: toolbarDividerDataAttributes },
+            ToolbarGroup: { attributes: toolbarGroupDataAttributes },
+            ToolbarRadioButton: { attributes: toolbarRadioButtonDataAttributes },
+            ToolbarRadioGroup: { attributes: toolbarRadioGroupDataAttributes },
+            ToolbarToggleButton: { attributes: toolbarToggleButtonDataAttributes },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('Toolbar')].join('\n'),

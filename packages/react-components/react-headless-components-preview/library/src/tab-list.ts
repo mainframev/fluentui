@@ -1,8 +1,10 @@
 export {
   Tab,
+  tabDataAttributes,
   renderTab,
   useTab,
   TabList,
+  tabListDataAttributes,
   renderTabList,
   useTabList,
   useTabListContextValues,

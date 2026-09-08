@@ -12,10 +12,10 @@ export type {
 } from './components/Nav/index';
 export { NavProvider, useNavContext } from './components/Nav/index';
 
-export { NavItem, renderNavItem, useNavItem } from './components/Nav/index';
+export { NavItem, navItemDataAttributes, renderNavItem, useNavItem } from './components/Nav/index';
 export type { NavItemProps, NavItemSlots, NavItemState } from './components/Nav/index';
 
-export { NavSubItem, renderNavSubItem, useNavSubItem } from './components/Nav/index';
+export { NavSubItem, navSubItemDataAttributes, renderNavSubItem, useNavSubItem } from './components/Nav/index';
 export type { NavSubItemProps, NavSubItemSlots, NavSubItemState } from './components/Nav/index';
 
 export { NavCategory, renderNavCategory, useNavCategory, useNavCategoryContextValues } from './components/Nav/index';
@@ -25,6 +25,7 @@ export { NavCategoryProvider, useNavCategoryContext } from './components/Nav/ind
 
 export {
   NavCategoryItem,
+  navCategoryItemDataAttributes,
   renderNavCategoryItem,
   useNavCategoryItem,
   useNavCategoryItemContextValues,

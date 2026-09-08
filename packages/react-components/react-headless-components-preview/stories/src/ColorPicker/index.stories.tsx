@@ -1,8 +1,10 @@
 import {
   AlphaSlider,
+  alphaSliderDataAttributes,
   ColorArea,
   ColorPicker,
   ColorSlider,
+  colorSliderDataAttributes,
 } from '@fluentui/react-headless-components-preview/color-picker';
 
 import descriptionMd from './ColorPickerDescription.md';
@@ -22,6 +24,32 @@ export default {
     ColorSlider,
   },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            AlphaSlider: {
+              attributes: alphaSliderDataAttributes,
+              values: {
+                root: {
+                  channel: ['alpha'],
+                  orientation: ['horizontal', 'vertical'],
+                },
+              },
+            },
+            ColorSlider: {
+              attributes: colorSliderDataAttributes,
+              values: {
+                root: {
+                  channel: ['hue', 'saturation', 'value'],
+                  orientation: ['horizontal', 'vertical'],
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: descriptionMd,

@@ -1,4 +1,5 @@
 export { Combobox } from './Combobox';
+export { comboboxDataAttributes } from './Combobox.dataAttributes';
 export type { ComboboxSlots, ComboboxProps, ComboboxState } from './Combobox.types';
 export { renderCombobox } from './renderCombobox';
 export { useCombobox } from './useCombobox';

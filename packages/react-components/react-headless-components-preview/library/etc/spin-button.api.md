@@ -16,6 +16,16 @@ export { renderSpinButton }
 // @public
 export const SpinButton: ForwardRefComponent<SpinButtonProps>;
 
+// @public
+export const spinButtonDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly spinState: "data-spin-state";
+        readonly atBound: "data-at-bound";
+        readonly invalid: "data-invalid";
+    };
+};
+
 export { SpinButtonProps }
 
 export { SpinButtonSlots }

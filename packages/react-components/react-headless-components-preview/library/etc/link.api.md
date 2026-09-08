@@ -14,6 +14,14 @@ import { renderLink_unstable as renderLink } from '@fluentui/react-link';
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
 
+// @public
+export const linkDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly disabledFocusable: "data-disabled-focusable";
+    };
+};
+
 export { LinkProps }
 
 export { LinkSlots }

@@ -1,5 +1,6 @@
 export {
   Card,
+  cardDataAttributes,
   renderCard,
   useCard,
   useCardContext,

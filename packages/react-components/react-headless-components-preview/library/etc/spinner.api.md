@@ -16,6 +16,13 @@ export { renderSpinner }
 // @public
 export const Spinner: ForwardRefComponent<SpinnerProps>;
 
+// @public
+export const spinnerDataAttributes: {
+    readonly root: {
+        readonly labelPosition: "data-label-position";
+    };
+};
+
 export { SpinnerProps }
 
 export { SpinnerSlots }

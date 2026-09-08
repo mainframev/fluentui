@@ -1,4 +1,5 @@
 export { InteractionTagPrimary } from './InteractionTagPrimary';
+export { interactionTagPrimaryDataAttributes } from './InteractionTagPrimary.dataAttributes';
 export { renderInteractionTagPrimary } from './renderInteractionTagPrimary';
 export { useInteractionTagPrimary } from './useInteractionTagPrimary';
 export { useInteractionTagPrimaryContextValues } from './useInteractionTagPrimaryContextValues';

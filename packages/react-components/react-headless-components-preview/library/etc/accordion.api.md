@@ -33,7 +33,24 @@ export const Accordion: ForwardRefComponent<AccordionProps>;
 export { AccordionContextValues }
 
 // @public
+export const accordionDataAttributes: {
+    readonly root: {
+        readonly collapsible: "data-collapsible";
+        readonly multiple: "data-multiple";
+    };
+};
+
+// @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
+
+// @public
+export const accordionHeaderDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly expandIconPosition: "data-expand-icon-position";
+        readonly open: "data-open";
+    };
+};
 
 export { AccordionHeaderProps }
 
@@ -51,6 +68,14 @@ export type AccordionHeaderState = AccordionHeaderBaseState & {
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
+// @public
+export const accordionItemDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly open: "data-open";
+    };
+};
+
 export { AccordionItemProps }
 
 export { AccordionItemSlots }
@@ -65,6 +90,13 @@ export type AccordionItemState = AccordionItemState_2 & {
 
 // @public
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
+
+// @public
+export const accordionPanelDataAttributes: {
+    readonly root: {
+        readonly open: "data-open";
+    };
+};
 
 export { AccordionPanelProps }
 

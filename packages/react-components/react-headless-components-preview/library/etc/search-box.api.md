@@ -16,6 +16,14 @@ export { renderSearchBox }
 // @public
 export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 
+// @public
+export const searchBoxDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly focused: "data-focused";
+    };
+};
+
 export { SearchBoxProps }
 
 export { SearchBoxSlots }

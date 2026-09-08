@@ -1,4 +1,4 @@
-export { RatingItem, renderRatingItem, useRatingItem } from './RatingItem';
+export { RatingItem, ratingItemDataAttributes, renderRatingItem, useRatingItem } from './RatingItem';
 export type { RatingItemSlots, RatingItemProps, RatingItemState } from './RatingItem/RatingItem.types';
 
 export { Rating } from './Rating';

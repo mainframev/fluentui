@@ -30,6 +30,17 @@ import { useListboxContextValues } from '@fluentui/react-combobox';
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
 
+// @public
+export const dropdownDataAttributes: {
+    readonly root: {
+        readonly clearable: "data-clearable";
+        readonly disabled: "data-disabled";
+        readonly invalid: "data-invalid";
+        readonly open: "data-open";
+        readonly placeholder: "data-placeholder";
+    };
+};
+
 // @public (undocumented)
 export type DropdownProps = Omit<DropdownBaseHookProps, 'inlinePopup' | 'mountNode' | 'positioning'> & {
     positioning?: PositioningShorthand;
@@ -60,6 +71,15 @@ export { ListboxState }
 // @public
 const Option_2: ForwardRefComponent<OptionProps>;
 export { Option_2 as Option }
+
+// @public
+export const optionDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly multiselect: "data-multiselect";
+        readonly selected: "data-selected";
+    };
+};
 
 // @public
 export const OptionGroup: ForwardRefComponent<OptionGroupProps>;

@@ -1,4 +1,4 @@
-export { AlphaSlider, renderAlphaSlider, useAlphaSlider } from './AlphaSlider/index';
+export { AlphaSlider, alphaSliderDataAttributes, renderAlphaSlider, useAlphaSlider } from './AlphaSlider/index';
 export type { AlphaSliderProps, AlphaSliderSlots, AlphaSliderState } from './AlphaSlider/index';
 
 export { ColorArea, renderColorArea, useColorArea } from './ColorArea/index';
@@ -15,5 +15,5 @@ export type {
   ColorPickerState,
 } from './ColorPicker.types';
 
-export { ColorSlider, renderColorSlider, useColorSlider } from './ColorSlider/index';
+export { ColorSlider, colorSliderDataAttributes, renderColorSlider, useColorSlider } from './ColorSlider/index';
 export type { ColorSliderProps, ColorSliderSlots, ColorSliderState } from './ColorSlider/index';

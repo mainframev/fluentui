@@ -1,4 +1,5 @@
 export { Card } from './Card';
+export { cardDataAttributes } from './Card.dataAttributes';
 export { renderCard } from './renderCard';
 export { useCard, useCardContext, useCardContextValue } from './useCard';
 export type { CardSlots, CardProps, CardState, CardContextValue, CardOnSelectionChangeEvent } from './Card.types';

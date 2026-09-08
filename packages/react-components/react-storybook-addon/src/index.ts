@@ -1,4 +1,15 @@
-export type { FluentGlobals, FluentParameters, FluentStoryContext } from './hooks';
+export type {
+  ComponentDataAttributes,
+  DataAttributeName,
+  DataAttributeDocs,
+  DataAttributeValue,
+  DataAttributeValues,
+  DataAttributes,
+  FluentDocsConfig,
+  FluentGlobals,
+  FluentParameters,
+  FluentStoryContext,
+} from './hooks';
 export type { ThemeIds, Theme } from './theme';
 export { themes } from './theme';
 export { DIR_ID, THEME_ID, THEMES } from './constants';

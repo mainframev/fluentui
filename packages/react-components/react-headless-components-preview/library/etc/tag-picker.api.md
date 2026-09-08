@@ -76,6 +76,13 @@ export const TagPicker: {
 // @public
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps>;
 
+// @public
+export const tagPickerButtonDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+    };
+};
+
 export { TagPickerButtonProps }
 
 export { TagPickerButtonSlots }
@@ -93,6 +100,14 @@ export { TagPickerContextValues }
 
 // @public
 export const TagPickerControl: ForwardRefComponent<TagPickerControlProps>;
+
+// @public
+export const tagPickerControlDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly invalid: "data-invalid";
+    };
+};
 
 export { TagPickerControlInternalSlots }
 
@@ -112,6 +127,13 @@ export type TagPickerControlState = TagPickerControlBaseState & {
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps>;
 
 // @public
+export const tagPickerGroupDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+    };
+};
+
+// @public
 export type TagPickerGroupProps = ComponentProps<TagPickerGroupSlots> & Pick<TagGroupBaseProps, 'dismissible' | 'onDismiss'>;
 
 export { TagPickerGroupSlots }
@@ -125,6 +147,13 @@ export type TagPickerGroupState = TagPickerGroupBaseState & {
 
 // @public
 export const TagPickerInput: ForwardRefComponent<TagPickerInputProps>;
+
+// @public
+export const tagPickerInputDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+    };
+};
 
 export { TagPickerInputProps }
 

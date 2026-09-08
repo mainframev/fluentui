@@ -16,6 +16,15 @@ export { renderTextarea }
 // @public
 export const Textarea: ForwardRefComponent<TextareaProps>;
 
+// @public
+export const textareaDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly invalid: "data-invalid";
+        readonly resize: "data-resize";
+    };
+};
+
 export { TextareaProps }
 
 export { TextareaSlots }

@@ -59,6 +59,13 @@ export { DrawerContextValue }
 // @public
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
 
+// @public
+export const drawerFooterDataAttributes: {
+    readonly root: {
+        readonly scrollState: "data-scroll-state";
+    };
+};
+
 export { DrawerFooterProps }
 
 export { DrawerFooterSlots }
@@ -72,6 +79,13 @@ export type DrawerFooterState = DrawerFooterState_2 & {
 
 // @public
 export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
+
+// @public
+export const drawerHeaderDataAttributes: {
+    readonly root: {
+        readonly scrollState: "data-scroll-state";
+    };
+};
 
 // @public
 export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps>;
@@ -124,6 +138,14 @@ export type DrawerState = {
 
 // @public
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
+
+// @public
+export const inlineDrawerDataAttributes: {
+    readonly root: {
+        readonly open: "data-open";
+        readonly position: "data-position";
+    };
+};
 
 export { InlineDrawerProps }
 

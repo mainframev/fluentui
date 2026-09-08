@@ -1,5 +1,5 @@
 import { Avatar } from '@fluentui/react-headless-components-preview/avatar';
-import { Persona } from '@fluentui/react-headless-components-preview/persona';
+import { Persona, personaDataAttributes } from '@fluentui/react-headless-components-preview/persona';
 
 import descriptionMd from './PersonaDescription.md';
 
@@ -10,6 +10,14 @@ export default {
   component: Persona,
   subcomponent: { Avatar },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          attributes: personaDataAttributes,
+          values: { root: { textPosition: ['after', 'before', 'below'] } },
+        },
+      },
+    },
     docs: {
       description: {
         component: descriptionMd,

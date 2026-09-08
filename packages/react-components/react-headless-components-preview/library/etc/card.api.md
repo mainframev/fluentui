@@ -35,6 +35,14 @@ export const Card: ForwardRefComponent<CardProps>;
 export { CardContextValue }
 
 // @public
+export const cardDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly selected: "data-selected";
+    };
+};
+
+// @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
 export { CardFooterProps }

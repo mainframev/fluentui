@@ -1,4 +1,4 @@
-export { Tooltip, renderTooltip, useTooltip } from './components/Tooltip';
+export { Tooltip, tooltipDataAttributes, renderTooltip, useTooltip } from './components/Tooltip';
 export type {
   OnVisibleChangeData,
   TooltipTriggerProps,

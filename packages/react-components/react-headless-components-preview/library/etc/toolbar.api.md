@@ -47,6 +47,16 @@ export const Toolbar: ForwardRefComponent<ToolbarProps>;
 // @public
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 
+// @public
+export const toolbarButtonDataAttributes: {
+    readonly root: {
+        readonly vertical: "data-vertical";
+        readonly disabled: "data-disabled";
+        readonly disabledFocusable: "data-disabled-focusable";
+        readonly iconOnly: "data-icon-only";
+    };
+};
+
 export { ToolbarButtonProps }
 
 // @public (undocumented)
@@ -62,7 +72,21 @@ export type ToolbarButtonState = ToolbarButtonBaseState & {
 export { ToolbarContextValues }
 
 // @public
+export const toolbarDataAttributes: {
+    readonly root: {
+        readonly vertical: "data-vertical";
+    };
+};
+
+// @public
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps>;
+
+// @public
+export const toolbarDividerDataAttributes: {
+    readonly root: {
+        readonly vertical: "data-vertical";
+    };
+};
 
 export { ToolbarDividerProps }
 
@@ -75,6 +99,13 @@ export type ToolbarDividerState = ToolbarDividerBaseState & {
 
 // @public
 export const ToolbarGroup: ForwardRefComponent<ToolbarGroupProps>;
+
+// @public
+export const toolbarGroupDataAttributes: {
+    readonly root: {
+        readonly vertical: "data-vertical";
+    };
+};
 
 export { ToolbarGroupProps }
 
@@ -90,6 +121,16 @@ export { ToolbarProps }
 // @public
 export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
 
+// @public
+export const toolbarRadioButtonDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly disabledFocusable: "data-disabled-focusable";
+        readonly iconOnly: "data-icon-only";
+        readonly checked: "data-checked";
+    };
+};
+
 export { ToolbarRadioButtonProps }
 
 // @public (undocumented)
@@ -104,6 +145,13 @@ export type ToolbarRadioButtonState = ToolbarRadioButtonBaseState & {
 
 // @public
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
+
+// @public
+export const toolbarRadioGroupDataAttributes: {
+    readonly root: {
+        readonly vertical: "data-vertical";
+    };
+};
 
 export { ToolbarRadioGroupProps }
 
@@ -126,6 +174,16 @@ export type ToolbarState = ToolbarBaseState & {
 
 // @public
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
+
+// @public
+export const toolbarToggleButtonDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly disabledFocusable: "data-disabled-focusable";
+        readonly iconOnly: "data-icon-only";
+        readonly checked: "data-checked";
+    };
+};
 
 export { ToolbarToggleButtonProps }
 

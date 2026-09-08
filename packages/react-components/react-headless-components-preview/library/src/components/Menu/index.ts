@@ -18,19 +18,29 @@ export type { MenuTriggerProps, MenuTriggerState, MenuTriggerChildProps } from '
 export { MenuList, useMenuList, useMenuListContextValues, renderMenuList } from './MenuList';
 export type { MenuListProps, MenuListState, MenuListSlots } from './MenuList';
 
-export { MenuItem, useMenuItem, renderMenuItem } from './MenuItem';
+export { MenuItem, menuItemDataAttributes, useMenuItem, renderMenuItem } from './MenuItem';
 export type { MenuItemProps, MenuItemState, MenuItemSlots } from './MenuItem';
 
-export { MenuItemCheckbox, useMenuItemCheckbox, renderMenuItemCheckbox } from './MenuItemCheckbox';
+export {
+  MenuItemCheckbox,
+  menuItemCheckboxDataAttributes,
+  useMenuItemCheckbox,
+  renderMenuItemCheckbox,
+} from './MenuItemCheckbox';
 export type { MenuItemCheckboxProps, MenuItemCheckboxState } from '@fluentui/react-menu';
 
-export { MenuItemRadio, useMenuItemRadio, renderMenuItemRadio } from './MenuItemRadio';
+export { MenuItemRadio, menuItemRadioDataAttributes, useMenuItemRadio, renderMenuItemRadio } from './MenuItemRadio';
 export type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio';
 
-export { MenuItemLink, useMenuItemLink, renderMenuItemLink } from './MenuItemLink';
+export { MenuItemLink, menuItemLinkDataAttributes, useMenuItemLink, renderMenuItemLink } from './MenuItemLink';
 export type { MenuItemLinkProps, MenuItemLinkSlots, MenuItemLinkState } from '@fluentui/react-menu';
 
-export { MenuItemSwitch, useMenuItemSwitch, renderMenuItemSwitch } from './MenuItemSwitch';
+export {
+  MenuItemSwitch,
+  menuItemSwitchDataAttributes,
+  useMenuItemSwitch,
+  renderMenuItemSwitch,
+} from './MenuItemSwitch';
 export type { MenuItemSwitchProps, MenuItemSwitchSlots, MenuItemSwitchState } from '@fluentui/react-menu';
 
 export { MenuDivider, useMenuDivider, renderMenuDivider } from './MenuDivider';

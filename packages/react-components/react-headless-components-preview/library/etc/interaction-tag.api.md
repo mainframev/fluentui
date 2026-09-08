@@ -30,9 +30,26 @@ export type InteractionTagContextValues = {
 };
 
 // @public
+export const interactionTagDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly selected: "data-selected";
+    };
+};
+
+// @public
 export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
 
 export { InteractionTagPrimaryContextValues }
+
+// @public
+export const interactionTagPrimaryDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly selected: "data-selected";
+        readonly hasSecondaryAction: "data-has-secondary-action";
+    };
+};
 
 export { InteractionTagPrimaryProps }
 
@@ -51,6 +68,14 @@ export { InteractionTagProps }
 
 // @public
 export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps>;
+
+// @public
+export const interactionTagSecondaryDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly selected: "data-selected";
+    };
+};
 
 export { InteractionTagSecondaryProps }
 

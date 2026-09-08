@@ -39,6 +39,13 @@ export { AvatarGroupContextValue }
 export { AvatarGroupContextValues }
 
 // @public
+export const avatarGroupDataAttributes: {
+    readonly root: {
+        readonly layout: "data-layout";
+    };
+};
+
+// @public
 export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
 
 // @public

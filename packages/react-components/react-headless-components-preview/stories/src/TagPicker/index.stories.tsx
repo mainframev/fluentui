@@ -1,9 +1,13 @@
 import {
   TagPicker,
   TagPickerControl,
+  tagPickerControlDataAttributes,
   TagPickerGroup,
+  tagPickerGroupDataAttributes,
   TagPickerInput,
+  tagPickerInputDataAttributes,
   TagPickerButton,
+  tagPickerButtonDataAttributes,
   TagPickerList,
   TagPickerOption,
 } from '@fluentui/react-headless-components-preview/tag-picker';
@@ -25,6 +29,18 @@ export default {
   component: TagPicker,
   subcomponents: { TagPickerControl, TagPickerGroup, TagPickerInput, TagPickerButton, TagPickerList, TagPickerOption },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            TagPickerButton: { attributes: tagPickerButtonDataAttributes },
+            TagPickerControl: { attributes: tagPickerControlDataAttributes },
+            TagPickerGroup: { attributes: tagPickerGroupDataAttributes },
+            TagPickerInput: { attributes: tagPickerInputDataAttributes },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('TagPicker')].join('\n'),

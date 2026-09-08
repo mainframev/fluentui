@@ -19,6 +19,14 @@ export const TagGroup: ForwardRefComponent<TagGroupProps>;
 
 export { TagGroupContextValues }
 
+// @public
+export const tagGroupDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly dismissible: "data-dismissible";
+    };
+};
+
 export { TagGroupProps }
 
 export { TagGroupSlots }

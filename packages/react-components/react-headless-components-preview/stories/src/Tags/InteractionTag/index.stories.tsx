@@ -1,7 +1,10 @@
 import {
   InteractionTag,
+  interactionTagDataAttributes,
   InteractionTagPrimary,
+  interactionTagPrimaryDataAttributes,
   InteractionTagSecondary,
+  interactionTagSecondaryDataAttributes,
 } from '@fluentui/react-headless-components-preview/interaction-tag';
 
 import descriptionMd from './InteractionTagDescription.md';
@@ -19,6 +22,17 @@ export default {
   component: InteractionTag,
   subcomponents: { InteractionTagPrimary, InteractionTagSecondary },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            InteractionTag: { attributes: interactionTagDataAttributes },
+            InteractionTagPrimary: { attributes: interactionTagPrimaryDataAttributes },
+            InteractionTagSecondary: { attributes: interactionTagSecondaryDataAttributes },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: descriptionMd,

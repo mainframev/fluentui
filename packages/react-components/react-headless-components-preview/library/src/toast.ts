@@ -1,8 +1,9 @@
-export { Toast, renderToast, useToast } from './components/Toast';
+export { Toast, toastDataAttributes, renderToast, useToast } from './components/Toast';
 export type { ToastProps, ToastState, ToastSlots, ToastIntent } from './components/Toast';
 
 export {
   ToastTitle,
+  toastTitleDataAttributes,
   renderToastTitle,
   useToastTitle,
   ToastBody,

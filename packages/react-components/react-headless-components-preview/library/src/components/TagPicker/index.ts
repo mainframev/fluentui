@@ -13,7 +13,12 @@ export type {
   TagPickerOnOptionSelectData,
 } from './TagPicker.types';
 
-export { TagPickerControl, renderTagPickerControl, useTagPickerControl } from './TagPickerControl';
+export {
+  TagPickerControl,
+  tagPickerControlDataAttributes,
+  renderTagPickerControl,
+  useTagPickerControl,
+} from './TagPickerControl';
 export type {
   TagPickerControlProps,
   TagPickerControlSlots,
@@ -21,14 +26,25 @@ export type {
   TagPickerControlInternalSlots,
 } from './TagPickerControl';
 
-export { TagPickerInput, renderTagPickerInput, useTagPickerInput } from './TagPickerInput';
+export {
+  TagPickerInput,
+  tagPickerInputDataAttributes,
+  renderTagPickerInput,
+  useTagPickerInput,
+} from './TagPickerInput';
 export type { TagPickerInputProps, TagPickerInputSlots, TagPickerInputState } from './TagPickerInput';
 
-export { TagPickerButton, renderTagPickerButton, useTagPickerButton } from './TagPickerButton';
+export {
+  TagPickerButton,
+  tagPickerButtonDataAttributes,
+  renderTagPickerButton,
+  useTagPickerButton,
+} from './TagPickerButton';
 export type { TagPickerButtonProps, TagPickerButtonSlots, TagPickerButtonState } from './TagPickerButton';
 
 export {
   TagPickerGroup,
+  tagPickerGroupDataAttributes,
   renderTagPickerGroup,
   useTagPickerGroup,
   useTagPickerGroupContextValues,

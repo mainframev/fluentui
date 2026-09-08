@@ -3,6 +3,6 @@ export type { InfoLabelSlots, InfoLabelProps, InfoLabelState } from './InfoLabel
 export { renderInfoLabel } from './renderInfoLabel';
 export { useInfoLabel } from './useInfoLabel';
 
-export { InfoButton } from './InfoButton';
+export { InfoButton, infoButtonDataAttributes } from './InfoButton';
 export type { InfoButtonSlots, InfoButtonProps, InfoButtonState } from './InfoButton';
 export { renderInfoButton, useInfoButton } from './InfoButton';

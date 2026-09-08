@@ -1,7 +1,10 @@
 export {
   InteractionTag,
+  interactionTagDataAttributes,
   InteractionTagPrimary,
+  interactionTagPrimaryDataAttributes,
   InteractionTagSecondary,
+  interactionTagSecondaryDataAttributes,
   renderInteractionTag,
   renderInteractionTagPrimary,
   renderInteractionTagSecondary,

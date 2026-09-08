@@ -32,6 +32,14 @@ import { useSwatchPickerContextValues } from '@fluentui/react-swatch-picker';
 // @public (undocumented)
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
 
+// @public
+export const colorSwatchDataAttributes: {
+    readonly root: {
+        readonly selected: "data-selected";
+        readonly disabled: "data-disabled";
+    };
+};
+
 export { ColorSwatchProps }
 
 export { ColorSwatchSlots }
@@ -47,6 +55,14 @@ export type ColorSwatchState = ColorSwatchBaseState & {
 // @public (undocumented)
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps>;
 
+// @public
+export const emptySwatchDataAttributes: {
+    readonly root: {
+        readonly selected: "data-selected";
+        readonly disabled: "data-disabled";
+    };
+};
+
 export { EmptySwatchProps }
 
 export { EmptySwatchSlots }
@@ -61,6 +77,13 @@ export type EmptySwatchState = EmptySwatchBaseState & {
 
 // @public (undocumented)
 export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
+
+// @public
+export const imageSwatchDataAttributes: {
+    readonly root: {
+        readonly selected: "data-selected";
+    };
+};
 
 export { ImageSwatchProps }
 
@@ -85,6 +108,13 @@ export { renderSwatchPickerRow }
 
 // @public
 export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
+
+// @public
+export const swatchPickerDataAttributes: {
+    readonly root: {
+        readonly layout: "data-layout";
+    };
+};
 
 export { SwatchPickerProps }
 

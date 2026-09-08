@@ -1,5 +1,6 @@
 export {
   Combobox,
+  comboboxDataAttributes,
   renderCombobox,
   useCombobox,
   useComboboxContextValues,

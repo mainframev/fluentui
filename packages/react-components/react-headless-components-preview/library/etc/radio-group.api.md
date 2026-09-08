@@ -28,6 +28,14 @@ export const Radio: React_2.ForwardRefExoticComponent<Omit<ComponentProps<Partia
 } & React_2.RefAttributes<HTMLInputElement>>;
 
 // @public
+export const radioDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly labelPosition: "data-label-position";
+    };
+};
+
+// @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 
 export { RadioGroupProps }

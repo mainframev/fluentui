@@ -1,4 +1,4 @@
-import { Tooltip } from '@fluentui/react-headless-components-preview/tooltip';
+import { Tooltip, tooltipDataAttributes } from '@fluentui/react-headless-components-preview/tooltip';
 
 import descriptionMd from './TooltipDescription.md';
 import bestPracticesMd from './TooltipBestPractices.md';
@@ -16,6 +16,11 @@ export default {
   title: 'Components/Tooltip',
   component: Tooltip,
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: { attributes: tooltipDataAttributes },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, bestPracticesMd, getBrowserSupportNotice('Tooltip')].join('\n'),

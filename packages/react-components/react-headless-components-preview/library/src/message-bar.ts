@@ -1,10 +1,12 @@
 export {
   MessageBar,
+  messageBarDataAttributes,
   renderMessageBar,
   useMessageBar,
   useMessageBarContext,
   useMessageBarContextValues,
   MessageBarActions,
+  messageBarActionsDataAttributes,
   renderMessageBarActions,
   useMessageBarActions,
   useMessageBarActionsContextValues,

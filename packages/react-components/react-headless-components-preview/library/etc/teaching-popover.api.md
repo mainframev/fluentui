@@ -168,6 +168,13 @@ export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCaro
 // @public (undocumented)
 export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;
 
+// @public
+export const teachingPopoverCarouselNavButtonDataAttributes: {
+    readonly root: {
+        readonly selected: "data-selected";
+    };
+};
+
 export { TeachingPopoverCarouselNavButtonProps }
 
 export { TeachingPopoverCarouselNavButtonSlots }

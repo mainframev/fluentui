@@ -16,6 +16,17 @@ export { renderToggleButton }
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 
+// @public
+export const toggleButtonDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly disabledFocusable: "data-disabled-focusable";
+        readonly iconOnly: "data-icon-only";
+        readonly checked: "data-checked";
+        readonly iconPosition: "data-icon-position";
+    };
+};
+
 export { ToggleButtonProps }
 
 export { ToggleButtonSlots }

@@ -12,11 +12,47 @@ import * as React_2 from 'react';
 import type { Renderer } from 'storybook/internal/types';
 import type { StoryContext } from '@storybook/react-webpack5';
 
+// @public
+export type ComponentDataAttributes = {
+    attributes: DataAttributes;
+    values?: DataAttributeValues;
+};
+
+// @public
+export type DataAttributeDocs = ComponentDataAttributes | {
+    components: Readonly<Record<string, ComponentDataAttributes>>;
+};
+
+// @public
+export type DataAttributeName = `data-${string}`;
+
+// @public
+export type DataAttributes = Readonly<Record<string, Readonly<Record<string, DataAttributeName>>>>;
+
+// @public
+export type DataAttributeValue = readonly string[] | string;
+
+// @public
+export type DataAttributeValues = Readonly<Record<string, Readonly<Record<string, DataAttributeValue>>>>;
+
 // @public (undocumented)
 export const DIR_ID: "storybook_fluentui-react-addon_dir";
 
 // @public
 export const FluentCanvas: (props: React_2.ComponentProps<"div">) => JSXElement;
+
+// @public
+export type FluentDocsConfig = boolean | {
+    tableOfContents?: boolean;
+    dirSwitcher?: boolean;
+    themePicker?: boolean;
+    copyAsMarkdown?: boolean;
+    dataAttributes?: DataAttributeDocs;
+    argTable?: boolean | {
+        slotsApi?: boolean;
+        nativePropsApi?: boolean;
+    };
+};
 
 // @public (undocumented)
 export const FluentDocsPage: ({ renderPrimaryStory, renderArgsTable, renderStories, }?: FluentDocsPageProps) => JSXElement;

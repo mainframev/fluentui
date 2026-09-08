@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(react-storybook-addon): support explicit data attribute metadata in API docs",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "vgenaev@gmail.com"
+}

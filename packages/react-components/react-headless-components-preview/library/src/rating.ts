@@ -1,5 +1,6 @@
 export {
   RatingItem,
+  ratingItemDataAttributes,
   renderRatingItem,
   useRatingItem,
   Rating,

@@ -29,6 +29,13 @@ export const RatingItem: React_2.ForwardRefExoticComponent<Omit<Partial<RatingIt
     value?: number;
 } & React_2.RefAttributes<HTMLSpanElement>>;
 
+// @public
+export const ratingItemDataAttributes: {
+    readonly root: {
+        readonly appearance: "data-appearance";
+    };
+};
+
 export { RatingItemProps }
 
 export { RatingItemSlots }

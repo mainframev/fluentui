@@ -2,6 +2,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbButton,
+  breadcrumbButtonDataAttributes,
   BreadcrumbDivider,
 } from '@fluentui/react-headless-components-preview/breadcrumb';
 
@@ -13,6 +14,11 @@ export default {
   component: Breadcrumb,
   subcomponents: { BreadcrumbItem, BreadcrumbButton, BreadcrumbDivider },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: { attributes: breadcrumbButtonDataAttributes },
+      },
+    },
     docs: {
       description: {
         component: descriptionMd,

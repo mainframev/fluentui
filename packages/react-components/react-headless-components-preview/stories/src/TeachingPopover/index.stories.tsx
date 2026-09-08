@@ -1,4 +1,7 @@
-import { TeachingPopover } from '@fluentui/react-headless-components-preview/teaching-popover';
+import {
+  TeachingPopover,
+  teachingPopoverCarouselNavButtonDataAttributes,
+} from '@fluentui/react-headless-components-preview/teaching-popover';
 
 import descriptionMd from './TeachingPopoverDescription.md';
 
@@ -9,6 +12,11 @@ export default {
   title: 'Components/TeachingPopover',
   component: TeachingPopover,
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: { attributes: teachingPopoverCarouselNavButtonDataAttributes },
+      },
+    },
     docs: {
       description: {
         component: descriptionMd,

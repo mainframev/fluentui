@@ -1,4 +1,8 @@
-import { TabList } from '@fluentui/react-headless-components-preview/tab-list';
+import {
+  tabDataAttributes,
+  TabList,
+  tabListDataAttributes,
+} from '@fluentui/react-headless-components-preview/tab-list';
 
 import descriptionMd from './TabListDescription.md';
 
@@ -10,6 +14,19 @@ export default {
   title: 'Components/TabList',
   component: TabList,
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            Tab: { attributes: tabDataAttributes },
+            TabList: {
+              attributes: tabListDataAttributes,
+              values: { root: { orientation: ['horizontal', 'vertical'] } },
+            },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('TabList')].join('\n'),

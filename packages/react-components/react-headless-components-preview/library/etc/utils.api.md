@@ -5,6 +5,21 @@
 ```ts
 
 // @public
+export type DataAttributeConstants<Value> = {
+    readonly [Attribute in DataAttributeKeys<Value> as Attribute extends `data-${infer Name}` ? KebabToCamelCase<Name> : never]-?: Attribute;
+};
+
+// @public
+export type DataAttributeName = `data-${string}`;
+
+// @public
+export type SlotDataAttributes<State extends {
+    components: object;
+}> = {
+    readonly [SlotName in SlotNames<State> as DataAttributeKeys<State[SlotName]> extends never ? never : SlotName]-?: DataAttributeConstants<State[SlotName]>;
+};
+
+// @public
 export function toDataAttributeValue(value: boolean | string | number | undefined): string | undefined;
 
 // (No @packageDocumentation comment for this package)

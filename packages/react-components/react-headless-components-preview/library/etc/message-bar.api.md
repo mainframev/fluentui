@@ -38,6 +38,14 @@ export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps>;
 
 export { MessageBarActionsContextValues }
 
+// @public
+export const messageBarActionsDataAttributes: {
+    readonly root: {
+        readonly layout: "data-layout";
+        readonly hasActions: "data-has-actions";
+    };
+};
+
 export { MessageBarActionsProps }
 
 export { MessageBarActionsSlots }
@@ -62,6 +70,14 @@ export { MessageBarBodySlots }
 export { MessageBarBodyState }
 
 export { MessageBarContextValues }
+
+// @public
+export const messageBarDataAttributes: {
+    readonly root: {
+        readonly layout: "data-layout";
+        readonly intent: "data-intent";
+    };
+};
 
 export { MessageBarIntent }
 

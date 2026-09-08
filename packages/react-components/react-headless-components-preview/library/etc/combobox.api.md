@@ -31,6 +31,17 @@ import { useListboxContextValues } from '@fluentui/react-combobox';
 // @public (undocumented)
 export const Combobox: ForwardRefComponent<ComboboxProps>;
 
+// @public
+export const comboboxDataAttributes: {
+    readonly root: {
+        readonly clearable: "data-clearable";
+        readonly disabled: "data-disabled";
+        readonly invalid: "data-invalid";
+        readonly open: "data-open";
+        readonly placeholder: "data-placeholder";
+    };
+};
+
 // @public (undocumented)
 export type ComboboxProps = Omit<BaseComboboxProps, 'inlinePopup' | 'mountNode' | 'positioning'> & {
     positioning?: PositioningShorthand;

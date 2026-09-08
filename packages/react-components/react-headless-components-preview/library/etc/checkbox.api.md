@@ -14,6 +14,15 @@ import { renderCheckbox_unstable as renderCheckbox } from '@fluentui/react-check
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
+// @public
+export const checkboxDataAttributes: {
+    readonly root: {
+        readonly checked: "data-checked";
+        readonly disabled: "data-disabled";
+        readonly labelPosition: "data-label-position";
+    };
+};
+
 export { CheckboxProps }
 
 export { CheckboxSlots }

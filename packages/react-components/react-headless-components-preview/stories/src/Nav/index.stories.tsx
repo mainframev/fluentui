@@ -1,9 +1,12 @@
 import {
   Nav,
   NavItem,
+  navItemDataAttributes,
   NavSubItem,
+  navSubItemDataAttributes,
   NavCategory,
   NavCategoryItem,
+  navCategoryItemDataAttributes,
   NavSubItemGroup,
   NavDivider,
   NavSectionHeader,
@@ -40,6 +43,17 @@ export default {
     NavDrawerFooter,
   },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            NavItem: { attributes: navItemDataAttributes },
+            NavSubItem: { attributes: navSubItemDataAttributes },
+            NavCategoryItem: { attributes: navCategoryItemDataAttributes },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('Nav')].join('\n'),

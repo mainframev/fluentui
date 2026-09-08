@@ -17,6 +17,13 @@ import { useFieldControlProps_unstable as useFieldControlProps } from '@fluentui
 // @public
 export const Field: ForwardRefComponent<FieldProps>;
 
+// @public
+export const fieldDataAttributes: {
+    readonly root: {
+        readonly validateState: "data-validate-state";
+    };
+};
+
 export { FieldProps }
 
 export { FieldSlots }

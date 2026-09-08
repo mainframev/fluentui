@@ -1,5 +1,6 @@
 export {
   Field,
+  fieldDataAttributes,
   renderField,
   useField,
   useFieldContextValues,

@@ -1,5 +1,6 @@
 export {
   Radio,
+  radioDataAttributes,
   renderRadio,
   useRadio,
   RadioGroup,

@@ -1,4 +1,5 @@
 export { NavCategoryItem } from './NavCategoryItem';
+export { navCategoryItemDataAttributes } from './NavCategoryItem.dataAttributes';
 export type {
   NavCategoryItemProps,
   NavCategoryItemSlots,

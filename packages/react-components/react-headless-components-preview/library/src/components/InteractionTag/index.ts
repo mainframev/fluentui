@@ -1,4 +1,5 @@
 export { InteractionTag } from './InteractionTag';
+export { interactionTagDataAttributes } from './InteractionTag.dataAttributes';
 export { renderInteractionTag } from './renderInteractionTag';
 export { useInteractionTag } from './useInteractionTag';
 export { useInteractionTagContextValues } from './useInteractionTagContextValues';
@@ -11,6 +12,7 @@ export type {
 
 export {
   InteractionTagPrimary,
+  interactionTagPrimaryDataAttributes,
   renderInteractionTagPrimary,
   useInteractionTagPrimary,
   useInteractionTagPrimaryContextValues,
@@ -24,6 +26,7 @@ export type {
 
 export {
   InteractionTagSecondary,
+  interactionTagSecondaryDataAttributes,
   renderInteractionTagSecondary,
   useInteractionTagSecondary,
 } from './InteractionTagSecondary';

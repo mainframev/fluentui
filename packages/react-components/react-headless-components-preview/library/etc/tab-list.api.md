@@ -25,7 +25,23 @@ export { renderTabList }
 export const Tab: ForwardRefComponent<TabProps>;
 
 // @public
+export const tabDataAttributes: {
+    readonly root: {
+        readonly iconOnly: "data-icon-only";
+        readonly selected: "data-selected";
+        readonly disabled: "data-disabled";
+    };
+};
+
+// @public
 export const TabList: ForwardRefComponent<TabListProps>;
+
+// @public
+export const tabListDataAttributes: {
+    readonly root: {
+        readonly orientation: "data-orientation";
+    };
+};
 
 export { TabListProps }
 

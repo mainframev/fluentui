@@ -1,5 +1,6 @@
 export {
   Accordion,
+  accordionDataAttributes,
   renderAccordion,
   useAccordion,
   useAccordionContext,
@@ -9,6 +10,7 @@ export type { AccordionSlots, AccordionProps, AccordionState, AccordionContextVa
 
 export {
   AccordionHeader,
+  accordionHeaderDataAttributes,
   renderAccordionHeader,
   useAccordionHeader,
   useAccordionHeaderContextValues,
@@ -17,11 +19,17 @@ export type { AccordionHeaderSlots, AccordionHeaderProps, AccordionHeaderState }
 
 export {
   AccordionItem,
+  accordionItemDataAttributes,
   renderAccordionItem,
   useAccordionItem,
   useAccordionItemContextValues,
 } from './components/Accordion';
 export type { AccordionItemSlots, AccordionItemProps, AccordionItemState } from './components/Accordion';
 
-export { AccordionPanel, renderAccordionPanel, useAccordionPanel } from './components/Accordion';
+export {
+  AccordionPanel,
+  accordionPanelDataAttributes,
+  renderAccordionPanel,
+  useAccordionPanel,
+} from './components/Accordion';
 export type { AccordionPanelSlots, AccordionPanelProps, AccordionPanelState } from './components/Accordion';

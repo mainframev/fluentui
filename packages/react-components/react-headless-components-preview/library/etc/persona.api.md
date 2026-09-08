@@ -19,6 +19,13 @@ import type { Slot } from '@fluentui/react-utilities';
 export const Persona: ForwardRefComponent<PersonaProps>;
 
 // @public
+export const personaDataAttributes: {
+    readonly root: {
+        readonly textPosition: "data-text-position";
+    };
+};
+
+// @public
 export type PersonaProps = ComponentProps<PersonaSlots> & Pick<PersonaProps_2, 'name' | 'textPosition'>;
 
 // @public (undocumented)

@@ -16,6 +16,16 @@ export { renderSwitch }
 // @public
 export const Switch: ForwardRefComponent<SwitchProps>;
 
+// @public
+export const switchDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly disabledFocusable: "data-disabled-focusable";
+        readonly checked: "data-checked";
+        readonly labelPosition: "data-label-position";
+    };
+};
+
 export { SwitchProps }
 
 export { SwitchSlots }

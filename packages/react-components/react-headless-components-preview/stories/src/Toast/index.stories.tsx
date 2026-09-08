@@ -1,4 +1,12 @@
-import { Toast, ToastTitle, ToastBody, ToastFooter, Toaster } from '@fluentui/react-headless-components-preview/toast';
+import {
+  Toast,
+  toastDataAttributes,
+  ToastTitle,
+  toastTitleDataAttributes,
+  ToastBody,
+  ToastFooter,
+  Toaster,
+} from '@fluentui/react-headless-components-preview/toast';
 
 import descriptionMd from './ToastDescription.md';
 
@@ -29,6 +37,22 @@ export default {
     Toaster,
   },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            Toast: {
+              attributes: toastDataAttributes,
+              values: { root: { intent: ['info', 'success', 'error', 'warning'] } },
+            },
+            ToastTitle: {
+              attributes: toastTitleDataAttributes,
+              values: { media: { intent: ['info', 'success', 'error', 'warning'] } },
+            },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('Toast')].join('\n'),

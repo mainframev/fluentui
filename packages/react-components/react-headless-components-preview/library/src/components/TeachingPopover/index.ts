@@ -115,6 +115,7 @@ export type {
 
 export {
   TeachingPopoverCarouselNavButton,
+  teachingPopoverCarouselNavButtonDataAttributes,
   useTeachingPopoverCarouselNavButton,
   renderTeachingPopoverCarouselNavButton,
 } from './TeachingPopoverCarouselNavButton';

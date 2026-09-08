@@ -1,4 +1,11 @@
-import { Dropdown, Listbox, Option, OptionGroup } from '@fluentui/react-headless-components-preview/dropdown';
+import {
+  Dropdown,
+  dropdownDataAttributes,
+  Listbox,
+  Option,
+  optionDataAttributes,
+  OptionGroup,
+} from '@fluentui/react-headless-components-preview/dropdown';
 
 import descriptionMd from './DropdownDescription.md';
 
@@ -16,6 +23,19 @@ export default {
   component: Dropdown,
   subcomponents: { Listbox, Option, OptionGroup },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            Dropdown: {
+              attributes: dropdownDataAttributes,
+              values: { root: { invalid: ['boolean', 'grammar', 'spelling'] } },
+            },
+            Option: { attributes: optionDataAttributes },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('Dropdown')].join('\n'),

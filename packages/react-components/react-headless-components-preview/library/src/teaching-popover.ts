@@ -38,6 +38,7 @@ export {
   useTeachingPopoverCarouselNav,
   renderTeachingPopoverCarouselNav,
   TeachingPopoverCarouselNavButton,
+  teachingPopoverCarouselNavButtonDataAttributes,
   useTeachingPopoverCarouselNavButton,
   renderTeachingPopoverCarouselNavButton,
   TeachingPopoverCarouselPageCount,

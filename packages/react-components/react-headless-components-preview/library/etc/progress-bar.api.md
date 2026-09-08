@@ -14,6 +14,13 @@ import { renderProgressBar_unstable as renderProgressBar } from '@fluentui/react
 // @public
 export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 
+// @public
+export const progressBarDataAttributes: {
+    readonly root: {
+        readonly indeterminate: "data-indeterminate";
+    };
+};
+
 export { ProgressBarProps }
 
 export { ProgressBarSlots }

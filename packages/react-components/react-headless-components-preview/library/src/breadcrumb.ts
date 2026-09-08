@@ -18,5 +18,10 @@ export type { BreadcrumbDividerSlots, BreadcrumbDividerProps, BreadcrumbDividerS
 export { BreadcrumbItem, renderBreadcrumbItem, useBreadcrumbItem } from './components/Breadcrumb';
 export type { BreadcrumbItemSlots, BreadcrumbItemProps, BreadcrumbItemState } from './components/Breadcrumb';
 
-export { BreadcrumbButton, renderBreadcrumbButton, useBreadcrumbButton } from './components/Breadcrumb';
+export {
+  BreadcrumbButton,
+  breadcrumbButtonDataAttributes,
+  renderBreadcrumbButton,
+  useBreadcrumbButton,
+} from './components/Breadcrumb';
 export type { BreadcrumbButtonSlots, BreadcrumbButtonProps, BreadcrumbButtonState } from './components/Breadcrumb';

@@ -14,6 +14,13 @@ import { renderDivider_unstable as renderDivider } from '@fluentui/react-divider
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
 
+// @public
+export const dividerDataAttributes: {
+    readonly root: {
+        readonly orientation: "data-orientation";
+    };
+};
+
 export { DividerProps }
 
 export { DividerSlots }

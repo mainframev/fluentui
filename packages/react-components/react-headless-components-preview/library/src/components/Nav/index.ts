@@ -15,11 +15,11 @@ export { NavCategoryItemProvider, useNavCategoryItemContext } from './navCategor
 
 export { NavItem } from './NavItem';
 export type { NavItemProps, NavItemSlots, NavItemState } from './NavItem';
-export { renderNavItem, useNavItem } from './NavItem';
+export { navItemDataAttributes, renderNavItem, useNavItem } from './NavItem';
 
 export { NavSubItem } from './NavSubItem';
 export type { NavSubItemProps, NavSubItemSlots, NavSubItemState } from './NavSubItem';
-export { renderNavSubItem, useNavSubItem } from './NavSubItem';
+export { navSubItemDataAttributes, renderNavSubItem, useNavSubItem } from './NavSubItem';
 
 export { NavCategory } from './NavCategory';
 export type { NavCategoryProps, NavCategoryState } from './NavCategory';
@@ -32,7 +32,12 @@ export type {
   NavCategoryItemState,
   NavCategoryItemContextValues,
 } from './NavCategoryItem';
-export { renderNavCategoryItem, useNavCategoryItem, useNavCategoryItemContextValues } from './NavCategoryItem';
+export {
+  navCategoryItemDataAttributes,
+  renderNavCategoryItem,
+  useNavCategoryItem,
+  useNavCategoryItemContextValues,
+} from './NavCategoryItem';
 
 export { NavSubItemGroup } from './NavSubItemGroup';
 export type { NavSubItemGroupProps, NavSubItemGroupSlots, NavSubItemGroupState } from './NavSubItemGroup';

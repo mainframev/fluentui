@@ -1,4 +1,10 @@
-import { Combobox, Listbox, Option, OptionGroup } from '@fluentui/react-headless-components-preview/combobox';
+import {
+  Combobox,
+  comboboxDataAttributes,
+  Listbox,
+  Option,
+  OptionGroup,
+} from '@fluentui/react-headless-components-preview/combobox';
 
 import descriptionMd from './ComboboxDescription.md';
 
@@ -18,6 +24,14 @@ export default {
   component: Combobox,
   subcomponents: { Listbox, Option, OptionGroup },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          attributes: comboboxDataAttributes,
+          values: { root: { invalid: ['boolean', 'grammar', 'spelling'] } },
+        },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('Combobox')].join('\n'),

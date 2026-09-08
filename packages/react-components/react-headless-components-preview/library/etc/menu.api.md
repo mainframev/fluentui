@@ -111,12 +111,38 @@ export const MenuItem: ForwardRefComponent<MenuItemProps>;
 // @public
 export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
 
+// @public
+export const menuItemCheckboxDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly hasSubmenu: "data-has-submenu";
+        readonly submenuOpen: "data-submenu-open";
+        readonly checked: "data-checked";
+    };
+};
+
 export { MenuItemCheckboxProps }
 
 export { MenuItemCheckboxState }
 
 // @public
+export const menuItemDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly hasSubmenu: "data-has-submenu";
+        readonly submenuOpen: "data-submenu-open";
+    };
+};
+
+// @public
 export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps>;
+
+// @public
+export const menuItemLinkDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+    };
+};
 
 export { MenuItemLinkProps }
 
@@ -128,6 +154,16 @@ export { MenuItemProps }
 
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
+
+// @public
+export const menuItemRadioDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly hasSubmenu: "data-has-submenu";
+        readonly submenuOpen: "data-submenu-open";
+        readonly checked: "data-checked";
+    };
+};
 
 export { MenuItemRadioProps }
 
@@ -154,6 +190,14 @@ export type MenuItemState = MenuItemState_2 & {
 
 // @public
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
+
+// @public
+export const menuItemSwitchDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly checked: "data-checked";
+    };
+};
 
 export { MenuItemSwitchProps }
 

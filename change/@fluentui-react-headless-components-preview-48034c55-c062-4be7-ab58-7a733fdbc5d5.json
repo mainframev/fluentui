@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "feat: export component data attribute constants",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}

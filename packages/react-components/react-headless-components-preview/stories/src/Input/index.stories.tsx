@@ -1,4 +1,4 @@
-import { Input } from '@fluentui/react-headless-components-preview/input';
+import { Input, inputDataAttributes } from '@fluentui/react-headless-components-preview/input';
 
 import descriptionMd from './InputDescription.md';
 export { Default } from './InputDefault.stories';
@@ -8,6 +8,18 @@ export default {
   title: 'Components/Input',
   component: Input,
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          attributes: inputDataAttributes,
+          values: {
+            root: {
+              invalid: ['boolean', 'grammar', 'spelling'],
+            },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: descriptionMd,

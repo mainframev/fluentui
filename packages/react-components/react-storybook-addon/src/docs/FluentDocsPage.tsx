@@ -20,6 +20,7 @@ import { InfoFilled } from '@fluentui/react-icons';
 import type { JSXElement } from '@fluentui/react-utilities';
 
 import { DIR_ID, THEME_ID, THEMES } from '../constants';
+import type { ComponentDataAttributes, DataAttributeDocs, DataAttributeValue } from '../hooks';
 import { themes as defaultThemes, type Theme } from '../theme';
 
 import { getDocsPageConfig } from './utils';
@@ -92,6 +93,60 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     gap: tokens.spacingVerticalXS,
     flex: 1,
+  },
+  dataAttributesSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalM,
+    marginTop: tokens.spacingVerticalL,
+  },
+  dataAttributesTitle: {
+    margin: 0,
+    color: tokens.colorNeutralForeground1,
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase500,
+    fontWeight: tokens.fontWeightSemibold,
+    lineHeight: tokens.lineHeightBase500,
+  },
+  dataAttributesTableContainer: {
+    overflowX: 'auto',
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+  },
+  dataAttributesTable: {
+    width: '100%',
+    borderCollapse: 'separate',
+    borderSpacing: 0,
+    color: tokens.colorNeutralForeground1,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  dataAttributesHeader: {
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalM}`,
+    color: tokens.colorNeutralForeground2,
+    backgroundColor: tokens.colorNeutralBackground2,
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    fontWeight: tokens.fontWeightSemibold,
+    textAlign: 'left',
+  },
+  dataAttributesCell: {
+    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalM}`,
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
+    textAlign: 'left',
+    verticalAlign: 'top',
+  },
+  dataAttributesLastRowCell: {
+    borderBottom: 'none',
+  },
+  dataAttributesCode: {
+    display: 'inline-block',
+    padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalXS}`,
+    color: tokens.colorNeutralForeground1,
+    fontFamily: tokens.fontFamilyMonospace,
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    backgroundColor: tokens.colorNeutralBackground3,
+    borderRadius: tokens.borderRadiusSmall,
   },
 });
 
@@ -248,16 +303,98 @@ const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactEl
     </div>
   );
 };
+
+const DataAttributesTable = ({ dataAttributes }: { dataAttributes: DataAttributeDocs }) => {
+  const styles = useStyles();
+  const showComponent = 'components' in dataAttributes;
+  const attributesByComponent: Readonly<Record<string, ComponentDataAttributes>> = showComponent
+    ? dataAttributes.components
+    : { '': dataAttributes };
+
+  const renderValue = (value: DataAttributeValue | undefined) => {
+    const summary = !value
+      ? 'boolean'
+      : Array.isArray(value)
+      ? value.map(item => (item === 'boolean' ? item : `"${item}"`)).join(' | ')
+      : value;
+
+    return <code className={styles.dataAttributesCode}>{summary}</code>;
+  };
+
+  const rows = Object.entries(attributesByComponent).flatMap(([component, docs]) =>
+    Object.entries(docs.attributes).flatMap(([slot, attributes]) =>
+      Object.entries(attributes).map(([property, attribute]) => ({
+        attribute,
+        component,
+        property,
+        slot,
+        value: docs.values?.[slot]?.[property],
+      })),
+    ),
+  );
+
+  return (
+    <section className={styles.dataAttributesSection} aria-labelledby="data-attributes-title">
+      <h2 className={styles.dataAttributesTitle} id="data-attributes-title">
+        Data attributes
+      </h2>
+      <div className={styles.dataAttributesTableContainer}>
+        <table className={styles.dataAttributesTable}>
+          <thead>
+            <tr>
+              {showComponent && (
+                <th className={styles.dataAttributesHeader} scope="col">
+                  Component
+                </th>
+              )}
+              <th className={styles.dataAttributesHeader} scope="col">
+                Slot
+              </th>
+              <th className={styles.dataAttributesHeader} scope="col">
+                Attribute
+              </th>
+              <th className={styles.dataAttributesHeader} scope="col">
+                Value
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(({ attribute, component, property, slot, value }, index) => {
+              const cellClassName =
+                index === rows.length - 1
+                  ? `${styles.dataAttributesCell} ${styles.dataAttributesLastRowCell}`
+                  : styles.dataAttributesCell;
+
+              return (
+                <tr key={`${component}-${slot}-${property}`}>
+                  {showComponent && <td className={cellClassName}>{component}</td>}
+                  <td className={cellClassName}>{slot}</td>
+                  <td className={cellClassName}>
+                    <code className={styles.dataAttributesCode}>{attribute}</code>
+                  </td>
+                  <td className={cellClassName}>{renderValue(value)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+};
+
 const RenderArgsTable = ({
   story,
   hideArgsTable,
   showSlotsApi,
   showNativePropsApi,
+  dataAttributes,
 }: {
   story: PrimaryStory;
   hideArgsTable: boolean;
   showSlotsApi?: boolean;
   showNativePropsApi?: boolean;
+  dataAttributes?: DataAttributeDocs;
 }) => {
   const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story, {
     slotsApi: showSlotsApi,
@@ -302,6 +439,9 @@ const RenderArgsTable = ({
               </span>
             </p>
           </AdditionalApiDocs>
+        )}
+        {dataAttributes && Object.keys(dataAttributes).length > 0 && (
+          <DataAttributesTable dataAttributes={dataAttributes} />
         )}
       </div>
     </>
@@ -379,6 +519,8 @@ export const FluentDocsPage = ({
   const skipPrimaryStory = Boolean(primaryStoryContext.parameters?.docs?.skipPrimaryStory);
 
   const videos = primaryStoryContext.parameters?.videos ?? null;
+  const docsParameters = primaryStoryContext.parameters?.reactStorybookAddon?.docs;
+  const dataAttributes = typeof docsParameters === 'object' ? docsParameters.dataAttributes : undefined;
   const styles = useStyles();
 
   // If docs page is disabled, return Storybook's default docs page
@@ -388,8 +530,8 @@ export const FluentDocsPage = ({
         <Title />
         <Subtitle />
         <Description />
-        {renderPrimaryStory({ primaryStory: primaryStory, skipPrimaryStory })}
-        {renderArgsTable({ story: primaryStory, hideArgsTable })}
+        {renderPrimaryStory({ primaryStory, skipPrimaryStory })}
+        {renderArgsTable({ story: primaryStory, hideArgsTable, dataAttributes })}
         {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
       </div>
     );
@@ -439,6 +581,7 @@ export const FluentDocsPage = ({
             hideArgsTable,
             showSlotsApi: argTable.slotsApi,
             showNativePropsApi: argTable.nativePropsApi,
+            dataAttributes,
           })}
           {renderStories({ stories: stories.slice(1), skipPrimaryStory })}
         </div>

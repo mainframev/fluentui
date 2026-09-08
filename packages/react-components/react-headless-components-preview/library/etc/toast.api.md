@@ -100,6 +100,13 @@ export type ToastContainerState = ComponentState<ToastContainerSlots> & Pick<Toa
 };
 
 // @public
+export const toastDataAttributes: {
+    readonly root: {
+        readonly intent: "data-intent";
+    };
+};
+
+// @public
 export const Toaster: {
     (props: ToasterProps): JSXElement;
     displayName: string;
@@ -147,6 +154,13 @@ export { ToastStatus }
 
 // @public
 export const ToastTitle: ForwardRefComponent<ToastTitleProps>;
+
+// @public
+export const toastTitleDataAttributes: {
+    readonly media: {
+        readonly intent: "data-intent";
+    };
+};
 
 export { ToastTitleProps }
 

@@ -4,10 +4,15 @@ import {
   MenuPopover,
   MenuList,
   MenuItem,
+  menuItemDataAttributes,
   MenuItemCheckbox,
+  menuItemCheckboxDataAttributes,
   MenuItemRadio,
+  menuItemRadioDataAttributes,
   MenuItemSwitch,
+  menuItemSwitchDataAttributes,
   MenuItemLink,
+  menuItemLinkDataAttributes,
   MenuDivider,
   MenuGroup,
   MenuGroupHeader,
@@ -52,6 +57,19 @@ export default {
     MenuSplitGroup,
   },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            MenuItem: { attributes: menuItemDataAttributes },
+            MenuItemCheckbox: { attributes: menuItemCheckboxDataAttributes },
+            MenuItemRadio: { attributes: menuItemRadioDataAttributes },
+            MenuItemSwitch: { attributes: menuItemSwitchDataAttributes },
+            MenuItemLink: { attributes: menuItemLinkDataAttributes },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, bestPracticesMd, getBrowserSupportNotice('Menu')].join('\n'),

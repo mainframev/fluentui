@@ -1,4 +1,5 @@
 export { TagGroup } from './TagGroup';
+export { tagGroupDataAttributes } from './TagGroup.dataAttributes';
 export { renderTagGroup } from './renderTagGroup';
 export { useTagGroup } from './useTagGroup';
 export { useTagGroupContextValues } from './useTagGroupContextValues';

@@ -1,4 +1,5 @@
 export { MessageBar } from './MessageBar';
+export { messageBarDataAttributes } from './MessageBar.dataAttributes';
 export { renderMessageBar } from './renderMessageBar';
 export { useMessageBar, useMessageBarContext, useMessageBarContextValues } from './useMessageBar';
 export type {
@@ -11,6 +12,7 @@ export type {
 
 export {
   MessageBarActions,
+  messageBarActionsDataAttributes,
   renderMessageBarActions,
   useMessageBarActions,
   useMessageBarActionsContextValues,

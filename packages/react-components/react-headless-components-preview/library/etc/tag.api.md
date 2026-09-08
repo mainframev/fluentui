@@ -19,6 +19,15 @@ export const Tag: ForwardRefComponent<TagProps>;
 
 export { TagContextValues }
 
+// @public
+export const tagDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly dismissible: "data-dismissible";
+        readonly selected: "data-selected";
+    };
+};
+
 export { TagProps }
 
 export { TagSlots }

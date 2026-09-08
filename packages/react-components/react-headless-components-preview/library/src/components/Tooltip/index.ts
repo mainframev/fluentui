@@ -1,4 +1,5 @@
 export { Tooltip } from './Tooltip';
+export { tooltipDataAttributes } from './Tooltip.dataAttributes';
 export type {
   OnVisibleChangeData,
   TooltipTriggerProps,

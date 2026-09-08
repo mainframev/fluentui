@@ -1,4 +1,5 @@
 export { AvatarGroup } from './AvatarGroup';
+export { avatarGroupDataAttributes } from './AvatarGroup.dataAttributes';
 export { renderAvatarGroup } from './renderAvatarGroup';
 export { useAvatarGroup, useAvatarGroupContext } from './useAvatarGroup';
 export { useAvatarGroupContextValues } from './useAvatarGroupContextValues';

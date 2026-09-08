@@ -4,5 +4,5 @@ export { useRadioGroup } from './useRadioGroup';
 export { useRadioGroupContextValues } from './useRadioGroupContextValues';
 export type { RadioGroupSlots, RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 
-export { Radio, renderRadio, useRadio } from './Radio';
+export { Radio, radioDataAttributes, renderRadio, useRadio } from './Radio';
 export type { RadioSlots, RadioProps, RadioState } from './Radio';

@@ -25,6 +25,13 @@ export const Tooltip: {
 };
 
 // @public
+export const tooltipDataAttributes: {
+    readonly content: {
+        readonly open: "data-open";
+    };
+};
+
+// @public
 export type TooltipProps = Omit<TooltipBaseProps, 'mountNode' | 'positioning'> & {
     positioning?: PositioningShorthand;
 };

@@ -1,11 +1,12 @@
 // ─── Compound Toast content ──────────────────────────────────────────────────
 export { Toast } from './Toast';
+export { toastDataAttributes } from './Toast.dataAttributes';
 export { renderToast } from './renderToast';
 export { useToast } from './useToast';
 export type { ToastProps, ToastState, ToastSlots } from './Toast.types';
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
-export { ToastTitle, renderToastTitle, useToastTitle } from './ToastTitle';
+export { ToastTitle, toastTitleDataAttributes, renderToastTitle, useToastTitle } from './ToastTitle';
 export type { ToastTitleProps, ToastTitleState, ToastTitleSlots } from './ToastTitle';
 
 export { ToastBody, renderToastBody, useToastBody } from './ToastBody';

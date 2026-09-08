@@ -1,4 +1,4 @@
-import { CounterBadge } from '@fluentui/react-headless-components-preview/badge';
+import { CounterBadge, counterBadgeDataAttributes } from '@fluentui/react-headless-components-preview/badge';
 
 import descriptionMd from './CounterBadgeDescription.md';
 export { Default } from './CounterBadgeDefault.stories';
@@ -9,6 +9,14 @@ export default {
   title: 'Components/Badge/CounterBadge',
   component: CounterBadge,
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          attributes: counterBadgeDataAttributes,
+          values: { root: { count: '<number>' } },
+        },
+      },
+    },
     docs: {
       description: {
         component: descriptionMd,

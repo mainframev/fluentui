@@ -14,6 +14,16 @@ import { renderButton_unstable as renderButton } from '@fluentui/react-button';
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
+// @public
+export const buttonDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly disabledFocusable: "data-disabled-focusable";
+        readonly iconOnly: "data-icon-only";
+        readonly iconPosition: "data-icon-position";
+    };
+};
+
 export { ButtonProps }
 
 export { ButtonSlots }

@@ -2,10 +2,13 @@ import {
   Drawer,
   DrawerBody,
   DrawerFooter,
+  drawerFooterDataAttributes,
   DrawerHeader,
+  drawerHeaderDataAttributes,
   DrawerHeaderNavigation,
   DrawerHeaderTitle,
   InlineDrawer,
+  inlineDrawerDataAttributes,
   OverlayDrawer,
 } from '@fluentui/react-headless-components-preview/drawer';
 
@@ -29,6 +32,26 @@ export default {
     DrawerFooter,
   },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            InlineDrawer: {
+              attributes: inlineDrawerDataAttributes,
+              values: { root: { position: ['start', 'end', 'bottom'] } },
+            },
+            DrawerHeader: {
+              attributes: drawerHeaderDataAttributes,
+              values: { root: { scrollState: ['none', 'top', 'middle', 'bottom'] } },
+            },
+            DrawerFooter: {
+              attributes: drawerFooterDataAttributes,
+              values: { root: { scrollState: ['none', 'top', 'middle', 'bottom'] } },
+            },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('Drawer')].join('\n'),

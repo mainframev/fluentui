@@ -16,6 +16,14 @@ export { renderSlider }
 // @public
 export const Slider: ForwardRefComponent<SliderProps>;
 
+// @public
+export const sliderDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly vertical: "data-vertical";
+    };
+};
+
 export { SliderProps }
 
 export { SliderSlots }

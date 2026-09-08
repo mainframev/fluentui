@@ -1,6 +1,8 @@
 import {
   MessageBar,
+  messageBarDataAttributes,
   MessageBarActions,
+  messageBarActionsDataAttributes,
   MessageBarBody,
   MessageBarTitle,
 } from '@fluentui/react-headless-components-preview/message-bar';
@@ -18,6 +20,31 @@ export default {
     MessageBarActions,
   },
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          components: {
+            MessageBar: {
+              attributes: messageBarDataAttributes,
+              values: {
+                root: {
+                  layout: ['singleline', 'multiline'],
+                  intent: ['info', 'success', 'warning', 'error'],
+                },
+              },
+            },
+            MessageBarActions: {
+              attributes: messageBarActionsDataAttributes,
+              values: {
+                root: {
+                  layout: ['singleline', 'multiline'],
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: descriptionMd,

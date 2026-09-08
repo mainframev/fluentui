@@ -14,6 +14,16 @@ import { renderMenuButton_unstable as renderMenuButton } from '@fluentui/react-b
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 
+// @public
+export const menuButtonDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly disabledFocusable: "data-disabled-focusable";
+        readonly iconOnly: "data-icon-only";
+        readonly open: "data-open";
+    };
+};
+
 export { MenuButtonProps }
 
 export { MenuButtonSlots }

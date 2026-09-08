@@ -1,5 +1,6 @@
 export {
   AvatarGroup,
+  avatarGroupDataAttributes,
   renderAvatarGroup,
   useAvatarGroup,
   useAvatarGroupContext,

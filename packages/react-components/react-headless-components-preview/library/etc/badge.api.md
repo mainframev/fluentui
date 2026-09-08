@@ -19,6 +19,13 @@ import { renderBadge_unstable } from '@fluentui/react-badge';
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
 
+// @public
+export const badgeDataAttributes: {
+    readonly root: {
+        readonly iconPosition: "data-icon-position";
+    };
+};
+
 export { BadgeProps }
 
 export { BadgeSlots }
@@ -32,6 +39,16 @@ export type BadgeState = BadgeBaseState & {
 
 // @public
 export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
+
+// @public
+export const counterBadgeDataAttributes: {
+    readonly root: {
+        readonly count: "data-count";
+        readonly dot: "data-dot";
+        readonly hidden: "data-hidden";
+        readonly overflowed: "data-overflowed";
+    };
+};
 
 export { CounterBadgeProps }
 
@@ -47,6 +64,14 @@ export type CounterBadgeState = CounterBadgeBaseState & {
 
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
+
+// @public
+export const presenceBadgeDataAttributes: {
+    readonly root: {
+        readonly outOfOffice: "data-out-of-office";
+        readonly status: "data-status";
+    };
+};
 
 export { PresenceBadgeProps }
 

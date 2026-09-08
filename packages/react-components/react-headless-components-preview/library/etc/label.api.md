@@ -14,6 +14,14 @@ import { renderLabel_unstable as renderLabel } from '@fluentui/react-label';
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
 
+// @public
+export const labelDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly required: "data-required";
+    };
+};
+
 export { LabelProps }
 
 export { LabelSlots }

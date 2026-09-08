@@ -20,6 +20,13 @@ import type { Slot } from '@fluentui/react-utilities';
 export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 
 // @public
+export const infoButtonDataAttributes: {
+    readonly root: {
+        readonly open: "data-open";
+    };
+};
+
+// @public
 export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled' | 'popover'> & {
     popover?: InfoButtonSlots['popover'];
 };

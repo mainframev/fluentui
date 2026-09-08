@@ -1,4 +1,4 @@
-import { PresenceBadge } from '@fluentui/react-headless-components-preview/badge';
+import { PresenceBadge, presenceBadgeDataAttributes } from '@fluentui/react-headless-components-preview/badge';
 
 import descriptionMd from './PresenceBadgeDescription.md';
 export { Default } from './PresenceBadgeDefault.stories';
@@ -10,6 +10,18 @@ export default {
   title: 'Components/Badge/PresenceBadge',
   component: PresenceBadge,
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: {
+          attributes: presenceBadgeDataAttributes,
+          values: {
+            root: {
+              status: ['busy', 'out-of-office', 'away', 'available', 'offline', 'do-not-disturb', 'unknown', 'blocked'],
+            },
+          },
+        },
+      },
+    },
     docs: {
       description: {
         component: descriptionMd,

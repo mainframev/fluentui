@@ -1,4 +1,4 @@
-import { TagGroup } from '@fluentui/react-headless-components-preview/tag-group';
+import { TagGroup, tagGroupDataAttributes } from '@fluentui/react-headless-components-preview/tag-group';
 
 import descriptionMd from './TagGroupDescription.md';
 
@@ -13,6 +13,11 @@ export default {
   title: 'Components/Tags/TagGroup',
   component: TagGroup,
   parameters: {
+    reactStorybookAddon: {
+      docs: {
+        dataAttributes: { attributes: tagGroupDataAttributes },
+      },
+    },
     docs: {
       description: {
         component: [descriptionMd, getBrowserSupportNotice('TagGroup')].join('\n'),

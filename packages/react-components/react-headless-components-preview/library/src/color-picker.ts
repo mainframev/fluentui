@@ -16,12 +16,14 @@ export type {
 
 export {
   AlphaSlider,
+  alphaSliderDataAttributes,
   renderAlphaSlider,
   useAlphaSlider,
   ColorArea,
   renderColorArea,
   useColorArea,
   ColorSlider,
+  colorSliderDataAttributes,
   renderColorSlider,
   useColorSlider,
   ColorPicker,

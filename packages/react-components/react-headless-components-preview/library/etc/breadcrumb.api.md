@@ -34,6 +34,13 @@ export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
 // @public
 export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 
+// @public
+export const breadcrumbButtonDataAttributes: {
+    readonly root: {
+        readonly current: "data-current";
+    };
+};
+
 export { BreadcrumbButtonProps }
 
 export { BreadcrumbButtonSlots }

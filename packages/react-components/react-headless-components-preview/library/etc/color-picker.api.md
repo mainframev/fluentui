@@ -32,6 +32,15 @@ import { useColorPickerContextValues } from '@fluentui/react-color-picker';
 // @public
 export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
 
+// @public
+export const alphaSliderDataAttributes: {
+    readonly root: {
+        readonly channel: "data-channel";
+        readonly orientation: "data-orientation";
+        readonly transparency: "data-transparency";
+    };
+};
+
 export { AlphaSliderProps }
 
 export { AlphaSliderSlots }
@@ -67,6 +76,14 @@ export { ColorPickerState }
 
 // @public
 export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
+
+// @public
+export const colorSliderDataAttributes: {
+    readonly root: {
+        readonly channel: "data-channel";
+        readonly orientation: "data-orientation";
+    };
+};
 
 export { ColorSliderProps }
 

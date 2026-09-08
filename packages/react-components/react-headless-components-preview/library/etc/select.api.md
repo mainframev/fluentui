@@ -16,6 +16,14 @@ export { renderSelect }
 // @public
 export const Select: ForwardRefComponent<SelectProps>;
 
+// @public
+export const selectDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly invalid: "data-invalid";
+    };
+};
+
 export { SelectProps }
 
 export { SelectSlots }

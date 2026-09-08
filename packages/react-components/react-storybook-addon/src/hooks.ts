@@ -4,6 +4,29 @@ import type { Args as StorybookArgs, StoryContext as StorybookContext, Parameter
 import type { DIR_ID, STRICT_MODE_ID, THEME_ID, THEMES } from './constants';
 import type { Theme, ThemeIds } from './theme';
 
+/** A DOM data attribute name. */
+export type DataAttributeName = `data-${string}`;
+
+/** Maps slot names and property names to public data attribute names. */
+export type DataAttributes = Readonly<Record<string, Readonly<Record<string, DataAttributeName>>>>;
+
+/** Describes the values accepted by a data attribute. */
+export type DataAttributeValue = readonly string[] | string;
+
+/** Optional value metadata keyed like a data attribute map. Omitted entries are boolean attributes. */
+export type DataAttributeValues = Readonly<Record<string, Readonly<Record<string, DataAttributeValue>>>>;
+
+/** Data attribute documentation for one component. */
+export type ComponentDataAttributes = {
+  attributes: DataAttributes;
+  values?: DataAttributeValues;
+};
+
+/** Data attribute documentation for one component or a component family. */
+export type DataAttributeDocs =
+  | ComponentDataAttributes
+  | { components: Readonly<Record<string, ComponentDataAttributes>> };
+
 export interface FluentStoryContext extends StorybookContext {
   globals: FluentGlobals;
   parameters: FluentParameters;
@@ -36,13 +59,15 @@ export interface FluentParameters extends Parameters {
 /**
  * Configuration for docs components
  */
-type FluentDocsConfig =
+export type FluentDocsConfig =
   | boolean
   | {
       tableOfContents?: boolean;
       dirSwitcher?: boolean;
       themePicker?: boolean;
       copyAsMarkdown?: boolean;
+      /** Public data attribute names rendered by the component or component family. */
+      dataAttributes?: DataAttributeDocs;
       argTable?:
         | boolean
         | {

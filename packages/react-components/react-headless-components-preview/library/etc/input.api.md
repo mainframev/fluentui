@@ -14,6 +14,14 @@ import { renderInput_unstable as renderInput } from '@fluentui/react-input';
 // @public
 export const Input: ForwardRefComponent<InputProps>;
 
+// @public
+export const inputDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly invalid: "data-invalid";
+    };
+};
+
 export { InputProps }
 
 export { InputSlots }

@@ -14,6 +14,16 @@ import { renderCompoundButton_unstable as renderCompoundButton } from '@fluentui
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
+// @public
+export const compoundButtonDataAttributes: {
+    readonly root: {
+        readonly disabled: "data-disabled";
+        readonly disabledFocusable: "data-disabled-focusable";
+        readonly hasSecondaryContent: "data-has-secondary-content";
+        readonly iconOnly: "data-icon-only";
+    };
+};
+
 export { CompoundButtonProps }
 
 export { CompoundButtonSlots }
