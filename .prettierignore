@@ -32,6 +32,12 @@ __snapshots__
 
 # package specific files
 apps/vr-tests/dndSim.js
+apps/public-docsite-v9-new/.source
+apps/public-docsite-v9-new/.react-router
+apps/public-docsite-v9-new/.fumadocs-typescript
+apps/public-docsite-v9-new/.impeccable
+apps/public-docsite-v9-new/app/generated
+apps/public-docsite-v9-new/src/generated
 packages/monaco-editor/esm
 packages/font-icons-mdl2/**/fabric-icons-*
 
