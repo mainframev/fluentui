@@ -33,6 +33,12 @@ export function fullSource(options: FullSourceOptions): Plugin {
         return null;
       }
 
+      const normalizedFilename = filename.replace(/\\/g, '/');
+      const inlineLocalImports =
+        normalizedFilename.includes('/react-headless-components-preview/stories/') ||
+        normalizedFilename.endsWith('/react-tree/stories/src/Tree/TreeLazyLoading.stories.tsx') ||
+        normalizedFilename.includes('/apps/public-docsite-v9/src/Concepts/Accessibility/LabellingExamples/');
+
       const result = await babel.transformAsync(code, {
         filename,
         babelrc: false,
@@ -41,7 +47,16 @@ export function fullSource(options: FullSourceOptions): Plugin {
         compact: false,
         retainLines: true,
         parserOpts: { plugins: ['typescript', 'jsx'] },
-        plugins: [[sourcePlugin, { ...options, storyGranularity: 'story' }]],
+        plugins: [
+          [
+            sourcePlugin,
+            {
+              ...options,
+              storyGranularity: 'story',
+              inlineLocalImports,
+            },
+          ],
+        ],
       });
 
       if (!result?.code) {
