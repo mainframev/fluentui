@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { series, task, copyInstructionsTask, copyInstructions, cleanTask } from '@fluentui/scripts-tasks';
 import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts-monorepo';
+import { prepareFumadocs } from './prepareFumadocs';
 
 function getDeployDirectoryName(packageName: string) {
   return packageName.replace(/^@[^/]+\//, '');
@@ -59,6 +60,18 @@ repoDeps.forEach(dep => {
   }
 });
 
+task('generate:fumadocs', () => {
+  if (
+    prepareFumadocs(
+      path.join(gitRoot, 'apps/public-docsite-v9-fumadocs'),
+      path.resolve('dist'),
+      process.env.DOCSITE_BASE_PATH || '/',
+    )
+  ) {
+    deployedPackages.add('@fluentui/public-docsite-v9-fumadocs');
+  }
+});
+
 /**
  * Sets the list of tiles to render based on which packages were actually built
  */
@@ -86,4 +99,7 @@ task('generate:js', () => {
 /**
  * Copies all the built dist files and updates the JS to load the ones that were actually built
  */
-task('generate:site', series(copyInstructionsTask({ copyInstructions: instructions }), 'generate:js'));
+task(
+  'generate:site',
+  series(copyInstructionsTask({ copyInstructions: instructions }), 'generate:fumadocs', 'generate:js'),
+);

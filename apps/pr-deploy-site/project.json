@@ -3,5 +3,14 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": [],
-  "tags": []
+  "tags": [],
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node -r ts-node/register --test prepareFumadocs.test.ts",
+        "cwd": "apps/pr-deploy-site"
+      }
+    }
+  }
 }

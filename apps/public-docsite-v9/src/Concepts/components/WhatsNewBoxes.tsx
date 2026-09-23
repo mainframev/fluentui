@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Title3, Text } from '@fluentui/react-components';
+import { Text, webLightTheme } from '@fluentui/react-components';
 import { useWhatsNewStyles } from './WhatsNewBoxes.styles';
 
 type Box = {
@@ -16,9 +16,19 @@ export const WhatsNewBoxes: React.FC<WhatsNewBoxProps> = props => {
 
   return (
     <div>
-      <Title3 className={styles.title} as="h2">
+      <h2
+        style={{
+          fontFamily: 'inherit',
+          fontSize: webLightTheme.fontSizeBase600,
+          lineHeight: webLightTheme.lineHeightBase600,
+          fontWeight: webLightTheme.fontWeightBold,
+          color: 'inherit',
+          marginBlock: `0 ${webLightTheme.spacingVerticalXXL}`,
+          textWrap: 'balance',
+        }}
+      >
         What's new
-      </Title3>
+      </h2>
       <div className={styles.wrapper}>
         {props.boxes.map((box, i) => (
           <WhatsNewBox key={i} {...box} />

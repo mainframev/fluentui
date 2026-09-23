@@ -1,0 +1,50 @@
+{
+  "name": "public-docsite-v9-fumadocs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/public-docsite-v9-fumadocs/src",
+  "tags": ["platform:web", "vNext"],
+  "targets": {
+    "build": {
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/.source", "{projectRoot}/.react-router"],
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/tsconfig.base.json",
+        "{workspaceRoot}/tsconfig.base.all.json",
+        { "env": "DOCSITE_BASE_PATH" }
+      ],
+      "dependsOn": [
+        {
+          "projects": ["babel-preset-storybook-full-source", "react-storybook-addon-export-to-sandbox"],
+          "target": "build"
+        }
+      ]
+    },
+    "start": {
+      "dependsOn": [
+        {
+          "projects": ["babel-preset-storybook-full-source", "react-storybook-addon-export-to-sandbox"],
+          "target": "build"
+        }
+      ]
+    },
+    "type-check": {
+      "dependsOn": ["build", "^build"]
+    },
+    "lint": {
+      "dependsOn": ["build"],
+      "inputs": ["default", "{workspaceRoot}/eslint.config.js"],
+      "options": {
+        "command": "yarn run -T eslint .",
+        "cwd": "apps/public-docsite-v9-fumadocs"
+      }
+    },
+    "clean": {
+      "options": {
+        "paths": ["dist", ".source", ".react-router", ".eslintcache", "node_modules/.vite"]
+      }
+    }
+  },
+  "implicitDependencies": ["tag:type:stories", "public-docsite-v9", "public-docsite-v9-headless"]
+}

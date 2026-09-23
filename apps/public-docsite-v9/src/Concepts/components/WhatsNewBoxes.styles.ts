@@ -1,11 +1,6 @@
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 export const useWhatsNewStyles = makeStyles({
-  title: {
-    marginBottom: '32px',
-    marginTop: '0',
-    display: 'block',
-  },
   wrapper: {
     display: 'flex',
     '@media (max-width: 460px)': {

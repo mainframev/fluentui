@@ -34,6 +34,9 @@ export interface BabelPluginOptions {
    */
   storyGranularity?: 'file' | 'story';
 
+  /** Inline named imports from local TS/JS helpers into exported example source. */
+  inlineLocalImports?: boolean;
+
   /**
    * When `true` (or a config object), the plugin will:
    *  - Preserve `*.module.css` imports (rewriting paths to `./styles/<basename>`)
