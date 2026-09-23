@@ -1,8 +1,8 @@
 {
-  "name": "public-docsite-v9-new",
+  "name": "public-docsite-v9-fumadocs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/public-docsite-v9-new/src",
+  "sourceRoot": "apps/public-docsite-v9-fumadocs/src",
   "tags": ["platform:web", "vNext"],
   "targets": {
     "build": {
@@ -34,8 +34,10 @@
     },
     "lint": {
       "dependsOn": ["build"],
+      "inputs": ["default", "{workspaceRoot}/eslint.config.js"],
       "options": {
-        "command": "yarn run -T eslint ."
+        "command": "yarn run -T eslint .",
+        "cwd": "apps/public-docsite-v9-fumadocs"
       }
     },
     "clean": {

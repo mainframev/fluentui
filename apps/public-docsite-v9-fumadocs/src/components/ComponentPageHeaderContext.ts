@@ -1,10 +1,16 @@
+'use client';
+
 import * as React from 'react';
 
-/** Lets component pages place the document heading after their preview controls. */
-export const ComponentPageHeaderContext = React.createContext<
-  | {
-      title: React.ReactNode;
-      description?: string;
-    }
-  | undefined
->(undefined);
+export type ComponentPageHeaderContextValue = {
+  title: React.ReactNode;
+  description?: string;
+};
+
+const ComponentPageHeaderContext = React.createContext<ComponentPageHeaderContextValue | undefined>(undefined);
+
+export const ComponentPageHeaderProvider = ComponentPageHeaderContext.Provider;
+
+export function useComponentPageHeader(): ComponentPageHeaderContextValue | undefined {
+  return React.useContext(ComponentPageHeaderContext);
+}

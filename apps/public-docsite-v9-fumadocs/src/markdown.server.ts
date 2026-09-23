@@ -1,6 +1,7 @@
 import { llms } from 'fumadocs-core/source/llms';
 import { renderPlaceholder } from 'fumadocs-core/mdx-plugins/remark-llms.runtime';
-import { sources, type DocsTree } from './source';
+import { sources } from './source';
+import type { DocsTree } from './source';
 import { createDocsTree } from './utils/createDocsTree';
 import { getOverviewLinks } from './utils/getOverviewLinks';
 import { docsBasename } from './utils/paths';
@@ -8,6 +9,7 @@ import { docsBasename } from './utils/paths';
 type Story = (() => unknown) & {
   parameters?: { fullSource?: string; docs?: { description?: { story?: string } } };
 };
+
 interface ComponentContent {
   meta: { parameters?: { docs?: { description?: { component?: string }; hideArgsTable?: boolean } } };
   stories: Record<string, unknown>;
@@ -57,28 +59,32 @@ export async function pageMarkdown(collection: DocsTree, slugs: string[]): Promi
   const loaded = await page.data.load();
   const components = loaded._exports._componentPages as ComponentContent[];
   const body = await renderPlaceholder(markdown, {
-    // Placeholder keys are authored MDX component names.
     // eslint-disable-next-line @typescript-eslint/naming-convention
     ComponentPage({ attributes, children }) {
       const component = components[Number(attributes['data-llms-id'])];
       if (!component) {
         throw new Error(`Missing component Markdown data for ${page.url}`);
       }
+
       const { meta, stories } = component;
       const names = Object.keys(stories).filter(name => name !== 'default' && typeof stories[name] === 'function');
       const order = component.order ?? (stories.__storyOrder as string[] | undefined) ?? names;
       const ordered = [...new Set([...order.filter(name => names.includes(name)), ...names])];
+
       const examples = ordered.map(name => {
         const story = stories[name] as Story;
         const code = story.parameters?.fullSource;
+
         if (!code) {
           throw new Error(`Missing standalone source for ${page.url}: ${name}`);
         }
+
         const fence = '`'.repeat(Math.max(3, ...Array.from(code.matchAll(/`+/g), match => match[0].length + 1)));
         return [`### ${name}`, story.parameters?.docs?.description?.story, `${fence}tsx\n${code.trimEnd()}\n${fence}`]
           .filter(Boolean)
           .join('\n\n');
       });
+
       return [
         meta.parameters?.docs?.description?.component || page.data.description,
         meta.parameters?.docs?.hideArgsTable ? undefined : children,
@@ -95,10 +101,11 @@ export async function pageMarkdown(collection: DocsTree, slugs: string[]): Promi
         .join('\n');
     },
   });
-  // Fumadocs retains placeholders when a renderer throws; never publish an incomplete export.
+
   if (body.includes('\0')) {
     throw new Error(`Unresolved Markdown placeholder in ${page.url}`);
   }
+
   return [`# ${page.data.title}`, components.length === 0 ? page.data.description : undefined, body.trim()]
     .filter(Boolean)
     .join('\n\n');

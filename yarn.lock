@@ -3387,22 +3387,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@fluentui/public-docsite-v9-headless@workspace:apps/public-docsite-v9-headless":
+"@fluentui/public-docsite-v9-fumadocs@workspace:apps/public-docsite-v9-fumadocs":
   version: 0.0.0-use.local
-  resolution: "@fluentui/public-docsite-v9-headless@workspace:apps/public-docsite-v9-headless"
-  dependencies:
-    "@fluentui/react-headless-components-preview": "npm:*"
-    "@fluentui/react-storybook-addon": "npm:*"
-    "@fluentui/react-storybook-addon-export-to-sandbox": "npm:*"
-    react: "npm:19.2.0"
-    react-dom: "npm:19.2.0"
-    tslib: "npm:^2.1.0"
-  languageName: unknown
-  linkType: soft
-
-"@fluentui/public-docsite-v9-new@workspace:apps/public-docsite-v9-new":
-  version: 0.0.0-use.local
-  resolution: "@fluentui/public-docsite-v9-new@workspace:apps/public-docsite-v9-new"
+  resolution: "@fluentui/public-docsite-v9-fumadocs@workspace:apps/public-docsite-v9-fumadocs"
   dependencies:
     "@fluentui/eslint-plugin": "npm:*"
     "@fluentui/react-components": "npm:*"
@@ -3418,11 +3405,11 @@ __metadata:
     "@tailwindcss/vite": "npm:4.3.3"
     "@types/react": "npm:19.2.2"
     "@types/react-dom": "npm:19.2.2"
+    clsx: "npm:^2.1.1"
     fumadocs-core: "npm:16.14.4"
     fumadocs-mdx: "npm:15.2.3"
     fumadocs-typescript: "npm:5.3.0"
     fumadocs-ui: "npm:16.14.4"
-    isbot: "npm:^5"
     lucide-react: "npm:^0.548.0"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
@@ -3433,6 +3420,19 @@ __metadata:
     tailwindcss: "npm:4.3.3"
     typescript: "npm:5.7.3"
     vite: "npm:7.3.6"
+  languageName: unknown
+  linkType: soft
+
+"@fluentui/public-docsite-v9-headless@workspace:apps/public-docsite-v9-headless":
+  version: 0.0.0-use.local
+  resolution: "@fluentui/public-docsite-v9-headless@workspace:apps/public-docsite-v9-headless"
+  dependencies:
+    "@fluentui/react-headless-components-preview": "npm:*"
+    "@fluentui/react-storybook-addon": "npm:*"
+    "@fluentui/react-storybook-addon-export-to-sandbox": "npm:*"
+    react: "npm:19.2.0"
+    react-dom: "npm:19.2.0"
+    tslib: "npm:^2.1.0"
   languageName: unknown
   linkType: soft
 
@@ -23636,7 +23636,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbot@npm:^5, isbot@npm:^5.1.11":
+"isbot@npm:^5.1.11":
   version: 5.2.1
   resolution: "isbot@npm:5.2.1"
   checksum: 10c0/83bf2852897694f28e46d742dc9a9e722fb650a7412d9288f4eab17247a706d242e98b5794caf93804d6566df54fbe4be9e38cc2604dba04a5018d69a6abe252

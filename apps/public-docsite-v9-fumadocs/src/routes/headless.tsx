@@ -1,6 +1,7 @@
 'use client';
 
 import { useParams } from 'react-router';
+import type * as React from 'react';
 
 /*
  * The headless examples are styled with CSS Modules that reference design tokens defined in
@@ -12,7 +13,7 @@ import '@fluentui/react-headless-components-preview-stories/.storybook/tokens.cs
 import { DocsTreeRoute } from '../components/DocsTreeRoute';
 import { headlessSource } from '../source';
 
-const HeadlessDocs = () => {
+const HeadlessDocs = (): React.ReactElement => {
   const params = useParams();
 
   return <DocsTreeRoute source={headlessSource} splat={params['*']} title="Fluent UI Headless" home />;

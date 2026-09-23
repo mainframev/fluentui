@@ -1,23 +1,18 @@
+'use client';
+
 import * as React from 'react';
 import { CodeXml } from 'lucide-react';
 import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
 
 import { highlightCode } from './highlighter';
-import { DocsButton, docsControlTokens } from './DocsControls';
-import { palette } from './DocsControls/styles';
+import { DocsButton } from './DocsControls';
 
 export interface StorySourceProps {
-  /** Story export carrying the build-injected standalone source. */
   story: { parameters?: { fullSource?: string } };
-  /** Whether the panel starts expanded. */
   defaultOpen?: boolean;
 }
 
-/**
- * Reveals the standalone source the build injected onto the story (design D2), with
- * syntax highlighting and copy-to-clipboard.
- */
-export const StorySource = ({ story, defaultOpen = false }: StorySourceProps) => {
+export const StorySource = ({ story, defaultOpen = false }: StorySourceProps): React.ReactElement | null => {
   const [open, setOpen] = React.useState(defaultOpen);
   const source = story.parameters?.fullSource;
 
@@ -36,15 +31,14 @@ export const StorySource = ({ story, defaultOpen = false }: StorySourceProps) =>
         iconPosition="after"
         icon={{
           className: 'inline-flex shrink-0',
-          children: <CodeXml aria-hidden="true" className="size-[var(--docs-indicator)]" />,
+          children: <CodeXml aria-hidden="true" className="size-lg" />,
         }}
       >
         {open ? 'Hide code' : 'Show code'}
       </DocsButton>
       {open ? (
         <CodeBlock
-          className={`${palette} order-2 min-w-0 basis-full bg-[var(--docs-bg)]`}
-          style={docsControlTokens}
+          className="order-2 min-w-0 basis-full bg-surface"
           viewportProps={{ 'aria-label': 'Example source code' }}
         >
           {/* Shiki escapes the build-injected story source before producing this HTML. */}

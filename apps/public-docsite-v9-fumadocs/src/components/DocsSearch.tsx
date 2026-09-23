@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { webLightTheme } from '@fluentui/react-theme';
 import { useLocation } from 'react-router';
-import { useDocsSearch, type SearchClient } from 'fumadocs-core/search/client';
+import { useDocsSearch } from 'fumadocs-core/search/client';
+import type { SearchClient } from 'fumadocs-core/search/client';
 import { staticClient } from 'fumadocs-core/search/client/orama-static';
 import {
   SearchDialog,
@@ -17,9 +17,8 @@ import {
   SearchDialogClose,
   SearchDialogList,
   SearchDialogListItem,
-  type SharedProps,
-  type SearchItemType,
 } from 'fumadocs-ui/components/dialog/search';
+import type { SharedProps, SearchItemType } from 'fumadocs-ui/components/dialog/search';
 import { DocsButton } from './DocsControls';
 import { rankSearchResults } from '../utils/rankSearchResults';
 import { groupSearchMatches } from '../utils/groupSearchMatches';
@@ -29,19 +28,11 @@ import { docsBasename } from '../utils/paths';
 
 type RankedResult = Awaited<ReturnType<SearchClient['search']>>[number] & { match: SearchMatch; secondary: boolean };
 
-const searchTokens = {
-  '--search-gap': webLightTheme.spacingVerticalS,
-  '--search-padding': webLightTheme.spacingHorizontalM,
-  '--search-section': webLightTheme.spacingVerticalL,
-  '--search-small': webLightTheme.fontSizeBase200,
-  '--search-weight': webLightTheme.fontWeightSemibold,
-} as React.CSSProperties;
-
 const Highlight: ForwardRefComponent<{ text: string; query: string }> = React.forwardRef(({ text, query }, ref) => (
   <span ref={ref}>
     {highlightSearchText(text, query).map((part, index) =>
       part.match ? (
-        <mark key={index} className="bg-transparent text-inherit underline font-[number:var(--search-weight)]">
+        <mark key={index} className="bg-transparent text-inherit underline font-semibold">
           {part.text}
         </mark>
       ) : (
@@ -151,14 +142,14 @@ export const DocsSearch: ForwardRefComponent<SharedProps> = React.forwardRef(({ 
             type: 'page',
             content: (
               <>
-                <span className="block wrap-anywhere font-[number:var(--search-weight)]">
+                <span className="block wrap-anywhere font-semibold">
                   <Highlight text={match.page.title} query={search} />
                 </span>
-                <span className="block wrap-anywhere mt-[var(--search-gap)] text-[length:var(--search-small)] text-fd-muted-foreground font-normal">
+                <span className="block wrap-anywhere mt-sm text-small text-fd-muted-foreground font-normal">
                   {[...match.page.breadcrumbs, match.page.kind].join(' › ')}
                 </span>
                 {match.excerpt && (
-                  <span className="block wrap-anywhere mt-[var(--search-gap)] text-[length:var(--search-small)] text-fd-muted-foreground font-normal">
+                  <span className="block wrap-anywhere mt-sm text-small text-fd-muted-foreground font-normal">
                     <Highlight text={match.excerpt} query={search} />
                   </span>
                 )}
@@ -183,7 +174,7 @@ export const DocsSearch: ForwardRefComponent<SharedProps> = React.forwardRef(({ 
       return (
         <React.Fragment key={item.id}>
           {groupLabels.has(item.id) && (
-            <div className="pt-[var(--search-section)] px-[var(--search-padding)] pb-[var(--search-gap)] text-fd-muted-foreground text-[length:var(--search-small)] font-[number:var(--search-weight)]">
+            <div className="pt-lg px-md pb-sm text-fd-muted-foreground text-small font-semibold">
               {groupLabels.get(item.id)}
             </div>
           )}
@@ -215,28 +206,26 @@ export const DocsSearch: ForwardRefComponent<SharedProps> = React.forwardRef(({ 
       isLoading={query.isLoading}
     >
       <SearchDialogOverlay />
-      <SearchDialogContent style={searchTokens}>
+      <SearchDialogContent>
         <SearchDialogHeader>
           <SearchDialogIcon />
           <SearchDialogInput aria-label="Search documentation" ref={ref} />
           <SearchDialogClose />
         </SearchDialogHeader>
         {query.error ? (
-          <SearchDialogFooter className="py-[var(--search-section)] px-[var(--search-padding)]" role="alert">
+          <SearchDialogFooter className="py-lg px-md" role="alert">
             Search could not be loaded. <DocsButton onClick={retry}>Retry</DocsButton>
           </SearchDialogFooter>
         ) : !search.trim() ? (
-          <p className="py-[var(--search-section)] px-[var(--search-padding)]">
-            Search for a component, guide, or topic.
-          </p>
+          <p className="py-lg px-md">Search for a component, guide, or topic.</p>
         ) : query.isLoading && query.data === 'empty' ? (
-          <p className="py-[var(--search-section)] px-[var(--search-padding)]" role="status">
+          <p className="py-lg px-md" role="status">
             Loading search…
           </p>
         ) : (
           <>
             <SearchDialogList id={resultsId} items={resultItems} Item={renderItem} aria-busy={query.isLoading} />
-            <SearchDialogFooter className="flex flex-wrap items-center gap-[var(--search-gap)] p-[var(--search-padding)] empty:hidden">
+            <SearchDialogFooter className="flex flex-wrap items-center gap-sm p-md empty:hidden">
               {matches.direct.length > directLimit && <DocsButton onClick={morePages}>Show more pages</DocsButton>}
               {matches.secondary.length > 0 && matches.direct.length > 0 && (
                 <DocsButton aria-expanded={showSecondary} aria-controls={resultsId} onClick={toggleSecondary}>

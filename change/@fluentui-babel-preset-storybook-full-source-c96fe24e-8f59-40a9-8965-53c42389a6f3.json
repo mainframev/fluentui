@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "comment": "feat(babel-preset-storybook-full-source): support local helper imports and their CSS in standalone story exports",
+  "packageName": "@fluentui/babel-preset-storybook-full-source",
+  "email": "vgenaev@gmail.com"
+}

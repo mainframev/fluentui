@@ -12,6 +12,7 @@ import { docsBasename } from '../utils/paths';
 
 const DescriptionCode: ForwardRefComponent<React.ComponentProps<'div'>> = React.forwardRef(({ children }, ref) => {
   const code = React.Children.toArray(children)[0];
+
   if (!React.isValidElement<{ children?: string; className?: string }>(code)) {
     return (
       <div ref={ref}>
@@ -19,15 +20,15 @@ const DescriptionCode: ForwardRefComponent<React.ComponentProps<'div'>> = React.
       </div>
     );
   }
+
   const language = code.props.className?.replace(/^language-/, '');
   const html = highlight(String(code.props.children ?? ''), language);
-  // Shiki escapes source authored in our story descriptions.
   // eslint-disable-next-line react/no-danger
   return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
 });
+
 DescriptionCode.displayName = 'DescriptionCode';
 
-/** The native renderer handles Markdown/GFM; only story-specific links and heading namespaces differ. */
 export const Description: ForwardRefComponent<{ children: string }> = React.forwardRef(({ children }, ref) => {
   const prefix = React.useId().replace(/[^a-zA-Z0-9_-]/g, '');
   const { Markdown } = React.useMemo(
@@ -57,15 +58,19 @@ export const Description: ForwardRefComponent<{ children: string }> = React.forw
       }),
     [prefix],
   );
+
   const source = children.replace(
     /href=(["'])\/?\?path=\/docs\/overview-browser-support--docs(#[^"']*)?\1/g,
     `href=$1${docsBasename}/headless/guide/browser-support$2$1`,
   );
+
   return (
     <div ref={ref}>
       <Markdown components={{ pre: DescriptionCode }}>{source}</Markdown>
     </div>
   );
 });
+
 const headingCounts = new WeakMap<object, Map<string, number>>();
+
 Description.displayName = 'Description';

@@ -4,4 +4,3 @@ export { DocsInput } from './DocsInput';
 export { DocsLabel } from './DocsLabel';
 export { DocsSelect } from './DocsSelect';
 export { DocsSwitch } from './DocsSwitch';
-export { docsControlTokens } from './tokens';

@@ -1,21 +1,21 @@
 'use client';
 
 import * as React from 'react';
-import { Checkbox, type CheckboxProps } from '@fluentui/react-headless-components-preview/checkbox';
+import { Checkbox } from '@fluentui/react-headless-components-preview/checkbox';
+import type { CheckboxProps } from '@fluentui/react-headless-components-preview/checkbox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { toggleIndicator, toggleInput, toggleRoot } from './styles';
-import { docsControlTokens } from './tokens';
+import { clsx } from 'clsx';
 
 export const DocsCheckbox: ForwardRefComponent<Omit<CheckboxProps, 'input' | 'indicator'>> = React.forwardRef(
   (props, ref) => (
     <Checkbox
       {...props}
       ref={ref}
-      className={`${toggleRoot} ${props.className ?? ''}`}
-      style={{ ...docsControlTokens, ...props.style }}
+      className={clsx(toggleRoot, props.className)}
       input={{ className: toggleInput }}
       indicator={{
-        className: `${toggleIndicator} w-docs-indicator rounded-docs`,
+        className: clsx(toggleIndicator, 'w-indicator rounded-control'),
         children: (
           <svg
             aria-hidden="true"

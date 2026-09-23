@@ -1,4 +1,5 @@
-import { createSearchAPI, type AdvancedIndex } from 'fumadocs-core/search/server';
+import { createSearchAPI } from 'fumadocs-core/search/server';
+import type { AdvancedIndex } from 'fumadocs-core/search/server';
 import { sources } from './source';
 import { createDocsTree } from './utils/createDocsTree';
 import type { Root } from 'fumadocs-core/page-tree';

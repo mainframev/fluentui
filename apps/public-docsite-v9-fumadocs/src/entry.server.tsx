@@ -1,7 +1,8 @@
 import { RendererProvider, createDOMRenderer, renderToStyleElements } from '@griffel/react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { prerender } from 'react-dom/static';
-import { ServerRouter, type EntryContext } from 'react-router';
+import { ServerRouter } from 'react-router';
+import type { EntryContext } from 'react-router';
 
 export default async function handleRequest(
   request: Request,

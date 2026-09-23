@@ -1,15 +1,12 @@
 import * as React from 'react';
-import { webLightTheme } from '@fluentui/react-theme';
 import { SSRProvider } from '@fluentui/react-utilities';
 import { RootProvider } from 'fumadocs-ui/provider/react-router';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import { DocsSearch } from './components/DocsSearch';
-import { docsControlTokens } from './components/DocsControls';
-import { palette } from './components/DocsControls/styles';
 
 import './app.css';
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export const Layout = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -19,21 +16,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         <Meta />
         <Links />
       </head>
-      <body
-        className={`${palette} flex flex-col min-h-screen`}
-        style={
-          { ...docsControlTokens, '--docs-related-links-gap': webLightTheme.spacingVerticalL } as React.CSSProperties
-        }
-      >
+      <body className="flex flex-col min-h-screen">
         <SSRProvider>
-          <RootProvider
-            /*
-             * The dialog fetches the prerendered native index (see src/routes/search.ts).
-             */
-            search={{ SearchDialog: DocsSearch }}
-          >
-            {children}
-          </RootProvider>
+          <RootProvider search={{ SearchDialog: DocsSearch }}>{children}</RootProvider>
         </SSRProvider>
         <ScrollRestoration />
         <Scripts />
@@ -42,7 +27,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const Root = () => {
+const Root = (): React.ReactElement => {
   return <Outlet />;
 };
 

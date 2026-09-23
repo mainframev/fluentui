@@ -4,7 +4,6 @@ import type { MdxJsxAttribute } from 'mdast-util-mdx-jsx';
 import type { Transformer } from 'unified';
 import type { GeneratedDoc } from 'fumadocs-typescript';
 import type { LLMsOptions } from 'fumadocs-core/mdx-plugins/remark-llms';
-import { hostingBase } from '../deployment.config.js';
 
 declare module 'mdast' {
   interface Data {
@@ -12,12 +11,11 @@ declare module 'mdast' {
   }
 }
 
-/** Expose existing story bindings and API extraction to Fumadocs' Markdown serializer. */
 export function remarkFluentMarkdown(): Transformer<Root, Root> {
+  const hostingBase = process.env.DOCSITE_BASE_PATH || '/';
   return tree => {
     const components: ObjectExpression[] = [];
     function walk(node: Nodes): void {
-      // Rebase native resource links before both HTML and Markdown are generated.
       if ((node.type === 'mdxJsxTextElement' || node.type === 'mdxJsxFlowElement') && node.name === 'a') {
         for (const attribute of node.attributes) {
           if (
@@ -36,7 +34,7 @@ export function remarkFluentMarkdown(): Transformer<Root, Root> {
       }
 
       if (node.type === 'mdxJsxFlowElement' && node.name === 'ComponentPage') {
-        const properties = ['meta', 'stories', 'order'].flatMap((name): Property[] => {
+        const properties = ['meta', 'stories', 'order', 'wrapper'].flatMap((name): Property[] => {
           const attribute = node.attributes.find(
             (item): item is MdxJsxAttribute => item.type === 'mdxJsxAttribute' && item.name === name,
           );

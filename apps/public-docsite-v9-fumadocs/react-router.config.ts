@@ -1,12 +1,11 @@
 import type { Config } from '@react-router/dev/config';
-import { docsBasename } from './deployment.config.js';
+import { getExamplePaths } from './example-paths.config';
 
 export default {
   appDirectory: 'src',
   ssr: false,
-  basename: docsBasename,
+  basename: `${process.env.DOCSITE_BASE_PATH || '/'}docs`,
   buildDirectory: 'dist',
-  // These option names are defined by React Router.
   /* eslint-disable @typescript-eslint/naming-convention */
   future: {
     v8_middleware: true,
@@ -23,6 +22,7 @@ export default {
       '/search-index.json',
       ...resources,
       ...resources.filter(path => path !== '/llms.txt').map(path => path.slice(0, -4)),
+      ...getExamplePaths(),
     ];
   },
 } satisfies Config;

@@ -1,8 +1,8 @@
 {
-  "name": "@fluentui/public-docsite-v9-new",
-  "version": "1.0.0",
+  "name": "@fluentui/public-docsite-v9-fumadocs",
+  "version": "0.1.0",
   "private": true,
-  "description": "Fluent UI React v9 documentation site (next generation)",
+  "description": "Fluent UI React v9 and Headless documentation site",
   "type": "module",
   "sideEffects": false,
   "scripts": {
@@ -20,10 +20,10 @@
     "@fluentui/react-utilities": "*",
     "@griffel/react": "^1.5.32",
     "@react-router/node": "7.18.2",
+    "clsx": "^2.1.1",
     "fumadocs-core": "16.14.4",
     "fumadocs-mdx": "15.2.3",
     "fumadocs-ui": "16.14.4",
-    "isbot": "^5",
     "lucide-react": "^0.548.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",

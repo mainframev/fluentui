@@ -2,48 +2,31 @@
 
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { webLightTheme } from '@fluentui/react-theme';
+import { clsx } from 'clsx';
 import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
 
-import { sources, type DocsTree } from '../source';
+import { sources } from '../source';
+import type { DocsTree } from '../source';
 import { createDocsTree } from '../utils/createDocsTree';
 import { getOverviewLinks } from '../utils/getOverviewLinks';
 
-const overviewTokens = {
-  '--overview-gap': webLightTheme.spacingHorizontalL,
-  '--overview-padding': webLightTheme.spacingHorizontalXXL,
-  '--overview-compact-padding': webLightTheme.spacingHorizontalL,
-  '--overview-title-size': webLightTheme.fontSizeBase500,
-  '--overview-title-line': webLightTheme.lineHeightBase500,
-  '--overview-body-size': webLightTheme.fontSizeBase300,
-  '--overview-body-line': webLightTheme.lineHeightBase300,
-  '--overview-weight': webLightTheme.fontWeightSemibold,
-  '--overview-radius': webLightTheme.borderRadiusLarge,
-  '--overview-stroke': webLightTheme.strokeWidthThin,
-  '--overview-focus': webLightTheme.strokeWidthThick,
-  '--overview-icon': webLightTheme.fontSizeBase500,
-  '--overview-duration': webLightTheme.durationFast,
-  '--overview-easing': webLightTheme.curveEasyEase,
-} as React.CSSProperties;
-
-/** Shared presentation for section navigation and alphabetical component catalogs. */
 export const SectionOverview: ForwardRefComponent<{ tree: DocsTree; path: string; catalog?: boolean }> =
   React.forwardRef(({ tree, path, catalog = false }, ref) => {
     const source = sources[tree];
     const id = React.useId();
     const pages = getOverviewLinks(createDocsTree(source.pageTree), `/${tree}/${path}`, source.getPages(), catalog);
     const descriptions = new Map(source.getPages().map(page => [page.url, page.data.description]));
-    const card = `grid grid-cols-[minmax(0,1fr)_auto] content-start items-start gap-[var(--overview-gap)] w-full border-[length:var(--overview-stroke)] border-fd-border rounded-[var(--overview-radius)] bg-fd-card text-fd-foreground no-underline transition-[background-color,border-color] duration-[var(--overview-duration)] ease-[var(--overview-easing)] hover:bg-fd-accent hover:border-fd-muted-foreground focus-visible:outline focus-visible:outline-[length:var(--overview-focus)] focus-visible:outline-fd-ring focus-visible:outline-offset-[var(--overview-focus)] active:bg-fd-secondary motion-reduce:transition-none ${
-      catalog ? 'p-[var(--overview-compact-padding)]' : 'p-[var(--overview-padding)]'
-    }`;
+    const card = clsx(
+      'grid grid-cols-[minmax(0,1fr)_auto] content-start items-start gap-lg w-full border-thin border-fd-border rounded-panel bg-fd-card text-fd-foreground no-underline transition-[background-color,border-color] duration-fast ease-standard hover:bg-fd-accent hover:border-fd-muted-foreground focus-visible:outline focus-visible:outline-focus focus-visible:outline-fd-ring focus-visible:outline-offset-focus active:bg-fd-secondary motion-reduce:transition-none',
+      catalog ? 'p-lg' : 'p-2xl',
+    );
 
     return (
       <ul
         ref={ref}
         data-section-overview=""
-        className="not-prose grid grid-cols-2 max-[640px]:grid-cols-1 gap-[var(--overview-gap)] p-0 list-none"
-        style={overviewTokens}
+        className="not-prose grid grid-cols-2 max-[640px]:grid-cols-1 gap-lg p-0 list-none"
       >
         {pages.map((page, index) => {
           const description = descriptions.get(page.url);
@@ -53,20 +36,13 @@ export const SectionOverview: ForwardRefComponent<{ tree: DocsTree; path: string
             <>
               <span
                 id={titleId}
-                className={`font-[number:var(--overview-weight)] text-balance wrap-anywhere ${
-                  catalog
-                    ? 'text-[length:var(--overview-body-size)] leading-[var(--overview-body-line)]'
-                    : 'text-[length:var(--overview-title-size)] leading-[var(--overview-title-line)]'
-                }`}
+                className={clsx('font-semibold text-balance wrap-anywhere', catalog ? 'text-control' : 'text-lead')}
               >
                 {page.name}
               </span>
-              <ArrowUpRight aria-hidden="true" className="size-[var(--overview-icon)] text-fd-muted-foreground" />
+              <ArrowUpRight aria-hidden="true" className="size-icon text-fd-muted-foreground" />
               {description ? (
-                <span
-                  id={descriptionId}
-                  className="col-span-full text-fd-muted-foreground text-[length:var(--overview-body-size)] leading-[var(--overview-body-line)]"
-                >
+                <span id={descriptionId} className="col-span-full text-fd-muted-foreground text-control">
                   {description}
                 </span>
               ) : null}

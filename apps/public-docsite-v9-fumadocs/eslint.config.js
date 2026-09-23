@@ -5,13 +5,11 @@ import { defineConfig } from 'eslint/config';
 /** @type {import('eslint').Linter.Config[]} */
 export default defineConfig(
   fluentPlugin.configs['flat/react'],
-  { ignores: ['.source/**', '.react-router/**', '.impeccable/**'] },
+  { ignores: ['.source/**', '.react-router/**', '.fumadocs-typescript/**', '.impeccable/**', 'dist/**'] },
   {
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-deprecated': 'off',
-      '@fluentui/react-components/enforce-use-client': 'off',
       'import/no-extraneous-dependencies': ['error', { packageDir: ['.', '../..'] }],
     },
   },

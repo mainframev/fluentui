@@ -6,6 +6,7 @@ import * as nodePath from 'path';
 import { modifyImportsPlugin } from './modifyImports';
 import { removeStorybookParameters } from './removeStorybookParameters';
 import { sliceStorySource } from './sliceStory';
+import { inlineLocalImports } from './inlineLocalImports';
 import { BabelPluginOptions } from './types';
 
 export const PLUGIN_NAME = 'storybook-stories-fullsource';
@@ -160,14 +161,20 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
             return;
           }
 
-          const fileContents = fs.readFileSync(state.filename, 'utf-8');
+          const originalContents = fs.readFileSync(state.filename, 'utf-8');
+          const inlined = options.inlineLocalImports
+            ? inlineLocalImports(babel, originalContents, state.filename)
+            : undefined;
+          const fileContents = inlined?.code ?? originalContents;
           const tokensSource =
             cssModulesEnabled && cssModulesConfig?.tokensFilePath
               ? fs.readFileSync(cssModulesConfig.tokensFilePath, 'utf-8')
               : undefined;
           // Auto-detected CSS module imports are file-level (identical for every
           // story), so collect them once and reuse for each emitted story.
-          const cssModules = cssModulesEnabled ? collectCssModuleImports(path, t, state.filename) : [];
+          const cssModules = cssModulesEnabled
+            ? inlined?.cssModules ?? collectCssModuleImports(path, t, state.filename)
+            : [];
 
           // Runs the shared modify-imports + prettier pipeline over a source string.
           const buildFullSource = (source: string): string => {

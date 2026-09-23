@@ -1,15 +1,7 @@
 import { relative, isAbsolute } from 'node:path';
 import { fileURLToPath } from 'node:url';
-// MDX compilation runs only in the build toolchain.
-
-import {
-  createGenerator,
-  type Generator,
-  type GeneratorOptions,
-  type GenerateOptions,
-  type GeneratedDoc,
-  type DocEntry,
-} from 'fumadocs-typescript';
+import { createGenerator } from 'fumadocs-typescript';
+import type { Generator, GeneratorOptions, GenerateOptions, GeneratedDoc, DocEntry } from 'fumadocs-typescript';
 
 const componentsRoot = fileURLToPath(new URL('../../../packages/react-components/', import.meta.url));
 

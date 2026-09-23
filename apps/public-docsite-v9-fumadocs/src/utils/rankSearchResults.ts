@@ -4,7 +4,6 @@ import { searchWords } from './searchWords';
 import { searchMatchRank } from './searchMatchRank';
 import { searchExcerpt } from './searchExcerpt';
 
-/** Rank native search hits for presentation, retaining one destination per page. */
 export function rankSearchResults(
   results: SortedResult[],
   query: string,
@@ -13,24 +12,31 @@ export function rankSearchResults(
   const queryWords = searchWords(query);
   const direct: SearchMatch[] = [];
   const secondary: SearchMatch[] = [];
+
   if (queryWords.length === 0) {
     return { direct, secondary };
   }
+
   const plain = (text: string) => text.replace(/<\/?mark>/g, '');
   const pages = new Map<string, SortedResult[]>();
+
   for (const result of results) {
     const url = result.url.split('#')[0];
     const hits = pages.get(url) ?? [];
     hits.push(result);
     pages.set(url, hits);
   }
+
   for (const [url, hits] of pages) {
     const title = hits.find(hit => hit.type === 'page');
+
     if (!title) {
       continue;
     }
+
     const breadcrumbs = (title.breadcrumbs ?? []).map(plain);
     const kind = breadcrumbs.pop() ?? 'Guide';
+
     const page: SearchPage = {
       url,
       title: plain(title.content),
@@ -42,20 +48,26 @@ export function rankSearchResults(
           ? 'Components'
           : breadcrumbs.join(' › ') || 'Getting Started',
     };
+
     const rank = searchMatchRank(page.title, queryWords);
+
     if (rank !== undefined) {
       direct.push({ page, rank, url: page.url, excerpt: '' });
       continue;
     }
+
     const heading = hits
       .filter(hit => hit.type === 'heading')
       .map(item => ({ ...item, rank: searchMatchRank(plain(item.content), queryWords) ?? 4 }))
       .sort((a, b) => a.rank - b.rank)[0];
+
     if (heading) {
       direct.push({ page, rank: 4 + heading.rank, url: heading.url, excerpt: plain(heading.content) });
       continue;
     }
+
     const paragraph = hits.find(hit => hit.type === 'text');
+
     if (paragraph) {
       secondary.push({
         page,
@@ -68,6 +80,7 @@ export function rankSearchResults(
       direct.push({ page, rank: 8, url: page.url, excerpt: '' });
     }
   }
+
   const compare = (a: SearchMatch, b: SearchMatch) =>
     a.rank - b.rank ||
     Number(a.page.kind !== 'Component reference') - Number(b.page.kind !== 'Component reference') ||

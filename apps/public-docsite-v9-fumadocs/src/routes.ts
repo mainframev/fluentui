@@ -1,6 +1,5 @@
-// React Router evaluates this build configuration in Node.
-
-import { type RouteConfig, index, route } from '@react-router/dev/routes';
+import { index, route } from '@react-router/dev/routes';
+import type { RouteConfig } from '@react-router/dev/routes';
 import { readdirSync } from 'node:fs';
 
 const markdownRoutes = ['react', 'headless'].flatMap(collection =>
@@ -21,6 +20,8 @@ export default [
   route('search-index.json', 'routes/search.ts'),
   route('llms.txt', 'routes/markdown.ts', { id: 'markdown/index' }),
   ...markdownRoutes,
+  route('examples/headless/:example/*', 'routes/headless-example.tsx'),
+  route('examples/:collection/:example/*', 'routes/example.tsx'),
   route('react/*', 'routes/react.tsx'),
   route('headless/*', 'routes/headless.tsx'),
 ] satisfies RouteConfig;

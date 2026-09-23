@@ -7,26 +7,7 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
-/* Values are supplied by Fluent theme tokens in DocsControls/tokens.ts. */
-@theme inline {
-  --color-docs-bg: var(--docs-bg);
-  --color-docs-fg: var(--docs-fg);
-  --color-docs-border: var(--docs-border);
-  --color-docs-muted: var(--docs-muted);
-  --spacing-docs-gap: var(--docs-gap);
-  --spacing-docs-x: var(--docs-padding-x);
-  --spacing-docs-y: var(--docs-padding-y);
-  --spacing-docs-height: var(--docs-height);
-  --spacing-docs-indicator: var(--docs-indicator);
-  --spacing-docs-track: var(--docs-track);
-  --spacing-docs-thumb: var(--docs-thumb);
-  --spacing-docs-inset: var(--docs-inset);
-  --radius-docs: var(--docs-radius);
-  --radius-docs-round: var(--docs-round);
-  --text-docs: var(--docs-font);
-  --text-docs--line-height: var(--docs-line);
-  --ease-docs: var(--docs-easing);
-}
+@config '../tailwind.config.ts';
 
 button:is([data-search], [data-search-full], [data-theme-toggle]):not(:disabled),
 [data-theme-toggle] button:not(:disabled) {
@@ -70,7 +51,7 @@ button:is([data-search], [data-search-full], [data-theme-toggle]):not(:disabled)
 }
 
 .docs-react :is(#nd-sidebar, #nd-sidebar-mobile) [data-radix-scroll-area-viewport] > * > a[href$='/docs/headless'] {
-  margin-block-start: var(--docs-related-links-gap);
+  @apply mt-lg;
 }
 
 .dark pre.shiki {

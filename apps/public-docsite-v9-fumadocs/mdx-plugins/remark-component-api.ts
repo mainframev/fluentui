@@ -1,7 +1,7 @@
 import { relative, dirname } from 'node:path';
-// MDX compilation runs only in the build toolchain.
+import { remarkAutoTypeTable } from 'fumadocs-typescript';
+import type { Generator } from 'fumadocs-typescript';
 
-import { remarkAutoTypeTable, type Generator } from 'fumadocs-typescript';
 import type { Nodes } from 'mdast';
 import type { MdxJsxAttribute } from 'mdast-util-mdx-jsx';
 import { componentApiSource } from './component-api-source';
@@ -33,6 +33,7 @@ export function remarkComponentApi({ generator }: { generator: Generator }): Ret
         }
       }
     });
+
     walk(tree, node => {
       if (node.type !== 'mdxJsxFlowElement' || node.name !== 'ComponentPage') {
         return;
@@ -52,6 +53,7 @@ export function remarkComponentApi({ generator }: { generator: Generator }): Ret
       }
 
       const source = componentApiSource(storyImports[0], component);
+
       node.children.push({
         type: 'mdxJsxFlowElement',
         name: 'auto-type-table',

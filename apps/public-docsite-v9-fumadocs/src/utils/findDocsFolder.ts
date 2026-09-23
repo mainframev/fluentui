@@ -5,10 +5,13 @@ export function findDocsFolder(nodes: Node[], url: string): Folder | undefined {
     if (node.type !== 'folder') {
       continue;
     }
+
     if (node.index?.url === url) {
       return node;
     }
+
     const found = findDocsFolder(node.children, url);
+
     if (found) {
       return found;
     }

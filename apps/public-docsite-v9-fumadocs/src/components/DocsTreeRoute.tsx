@@ -1,3 +1,5 @@
+'use client';
+
 import { webLightTheme } from '@fluentui/react-theme';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
@@ -9,13 +11,13 @@ import browserCollections from '../../.source/browser';
 import type { TOCItemType } from 'fumadocs-core/toc';
 import type { MDXProps } from 'mdx/types';
 
-import { headlessSource, type reactSource } from '../source';
+import { headlessSource } from '../source';
+import type { reactSource } from '../source';
 import { baseOptions, homeOptions, headlessOptions, headlessHomeOptions } from '../layout.shared';
 import { createDocsTree } from '../utils/createDocsTree';
-import { StandaloneExampleContext, useStandaloneExample } from './useStandaloneExample';
 import { toKebabCase } from '../utils/toKebabCase';
 import { DocsTypeTable } from './DocsTypeTable';
-import { ComponentPageHeaderContext } from './ComponentPageHeaderContext';
+import { ComponentPageHeaderProvider } from './ComponentPageHeaderContext';
 import { DocsHome } from './DocsHome';
 
 const mdxComponents = {
@@ -60,7 +62,7 @@ const contentLoaders = {
   }),
 };
 
-type ContentProps = { page: Page; home?: boolean; standalone?: boolean };
+type ContentProps = { page: Page; home?: boolean };
 
 const PageContent = (props: ContentProps) => {
   const collection = props.page.url.startsWith('/headless') ? 'headless' : 'react';
@@ -73,7 +75,6 @@ const PageContent = (props: ContentProps) => {
 const LoadedContent = ({
   page,
   home = false,
-  standalone = false,
   data,
 }: ContentProps & {
   data: { body: React.ComponentType<MDXProps>; toc?: TOCItemType[]; hasComponentPage: boolean };
@@ -83,7 +84,7 @@ const LoadedContent = ({
 
   React.useEffect(() => {
     const body = bodyRef.current;
-    if (!body || home || standalone) {
+    if (!body || home) {
       return;
     }
 
@@ -106,13 +107,9 @@ const LoadedContent = ({
         return { title, url: `#${heading.id}`, depth: Number(heading.tagName.slice(1)) };
       });
     setRenderedToc(toc);
-  }, [data, home, standalone]);
+  }, [data, home]);
 
   const MDX = data.body;
-
-  if (standalone) {
-    return <MDX components={mdxComponents} />;
-  }
 
   if (home) {
     return (
@@ -137,7 +134,7 @@ const LoadedContent = ({
     <DocsPage toc={renderedToc ?? data.toc} className="max-w-none">
       {!data.hasComponentPage && header}
       <DocsBody ref={bodyRef}>
-        <ComponentPageHeaderContext.Provider
+        <ComponentPageHeaderProvider
           value={
             data.hasComponentPage
               ? {
@@ -152,7 +149,7 @@ const LoadedContent = ({
           }
         >
           <MDX components={mdxComponents} />
-        </ComponentPageHeaderContext.Provider>
+        </ComponentPageHeaderProvider>
       </DocsBody>
     </DocsPage>
   );
@@ -170,23 +167,9 @@ export interface DocsTreeRouteProps {
  * Shared renderer for both documentation trees (design D3). The trees differ only in
  * their content source and title; the chrome is identical.
  */
-export const DocsTreeRoute = ({ source, splat, title, home = false }: DocsTreeRouteProps) => {
+export const DocsTreeRoute = ({ source, splat, title, home = false }: DocsTreeRouteProps): React.ReactElement => {
   const slugs = splat ? splat.split('/').filter(Boolean) : [];
   const page = source.getPage(slugs);
-  const { example } = useStandaloneExample();
-
-  if (page && example !== null) {
-    return (
-      <main aria-label={`${page.data.title}: ${example}`}>
-        <title>{`${page.data.title}: ${example} — Fluent UI`}</title>
-        <React.Suspense fallback={<p role="status">Loading example…</p>}>
-          <StandaloneExampleContext.Provider value={example}>
-            <PageContent page={page} standalone />
-          </StandaloneExampleContext.Provider>
-        </React.Suspense>
-      </main>
-    );
-  }
 
   // The chrome is identical on both paths; only the children differ.
   const layoutProps = {
