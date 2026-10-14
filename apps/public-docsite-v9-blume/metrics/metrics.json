@@ -1,0 +1,100 @@
+{
+  "pages": 333,
+  "total": 157493064,
+  "sizes": {
+    "(none)": 3487,
+    ".html": 114202101,
+    ".json": 4528227,
+    ".md": 3136592,
+    ".js": 11411503,
+    ".woff2": 421232,
+    ".woff": 303116,
+    ".ttf": 513664,
+    ".css": 323410,
+    ".png": 1197671,
+    ".svg": 32081,
+    ".webm": 392954,
+    ".mdx": 14798379,
+    ".txt": 6228647
+  },
+  "transfers": {
+    "/docs/react/components/button": {
+      "js": 526310,
+      "css": 309842,
+      "html": 610645,
+      "json": 0,
+      "other": 68544,
+      "requests": 68
+    },
+    "/docs/react/components/data-grid": {
+      "js": 856007,
+      "css": 309842,
+      "html": 1893273,
+      "json": 0,
+      "other": 131768,
+      "requests": 121
+    },
+    "/docs/contrib/packages/react-keytips": {
+      "js": 251628,
+      "css": 309842,
+      "html": 174888,
+      "json": 0,
+      "other": 68544,
+      "requests": 31
+    }
+  },
+  "loc": {
+    "blume/Example.tsx": 108,
+    "blume/ExampleStyles.astro": 9,
+    "blume/api.ts": 88,
+    "blume/blume.config.ts": 45,
+    "blume/components.ts": 7,
+    "blume/generate-contrib.ts": 184,
+    "blume/generate.ts": 727,
+    "blume/integration.ts": 61,
+    "blume/islands/StorybookEmbed.tsx": 40,
+    "blume/metrics.mjs": 107,
+    "blume/run.mjs": 3,
+    "blume/smoke.mjs": 93,
+    "blume/story-config.ts": 94,
+    "blume/verify.mjs": 125,
+    "vite-plugins/full-source.ts": 63,
+    "vite-plugins/inlineLocalImports.test.ts": 120,
+    "vite-plugins/inlineLocalImports.ts": 230,
+    "vite-plugins/local-story-source.ts": 104,
+    "vite-plugins/markdown-as-string.ts": 42,
+    "vite-plugins/scope-story-globals.ts": 63,
+    "vite-plugins/story-order.ts": 54,
+    "vite-plugins/tsconfig-aliases.ts": 47,
+    "mdx-plugins/component-api-source.ts": 33,
+    "src/components/GuideExample.tsx": 15
+  },
+  "locTotal": 2462,
+  "versions": {
+    "blume": "2.1.3",
+    "astro": "7.3.6",
+    "@astrojs/react": "7.0.1",
+    "react": "19.2.0",
+    "vite": "6.4.2",
+    "typescript": "5.7.3",
+    "blume > react": "19.3.0",
+    "blume > typescript": "6.0.3",
+    "astro > vite": "8.3.3"
+  },
+  "stats": {
+    "pages": 268,
+    "componentPages": 145,
+    "stories": 905,
+    "islands": 177,
+    "apiTables": 125,
+    "apiRows": 1243,
+    "cssBytes": 11545074,
+    "ssrSkipped": [
+      "ReactTokensPreview.MotionCurves: window is not defined",
+      "ReactTokensPreview.MotionDuration: window is not defined"
+    ],
+    "contribPages": 41,
+    "generateMs": 1101337
+  },
+  "du": "156M\t/Users/mainframev/fluentui/.worktrees/docsite-blume-v2/apps/public-docsite-v9-blume/blume/dist"
+}

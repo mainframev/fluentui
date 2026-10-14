@@ -57,7 +57,14 @@ const errors = [];
 const results = [];
 try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
-  page.on('pageerror', error => errors.push(`${page.url()}: ${error.message}`));
+  page.on('pageerror', error => {
+    // Embedded fluentui-contrib Storybook frames (houdini-utils) re-register the same paint worklet
+    // in every story; that is upstream content, not this site.
+    if (/registerPaint/.test(error.message)) {
+      return;
+    }
+    errors.push(`${page.url()}: ${error.message}`);
+  });
   page.on('console', message => {
     if (message.type() !== 'error') {
       return;
@@ -73,9 +80,15 @@ try {
     const response = await page.goto(`${origin}${route}`, { waitUntil: 'load' });
     assert.equal(response.status(), 200, route);
     await page
-      .waitForFunction(() => [...document.querySelectorAll('astro-island')].every(island => !island.hasAttribute('ssr')), null, {
-        timeout: 30000,
-      })
+      // `client:visible` islands below the fold legitimately stay unhydrated.
+      .waitForFunction(
+        () =>
+          [...document.querySelectorAll('astro-island')].every(
+            island => !island.hasAttribute('ssr') || island.getAttribute('client') === 'visible',
+          ),
+        null,
+        { timeout: 30000 },
+      )
       .catch(() => errors.push(`${route}: islands did not hydrate within 30s`));
     const alerts = (await page.locator('[role="alert"]').allTextContents()).filter(text => /failed to render|Unknown example/.test(text));
     for (const alert of alerts) {
@@ -90,9 +103,13 @@ try {
     await page.locator('[data-blume-search-open]').first().click();
     await page.locator('[data-blume-search-input]').fill(process.env.VERIFY_SEARCH);
     await page.waitForTimeout(1500);
-    const hits = await page.locator('dialog a[href]').allTextContents();
+    const hits = await page.locator('[data-blume-search-results] [role="option"], [data-blume-search-results] a[href]').allTextContents();
+    const message = await page.locator('[data-blume-search-message]').textContent().catch(() => '');
     process.stdout.write(`search "${process.env.VERIFY_SEARCH}": ${hits.length} hits: ${hits.slice(0, 5).join(' | ')}\n`);
-    assert.ok(hits.length > 0, `search for ${process.env.VERIFY_SEARCH} returned nothing`);
+    if (!hits.length) {
+      errors.push(`search for ${process.env.VERIFY_SEARCH} returned nothing (${(message ?? '').trim()})`);
+    }
+    results.push({ route: `search:${process.env.VERIFY_SEARCH}`, hits: hits.length });
   }
 } finally {
   await browser.close();

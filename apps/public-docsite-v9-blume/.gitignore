@@ -6,3 +6,6 @@ blume/generated/
 blume/public/
 blume/dist/
 metrics/screenshots/
+
+# Local experiments keep their build output out of git.
+experiments/**/dist/

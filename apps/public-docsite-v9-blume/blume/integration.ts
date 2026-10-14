@@ -29,6 +29,25 @@ export function fluentIntegration(): AstroIntegration {
             return code.replace(selector, 'document.querySelectorAll(".prose pre:not(astro-island pre)")');
           },
         } as never);
+        vite.plugins.push({
+          name: 'fluentui:orama-english-locale',
+          enforce: 'pre',
+          transform(code: string, id: string) {
+            if (!id.endsWith('/blume/src/search/orama-index.ts')) {
+              return;
+            }
+            const expression = 'parseLocale(tag)?.maximize()';
+            if (!code.includes(expression)) {
+              throw new Error('Blume Orama locale handling changed; review the English locale adapter.');
+            }
+            // Orama's default tokenizer reports its language as "english"; Chromium's
+            // `Intl.Locale("english").maximize()` throws, which makes every search fail.
+            return code.replace(
+              expression,
+              '(() => { try { return parseLocale(tag === "english" ? "en" : tag)?.maximize(); } catch { return undefined; } })()',
+            );
+          },
+        } as never);
         updateConfig({
           vite: {
             ...vite,
