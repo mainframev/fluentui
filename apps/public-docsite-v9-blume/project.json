@@ -1,0 +1,71 @@
+{
+  "name": "public-docsite-v9-blume",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/public-docsite-v9-blume/src",
+  "tags": ["platform:web", "vNext"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }],
+      "outputs": [
+        "{projectRoot}/blume/dist",
+        "{projectRoot}/blume/content",
+        "{projectRoot}/blume/islands/generated",
+        "{projectRoot}/blume/generated",
+        "{projectRoot}/blume/public"
+      ],
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/tsconfig.base.json",
+        "{workspaceRoot}/tsconfig.base.all.json",
+        { "env": "DOCSITE_BASE_PATH" }
+      ],
+      "options": { "cwd": "apps/public-docsite-v9-blume/blume", "command": "node run.mjs build" }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }],
+      "options": { "cwd": "apps/public-docsite-v9-blume/blume", "command": "node run.mjs dev" }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "dependsOn": [{ "projects": ["babel-preset-storybook-full-source"], "target": "build" }],
+      "options": { "cwd": "apps/public-docsite-v9-blume/blume", "command": "node run.mjs dev" }
+    },
+    "preview": {
+      "executor": "nx:run-commands",
+      "options": { "cwd": "apps/public-docsite-v9-blume/blume", "command": "yarn blume preview --port 4322" }
+    },
+    "verify": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": { "cwd": "apps/public-docsite-v9-blume", "command": "node blume/verify.mjs" }
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": { "cwd": "apps/public-docsite-v9-blume", "command": "tsc -p blume/tsconfig.json --noEmit" }
+    },
+    "lint": {
+      "dependsOn": ["build"],
+      "inputs": ["default", "{workspaceRoot}/eslint.config.js"],
+      "options": { "command": "yarn run -T eslint ." }
+    },
+    "clean": {
+      "options": {
+        "paths": [
+          "blume/dist",
+          "blume/.blume",
+          "blume/content",
+          "blume/islands/generated",
+          "blume/generated",
+          "blume/public",
+          ".eslintcache",
+          "node_modules/.vite"
+        ]
+      }
+    }
+  }
+}

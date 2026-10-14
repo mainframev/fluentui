@@ -1,0 +1,2126 @@
+{
+  "schemaVersion": 1,
+  "site": {
+    "id": "contrib",
+    "title": "Contributors Packages",
+    "baseUrl": "https://microsoft.github.io/fluentui-contrib/docsite/",
+    "sourceUrl": "https://github.com/microsoft/fluentui-contrib",
+    "generatedAt": "2026-10-04T16:52:02.738Z"
+  },
+  "entries": [
+    {
+      "id": "welcome",
+      "slug": "welcome",
+      "titlePath": [
+        "Welcome"
+      ],
+      "kind": "page",
+      "description": "# Fluent UI Contributors Packages\n\nWelcome to the documentation site for Fluent UI Contributors packages! These packages are published under the `@fluentui-contrib/` scope and provide additional functionality to enhance your Fluent UI experience.\n\n## Available Packages\n\nExplore the various packages available to extend your Fluent UI capabilities:\n\n-   [**houdini-utils**](./?path=/docs/packages-houdini-utils--docs): Utilities for CSS Houdini.\n    \n-   [**react-chat**](./?path=/docs/packages-react-chat-chat--docs): React component for chat interfaces.\n    \n-   [**react-data-grid-react-window**](./?path=/docs/packages-react-data-grid-react-window--docs): DataGrid with vertical virtualization using react-window.\n    \n-   [**react-data-grid-react-window-grid**](./?path=/docs/packages-react-data-grid-react-window-grid--docs): DataGrid with 2D virtualization using react-window.\n    \n-   [**react-draggable-dialog**](./?path=/docs/packages-react-draggable-dialog--docs): Draggable dialog component.\n    \n-   [**react-headless-provider**](./?path=/docs/packages-react-headless-provider--docs): Provides a replacement for `FluentProvider` that does not render additional DOM elements.\n    \n-   [**react-interactive-tab**](./?path=/docs/packages-react-interactive-tab--docs): InteractiveTab component enables you to include interactive elements, such as buttons, within a tab.\n    \n-   [**react-resize-handle**](./?path=/docs/packages-react-resize-handle--docs): Component for creating resizable layouts.\n    \n-   [**react-shadow**](./?path=/docs/packages-react-shadow--docs): Adapter for using Fluent UI with `react-shadow`.\n    \n-   [**react-tree-grid**](./?path=/docs/packages-react-tree-grid--docs): TreeGrid component for hierarchical data.\n    \n-   [**react-virtualizer**](./?path=/docs/packages-react-virtualizer--docs): Virtualizer hooks and scroll view component for optimizing long-list renders\n    \n\n## Getting Started\n\nTo get started with any of these packages in your project:\n\n1.  Install the desired package using `npm` or `yarn`:\n    \n    ```text\n    npm install @fluentui-contrib/<package-name>\n    ```\n    \n    or\n    \n    ```text\n    yarn add @fluentui-contrib/<package-name>\n    ```\n2.  Import and use the components in your React application.\n    \n3.  Refer to the individual package documentation (Storybook links above) for detailed usage instructions and examples.\n    \n\n## Contributing\n\nWe welcome contributions to FluentUI Contrib! If you're interested in contributing, please read our [Contribution Guidelines](https://github.com/microsoft/fluentui-contrib/blob/main/CONTRIBUTING.md) for instructions on how to get started.\n\nThank you for being a part of the Fluent UI community!",
+      "stories": [],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/welcome--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/welcome.txt",
+      "sourcePath": "./apps/docsite/src/Welcome.mdx"
+    },
+    {
+      "id": "packages-azure-theme",
+      "slug": "packages/azure-theme",
+      "titlePath": [
+        "Packages",
+        "azure-theme"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/azure-theme\n\nAzure Theme package powered by Fluent UI and used in Microsoft Azure.",
+      "stories": [
+        {
+          "id": "packages-azure-theme--accordion-example",
+          "name": "AccordionExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--accordion-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--avatar-example",
+          "name": "AvatarExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--avatar-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--avatar-group-example",
+          "name": "AvatarGroupExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--avatar-group-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--badge-example",
+          "name": "BadgeExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--badge-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--breadcrumb-example",
+          "name": "BreadcrumbExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--breadcrumb-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--buttons-example",
+          "name": "ButtonsExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--buttons-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--cards-example",
+          "name": "CardsExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--cards-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--check-box-example",
+          "name": "CheckBoxExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--check-box-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--combo-box-example",
+          "name": "ComboBoxExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--combo-box-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--data-grid-example",
+          "name": "DataGridExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--data-grid-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--dialog-example",
+          "name": "DialogExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--dialog-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--divider-example",
+          "name": "DividerExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--divider-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--drawer-example",
+          "name": "DrawerExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--drawer-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--drop-down-example",
+          "name": "DropDownExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--drop-down-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--field-example",
+          "name": "FieldExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--field-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--input-example",
+          "name": "InputExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--input-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--label-example",
+          "name": "LabelExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--label-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--link-example",
+          "name": "LinkExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--link-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--menu-example",
+          "name": "MenuExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--menu-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--message-bar-example",
+          "name": "MessageBarExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--message-bar-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--overflow-example",
+          "name": "OverflowExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--overflow-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--persona-example",
+          "name": "PersonaExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--persona-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--popover-example",
+          "name": "PopoverExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--popover-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--radio-group-example",
+          "name": "RadioGroupExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--radio-group-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--select-example",
+          "name": "SelectExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--select-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--skeleton-example",
+          "name": "SkeletonExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--skeleton-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--slider-example",
+          "name": "SliderExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--slider-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--spin-button-example",
+          "name": "SpinButtonExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--spin-button-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--switch-example",
+          "name": "SwitchExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--switch-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--table-example",
+          "name": "TableExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--table-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--tab-list-example",
+          "name": "TabListExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--tab-list-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--text-example",
+          "name": "TextExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--text-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--text-area-example",
+          "name": "TextAreaExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--text-area-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--toast-example",
+          "name": "ToastExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--toast-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--toolbar-example",
+          "name": "ToolbarExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--toolbar-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--tool-tip-example",
+          "name": "ToolTipExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--tool-tip-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-azure-theme--tree-example",
+          "name": "TreeExample",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-azure-theme--tree-example&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-azure-theme--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-azure-theme.txt",
+      "sourcePath": "./packages/azure-theme/stories/index.stories.tsx"
+    },
+    {
+      "id": "packages-houdini-utils",
+      "slug": "packages/houdini-utils",
+      "titlePath": [
+        "Packages",
+        "houdini-utils"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/houdini-utils\n\nThis library exposes some low level utilities to use the [houdini APIs](https://developer.mozilla.org/en-US/docs/Web/API/Houdini_APIs)\nas well as a canvas fallback that should be usable with the [paint worklet](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Painting_API#the_paint_worklet) that would normally be used by houdini.\n\nPlease refer to the [documentation samples](https://microsoft.github.io/fluentui-contrib/houdini-utils/) for usage guidance",
+      "stories": [
+        {
+          "id": "packages-houdini-utils--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-houdini-utils--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-houdini-utils--fallback",
+          "name": "Fallback",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-houdini-utils--fallback&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-houdini-utils--fallback-with-duration",
+          "name": "FallbackWithDuration",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-houdini-utils--fallback-with-duration&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-houdini-utils--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-houdini-utils.txt",
+      "sourcePath": "./packages/houdini-utils/stories/Utils/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-accordion",
+      "slug": "packages/react-cap-theme/components/accordion",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Accordion"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-accordion--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-accordion--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-accordion--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-accordion.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Accordion/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-avatar",
+      "slug": "packages/react-cap-theme/components/avatar",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Avatar"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-avatar--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-avatar--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-avatar--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-avatar.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Avatar/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-badge",
+      "slug": "packages/react-cap-theme/components/badge",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Badge"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-badge--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-badge--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-badge--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-badge.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Badge/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-button",
+      "slug": "packages/react-cap-theme/components/button",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Button"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-button--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-button--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-components-button--ca-pvs-teams",
+          "name": "CAPvsTeams",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-button--ca-pvs-teams&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-button--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-button.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Button/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-carousel",
+      "slug": "packages/react-cap-theme/components/carousel",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Carousel"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-carousel--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-carousel--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-carousel--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-carousel.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Carousel/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-checkbox",
+      "slug": "packages/react-cap-theme/components/checkbox",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Checkbox"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-checkbox--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-checkbox--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-checkbox--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-checkbox.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Checkbox/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-dialog",
+      "slug": "packages/react-cap-theme/components/dialog",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Dialog"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-dialog--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-dialog--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-dialog--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-dialog.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Dialog/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-drawer",
+      "slug": "packages/react-cap-theme/components/drawer",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Drawer"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-drawer--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-drawer--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-drawer--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-drawer.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Drawer/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-image",
+      "slug": "packages/react-cap-theme/components/image",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Image"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-image--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-image--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-image--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-image.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Image/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-link",
+      "slug": "packages/react-cap-theme/components/link",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Link"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-link--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-link--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-link--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-link.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Link/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-menu",
+      "slug": "packages/react-cap-theme/components/menu",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Menu"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-menu--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-menu--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-menu--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-menu.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Menu/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-popover",
+      "slug": "packages/react-cap-theme/components/popover",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Popover"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-popover--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-popover--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-popover--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-popover.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Popover/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-components-tooltip",
+      "slug": "packages/react-cap-theme/components/tooltip",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Components",
+        "Tooltip"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-components-tooltip--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-components-tooltip--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-components-tooltip--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-components-tooltip.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Tooltip/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-cap-theme-design-language-overview",
+      "slug": "packages/react-cap-theme/design-language/overview",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Design Language",
+        "Overview"
+      ],
+      "kind": "page",
+      "description": "# Design Language\n\nThe CAP design language is broken into **facets** — self-contained slices of the look that each restyle a single aspect of every component, such as their corner radius. Adopt a facet on its own to take part of the CAP look without committing to all of it, and combine the facets you want. Each facet is a `customStyleHooks_unstable` registry exported from the package.\n\nToday the design language ships one facet:\n\n-   [**Rounded Corners**](?path=/docs/packages-react-cap-theme-design-language-rounded-corners--docs) (`CAP_STYLE_HOOKS_ROUNDED_CORNERS`) — rounds component corners to the CAP radius.\n\n## Combining facets\n\nUse `mergeStyleHooks` to combine facets — or layer them on top of your own custom hooks — into a single `customStyleHooks_unstable` map:\n\n```tsx\nimport { FluentProvider, webLightTheme } from '@fluentui/react-components';\nimport {\n  mergeStyleHooks,\n  CAP_STYLE_HOOKS_ROUNDED_CORNERS,\n} from '@fluentui-contrib/react-cap-theme';\nconst styleHooks = mergeStyleHooks([\n  CAP_STYLE_HOOKS_ROUNDED_CORNERS,\n  // ...other CAP facets, or your own custom style hooks\n]);\nexport const App = () => (\n  <FluentProvider theme={webLightTheme} customStyleHooks_unstable={styleHooks}>\n    {/* the rest of your app */}\n  </FluentProvider>\n);\n```\n\nEach registry maps a component to a hook that _appends_ its styling. A plain `{ ...rounded, ...colors }` spread (which is also how nesting `FluentProvider`s behaves) is **last-one-wins**: for `Button`, only the colors hook survives and the rounded-corners hook is dropped entirely, so your buttons get the new colors but lose the rounded corners. `mergeStyleHooks` instead **composes** them: the merged `Button` hook runs both in array order, so the button gets both. Where two registries set the same CSS property the later one wins; where they touch different properties, both apply.",
+      "stories": [],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-design-language-overview--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-design-language-overview.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/design-language/index.mdx"
+    },
+    {
+      "id": "packages-react-cap-theme-design-language-rounded-corners",
+      "slug": "packages/react-cap-theme/design-language/rounded-corners",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Design Language",
+        "Rounded Corners"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--button-example",
+          "name": "Button",
+          "source": "example(() => <>\n    <Button>Default</Button>\n    <Button appearance=\"primary\">Primary</Button>\n    <Button size=\"small\">Small</Button>\n    <Button size=\"large\">Large</Button>\n    <Button shape=\"circular\">Circular</Button>\n    <Button shape=\"square\">Square</Button>\n    <Button icon={<CalendarIcon />} title=\"Icon only\" />\n  </>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--button-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--compound-button-example",
+          "name": "CompoundButton",
+          "source": "example(() => <>\n    <CompoundButton secondaryContent=\"Secondary\">Default</CompoundButton>\n    <CompoundButton appearance=\"primary\" secondaryContent=\"Secondary\">\n      Primary\n    </CompoundButton>\n  </>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--compound-button-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--toggle-button-example",
+          "name": "ToggleButton",
+          "source": "example(() => <>\n    <ToggleButton>Off</ToggleButton>\n    <ToggleButton defaultChecked>On</ToggleButton>\n  </>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--toggle-button-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--split-button-example",
+          "name": "SplitButton",
+          "source": "example(() => <Menu positioning=\"below-start\">\n    <MenuTrigger disableButtonEnhancement>\n      {triggerProps => <SplitButton menuButton={triggerProps}>Split</SplitButton>}\n    </MenuTrigger>\n    <MenuPopover>\n      <MenuList>\n        <MenuItem>Item one</MenuItem>\n        <MenuItem>Item two</MenuItem>\n      </MenuList>\n    </MenuPopover>\n  </Menu>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--split-button-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--input-example",
+          "name": "Input",
+          "source": "example(() => <>\n    <Input placeholder=\"Outline\" />\n    <Input appearance=\"underline\" placeholder=\"Underline\" />\n    <Input size=\"small\" placeholder=\"Small\" />\n  </>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--input-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--combobox-example",
+          "name": "Combobox",
+          "source": "example(() => <Combobox placeholder=\"Pick a color\">\n    <Option>Red</Option>\n    <Option>Green</Option>\n    <Option>Blue</Option>\n  </Combobox>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--combobox-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--dropdown-example",
+          "name": "Dropdown",
+          "source": "example(() => <Dropdown placeholder=\"Pick a number\">\n    <Option>One</Option>\n    <Option>Two</Option>\n    <Option>Three</Option>\n  </Dropdown>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--dropdown-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--checkbox-example",
+          "name": "Checkbox",
+          "source": "example(() => <>\n    <Checkbox label=\"Unchecked\" />\n    <Checkbox label=\"Checked\" defaultChecked />\n  </>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--checkbox-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--tag-example",
+          "name": "Tag",
+          "source": "example(() => <TagGroup>\n    <Tag>Medium</Tag>\n    <Tag size=\"small\">Small</Tag>\n    <Tag shape=\"circular\">Circular</Tag>\n  </TagGroup>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--tag-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--interaction-tag-example",
+          "name": "InteractionTag",
+          "source": "example(() => <TagGroup>\n    <InteractionTag>\n      <InteractionTagPrimary hasSecondaryAction>\n        Interaction\n      </InteractionTagPrimary>\n      <InteractionTagSecondary aria-label=\"dismiss\" />\n    </InteractionTag>\n  </TagGroup>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--interaction-tag-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--menu-item-example",
+          "name": "MenuItem",
+          "source": "example(() => <MenuList style={{\n  minWidth: '180px'\n}}>\n    <MenuItem>New</MenuItem>\n    <MenuItem>Open</MenuItem>\n    <MenuItem>Save</MenuItem>\n  </MenuList>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--menu-item-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--avatar-example",
+          "name": "Avatar",
+          "source": "example(() => <>\n    <Avatar shape=\"square\" size={32} name=\"Cap Theme\" />\n    <Avatar shape=\"square\" size={48} name=\"Cap Theme\" />\n    <Avatar shape=\"square\" size={64} name=\"Cap Theme\" />\n  </>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--avatar-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--badge-example",
+          "name": "Badge",
+          "source": "example(() => <>\n    <Badge size=\"medium\">Medium</Badge>\n    <Badge size=\"extra-large\">Extra large</Badge>\n    <Badge shape=\"square\" size=\"extra-large\">\n      Square\n    </Badge>\n  </>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--badge-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--image-example",
+          "name": "Image",
+          "source": "example(() => <Image src={sampleImage} shape=\"rounded\" alt=\"\" />)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--image-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--toolbar-example",
+          "name": "Toolbar",
+          "source": "example(() => <Toolbar>\n    <ToolbarButton icon={<CalendarIcon />}>Action</ToolbarButton>\n    <ToolbarButton icon={<CalendarIcon />}>Action</ToolbarButton>\n  </Toolbar>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--toolbar-example&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-cap-theme-design-language-rounded-corners--card-example",
+          "name": "Card",
+          "source": "example(() => <Card style={{\n  maxWidth: '260px'\n}}>\n    <Text weight=\"semibold\">Card</Text>\n    <Text>Surfaces use the largest CAP radius.</Text>\n  </Card>)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-cap-theme-design-language-rounded-corners--card-example&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-design-language-rounded-corners--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-design-language-rounded-corners.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/design-language/rounded-corners/index.mdx"
+    },
+    {
+      "id": "packages-react-cap-theme-getting-started",
+      "slug": "packages/react-cap-theme/getting-started",
+      "titlePath": [
+        "Packages",
+        "react-cap-theme",
+        "Getting Started"
+      ],
+      "kind": "page",
+      "description": "# react-cap-theme\n\n`@fluentui-contrib/react-cap-theme` restyles Fluent UI v9 components to match the CAP design language. It's a collection of custom style hooks that you drop into a `FluentProvider`. Every Fluent component rendered inside that provider picks up the CAP look automatically, with no changes to your markup. Apply the entire look at once with `CAP_STYLE_HOOKS`, or opt into individual, [composable facets](?path=/docs/packages-react-cap-theme-design-language-overview--docs) of the design language (such as rounded corners) on their own.\n\n## Usage\n\nInstall the package:\n\n```bash\nnpm install --save @fluentui-contrib/react-cap-theme\n```\n\nWrap your app (or any subtree) in a `FluentProvider` and pass `CAP_STYLE_HOOKS` to `customStyleHooks_unstable`. Every Fluent component rendered inside picks up the CAP styling automatically.\n\n```tsx\nimport { FluentProvider, webLightTheme } from '@fluentui/react-components';\nimport { CAP_STYLE_HOOKS } from '@fluentui-contrib/react-cap-theme';\nexport const App = () => (\n  <FluentProvider\n    theme={webLightTheme}\n    customStyleHooks_unstable={CAP_STYLE_HOOKS}\n  >\n    {/* the rest of your app */}\n  </FluentProvider>\n);\n```\n\nThe CAP look-and-feel relies on a few design tokens that Fluent v9 doesn't ship yet. Their default values are built into the style hooks, so the example above works as-is — no extra theme setup required. To customize them, spread `CAP_THEME_TOKENS` (or your own values) onto your theme:\n\n```tsx\nimport { CAP_THEME_TOKENS } from '@fluentui-contrib/react-cap-theme';\nconst capTheme = {\n  ...webLightTheme,\n  ...CAP_THEME_TOKENS,\n  borderRadius2XLarge: '8px', // override an individual token\n};\n```\n\nDon't want the whole CAP look? The design language is also published as individual facets you can adopt on their own and combine together. See [Design Language](?path=/docs/packages-react-cap-theme-design-language-overview--docs) for the full list and how to use them.",
+      "stories": [],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-cap-theme-getting-started--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-cap-theme-getting-started.txt",
+      "sourcePath": "./packages/react-cap-theme/stories/Overview/index.mdx"
+    },
+    {
+      "id": "packages-react-chat-chat",
+      "slug": "packages/react-chat/chat",
+      "titlePath": [
+        "Packages",
+        "react-chat",
+        "Chat"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-chat\n\nChat component powered by Fluent UI and used in Microsoft Teams.",
+      "props": [
+        {
+          "component": "Chat",
+          "props": [
+            {
+              "name": "as",
+              "type": "\"div\"",
+              "required": false
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-react-chat-chat--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-chat-chat--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-chat-chat--chat-with-focusable-content",
+          "name": "ChatWithFocusableContent",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-chat-chat--chat-with-focusable-content&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-chat-chat--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-chat-chat.txt",
+      "sourcePath": "./packages/react-chat/stories/Chat/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-chat-chatmessage",
+      "slug": "packages/react-chat/chat-message",
+      "titlePath": [
+        "Packages",
+        "react-chat",
+        "ChatMessage"
+      ],
+      "kind": "component",
+      "props": [
+        {
+          "component": "ChatMessage",
+          "props": [
+            {
+              "name": "root",
+              "type": "NonNullable<WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>>",
+              "required": false
+            },
+            {
+              "name": "body",
+              "type": "NonNullable<WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>>",
+              "required": false
+            },
+            {
+              "name": "details",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Specifies additional info (for example if a message is edited/translated) to the message on author name line"
+            },
+            {
+              "name": "as",
+              "type": "\"div\"",
+              "required": false
+            },
+            {
+              "name": "avatar",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false
+            },
+            {
+              "name": "author",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false
+            },
+            {
+              "name": "decorationIcon",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Can be used to customize the decoration icon next to the message"
+            },
+            {
+              "name": "decorationLabel",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Decoration label on top of the message"
+            },
+            {
+              "name": "reactions",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Reactions on the message"
+            },
+            {
+              "name": "timestamp",
+              "type": "WithSlotShorthandValue<{ as?: \"span\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }> | ({ ...; } & ... 1 more ... & { ...; })",
+              "required": false
+            },
+            {
+              "name": "attached",
+              "type": "\"center\" \"top\" \"bottom\"",
+              "required": false,
+              "description": "Whether the bubble is on the top/center/bottom of a group of messages. It is used to style message bubble border radius."
+            },
+            {
+              "name": "decoration",
+              "type": "\"important\" \"urgent\" \"mention\" \"mentionEveryone\"",
+              "required": false,
+              "description": "Specifies the decoration to render pre-defined decoration icon next to the message"
+            },
+            {
+              "name": "persistentTimestamp",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "By default, timestamp is only visible on hover, and it appears next to the message bubble. When set, show timestamp on top of message bubble, and make it always visible."
+            },
+            {
+              "name": "showAnimation",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Whether the message bubble has animation."
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-react-chat-chatmessage--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-chat-chatmessage--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-chat-chatmessage--decoration",
+          "name": "Decoration",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-chat-chatmessage--decoration&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-chat-chatmessage--slots",
+          "name": "Slots",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-chat-chatmessage--slots&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-chat-chatmessage--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-chat-chatmessage.txt",
+      "sourcePath": "./packages/react-chat/stories/ChatMessage/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-chat-chatmymessage",
+      "slug": "packages/react-chat/chat-my-message",
+      "titlePath": [
+        "Packages",
+        "react-chat",
+        "ChatMyMessage"
+      ],
+      "kind": "component",
+      "props": [
+        {
+          "component": "ChatMyMessage",
+          "props": [
+            {
+              "name": "root",
+              "type": "NonNullable<WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>>",
+              "required": false
+            },
+            {
+              "name": "body",
+              "type": "NonNullable<WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>>",
+              "required": false
+            },
+            {
+              "name": "details",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Specifies additional info (for example if a message is edited/translated) to the message; displays on top of the message"
+            },
+            {
+              "name": "as",
+              "type": "\"div\"",
+              "required": false
+            },
+            {
+              "name": "author",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Invisible author name for screen reader"
+            },
+            {
+              "name": "decorationIcon",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Can be used to customize the decoration icon next to the message"
+            },
+            {
+              "name": "decorationLabel",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Decoration label on top of the message"
+            },
+            {
+              "name": "reactions",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Reactions on the message"
+            },
+            {
+              "name": "timestamp",
+              "type": "WithSlotShorthandValue<{ as?: \"span\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }> | ({ ...; } & ... 1 more ... & { ...; })",
+              "required": false,
+              "description": "timestamp of the message"
+            },
+            {
+              "name": "actions",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Specifies additional actions next to the message"
+            },
+            {
+              "name": "statusIcon",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Can be used to customize message status icon"
+            },
+            {
+              "name": "statusMessage",
+              "type": "WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Displays message status on top of the message"
+            },
+            {
+              "name": "decoration",
+              "type": "\"important\" \"urgent\"",
+              "required": false
+            },
+            {
+              "name": "status",
+              "type": "\"blocked\" \"sending\" \"received\" \"read\" \"failed\" \"scheduled\"",
+              "required": false
+            },
+            {
+              "name": "attached",
+              "type": "\"center\" \"top\" \"bottom\"",
+              "required": false,
+              "description": "Whether the bubble is on the top/center/bottom of a group of messages. It is used to style message bubble border radius."
+            },
+            {
+              "name": "showAnimation",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Whether the message bubble has animation."
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-react-chat-chatmymessage--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-chat-chatmymessage--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-chat-chatmymessage--decoration",
+          "name": "Decoration",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-chat-chatmymessage--decoration&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-chat-chatmymessage--status",
+          "name": "Status",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-chat-chatmymessage--status&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-chat-chatmymessage--slots",
+          "name": "Slots",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-chat-chatmymessage--slots&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-chat-chatmymessage--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-chat-chatmymessage.txt",
+      "sourcePath": "./packages/react-chat/stories/ChatMyMessage/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-contextual-pane-footer",
+      "slug": "packages/react-contextual-pane/footer",
+      "titlePath": [
+        "Packages",
+        "react-contextual-pane",
+        "Footer"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-contextual-pane-footer--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-contextual-pane-footer--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-contextual-pane-footer--custom-children",
+          "name": "CustomChildren",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-contextual-pane-footer--custom-children&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-contextual-pane-footer--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-contextual-pane-footer.txt",
+      "sourcePath": "./packages/react-contextual-pane/stories/Footer/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-contextual-pane-header",
+      "slug": "packages/react-contextual-pane/header",
+      "titlePath": [
+        "Packages",
+        "react-contextual-pane",
+        "Header"
+      ],
+      "kind": "component",
+      "stories": [
+        {
+          "id": "packages-react-contextual-pane-header--default",
+          "name": "Default",
+          "description": "Contextual pane header at the top of the pane, with a title, brand and\n        actions. The title is always required and here we have all the slots\n        filled.\n- The dismiss button on the right will always be present.\n- Arrow back button will be present if hasArrowBack is true.\n- Brand icon will be present if brandIcon is passed as a prop.\n- Actions will be present if actions is passed, with a maximum of 2 actions.",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-contextual-pane-header--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-contextual-pane-header--long-title",
+          "name": "LongTitle",
+          "description": "When a very long title is passed it will be truncated and we have a\n        tooltip present for it",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-contextual-pane-header--long-title&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-contextual-pane-header--brand",
+          "name": "Brand",
+          "description": "If the pane feature is not native to Teams it will require a brand\n        identifier",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-contextual-pane-header--brand&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-contextual-pane-header--actions",
+          "name": "Actions",
+          "description": "If the pane requires additional actions in the pane header, then the\n        actions slot will be present",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-contextual-pane-header--actions&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-contextual-pane-header--truncation",
+          "name": "Truncation",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-contextual-pane-header--truncation&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-contextual-pane-header--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-contextual-pane-header.txt",
+      "sourcePath": "./packages/react-contextual-pane/stories/Header/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-data-grid-react-window",
+      "slug": "packages/react-data-grid-react-window",
+      "titlePath": [
+        "Packages",
+        "react-data-grid-react-window"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-data-grid-react-window\n\nA variant of the Fluent UI [DataGrid](https://react.fluentui.dev/?path=/docs/components-datagrid--default) that is\nvirtualized using [react-window](https://react-window.vercel.app/#/examples/list/fixed-size).",
+      "props": [
+        {
+          "component": "react-data-grid-react-window",
+          "props": [
+            {
+              "name": "as",
+              "type": "\"div\" \"table\"",
+              "required": false
+            },
+            {
+              "name": "size",
+              "type": "\"small\" \"medium\" \"extra-small\"",
+              "required": false,
+              "defaultValue": "medium",
+              "description": "Affects the sizes of all table subcomponents"
+            },
+            {
+              "name": "noNativeElements",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Render all table elements as divs instead of semantic table elements Using divs no longer uses `display: table` layout but `display: flex`"
+            },
+            {
+              "name": "sortable",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Whether the table is sortable"
+            },
+            {
+              "name": "focusMode",
+              "type": "\"cell\" \"none\" \"row_unstable\" \"composite\"",
+              "required": false,
+              "defaultValue": "cell",
+              "description": "How focus navigation will work in the datagrid"
+            },
+            {
+              "name": "subtleSelection",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Enables subtle selection style"
+            },
+            {
+              "name": "selectionAppearance",
+              "type": "\"none\" \"brand\" \"neutral\"",
+              "required": false,
+              "defaultValue": "brand",
+              "description": "Row appearance when selected"
+            },
+            {
+              "name": "resizableColumns",
+              "type": "boolean",
+              "required": false,
+              "description": "Enables column resizing"
+            },
+            {
+              "name": "defaultSelectedItems",
+              "type": "Iterable<SelectionItemId>",
+              "required": false,
+              "description": "Used in uncontrolled mode to set initial selected items on mount"
+            },
+            {
+              "name": "selectedItems",
+              "type": "Iterable<SelectionItemId>",
+              "required": false,
+              "description": "Used to control selected items"
+            },
+            {
+              "name": "onSortChange",
+              "type": "(e: MouseEvent<Element, MouseEvent>, sortState: SortState) => void",
+              "required": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "(e: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>, data: OnSelectionChangeData) => void",
+              "required": false
+            },
+            {
+              "name": "selectionMode",
+              "type": "\"multiselect\" \"single\"",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Enables row selection and sets the selection mode"
+            },
+            {
+              "name": "columnSizingOptions",
+              "type": "TableColumnSizingOptions",
+              "required": false,
+              "description": "Options for column resizing, specific for each column"
+            },
+            {
+              "name": "onColumnResize",
+              "type": "(e: MouseEvent | KeyboardEvent | TouchEvent, data: { columnId: TableColumnId; width: number; }) => void",
+              "required": false,
+              "description": "A callback triggered when a column is resized."
+            },
+            {
+              "name": "containerWidthOffset",
+              "type": "number",
+              "required": false,
+              "description": "For column resizing. Allows for a container size to be adjusted by a number of pixels, to make sure the columns don't overflow the table. By default, this value is calculated internally based on other props, but can be overriden."
+            },
+            {
+              "name": "resizableColumnsOptions",
+              "type": "{ autoFitColumns?: boolean; }",
+              "required": false,
+              "description": "Custom options for column resizing."
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-react-data-grid-react-window--virtualized-data-grid",
+          "name": "VirtualizedDataGrid",
+          "description": "Virtualizating the DataGrid component involves recomposing components to use a virtualized container.\nThis is already done in the extension package `@fluentui/react-data-grid-react-window` which provides\nextended DataGrid components that are powered\nby [react-window](https://react-window.vercel.app/#/examples/list/fixed-size).\n\nThe example below shows how to use this extension package to virtualize the DataGrid component.\n\n> ⚠️ Make sure to memoize the row render function to avoid excessive unmouting/mounting of components.\nreact-window will [create components based on this renderer](https://react-window.vercel.app/#/api/FixedSizeList)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-data-grid-react-window--virtualized-data-grid&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-data-grid-react-window--react-window-overrides",
+          "name": "ReactWindowOverrides",
+          "description": "As VirtualizedDataGrid relies on [FixedListSIze](https://react-window.vercel.app/#/examples/list/fixed-size),\nyou may want to pass some props directly to it. One use case could be to add additional styling to the list itself\nIn this example we make sure to keep header aligned with row content no matter if list scrollbar is visible or not.\nResize window vertically to see this in action.",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-data-grid-react-window--react-window-overrides&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-data-grid-react-window--data-grid-scrolling-indicators",
+          "name": "DataGridScrollingIndicators",
+          "description": "As VirtualizedDataGrid relies on [FixedSizeList](https://react-window.vercel.app/#/examples/list/fixed-size),\nyou may want to pass some props directly to it. If your component's items are expensive to render,\nyou can boost performance by rendering a placeholder while the user is scrolling.\nTo do this, add the `useIsScrolling` property to your List or Grid.\nNow an additional parameter, `isScrolling`, will be passed to your render method.\nIn this example, we render a shimmer effect while the user is scrolling.",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-data-grid-react-window--data-grid-scrolling-indicators&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-data-grid-react-window--resizable-data-grid",
+          "name": "ResizableDataGrid",
+          "description": "Virtualizating the DataGrid component involves recomposing components to use a virtualized container.\nThis is already done in the extension package `@fluentui/react-data-grid-react-window` which provides\nextended DataGrid components that are powered\nby [react-window](https://react-window.vercel.app/#/examples/list/fixed-size).\n\nThe example below shows how to use this extension package to virtualize the DataGrid component.\n\n> ⚠️ Make sure to memoize the row render function to avoid excessive unmouting/mounting of components.\nreact-window will [create components based on this renderer](https://react-window.vercel.app/#/api/FixedSizeList)",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-data-grid-react-window--resizable-data-grid&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-data-grid-react-window--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-data-grid-react-window.txt",
+      "sourcePath": "./packages/react-data-grid-react-window/stories/DataGrid/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-data-grid-react-window-grid",
+      "slug": "packages/react-data-grid-react-window-grid",
+      "titlePath": [
+        "Packages",
+        "react-data-grid-react-window-grid"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-data-grid-react-window-grid\n\nA variant of the Fluent UI [DataGrid](https://react.fluentui.dev/?path=/docs/components-datagrid--default) that is\nvirtualized 2 dimentionally using [react-window](https://react-window.vercel.app/#/examples/grid/variable-size).",
+      "props": [
+        {
+          "component": "react-data-grid-react-window-grid",
+          "props": [
+            {
+              "name": "as",
+              "type": "\"div\" \"table\"",
+              "required": false
+            },
+            {
+              "name": "size",
+              "type": "\"small\" \"medium\" \"extra-small\"",
+              "required": false,
+              "defaultValue": "medium",
+              "description": "Affects the sizes of all table subcomponents"
+            },
+            {
+              "name": "noNativeElements",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Render all table elements as divs instead of semantic table elements Using divs no longer uses `display: table` layout but `display: flex`"
+            },
+            {
+              "name": "sortable",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Whether the table is sortable"
+            },
+            {
+              "name": "focusMode",
+              "type": "\"cell\" \"none\" \"row_unstable\" \"composite\"",
+              "required": false,
+              "defaultValue": "cell",
+              "description": "How focus navigation will work in the datagrid"
+            },
+            {
+              "name": "subtleSelection",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Enables subtle selection style"
+            },
+            {
+              "name": "selectionAppearance",
+              "type": "\"none\" \"brand\" \"neutral\"",
+              "required": false,
+              "defaultValue": "brand",
+              "description": "Row appearance when selected"
+            },
+            {
+              "name": "resizableColumns",
+              "type": "boolean",
+              "required": false,
+              "description": "Enables column resizing"
+            },
+            {
+              "name": "defaultSelectedItems",
+              "type": "Iterable<SelectionItemId>",
+              "required": false,
+              "description": "Used in uncontrolled mode to set initial selected items on mount"
+            },
+            {
+              "name": "selectedItems",
+              "type": "Iterable<SelectionItemId>",
+              "required": false,
+              "description": "Used to control selected items"
+            },
+            {
+              "name": "onSortChange",
+              "type": "(e: MouseEvent<Element, MouseEvent>, sortState: SortState) => void",
+              "required": false
+            },
+            {
+              "name": "onSelectionChange",
+              "type": "(e: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>, data: OnSelectionChangeData) => void",
+              "required": false
+            },
+            {
+              "name": "selectionMode",
+              "type": "\"multiselect\" \"single\"",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Enables row selection and sets the selection mode"
+            },
+            {
+              "name": "columnSizingOptions",
+              "type": "TableColumnSizingOptions",
+              "required": false,
+              "description": "Options for column resizing, specific for each column"
+            },
+            {
+              "name": "onColumnResize",
+              "type": "(e: MouseEvent | KeyboardEvent | TouchEvent, data: { columnId: TableColumnId; width: number; }) => void",
+              "required": false,
+              "description": "A callback triggered when a column is resized."
+            },
+            {
+              "name": "containerWidthOffset",
+              "type": "number",
+              "required": false,
+              "description": "For column resizing. Allows for a container size to be adjusted by a number of pixels, to make sure the columns don't overflow the table. By default, this value is calculated internally based on other props, but can be overriden."
+            },
+            {
+              "name": "resizableColumnsOptions",
+              "type": "{ autoFitColumns?: boolean; }",
+              "required": false,
+              "description": "Custom options for column resizing."
+            },
+            {
+              "name": "bodyRef",
+              "type": "RefObject<VariableSizeGrid<any>>",
+              "required": false
+            },
+            {
+              "name": "headerRef",
+              "type": "RefObject<VariableSizeList<any>>",
+              "required": false
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-react-data-grid-react-window-grid--virtualized-data-grid",
+          "name": "VirtualizedDataGrid",
+          "source": "() => {\n  const columns = getColumnDefinitions([...new Array(50)].map((v, index) => `Column ${index}`));\n  const items = generateTableArrays(1000, 50);\n  const styles = useStyles();\n  const bodyRef = React.useRef<VariableSizeGrid>(null);\n  const headerRef = React.useRef<VariableSizeList>(null);\n  const [width, setWidth] = React.useState(200);\n  const columnWidth = React.useCallback((index: number) => index === 0 ? 200 : width, [width]);\n  return <>\n      <Button onClick={() => {\n      setWidth(100);\n      bodyRef.current?.resetAfterColumnIndex(0);\n      headerRef.current?.resetAfterIndex(0);\n    }}>\n        Change column width\n      </Button>\n      <DataGrid noNativeElements sortable items={items} columns={columns} size={'medium'} bodyRef={bodyRef} headerRef={headerRef}>\n        <DataGridHeader className={styles.tableHeader}>\n          <DataGridHeaderRow<TableUIData> itemSize={columnWidth} height={42} width={1000}>\n            {({\n            renderHeaderCell\n          }, style) => {\n            return <DataGridHeaderCell className={styles.headerCell} as=\"div\" style={style}>\n                  {renderHeaderCell()}\n                </DataGridHeaderCell>;\n          }}\n          </DataGridHeaderRow>\n        </DataGridHeader>\n        <DataGridBody<TableUIData> rowHeight={index => ROW_HEIGHT} height={500} width={1000} columnWidth={columnWidth}>\n          {cellRenderer}\n        </DataGridBody>\n      </DataGrid>\n    </>;\n}",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-data-grid-react-window-grid--virtualized-data-grid&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-data-grid-react-window-grid--data-grid-scrolling-indicators",
+          "name": "DataGridScrollingIndicators",
+          "source": "() => {\n  const columns = getColumnDefinitions([...new Array(50)].map((v, index) => `Column ${index}`));\n  const items = generateTableArrays(1000, 50);\n  const styles = useStyles();\n  const bodyRef = React.useRef<VariableSizeGrid>(null);\n  const headerRef = React.useRef<VariableSizeList>(null);\n  const [width, setWidth] = React.useState(200);\n  const columnWidth = React.useCallback((index: number) => index === 0 ? 200 : width, [width]);\n  return <>\n      <Button onClick={() => {\n      setWidth(100);\n      bodyRef.current?.resetAfterColumnIndex(0);\n      headerRef.current?.resetAfterIndex(0);\n    }}>\n        Change column width\n      </Button>\n      <DataGrid noNativeElements sortable items={items} columns={columns} size={'medium'} bodyRef={bodyRef} headerRef={headerRef}>\n        <DataGridHeader className={styles.tableHeader}>\n          <DataGridHeaderRow<TableUIData> itemSize={columnWidth} height={42} width={1000}>\n            {({\n            renderHeaderCell\n          }, style) => {\n            return <DataGridHeaderCell className={styles.headerCell} as=\"div\" style={style}>\n                  {renderHeaderCell()}\n                </DataGridHeaderCell>;\n          }}\n          </DataGridHeaderRow>\n        </DataGridHeader>\n        <DataGridBody<TableUIData> rowHeight={() => ROW_HEIGHT} height={500} width={1000} columnWidth={columnWidth} gridProps={gridProps}>\n          {cellRenderer}\n        </DataGridBody>\n      </DataGrid>\n    </>;\n}",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-data-grid-react-window-grid--data-grid-scrolling-indicators&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-data-grid-react-window-grid--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-data-grid-react-window-grid.txt",
+      "sourcePath": "./packages/react-data-grid-react-window-grid/stories/DataGrid/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-draggable-dialog",
+      "slug": "packages/react-draggable-dialog",
+      "titlePath": [
+        "Packages",
+        "react-draggable-dialog"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-draggable-dialog\n\nA draggable dialog component powered by Fluent UI.",
+      "props": [
+        {
+          "component": "react-draggable-dialog",
+          "props": [
+            {
+              "name": "surfaceMotion",
+              "type": "PresenceMotionSlotProps",
+              "required": false,
+              "description": "For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs)."
+            },
+            {
+              "name": "modalType",
+              "type": "\"alert\" \"modal\" \"non-modal\"",
+              "required": false,
+              "defaultValue": "modal",
+              "description": "Dialog variations.  `modal`: When this type of dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab sequence is kept within the dialog and moving the focus outside the dialog will imply closing it. This is the default type of the component.  `non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.  `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background."
+            },
+            {
+              "name": "open",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Controls the open state of the dialog"
+            },
+            {
+              "name": "defaultOpen",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Default value for the uncontrolled open state of the dialog."
+            },
+            {
+              "name": "onOpenChange",
+              "type": "DialogOpenChangeEventHandler",
+              "required": false,
+              "description": "Callback fired when the component changes value from open state. @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown` @param data - A data object with relevant information, such as open value and type of interaction that created the event"
+            },
+            {
+              "name": "inertTrapFocus",
+              "type": "boolean",
+              "required": false,
+              "defaultValue": "false",
+              "description": "Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) where the focus trap involves setting outside elements inert."
+            },
+            {
+              "name": "id",
+              "type": "string",
+              "required": false,
+              "description": "Unique identifier for the draggable dialog."
+            },
+            {
+              "name": "boundary",
+              "type": "RefObject<HTMLElement> | \"viewport\"",
+              "required": false,
+              "defaultValue": "viewport",
+              "description": "Element to be used as a boundary when dragging the dialog."
+            },
+            {
+              "name": "margin",
+              "type": "DraggableDialogMargin",
+              "required": false,
+              "defaultValue": "0",
+              "description": "The margin from the boundary to keep the element in when dragged. Only used when boundary is set."
+            },
+            {
+              "name": "position",
+              "type": "DraggableDialogPosition",
+              "required": false,
+              "defaultValue": "null",
+              "description": "Initial position of the dialog. - Only works when boundary is set. - If not set, the dialog will be centered within the boundary. - If set, the dialog will be positioned at the specified coordinates, relative to the boundary."
+            },
+            {
+              "name": "onPositionChange",
+              "type": "(position: { x: number; y: number; }) => void",
+              "required": false,
+              "description": "Event triggered when the dialog is dragged."
+            },
+            {
+              "name": "announcements",
+              "type": "{ start?: string; end?: string; }",
+              "required": false,
+              "description": "Text to be announced by screen readers when the dialog is dragged."
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-react-draggable-dialog--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-draggable-dialog--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-draggable-dialog--with-margin",
+          "name": "WithMargin",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-draggable-dialog--with-margin&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-draggable-dialog--no-boundary",
+          "name": "NoBoundary",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-draggable-dialog--no-boundary&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-draggable-dialog--custom-boundary",
+          "name": "CustomBoundary",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-draggable-dialog--custom-boundary&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-draggable-dialog--custom-position",
+          "name": "CustomPosition",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-draggable-dialog--custom-position&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-draggable-dialog--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-draggable-dialog.txt",
+      "sourcePath": "./packages/react-draggable-dialog/stories/DraggableDialog/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-gamepad-navigation",
+      "slug": "packages/react-gamepad-navigation",
+      "titlePath": [
+        "Packages",
+        "react-gamepad-navigation"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-gamepad-navigation\n\n**Gamepad Navigation for [Fluent UI React](https://react.fluentui.dev/)**\n\n> [!WARNING]\n> These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.\n\nThis package provides gamepad navigation support for Fluent UI Components.\nAny gaming controller implementing the [Gamepad API](https://w3c.github.io/gamepad/) is supported. Major brand controllers such as Xbox, PlayStation, Nintendo, 8bit, etc. are supported.\n\nThis hook calls [useArrowNavigationGroup](https://react.fluentui.dev/?path=/docs/utilities-focus-management-usearrownavigationgroup--docs) and [useFocusableGroup](https://react.fluentui.dev/?path=/docs/utilities-focus-management-usefocusablegroup--docs) internally.\nFor that reason, 'useGamepadNavigationGroup' hook uses the same API and configuration as those two previous hooks.\n\nIn addition to gamepad navigation, arrow key navigation is available by calling this hook, so there is no need to call `useArrowNavigationGroup` separately.",
+      "stories": [
+        {
+          "id": "packages-react-gamepad-navigation--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-gamepad-navigation--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-gamepad-navigation--single-elements",
+          "name": "SingleElements",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-gamepad-navigation--single-elements&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-gamepad-navigation--composed-elements",
+          "name": "ComposedElements",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-gamepad-navigation--composed-elements&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-gamepad-navigation--multiple-groups",
+          "name": "MultipleGroups",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-gamepad-navigation--multiple-groups&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-gamepad-navigation--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-gamepad-navigation.txt",
+      "sourcePath": "./packages/react-gamepad-navigation/stories/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-headless-provider",
+      "slug": "packages/react-headless-provider",
+      "titlePath": [
+        "Packages",
+        "react-headless-provider"
+      ],
+      "kind": "component",
+      "description": "# @fluentui/react-headless-provider\n\nA package that provides a headless provider, a replacement in some cases for `FluentProvider` from `@fluentui/react-components`.\n\n`HeadlessFluentProvider` does not render additional any DOM elements, only applies React Contexts needed for components from `@fluentui/react-components` to render properly.\n\nFollowing features work:\n\n- rendering into different documents i.e. `targetDocument` prop\n- `customStyleHooks_unstable` & `overrides_unstable` props\n\nFollowing features don't work:\n\n- scoped theming, in this scenario theming should be configured globally or separately\n- scoped \"dir\", in this scenario text direction should be configured globally or separately\n- polyfill for `:focus-visible` (`useFocusVisible()` from `@fluentui/react-tabster`) should be initialized separately\n\nDesigned to be used with [`createCSSRuleFromTheme()`](https://github.com/microsoft/fluentui/pull/29052), see for context [microsoft/fluentui#21290](https://github.com/microsoft/fluentui/issues/21290).",
+      "stories": [
+        {
+          "id": "packages-react-headless-provider--default",
+          "name": "Default",
+          "description": "This example uses <code>iframe</code> to sandbox styles, but it's not\n      mandatory in a real world.\nThis example uses <code>HeadlessFluentProvider</code> to provide proper\n      context values for components (including a proper <code>document</code>\n      instance), but does not apply CSS for the theme. CSS for theme is\n      applied globally (to `:root`) in this example.",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-headless-provider--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-headless-provider--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-headless-provider.txt",
+      "sourcePath": "./packages/react-headless-provider/stories/HeadlessFluentProvider/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-interactive-tab",
+      "slug": "packages/react-interactive-tab",
+      "titlePath": [
+        "Packages",
+        "react-interactive-tab"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-interactive-tab\n\nThe `InteractiveTab` component is an extension of the Tab component from `@fluentui/react-components`. It allows you to add interactive elements, such as buttons, inside a tab.",
+      "props": [
+        {
+          "component": "react-interactive-tab",
+          "props": [
+            {
+              "name": "root",
+              "type": "NonNullable<WithSlotShorthandValue<{ as?: \"div\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>>",
+              "required": false,
+              "description": "Root of the component."
+            },
+            {
+              "name": "content",
+              "type": "NonNullable<WithSlotShorthandValue<{ as?: \"span\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>> & string",
+              "required": false,
+              "description": "Component children are placed in this slot Avoid using the `children` property in this slot in favour of Component children whenever possible."
+            },
+            {
+              "name": "button",
+              "type": "NonNullable<WithSlotShorthandValue<{ as?: \"button\"; } & Omit<Omit<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>>",
+              "required": false,
+              "description": "The button that represents the tab. This is the element that will be focused when the tab is selected."
+            },
+            {
+              "name": "icon",
+              "type": "WithSlotShorthandValue<{ as?: \"span\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Icon that renders before the content."
+            },
+            {
+              "name": "contentBefore",
+              "type": "WithSlotShorthandValue<{ as?: \"span\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Element before the button, within the tab"
+            },
+            {
+              "name": "contentAfter",
+              "type": "WithSlotShorthandValue<{ as?: \"span\"; } & Omit<Omit<DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, \"ref\"> & { ...; }, \"children\"> & { ...; }>",
+              "required": false,
+              "description": "Element after the button, within the tab"
+            },
+            {
+              "name": "as",
+              "type": "\"button\"",
+              "required": false
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-react-interactive-tab--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-interactive-tab--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-interactive-tab--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-interactive-tab.txt",
+      "sourcePath": "./packages/react-interactive-tab/stories/InteractiveTab/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-keytips",
+      "slug": "packages/react-keytips",
+      "titlePath": [
+        "Packages",
+        "react-keytips"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-keytips",
+      "stories": [
+        {
+          "id": "packages-react-keytips--default",
+          "name": "Default",
+          "description": "By default Keytips are shown for all target elements that have keytip attached via\n`useKeytipRef`, except disabled elements.\nWhen multiple Keytips start with the same character, typing that character will filter the visible keytips.\nYou can also use `positioning` to set an offset from the target element, or control [other positioning options](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--docs).",
+          "source": "export const DefaultStory = () => {\n  const normalKeytip = useKeytipRef({\n    keySequences: ['b1'],\n    content: 'B1',\n    onExecute,\n  });\n\n  const keytipWithOffset = useKeytipRef({\n    keySequences: ['b4'],\n    positioning: { offset: { crossAxis: -50, mainAxis: 5 } },\n    content: 'B4',\n    onExecute,\n  });\n\n  return (\n    <>\n      <Button ref={normalKeytip}>Normal Keytip</Button>\n      <Button ref={keytipWithOffset}>Keytip with offset</Button>\n    </>\n  );\n};",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-keytips--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-keytips--with-tabs",
+          "name": "WithTabs",
+          "description": "For Tabs, Keytips will first show keytip for each tab, after selecting a tab, the keytips foor it's content are shown.",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-keytips--with-tabs&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-keytips--dynamic",
+          "name": "Dynamic",
+          "description": "If a `Keytip` triggers dynamic content that includes its own keytips, you must add the `dynamic` prop to the `useKeytipRef` for the relevant component. Additionally, the child keytips should include the parents key sequence in their key sequences.\n\nTake the case below; clicking Button 1 and Button 2 will update the text of Button3. Triggering the keytip for Button 1 or Button 2 will then also change the keytip sequence of Button 3, because it can be both a child of Button 1 or Button 2. For this to work fully, Button 1 and Button 2 should have `dynamic: true`.",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-keytips--dynamic&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-keytips--shortcut",
+          "name": "Shortcut",
+          "description": "Keytips with `Overflow` and `Menu` components offer special options:\n\n`hasMenu` - Indicates that the Keytip opens a submenu. If hasMenu is not provided, the Keytip will trigger `onExecute` directly instead of displaying a submenu.\n\nIn this example, firing `T`, `Y` and `R` will show this functionality.",
+          "source": "const subMenuRef = useKeytipRef<HTMLDivElement>({\n  keySequences: ['y'],\n  content: 'Y',\n  hasMenu: true,\n  onExecute,\n});\n\nconst subMenuRefItem = useKeytipRef<HTMLDivElement>({\n  keySequences: ['t'],\n  content: 'T',\n  onExecute,\n});",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-keytips--shortcut&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-keytips--overflow",
+          "name": "Overflow",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-keytips--overflow&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-keytips--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-keytips.txt",
+      "sourcePath": "./packages/react-keytips/stories/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-resize-handle",
+      "slug": "packages/react-resize-handle",
+      "titlePath": [
+        "Packages",
+        "react-resize-handle"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-resize-handle\n\nThis library adds support for mouse and keyboard resizing of components/panels in your UI. It has proper a11y, works well with flex and grid layouts and is flexible enough to not require any drastic changes in your layout.\n\nUse your mouse or touch to drag the element, or focus it and use the arrow keys to resize (step is 20px).\n\nIt also works with HTML elements directly without going through the React lifecycle. This and the fact that it relies on the CSS layouting engine makes sure it is very performant.\n\n![Demo](public/demo.gif 'Demo')",
+      "stories": [
+        {
+          "id": "packages-react-resize-handle--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-resize-handle--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-resize-handle--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-resize-handle.txt",
+      "sourcePath": "./packages/react-resize-handle/stories/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-shadow",
+      "slug": "packages/react-shadow",
+      "titlePath": [
+        "Packages",
+        "react-shadow"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-shadow\n\nThis package provides a React component that renders its children inside a shadow DOM.",
+      "stories": [
+        {
+          "id": "packages-react-shadow--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-shadow--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-shadow--portals",
+          "name": "Portals",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-shadow--portals&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-shadow--insertion-point",
+          "name": "InsertionPoint",
+          "description": "The insertion order of Fluent styles can be controlled with a sentinal \"insertion point\" stylesheet.\n              This is useful for controlling specificity when using styles outside of Fluent.",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-shadow--insertion-point&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-shadow--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-shadow.txt",
+      "sourcePath": "./packages/react-shadow/stories/root/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-themeless-provider",
+      "slug": "packages/react-themeless-provider",
+      "titlePath": [
+        "Packages",
+        "react-themeless-provider"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-themeless-provider\n\nThis package provides `ThemelessFluentProvider`, a replacement for `FluentProvider` when the provider needs to be rendered inside shadow DOM.\n\n`ThemelessFluentProvider` does not render the theme contexts or inject theme CSS custom properties into the DOM. When using this provider you are responsible for setting the necessary CSS custom properties in such a way that they will pierce the shadow DOM (e.g., apply them to `:root`).",
+      "props": [
+        {
+          "component": "react-themeless-provider",
+          "props": [
+            {
+              "name": "dir",
+              "type": "\"ltr\" \"rtl\"",
+              "required": false,
+              "description": "Sets the direction of text & generated styles."
+            },
+            {
+              "name": "as",
+              "type": "\"div\"",
+              "required": false
+            },
+            {
+              "name": "customStyleHooks_unstable",
+              "type": "Partial<{ useAccordionHeaderStyles_unstable: CustomStyleHook; useAccordionItemStyles_unstable: CustomStyleHook; useAccordionPanelStyles_unstable: CustomStyleHook; ... 189 more ...; useVirtualizerStyles_unstable: CustomStyleHook; }>",
+              "required": false,
+              "description": "Sets the hooks for custom styling components."
+            },
+            {
+              "name": "targetDocument",
+              "type": "Document",
+              "required": false,
+              "description": "Provides the document, can be undefined during SSR render."
+            },
+            {
+              "name": "overrides_unstable",
+              "type": "OverridesContextValue_unstable",
+              "required": false
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-react-themeless-provider--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-themeless-provider--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-themeless-provider--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-themeless-provider.txt",
+      "sourcePath": "./packages/react-themeless-provider/stories/ThemelessFluentProvider/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-tree-grid",
+      "slug": "packages/react-tree-grid",
+      "titlePath": [
+        "Packages",
+        "react-tree-grid"
+      ],
+      "kind": "component",
+      "description": "# @fluentui-contrib/react-tree-grid\n\nThis package provides a set of styleless components to implement the `treegrid` navigation pattern.",
+      "props": [
+        {
+          "component": "react-tree-grid",
+          "props": [
+            {
+              "name": "as",
+              "type": "\"div\"",
+              "required": false
+            },
+            {
+              "name": "onTabsterMoveFocus",
+              "type": "(event: CustomEvent<TreeGridTabsterMoveFocusEventDetail>) => void",
+              "required": false,
+              "description": "Allows callers to intercept Tabster-driven row-to-row focus movement."
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-react-tree-grid--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-tree-grid--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-tree-grid--meet",
+          "name": "Meet",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-tree-grid--meet&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-tree-grid--live-meetings-list",
+          "name": "LiveMeetingsList",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-tree-grid--live-meetings-list&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-tree-grid--virtualization",
+          "name": "Virtualization",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-tree-grid--virtualization&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-tree-grid--threaded-virtualization",
+          "name": "ThreadedVirtualization",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-tree-grid--threaded-virtualization&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-tree-grid--email-inbox",
+          "name": "EmailInbox",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-tree-grid--email-inbox&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-tree-grid--calls",
+          "name": "Calls",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-tree-grid--calls&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-tree-grid--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-tree-grid.txt",
+      "sourcePath": "./packages/react-tree-grid/stories/index.stories.tsx"
+    },
+    {
+      "id": "packages-react-virtualizer-virtualizer",
+      "slug": "packages/react-virtualizer/virtualizer",
+      "titlePath": [
+        "Packages",
+        "react-virtualizer",
+        "Virtualizer"
+      ],
+      "kind": "component",
+      "description": "# react-virtualizer\n\nThis library was generated with [Nx](https://nx.dev).",
+      "stories": [
+        {
+          "id": "packages-react-virtualizer-virtualizer--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizer--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizer--default-unbounded",
+          "name": "DefaultUnbounded",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizer--default-unbounded&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizer--dynamic",
+          "name": "Dynamic",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizer--dynamic&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizer--horizontal",
+          "name": "Horizontal",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizer--horizontal&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizer--reversed-horizontal",
+          "name": "ReversedHorizontal",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizer--reversed-horizontal&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizer--reversed",
+          "name": "Reversed",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizer--reversed&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizer--rtl",
+          "name": "RTL",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizer--rtl&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizer--multi-unbounded",
+          "name": "MultiUnbounded",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizer--multi-unbounded&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-virtualizer-virtualizer--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-virtualizer-virtualizer.txt",
+      "sourcePath": "./packages/react-virtualizer/stories/Virtualizer/index.stories.ts"
+    },
+    {
+      "id": "packages-react-virtualizer-virtualizerscrollview",
+      "slug": "packages/react-virtualizer/virtualizer-scroll-view",
+      "titlePath": [
+        "Packages",
+        "react-virtualizer",
+        "VirtualizerScrollView"
+      ],
+      "kind": "component",
+      "description": "<!-- Don't allow prettier to collapse code block into single line -->\n<!-- prettier-ignore -->\n>\n> ```jsx\n>\n> import { VirtualizerScrollView } from '@fluentui-contrib/react-virtualizer';\n>\n> ```\n>\n> - Features and APIs may change before final release\n> - Please contact us if you intend to use this in your product\n>\n> VirtualizerScrollView provides an out of the box static (uniform row/column sizing) implementation of Virtualizer hooks\n>\n> If looking for dynamic sizes or auto-measuring features, use VirtualizerScrollViewDynamic",
+      "stories": [
+        {
+          "id": "packages-react-virtualizer-virtualizerscrollview--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizerscrollview--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizerscrollview--scroll-to",
+          "name": "ScrollTo",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizerscrollview--scroll-to&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizerscrollview--snap-to-alignment",
+          "name": "SnapToAlignment",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizerscrollview--snap-to-alignment&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-virtualizer-virtualizerscrollview--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-virtualizer-virtualizerscrollview.txt",
+      "sourcePath": "./packages/react-virtualizer/stories/VirtualizerScrollView/index.stories.ts"
+    },
+    {
+      "id": "packages-react-virtualizer-virtualizerscrollviewdynamic",
+      "slug": "packages/react-virtualizer/virtualizer-scroll-view-dynamic",
+      "titlePath": [
+        "Packages",
+        "react-virtualizer",
+        "VirtualizerScrollViewDynamic"
+      ],
+      "kind": "component",
+      "description": "<!-- Don't allow prettier to collapse code block into single line -->\n<!-- prettier-ignore -->\n>\n> ```jsx\n>\n> import { VirtualizerScrollViewDynamic } from '@fluentui-contrib/react-virtualizer';\n>\n> ```\n>\n> - Features and APIs may change before final release\n> - Please contact us if you intend to use this in your product\n>\n> VirtualizerScrollViewDynamic provides an out of the box virtualizer implementation for dynamic or variant sized columns/rows\n>\n> This component has auto enabled measuring functionality when getItemSize is not passed in as prop function.\n>\n> If rows/columns are known uniform sizes, use VirtualizerScrollView instead",
+      "stories": [
+        {
+          "id": "packages-react-virtualizer-virtualizerscrollviewdynamic--auto-measure",
+          "name": "AutoMeasure",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizerscrollviewdynamic--auto-measure&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizerscrollviewdynamic--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizerscrollviewdynamic--default&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizerscrollviewdynamic--scroll-to",
+          "name": "ScrollTo",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizerscrollviewdynamic--scroll-to&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizerscrollviewdynamic--scroll-loading",
+          "name": "ScrollLoading",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizerscrollviewdynamic--scroll-loading&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizerscrollviewdynamic--snap-to-alignment",
+          "name": "SnapToAlignment",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizerscrollviewdynamic--snap-to-alignment&viewMode=story&shortcuts=false&singleStory=true"
+        },
+        {
+          "id": "packages-react-virtualizer-virtualizerscrollviewdynamic--complex-dynamic-list",
+          "name": "ComplexDynamicList",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-react-virtualizer-virtualizerscrollviewdynamic--complex-dynamic-list&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-react-virtualizer-virtualizerscrollviewdynamic--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-react-virtualizer-virtualizerscrollviewdynamic.txt",
+      "sourcePath": "./packages/react-virtualizer/stories/VirtualizerScrollViewDynamic/index.stories.ts"
+    },
+    {
+      "id": "packages-teams-components-button",
+      "slug": "packages/teams-components/button",
+      "titlePath": [
+        "Packages",
+        "teams-components",
+        "Button"
+      ],
+      "kind": "component",
+      "props": [
+        {
+          "component": "Button",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "\"transparent\" \"primary\"",
+              "required": false
+            },
+            {
+              "name": "className",
+              "type": "StrictCssClass<ButtonStrictOverrides>",
+              "required": false
+            },
+            {
+              "name": "icon",
+              "type": "StrictSlot",
+              "required": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement>",
+              "required": false
+            },
+            {
+              "name": "title",
+              "type": "StrictSlot",
+              "required": false
+            },
+            {
+              "name": "size",
+              "type": "\"small\" \"medium\" \"large\"",
+              "required": false,
+              "defaultValue": "'medium'",
+              "description": "A button supports different sizes."
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-teams-components-button--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-teams-components-button--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-teams-components-button--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-teams-components-button.txt",
+      "sourcePath": "./packages/teams-components/stories/Button/index.stories.tsx"
+    },
+    {
+      "id": "packages-teams-components-menubutton",
+      "slug": "packages/teams-components/menu-button",
+      "titlePath": [
+        "Packages",
+        "teams-components",
+        "MenuButton"
+      ],
+      "kind": "component",
+      "props": [
+        {
+          "component": "MenuButton",
+          "props": [
+            {
+              "name": "appearance",
+              "type": "\"transparent\" \"primary\"",
+              "required": false
+            },
+            {
+              "name": "className",
+              "type": "StrictCssClass<ButtonStrictOverrides>",
+              "required": false
+            },
+            {
+              "name": "icon",
+              "type": "StrictSlot",
+              "required": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement>",
+              "required": false
+            },
+            {
+              "name": "title",
+              "type": "StrictSlot",
+              "required": false
+            },
+            {
+              "name": "size",
+              "type": "\"small\" \"medium\" \"large\"",
+              "required": false,
+              "defaultValue": "'medium'",
+              "description": "A button supports different sizes."
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-teams-components-menubutton--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-teams-components-menubutton--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-teams-components-menubutton--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-teams-components-menubutton.txt",
+      "sourcePath": "./packages/teams-components/stories/MenuButton/index.stories.tsx"
+    },
+    {
+      "id": "packages-teams-components-togglebutton",
+      "slug": "packages/teams-components/toggle-button",
+      "titlePath": [
+        "Packages",
+        "teams-components",
+        "ToggleButton"
+      ],
+      "kind": "component",
+      "props": [
+        {
+          "component": "ToggleButton",
+          "props": [
+            {
+              "name": "checked",
+              "type": "boolean",
+              "required": true
+            },
+            {
+              "name": "aria-pressed",
+              "type": "undefined",
+              "required": false
+            },
+            {
+              "name": "appearance",
+              "type": "\"transparent\" \"primary\"",
+              "required": false
+            },
+            {
+              "name": "className",
+              "type": "StrictCssClass<ButtonStrictOverrides>",
+              "required": false
+            },
+            {
+              "name": "icon",
+              "type": "StrictSlot",
+              "required": false
+            },
+            {
+              "name": "onClick",
+              "type": "MouseEventHandler<HTMLButtonElement>",
+              "required": false
+            },
+            {
+              "name": "title",
+              "type": "StrictSlot",
+              "required": false
+            },
+            {
+              "name": "size",
+              "type": "\"small\" \"medium\" \"large\"",
+              "required": false,
+              "defaultValue": "'medium'",
+              "description": "A button supports different sizes."
+            }
+          ]
+        }
+      ],
+      "stories": [
+        {
+          "id": "packages-teams-components-togglebutton--default",
+          "name": "Default",
+          "embedUrl": "https://microsoft.github.io/fluentui-contrib/docsite/iframe.html?id=packages-teams-components-togglebutton--default&viewMode=story&shortcuts=false&singleStory=true"
+        }
+      ],
+      "docsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/?path=/docs/packages-teams-components-togglebutton--docs",
+      "llmsUrl": "https://microsoft.github.io/fluentui-contrib/docsite/llms/packages-teams-components-togglebutton.txt",
+      "sourcePath": "./packages/teams-components/stories/ToggleButton/index.stories.tsx"
+    }
+  ]
+}

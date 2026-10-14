@@ -1,0 +1,1554 @@
+{
+  "routes": [
+    {
+      "route": "/docs/headless/components/accordion",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/avatar-group",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/avatar",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/badge",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/badge/counter-badge",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/badge/presence-badge",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/breadcrumb",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/button",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/card",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/checkbox",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/color-picker",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/combobox",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/compound-button",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/dialog",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/divider",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/drawer",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/dropdown",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/field",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/image",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/info-label",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/input",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/label",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/link",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/menu-button",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/menu",
+      "islands": 14,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/message-bar",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/nav",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/overflow",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/persona",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/popover",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/progress-bar",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/radio-group",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/rating-display",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/rating",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/search-box",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/select",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/skeleton",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/slider",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/spin-button",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/spinner",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/split-button",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/swatch-picker",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/switch",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/tab-list",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/tag-picker",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/tags",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/tags/interaction-tag",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/tags/tag-group",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/tags/tag",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/teaching-popover",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/textarea",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/toast",
+      "islands": 14,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/toggle-button",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/toolbar",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/components/tooltip",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/getting-started",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/guide/accessibility",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/guide/architecture",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/guide/browser-support",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/guide",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/guide/polyfills-fallbacks",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless/guide/positioning",
+      "islands": 9,
+      "errors": 0
+    },
+    {
+      "route": "/docs/headless",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/accordion",
+      "islands": 13,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/avatar-group",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/avatar",
+      "islands": 14,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/badge",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/badge/counter-badge",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/badge/presence-badge",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/breadcrumb",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/button",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/button/compound-button",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/button/menu-button",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/button/split-button",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/button/toggle-button",
+      "islands": 9,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/card/card-footer",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/card/card-header",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/card/card-preview",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/card",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/carousel/carousel-nav",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/carousel",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/checkbox",
+      "islands": 9,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/color-picker",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/combobox",
+      "islands": 17,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/compat-components/calendar",
+      "islands": 13,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/compat-components/date-picker",
+      "islands": 12,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/compat-components",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/compat-components/time-picker",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/data-grid",
+      "islands": 15,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/dialog",
+      "islands": 18,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/divider",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/drawer",
+      "islands": 20,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/dropdown",
+      "islands": 14,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/field",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/fluent-provider",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/image",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/info-label",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/input",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/label",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/link",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/list",
+      "islands": 11,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/menu/menu-list",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/menu",
+      "islands": 28,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/message-bar",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/nav",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/overflow",
+      "islands": 13,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/persona",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/popover",
+      "islands": 14,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/portal",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/portal/to-mount-node-props",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/preview-components",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/preview-components/menu",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/preview-components/menu/menu-grid",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/progress-bar",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/radio-group",
+      "islands": 9,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/rating-display",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/rating",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/search-box",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/select",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/skeleton",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/slider",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/spin-button",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/spinner",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/swatch-picker",
+      "islands": 12,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/switch",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/tab-list",
+      "islands": 13,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/table",
+      "islands": 23,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/tag-picker",
+      "islands": 13,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/tag/interaction-tag",
+      "islands": 11,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/tag/tag-group",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/tag",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/teaching-popover",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/text",
+      "islands": 10,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/textarea",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/toast",
+      "islands": 20,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/toolbar",
+      "islands": 15,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/tooltip",
+      "islands": 12,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/components/tree",
+      "islands": 23,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/foundations/border-radii",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/foundations/colors",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/foundations/fonts",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/foundations",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/foundations/shadows",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/foundations/spacing",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/foundations/stroke-widths",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/foundations/theme-designer",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/foundations/typography",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/getting-started",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/component-labelling",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components-overview",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components/button",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components/checkbox",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components/dropdown",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components/input",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components/menu-button",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components/radio-group",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components/spin-button",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components/split-button",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/components/textarea",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/debugging-notifications",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/experiences",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/focus-indicator",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/notification-best-practices",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/scenarios",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/accessibility/truncation",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/advanced-configuration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/advanced-styling-techniques",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/browser-support-matrix",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/build-time-styles",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/building-custom-controls",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/customizing-components-with-slots",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/package-maturity-levels",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/positioning-components",
+      "islands": 18,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/react-version-support",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/server-side-rendering/basic-setup",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/server-side-rendering",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/server-side-rendering/limitations-with-portals",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/server-side-rendering/next-js-app-dir-setup",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/server-side-rendering/next-js-pages-setup",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/server-side-rendering/react-router-7-and-remix-setup",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/styling-components",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/supported-platforms",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/theming",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/unprocessed-styles",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/web-components-interop",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/guide/web-components-interop/using-fluent-react-with-web-components",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/color-mapping",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/component-mapping",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/avatar-group-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/button-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/card-migration/card-footer",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/card-migration/card-header",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/card-migration/card-preview",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/card-migration/card",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/card-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/charts-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/checkbox-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/choice-group-to-radio-group-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/color-picker-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/flex",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/flex/stack-item",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/flex/stack",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/grouped-list-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/image-migration",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/keytips-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/label-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/menu-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/separator-to-divider-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/slider-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/spin-button-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/spinner-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/tabs-pivot-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/text-field-to-input-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/textarea-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/components/theme-migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/from-v8/troubleshooting",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/getting-started",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/handling-breaking-changes",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/migration/keeping-design-consistent",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/apis/create-motion-component-variant",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/apis/create-motion-component",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/apis/create-presence-component",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/apis",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/apis/motion-slot",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/apis/presence-group",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/apis/presence-motion-slot",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/choreography-preview",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/choreography-preview/stagger",
+      "islands": 12,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/components-preview/atoms",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/components-preview/blur",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/components-preview/collapse",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/components-preview/fade",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/components-preview",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/components-preview/introduction",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/components-preview/rotate",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/components-preview/scale",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/components-preview/slide",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/introduction",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/migration",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/tokens",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/using-motion-slots",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/motion/using-motion-slots/components-with-motion-slots",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/aria-live/aria-live-announcer",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/aria-live",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/aria-live/use-announce",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/aria-live/use-typing-announce",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/focus-management",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/focus-management/use-arrow-navigation-group",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/focus-management/use-focus-finders",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/focus-management/use-focusable-group",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/focus-management/use-modal-attributes",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/focus-management/use-observed-element",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/focus-management/use-restore-focus-source",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/positioning",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/positioning/use-safe-zone-area",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/theme/create-css-rule-from-theme",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/react/utilities/theme",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/azure-theme",
+      "islands": 37,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/houdini-utils",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/accordion",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/avatar",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/badge",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/button",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/carousel",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/checkbox",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/dialog",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/drawer",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/image",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/link",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/menu",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/popover",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/components/tooltip",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/design-language/overview",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/design-language/rounded-corners",
+      "islands": 16,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-cap-theme/getting-started",
+      "islands": 0,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-chat/chat",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-chat/chat-message",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-chat/chat-my-message",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-contextual-pane/footer",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-contextual-pane/header",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-data-grid-react-window",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-data-grid-react-window-grid",
+      "islands": 2,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-draggable-dialog",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-gamepad-navigation",
+      "islands": 4,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-headless-provider",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-interactive-tab",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-keytips",
+      "islands": 5,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-resize-handle",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-shadow",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-themeless-provider",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-tree-grid",
+      "islands": 7,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-virtualizer/virtualizer",
+      "islands": 8,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-virtualizer/virtualizer-scroll-view",
+      "islands": 3,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/react-virtualizer/virtualizer-scroll-view-dynamic",
+      "islands": 6,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/teams-components/button",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/teams-components/menu-button",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "/docs/contrib/packages/teams-components/toggle-button",
+      "islands": 1,
+      "errors": 0
+    },
+    {
+      "route": "search:keytips",
+      "hits": 4
+    }
+  ],
+  "errors": []
+}

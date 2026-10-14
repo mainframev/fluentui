@@ -1,0 +1,11 @@
+# Generated Blume project (content, islands, static CSS, runtime, output).
+blume/.blume/
+blume/content/
+blume/islands/generated/
+blume/generated/
+blume/public/
+blume/dist/
+metrics/screenshots/
+
+# Local experiments keep their build output out of git.
+experiments/**/dist/
