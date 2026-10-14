@@ -1,5 +1,8 @@
-# Generated React Router types and Fumadocs content modules.
-.react-router/
-.source/
-.fumadocs-typescript/
-.impeccable/
+# Generated Blume project (content, islands, static CSS, runtime, output).
+blume/.blume/
+blume/content/
+blume/islands/generated/
+blume/generated/
+blume/public/
+blume/dist/
+metrics/screenshots/

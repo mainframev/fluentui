@@ -1,0 +1,10 @@
+---
+// Static Griffel rules collected at generation time for one page's story island. Rendering them
+// inline keeps each page's CSS on that page instead of in one site-wide stylesheet.
+interface Props {
+  css: string;
+}
+const { css } = Astro.props;
+---
+
+<Fragment set:html={`<style data-fluent-static-styles>${css}</style>`} />
