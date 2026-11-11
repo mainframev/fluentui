@@ -4,6 +4,8 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
+import { MotionBehaviourProvider } from '@fluentui/react-motion';
+import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTrigger } from '@fluentui/react-dialog';
 import { OverlayDrawer } from './OverlayDrawer';
 import type { OverlayDrawerProps } from './OverlayDrawer.types';
 import { overlayDrawerClassNames } from './useOverlayDrawerStyles.styles';
@@ -80,6 +82,65 @@ describe('OverlayDrawer', () => {
 
         cy.get(`.${overlayDrawerClassNames.backdrop}`).should('not.exist');
       });
+    });
+  });
+
+  // https://github.com/microsoft/fluentui/issues/35389
+  describe('mountNode with modalType="non-modal"', () => {
+    const ExampleDrawerInContainer = () => {
+      const [container, setContainer] = React.useState<HTMLDivElement | null>(null);
+
+      return (
+        <MotionBehaviourProvider value="skip">
+          <input id="outside-input" />
+          <Dialog>
+            <DialogTrigger disableButtonEnhancement>
+              <button id="open-dialog">Open Dialog</button>
+            </DialogTrigger>
+            <DialogSurface>
+              <DialogBody>
+                <DialogActions>
+                  <DialogTrigger disableButtonEnhancement>
+                    <button id="close-dialog">Close Dialog</button>
+                  </DialogTrigger>
+                </DialogActions>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+          <div ref={setContainer} style={{ position: 'relative', width: 500, height: 300, overflow: 'hidden' }}>
+            {container && (
+              <OverlayDrawer open mountNode={container} modalType="non-modal">
+                <input id="drawer-input" />
+              </OverlayDrawer>
+            )}
+          </div>
+        </MotionBehaviourProvider>
+      );
+    };
+
+    it('should keep focus on elements outside the container', () => {
+      mountFluent(<ExampleDrawerInContainer />);
+
+      cy.get('#drawer-input').realClick();
+      cy.get('#drawer-input').should('be.focused');
+
+      cy.get('#outside-input').realClick();
+      // Tabster pulls focus back into a trapped modalizer after a delay, so wait past it
+      cy.wait(300);
+      cy.get('#outside-input').should('be.focused');
+    });
+
+    it('should let focus return to the Drawer after a modal Dialog outside the container closes', () => {
+      mountFluent(<ExampleDrawerInContainer />);
+
+      cy.get('#open-dialog').realClick();
+      cy.get('#close-dialog').realClick();
+      cy.get('#open-dialog').should('be.focused');
+
+      cy.get('#drawer-input').realClick();
+      cy.wait(300);
+      cy.get('#drawer-input').should('be.focused');
+      cy.get('.fui-OverlayDrawer').should('not.have.attr', 'aria-hidden');
     });
   });
 
