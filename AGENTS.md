@@ -65,7 +65,7 @@ state.root.className = mergeClasses(
 
 - `packages/react-components/` has 74+ packages — search by specific component name, never read the full directory.
 - Use `yarn nx show project <project-name>` to understand a project's structure.
-- Map package names to paths: `@fluentui/react-<name>` → `packages/react-components/react-<name>/library/src/`.
+- Map package names to paths: most v9 packages live at `packages/react-components/react-<name>/library/src/`; foundation and tooling packages (e.g. `react-components`, `react-utilities`, `react-tabster`, `react-context-selector`, `priority-overflow`, `keyboard-keys`) have no `library/` folder and live at `packages/react-components/<name>/src/`. When unsure: `yarn nx show project <name> --json | jq -r .sourceRoot`.
 
 ## Architecture (deep dives)
 

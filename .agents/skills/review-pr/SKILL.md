@@ -88,15 +88,15 @@ Reference: [docs/architecture/layers.md](../../../docs/architecture/layers.md)
 
 Grep added lines for unguarded browser API access:
 
-| Pattern                                                       | Severity |
-| ------------------------------------------------------------- | -------- |
-| `window.` without `canUseDOM` or `typeof window` guard nearby | BLOCKER  |
-| `document.` without guard                                     | BLOCKER  |
-| `navigator.` without guard                                    | BLOCKER  |
-| `localStorage` / `sessionStorage` without guard               | BLOCKER  |
-| `instanceof HTMLElement`                                      | WARNING  |
+| Pattern                                                                                       | Severity |
+| --------------------------------------------------------------------------------------------- | -------- |
+| `window.` without `canUseDOM` guard nearby (components must use `targetDocument.defaultView`) | BLOCKER  |
+| `document.` without guard                                                                     | BLOCKER  |
+| `navigator.` without guard                                                                    | BLOCKER  |
+| `localStorage` / `sessionStorage` without guard                                               | BLOCKER  |
+| `instanceof HTMLElement`                                                                      | WARNING  |
 
-Check 3 lines above each match for a guard (`canUseDOM`, `typeof window !== 'undefined'`).
+Check 3 lines above each match for a `canUseDOM()` guard. In v9 component code, direct `window`/`document` access is a BLOCKER even when guarded — it must go through `useFluent_unstable().targetDocument`.
 
 ### E. Testing
 

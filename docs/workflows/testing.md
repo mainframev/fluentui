@@ -2,14 +2,16 @@
 
 ## Test Types
 
-| Type              | Tool                         | Command                                         | Purpose                          |
-| ----------------- | ---------------------------- | ----------------------------------------------- | -------------------------------- |
-| Unit              | Jest + React Testing Library | `yarn nx run <project>:test`                    | Component behavior, hooks, utils |
-| Visual Regression | Storybook + StoryWright      | `yarn nx run vr-tests-react-components:test-vr` | Screenshot diffs (CI only)       |
-| E2E               | Cypress                      | `yarn nx run react-components:e2e`              | Integration flows                |
-| SSR               | Custom                       | `yarn nx run ssr-tests-v9:test-ssr`             | Server-side rendering safety     |
-| Cross-React       | Custom                       | `yarn nx run rit-tests-v9:test-rit`             | React version compatibility      |
-| Conformance       | isConformant                 | Part of unit tests                              | Consistent component API         |
+| Type              | Tool                         | Command                                         | Purpose                                             |
+| ----------------- | ---------------------------- | ----------------------------------------------- | --------------------------------------------------- |
+| Unit              | Jest + React Testing Library | `yarn nx run <project>:test`                    | Component behavior, hooks, utils                    |
+| Visual Regression | Storybook + StoryWright      | `yarn nx run vr-tests-react-components:test-vr` | Screenshot diffs (CI only)                          |
+| E2E               | Cypress                      | `yarn nx run <project>:e2e`                     | Integration flows (projects with cypress.config.ts) |
+| SSR               | Custom                       | `yarn nx run ssr-tests-v9:test-ssr`             | Server-side rendering safety                        |
+| Cross-React       | Custom                       | `yarn nx run rit-tests-v9:test-rit`             | React version compatibility                         |
+| Conformance       | isConformant                 | Part of unit tests                              | Consistent component API                            |
+
+To run E2E for everything affected by your branch: `yarn nx affected -t e2e`.
 
 ## V9 Icon Regression Coverage
 
@@ -71,18 +73,23 @@ Every component package has a `testing/isConformant.ts` file that validates:
 
 ## SSR Safety
 
-Components must work in server-side rendering. Never access browser APIs without guards:
+Components must work in server-side rendering. Never access browser globals directly:
 
 ```tsx
-// WRONG — crashes on server
+// WRONG — crashes on the server, and targets the wrong window inside iframes / multi-window apps
 const width = window.innerWidth;
 
-// RIGHT — guarded access
+// WRONG — SSR-safe, but still ignores iframes / multi-window (breaks AGENTS.md critical rule 3)
 const width = typeof window !== 'undefined' ? window.innerWidth : 0;
 
-// BETTER — use useIsSSR or check canUseDOM
+// RIGHT (components) — use the document Fluent renders into
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+const { targetDocument } = useFluent();
+const width = targetDocument?.defaultView?.innerWidth ?? 0;
+
+// RIGHT (non-component code) — check the environment first
 import { canUseDOM } from '@fluentui/react-utilities';
 if (canUseDOM()) {
-  // safe to use window/document
+  // safe to use the DOM
 }
 ```

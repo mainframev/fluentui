@@ -22,7 +22,7 @@ Updated during periodic documentation audits.
 
 ## Current Grades
 
-<!-- This table is updated by the docs-groomer agent. Do not edit manually. -->
+<!-- No automation populates this table yet. Fill it in manually during documentation audits using the criteria above. -->
 
 | Package                                   | README | Stories | Tests | API Docs | Conformance | Grade |
 | ----------------------------------------- | ------ | ------- | ----- | -------- | ----------- | ----- |
