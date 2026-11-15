@@ -78,8 +78,9 @@ Reference: [docs/architecture/component-patterns.md](../../../docs/architecture/
 
 For changes to `package.json` files or new imports in Tier 3 component packages:
 
-- **BLOCKER** if a Tier 3 package (`react-button`, `react-menu`, etc.) adds a dependency on another Tier 3 package
-- Allowed Tier 2 deps: `react-utilities`, `react-theme`, `react-shared-contexts`, `react-tabster`, `react-positioning`, `react-portal`
+- **BLOCKER** if a Tier 3 package adds a dependency on another Tier 3 package to reuse internal hooks/contexts/utilities (that logic belongs in Tier 2), or if a new dependency creates a cycle
+- **WARNING** if a Tier 3 package adds a dependency on another Tier 3 package to render its public component — confirm composition is intended
+- Allowed Tier 2 deps: `react-utilities`, `react-theme`, `react-shared-contexts`, `react-tabster`, `react-positioning`, `react-portal`, `react-aria`, `react-context-selector`, `react-motion`, `react-motion-components-preview`, `priority-overflow`, `keyboard-keys`
 - Allowed Tier 1 deps: `@griffel/react`, `@fluentui/tokens`, `@fluentui/react-jsx-runtime`
 
 Reference: [docs/architecture/layers.md](../../../docs/architecture/layers.md)

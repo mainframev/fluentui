@@ -62,7 +62,7 @@ yarn nx g @fluentui/workspace-plugin:react-component --name $ARGUMENTS --project
 - Always preserve user `className` as the LAST argument in `mergeClasses()`
 - Use `_unstable` suffix on exported hooks: `use$ARGUMENTS_unstable`, `use${ARGUMENTS}Styles_unstable`, `render${ARGUMENTS}_unstable`
 - Never access `window`/`document`/`navigator` directly — use `useFluent_unstable().targetDocument` (and `targetDocument.defaultView`) in components; `canUseDOM()` from `@fluentui/react-utilities` only in non-component code
-- Do not add dependencies on other Tier 3 component packages (see [docs/architecture/layers.md](../../../docs/architecture/layers.md))
+- Depend on another Tier 3 component package only to render its public components; never to share internal logic (see [docs/architecture/layers.md](../../../docs/architecture/layers.md))
 
 ## Available Generators Reference
 
