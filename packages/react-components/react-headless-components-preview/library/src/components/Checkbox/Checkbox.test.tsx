@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Checkbox } from './Checkbox';
 
@@ -32,5 +32,44 @@ describe('Checkbox', () => {
     const root = container.firstElementChild!;
 
     expect(root).toHaveAttribute('data-disabled');
+  });
+
+  it('toggles data-checked when an uncontrolled checkbox is clicked', () => {
+    const { container, getByRole } = render(<Checkbox label="x" />);
+    const root = container.firstElementChild!;
+    const input = getByRole('checkbox');
+
+    expect(root).not.toHaveAttribute('data-checked');
+    fireEvent.click(input);
+    expect(root).toHaveAttribute('data-checked');
+    fireEvent.click(input);
+    expect(root).not.toHaveAttribute('data-checked');
+  });
+
+  it('renders data-checked="mixed" when checked is mixed', () => {
+    const { container } = render(<Checkbox checked="mixed" label="x" />);
+    const root = container.firstElementChild!;
+
+    expect(root).toHaveAttribute('data-checked', 'mixed');
+  });
+
+  it('moves from mixed to checked when an uncontrolled mixed checkbox is clicked', () => {
+    const { container, getByRole } = render(<Checkbox defaultChecked="mixed" label="x" />);
+    const root = container.firstElementChild!;
+
+    expect(root).toHaveAttribute('data-checked', 'mixed');
+    fireEvent.click(getByRole('checkbox'));
+    expect(root).toHaveAttribute('data-checked', '');
+  });
+
+  it('keeps data-checked in sync with a controlled checked prop', () => {
+    const { container, getByRole, rerender } = render(<Checkbox checked={false} label="x" />);
+    const root = container.firstElementChild!;
+
+    fireEvent.click(getByRole('checkbox'));
+    expect(root).not.toHaveAttribute('data-checked');
+
+    rerender(<Checkbox checked label="x" />);
+    expect(root).toHaveAttribute('data-checked');
   });
 });

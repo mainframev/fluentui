@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { ToggleButton } from './ToggleButton';
 
@@ -46,5 +46,36 @@ describe('ToggleButton', () => {
 
     expect(button).toBeInTheDocument();
     expect(button).toHaveAttribute('data-icon-only');
+  });
+
+  it('toggles data-checked when an uncontrolled toggle button is clicked', () => {
+    const { getByRole } = render(<ToggleButton>x</ToggleButton>);
+    const button = getByRole('button', { name: 'x' });
+
+    expect(button).not.toHaveAttribute('data-checked');
+    expect(button).toHaveAttribute('aria-pressed', 'false');
+    fireEvent.click(button);
+    expect(button).toHaveAttribute('data-checked');
+    expect(button).toHaveAttribute('aria-pressed', 'true');
+    fireEvent.click(button);
+    expect(button).not.toHaveAttribute('data-checked');
+    expect(button).toHaveAttribute('aria-pressed', 'false');
+  });
+
+  it('starts checked with defaultChecked', () => {
+    const { getByRole } = render(<ToggleButton defaultChecked>x</ToggleButton>);
+
+    expect(getByRole('button', { name: 'x' })).toHaveAttribute('data-checked');
+  });
+
+  it('keeps data-checked in sync with a controlled checked prop', () => {
+    const { getByRole, rerender } = render(<ToggleButton checked={false}>x</ToggleButton>);
+    const button = getByRole('button', { name: 'x' });
+
+    fireEvent.click(button);
+    expect(button).not.toHaveAttribute('data-checked');
+
+    rerender(<ToggleButton checked>x</ToggleButton>);
+    expect(button).toHaveAttribute('data-checked');
   });
 });
