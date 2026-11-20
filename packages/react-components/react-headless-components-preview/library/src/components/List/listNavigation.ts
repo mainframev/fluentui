@@ -40,9 +40,26 @@ const updateAuthorTabIndices = (root: HTMLElement, records: MutationRecord[]): v
   }
 };
 
-const isAvailable = (element: HTMLElement, boundary: HTMLElement): boolean => {
+type CheckVisibility = (options?: { visibilityProperty?: boolean; checkVisibilityCSS?: boolean }) => boolean;
+
+const nativeVisible = (element: HTMLElement): boolean | undefined => {
+  const check = (element as HTMLElement & { checkVisibility?: CheckVisibility }).checkVisibility;
+  return typeof check === 'function'
+    ? check.call(element, { visibilityProperty: true, checkVisibilityCSS: true })
+    : undefined;
+};
+
+/**
+ * @param rootVisible - whether the native visibility check is known to be valid for `boundary`.
+ * `checkVisibility()` also inspects ancestors above the list, so it is only equivalent to walking up to
+ * the boundary when the boundary itself is visible.
+ */
+const isAvailableWithin = (element: HTMLElement, boundary: HTMLElement, rootVisible: boolean): boolean => {
   if (element.matches(':disabled, input[type="hidden"]') || element.closest('[hidden], [inert]')) {
     return false;
+  }
+  if (rootVisible) {
+    return nativeVisible(element) === true;
   }
   const view = element.ownerDocument.defaultView;
   for (let current: HTMLElement | null = element; current; current = current.parentElement) {
@@ -57,11 +74,26 @@ const isAvailable = (element: HTMLElement, boundary: HTMLElement): boolean => {
   return true;
 };
 
-export const getListFocusableElements = (root: HTMLElement): HTMLElement[] =>
+const isAvailable = (element: HTMLElement, boundary: HTMLElement): boolean =>
+  isAvailableWithin(element, boundary, nativeVisible(boundary) === true);
+
+const getFocusableElements = (root: HTMLElement, boundary: HTMLElement, rootVisible: boolean): HTMLElement[] =>
   Array.from(root.querySelectorAll<HTMLElement>(`[tabindex], ${naturallyFocusableSelector}`)).filter(
     element =>
-      (authorTabIndices.get(element)?.tabIndex ?? getAuthorTabIndex(element)) >= 0 && isAvailable(element, root),
+      (authorTabIndices.get(element)?.tabIndex ?? getAuthorTabIndex(element)) >= 0 &&
+      isAvailableWithin(element, boundary, rootVisible),
   );
+
+export const getListFocusableElements = (root: HTMLElement): HTMLElement[] =>
+  getFocusableElements(root, root, nativeVisible(root) === true);
+
+/** Rows of `list` that are candidates for vertical navigation, in DOM order. Availability is NOT checked. */
+export const getListRows = (list: HTMLElement): HTMLElement[] =>
+  Array.from(list.querySelectorAll<HTMLElement>('[data-navigable]')).filter(
+    row => row.closest('[data-list]') === list && (authorTabIndices.get(row)?.tabIndex ?? getAuthorTabIndex(row)) >= 0,
+  );
+
+export const isListElementAvailable = isAvailable;
 
 /**
  * Composite grids need a roving tab stop until focusgroup supports their row/control model.
@@ -86,15 +118,11 @@ export const useCompositeListNavigation = (
     cancelFrame();
     updateAuthorTabIndices(root, [...pendingRecords.current.splice(0), ...(observer.current?.takeRecords() ?? [])]);
 
-    const rows = Array.from(root.querySelectorAll<HTMLElement>('[data-navigable]')).filter(
-      element =>
-        element.closest('[data-list]') === root &&
-        (authorTabIndices.get(element)?.tabIndex ?? getAuthorTabIndex(element)) >= 0 &&
-        isAvailable(element, root),
-    );
+    const rootVisible = nativeVisible(root) === true;
+    const rows = getListRows(root).filter(element => isAvailableWithin(element, root, rootVisible));
     const elements = rows.flatMap(row => [
       row,
-      ...getListFocusableElements(row).filter(
+      ...getFocusableElements(row, root, rootVisible).filter(
         element => element.closest('[data-navigable]') === row && element.closest('[data-list]') === root,
       ),
     ]);
@@ -190,7 +218,23 @@ export const useCompositeListNavigation = (
     }
     const row = event.target.closest<HTMLElement>('[data-navigable]');
     if (row?.closest('[data-list]') === root) {
-      current.current = managed.current.has(event.target) ? event.target : row;
+      const next = managed.current.has(event.target) ? event.target : row;
+      // Undelivered mutation records mean the managed set may be stale, so only take the fast path when none exist.
+      pendingRecords.current.push(...(observer.current?.takeRecords() ?? []));
+      if (managed.current.has(next) && !pendingRecords.current.length) {
+        const previous = current.current;
+        current.current = next;
+        if (previous && previous !== next && managed.current.has(previous)) {
+          previous.tabIndex = -1;
+        }
+        if (next.getAttribute('tabindex') !== '0') {
+          next.tabIndex = 0;
+        }
+        // Discard the records produced by our own tabindex writes so they are not mistaken for author changes.
+        observer.current?.takeRecords();
+        return;
+      }
+      current.current = next;
       reconcile();
     }
   });

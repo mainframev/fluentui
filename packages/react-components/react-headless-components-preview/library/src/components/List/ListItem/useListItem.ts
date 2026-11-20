@@ -17,7 +17,7 @@ import {
 } from '@fluentui/keyboard-keys';
 
 import type { ListItemProps, ListItemState } from './ListItem.types';
-import { getListFocusableElements } from '../listNavigation';
+import { getListFocusableElements, getListRows, isListElementAvailable } from '../listNavigation';
 import { useListNavigationMode } from '../listNavigationContext';
 import { toDataAttributeValue } from '../../../utils';
 
@@ -98,9 +98,7 @@ export const useListItem = (props: ListItemProps, ref: React.Ref<HTMLLIElement |
       return;
     }
 
-    const rows = (list ? getListFocusableElements(list) : []).filter(
-      element => element.hasAttribute('data-navigable') && element.closest('[data-list]') === list,
-    );
+    const rows = list ? getListRows(list) : [];
     let step: number;
     let start: number;
 
@@ -128,6 +126,9 @@ export const useListItem = (props: ListItemProps, ref: React.Ref<HTMLLIElement |
     }
 
     for (let index = start; index >= 0 && index < rows.length; index += step) {
+      if (!list || !isListElementAvailable(rows[index], list)) {
+        continue;
+      }
       rows[index].focus();
       if (rows[index].matches(':focus')) {
         event.preventDefault();
