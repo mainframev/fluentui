@@ -5,18 +5,17 @@
 ```ts
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { JSXElement } from '@fluentui/react-utilities';
 import type { RadioBaseState } from '@fluentui/react-radio';
+import type { RadioGroupBaseState } from '@fluentui/react-radio';
 import { RadioGroupContextValue } from '@fluentui/react-radio';
 import { RadioGroupContextValues } from '@fluentui/react-radio';
 import { RadioGroupBaseProps as RadioGroupProps } from '@fluentui/react-radio';
 import { RadioGroupSlots } from '@fluentui/react-radio';
-import { RadioGroupBaseState as RadioGroupState } from '@fluentui/react-radio';
 import { RadioBaseProps as RadioProps } from '@fluentui/react-radio';
 import { RadioSlots } from '@fluentui/react-radio';
 import type * as React_2 from 'react';
 import { renderRadio_unstable as renderRadio } from '@fluentui/react-radio';
-import { renderRadioGroup_unstable as renderRadioGroup } from '@fluentui/react-radio';
-import { useRadioGroupBase_unstable as useRadioGroup } from '@fluentui/react-radio';
 import { useRadioGroupContextValue_unstable as useRadioGroupContextValue } from '@fluentui/react-radio';
 
 // @public
@@ -33,7 +32,10 @@ export { RadioGroupProps }
 
 export { RadioGroupSlots }
 
-export { RadioGroupState }
+// @public
+export type RadioGroupState = RadioGroupBaseState & {
+    selectedValue: string | undefined;
+};
 
 export { RadioProps }
 
@@ -42,6 +44,7 @@ export { RadioSlots }
 // @public
 export type RadioState = RadioBaseState & {
     root: {
+        'data-checked'?: string;
         'data-disabled'?: string;
         'data-label-position'?: RadioBaseState['labelPosition'];
     };
@@ -49,12 +52,14 @@ export type RadioState = RadioBaseState & {
 
 export { renderRadio }
 
-export { renderRadioGroup }
+// @public
+export const renderRadioGroup: (state: RadioGroupState, contextValues: RadioGroupContextValues) => JSXElement;
 
 // @public
 export const useRadio: (props: RadioProps, ref: React_2.Ref<HTMLInputElement>) => RadioState;
 
-export { useRadioGroup }
+// @public
+export const useRadioGroup: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
 
 export { useRadioGroupContextValue }
 
