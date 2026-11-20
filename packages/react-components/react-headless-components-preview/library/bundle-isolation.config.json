@@ -2,8 +2,19 @@
   "$schema": "../../../../tools/verify-bundle-isolation/schema.json",
   "fixturesRoot": "./bundle-size",
   "externals": ["react", "react-dom", "react/jsx-runtime", "react/compiler-runtime"],
-  "forbiddenPackages": ["tabster", "@griffel/*", "@fluentui/react-icons"],
+  "forbiddenPackages": [
+    "tabster",
+    "@griffel/*",
+    "@fluentui/react-icons",
+    "keyborg",
+    "@fluentui/react-motion",
+    "@fluentui/react-motion-components-preview",
+    "@fluentui/react-portal",
+    "@floating-ui/*"
+  ],
   "fixtures": {
-    "AllComponents.fixture.js": {}
+    "AllComponents.fixture.js": {
+      "allowedViolations": ["keyborg"]
+    }
   }
 }
