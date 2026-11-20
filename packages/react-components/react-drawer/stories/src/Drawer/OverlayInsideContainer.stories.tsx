@@ -48,6 +48,8 @@ export const OverlayInsideContainer = (): JSXElement => {
           as="aside"
           {...restoreFocusSourceAttributes}
           mountNode={ref.current}
+          // The rest of the page stays visible and interactive, so the Drawer is not modal.
+          modalType="non-modal"
           open={isOpen}
           onOpenChange={(_, { open }) => setIsOpen(open)}
         >
@@ -87,6 +89,10 @@ OverlayInsideContainer.parameters = {
       story: [
         'The overlay Drawer can be rendered inside a specific container by setting the `mountNode` prop to the desired container element.',
         'This approach is useful when you need the Drawer to appear within a particular section of the DOM, rather than being attached to the root element.',
+        '',
+        'A Drawer inside a container only covers that container, so the rest of the page stays visible and interactive.',
+        'In that case, set `modalType="non-modal"`: a modal Drawer traps focus and hides the rest of the page from assistive technology,',
+        'which conflicts with users clicking or tabbing to the controls outside the container (for example, a header that opens other dialogs).',
       ].join('\n'),
     },
   },
