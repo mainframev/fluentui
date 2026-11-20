@@ -285,6 +285,11 @@
         "entryPoint": "./textarea",
         "name": "@fluentui/react-headless-components-preview/textarea"
       },
+      "TimePicker.fixture.js": {
+        "kind": "entryPoint",
+        "entryPoint": "./time-picker",
+        "name": "@fluentui/react-headless-components-preview/time-picker"
+      },
       "Toast.fixture.js": {
         "kind": "entryPoint",
         "entryPoint": "./toast",
