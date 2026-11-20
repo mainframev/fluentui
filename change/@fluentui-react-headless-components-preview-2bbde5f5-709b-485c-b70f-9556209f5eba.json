@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: composite List navigation avoids full rescans",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}

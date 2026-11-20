@@ -447,3 +447,107 @@ describe('List', () => {
     expect(getByRole('button', { name: 'More' })).not.toHaveAttribute('tabindex');
   });
 });
+
+describe('composite navigation cost', () => {
+  type WithCheckVisibility = { checkVisibility?: unknown };
+  const nextFrame = () =>
+    new Promise(resolve => {
+      requestAnimationFrame(() => resolve(undefined));
+    });
+  const items = Array.from({ length: 50 }, (_, index) => index);
+  const renderGrid = (container?: HTMLElement) =>
+    render(
+      <>
+        <List aria-label="Grid" navigationMode="composite">
+          {items.map(index => (
+            <ListItem key={index} value={`item-${index}`}>
+              <span role="gridcell">
+                <button>Edit {index}</button>
+              </span>
+              <span role="gridcell">
+                <button>More {index}</button>
+              </span>
+            </ListItem>
+          ))}
+        </List>
+      </>,
+      { container },
+    );
+
+  it('checks only the rows an arrow key walks past', async () => {
+    const { getAllByRole } = renderGrid();
+    const rows = getAllByRole('row');
+    rows[0].focus();
+    await nextFrame();
+
+    const spy = jest.spyOn(window, 'getComputedStyle');
+    fireEvent.keyDown(rows[0], { key: 'ArrowDown' });
+    const calls = spy.mock.calls.length;
+    spy.mockRestore();
+
+    expect(rows[1]).toHaveFocus();
+    expect(calls).toBeLessThanOrEqual(10);
+  });
+
+  it('swaps the tab stop without rescanning when focus moves between managed elements', async () => {
+    const { getAllByRole, getByRole } = renderGrid();
+    const rows = getAllByRole('row');
+    const grid = getByRole('grid');
+    rows[0].focus();
+    await nextFrame();
+    fireEvent.keyDown(rows[0], { key: 'ArrowDown' });
+
+    const styleSpy = jest.spyOn(window, 'getComputedStyle');
+    const querySpy = jest.spyOn(grid, 'querySelectorAll');
+    rows[5].focus();
+
+    expect(rows[5]).toHaveAttribute('tabindex', '0');
+    expect(rows[1]).toHaveAttribute('tabindex', '-1');
+    expect(styleSpy).not.toHaveBeenCalled();
+    expect(querySpy).not.toHaveBeenCalled();
+    styleSpy.mockRestore();
+    querySpy.mockRestore();
+  });
+
+  it('uses checkVisibility when available', async () => {
+    const checkVisibility = jest.fn(() => true);
+    (HTMLElement.prototype as WithCheckVisibility).checkVisibility = checkVisibility;
+    try {
+      const { getAllByRole } = renderGrid();
+      const rows = getAllByRole('row');
+      rows[0].focus();
+      await nextFrame();
+
+      const spy = jest.spyOn(window, 'getComputedStyle');
+      checkVisibility.mockClear();
+      fireEvent.keyDown(rows[0], { key: 'End' });
+      const styledElements = spy.mock.calls.map(([element]) => element);
+      spy.mockRestore();
+
+      expect(rows[rows.length - 1]).toHaveFocus();
+      expect(
+        styledElements.some(element => rows.includes(element as HTMLElement) || element.tagName === 'BUTTON'),
+      ).toBe(false);
+      expect(checkVisibility).toHaveBeenCalled();
+    } finally {
+      delete (HTMLElement.prototype as WithCheckVisibility).checkVisibility;
+    }
+  });
+
+  it('keeps boundary semantics when the list itself is hidden', async () => {
+    (HTMLElement.prototype as WithCheckVisibility).checkVisibility = jest.fn(() => false);
+    try {
+      const container = document.body.appendChild(document.createElement('div'));
+      container.style.display = 'none';
+      const { getAllByRole } = renderGrid(container);
+      await nextFrame();
+      const rows = getAllByRole('row', { hidden: true });
+
+      expect(rows[0]).toHaveAttribute('tabindex', '0');
+      expect(rows[1]).toHaveAttribute('tabindex', '-1');
+      expect(rows[49]).toHaveAttribute('tabindex', '-1');
+    } finally {
+      delete (HTMLElement.prototype as WithCheckVisibility).checkVisibility;
+    }
+  });
+});
