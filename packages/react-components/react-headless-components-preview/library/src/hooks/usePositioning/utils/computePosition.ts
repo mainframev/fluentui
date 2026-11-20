@@ -73,6 +73,10 @@ export function computePosition(
   const referenceRect = reference.getBoundingClientRect();
   const floatingRect = floating.getBoundingClientRect();
 
+  if (floatingRect.width === 0 && floatingRect.height === 0) {
+    return null;
+  }
+
   const position = detectPosition(floatingRect, referenceRect, tolerance);
   if (!position) {
     return null;

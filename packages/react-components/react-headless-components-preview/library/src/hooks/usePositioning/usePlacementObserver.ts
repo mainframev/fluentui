@@ -10,6 +10,8 @@ import { computePosition, debounce } from './utils';
  * or content reflow — consumers can style the surface (arrows, animations)
  * via `[data-placement^="above"]` and friends and stay in sync.
  *
+ * While the surface has no box (hidden or `display: none`) only a ResizeObserver
+ * stays attached; window listeners attach when it is laid out.
  */
 export function usePlacementObserver(
   containerEl: HTMLElement | null,
@@ -44,28 +46,56 @@ export function usePlacementObserver(
 
     const debouncedUpdate = debounce(update);
 
-    const ResizeObserverCtor = win.ResizeObserver;
-    const resizeObserver = ResizeObserverCtor
-      ? new ResizeObserverCtor(entries => {
-          const allLaidOut = entries.every(entry => entry.contentRect.width > 0 && entry.contentRect.height > 0);
-          if (allLaidOut) {
-            debouncedUpdate();
-          }
-        })
-      : null;
+    let containerLaidOut = false;
+    let listening = false;
 
-    resizeObserver?.observe(containerEl);
-    resizeObserver?.observe(targetEl);
+    const startListening = () => {
+      if (listening) {
+        return;
+      }
+      listening = true;
+      win.addEventListener('scroll', debouncedUpdate, { capture: true, passive: true });
+      win.addEventListener('resize', debouncedUpdate);
+    };
 
-    win.addEventListener('scroll', debouncedUpdate, { capture: true, passive: true });
-    win.addEventListener('resize', debouncedUpdate);
-
-    debouncedUpdate();
-
-    return () => {
-      resizeObserver?.disconnect();
+    const stopListening = () => {
+      if (!listening) {
+        return;
+      }
+      listening = false;
       win.removeEventListener('scroll', debouncedUpdate, { capture: true });
       win.removeEventListener('resize', debouncedUpdate);
+    };
+
+    const ResizeObserverCtor = win.ResizeObserver;
+    if (!ResizeObserverCtor) {
+      // No ResizeObserver (jsdom, very old browsers): keep the previous always-on behaviour.
+      startListening();
+      debouncedUpdate();
+      return stopListening;
+    }
+
+    const resizeObserver = new ResizeObserverCtor(entries => {
+      for (const entry of entries) {
+        if (entry.target === containerEl) {
+          containerLaidOut = entry.contentRect.width > 0 && entry.contentRect.height > 0;
+        }
+      }
+
+      if (containerLaidOut) {
+        startListening();
+        debouncedUpdate();
+      } else {
+        stopListening();
+      }
+    });
+
+    resizeObserver.observe(containerEl);
+    resizeObserver.observe(targetEl);
+
+    return () => {
+      resizeObserver.disconnect();
+      stopListening();
     };
   }, [containerEl, targetEl, targetDocument, disabled, update]);
 

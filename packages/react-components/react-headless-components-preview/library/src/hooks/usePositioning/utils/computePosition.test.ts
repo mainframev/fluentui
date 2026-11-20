@@ -80,6 +80,13 @@ describe('computePosition', () => {
     expect(computePosition(reference, floating)?.position).toBe('above');
   });
 
+  it('returns null when the floating element has no box', () => {
+    const reference = makeElement({ top: 200, left: 100, right: 200, bottom: 240, width: 100, height: 40 });
+    const floating = makeElement({});
+
+    expect(computePosition(reference, floating)).toBeNull();
+  });
+
   it('respects a custom tolerance', () => {
     const reference = makeElement({ top: 200, left: 100, right: 200, bottom: 240, width: 100, height: 40 });
     const floating = makeElement({ top: 150, left: 125, right: 175, bottom: 205, width: 50, height: 55 });
