@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Tooltip ignores programmatic focus without keyborg",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
