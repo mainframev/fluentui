@@ -21,7 +21,7 @@ from existing code without verifying they match these instructions.
 1. **Never hardcode colors, spacing, or typography values.** Always use design tokens from `@fluentui/react-theme`. See [docs/architecture/design-tokens.md](docs/architecture/design-tokens.md).
 2. **Never use `React.FC`.** Always use `ForwardRefComponent` with `React.forwardRef`.
 3. **Never access `window`, `document`, or `navigator` directly.** In v9 components, use `useFluent_unstable()` to get `targetDocument` and `targetDocument.defaultView` instead of `document`/`window`. For non-component code, use `canUseDOM()` from `@fluentui/react-utilities`.
-4. **Never add dependencies between component packages.** `react-button` must not depend on `react-menu`. Shared logic goes in `react-utilities` or `react-shared-contexts`. See [docs/architecture/layers.md](docs/architecture/layers.md).
+4. **Never add a dependency between component packages to share internal logic.** Shared hooks, contexts and utilities go in Tier 2 (`react-utilities`, `react-shared-contexts`, …). Depending on another component package to render its public component (composition, e.g. `react-avatar` → `react-tooltip`) is allowed, as long as it creates no cycle. See [docs/architecture/layers.md](docs/architecture/layers.md).
 5. **Never skip beachball change files** for published package changes. Run `yarn beachball change`.
 6. **Each PR must contain at most one Beachball change file per package.** Consolidate all changes for that package in the PR into that one file.
 
@@ -65,7 +65,7 @@ state.root.className = mergeClasses(
 
 - `packages/react-components/` has 74+ packages — search by specific component name, never read the full directory.
 - Use `yarn nx show project <project-name>` to understand a project's structure.
-- Map package names to paths: `@fluentui/react-<name>` → `packages/react-components/react-<name>/library/src/`.
+- Map package names to paths: most v9 packages live at `packages/react-components/react-<name>/library/src/`; foundation and tooling packages (e.g. `react-components`, `react-utilities`, `react-tabster`, `react-context-selector`, `priority-overflow`, `keyboard-keys`) have no `library/` folder and live at `packages/react-components/<name>/src/`. When unsure: `yarn nx show project <name> --json | jq -r .sourceRoot`.
 
 ## Architecture (deep dives)
 
