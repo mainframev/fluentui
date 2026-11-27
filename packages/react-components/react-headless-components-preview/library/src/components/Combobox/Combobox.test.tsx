@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Combobox } from './Combobox';
 import { Option } from '../Dropdown/Option';
@@ -65,5 +65,27 @@ describe('Combobox', () => {
     expect(options[0]).not.toHaveAttribute('data-disabled');
     expect(options[1]).toHaveAttribute('data-disabled');
     expect(options[2]).not.toHaveAttribute('data-disabled');
+  });
+
+  describe('IME composition', () => {
+    it.each<[string, KeyboardEventInit]>([
+      ['isComposing', { key: 'Enter', isComposing: true }],
+      ['keyCode 229', { key: 'Enter', keyCode: 229 }],
+    ])('does not select an option or close on Enter with %s', (_, init) => {
+      const onOptionSelect = jest.fn();
+      const { getByRole, queryByRole } = render(
+        <Combobox open onOptionSelect={onOptionSelect} placeholder="Select">
+          <Option>Red</Option>
+          <Option>Green</Option>
+        </Combobox>,
+      );
+      const input = getByRole('combobox');
+
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      fireEvent.keyDown(input, init);
+
+      expect(onOptionSelect).not.toHaveBeenCalled();
+      expect(queryByRole('listbox')).not.toBeNull();
+    });
   });
 });

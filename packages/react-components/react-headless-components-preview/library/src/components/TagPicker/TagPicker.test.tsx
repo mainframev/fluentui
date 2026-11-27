@@ -12,7 +12,9 @@ import { TagPickerList } from './TagPickerList';
 import { TagPickerOption } from './TagPickerOption';
 import { Tag } from '../Tag';
 
-const renderTagPicker = (props: Partial<Pick<TagPickerProps, 'disabled' | 'positioning' | 'selectedOptions'>> = {}) => {
+const renderTagPicker = (
+  props: Partial<Pick<TagPickerProps, 'disabled' | 'positioning' | 'selectedOptions' | 'onOpenChange'>> = {},
+) => {
   const { selectedOptions = [], ...tagPickerProps } = props;
   return render(
     <TagPicker open selectedOptions={selectedOptions} {...tagPickerProps}>
@@ -499,5 +501,22 @@ describe('TagPickerGroup composition', () => {
 
   it('exports useTagPickerGroupContextValues as a composable hook', () => {
     expect(typeof useTagPickerGroupContextValues).toBe('function');
+  });
+
+  describe('IME composition', () => {
+    it.each<[string, KeyboardEventInit]>([
+      ['isComposing', { key: 'Enter', isComposing: true }],
+      ['keyCode 229', { key: 'Enter', keyCode: 229 }],
+    ])('does not clear the query or close on Enter with %s', (_, init) => {
+      const onOpenChange = jest.fn();
+      const { getByRole } = renderTagPicker({ onOpenChange });
+      const input = getByRole('combobox') as HTMLInputElement;
+
+      fireEvent.change(input, { target: { value: 'ab' } });
+      fireEvent.keyDown(input, init);
+
+      expect(input.value).toBe('ab');
+      expect(onOpenChange).not.toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: false }));
+    });
   });
 });

@@ -108,6 +108,7 @@ describe('useTagPickerInput_unstable', () => {
       code: Space,
       currentTarget: { selectionStart: 0, selectionEnd: 0 },
       preventDefault: jest.fn(),
+      nativeEvent: {},
     } as unknown as React.KeyboardEvent<HTMLInputElement>;
     act(() => {
       result.current.root.onKeyDown?.(event);
@@ -128,6 +129,7 @@ describe('useTagPickerInput_unstable', () => {
       code: Enter,
       currentTarget: { selectionStart: 0, selectionEnd: 0 },
       preventDefault: jest.fn(),
+      nativeEvent: {},
     } as unknown as React.KeyboardEvent<HTMLInputElement>;
     act(() => {
       result.current.root.onKeyDown?.(event);
@@ -152,6 +154,7 @@ describe('useTagPickerInput_unstable', () => {
       code: key,
       currentTarget: { selectionStart: 0, selectionEnd: 0 },
       preventDefault: jest.fn(),
+      nativeEvent: {},
     } as unknown as React.KeyboardEvent<HTMLInputElement>;
     act(() => {
       result.current.root.onKeyDown?.(event);
@@ -172,6 +175,7 @@ describe('useTagPickerInput_unstable', () => {
       code: 'KeyA',
       currentTarget: { selectionStart: 1, selectionEnd: 1 },
       preventDefault: jest.fn(),
+      nativeEvent: {},
     } as unknown as React.KeyboardEvent<HTMLInputElement>;
     act(() => {
       result.current.root.onKeyDown?.(event);

@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Enter/Space that confirm an IME composition no longer select or close",
+  "packageName": "@fluentui/react-combobox",
+  "email": "vgenaev@gmail.com"
+}
