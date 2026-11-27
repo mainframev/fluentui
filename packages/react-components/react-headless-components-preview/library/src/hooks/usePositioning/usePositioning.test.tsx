@@ -23,7 +23,19 @@ describe('usePositioning', () => {
     expect(typeof result.current.containerRef).toBe('function');
   });
 
-  it('targetRef writes anchor-name onto the trigger element', () => {
+  it('targetRef writes anchor-name onto the trigger element once a container is attached', () => {
+    const result = mountHook();
+    const node = document.createElement('div');
+
+    act(() => {
+      result.current.targetRef(node);
+      result.current.containerRef(document.createElement('div'));
+    });
+
+    expect(node.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+  });
+
+  it('does not touch the trigger while no container is attached (closed overlay)', () => {
     const result = mountHook();
     const node = document.createElement('div');
 
@@ -31,7 +43,72 @@ describe('usePositioning', () => {
       result.current.targetRef(node);
     });
 
+    expect(node.style.getPropertyValue('anchor-name')).toBe('');
+  });
+
+  it('releases a trigger removed while the overlay is closed', () => {
+    const result = mountHook();
+    const node = document.createElement('div');
+    const container = document.createElement('div');
+
+    // Open: anchor-name is written onto the trigger.
+    act(() => {
+      result.current.targetRef(node);
+      result.current.containerRef(container);
+    });
     expect(node.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+
+    // Close, then remove the trigger: its anchor-name is cleaned up instead of lingering on the detached node.
+    act(() => {
+      result.current.containerRef(null);
+    });
+    act(() => {
+      result.current.targetRef(null);
+    });
+    expect(node.style.getPropertyValue('anchor-name')).toBe('');
+  });
+
+  it('does not write anchor-name onto an explicit target while no container is attached', () => {
+    const target = document.createElement('div');
+    const result = mountHook({ target });
+
+    expect(target.style.getPropertyValue('anchor-name')).toBe('');
+
+    act(() => {
+      result.current.containerRef(document.createElement('div'));
+    });
+
+    expect(target.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+  });
+
+  it('removes its anchor-name when the container detaches', () => {
+    const result = mountHook();
+    const node = document.createElement('div');
+
+    act(() => {
+      result.current.targetRef(node);
+      result.current.containerRef(document.createElement('div'));
+    });
+    expect(node.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+
+    act(() => {
+      result.current.containerRef(null);
+    });
+
+    expect(node.style.getPropertyValue('anchor-name')).not.toMatch(/--popover-anchor-/);
+  });
+
+  it('keeps containerRef stable across renders with an equal inline fallbackPositions array', () => {
+    const refs: PositioningReturn['containerRef'][] = [];
+    const Capture = () => {
+      refs.push(usePositioning({ fallbackPositions: ['above', 'below'] }).containerRef);
+      return null;
+    };
+    const { rerender } = render(<Capture />);
+    rerender(<Capture />);
+
+    expect(refs.length).toBeGreaterThanOrEqual(2);
+    expect(refs[refs.length - 1]).toBe(refs[0]);
   });
 
   it('appends to anchor-name so multiple instances can share one trigger', () => {
@@ -43,6 +120,8 @@ describe('usePositioning', () => {
     act(() => {
       first.current.targetRef(node);
       second.current.targetRef(node);
+      first.current.containerRef(document.createElement('div'));
+      second.current.containerRef(document.createElement('div'));
     });
 
     const names = node.style
@@ -64,6 +143,7 @@ describe('usePositioning', () => {
 
     act(() => {
       result.current.targetRef(node);
+      result.current.containerRef(document.createElement('div'));
     });
 
     const names = node.style

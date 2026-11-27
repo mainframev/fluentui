@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "perf: write anchor-name only while a positioned surface is mounted, and keep a stable container ref for inline fallbackPositions",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
