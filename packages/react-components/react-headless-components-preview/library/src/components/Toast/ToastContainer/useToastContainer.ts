@@ -14,6 +14,7 @@ import { Delete } from '@fluentui/keyboard-keys';
 import type { ToastPoliteness, ToastStatus, ToasterOptions } from '@fluentui/react-toast';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { usePausableTimer } from './usePausableTimer';
+import { consumeDismissReported, markDismissReported } from './dismissReporting';
 
 const intentPolitenessMap: Record<NonNullable<ToastContainerProps['intent']>, ToastPoliteness> = {
   success: 'assertive',
@@ -64,6 +65,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
   const hoverPauseRef = React.useRef(false);
   const windowBlurPauseRef = React.useRef(false);
   const focusedToastBeforeClose = React.useRef(false);
+  const wasVisibleRef = React.useRef(false);
 
   const close = useEventCallback(() => {
     const activeElement = targetDocument?.activeElement;
@@ -71,12 +73,18 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
       focusedToastBeforeClose.current = true;
     }
 
+    markDismissReported(closeProp);
     closeProp();
   });
 
   const reportStatus = useEventCallback((status: ToastStatus) => onStatusChange?.(null, { status, ...props }));
   const pause = useEventCallback(() => setRunning(false));
   const play = useEventCallback(() => {
+    // A queued toast must not spend its display time while it waits for a free slot.
+    if (!visible) {
+      return;
+    }
+
     if (imperativePauseRef.current || hoverPauseRef.current || windowBlurPauseRef.current) {
       return;
     }
@@ -182,11 +190,21 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
   usePausableTimer({ timeout, running, onTimeout: close, resetKey: updateId });
 
   React.useEffect(() => {
-    if (!visible) {
-      reportStatus('dismissed');
-      remove();
+    if (visible) {
+      wasVisibleRef.current = true;
+      consumeDismissReported(closeProp);
+      return;
     }
-  }, [visible, remove, reportStatus]);
+    // Queued toasts mount hidden and must stay in the store until they are shown.
+    if (!wasVisibleRef.current) {
+      return;
+    }
+    // The store's close() already reports 'dismissed'; dismissToast()/dismissAllToasts() do not.
+    if (!consumeDismissReported(closeProp)) {
+      reportStatus('dismissed');
+    }
+    remove();
+  }, [visible, remove, reportStatus, closeProp]);
 
   React.useEffect(() => {
     return () => {
@@ -246,6 +264,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
         'aria-describedby': bodyId,
         ...rest,
         ...userRootSlot,
+        hidden: visible ? undefined : true,
         onMouseEnter,
         onMouseLeave,
         onKeyDown,
