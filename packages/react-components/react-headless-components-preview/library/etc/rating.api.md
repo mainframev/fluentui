@@ -12,10 +12,9 @@ import { RatingItemSlots } from '@fluentui/react-rating';
 import { RatingBaseProps as RatingProps } from '@fluentui/react-rating';
 import { RatingSlots } from '@fluentui/react-rating';
 import { RatingBaseState as RatingState } from '@fluentui/react-rating';
-import type * as React_2 from 'react';
+import * as React_2 from 'react';
 import { renderRating_unstable as renderRating } from '@fluentui/react-rating';
 import { renderRatingItem_unstable as renderRatingItem } from '@fluentui/react-rating';
-import { useRatingBase_unstable as useRating } from '@fluentui/react-rating';
 import { useRatingItemContextValue_unstable as useRatingItemContextValue } from '@fluentui/react-rating';
 
 // @public
@@ -50,7 +49,8 @@ export { renderRating }
 
 export { renderRatingItem }
 
-export { useRating }
+// @public
+export const useRating: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
 
 // @public (undocumented)
 export const useRatingContextValues: (state: RatingState) => RatingContextValues;

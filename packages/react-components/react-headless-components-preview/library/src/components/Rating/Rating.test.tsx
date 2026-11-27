@@ -59,4 +59,29 @@ describe('Rating', () => {
 
     expect(appearances).toEqual(['filled', 'filled', 'filled', 'outline', 'outline']);
   });
+
+  it('renders 5 rating items by default', () => {
+    const { getAllByRole } = render(<Rating defaultValue={3} />);
+    const radios = getAllByRole('radio');
+
+    expect(radios).toHaveLength(5);
+    expect((radios[2] as HTMLInputElement).checked).toBe(true);
+  });
+
+  it('renders max rating items', () => {
+    const { getAllByRole } = render(<Rating max={3} />);
+
+    expect(getAllByRole('radio')).toHaveLength(3);
+  });
+
+  it('prefers consumer children over max', () => {
+    const { getAllByRole } = render(
+      <Rating max={10}>
+        <RatingItem value={1} />
+        <RatingItem value={2} />
+      </Rating>,
+    );
+
+    expect(getAllByRole('radio')).toHaveLength(2);
+  });
 });
