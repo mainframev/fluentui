@@ -81,7 +81,8 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (!effectiveTarget) {
+    // Only write while a surface is mounted: a closed popup costs nothing, including with an explicit `target`.
+    if (!effectiveTarget || !containerEl) {
       return;
     }
 
@@ -107,7 +108,7 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
         }
       }
     };
-  }, [effectiveTarget, anchorName]);
+  }, [effectiveTarget, containerEl, anchorName]);
 
   // The trigger is tracked in a ref and only promoted to state once a container exists (the surface is rendered):
   // a closed overlay then neither re-renders after mount nor writes `anchor-name` onto its trigger.

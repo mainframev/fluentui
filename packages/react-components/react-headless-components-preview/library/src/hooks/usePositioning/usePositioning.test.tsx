@@ -68,6 +68,36 @@ describe('usePositioning', () => {
     expect(node.style.getPropertyValue('anchor-name')).toBe('');
   });
 
+  it('does not write anchor-name onto an explicit target while no container is attached', () => {
+    const target = document.createElement('div');
+    const result = mountHook({ target });
+
+    expect(target.style.getPropertyValue('anchor-name')).toBe('');
+
+    act(() => {
+      result.current.containerRef(document.createElement('div'));
+    });
+
+    expect(target.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+  });
+
+  it('removes its anchor-name when the container detaches', () => {
+    const result = mountHook();
+    const node = document.createElement('div');
+
+    act(() => {
+      result.current.targetRef(node);
+      result.current.containerRef(document.createElement('div'));
+    });
+    expect(node.style.getPropertyValue('anchor-name')).toMatch(/^--popover-anchor-/);
+
+    act(() => {
+      result.current.containerRef(null);
+    });
+
+    expect(node.style.getPropertyValue('anchor-name')).not.toMatch(/--popover-anchor-/);
+  });
+
   it('appends to anchor-name so multiple instances can share one trigger', () => {
     // Two popovers (e.g. a Tooltip and a Menu) attached to the same trigger.
     const first = mountHook();
