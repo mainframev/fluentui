@@ -89,6 +89,20 @@ describe('Combobox', () => {
     expect(getByTestId('clear')).toHaveAttribute('hidden');
   });
 
+  it('keeps a consumer-hidden clear icon hidden when clearable with a selection', () => {
+    const { getByTestId } = render(
+      <Combobox
+        clearable
+        defaultSelectedOptions={['Cat']}
+        defaultValue="Cat"
+        clearIcon={{ hidden: true, 'data-testid': 'clear' } as React.HTMLAttributes<HTMLSpanElement>}
+      >
+        <Option>Cat</Option>
+      </Combobox>,
+    );
+    expect(getByTestId('clear')).toHaveAttribute('hidden');
+  });
+
   it('sets data-selected="true" on the selected option', () => {
     const { getAllByRole } = render(
       <Combobox open defaultSelectedOptions={['Dog']} placeholder="Select">
