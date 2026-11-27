@@ -65,7 +65,15 @@ export function usePositioning(options: PositioningProps): PositioningReturn {
 
   const { targetDocument } = useFluent();
 
-  const fallbackAreas = React.useMemo(() => fallbackPositions.map(shorthandToPositionArea), [fallbackPositions]);
+  // Keyed by value so an inline fallbackPositions array doesn't change containerRef on every render.
+  const fallbackKey = fallbackPositions.join(' ');
+  const fallbackAreas = React.useMemo(
+    () =>
+      fallbackKey
+        ? fallbackKey.split(' ').map(value => shorthandToPositionArea(value as PositioningShorthandValue))
+        : [],
+    [fallbackKey],
+  );
 
   const requestPlacementUpdate = usePlacementObserver(containerEl, effectiveTarget, targetDocument, coverTarget);
 

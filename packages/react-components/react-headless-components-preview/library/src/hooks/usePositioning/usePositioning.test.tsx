@@ -98,6 +98,19 @@ describe('usePositioning', () => {
     expect(node.style.getPropertyValue('anchor-name')).not.toMatch(/--popover-anchor-/);
   });
 
+  it('keeps containerRef stable across renders with an equal inline fallbackPositions array', () => {
+    const refs: PositioningReturn['containerRef'][] = [];
+    const Capture = () => {
+      refs.push(usePositioning({ fallbackPositions: ['above', 'below'] }).containerRef);
+      return null;
+    };
+    const { rerender } = render(<Capture />);
+    rerender(<Capture />);
+
+    expect(refs.length).toBeGreaterThanOrEqual(2);
+    expect(refs[refs.length - 1]).toBe(refs[0]);
+  });
+
   it('appends to anchor-name so multiple instances can share one trigger', () => {
     // Two popovers (e.g. a Tooltip and a Menu) attached to the same trigger.
     const first = mountHook();
