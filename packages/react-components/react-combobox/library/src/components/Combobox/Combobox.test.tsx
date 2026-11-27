@@ -1384,4 +1384,44 @@ describe('Combobox', () => {
       expect(container.querySelector(`.${comboboxClassNames.expandIcon}`)).not.toBeInTheDocument();
     });
   });
+
+  describe('IME composition', () => {
+    const composingKeys: Array<[string, KeyboardEventInit]> = [
+      ['isComposing', { key: 'Enter', isComposing: true }],
+      ['keyCode 229', { key: 'Enter', keyCode: 229 }],
+    ];
+
+    it.each(composingKeys)('does not select an option or close on Enter with %s', (_, init) => {
+      const onOptionSelect = jest.fn();
+      const { getByRole, queryByRole } = render(
+        <Combobox open onOptionSelect={onOptionSelect}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+        </Combobox>,
+      );
+      const input = getByRole('combobox');
+
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      fireEvent.keyDown(input, init);
+
+      expect(onOptionSelect).not.toHaveBeenCalled();
+      expect(queryByRole('listbox')).not.toBeNull();
+    });
+
+    it('selects the active option on a regular Enter', () => {
+      const onOptionSelect = jest.fn();
+      const { getByRole } = render(
+        <Combobox open onOptionSelect={onOptionSelect}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+        </Combobox>,
+      );
+      const input = getByRole('combobox');
+
+      fireEvent.keyDown(input, { key: 'ArrowDown' });
+      fireEvent.keyDown(input, { key: 'Enter' });
+
+      expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    });
+  });
 });

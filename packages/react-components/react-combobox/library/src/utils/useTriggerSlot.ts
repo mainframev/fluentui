@@ -146,6 +146,12 @@ function useTriggerKeydown(
 
   const setKeyboardNavigation = useSetKeyboardNavigation();
   return useEventCallback((e: React.KeyboardEvent<HTMLInputElement> & React.KeyboardEvent<HTMLButtonElement>) => {
+    // Keys that confirm an IME composition belong to the IME, not to the listbox.
+    /* eslint-disable @typescript-eslint/no-deprecated -- Safari reports composition keys only as keyCode 229 */
+    if (e.nativeEvent.isComposing || e.keyCode === 229) {
+      return;
+    }
+    /* eslint-enable @typescript-eslint/no-deprecated */
     const action = getDropdownActionFromKey(e, { open, multiselect });
     const activeOption = getActiveOption();
 
