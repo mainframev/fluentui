@@ -152,6 +152,9 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
   const onClearIconClick = useEventCallback(
     // eslint-disable-next-line react-hooks/refs
     mergeCallbacks(state.clearIcon?.onClick, (ev: React.MouseEvent<HTMLSpanElement>) => {
+      if (!showClearIcon) {
+        return;
+      }
       clearSelection(ev);
       triggerRef.current?.focus();
     }),
@@ -160,6 +163,9 @@ export const useCombobox = (props: ComboboxProps, ref: React.Ref<HTMLInputElemen
   if (state.clearIcon) {
     state.clearIcon.onMouseDown = onClearIconMouseDown;
     state.clearIcon.onClick = onClearIconClick;
+    // The icon stays mounted so TimePicker and consumers can toggle it; it's aria-hidden and not focusable.
+    // A consumer's own `hidden` is preserved; clearability can only hide the icon further.
+    state.clearIcon.hidden = !showClearIcon || !!state.clearIcon.hidden;
   }
 
   // Heads up! We don't support "clearable" in multiselect mode, so we should never display a slot
