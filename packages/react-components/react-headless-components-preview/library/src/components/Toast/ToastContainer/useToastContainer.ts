@@ -64,6 +64,9 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
   const hoverPauseRef = React.useRef(false);
   const windowBlurPauseRef = React.useRef(false);
   const focusedToastBeforeClose = React.useRef(false);
+  const wasVisibleRef = React.useRef(false);
+  // The store's close() already reports 'dismissed'; dismissToast()/dismissAllToasts() do not.
+  const closeReportedRef = React.useRef(false);
 
   const close = useEventCallback(() => {
     const activeElement = targetDocument?.activeElement;
@@ -71,6 +74,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
       focusedToastBeforeClose.current = true;
     }
 
+    closeReportedRef.current = true;
     closeProp();
   });
 
@@ -182,10 +186,19 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
   usePausableTimer({ timeout, running, onTimeout: close, resetKey: updateId });
 
   React.useEffect(() => {
-    if (!visible) {
-      reportStatus('dismissed');
-      remove();
+    if (visible) {
+      wasVisibleRef.current = true;
+      closeReportedRef.current = false;
+      return;
     }
+    // Queued toasts mount hidden and must stay in the store until they are shown.
+    if (!wasVisibleRef.current) {
+      return;
+    }
+    if (!closeReportedRef.current) {
+      reportStatus('dismissed');
+    }
+    remove();
   }, [visible, remove, reportStatus]);
 
   React.useEffect(() => {
@@ -246,6 +259,7 @@ export const useToastContainer = (props: ToastContainerProps, ref: React.Ref<HTM
         'aria-describedby': bodyId,
         ...rest,
         ...userRootSlot,
+        hidden: visible ? undefined : true,
         onMouseEnter,
         onMouseLeave,
         onKeyDown,

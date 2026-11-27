@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { act, render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import { useToastController } from '@fluentui/react-toast';
 import { isConformant } from '../../../testing/isConformant';
 import { Toaster } from './Toaster';
@@ -67,15 +67,99 @@ describe('Toaster', () => {
       dispatchToast = useToastController(toasterId).dispatchToast;
       return <Toaster toasterId={toasterId} limit={1} />;
     };
-    const { queryByText } = render(<Test />);
+    const { getAllByRole } = render(<Test />);
 
     act(() => {
       dispatchToast('first toast', { toastId: 'first', timeout: -1 });
       dispatchToast('second toast', { toastId: 'second', timeout: -1 });
     });
 
-    expect(queryByText('first toast')).not.toBeNull();
-    expect(queryByText('second toast')).toBeNull();
+    const items = getAllByRole('listitem');
+    expect(items).toHaveLength(1);
+    expect(items[0].textContent).toContain('first toast');
+  });
+
+  it('shows a queued toast after the visible one is dismissed', () => {
+    let controller: ReturnType<typeof useToastController>;
+    const toasterId = 'queue-toaster';
+    const Test = () => {
+      controller = useToastController(toasterId);
+      return <Toaster toasterId={toasterId} limit={1} />;
+    };
+    const { getAllByRole } = render(<Test />);
+
+    act(() => {
+      controller.dispatchToast('first toast', { toastId: 'first', timeout: -1 });
+      controller.dispatchToast('second toast', { toastId: 'second', timeout: -1 });
+    });
+    act(() => {
+      controller.dismissToast('first');
+    });
+
+    const items = getAllByRole('listitem');
+    expect(items).toHaveLength(1);
+    expect(items[0].textContent).toContain('second toast');
+  });
+
+  it('does not report dismissed for a queued toast', () => {
+    let dispatchToast: ReturnType<typeof useToastController>['dispatchToast'];
+    const onStatusChange = jest.fn();
+    const toasterId = 'queued-status-toaster';
+    const Test = () => {
+      dispatchToast = useToastController(toasterId).dispatchToast;
+      return <Toaster toasterId={toasterId} limit={1} />;
+    };
+    render(<Test />);
+
+    act(() => {
+      dispatchToast('first toast', { toastId: 'first', timeout: -1 });
+      dispatchToast('second toast', { toastId: 'second', timeout: -1, onStatusChange });
+    });
+
+    expect(onStatusChange).toHaveBeenCalledWith(null, expect.objectContaining({ status: 'queued' }));
+    expect(onStatusChange).not.toHaveBeenCalledWith(null, expect.objectContaining({ status: 'dismissed' }));
+  });
+
+  it('reports dismissed once when a toast closes', () => {
+    let dispatchToast: ReturnType<typeof useToastController>['dispatchToast'];
+    const onStatusChange = jest.fn();
+    const toasterId = 'dismissed-once-toaster';
+    const Test = () => {
+      dispatchToast = useToastController(toasterId).dispatchToast;
+      return <Toaster toasterId={toasterId} />;
+    };
+    const { getByRole } = render(<Test />);
+
+    act(() => {
+      dispatchToast('toast', { toastId: 'once', timeout: -1, onStatusChange });
+    });
+    act(() => {
+      fireEvent.keyDown(getByRole('listitem'), { key: 'Delete' });
+    });
+
+    const dismissed = onStatusChange.mock.calls.filter(([, data]) => data?.status === 'dismissed');
+    expect(dismissed).toHaveLength(1);
+  });
+
+  it('reports dismissed once when dismissed through the controller', () => {
+    let controller: ReturnType<typeof useToastController>;
+    const onStatusChange = jest.fn();
+    const toasterId = 'dismissed-controller-toaster';
+    const Test = () => {
+      controller = useToastController(toasterId);
+      return <Toaster toasterId={toasterId} />;
+    };
+    render(<Test />);
+
+    act(() => {
+      controller.dispatchToast('toast', { toastId: 'ctl', timeout: -1, onStatusChange });
+    });
+    act(() => {
+      controller.dismissToast('ctl');
+    });
+
+    const dismissed = onStatusChange.mock.calls.filter(([, data]) => data?.status === 'dismissed');
+    expect(dismissed).toHaveLength(1);
   });
 
   it('does not forward toaster options to toast container elements', () => {

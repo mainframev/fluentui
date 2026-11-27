@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "comment": "fix: Toaster limit no longer drops queued toasts; dismissed status is reported once",
+  "packageName": "@fluentui/react-headless-components-preview",
+  "email": "vgenaev@gmail.com"
+}
