@@ -87,6 +87,12 @@ export const useTagPickerInputBase_unstable = (
       ...getIntrinsicElementProps('input', fieldProps),
       onKeyDown: useEventCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
         fieldProps.onKeyDown?.(event);
+        // Keys that confirm an IME composition belong to the IME, not to the listbox.
+        /* eslint-disable @typescript-eslint/no-deprecated -- Safari reports composition keys only as keyCode 229 */
+        if (event.nativeEvent.isComposing || event.keyCode === 229) {
+          return;
+        }
+        /* eslint-enable @typescript-eslint/no-deprecated */
         if (event.key === Space) {
           if (open && !isTypingRef.current) {
             setOpen(event, false);
