@@ -9,6 +9,7 @@ import { slot, useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Escape } from '@fluentui/keyboard-keys';
 import { ToastContainer } from '../ToastContainer';
+import { markDismissReported } from '../ToastContainer/dismissReporting';
 import { useLayerOpenState } from '../../../hooks/top-layer';
 
 /**
@@ -71,6 +72,14 @@ export const useToaster = (props: ToasterProps): ToasterState => {
     // Leave Escape that a popover or dialog inside a toast already handled.
     if (e.key === Escape && !e.isDefaultPrevented()) {
       e.preventDefault();
+      // The store reports 'dismissed' for each toast it closes; keep the containers from reporting it again.
+      toastsToRender.forEach(toasts =>
+        toasts.forEach(toast => {
+          if (isToastVisible(toast.toastId)) {
+            markDismissReported(toast.close);
+          }
+        }),
+      );
       closeAllToasts();
     }
     onKeyDownProp?.(e);
